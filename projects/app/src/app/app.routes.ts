@@ -6,13 +6,11 @@ export const routes: Routes = [
         path: '',
         loadChildren: () => import('home').then(m => m.homeRoutes)
     },
-   
 
     {
         path: 'dishes',
         loadChildren: () => import('dishes').then(m => m.dishesRoutes)
     },
-
 
     {
         path: 'menus',
@@ -23,8 +21,6 @@ export const routes: Routes = [
         path: 'orders',
         loadChildren: () => import('orders').then(m => m.ordersRoutes)
     },
-
-
 
     {
         path: 'clients',
