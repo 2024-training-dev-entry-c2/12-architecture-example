@@ -1,0 +1,36 @@
+<menu class="menu" role="menubar" aria-label="Main Navigation Menu">
+    <div class="menu__logo">
+        <li class="menu__item" role="none">
+            <a href="" aria-label="Go to homepage">
+                <i class="menu__item menu__item-icon" aria-hidden="true">
+                    <a [routerLink]="'/'">
+                      <img src="./logo.png" alt="Gusteau's Logo that is displayed in the header of the page with the logo being a draw of 'Rattatouille'" />
+                    </a>
+                </i>
+            </a>
+        </li>
+    </div>
+    <div class="menu__navigation">
+        <li class="menu__item">
+            <a [routerLink]="'/dishes'" aria-label="Go to dishes page">
+                <span>Platos</span>
+            </a>
+        </li>
+        <li class="menu__item">
+            <a [routerLink]="'/menus'" aria-label="Go to menus page">
+                <span>Menus</span>
+            </a>
+        </li>
+        <li class="menu__item">
+            <a [routerLink]="'/orders'" aria-label="Go to orders page">
+                <span>Pedidos</span>
+            </a>
+        </li>
+        <li class="menu__item">
+            <a [routerLink]="'/clients'" aria-label="Go to clients page">
+                <span>Clients</span>
+            </a>
+        </li>
+    </div>
+  </menu>
+  

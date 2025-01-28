@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Capriola&family=Grandstander:ital,wght@0,100..900;1,100..900&family=Itim&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: "Grandstander", serif;
+}
+
+body {
+  min-height: 100vh !important;
+  display: flex !important;
+  flex-direction: column !important;
+}
+
