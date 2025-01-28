@@ -33,6 +33,9 @@
       "orders": [
         "./dist/orders"
       ],
+      "shared": [
+        "./dist/shared"
+      ],
       "users": [
         "./dist/users"
       ]
