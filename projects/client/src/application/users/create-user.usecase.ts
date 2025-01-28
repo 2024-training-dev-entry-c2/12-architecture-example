@@ -1,19 +1,20 @@
 import { inject, Injectable } from "@angular/core";
-import { CreateUserService } from "../../infrastructure/services/create-user.service";
+
 import { State } from "../../domain/state";
-import { IUser } from "../../domain/model/users.model";
+import { Iclient } from "../../domain/model/client.model";
 import { Observable, Subscription, tap } from "rxjs";
+import { ClientService } from "../../infrastructure/services/client.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CreateUserUsecase {
-  private readonly _service = inject(CreateUserService);
+  private readonly _service = inject(ClientService);
   private readonly _state = inject(State);
   private subscriptions: Subscription;
 
   //#region Observables
-  user$(): Observable<IUser> {
+  user$(): Observable<Iclient> {
     return this._state.users.user.$();
   }
   //#endregion
@@ -27,7 +28,7 @@ export class CreateUserUsecase {
     this.subscriptions.unsubscribe();
   }
 
-  execute(user: IUser): void {
+  execute(user: Iclient): void {
     this.subscriptions.add(
       this._service.create(user)
         .pipe(

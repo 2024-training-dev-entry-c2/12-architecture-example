@@ -6,7 +6,7 @@ import { IState } from "../model/state.model";
   providedIn: 'root'
 })
 export class StateFactory {
-  state<T>(subject$: BehaviorSubject<T>): IState<T> {
+  state<T>(subject$: BehaviorSubject<T>): IState<T> { //logica de transformacion  que los estados tenga esta forma
     return {
       $: () => subject$.asObservable(),
       snapshot: () => this.immutabilize(subject$.getValue()),
