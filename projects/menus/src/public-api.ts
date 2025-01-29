@@ -2,5 +2,5 @@
  * Public API Surface of menus
  */
 
-export * from './lib/menus.service';
-export * from './lib/menus.component';
+
+export * from './infrastructure/ui/guards/Menus.routes';

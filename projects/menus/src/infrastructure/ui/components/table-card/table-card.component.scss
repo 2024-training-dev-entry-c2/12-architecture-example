@@ -1,0 +1,163 @@
+@use "./../../../../../../shared/src/infrastructure/ui/styles/variables.scss" as
+  vars;
+@use "./../../../../../../shared/src/infrastructure/ui/styles/mixins.scss" as
+  mix;
+.section__main {
+  padding-bottom: 2rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.title__home {
+  text-align: center;
+  color: vars.$accent;
+  font-weight: 500;
+  font-size: 3rem;
+  padding: 6rem 0 20px 0;
+  margin: 0;
+}
+
+.tabs__container {
+  display: flex; /* Usamos flexbox para crear una disposición horizontal */
+  flex-direction: row;
+  align-items: stretch;
+  background: white;
+  padding: 3rem;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+  border-radius: 5px;
+}
+
+.tabs__buttons {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+
+.tabs__buttons li {
+  display: flex;
+  align-items: left;
+  justify-content: left;
+  padding: 10px 20px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  width: 300px;
+  &:hover {
+    .actions__items {
+      visibility: visible;
+    }
+  }
+}
+.tabs__buttons li span {
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+  padding: 5px auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: block;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover,
+  &:focus {
+    outline: 0;
+    color: lighten(vars.$color-menu, 15%);
+    svg {
+      fill: lighten(vars.$color-menu, 15%);
+    }
+  }
+}
+.tabs__buttons li.active {
+  border-color: #007bff;
+  background-color: #ededed;
+  color: vars.$color-menu;
+  .slider__indicator {
+    background: vars.$color-menu;
+    border-radius: 1px;
+    height: 4px;
+    width: 100%;
+  }
+}
+
+.tab__content {
+  flex: 1; /* Ocupa el resto del espacio */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-right: 20px; /* Separación con las pestañas */
+}
+.slider {
+  position: relative;
+  height: #{100% / vars.$tab-count};
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+  &__indicator {
+    position: relative;
+    height: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    height: vars.$indicator-height;
+    background: vars.$accent;
+    border-radius: 1px;
+  }
+}
+
+#section__add-menu {
+  justify-content: center;
+  align-items: center;
+  color: white;
+  background-color: vars.$color-menu;
+  border-radius: 5px;
+  text-align: center;
+  padding: 20px;
+  cursor: pointer;
+  &:hover {
+    background-color: vars.$color-menu-title;
+  }
+}
+
+.actions__button-dish {
+  padding: 2rem;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  & button {
+    cursor: pointer;
+    padding: 0.875rem 3rem;
+    border-radius: vars.$border-radius-small;
+    background-color: vars.$color-menu;
+    color: white;
+    border: none;
+    &:hover {
+      background-color: vars.$color-menu-title;
+      color: white;
+    }
+  }
+}
+
+.actions {
+  &__items {
+    visibility: hidden;
+    display: flex;
+    position: relative;
+  }
+  &__button {
+    height: 100%;
+    border: none;
+    display: flex;
+    left: 100%;
+    background-color: transparent;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+  }
+}

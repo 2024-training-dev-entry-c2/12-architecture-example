@@ -1,0 +1,38 @@
+<section class="section__main">
+    <h1 class="title__home">Menus List</h1>
+    <div class="tabs__container">
+        <ul class="tabs__buttons">
+            @for(item of getTabs; track $index) {
+            <li class="tab-button" [class.active]="activeTab === $index" (click)="selectTab($index)">
+
+                <span>{{item.name}}</span>
+                <div class="actions__items">
+                    <lib-buttons [icon]="images[0]" [rowIndex]="$index" (buttonClick)="deleteMenu(item.id)"
+                        ariaLabel="Remove"></lib-buttons>
+                    <lib-buttons [icon]="images[1]" [rowIndex]="$index" (buttonClick)="getMenu(item.id)"
+                        ariaLabel="Edit"></lib-buttons>
+                </div>
+            </li>
+
+            }
+            <!-- <li id="section__add-menu"< (click)="openModalMenu()">>Add Menu</li> -->
+        </ul>
+        <div class="slider">
+            <div class="slider__indicator" [style.transform]="'translateX(' + (activeTab * 100) + '%)'"></div>
+        </div>
+        <div class="tab__content">
+            @for(item of getTabs; track $index) {
+            @if(activeTab === $index){
+            <lib-table title="DishFoods" [data]="getMenuDishes(item.name)">
+            </lib-table>
+
+            <div class="actions__button-dish">
+                <button>Add Dish</button>
+            </div>
+            }
+            }
+
+        </div>
+    </div>
+
+</section>

@@ -3,14 +3,14 @@ import { CreateUserUsecase } from '../../../../application/clients/create-user.u
 import { Observable } from 'rxjs';
 import { IClient, IClientRequest } from '../../../../domain/model/client.model';
 import { AsyncPipe, JsonPipe } from '@angular/common';
-import { HeaderComponent } from '../../components/header/header.component';
+
 import { CreateClientFormComponent } from '../../forms/create-client-form/create-client-form.component';
 import { GetUsersListUsecase } from '../../../../application/clients/list-client.usercase';
 import { GetUserUsecase } from '../../../../application/clients/get-client.usercase';
 
 @Component({
   selector: 'lib-create-client',
-  imports: [AsyncPipe,CreateClientFormComponent,HeaderComponent],
+  imports: [CreateClientFormComponent],
   templateUrl: './create-client.component.html',
 })
 export class CreateClientComponent implements OnInit, OnDestroy {

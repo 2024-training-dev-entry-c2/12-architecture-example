@@ -58,6 +58,8 @@ export class CreateClientFormComponent {
       this.onSubmit.emit(
         this.clientForm.getRawValue() as unknown as IClientRequest
       );
+      alert("Client Created")
+      this.clientForm.reset();
     }
     else {
       console.log(this.clientForm);

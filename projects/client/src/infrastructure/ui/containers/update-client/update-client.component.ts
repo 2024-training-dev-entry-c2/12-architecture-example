@@ -24,27 +24,26 @@ export class UpdateClientComponent implements OnInit, OnDestroy {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.getClient();
+    this.clientId = null;
+    this.clientId = this.route.snapshot.params['id'];
+
+    this.getClient(this.clientId);
+    console.log(this.clientId);
   }
 
-  getClient() {
-    this.route.params
-      .pipe(
-        switchMap((params) => {
-          const id = Number(params['id']);
-          console.log('ID del cliente:', id);
+  getClient(id: number) {
+    this.__useCaseGet.execute(id);
 
-          this.__useCaseGet.execute(id);
-          return this.__useCaseGet.user$();
-        }),
-        takeUntil(this.destroy$)
-      )
+    this.__useCaseGet.user$()
+      .pipe(takeUntil(this.destroy$)) // Cancela la suscripción cuando el componente se destruye
       .subscribe({
-        next: (client: IClient | null) => {
-          console.log('Cliente obtenido en el componente:', client); // Depuración
+        next: (client: IClient) => {
+          console.log('Cliente obtenido:', client);
           this.client = client;
         },
-        error: (err) => console.error('Error al obtener cliente:', err),
+        error: (err) => {
+          console.error('Error al obtener cliente:', err);
+        },
       });
   }
 
