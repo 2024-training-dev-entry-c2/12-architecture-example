@@ -1,0 +1,44 @@
+@use "../../styles/variables.scss" as variables;
+@use "../../styles/mixins.scss" as mixins;
+
+.navbar {
+  @include mixins.center-container(space-between);
+  width: 100%;
+  background-color: variables.$color-primary;
+  padding: 10px 30px;
+
+  &__menu {
+    @include mixins.item-center-container();
+    list-style: none;
+  }
+
+  &__link {
+    color: variables.$color-light-font;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 20px 15px;
+    transition: all 0.25s ease;
+
+    &:hover {
+      background-color: #ca1a2c;
+      color: white;
+    }
+  }
+
+  &__button {
+    @include mixins.font(16px, 500);
+    background-color: variables.$color-primary;
+    padding: 8px 16px;
+    margin-left: 10px;
+    color: variables.$color-light-font;
+    border-radius: 8px;
+    border: 1px solid white;
+    cursor: pointer;
+    transition: all 0.25s ease;
+
+    &:hover {
+      background-color: #ca1a2c;
+      color: white;
+    }
+  }
+}

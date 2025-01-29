@@ -1,0 +1,17 @@
+@use "../../styles/variables.scss" as variables;
+@use "../../styles/mixins.scss" as mixins;
+
+.footer {
+  width: 100%;
+
+  &__content {
+    @include mixins.center-container(space-between);
+    background-color: variables.$color-font;
+    padding: 30px 40px;
+  }
+
+  p {
+    @include mixins.font(16px, 500);
+    color: variables.$color-light-font;
+  }
+}
