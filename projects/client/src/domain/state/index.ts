@@ -1,13 +1,13 @@
 import { inject, Injectable } from "@angular/core";
-import { ClientState } from "./users.state";
+import { ClientState } from "./client.state";
 //clase state que contiene todos los estados
 @Injectable({
   providedIn: 'root'
 })
 export class State {
-  private readonly _users = inject(ClientState);
+  private readonly _clients = inject(ClientState);
 
-  get users() {
-    return this._users.store();
+  get clients() {
+    return this._clients.store();
   }
 }

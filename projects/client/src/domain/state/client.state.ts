@@ -1,7 +1,7 @@
 import { inject, Injectable } from "@angular/core";
 import { StateFactory } from "./state.factory";
 import { BehaviorSubject } from "rxjs";
-import { Iclient, IUser } from "../model/client.model";
+import { IClient } from "../model/client.model";
 
 @Injectable({
   providedIn: 'root'
@@ -10,16 +10,14 @@ export class ClientState {
   private readonly _factory = inject(StateFactory);
 
   //#region Subjects
-  private readonly client$ = new BehaviorSubject<Iclient>(null);
-  // private readonly userfgdsadf$ = new BehaviorSubject<IUser>(null);
-  // private readonly usesaefsdffr$ = new BehaviorSubject<IUser>(null);
-  //#endregion
+  private readonly client$ = new BehaviorSubject<IClient>(null); // Solo un cliente
+  private readonly users$ = new BehaviorSubject<IClient[]>([]);
 
   store() {
     return {
+      // Aquí solo gestionamos el estado del cliente único
       user: this._factory.state(this.client$),
-      // userfgdsadf: this._factory.state(this.userfgdsadf$),
-      // usesaefsdffr: this._factory.state(this.usesaefsdffr$)
+      users: this._factory.state(this.users$),
     }
   }
 }

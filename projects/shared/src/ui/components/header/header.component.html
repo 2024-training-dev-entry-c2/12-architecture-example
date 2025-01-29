@@ -1,0 +1,34 @@
+<header class="navbar">
+    <div class="navbar__container">
+        <div class="navbar__logo">
+            <a href="#">
+                <img width="70px" src="../../../../../../assets/icons/logo.svg" alt="logo">
+            </a>
+        </div>
+        <nav class=" navbar__menu">
+            <div class=" navbar__collapse" id="navbarSupportedContent">
+                <ul class="navbar__list">
+                    <div class="hori-selector">
+                        <div class="left"></div>
+                        <div class="right"></div>
+                    </div>
+                    @for (item of navItems; track $index) {
+                    <li class="navbar__item" [class.active]="item.active" (click)="onNavItemClick(item)">
+                        <a class="navbar__link" [routerLink]="item.link" [ariaLabel]="item.ariaLabel">
+                            <span>{{item.label}}</span>
+                        </a>
+                        }
+                    <li class="navbar__item navbar__item--btn">
+                        <button (click)="toggleTheme()" class="navbar__link navbar__button">
+
+                            <svg width="30px" height="30px" src="assets/icons/form-svgrepo-com.svg" alt="logo"
+                                aria-hidden="true">
+                                <use [attr.xlink:href]="images"></use>
+                            </svg>
+                        </button>
+                </ul>
+
+            </div>
+        </nav>
+    </div>
+</header>

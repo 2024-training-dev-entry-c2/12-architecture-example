@@ -9,6 +9,11 @@
   "projects": {
     "users": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "projects/users",
       "sourceRoot": "projects/users/src",
       "prefix": "lib",

@@ -1,6 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Iclient } from '../../../../domain/model/client.model';
-import { AsyncPipe } from '@angular/common';
+import { IClient } from '../../../../domain/model/client.model';
 
 @Component({
   selector: 'lib-header',
@@ -9,5 +8,5 @@ import { AsyncPipe } from '@angular/common';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
- public user = input<Iclient>();
+ public user = input<IClient>();
 }
