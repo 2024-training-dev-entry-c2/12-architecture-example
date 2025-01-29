@@ -3,6 +3,23 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "paths": {
+      "clients": [
+        "./dist/clients"
+      ],
+      "dishes": [
+        "./dist/dishes"
+      ],
+      "menus": [
+        "./dist/menus"
+      ],
+      "orders": [
+        "./dist/orders"
+      ],
+      "shared": [
+        "./dist/shared"
+      ]
+    },
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,
