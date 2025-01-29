@@ -1,0 +1,28 @@
+@use "../../styles/variables.scss" as variables;
+@use "../../styles/mixins.scss" as mixins;
+
+.layout {
+  @include mixins.radius(calc(100% - 30px), calc(100vh - 30px), 20px);
+  display: grid;
+  grid:
+    "aside body" 1fr 
+    "aside footer" auto 
+    / 1fr 5fr;
+  margin: 15px;
+  box-shadow: variables.$box-shadow;
+  overflow: hidden;
+}
+
+.aside {
+  grid-area: aside;
+}
+
+.body {
+  @include mixins.scrollbar();
+  grid-area: body;
+  overflow-y: scroll;
+}
+
+.footer {
+  grid-area: footer;
+}

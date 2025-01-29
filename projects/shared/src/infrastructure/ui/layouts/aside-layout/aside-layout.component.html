@@ -1,0 +1,11 @@
+<aside class="aside" aria-label="Navigation sidebar">
+  <lib-header/>
+
+  <ul class="aside__menu" role="menu" aria-label="Main navigation menu">
+    @for (item of items; track $index) {
+      <lib-navigation [link]="item.link" [icon]="item.icon" [title]="item.title"/>
+    }
+  </ul>
+
+  <lib-footer/>
+</aside>

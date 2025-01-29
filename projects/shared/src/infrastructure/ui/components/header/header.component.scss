@@ -1,0 +1,19 @@
+@use "../../styles/variables.scss" as variables;
+@use "../../styles/mixins.scss" as mixins;
+
+.header {
+  @include mixins.flex(row, flex-start, center, 0);
+
+  &__logo {
+    @include mixins.radius(80px, 80px, 0px);
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    background: variables.$radial-gradient;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
