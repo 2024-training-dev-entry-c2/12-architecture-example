@@ -1,8 +1,7 @@
 <main aria-labelledby="main-title">
     <section class="section section--order-details" aria-labelledby="order-details-title">
-        <!-- <app-main-section-orders [tableContent]="tableContent.headers" aria-describedby="orders-table-description"></app-main-section-orders>
-          -->
-          <lib-section-orders aria-describedby="List of the Menu Orders"></lib-section-orders>
+    
+          <lib-section-orders  [orders$]="orders$"></lib-section-orders>
 
     </section>
 </main>

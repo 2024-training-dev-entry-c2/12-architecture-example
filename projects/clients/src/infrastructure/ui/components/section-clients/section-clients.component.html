@@ -4,31 +4,38 @@
             <figure class="section__content-container">
                 <img src="./logo.png" alt="Gusteau's Logo that is displayed in the header of the page with the logo being a draw of 'Rattatouille'" />
                 <h1 class="container__content-title">Gusteau's Clients Details</h1>
-                <!-- <button (click)="openAddModal()" aria-label="Open modal to add a new client" class="container__content-btn container__content-btn--add">Add Client</button> -->
+                <button aria-label="Open modal to add a new client" class="container__content-btn container__content-btn--add">Add Client</button>
             </figure>
         </div>
         <table class="container__content-table" role="table" aria-labelledby="clientsTable">
             <thead class="container__content-table-header">
                 <tr>
-                    <!-- @for (tableContent of tableContent(); track $index) { -->
-                        <!-- <th class="">{{tableContent}}</th> -->
-                    <!-- } -->
+                     @for (header of tableContent(); track $index) {
+                         <th class="">{{header}}</th>
+                     } 
                 </tr>
             </thead>
             <tbody class="container__content-table-body">
-                <!-- @for (data of userData | async; track $index) {
-                    <tr [id]="$index">
-                        <td [id]="$index">{{data.id}}</td>
-                        <td [id]="$index">{{data.name}}</td>
-                        <td [id]="$index">{{data.email}}</td>
-                        <td [id]="$index">{{data.totalOrders}}</td>
-                        <td [id]="$index">{{data.userType}}</td>
+                @for (client of clients$ | async; track client.id) {
+                    <tr>
+                        <td>{{client.id}}</td>
+                        <td>{{client.name}}</td>
+                        <td>{{client.email}}</td>
+                        <td>{{client.totalOrders}}</td>
+                        <td>{{client.userType}}</td>
                         <td class="container__content-table-actions">
-                            <button aria-label="Edit client details" (click)="openEditModal(data)" class="container__content-btn container__content-btn--edit">Edit</button>
-                            <button aria-label="Delete client" (click)="openDeleteModal(data)" class="container__content-btn container__content-btn--delete">Delete</button>
+                            <button aria-label="Edit client details" 
+                                    (click)="openEditModal(client)" class="container__content-btn container__content-btn--edit">
+                                Edit
+                            </button>
+                            <button aria-label="Delete client" 
+                                    (click)="openDeleteModal(client)" 
+                                    class="container__content-btn container__content-btn--delete">
+                                Delete
+                            </button>
                         </td>
                     </tr>
-                } -->
+                }
             </tbody>
         </table>
     </div>

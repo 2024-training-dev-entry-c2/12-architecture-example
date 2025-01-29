@@ -2,9 +2,8 @@
 @use "../../../../../../shared/src/infrastructure/ui/styles/_mixin" as mixin;
 
 .dashboard {
-  @include mixin.main();
-
   flex-direction: column;
+  @include mixin.main();
 
   &__stats {
     display: flex;

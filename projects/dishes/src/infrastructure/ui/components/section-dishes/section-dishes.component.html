@@ -16,7 +16,7 @@
                 </tr>
             </thead>
             <tbody class="container__content-table-body">
-                <!-- @for (data of dishData | async; track $index) {
+                @for (data of dishes$ | async; track data.id) {
                     <tr [id]="$index">
                         <td [id]="$index">{{data.id}}</td>
                         <td [id]="$index">{{data.name}}</td>
@@ -31,7 +31,7 @@
                             <button class="container__content-btn container__content-btn--delete" aria-label="Delete dish" (click)="openDeleteModal(data)">Delete</button>
                         </td>
                     </tr>
-                } -->
+                }
             </tbody>
         </table>
     </div>

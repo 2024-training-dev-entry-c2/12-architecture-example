@@ -8,21 +8,21 @@
             </figure>
         </div>
         <table class="container__content-table" role="table" aria-labelledby="ordersTable">
-            <!-- <thead class="container__content-table-header">
+            <thead class="container__content-table-header">
                 <tr>
-                    @for (tableContent of tableContent(); track $index) {
-                        <th>{{tableContent}}</th>
+                    @for (header of tableContent(); track $index) {
+                        <th>{{header}}</th>
                     }
                 </tr>
             </thead>
             <tbody>
-                @for (data of orderData | async; track $index) {
-                    <tr [id]="$index">
-                        <td [id]="$index">{{data.id}}</td>
-                        <td [id]="$index">{{data.orderDate | date:'medium'}}</td>
-                        <td [id]="$index">{{data.totalPrice | currency:'COP' + ' '}}</td>
-                        <td [id]="$index">{{data.clientId}}</td>
-                        <td [id]="$index">{{data.clientEmail}}</td>
+                @for (data of orders$ | async; track data.id) {
+                    <tr>
+                        <td>{{data.id}}</td>
+                        <td>{{data.orderDate | date:'medium'}}</td>
+                        <td>{{data.totalPrice | currency:'COP' + ' '}}</td>
+                        <td>{{data.clientId}}</td>
+                        <td>{{data.clientEmail}}</td>
                         <td>
                             <div class="container__content-dishes--list">
                                 @for (data of data.dishes; track $index) {
@@ -38,7 +38,7 @@
                         </td>
                     </tr>
                 }
-            </tbody> -->
+            </tbody>
         </table>
     </div>
     <!-- <app-modal-action-edit [modalTitle]="'Edit Order'" [formData]="formData" [inputForm]="orderForm" [saveAction]="onSaveEdit.bind(this)"></app-modal-action-edit>

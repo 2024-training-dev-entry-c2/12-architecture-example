@@ -8,20 +8,19 @@
             </figure>
         </div>
         <table class="container__content-table" role="table" aria-labelledby="menusTable">
-            <!-- <thead class="container__content-table-header">
+             <thead class="container__content-table-header">
                 <tr>
                      @for (tableContent of tableContent(); track $index) { 
                          <th>{{tableContent}}</th> 
-                        <th>TABLE CONTENT</th>
                    } 
                 </tr>
             </thead>
             <tbody class="container__content-table-body">
-                 @for (data of menuData | async; track $index) { 
-                     <tr [id]="$index">
-                        <td [id]="$index">{{data.id}}</td>
-                        <td [id]="$index">{{data.name}}</td>
-                        <td [id]="$index">{{data.description}}</td>
+                 @for (data of menus$ | async; track $index) { 
+                     <tr>
+                        <td>{{data.id}}</td>
+                        <td>{{data.name}}</td>
+                        <td>{{data.description}}</td>
                         <td>
                             <div class="container__content-dishes--list">
                                  @for (data of data.dishes; track $index) {
@@ -37,7 +36,7 @@
                         </td>
                     </tr>
                  } 
-            </tbody> -->
+            </tbody>
         </table>
     </div>
     <!-- <app-modal-action-edit [modalTitle]="'Edit Menu'" [formData]="formData" [inputForm]="menuForm" [saveAction]="onSaveEdit.bind(this)"></app-modal-action-edit>
