@@ -1,0 +1,14 @@
+<nav>
+  <menu class="menu">
+    <div class="menu__logo">
+      Le Pastichini
+    </div>
+    <div class="menu__wrapper">
+      @for (item of links; track $index) {
+        <li class="menu__item">
+          <lib-link-container [link]="item"></lib-link-container>
+        </li>
+      }
+    </div>
+  </menu>
+</nav>

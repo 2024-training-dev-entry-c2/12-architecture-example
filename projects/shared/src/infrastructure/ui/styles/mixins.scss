@@ -1,0 +1,52 @@
+@use './variables.scss' as variables;
+
+@mixin header-page($bg: none, $color:variables.$header-color) {
+  color: $color;
+  padding-block: .5rem;
+  margin-bottom: 1.5rem;
+  background-color: $bg;
+  font-size: 1.5rem;
+}
+
+@mixin primary-button($width: 100%, $margin-inline: 0, $margin-block: 0) {
+  width: $width;
+  padding: .5rem;
+  border-radius: 5px;
+  border: none;
+  color: variables.$soft-light;
+  background-color: variables.$primary-red;
+  border: 2px solid variables.$secondary-orange;
+  margin-inline: $margin-inline;
+  margin-block: $margin-block;
+  cursor: pointer;
+
+  &:hover{
+    background-color: variables.$primary-red-hover;
+    transition: .5s all;
+    transform: translateY(-5px);
+  }
+
+  &:disabled{
+    opacity: .5;
+  }
+
+  &-delete{
+    background-color: transparent;
+    color: variables.$primary-dark;
+
+    &:hover{
+      background-color: transparent;
+    }
+  }
+
+  &-add{
+    background-color: variables.$secondary-blue;
+    color: variables.$primary-dark;
+    border: none;
+
+    &:hover{
+      background-color: variables.$secondary-blue;
+    }
+  }
+
+}
