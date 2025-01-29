@@ -1,7 +1,8 @@
 import { Routes } from "@angular/router";
-import { MainLayoutComponent } from "../../layouts/main-layout/main-layout.component";
+
 import { CreateClientComponent } from "../../containers/create-client/create-client.component";
 import { ListClientComponent } from "../../containers/list-client/list-client.component";
+import { MainLayoutComponent } from "shared";
 
 
 export const clientRoutes:Routes = [

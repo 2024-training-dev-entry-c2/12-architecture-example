@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { IClient, IClientRequest } from '../../domain/model/client.model';
+import { IClient, IClientRequest } from '../../../domain/model/client.model';
 import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
