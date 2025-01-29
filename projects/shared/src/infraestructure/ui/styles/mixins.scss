@@ -1,0 +1,30 @@
+@mixin container-column($align: center) {
+  display: flex;
+  flex-direction: column;
+  align-items: $align;
+}
+
+@mixin center-container($justify: center) {
+  @include item-center-container();
+  justify-content: $justify;
+}
+
+@mixin item-center-container() {
+  display: flex;
+  align-items: center;
+}
+
+@mixin container($justify: center) {
+  display: flex;
+  justify-content: $justify;
+}
+
+@mixin font($size, $weight: 400) {
+  font-size: $size;
+  font-weight: $weight;
+}
+
+@mixin full-width($height: auto) {
+  width: 100%;
+  height: $height;
+}

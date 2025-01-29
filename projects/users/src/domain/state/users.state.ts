@@ -1,10 +1,10 @@
-import { inject, Injectable } from "@angular/core";
-import { StateFactory } from "./state.factory";
-import { BehaviorSubject } from "rxjs";
-import { IUser } from "../model/users.model";
+import { inject, Injectable } from '@angular/core';
+import { StateFactory } from 'shared';
+import { BehaviorSubject } from 'rxjs';
+import { IUser } from '../model/users.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsersState {
   private readonly _factory = inject(StateFactory);
@@ -19,7 +19,7 @@ export class UsersState {
     return {
       user: this._factory.state(this.user$),
       userfgdsadf: this._factory.state(this.userfgdsadf$),
-      usesaefsdffr: this._factory.state(this.usesaefsdffr$)
-    }
+      usesaefsdffr: this._factory.state(this.usesaefsdffr$),
+    };
   }
 }

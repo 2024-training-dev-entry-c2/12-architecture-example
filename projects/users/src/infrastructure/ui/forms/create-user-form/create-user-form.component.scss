@@ -1,0 +1,5 @@
+@use "../../../../../../shared/src/infraestructure/ui/styles/variables.scss" as
+  variables;
+.prueba {
+  background-color: variables.$color-secondary;
+}
