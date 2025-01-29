@@ -1,0 +1,56 @@
+.section {
+  &__content-container {
+    width: 300px;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    .btn {
+      margin: 10px;
+    }
+  }
+
+  &__content-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 10px 0px;
+
+    &--clients-img {
+      background-size: cover;
+      border-radius: 10px 10px 0px 0px;
+      background-image: url("/clients.jpg");
+    }
+    &--menu-img {
+      background-size: cover;
+      border-radius: 10px 10px 0px 0px;
+      background-image: url("/menu.jpg");
+    }
+    &--orders-img {
+      background-size: cover;
+      border-radius: 10px 10px 0px 0px;
+      background-image: url("/orders.jpg");
+    }
+    img {
+      width: 250px;
+    }
+  }
+
+  &__content {
+    background: azure;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  &__menu-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+}

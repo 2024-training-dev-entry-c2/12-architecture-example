@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SectionClientsComponent } from "../../components/section-clients/section-clients.component";
-import { MainComponent } from "../../components/main/main.component";
+
 
 @Component({
   selector: 'lib-section-clients-content',

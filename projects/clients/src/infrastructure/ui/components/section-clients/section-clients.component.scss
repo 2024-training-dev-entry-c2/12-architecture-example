@@ -1,0 +1,14 @@
+@use "../../../../../../shared/src/infrastructure/ui/styles/_section";
+@use "../../../../../../shared/src/infrastructure/ui/styles/_container";
+
+.section {
+    background: beige;
+    padding: 2rem;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+  }
+  

@@ -1,0 +1,42 @@
+<section class="section">
+    <div class="container section__content">
+        <div class="section__content-header section__content-header--clients-img">
+            <figure class="section__content-container">
+              <img src="./logo.png" alt="Gusteau's Logo that is displayed in the header of the page with the logo being a draw of 'Rattatouille'" />
+              <h1 class="container__content-title">Gusteau's Dishes Details</h1>
+                <!-- <button (click)="openAddModal()" aria-label="Open modal to add a new dish" class="container__content-btn container__content-btn--add">Add Dish</button> -->
+            </figure>
+        </div>
+        <table class="container__content-table" role="table" aria-labelledby="dishesTable">
+            <thead class="container__content-table-header">
+                <tr>
+                    <!-- @for (tableContent of tableContent(); track $index) {
+                        <th>{{tableContent}}</th>
+                    } -->
+                </tr>
+            </thead>
+            <tbody class="container__content-table-body">
+                <!-- @for (data of dishData | async; track $index) {
+                    <tr [id]="$index">
+                        <td [id]="$index">{{data.id}}</td>
+                        <td [id]="$index">{{data.name}}</td>
+                        <td [id]="$index">{{data.price | currency:'COP' + ' '}}</td>
+                        <td [id]="$index">{{data.menuId}}</td>
+                        <td [id]="$index">
+                            <span>{{data.dishType}}</span>
+                        </td>
+                        <td [id]="$index">{{data.totalOrdered}}</td>
+                        <td class="container__content-table-actions">
+                            <button class="container__content-btn container__content-btn--edit" aria-label="Edit dish details" (click)="openEditModal(data)">Edit</button>
+                            <button class="container__content-btn container__content-btn--delete" aria-label="Delete dish" (click)="openDeleteModal(data)">Delete</button>
+                        </td>
+                    </tr>
+                } -->
+            </tbody>
+        </table>
+    </div>
+    <!-- <app-modal-action-edit [modalTitle]="'Edit Dish'" [formData]="editData" [inputForm]="dishForm" [saveAction]="onSaveEdit.bind(this)"></app-modal-action-edit>
+    <app-modal-action-delete [deleteAction]="deleteData.bind(this)"></app-modal-action-delete>
+    <app-modal [modalTitle]="'Add a new Dish'" [inputForm]="dishForm" (onSaveTest)="onSave()" [formData]="formData"></app-modal> -->
+  </section>
+  

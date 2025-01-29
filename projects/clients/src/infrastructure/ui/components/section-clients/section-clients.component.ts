@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'lib-section-clients',
   imports: [],
   templateUrl: './section-clients.component.html',
-  styleUrl: './section-clients.component.css'
+  styleUrl: './section-clients.component.scss'
 })
 export class SectionClientsComponent {
 

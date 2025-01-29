@@ -1,0 +1,64 @@
+@use "../../../../../../shared/src/infrastructure/ui/styles/_container";
+@use "../../../../../../shared/src/infrastructure/ui/styles/_mixin" as mixin;
+
+.dashboard {
+  @include mixin.main();
+
+  flex-direction: column;
+
+  &__stats {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__stat {
+    text-align: center;
+    width: 200px;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    &-title {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    &-value {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 0.5rem;
+
+      &--highlighted {
+        color: #4caf50;
+      }
+    }
+
+    &-graph {
+      height: 4px;
+      background-color: #e0e0e0;
+      border-radius: 2px;
+      overflow: hidden;
+
+      &::before {
+        content: "";
+        display: block;
+        height: 100%;
+        width: var(--percentage);
+        background-color: #4caf50;
+        transition: width 0.5s ease-in-out;
+      }
+
+     
+
+      &--high {
+        background-color: #4caf50;
+      }
+    }
+  }
+}

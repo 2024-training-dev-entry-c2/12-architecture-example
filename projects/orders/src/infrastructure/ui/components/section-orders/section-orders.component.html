@@ -1,0 +1,48 @@
+<section class="section">
+    <div class="container section__content">
+        <div class="section__content-header section__content-header--orders-img">
+            <figure class="section__content-container">
+              <img src="./logo.png" alt="Gusteau's Logo that is displayed in the header of the page with the logo being a draw of 'Rattatouille'" />
+              <h1 class="container__content-title">Gusteau's Orders Details</h1>
+                <!-- <button (click)="openAddModal()" aria-label="Open modal to add a new order" class="container__content-btn container__content-btn--add">Add Order</button> -->
+            </figure>
+        </div>
+        <table class="container__content-table" role="table" aria-labelledby="ordersTable">
+            <!-- <thead class="container__content-table-header">
+                <tr>
+                    @for (tableContent of tableContent(); track $index) {
+                        <th>{{tableContent}}</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @for (data of orderData | async; track $index) {
+                    <tr [id]="$index">
+                        <td [id]="$index">{{data.id}}</td>
+                        <td [id]="$index">{{data.orderDate | date:'medium'}}</td>
+                        <td [id]="$index">{{data.totalPrice | currency:'COP' + ' '}}</td>
+                        <td [id]="$index">{{data.clientId}}</td>
+                        <td [id]="$index">{{data.clientEmail}}</td>
+                        <td>
+                            <div class="container__content-dishes--list">
+                                @for (data of data.dishes; track $index) {
+                                    <div class="container__content-dishes--items">
+                                        <strong>{{data.name}}</strong> - {{data.price | currency:'COP' + ' '}}
+                                    </div>
+                                }
+                            </div>
+                        </td>
+                        <td class="container__content-table-actions">
+                            <button class="container__content-btn container__content-btn--edit" aria-label="Edit order details" (click)="openEditModal(data)">Edit</button>
+                            <button class="container__content-btn container__content-btn--delete" aria-label="Delete order" (click)="openDeleteModal(data)">Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody> -->
+        </table>
+    </div>
+    <!-- <app-modal-action-edit [modalTitle]="'Edit Order'" [formData]="formData" [inputForm]="orderForm" [saveAction]="onSaveEdit.bind(this)"></app-modal-action-edit>
+    <app-modal-action-delete [deleteAction]="deleteData.bind(this)"></app-modal-action-delete>
+    <app-modal [modalTitle]="'Add a new Order'" [inputForm]="orderForm" (onSaveTest)="onSave()" [formData]="formData"></app-modal> -->
+  </section>
+  
