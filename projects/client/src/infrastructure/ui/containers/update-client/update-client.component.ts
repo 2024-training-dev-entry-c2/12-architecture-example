@@ -5,11 +5,10 @@ import { ActivatedRoute } from '@angular/router';
 import { UpdateClientUsecase } from '../../../../application/clients/update-client.usercase';
 import { UpdateClientFormComponent } from '../../forms/update-client-form/update-client-form.component';
 import { ListClientComponent } from '../list-client/list-client.component';
-import { TableClientComponent } from "../../components/table/table.component";
 
 @Component({
   selector: 'lib-update-client',
-  imports: [UpdateClientFormComponent, ListClientComponent, TableClientComponent],
+  imports: [UpdateClientFormComponent, ListClientComponent],
   templateUrl: './update-client.component.html',
 })
 export class UpdateClientComponent implements OnInit {
@@ -27,7 +26,6 @@ export class UpdateClientComponent implements OnInit {
    this.clientId = +this.route.snapshot.params['id'];
    this.getClient(this.clientId); 
    console.log(this.clientId);
-   
 
  }
 
