@@ -2,38 +2,56 @@ import { Component, inject } from '@angular/core';
 import { TableClientComponent } from '../../components/table/table.component';
 import { GetUsersListUsecase } from '../../../../application/clients/list-client.usercase';
 import { IClient } from '../../../../domain/model/client.model';
-
+import { RemoveClientService } from '../../../services/remove/remove-client.service';
+import { RemoveClientUsecase } from '../../../../application/clients/delete-client.usercase';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'lib-list-client',
-  imports: [TableClientComponent ],
+  imports: [TableClientComponent],
   templateUrl: './list-client.component.html',
- 
 })
 export class ListClientComponent {
+
   private readonly __useCaseList = inject(GetUsersListUsecase);
+  private readonly __useCaseGet = inject(RemoveClientUsecase);
   clientList: IClient[] = [];
 
-  
   ngOnInit(): void {
     this.__useCaseList.initSubscriptions();
     this.getClients();
-  } 
-  getClients(){
+  }
+  getClients() {
     this.__useCaseList.execute();
-
 
     this.__useCaseList.clients$().subscribe({
       next: (clients: IClient[]) => {
-        console.log('Clientes obtenidos:', clients); 
-      
+
         this.clientList = clients;
       },
       error: (err) => {
-        console.error('Error al obtener clientes:', err); 
+        console.error('Error al obtener clientes:', err);
       },
     });
-    
   }
+
+  removeClient(id: number) {
+    this.__useCaseGet.execute(id);
+    setTimeout(() => {
+      this.getClients();
+    }, 1000);
+
+  }
+  showModal = false;
+  openModal() {
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
+    setTimeout(() => this.getClients(), 1000);
+    this.getClients();
+  }
+  
 
 }

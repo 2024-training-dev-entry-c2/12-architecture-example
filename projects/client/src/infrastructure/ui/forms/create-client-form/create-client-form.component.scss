@@ -1,0 +1,45 @@
+@use "./../../../../../../shared/src/ui/styles/variables.scss" as vars;
+
+.tab__content {
+    padding-top: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+    height: 550px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    &--form{
+      height: 550px;
+      width: 400px;
+    }
+  
+  }
+  
+  .form{
+    &__client{
+    padding: 2rem 2rem;
+    border-radius: 5px;
+    box-shadow:  4px 6px rgba(0, 0, 0, 0.1); 
+    background-color: #fff;
+    border:1px solid #ccc;
+    }
+    &__button{
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: bold;
+      text-align: center;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+  
+      &--submit {
+        background-color: vars.$color-menu;
+  
+        &:hover {
+          background-color: darken(vars.$color-menu, 10%);
+        }
+      }
+    }
+  }
+  

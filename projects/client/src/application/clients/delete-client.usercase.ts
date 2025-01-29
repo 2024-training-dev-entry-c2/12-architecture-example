@@ -3,15 +3,15 @@ import { inject, Injectable } from '@angular/core';
 import { State } from '../../domain/state';
 import { IClient } from '../../domain/model/client.model';
 import { Observable, Subscription, tap } from 'rxjs';
-import { ClientService } from '../../infrastructure/services/create/client.service';
+import { RemoveClientService } from '../../infrastructure/services/remove/remove-client.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CreateUserUsecase {
-  private readonly _service = inject(ClientService);
+export class RemoveClientUsecase {
+  private readonly _service = inject(RemoveClientService);
   private readonly _state = inject(State);
-  private subscriptions: Subscription;
+  private subscriptions: Subscription  =  new Subscription();
 
   //#region Observables
   user$(): Observable<IClient> {
@@ -25,7 +25,10 @@ export class CreateUserUsecase {
   }
 
   destroySubscriptions(): void {
-    this.subscriptions.unsubscribe();
+    if (this.subscriptions) {
+      this.subscriptions.unsubscribe();
+      this.subscriptions = new Subscription(); 
+    }
   }
 
   execute(id: number): void {
@@ -33,10 +36,10 @@ export class CreateUserUsecase {
       this._service
         .deleteClient(id)
         .pipe(
-          tap((result) => {
+          tap(() => {
             const clients = this._state.clients.users.snapshot();
-            const updateClient = clients.filter(client => id !== client.id);
-            this._state.clients.users.set(updateClient);
+            const updatedClients = clients.filter(client => client.id !== id);
+            this._state.clients.users.set(updatedClients);
           })
         )
         .subscribe()

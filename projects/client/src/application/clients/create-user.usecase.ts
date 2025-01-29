@@ -34,8 +34,8 @@ export class CreateUserUsecase {
         .pipe(
           tap(result => {
             this._state.clients.user.set(result);
-             const users = this._state.clients.users.snapshot();
-             this._state.clients.users.set([...users, result])
+            //  const users = this._state.clients.users.snapshot();
+            //  this._state.clients.users.set([...users, result])
           })
         )
         .subscribe()

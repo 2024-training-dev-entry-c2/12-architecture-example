@@ -1,0 +1,6 @@
+<lib-list-client></lib-list-client>
+@if (client != null) {
+<lib-update-client-form [getClientId]="clientId" [getData]="client" (updateClient)="UpdateClient($event)">
+
+</lib-update-client-form>
+}

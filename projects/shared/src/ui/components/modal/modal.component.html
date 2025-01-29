@@ -1,1 +1,11 @@
-<p>modal works!</p>
+<div class="modal-overlay" (click)="close()"></div>
+<div class="modal">
+    <div class="modal__content">
+
+        <lib-form [formFields]="fields" [formGroup]="formGroup" ></lib-form>
+        <ng-content select="[selection]" class="modal__selection"></ng-content>
+        <ng-content select="[form-optional]" class="modal__optional"></ng-content>
+        <button  aria-label="Close" class="modal__button modal__button--close"(click)="close()">Cerrar</button>
+        <ng-content select="[button]" class="modal__extra-button"></ng-content>
+    </div>
+</div>

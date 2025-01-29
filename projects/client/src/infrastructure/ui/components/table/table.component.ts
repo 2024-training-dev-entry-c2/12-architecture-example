@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { PaginationComponent, TableComponent } from 'shared';
 import { IClient } from '../../../../domain/model/client.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'lib-client-table',
@@ -11,7 +12,7 @@ import { IClient } from '../../../../domain/model/client.model';
 export class TableClientComponent {
 
 @Input() dataClients: IClient[]=[];
-
+@Output() deleteClient = new EventEmitter<number>();
 
   tabsList = [
     {
@@ -25,5 +26,14 @@ export class TableClientComponent {
       link:"/client"
     },
   ];
+  sendToDelete(id: number) {
+    console.log(id);
+    
+    this.deleteClient.emit(id);
+  }
 
+  constructor(private router: Router) {}
+  redirectToClient(id: number): void {
+    this.router.navigate(['/client', id]); 
+  }
 }

@@ -19,61 +19,6 @@ export class ClientService {
     );
   }
 
-  getClients(): Observable<IClient[]> {
-    return this.http.get<any>('http://localhost:8080/clients').pipe(
-      map((response) => this.validateResponse(response)),
-      catchError((error) => {
-        console.error('Error fetching clients:', error);
-        return throwError(() => new Error('Failed to fetch clients'));
-      })
-    );
-  }
-  create(user: IClient): Observable<IClient> {
-    return of(user);
-  }
-  getClientId(id: number): Observable<IClient> {
-    return this.http.get<any>(`http://localhost:8080/clients/${id}`).pipe(
-      map((response) => this.validateObjectResponse(response)),
-      catchError((error) => {
-        console.error('Error fetching clients:', error);
-        return throwError(() => new Error('Failed to fetch clients'));
-      })
-    );
-  }
-  deleteClient(id: number): Observable<any> {
-    return this.http.delete<any>(`http://localhost:8080/clients/${id}`);
-  }
-  updateClient(client: IClientRequest, id: number): Observable<IClient> {
-    return this.http
-      .put<any>(`http://localhost:8080/clients/${id}`, client)
-      .pipe(
-        map((response) => this.validateObjectResponse(response)),
-        catchError((error) => {
-          console.error('Error fetching clients:', error);
-          return throwError(() => new Error('Failed to fetch clients'));
-        })
-      );
-  }
-
-  private validateResponse(response: any): IClient[] {
-    if (Array.isArray(response)) {
-      return response.map((client) => {
-        if (
-          typeof client.id === 'number' &&
-          typeof client.name === 'string' &&
-          typeof client.email === 'string' &&
-          typeof client.isOften === 'boolean' &&
-          Array.isArray(client.orderIds)
-        ) {
-          return client as IClient;
-        } else {
-          throw new Error('Invalid client structure');
-        }
-      });
-    } else {
-      throw new Error('Invalid response structure');
-    }
-  }
   private validateObjectResponse(response: any): IClient {
     if (
       typeof response.id === 'number' &&

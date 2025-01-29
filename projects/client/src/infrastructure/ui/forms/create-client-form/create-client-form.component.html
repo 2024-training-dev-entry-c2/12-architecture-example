@@ -1,8 +1,9 @@
-asdasd
-asdasdad
-
-<br>
-<br>
-<br>
-
-<button (click)="submit()">Create User</button>
+<lib-pagination [tabs]="tabsList" title="Clients Data" [activeTab]="0" >
+    <div class="tab__content" tabContent0>
+        <form [formGroup]="clientForm" (ngSubmit)="submit()" class="form__client" aria-label="form to add Client" aria-labelledby="form to add Client">
+            <lib-form [formFields]="fields" [formGroup]="clientForm">
+            </lib-form >
+            <button type="submit" (click)="submit()" class="form__button form__button--submit">Iniciar Sesión</button>
+        </form>
+    </div>  
+</lib-pagination>

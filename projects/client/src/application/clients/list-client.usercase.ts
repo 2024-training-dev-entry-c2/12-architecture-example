@@ -1,14 +1,14 @@
 import { inject, Injectable } from "@angular/core";
-import { ClientService } from "../../infrastructure/services/create/client.service";
 import { Observable, Subscription, tap } from "rxjs";
 import { IClient } from "../../domain/model/client.model";
 import { State } from "../../domain/state";
+import { ListClientService } from "../../infrastructure/services/list/list-client.service";
 
 @Injectable({
     providedIn: 'root'
   })
   export class GetUsersListUsecase {
-    private readonly _service = inject(ClientService); // Servicio para obtener los clientes
+    private readonly _service = inject(ListClientService); // Servicio para obtener los clientes
     private readonly _state = inject(State); // Estado global
     private subscriptions: Subscription = new Subscription(); // Manejo de subscripciones
   
