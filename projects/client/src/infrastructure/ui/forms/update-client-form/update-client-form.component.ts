@@ -20,6 +20,7 @@ import { ModalComponent } from 'shared';
   selector: 'lib-update-client-form',
   imports: [ReactiveFormsModule, ModalComponent],
   templateUrl: './update-client-form.component.html',
+  styleUrls: ['./update-client-form.component.scss']
 })
 export class UpdateClientFormComponent implements OnInit {
   @Input() getData: IClient | null = null;
@@ -36,6 +37,7 @@ export class UpdateClientFormComponent implements OnInit {
     orderIds: this.formUpdateBuilder.array([]),
   });
   ngOnInit(): void {
+    
     this.setValue();
   }
 

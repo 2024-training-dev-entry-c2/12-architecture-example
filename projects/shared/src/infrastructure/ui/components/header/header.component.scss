@@ -1,6 +1,5 @@
-@use "../../styles/mixins.scss" as mixins;
-@use "../../styles/variables.scss" as vars;
-
+@use "../../../ui/styles/mixins.scss" as mix;
+@use "../../../ui/styles/variables.scss" as vars;
 .navbar {
   width: 100%;
   background-color: var(--color-menu);
@@ -18,9 +17,9 @@
     color: var(--text-menu);
   }
   &__container {
-    @include mixins.container(0, 1250px);
-    @include mixins.flex-center(row, space-between);
-    @include mixins.size(100%, vars.$size-medium);
+    @include mix.container(0, 1250px);
+    @include mix.flex-center(row, space-between);
+    @include mix.size(100%, vars.$size-medium);
   }
   &__list {
     padding: 0 1.5rem;
@@ -71,7 +70,7 @@
 
   & .right,
   & .left {
-    @include mixins.size(25px, 25px);
+    @include mix.size(25px, 25px);
     position: absolute;
     background-color: var(--background-color);
     bottom: 10px;

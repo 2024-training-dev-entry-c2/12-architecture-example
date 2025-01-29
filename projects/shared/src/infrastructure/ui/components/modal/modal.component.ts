@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
-import { FormField } from '../../../model/form.interface';
+import { FormField } from '../../../../domain/model/form.interface';
 import { FormComponent } from '../form/form.component';
 
 @Component({

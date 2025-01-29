@@ -1,0 +1,49 @@
+<svg width="800px" height="800px" viewBox="0 0 52 52" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="icon-twitter" viewBox="0 0 28.80 28.80" fill="none">
+
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+            <path
+                d="M4 7C4 5.11438 4 4.17157 4.58579 3.58579C5.17157 3 6.11438 3 8 3H16C17.8856 3 18.8284 3 19.4142 3.58579C20 4.17157 20 5.11438 20 7V15C20 17.8284 20 19.2426 19.1213 20.1213C18.2426 21 16.8284 21 14 21H10C7.17157 21 5.75736 21 4.87868 20.1213C4 19.2426 4 17.8284 4 15V7Z"
+                stroke="#000000" stroke-width="2"></path>
+            <path d="M15 18L15 21M9 18L9 21" stroke="#000000" stroke-width="2"
+                stroke-linecap="round"></path>
+            <path d="M9 8L15 8" stroke="#000000" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M9 12L15 12" stroke="#000000" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </symbol>
+    <symbol id="icon-list" viewBox="0 0 28.80 28.80" fill="none">
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+            <path d="M20 7L4 7" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path>
+            <path d="M15 12L4 12" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path>
+            <path d="M9 17H4" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path>
+        </g>
+    </symbol>
+    <symbol id="icon-delete"  fill="none">
+
+        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+        <g id="SVGRepo_iconCarrier">
+            <path
+                d="M6 7V18C6 19.1046 6.89543 20 8 20H16C17.1046 20 18 19.1046 18 18V7M6 7H5M6 7H8M18 7H19M18 7H16M10 11V16M14 11V16M8 7V5C8 3.89543 8.89543 3 10 3H14C15.1046 3 16 3.89543 16 5V7M8 7H16"
+                stroke="#ff0000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </g>
+
+
+    </symbol>
+    <symbol id="icon-update"  fill="none">
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+            <g id="SVGRepo_iconCarrier">
+                <g id="Edit / Edit_Pencil_01">
+                    <path id="Vector"
+                        d="M12 8.00012L4 16.0001V20.0001L8 20.0001L16 12.0001M12 8.00012L14.8686 5.13146L14.8704 5.12976C15.2652 4.73488 15.463 4.53709 15.691 4.46301C15.8919 4.39775 16.1082 4.39775 16.3091 4.46301C16.5369 4.53704 16.7345 4.7346 17.1288 5.12892L18.8686 6.86872C19.2646 7.26474 19.4627 7.46284 19.5369 7.69117C19.6022 7.89201 19.6021 8.10835 19.5369 8.3092C19.4628 8.53736 19.265 8.73516 18.8695 9.13061L18.8686 9.13146L16 12.0001M12 8.00012L16 12.0001"
+                        stroke="#0040ff" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round"></path>
+                </g>
+            </g>
+    </symbol>
+</svg>

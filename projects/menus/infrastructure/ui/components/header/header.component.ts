@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { IUser } from '../../../../domain/model/users.model';
+import { IUser } from '../../../../domain/model/menu.model';
 
 @Component({
   selector: 'lib-header',

@@ -1,7 +1,7 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CreateUserUsecase } from '../../../../application/users/create-user.usecase';
 import { Observable } from 'rxjs';
-import { IUser } from '../../../../domain/model/users.model';
+import { IUser } from '../../../../domain/model/menu.model';
 import { AsyncPipe } from '@angular/common';
 import { CreateUserFormComponent } from '../../forms/create-user-form/create-user-form.component';
 import { HeaderComponent } from '../../components/header/header.component';

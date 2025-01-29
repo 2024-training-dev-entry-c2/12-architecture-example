@@ -1,0 +1,51 @@
+@use "../../../ui/styles/mixins.scss" as mix;
+@use "../../../ui/styles/variables.scss" as vars;
+@import "../../../ui/styles/styles.scss";
+
+.form {
+    @include mix.flex(column);
+  
+    gap: 1.5rem;
+    color: vars.$color-menu;
+  
+    &__field {
+      @include mix.flex(column);
+  
+      gap: 0.5rem;
+    }
+  
+    &__label {
+      font-weight: bold;
+      font-size: 1rem;
+      color: vars.$color-menu;
+    }
+  
+    &__input {
+      padding: 0.75rem 1rem;
+      border: 1px solid lighten(vars.$text-color, 50%);
+      border-radius: vars.$border-radius-small;
+      font-size: 1rem;
+      background-color: #fff;
+      outline: none;
+      height: 30px;
+      @include mix.transition(border-color, 0.3s);
+  
+      &:focus {
+        border-color: vars.$primary-color;
+        box-shadow: 0 0 5px rgba(vars.$primary-color, 0.5);
+      }
+  
+      &--invalid {
+        border-color: vars.$error-color;
+        background-color: lighten(vars.$error-color, 40%);
+      }
+    }
+  
+    &__error {
+      @include mix.flex(column, flex-start, flex-start, vars.$spacing-small);
+    }
+  
+    &__error-message {
+      @include mix.typography(vars.$font-size-very-small, vars.$font-weight-medium, normal, vars.$error-color);
+    }
+  }

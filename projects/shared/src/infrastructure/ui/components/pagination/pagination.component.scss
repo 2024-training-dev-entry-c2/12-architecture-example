@@ -1,0 +1,113 @@
+@use "../../../ui/styles/mixins.scss" as mix;
+@use "../../../ui/styles/variables.scss" as vars;
+@import "../../../ui/styles/styles.scss";
+.section__main{
+    padding-bottom: 2rem;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+}
+.title__home {
+    text-align: center;
+    color: vars.$accent;
+    font-weight: 500;
+    font-size: 3rem;
+    padding: 6rem 0 20px 0;
+    margin: 0;
+  }
+
+  .tabs{
+    &__container {
+      left: 50%;
+      transform: translateX(-50%);
+      position: relative;
+      background: var(--color-tab);
+      padding: 50px;
+      padding-bottom: 80px; 
+      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+      border-radius: vars.$border-radius-large;
+      min-width: #{vars.$tab-count * 60px};
+      max-width: #{vars.$tab-count * 600px};
+    }
+    
+    &__buttons {
+      list-style-type: none;
+      padding-left: 0;
+      display: flex;
+      flex-direction: row;
+      margin-bottom: 10px;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+    }
+    
+    
+    &__buttons li {
+      box-sizing: border-box;
+      flex: 1;
+      width: #{100% / vars.$tab-count};
+      padding: 0 10px;
+      display: flex;    
+    justify-content: center;
+      text-align: center;
+      color: var(--text-tab);
+      font-size: 1rem;
+    }
+    &__buttons li span {
+      transition: all 0.3s ease-in-out;
+      padding: 5px auto;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: block;
+      cursor: pointer;
+      transition: all 0.2s ease-in-out;
+    
+      &:hover,
+      &:focus {
+        outline: 0;
+        color: lighten(vars.$color-menu, 15%);
+        svg {
+          fill: lighten(vars.$color-menu, 15%);
+        }
+      }
+    }
+    &__buttons li svg {
+    justify-content: center;
+    align-items: center;
+    }
+    
+    &__buttons li.active {
+      background-color: var(--background-color-card);
+      color: vars.$color-menu;
+      .slider__indicator {
+        background: vars.$color-menu;
+        border-radius: 1px;
+        height: 4px;
+        width: 100%;
+      }
+    }
+    
+    .tab__content {
+      padding: 20px;
+      border: 1px solid #ccc;
+    
+    }
+    
+  }
+
+.slider {
+  position: relative;
+  width: #{100% / vars.$tab-count};
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+  &__indicator {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    height: vars.$indicator-height;
+    background: vars.$accent;
+    border-radius: 1px;
+  }
+}

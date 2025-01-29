@@ -1,0 +1,30 @@
+<div [formGroup]="formGroup" class="form">
+
+    @for(field of formFields; track $index) {
+    <div class="form__field">
+
+
+        @if(field.label) {
+        <label for="{{field.label}}" class="form__label">{{field.label}}</label>
+        }
+        <input [id]="field.name" [type]="field.type" [formControlName]="field.name"
+            [placeholder]="field.placeholder || ''" value="{{field.value}}" class="form__input"
+            [ngClass]="{ 'is-invalid': formGroup.get(field.name)?.invalid && formGroup.get(field.name)?.touched }" />
+        <div class="invalid-feedback form__error">
+            @if(field.validators) {
+            @for (item of field.validators; track $index) {
+            @if (item === 'required') {
+            <span class="form__error-message">Este campo es obligatorio</span>
+            }
+            @if (item === 'minLength') {
+            <span class="form__error-message">El campo debe tener al menos {{formGroup.get(field.name)?.errors}}
+                caracteres</span>
+            }
+            }
+
+            }
+        </div>
+    </div>
+    }
+
+</div>
