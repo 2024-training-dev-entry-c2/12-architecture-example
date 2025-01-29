@@ -11,11 +11,11 @@ export const clientRoutes:Routes = [
     children: [
       {
         path: '',
-        component: CreateClientComponent
+        component: ListClientComponent
       },
       {
-        path: '',
-        component: ListClientComponent
+        path: 'add',
+        component: CreateClientComponent
       },
     ]
   }

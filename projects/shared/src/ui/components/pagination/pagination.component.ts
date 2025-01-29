@@ -1,11 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'lib-pagination',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './pagination.component.html',
-  styleUrl: './pagination.component.css'
+  styleUrl: './pagination.component.scss'
 })
-export class PaginationComponent {
+export class PaginationComponent implements OnInit {
+  @Input() tabs: { title: string; tabContent: string; link:string }[] = [];
+  @Input() title: string = '';
+  @Input() activeTab: number = 0;
 
+  ngOnInit(){
+    console.log(this.tabs);
+    
+  }
+  images = [
+    'assets/icons/form-svgrepo-com.svg#icon-twitter',
+    'assets/icons/form-svgrepo-com.svg#icon-list',
+  ];
+
+  selectTab(index: number): void {
+    this.activeTab = index;
+  }
+  show(value: string): void {
+    console.log(value);
+  }
 }

@@ -7,7 +7,7 @@ import { HeaderNavbarComponent } from 'shared';
 
 @Component({
   selector: 'lib-main-layout',
-  imports: [RouterOutlet,  HeaderComponent, HeaderNavbarComponent],
+  imports: [RouterOutlet, HeaderNavbarComponent],
   templateUrl: './main-layout.component.html',
   styleUrl: './main-layout.component.css'
 })

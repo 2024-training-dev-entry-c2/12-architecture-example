@@ -13,7 +13,7 @@ export class HeaderNavbarComponent {
   navItems = [
     { label: 'Home', icon: 'fas fa-tachometer-alt', active: true,link: '/' , ariaLabel: "Home" },
     { label: 'Dashboard', icon: 'fas fa-tachometer-alt', active: false,link: '/dashboard' , ariaLabel: "Dashboard" },
-    { label: 'Clients', icon: 'far fa-address-book', active: false,link: '/clients' , ariaLabel: "Clients" },
+    { label: 'Clients', icon: 'far fa-address-book', active: false,link: '/client' , ariaLabel: "Clients" },
     { label: 'Menus', icon: 'far fa-clone', active: false,link: '/menu' , ariaLabel: "Menus" },
     { label: 'Orders', icon: 'far fa-calendar-alt', active: false,link: '/orders' , ariaLabel: "Orders" },
 
