@@ -5,20 +5,20 @@ export const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
-    children: [
-      {
-        path: 'client',
+    children: [ 
+      { 
+        path: 'client', 
         loadChildren: () => import('client').then(m => m.clientRoutes)
       },
-      {
+      { 
         path: 'menu',
         loadChildren: () => import('menus').then(m => m.menusRoutes)
+      },{
+        path: 'dish', 
+        loadChildren: () => import('dishes').then(m => m.dishesRoutes)
       }
     ]
   }
 
-  // {  
-  //   path: '',
-  //   loadChildren: () => import('home').then(m => m.homeRoutes)
-  // }
+
 ];

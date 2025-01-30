@@ -1,9 +1,9 @@
-import { IDishResponse } from 'dishes';
+import { IDish } from 'dishes';
 
 export interface IMenu {
   id: number;
   name: string;
-  dishfoods: IDishResponse[];
+  dishfoods: IDish[];
  
 }
 export interface IMenuRequest {

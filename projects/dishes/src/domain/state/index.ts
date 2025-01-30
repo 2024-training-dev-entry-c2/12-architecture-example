@@ -5,9 +5,9 @@ import { DishState } from "./dish.state";
   providedIn: 'root'
 })
 export class State {
-  private readonly _users = inject(DishState);
+  private readonly _dish = inject(DishState);
 
-  get users() {
-    return this._users.store();
+  get dishes_list() {
+    return this._dish.store();
   }
 }

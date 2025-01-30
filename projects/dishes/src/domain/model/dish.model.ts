@@ -1,11 +1,11 @@
-export interface IDish {//response
+export interface IDishRequest {//response
   name:string;
   price:number;
   isPopular:boolean;
   menuId:number;
 }
 
-export interface IDishResponse {
+export interface IDish{
   id:number;
   name:string;
   price:number;

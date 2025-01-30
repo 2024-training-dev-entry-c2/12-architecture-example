@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
 })
 export class CreateMenuFormComponent {
   private menuFormBuilder = inject(FormBuilder);
-  showModal = false;
   getData: IMenuRequest | any = { name: '' };
   @Output() updateMenu = new EventEmitter<IMenuRequest>();
 

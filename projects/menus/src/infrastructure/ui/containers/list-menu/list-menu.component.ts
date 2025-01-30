@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { GetMenusListUseCase } from '../../../../application/menus/list-menus.usecase';
-import { IDishResponse } from 'dishes';
+import { IDish, RemoveDishUsecase } from 'dishes';
 import { IMenu } from '../../../../domain/model/menu.model';
 import { TableCardComponent } from '../../components/table-card/table-card.component';
 import { RemoveMenuUsecase } from '../../../../application/menus/remove-menus.usecase';
@@ -14,8 +14,9 @@ import { RemoveMenuUsecase } from '../../../../application/menus/remove-menus.us
 export class ListMenuComponent {
   private readonly __useCaseMenus = inject(GetMenusListUseCase);
   private readonly __useCaseRemoveMenus = inject(RemoveMenuUsecase);
+  private readonly __useCaseRemoveDish = inject(RemoveDishUsecase);
   menus: any[] = [];
-  dish: IDishResponse[] = [];
+  dish: IDish[] = [];
   ngOnInit(): void {
     this.__useCaseMenus.initSubscriptions();
     this.getMenus();
@@ -38,6 +39,12 @@ export class ListMenuComponent {
     this.__useCaseRemoveMenus.execute(id);
     setTimeout(() => {
       this.getMenus();
-    }, 1000);
+    }, 500);
+  }
+  removeDish(id: number) {
+    this.__useCaseRemoveDish.execute(id);
+    setTimeout(() => {
+      this.getMenus();
+    }, 500);
   }
 }
