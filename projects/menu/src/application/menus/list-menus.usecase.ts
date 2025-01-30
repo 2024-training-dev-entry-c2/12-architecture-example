@@ -31,7 +31,6 @@ export class ListMenusUseCase {
         this.subscriptions.add(
             this._service.getMenus().pipe(
                 tap(result => {
-                    console.log("Datos recibidos de la API:", result); // Depuración
                     this._state.menus.menu.set(result);
                 })
             ).subscribe()
