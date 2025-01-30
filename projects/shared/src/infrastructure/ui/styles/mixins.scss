@@ -1,0 +1,26 @@
+
+
+@mixin flex-style($direction: row, $wrap: nowrap, $gap: 0px) {
+  display: flex;
+  flex-direction: $direction;
+  flex-wrap: $wrap;
+  gap: $gap;
+}
+
+@mixin text-style($font-size, $font-weight, $font-style: normal, $line-height: 1.5, $letter-spacing: 0px) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  font-style: $font-style;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+}
+
+@mixin size($width: auto, $height: auto) {
+  width: $width;
+  height: $height;
+}
+
+@mixin radius-cursor($radius, $cursor: default) {
+  border-radius: $radius;
+  cursor: $cursor;
+}

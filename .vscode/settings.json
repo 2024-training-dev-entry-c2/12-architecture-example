@@ -103,6 +103,12 @@
   // Configuración de Git
   "git.enableSmartCommit": true, // Permite realizar commits sin necesidad de hacer stage explícito.
   "git.confirmSync": false,
-  "editor.guides.indentation": true // No pide confirmación para sincronizar cambios.
+  "editor.guides.indentation": true,
+  "angular-schematics.schematicsDefaultOptions": {
+    "angular-*": {
+      "style": "scss",
+      "externalTemplate": true
+    }
+  } // No pide confirmación para sincronizar cambios.
 
 }

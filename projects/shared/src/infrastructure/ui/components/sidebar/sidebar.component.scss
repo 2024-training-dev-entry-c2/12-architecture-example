@@ -1,0 +1,88 @@
+@use '../../styles/variables.scss' as variables;
+@use '../../styles/mixins.scss' as mixins;
+
+.sidebar {
+  border: 1px solid variables.$primary-color;
+  background-color: variables.$color-white;
+  border-radius: 10px;
+  width: 300px;
+  height: 100%;
+  color: variables.$typografy-color;
+  transition: all 0.3s ease-in-out;
+
+  &__close {
+    padding: 10px 0px 0px 20px;
+    font-size: 25px;
+
+    &:hover {
+      color: variables.$primary-color;
+      cursor: pointer;
+    }
+  }
+
+  &__title {
+    margin-bottom: 30px;
+    margin-top: 60px;
+    padding: 10px;
+    text-align: center;
+    font-size: 30px;
+  }
+
+  &__menu {
+    @include mixins.flex-style(column, nowrap, 30px);
+    justify-content: center;
+    list-style: none;
+    padding-left: 20px;
+
+    & li {
+      @include mixins.flex-style(row, nowrap, 13px);
+      align-items: center;
+      border-bottom: 1px solid variables.$quatery-color;
+
+      &:hover {
+        color: variables.$primary-color;
+      }
+    }
+
+    & a {
+      @include mixins.flex-style(row, nowrap, 10px);
+      text-decoration: none;
+      color: variables.$typografy-color;
+      align-items: center;
+      font-size: 20px;
+
+      & mat-icon:hover {
+        color: variables.$primary-color;
+      }
+
+    }
+
+  }
+
+  &__cazuela {
+    width: 90px;
+    position: relative;
+    top: 50px;
+    left: 100px;
+  }
+
+  &__info {
+    padding: 0px 20px;
+    font-size: 16px;
+    font-size: variables.$font-family-merriweather;
+    margin: 0px;
+    margin-bottom: 5px;
+  }
+
+  &__name {
+    cursor: pointer;
+
+    &:hover {
+      color: variables.$primary-color;
+      font-weight: bold;
+      font-size: 20px;
+      text-decoration: underline;
+    }
+
+  }
+}
