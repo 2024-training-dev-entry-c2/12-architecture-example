@@ -4,9 +4,26 @@
   "compileOnSave": false,
   "compilerOptions": {
     "outDir": "./dist/out-tsc",
-    "strict": true,
+    "strict": false,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
+    "paths": {
+      "customer": [
+        "./dist/customer"
+      ],
+      "dish": [
+        "./dist/dish"
+      ],
+      "menu": [
+        "./dist/menu"
+      ],
+      "order": [
+        "./dist/order"
+      ],
+      "shared": [
+        "./dist/shared"
+      ]
+    },
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
