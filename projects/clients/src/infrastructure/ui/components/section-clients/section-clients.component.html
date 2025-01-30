@@ -4,19 +4,24 @@
             <figure class="section__content-container">
                 <img src="./logo.png" alt="Gusteau's Logo that is displayed in the header of the page with the logo being a draw of 'Rattatouille'" />
                 <h1 class="container__content-title">Gusteau's Clients Details</h1>
-                <button aria-label="Open modal to add a new client" class="container__content-btn container__content-btn--add">Add Client</button>
+                <button 
+                    aria-label="Open modal to add a new client"  
+                    (click)="onOpenAddModal()" 
+                    class="container__content-btn container__content-btn--add">
+                    Add Client
+                </button>
             </figure>
         </div>
         <table class="container__content-table" role="table" aria-labelledby="clientsTable">
             <thead class="container__content-table-header">
                 <tr>
-                     @for (header of tableContent(); track $index) {
-                         <th class="">{{header}}</th>
-                     } 
+                    @for (header of tableHeaders; track $index) {
+                        <th class="">{{header}}</th>
+                    } 
                 </tr>
             </thead>
             <tbody class="container__content-table-body">
-                @for (client of clients$ | async; track client.id) {
+                @for (client of clients; track client.id) {
                     <tr>
                         <td>{{client.id}}</td>
                         <td>{{client.name}}</td>
@@ -24,13 +29,10 @@
                         <td>{{client.totalOrders}}</td>
                         <td>{{client.userType}}</td>
                         <td class="container__content-table-actions">
-                            <button aria-label="Edit client details" 
-                                    (click)="openEditModal(client)" class="container__content-btn container__content-btn--edit">
+                            <button aria-label="Edit client details" (click)="onOpenEditModal(client)" class="container__content-btn container__content-btn--edit">
                                 Edit
                             </button>
-                            <button aria-label="Delete client" 
-                                    (click)="openDeleteModal(client)" 
-                                    class="container__content-btn container__content-btn--delete">
+                            <button aria-label="Delete client" (click)="onOpenDeleteModal(client)" class="container__content-btn container__content-btn--delete">
                                 Delete
                             </button>
                         </td>
@@ -40,8 +42,32 @@
         </table>
     </div>
 
-    <!-- <app-modal-action-edit [modalTitle]="'Edit Client'" [formData]="formData" [inputForm]="clientForm" [saveAction]="onSaveEdit.bind(this)"></app-modal-action-edit>
-    <app-modal-action-delete [deleteAction]="deleteData.bind(this)"></app-modal-action-delete> -->
-    <!-- <app-modal [modalTitle]="'Add a new Client'" [inputForm]="clientForm" (onSaveTest)="onSave()" [formData]="formData"></app-modal> -->
-</section>
+    <lib-modal 
+        [isOpen]="isModalOpen" 
+        [title]="modalType === 'add' ? 'Add Client' : modalType === 'edit' ? 'Edit Client' : 'Delete Client'" 
+        (closeModal)="onCloseModal()">
 
+        <lib-add-modal
+            *ngIf="modalType !== 'delete'"
+            [clientForm]="clientForm"
+            [formData]="formData"
+            (save)="onSave()">
+        </lib-add-modal>
+
+        @if(modalType === 'delete'){
+        <div>
+            <p>Are you sure you want to delete <strong>{{ selectedClient?.name }}</strong>?</p>
+            <button 
+                (click)="onDelete()" class="container__content-btn container__content-btn--edit">
+                Confirm
+            </button>
+
+            <button 
+            (click)="onCloseModal()" class="container__content-btn container__content-btn">
+            Cancel
+        </button>
+        </div>
+        }
+
+    </lib-modal>
+</section>

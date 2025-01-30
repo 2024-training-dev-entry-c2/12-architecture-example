@@ -1,0 +1,14 @@
+<form [formGroup]="clientForm">
+    <div>
+        @for(item of formData; track $index) {
+      <label [for]="item.valueLabel">{{ item.labelName }}</label>
+      <input [id]="item.valueLabel" type="text" [formControlName]="item.valueLabel" />
+     }
+
+    </div>
+  
+    <button type="button" [disabled]="!clientForm.valid" (click)="save.emit()">
+      Guardar
+    </button>
+</form>
+  

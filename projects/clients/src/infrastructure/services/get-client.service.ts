@@ -2,22 +2,20 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IClients } from '../../domain/model/clients.model';
+import { environment } from 'shared';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class GetClientService {
-  private apiUrl = 'http://localhost:8080/api/clients';
+  private readonly apiUrl = environment.apiUrls.client;
   private readonly _http = inject(HttpClient);
-  private readonly baseUrl = this.apiUrl; 
 
   getClients(): Observable<IClients[]> {
-    return this._http.get<IClients[]>(`${this.baseUrl}`);
+    return this._http.get<IClients[]>(`${this.apiUrl}`);
   }
 
-  getClientById(id: number): Observable<IClients> {
-    return this._http.get<IClients>(`${this.baseUrl}/${id}`);
-  }
+
 }
 

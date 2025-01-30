@@ -6,4 +6,6 @@ export { FooterContainerComponent } from './infrastructure/ui/container/footer-c
 export { HeaderContainerComponent } from './infrastructure/ui/container/header-container/header-container.component';
 export { NavbarContainerComponent } from './infrastructure/ui/container/navbar-container/navbar-container.component';
 export { MainLayoutComponent } from './infrastructure/ui/layouts/main-layout/main-layout.component';
+export { environment } from './infrastructure/ui/enviroments/environment';
+export { ModalComponent } from './infrastructure/ui/components/modal/modal.component';
 

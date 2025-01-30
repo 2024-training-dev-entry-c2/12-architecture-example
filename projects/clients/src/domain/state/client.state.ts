@@ -8,8 +8,6 @@ import { BehaviorSubject } from "rxjs";
 })
 export class ClientsState {
     private readonly _factory = inject(StateFactory);
-    
-    
     private readonly _client$ = new BehaviorSubject<IClients[]>([]); 
 
     store() {
@@ -17,4 +15,5 @@ export class ClientsState {
             client: this._factory.state(this._client$)
         }
     }
+
 }

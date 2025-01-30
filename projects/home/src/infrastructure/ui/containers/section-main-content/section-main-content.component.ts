@@ -5,10 +5,6 @@ import { GetOrdersService } from "orders";
 import { GetMenusService } from "menus";
 import { GetDishesService } from "dishes";
 import { GetClientService } from "clients";
-// import { GetOrdersService } from "../../../../../../orders/src/infrastructure/services/get-orders.service";
-// import { GetMenusService } from "../../../../../../menus/src/infrastructure/services/get-menus.service";
-// import { GetDishesService } from "../../../../../../dishes/src/infrastructure/services/get-dishes.service";
-// import { GetClientService } from "../../../../../../clients/src/infrastructure/services/get-client.service";
 
 
 interface DashboardData {
