@@ -10,6 +10,6 @@ export interface IDish{
   name:string;
   price:number;
   isPopular:boolean;
-  menu:number;
+  menu:string;
   orderList:number[];
 }

@@ -25,6 +25,8 @@ export class CreateOrderUseCase {
   }
 
   execute(order: IOrderRequest): void {
+    console.log(order);
+    
     this.subscriptions.add(
       this._service
         .addOrder(order)

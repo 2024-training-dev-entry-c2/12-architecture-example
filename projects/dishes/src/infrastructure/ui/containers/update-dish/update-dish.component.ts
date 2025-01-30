@@ -20,16 +20,13 @@ export class UpdateDishComponent implements OnInit {
   menuId: number = 0;
   constructor(private route: ActivatedRoute) {}
   private readonly destroy$ = new Subject<void>();
+  
   ngOnInit(): void {
     this.menuId = Number(this.route.snapshot.paramMap.get('menuId')) || 0;
     this.dishId = this.route.snapshot.paramMap.get('id') ? Number(this.route.snapshot.paramMap.get('id')) : null;
-
-    console.log(this.dishId);
-    
     this.getDish(this.dishId);
-    console.log(this.dish);
-    
   }
+
   getDish(id: number) {
     this.__useCaseGet.execute(id).subscribe({
       next: (dish: any) => {

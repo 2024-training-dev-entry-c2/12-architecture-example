@@ -1,0 +1,5 @@
+<lib-pagination [tabs]="tabsList" title="Orders Data" [activeTab]="1" >
+    <div class="tab__content" tabContent1>
+        <lib-table [data]="dataOrders" (deleteId)="sendToDelete($event)" (updateId)="redirectToOrder($event)"></lib-table>
+    </div>
+</lib-pagination>     

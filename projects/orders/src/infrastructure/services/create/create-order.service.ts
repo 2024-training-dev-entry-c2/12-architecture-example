@@ -8,9 +8,10 @@ import { IOrder, IOrderRequest } from '../../../domain/model/order.model';
 })
 export class CreateOrderService {
   private http = inject(HttpClient);
-  addOrder(order: IOrderRequest): Observable<IOrder> {
+  addOrder(order: IOrderRequest): Observable<any> {
+    console.log(order);
     return this.http
-      .post<IOrder>('http://localhost:8080/order', order)
+      .post<any>('http://localhost:8080/order', order)
       .pipe(
         map((response) => this.validateObjectResponse(response)),
         catchError((error) => {

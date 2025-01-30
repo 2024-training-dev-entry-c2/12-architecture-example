@@ -1,1 +1,29 @@
-<p>update-order-form works!</p>
+<lib-modal (closeModal)="closeModal()" class="update-order" class="form__update-order">
+    <div class="tab__content" form-optional >
+        <form [formGroup]="updateOrderForm" aria-label="form to update Client" class="form__update-order">
+            <lib-client-selector [clients]="clients" [formGroup]="updateOrderForm" (clientSelected)="getClient($event)"></lib-client-selector>
+
+            <div class="order-form__group">
+                <label for="localDate" class="order-form__label">Date:</label>
+                <input id="localDate" type="date" formControlName="localDate" class="order-form__input" />
+            </div>
+            <lib-menu-selector [menusList]="menus" [formGroup]="updateOrderForm"
+                (dishfoodsSelected)="addDish($event)"></lib-menu-selector>
+            <div class="update-order__group">
+                <h3 class="update-order__subheading">Selected Dishes:</h3>
+                <ul class="update-order__list">
+                    @for(item of dishList; track $index) {
+                    <li class="update-order__list-item">
+                        {{item.name}} - {{item.price | currency}}
+                        <button type="button" (click)="removeDish(item)"
+                        class="update-order__remove-button">Remove</button>
+                    </li>
+                    }
+                </ul>
+            </div>
+            <div class="update-order__actions">
+                <button type="button" (click)="updateOrder()" class="update-order__submit-button">Submit Order</button>
+            </div>
+        </form>
+    </div>
+</lib-modal>
