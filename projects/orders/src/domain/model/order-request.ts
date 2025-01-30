@@ -1,10 +1,8 @@
-import { IClient } from "clients";
 import { IDishOrder } from "./dish-order.model";
 
-export interface IOrder{
+export interface IOrderRequest{
     id: number;
-    client: IClient;
+    clientId: number;
     dishes: IDishOrder[];
     date: Date;
-    total: number;
 }
