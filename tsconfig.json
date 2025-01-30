@@ -21,6 +21,9 @@
       "admin": [
         "./dist/admin"
       ],
+      "clients": [
+        "./dist/clients"
+      ],
       "users": [
         "./dist/users"
       ]

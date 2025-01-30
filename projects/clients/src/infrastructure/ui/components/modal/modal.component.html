@@ -1,0 +1,11 @@
+<div *ngIf="isVisible" class="modal">
+  <div class="modal__content">
+    <div class="modal__header">
+      <span class="modal__header--close" (click)="closeModal()">&times;</span>
+    </div>
+    <ng-content></ng-content>
+  </div>
+</div>
+
+
+

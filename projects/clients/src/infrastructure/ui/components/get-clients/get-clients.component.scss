@@ -1,0 +1,79 @@
+@use "../../styles/variables.scss" as variables;
+
+.content {
+  padding-right: 5px;
+  h1 {
+    color: variables.$color-secondary;
+    text-align: center;
+    margin: 0 0 10px 0;
+    font-size: 20px;
+  }
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: variables.$color-background;
+    font-family: variables.$font-family-secondary;
+
+    th,
+    td {
+      border: 1px solid variables.$color-gradients;
+      padding: 10px 12px;
+      font-size: 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background-color: variables.$color-secondary;
+      color: variables.$color-background;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    tr {
+      border-bottom: 1px solid variables.$color-lines;
+    }
+    tr:hover {
+      color: variables.$color-gradients;
+    }
+    hr{
+      opacity: 0;
+    }
+  }
+
+  &__button-edit {
+    background: variables.$color-background-button;
+    color: variables.$color-text;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    color: variables.$color-background;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background: variables.$color-secondary;
+    }
+  }
+
+  &__items {
+    list-style-type: none;
+    padding: 0;
+
+    li {
+      margin-bottom: 10px;
+
+      p {
+        margin: 0 0 5px 0;
+      }
+    }
+    &--frecuent-true {
+      color: green;
+      font-weight: bold;
+    }
+
+    &--frecuent-false {
+      color: gray;
+    }
+  }
+}
