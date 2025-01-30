@@ -2,7 +2,7 @@ import { inject, Injectable } from "@angular/core";
 import { CreateMenuService } from "../../infrastructure/services/create-menu.service";
 import { State } from "../../domain/state";
 import { IMenu } from "../../domain/model/menus.model";
-import { map, Observable, Subscription, tap } from "rxjs";
+import { Observable, Subscription, tap } from "rxjs";
 
 @Injectable({
     providedIn: 'root'

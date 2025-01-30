@@ -1,4 +1,4 @@
-import { Component, Input, input } from '@angular/core';
+import { Component, EventEmitter, Input, input, Output } from '@angular/core';
 import { IMenu } from '../../../../domain/model/menus.model';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
@@ -11,8 +11,9 @@ import { CommonModule } from '@angular/common';
 })
 export class MainComponent {
   public menus = input<IMenu[]>();
+  @Output() deleteMenuEvent = new EventEmitter<number>();
 
-  modalType: string = '';
+  // modalType: string = '';
 
   getHeaders() {
     return [
@@ -42,6 +43,8 @@ export class MainComponent {
     }
   }
 
-  openModal(template: any, type: string, idMenu: number): void {}
+  openDeleteModal(idMenu: number): void {
+    this.deleteMenuEvent.emit(idMenu);
+  }
 
 }

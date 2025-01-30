@@ -32,7 +32,7 @@
                 <td class="menu__action">
                     @for (action of getActions(); track action.label) {
                     <a class="menu__button menu__button--{{ action.type }}"
-                        (click)="openModal(modalTemplate, action.type, menu.idMenu)">
+                        (click)="action.type === 'delete' ? openDeleteModal(menu.idMenu) : null">
                         <i class="menu__icon" aria-hidden="true">
                             <svg>
                                 <use [attr.xlink:href]="action.icon"></use>
@@ -48,15 +48,15 @@
     </table>
 </main>
 
-<ng-template #modalTemplate>
+<!-- <ng-template #modalTemplate>
     <div class="modal" *ngIf="modalType === 'edit'; else deleteContent">
-        <!-- <label for="menuName">Ingrese el nuevo nombre del Menu</label>
-        <input class="modal__input" [(ngModel)]="menuName" id="menuName" placeholder={{currentMenuName}} /> -->
+        <label for="menuName">Ingrese el nuevo nombre del Menu</label>
+        <input class="modal__input" [(ngModel)]="menuName" id="menuName" placeholder={{currentMenuName}} />
     </div>
     <ng-template #deleteContent>
         <p>¿Estas seguro de que deseas eliminar este menu?</p>
     </ng-template>
-</ng-template>
+</ng-template> -->
 
 <!-- <div>
     @for(menu of menus(); track $index){

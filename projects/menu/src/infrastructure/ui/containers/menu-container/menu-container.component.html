@@ -1,3 +1,7 @@
 <lib-menu-header (onSubmitMenu)="addMenu($event)"></lib-menu-header>
-<lib-share (searchQueryChange)="onSearchQueryChange($event)"></lib-share>
-<lib-main [menus]="menu$ | async"></lib-main>
+<lib-share (searchQueryChange)="updateSearchQuery($event)"></lib-share>
+<lib-main [menus]=" menu$ | async" (deleteMenuEvent)="openDeleteModal($event)"></lib-main>
+
+<ng-template #deleteModalTemplate>
+    <p>¿Estás seguro de que deseas eliminar este menú?</p>
+</ng-template>

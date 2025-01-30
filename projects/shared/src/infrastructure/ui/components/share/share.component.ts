@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'lib-share',
-  imports: [ReactiveFormsModule],
+  imports: [FormsModule],
   templateUrl: './share.component.html',
   styleUrl: './share.component.scss'
 })
