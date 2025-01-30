@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeLayoutComponent } from './home-layout.component';
+import { DeleteCardComponent } from './delete-card.component';
 
-describe('HomeLayoutComponent', () => {
-  let component: HomeLayoutComponent;
-  let fixture: ComponentFixture<HomeLayoutComponent>;
+describe('DeleteCardComponent', () => {
+  let component: DeleteCardComponent;
+  let fixture: ComponentFixture<DeleteCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomeLayoutComponent]
+      imports: [DeleteCardComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HomeLayoutComponent);
+    fixture = TestBed.createComponent(DeleteCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

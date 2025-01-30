@@ -12,8 +12,8 @@ export class ListCustomersUsecase {
   private readonly _state = inject(State);
   private subscriptions: Subscription;
 
-  customerResponse(): ICustomerResponse[] {
-    return this._state.customers.customerResponse.snapshot();
+  customerResponse$(): Observable<ICustomerResponse[]> {
+    return this._state.customers.customerResponse.$();
   }
 
   initSubscriptions(): void {

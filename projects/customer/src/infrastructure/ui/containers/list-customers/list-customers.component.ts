@@ -1,8 +1,8 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { ListCustomersUsecase } from '../../../../application/customers/list-customers.usecase';
-import { Observable } from 'rxjs';
 import { ICustomerResponse } from '../../../../domain/model/customer.model';
 import { CustomersComponent } from '../../components/customers/customers.component';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'lib-list-customers',
@@ -10,16 +10,16 @@ import { CustomersComponent } from '../../components/customers/customers.compone
   templateUrl: './list-customers.component.html',
 })
 export class ListCustomersComponent implements OnInit, OnDestroy {
-  private _useCase = inject(ListCustomersUsecase);
-  public customers: ICustomerResponse[];
+  private _listUseCase = inject(ListCustomersUsecase);
+  public customers$: Observable<ICustomerResponse[]>;
 
   ngOnInit(): void {
-    this._useCase.initSubscriptions();
-    this._useCase.execute();
-    this.customers = this._useCase.customerResponse();
+    this._listUseCase.initSubscriptions();
+    this._listUseCase.execute();
+    this.customers$ = this._listUseCase.customerResponse$();
   }
 
   ngOnDestroy(): void {
-    this._useCase.destroySubscriptions();
+    this._listUseCase.destroySubscriptions();
   }
 }

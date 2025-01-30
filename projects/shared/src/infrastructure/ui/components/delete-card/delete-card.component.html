@@ -1,0 +1,19 @@
+<section class="modal-container">
+    <article class="delete-card">
+        <div class="delete-card__header">
+            <h2 class="delete-card__title">Eliminar {{ entityName }}</h2>
+            <button (click)="close()"><fa-icon [icon]="faX"></fa-icon></button>
+        </div>
+
+        <div class="delete-card__content">
+            <fa-icon class="delete-card__icon" [icon]="faExclamationCircle"></fa-icon>
+            <h3 class="delete-card__content-title">¿Está seguro de que desea eliminar el {{ entityName }}?</h3>
+            <p class="delete-card__content-text">Esta acción no se puede deshacer.</p>
+        </div>
+
+        <div class="delete-card__buttons">
+            <button class="delete-card__cancel-button" type="button" (click)="close()">Cancelar</button>
+            <button class="delete-card__delete-button" type="button" (click)="delete()">Eliminar</button>
+        </div>
+    </article>
+</section>
