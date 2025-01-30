@@ -3,3 +3,4 @@
  */
 
 export * from './infrastructure/ui/routes/guards/clients.routes';
+export type {IClient} from './domain/model/client.model';
