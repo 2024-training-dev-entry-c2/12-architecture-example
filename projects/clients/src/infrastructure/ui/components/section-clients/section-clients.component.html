@@ -55,18 +55,13 @@
         </lib-add-modal>
 
         @if(modalType === 'delete'){
-        <div>
-            <p>Are you sure you want to delete <strong>{{ selectedClient?.name }}</strong>?</p>
-            <button 
-                (click)="onDelete()" class="container__content-btn container__content-btn--edit">
-                Confirm
-            </button>
+        <lib-remove-modal 
 
-            <button 
-            (click)="onCloseModal()" class="container__content-btn container__content-btn">
-            Cancel
-        </button>
-        </div>
+        [clientName]="selectedClient?.name"
+        (deleteClient)="onDelete()"
+        (closeModal)="onCloseModal()"
+        >
+    </lib-remove-modal>
         }
 
     </lib-modal>

@@ -4,11 +4,12 @@ import { IClients } from '../../../../domain/model/clients.model';
 import { FormGroup } from '@angular/forms';
 import { AddModalComponent } from '../add-modal/add-modal.component';
 import { ModalComponent } from "shared";
+import { RemoveModalComponent } from "../remove-modal/remove-modal.component";
 
 @Component({
   selector: 'lib-section-clients',
   standalone: true,
-  imports: [CommonModule, ModalComponent, AddModalComponent],
+  imports: [CommonModule, ModalComponent, AddModalComponent, RemoveModalComponent],
   templateUrl: './section-clients.component.html',
   styleUrl: './section-clients.component.scss'
 })

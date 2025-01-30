@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, input, Output, output } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { ModalComponent } from 'shared';
 
 @Component({
   selector: 'lib-add-modal',
@@ -9,7 +8,7 @@ import { ModalComponent } from 'shared';
   styleUrl: './add-modal.component.scss'
 })
 export class AddModalComponent {
-  @Input() clientForm!: FormGroup; // Recibe el FormGroup del componente padre
+  @Input() clientForm!: FormGroup;
   @Input() formData: { labelName: string; valueLabel: string }[] = [];
-  @Output() save = new EventEmitter<void>(); // Emite evento al guardar
+  @Output() save = new EventEmitter<void>();
 }

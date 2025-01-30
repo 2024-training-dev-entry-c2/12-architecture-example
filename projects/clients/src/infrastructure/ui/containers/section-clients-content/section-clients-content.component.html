@@ -1,16 +1,16 @@
 <main role="main">
   <lib-section-clients
-  [clients]="clients$ | async"
-  [isModalOpen]="isModalOpen"
-  [modalType]="modalType"
-  [selectedClient]="selectedClient"
-  [clientForm]="clientForm"
-  [formData]="formData"
-  (addClient)="openAddModal()"
-  (editClient)="openEditModal($event)"
-  (deleteClient)="openDeleteModal($event)"
-  (saveClient)="onSave()"
-  (confirmDelete)="deleteClient()"
-  (closeModal)="closeModal()">
-</lib-section-clients>
-  </main>
+    [clients]="clients$ | async"
+    [isModalOpen]="isModalOpen"
+    [modalType]="modalType"
+    [selectedClient]="selectedClient"
+    [clientForm]="clientForm"
+    [formData]="formData"
+    (addClient)="openAddModal()"
+    (editClient)="openEditModal($event)"
+    (deleteClient)="openDeleteModal($event)"
+    (saveClient)="onSave()"
+    (confirmDelete)="deleteClient()"
+    (closeModal)="closeModal()">
+  </lib-section-clients>
+</main>

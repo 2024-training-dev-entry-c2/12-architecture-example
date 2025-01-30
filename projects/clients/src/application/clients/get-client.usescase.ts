@@ -2,15 +2,15 @@ import { inject, Injectable, OnDestroy } from '@angular/core';
 import { State } from '../../domain/state';
 import { IClients } from '../../domain/model/clients.model';
 import { GetClientService } from '../../infrastructure/services/get-client.service';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { Observable, Subject, Subscription, takeUntil } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
-export class GetClientUseCase implements OnDestroy {
+export class GetClientUseCase {
   private readonly _service = inject(GetClientService);
   private readonly _state = inject(State);
-  private destroy$ = new Subject<void>();
+ private subscriptions = new Subscription();
 
   client$(): Observable<IClients[]> {
     return this._state.clients.client.$();
@@ -27,7 +27,6 @@ export class GetClientUseCase implements OnDestroy {
 
     this._service
       .getClients()
-      .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (clients) => {
           this._state.clients.client.set(clients);
@@ -38,8 +37,7 @@ export class GetClientUseCase implements OnDestroy {
       });
   }
 
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
+  destroySubscriptions(): void {
+    this.subscriptions.unsubscribe();
+}
 }
