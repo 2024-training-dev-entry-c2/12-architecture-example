@@ -1,0 +1,108 @@
+{
+
+  // Apariencia del editor
+  "editor.fontSize": 14, // Tamaño de la fuente en el editor.
+  "editor.lineHeight": 22, // Altura de línea para mejor legibilidad.
+  "editor.tabSize": 2, // Tamaño del tabulador, ideal para proyectos Angular.
+  "editor.cursorStyle": "line", // Estilo del cursor (línea vertical).
+  "editor.cursorBlinking": "expand", // Efecto de parpadeo del cursor.
+  "editor.wordWrap": "on", // Activa el ajuste de línea.
+  // "editor.rulers": [
+  //   100
+  // ], // Límite visual a 80 caracteres.
+  "window.zoomLevel": 1, // Ajusta el nivel de zoom. Valores positivos aumentan el tamaño, negativos lo reducen.
+  "editor.renderWhitespace": "none", // Muestra los espacios en blanco (útil para detectar errores de formato).
+  "editor.bracketPairColorization.enabled": true, // Activa colores para los pares de corchetes y llaves.
+  "editor.guides.bracketPairs": true, // Muestra líneas guía entre pares de corchetes.
+  "editor.guides.highlightActiveBracketPair": true, // Resalta los corchetes activos.
+  "editor.minimap.enabled": false, // Habilita la minimapa.
+  "editor.renderLineHighlight": "all", // Muestra guías de indentación.
+  // Personalización de colores para los corchetes
+  "workbench.colorCustomizations": {
+    "editorBracketHighlight.foreground1": "#16de88", // Color amarillo.
+    "editorBracketHighlight.foreground2": "#decd51", // Color verde.
+    "editorBracketHighlight.foreground3": "#1E90FF", // Color azul.
+    "editorBracketHighlight.foreground4": "#e1744d", // Color naranja.
+    "editorBracketHighlight.foreground5": "#007c1d", // Color púrpura.
+    "editorBracketHighlight.foreground6": "#FF69B4", // Color rosa.
+    "editorBracketHighlight.unexpectedBracket.foreground": "#FF0000", // Color rojo para errores.
+
+    "editor.selectionBackground": "#264F78", // Fondo de selección.
+    // "activityBar.background": "#0e0e0e", // Fondo de la barra de actividad.
+    // "titleBar.activeBackground": "#1C1E24", // Fondo de la barra de título activa.
+    // "titleBar.inactiveBackground": "#2E3440", // Fondo de la barra de título inactiva.
+    // "statusBar.background": "#1759df", // Fondo de la barra de estado.
+    "statusBar.foreground": "#e9ebea", // Texto de la barra de estado.
+    "tab.activeBackground": "#1d3058", // Fondo de pestañas activas.
+    // "tab.inactiveBackground": "#282C34", // Fondo de pestañas inactivas.
+    "editorLineNumber.foreground": "#858585", // Números de línea.
+    // "editor.foreground": "#ff0000", // Texto principal en el editor.
+    "editorCursor.foreground": "#FFD700", // Color del cursor.
+
+    "activityBar.foreground": "#ED1053", // Color de los iconos.
+    // "activityBar.dropBackground": "#3E4451", // Fondo cuando se arrastra algo a la barra.
+    "activityBarBadge.background": "#edebeb", // Fondo de los badges en la barra.
+    "activityBarBadge.foreground": "#000000", // Texto de los badges.
+    // "activityBar.hoverBackground": "#ED1053", // Fondo al hacer hover sobre la barra.
+    // Barra lateral (Side Bar)
+    // "sideBar.background": "#004de6", // Fondo de la barra lateral.
+    // "sideBar.foreground": "#D1D1D1", // Texto de la barra lateral.
+    // "sideBar.hoverBackground": "#ED1053", // Fondo al hacer hover en la barra lateral.
+    // "sideBarSectionHeader.background": "#ED1053", // Fondo de los encabezados en la barra lateral.
+    "sideBarSectionHeader.foreground": "#3ad1b8", // Texto de los encabezados.
+    // Pestañas
+    // "tab.inactiveBackground": "#163e90", // Fondo de las pestañas inactivas.
+    "tab.hoverBackground": "#232323", // Fondo al hacer hover en una pestaña.
+    "tab.activeForeground": "#ffffff", // Texto de la pestaña activa.
+    // "tab.inactiveForeground": "#eb0e0e", // Texto de las pestañas inactivas.
+    "tab.hoverForeground": "#ffffff", // Texto al hacer hover en una pestaña.
+    "tab.border": "#4a4f61", // Borde de las pestañas.
+    // Barra de estado (Status Bar)
+    // "statusBar.background": "#0457ff", // Fondo de la barra de estado.
+    "statusBar.hoverBackground": "#ED1053", // Fondo al hacer hover en la barra de estado.
+    "statusBar.debuggingBackground": "#161ccf", // Fondo durante debugging.
+    "statusBar.debuggingForeground": "#FFFFFF", // Texto durante debugging.
+    // Barra de título (Title Bar)
+    // "titleBar.activeBackground": "#1C1E24", // Fondo de la barra de título activa.
+    "titleBar.inactiveBackground": "#d0b311", // Fondo de la barra de título inactiva.
+    "titleBar.activeForeground": "#e3dddd", // Texto en la barra de título activa.
+    "titleBar.inactiveForeground": "#ff1010", // Texto en la barra de título inactiva.
+    "titleBar.hoverBackground": "#3A3F4B", // Fondo al hacer hover en la barra de título.
+  },
+  // Apariencia general de VS Code
+  "workbench.colorTheme": "Aura Dark", // Tema de colores (requiere instalación).
+  "workbench.iconTheme": "material-icon-theme", // Iconos personalizados para archivos y carpetas.
+  "workbench.sideBar.location": "right", // Muestra la barra de actividad.
+  "workbench.statusBar.visible": true, // Muestra la barra de estado.
+  "workbench.editor.tabSizing": "shrink", // Reduce el tamaño de las pestañas.
+  "workbench.editor.labelFormat": "short", // Usa etiquetas cortas para las pestañas.
+  // Configuración del explorador de archivos
+  "explorer.compactFolders": false, // Desactiva las carpetas compactas.
+  "explorer.confirmDelete": false, // No pide confirmación al eliminar archivos.
+  "explorer.confirmDragAndDrop": false, // No pide confirmación al arrastrar archivos.
+  // Configuración del terminal integrado
+  "terminal.integrated.fontSize": 14, // Tamaño de la fuente del terminal.
+  "terminal.integrated.cursorStyle": "underline", // Cursor en forma de subrayado.
+  "terminal.integrated.cursorBlinking": true, // Efecto de parpadeo del cursor.
+  "terminal.integrated.scrollback": 10000, // Historial de líneas visibles en el terminal.
+  "terminal.integrated.defaultProfile.windows": "Git Bash", // Perfil predeterminado en Windows.
+  // Guardado automático y formato de código
+  // "files.autoSave": "afterDelay", // Guarda automáticamente después de un retraso.
+  // "files.autoSaveDelay": 1000, // Retraso de 1 segundo para el guardado automático.
+  "editor.formatOnSave": true, // Formato automático al guardar.
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always" // Aplica correcciones automáticas de ESLint.
+  },
+  // Configuración de Prettier
+  "prettier.singleQuote": true, // Usa comillas simples.
+  "prettier.semi": false, // No agrega punto y coma al final de las líneas.
+  "prettier.tabWidth": 2, // Indentación con 2 espacios.
+  // Integración con ESLint
+  "eslint.enable": true, // Habilita ESLint en el proyecto.
+  "eslint.alwaysShowStatus": true, // Siempre muestra el estado de ESLint.
+  // Configuración de Git
+  "git.enableSmartCommit": true, // Permite realizar commits sin necesidad de hacer stage explícito.
+  "git.confirmSync": false,
+  "editor.guides.indentation": true // No pide confirmación para sincronizar cambios.
+
+}
