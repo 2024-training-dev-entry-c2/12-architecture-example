@@ -1,0 +1,30 @@
+@use '../../../../styles/variables.scss' as vr;
+@use '../../../../styles/mixins.scss' as mx;
+
+.cell{
+    @include mx.flex-container(center);
+
+    &__button{
+        @include mx.flex-container(center, center);
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: none;
+        cursor: pointer;
+        margin: 0 6px;
+        color: vr.$color-white;
+        
+        &--update{
+            background: vr.$color-yellow;
+        }
+
+        &--delete{
+            background: vr.$color-red;
+        }
+
+        & svg{
+            width: 18px;
+            height: 18px;
+        }
+    }
+}

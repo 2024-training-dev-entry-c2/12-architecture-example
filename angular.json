@@ -5,6 +5,11 @@
   "projects": {
     "clients": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "projects/clients",
       "sourceRoot": "projects/clients/src",
       "prefix": "lib",
@@ -38,6 +43,11 @@
     },
     "orders": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "projects/orders",
       "sourceRoot": "projects/orders/src",
       "prefix": "lib",
@@ -71,6 +81,11 @@
     },
     "dishes": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "projects/dishes",
       "sourceRoot": "projects/dishes/src",
       "prefix": "lib",
@@ -104,6 +119,11 @@
     },
     "menus": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "projects/menus",
       "sourceRoot": "projects/menus/src",
       "prefix": "lib",
@@ -137,6 +157,11 @@
     },
     "shared": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "projects/shared",
       "sourceRoot": "projects/shared/src",
       "prefix": "lib",

@@ -1,0 +1,13 @@
+.table-head{
+    &__column{
+
+    }
+
+    &__title{
+        padding: 10px;
+        font-weight: 600;
+        background-color: vr.$color-back;
+        color: vr.$color-white;
+        border: none;
+    }
+}

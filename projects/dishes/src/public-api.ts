@@ -2,5 +2,5 @@
  * Public API Surface of dishes
  */
 
-export * from './lib/dishes.service';
-export * from './lib/dishes.component';
+export * from './domain/model/dish.model';
+

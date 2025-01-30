@@ -1,0 +1,11 @@
+@use '../../styles/variables.scss' as vr;
+
+.table{
+    background: vr.$color-white;
+    border-radius: 6px;
+    border-spacing: 0;
+    overflow: hidden;
+    box-shadow: 1px -3px 10px #00000028;
+    width: 100%;
+    max-width: 100%;
+}

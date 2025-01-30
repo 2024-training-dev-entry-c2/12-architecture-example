@@ -1,0 +1,20 @@
+@use '../../../styles//variables.scss' as vr;
+@use '../../../styles/mixins.scss' as mx;
+
+.user{
+    @include mx.flex-container(center, center, 10px);
+    margin-left: 50px;
+    padding: 5px 10px;
+    border: solid 1px vr.$color-gray;
+    border-radius: 30px;
+
+    &__icon{
+        width: 22px;
+        height: 22px;
+    }
+
+    &__text{
+        @include mx.text-properties(balance, normal, 2px);
+        font-size: 12px;
+    }
+}
