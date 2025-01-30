@@ -1,1 +1,3 @@
-<p>update-dish works!</p>
+@if (dish != null) {
+<lib-update-dish-form [getData]="dish" (updateDish)="UpdateDish($event)"></lib-update-dish-form>
+}

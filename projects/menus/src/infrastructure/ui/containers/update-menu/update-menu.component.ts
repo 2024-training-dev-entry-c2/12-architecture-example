@@ -30,7 +30,7 @@ private readonly __useCaseGet = inject(GetMenuUsecase);
         console.log(menu);
       },
       error: (err) => {
-        console.error('Error al obtener cliente:', err);
+        console.error('Error al obtener menu:', err);
       },
     });
   }

@@ -22,7 +22,7 @@
         <div class="tab__content">
             @for(item of getTabs; track $index) {
             @if(activeTab === $index){
-            <lib-table title="DishFoods" [data]="getMenuDishes(item.name)" (deleteId)="deleteDish($event)">
+            <lib-table title="DishFoods" [data]="getMenuDishes(item.name)" (deleteId)="deleteDish($event)" (updateId)="redirectToDishUpdate($event, item.id)">
             </lib-table>
 
             <div class="actions__button-dish">

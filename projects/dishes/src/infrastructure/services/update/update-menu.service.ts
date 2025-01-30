@@ -1,9 +1,9 @@
 import { inject, Injectable } from '@angular/core';
 
-import { IDish } from '../../../public-api';
+import { IDish, IDishRequest } from '../../../public-api';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { IDishRequest } from 'dishes';
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,7 @@ import { IDishRequest } from 'dishes';
 export class UpdateMenuService {
   private http = inject(HttpClient);
   updateDish(dish: IDishRequest, id: number): Observable<IDish> {
+    console.log(dish);
     return this.http
       .put<IDish>( `http://localhost:8080/dishfoods/${id}`, dish)
       .pipe(

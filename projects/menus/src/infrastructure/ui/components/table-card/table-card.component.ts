@@ -31,17 +31,16 @@ export class TableCardComponent {
     return this.dishfoods.filter((dish) => dish.menu === menu);
   }
 
-
   deleteMenu(id: number) {
     this.deleteMenuData.emit(id);
     alert('Menu Deleted');
   }
-  redirectToDish(id:number): void {
-    console.log(id)//menu id -----------
-    this.router.navigate(['dish', id]); 
+  redirectToDish(id: number): void {
+    console.log(id); //menu id -----------
+    this.router.navigate(['dish', id]);
   }
-  redirectToDishUpdate(id: number): void {
-    this.router.navigate(['/dish', id]);  
+  redirectToDishUpdate( dishId: number,menuId: number): void {
+    this.router.navigate([`/dish/${menuId}/${dishId}`]);
   }
 
   deleteDish(id: number) {
@@ -52,8 +51,8 @@ export class TableCardComponent {
   redirectToMenu(): void {
     this.router.navigate(['menu/add']);
   }
-  
+
   redirectToMenuId(id: number): void {
-    this.router.navigate(['/menu', id]); 
+    this.router.navigate(['/menu', id]);
   }
 }
