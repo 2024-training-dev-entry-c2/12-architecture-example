@@ -1,1 +1,49 @@
-<p>customers works!</p>
+<section class="container">
+    <article class="entity">
+        <div class="entity__header">
+            <h1>Clientes</h1>
+        </div>
+        <div class="entity__create-button-container">
+            <button aria-expanded="false" class="entity__create-button">
+                <fa-icon [icon]="faPlus"></fa-icon>
+                <span>Crear nuevo cliente</span>
+            </button>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NOMBRE</th>
+                    <th>APELLIDO</th>
+                    <th>EMAIL</th>
+                    <th>TELEFONO</th>
+                    <th>DIRECCIÓN</th>
+                    <th>FRECUENTE</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for ( customer of customers; track customer.id) {
+                <tr>
+                    <td>{{ customer.id }}</td>
+                    <td>{{ customer.name }}</td>
+                    <td>{{ customer.lastName }}</td>
+                    <td>{{ customer.email }}</td>
+                    <td>{{ customer.phone }}</td>
+                    <td>{{ customer.address }}</td>
+                    <td>{{ customer.isFrequent ? 'Si' : 'No' }}</td>
+                    <td class="entity__buttons">
+                        <button class="entity__edit-button">
+                            <fa-icon [icon]="faEdit"></fa-icon>
+                        </button>
+                        <button class="entity__delete-button">
+                            <fa-icon [icon]="faTrash"></fa-icon>
+                        </button>
+                        <button class="entity__add-button">Añadir</button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </article>
+</section>
