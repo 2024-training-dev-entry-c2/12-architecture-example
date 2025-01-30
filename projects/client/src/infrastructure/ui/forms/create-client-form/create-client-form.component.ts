@@ -52,16 +52,13 @@ export class CreateClientFormComponent {
   });
 
   submit() {
-    console.log('Form valid');
     if (this.clientForm.valid) {
-      console.log('Form valid');
       this.onSubmit.emit(
         this.clientForm.getRawValue() as unknown as IClientRequest
       );
-      alert("Client Created")
+      alert('Client Created');
       this.clientForm.reset();
-    }
-    else {
+    } else {
       console.log(this.clientForm);
     }
   }

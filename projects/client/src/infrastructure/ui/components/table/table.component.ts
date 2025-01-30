@@ -28,7 +28,6 @@ export class TableClientComponent {
   ];
   sendToDelete(id: number) {
     console.log(id);
-    
     this.deleteClient.emit(id);
   }
 

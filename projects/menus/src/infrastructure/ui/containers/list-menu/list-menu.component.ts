@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { GetMenusListUseCase } from '../../../../application/menus/list-menus.usecase';
 import { IDishResponse } from 'dishes';
-import { IMenuResponse } from '../../../../domain/model/menu.model';
+import { IMenu } from '../../../../domain/model/menu.model';
 import { TableCardComponent } from '../../components/table-card/table-card.component';
+import { RemoveMenuUsecase } from '../../../../application/menus/remove-menus.usecase';
 
 @Component({
   selector: 'lib-list-menu',
@@ -12,6 +13,7 @@ import { TableCardComponent } from '../../components/table-card/table-card.compo
 })
 export class ListMenuComponent {
   private readonly __useCaseMenus = inject(GetMenusListUseCase);
+  private readonly __useCaseRemoveMenus = inject(RemoveMenuUsecase);
   menus: any[] = [];
   dish: IDishResponse[] = [];
   ngOnInit(): void {
@@ -22,7 +24,7 @@ export class ListMenuComponent {
     this.__useCaseMenus.execute();
 
     this.__useCaseMenus.menus$().subscribe({
-      next: (menus: IMenuResponse[]) => {
+      next: (menus: IMenu[]) => {
         this.menus = menus.map((menu) => ({ id: menu.id, name: menu.name }));
         this.dish =  menus.flatMap(menu => menu.dishfoods.map((dish: any) => ({ ...dish })));
       },
@@ -30,5 +32,12 @@ export class ListMenuComponent {
         console.error('Error al obtener menús:', err);
       },
     });
+  }
+
+  removeMenu(id: number) {
+    this.__useCaseRemoveMenus.execute(id);
+    setTimeout(() => {
+      this.getMenus();
+    }, 1000);
   }
 }

@@ -1,19 +1,19 @@
 import { inject, Injectable } from "@angular/core";
-import {  CreateMenuService } from "../../infrastructure/services/create-menu.service";
 import { State } from "../../domain/state";
-import {  IMenu } from "../../domain/model/menu.model";
+import {  IMenu, IMenuRequest } from "../../domain/model/menu.model";
 import { Observable, Subscription, tap } from "rxjs";
+import { CreateMenuService } from "../../infrastructure/services/create/create-menu.service";
 
 @Injectable({
   providedIn: 'root'
 })
-export class CreateUserUsecase {
+export class CreateMenuUsecase {
   private readonly _service = inject(CreateMenuService);
   private readonly _state = inject(State);
   private subscriptions: Subscription;
 
   //#region Observables
-  user$(): Observable<IMenu> {
+  menus$(): Observable<IMenu> {
     return this._state.menus.menu.$();
   }
   //#endregion
@@ -27,9 +27,9 @@ export class CreateUserUsecase {
     this.subscriptions.unsubscribe();
   }
 
-  execute(menu: IMenu): void {
+  execute(menu: IMenuRequest): void {
     this.subscriptions.add(
-      this._service.create(menu)
+      this._service.addMenu(menu)
         .pipe(
           tap(result => {
             this._state.menus.menu.set(result);

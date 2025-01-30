@@ -8,7 +8,7 @@
     border: none;
     border-radius: vars.$border-radius-small;
     cursor: pointer;
-    // @include transition(background-color, $transition-time);
+
 
     &--close {
       background-color: vars.$color-menu;

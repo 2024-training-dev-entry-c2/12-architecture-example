@@ -1,9 +1,13 @@
-import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { inject, Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RemoveMenuService {
-
-  constructor() { }
+  private http = inject(HttpClient);
+  deleteMenu(id: number): Observable<any> {
+    return this.http.delete<any>(`http://localhost:8080/menus/delete/${id}`);
+  }
 }

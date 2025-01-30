@@ -12,7 +12,6 @@ import { Router } from '@angular/router';
   templateUrl: './list-client.component.html',
 })
 export class ListClientComponent {
-
   private readonly __useCaseList = inject(GetUsersListUsecase);
   private readonly __useCaseGet = inject(RemoveClientUsecase);
   clientList: IClient[] = [];
@@ -26,7 +25,6 @@ export class ListClientComponent {
 
     this.__useCaseList.clients$().subscribe({
       next: (clients: IClient[]) => {
-
         this.clientList = clients;
       },
       error: (err) => {
@@ -40,18 +38,10 @@ export class ListClientComponent {
     setTimeout(() => {
       this.getClients();
     }, 1000);
-
-  }
-  showModal = false;
-  openModal() {
-    this.showModal = true;
   }
 
   closeModal() {
-    this.showModal = false;
     setTimeout(() => this.getClients(), 1000);
     this.getClients();
   }
-  
-
 }

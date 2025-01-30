@@ -1,0 +1,6 @@
+<form [formGroup]="menuAddForm" aria-label="form to update Menu" class="form__update-menu">
+    <lib-modal (closeModal)="redirectToMenu()" [data]="getData" [formGroup]="menuAddForm">
+        <button button type="submit" (click)="addMenu() " class="modal__button modal__button--close"
+            aria-label="button to update Menu" aria-labelledby="button to update Menu">Add</button>
+    </lib-modal>
+</form>
