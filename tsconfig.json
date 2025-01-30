@@ -24,6 +24,12 @@
       "customers": [
         "./dist/customers"
       ],
+      "dashboard": [
+        "./dist/dashboard"
+      ],
+      "home": [
+        "./dist/home"
+      ],
       "shared": [
         "./dist/shared"
       ],

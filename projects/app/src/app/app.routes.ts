@@ -3,7 +3,7 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: 'dashboard',
-    loadChildren: () => import('shared').then(m => m.sharedRoutes)
+    loadChildren: () => import('dashboard').then(m => m.dashboardRoutes)
   },
   {
     path:'',
