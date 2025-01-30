@@ -1,0 +1,13 @@
+<div class="modal">
+    <div class="modal__header">
+        {{ title }}
+        <span class="modal__close" (click)="close()">✕</span>
+    </div>
+    <hr>
+    <div class="modal__content" #contentContainer></div>
+    <div class="modal__footer">
+        <button class="modal__button" (click)="submit()">{{ buttonName }}</button>
+    </div>
+</div>
+
+<div class="modal-backdrop" (click)="close()"></div>

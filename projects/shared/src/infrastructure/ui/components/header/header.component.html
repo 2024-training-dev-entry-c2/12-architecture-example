@@ -1,1 +1,15 @@
-<p>header works!</p>
+<header class="header">
+    <h2>{{ title }}</h2>
+    <button class="header__button" (click)="openModal(modalTemplate)">
+        <i class="header__icon" aria-hidden="true">
+            <svg>
+                <use [attr.xlink:href]="iconPath"></use>
+            </svg>
+        </i>
+        {{ buttonText }}
+    </button>
+
+    <ng-template #modalTemplate>
+        <ng-container *ngTemplateOutlet="modalContent"></ng-container>
+    </ng-template>
+</header>

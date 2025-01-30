@@ -10,7 +10,7 @@ export class MenusState {
     private readonly _factory = inject(StateFactory);
 
     //#region Subjects
-    private readonly menu$ =  new BehaviorSubject<IMenu>(null);
+    private readonly menu$ =  new BehaviorSubject<IMenu[]>([]);
     //#endregion
 
     store() {

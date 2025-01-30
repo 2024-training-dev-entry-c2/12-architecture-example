@@ -1,0 +1,23 @@
+@use '../../../ui/styles/variables.scss' as variables;
+@use '../../../ui/styles/mixins.scss' as mixins;
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Silkscreen:wght@400;700&family=Stalinist+One&family=Wallpoet&display=swap');
+
+.header {
+    text-align: center;
+    margin-bottom: 50px;
+
+    &__title {
+        font-family: "Silkscreen", serif;
+        font-weight: 700;
+        font-style: normal;
+        font-size: 21px;
+        margin-bottom: 10px;
+    }
+
+    &__logo {
+        background-color: #00000026;
+        border-radius: 50%;
+        padding: 5px;
+        border: 1px solid variables.$black;
+    }
+}

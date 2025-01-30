@@ -1,0 +1,24 @@
+.layout {
+    width: 100%;
+    height: fit-content;
+    display: grid;
+    grid:
+        "sidebar body" 1fr / auto 1fr;
+    gap: 8px;
+
+    &__sidebar {
+        grid-area: sidebar;
+        width: 230px;
+        padding: 20px;
+    }
+
+    &__body {
+        height: 35em;
+        grid-area: body;
+        box-shadow: 0 0 8px 0;
+        border-radius: 15px;
+        padding: 20px;
+        margin: 20px 20px 20px 0;
+        background-color: rgba(255, 255, 255, 0.76);
+    }
+}

@@ -12,12 +12,7 @@ export class ListMenusService {
   constructor(private http: HttpClient) {}
 
   getMenus(): Observable<IMenu[]> {
-    return this.http.get<IMenu[]>(this.baseUrl, { headers: this.getHeaders() });
+    return this.http.get<IMenu[]>(this.baseUrl);
   }
 
-  private getHeaders(): HttpHeaders {
-    return new HttpHeaders()
-      .append('Authorization', 'token')
-      .append('Content-Type', 'application/json');
-  }
 }

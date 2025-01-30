@@ -1,7 +1,2 @@
-<lib-header></lib-header>
-
-@if(menu$ | async){
-<h1>menu</h1>
-}@else {
-<h1>no menu</h1>
-}
+<lib-menu-header (onSubmitMenu)="addMenu($event)"></lib-menu-header>
+<lib-main [menus]="menu$ | async"></lib-main>
