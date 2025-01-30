@@ -1,0 +1,32 @@
+@use "../../styles/variables.scss" as variables;
+@use "../../styles/mixins.scss" as mixins;
+
+.modal {
+  all: unset;
+  @include mixins.flex(column, center, center, 16px);
+  @include mixins.fixed(0, 3);
+  @include mixins.radius(100vw, 100vh, 0px);
+  top: -100%;
+  left: 0;
+  border: none;
+  background-color: variables.$bc-dark;
+  transition: top 0.3s ease;
+
+  &--open {
+    top: 0;
+  }
+
+  &__content {
+    @include mixins.radius(fit-content, auto, 20px);
+    box-shadow: variables.$box-shadow;
+    z-index: 1;
+    background-color: variables.$background-color;
+  }
+
+  &__close {
+    @include mixins.radius(100vw, 100vh, 0px);
+    position: absolute;
+    top: 0;
+    left: 0;
+  } 
+}

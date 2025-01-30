@@ -1,0 +1,45 @@
+@use "../../styles/variables.scss" as variables;
+@use "../../styles/mixins.scss" as mixins;
+
+.confirm {
+  @include mixins.flex(column, center, center, 30px);
+  @include mixins.radius(500px, 25vh, 10px);
+  padding: 20px;
+
+  &__title {
+    font-size: 25px;
+    color: variables.$green;
+    font-weight: 700;
+    text-align: center
+  }
+
+  &__buttons {
+    @include mixins.flex(row, center, center, 20px);
+  }  
+  
+  &__button {
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+
+    &--confirm {
+      background-color: variables.$red-light;
+      color: variables.$white;
+
+      &:hover {
+        @include mixins.hover(variables.$red-dark);
+      }
+    }
+
+    &--cancel {
+      background-color: variables.$blue-light;
+      color: variables.$white;
+
+      &:hover {
+        @include mixins.hover(variables.$blue-dark);
+      }
+    }
+  }
+} 
