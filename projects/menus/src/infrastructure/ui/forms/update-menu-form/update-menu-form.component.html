@@ -1,1 +1,8 @@
-<p>update-menu-form works!</p>
+
+<form [formGroup]="menuUpdatedForm" aria-label="form to update Client" class="form_update">
+    <lib-modal (closeModal)="redirectToMenu()" [data]="getData" [formGroup]="menuUpdatedForm">
+        <button button type="submit" (click)="sendToUpdate()" class="modal__button modal__button--close" aria-label="
+        ">Update</button>
+    </lib-modal>
+
+</form>

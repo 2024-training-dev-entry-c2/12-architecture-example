@@ -9,7 +9,7 @@
                 <div class="actions__items">
                     <lib-buttons [icon]="images[0]" [rowIndex]="$index" (buttonClick)="deleteMenu(item.id)"
                         ariaLabel="Remove"></lib-buttons>
-                    <lib-buttons [icon]="images[1]" [rowIndex]="$index" (buttonClick)="getMenu(item.id)"
+                    <lib-buttons [icon]="images[1]" [rowIndex]="$index" (buttonClick)="redirectToMenuId(item.id)"
                         ariaLabel="Edit"></lib-buttons>
                 </div>
             </li>

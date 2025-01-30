@@ -17,13 +17,13 @@ export class GetMenuService {
       })
     );
   }
-  private validateObjectResponse(response: any): Menu {
+  private validateObjectResponse(response: any): IMenu {
     if (
       typeof response.id === 'number' &&
       typeof response.name === 'string' &&
       typeof response.dishfoods === 'object'
     ) {
-      return response as Menu;
+      return response as IMenu;
     } else {
       throw new Error('Invalid menu structure');
     }

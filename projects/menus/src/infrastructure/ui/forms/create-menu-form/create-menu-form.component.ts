@@ -25,6 +25,7 @@ export class CreateMenuFormComponent {
       this.updateMenu.emit(
         this.menuAddForm.getRawValue() as unknown as IMenuRequest
       );
+      alert('Menu Created');
       this.menuAddForm.reset();
       this.redirectToMenu();
     }
@@ -32,8 +33,8 @@ export class CreateMenuFormComponent {
 
   constructor(private router: Router) {}
   redirectToMenu(): void {
-    setTimeout(() => this.router.navigate(['/menu']), 1000);
-    alert('Menu Created');
+    setTimeout(() => this.router.navigate(['/menu']), 500);
+  
 
   }
 }

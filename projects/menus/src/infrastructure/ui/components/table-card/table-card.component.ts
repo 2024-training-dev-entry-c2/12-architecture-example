@@ -36,11 +36,14 @@ export class TableCardComponent {
     alert('Menu Deleted');
   }
 
-  getMenu(id: number) {}
-
   deleteDish(id: number) {}
   constructor(private router: Router) {}
   redirectToMenu(): void {
     this.router.navigate(['menu/add']);
+  }
+
+  
+  redirectToMenuId(id: number): void {
+    this.router.navigate(['/menu', id]); 
   }
 }

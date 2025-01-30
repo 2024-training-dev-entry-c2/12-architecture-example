@@ -1,1 +1,3 @@
-<p>update-menu works!</p>
+@if(menu != null){
+<lib-update-menu-form [getData]="menu" [getMenuId]="menuId" (updateMenu)="UpdateMenu($event)"></lib-update-menu-form>
+}
