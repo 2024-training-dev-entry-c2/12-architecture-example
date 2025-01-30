@@ -12,6 +12,7 @@ import { CommonModule } from '@angular/common';
 export class MainComponent {
   public menus = input<IMenu[]>();
   @Output() deleteMenuEvent = new EventEmitter<number>();
+  @Output() editMenuEvent = new EventEmitter<IMenu>();
 
   // modalType: string = '';
 
@@ -45,6 +46,10 @@ export class MainComponent {
 
   openDeleteModal(idMenu: number): void {
     this.deleteMenuEvent.emit(idMenu);
+  }
+
+  openEditModal(menu: IMenu): void {
+    this.editMenuEvent.emit(menu);
   }
 
 }

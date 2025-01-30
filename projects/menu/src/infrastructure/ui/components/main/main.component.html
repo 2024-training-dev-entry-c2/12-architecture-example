@@ -31,8 +31,8 @@
                 </td>
                 <td class="menu__action">
                     @for (action of getActions(); track action.label) {
-                    <a class="menu__button menu__button--{{ action.type }}"
-                        (click)="action.type === 'delete' ? openDeleteModal(menu.idMenu) : null">
+                    <a class="menu__button menu__button--{{ action.type }}" (click)="action.type === 'delete' ? openDeleteModal(menu.idMenu) :  
+                        action.type === 'edit' ? openEditModal(menu) : null">
                         <i class="menu__icon" aria-hidden="true">
                             <svg>
                                 <use [attr.xlink:href]="action.icon"></use>

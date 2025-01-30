@@ -11,7 +11,7 @@ private baseUrl = 'http://localhost:8080/api/menus';
 
   constructor(private http: HttpClient) {}
 
-  updateMenu(id: number, payload: IMenu): Observable<IMenuResponse> {
-    return this.http.put<IMenuResponse>(`${this.baseUrl}/${id}`, payload);
+  updateMenu(id: number, payload: IMenu): Observable<IMenu> {
+    return this.http.put<IMenu>(`${this.baseUrl}/${id}`, payload);
   }
 }
