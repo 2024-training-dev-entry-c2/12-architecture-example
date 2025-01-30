@@ -45,7 +45,6 @@ export class MenuContainerComponent implements OnInit, OnDestroy {
     this._listUsecase.initSubscriptions();
     this._createUsecase.initSubscriptions();
     this.loadMenus();
-    // this.menu$ = this._listUsecase.menu$();
     this.menu$ = this._searchUsecase.filteredMenus$(); 
 }
 

@@ -17,7 +17,7 @@ updateMenu(menuId: number, menuName: string, menus$: Observable<IMenu[]>): Obser
       map(menus => menus.find(menu => menu.idMenu === menuId)), 
       switchMap(menuToUpdate => {
         if (!menuToUpdate) {
-          throw new Error('Menú no encontrado');
+          throw new Error('Menu no encontrado');
         }
 
         const updatedMenu: IMenu = {

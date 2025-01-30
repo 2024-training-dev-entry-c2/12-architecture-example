@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IMenu } from '../../domain/model/menus.model';
-import { Observable, of } from 'rxjs';
+import { Observable} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
