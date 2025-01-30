@@ -1,0 +1,29 @@
+<div class="card">
+    <!-- Custom information -->
+    <div class="card__about">
+        <h3>{{ title }}</h3>
+        <p class="lead">{{subTitle}}</p>
+        <div class="legends">
+            <div class="info">
+                <span class="legends legends--this"></span>
+                <p>This week</p>
+            </div>
+            <div class="info">
+                <span class="legends legends--prev"></span>
+                <p>Previous week</p>
+            </div>
+        </div>
+    </div>
+    <!-- Canvas for Chart.js -->
+    <canvas [id]="chartId"></canvas>
+    <!-- Custom Axis -->
+    <div class="axis">
+        @for (item of ticksData; track $index) {
+            <div class="tick" color="black">
+                {{ item.day }}
+                <span class="value value--this">{{ item.thisWeek }}</span>
+                <span class="value value--prev">{{ item.prevWeek }}</span>
+            </div>
+        }
+    </div>
+</div>

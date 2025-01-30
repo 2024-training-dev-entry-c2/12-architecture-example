@@ -3,9 +3,9 @@
         <form [formGroup]="updateOrderForm" aria-label="form to update Client" class="form__update-order">
             <lib-client-selector [clients]="clients" [formGroup]="updateOrderForm" (clientSelected)="getClient($event)"></lib-client-selector>
 
-            <div class="order-form__group">
-                <label for="localDate" class="order-form__label">Date:</label>
-                <input id="localDate" type="date" formControlName="localDate" class="order-form__input" />
+            <div class="update-order__group">
+                <label for="localDate" class="update-order__label">Date:</label>
+                <input id="localDate" type="date" formControlName="localDate" class="update-order__input" />
             </div>
             <lib-menu-selector [menusList]="menus" [formGroup]="updateOrderForm"
                 (dishfoodsSelected)="addDish($event)"></lib-menu-selector>

@@ -27,8 +27,14 @@
       "clients": [
         "./dist/clients"
       ],
+      "dashboard": [
+        "./dist/dashboard"
+      ],
       "dishes": [
         "./dist/dishes"
+      ],
+      "home": [
+        "./dist/home"
       ],
       "menus": [
         "./dist/menus"

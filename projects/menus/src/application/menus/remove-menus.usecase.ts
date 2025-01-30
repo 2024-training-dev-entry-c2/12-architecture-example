@@ -14,8 +14,6 @@ export class RemoveMenuUsecase {
     private readonly _state = inject(State);
     private subscriptions: Subscription = new Subscription();
 
-
-
     //#region Public Methods
     execute(id: number): void {
       this.subscriptions.add(

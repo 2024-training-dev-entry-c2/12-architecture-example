@@ -26,7 +26,6 @@ export class ListOrderComponent {
   }
   getOrders() {
     this.__useCaseList.execute();
-
     this.__useCaseList.order$().subscribe({
       next: (orders: IOrder[]) => {
         this.orderList = orders.map((order) => ({
@@ -45,8 +44,6 @@ export class ListOrderComponent {
 
   removeOrder(id: number) {
     this.__useCaseRemoveOrder.execute(id);
-    setTimeout(() => {
-      this.getOrders();
-    }, 500);
+    this.getOrders()
   }
 }

@@ -7,39 +7,34 @@ import { FormComponent } from '../form/form.component';
   selector: 'lib-modal',
   imports: [FormComponent],
   templateUrl: './modal.component.html',
-  styleUrl: './modal.component.scss'
+  styleUrl: './modal.component.scss',
 })
 export class ModalComponent {
-
-  @Input() data: any= [];
+  @Input() data: any = [];
   @Output() closeModal = new EventEmitter<void>();
-  @Input() formGroup!: FormGroup; 
-  fields: FormField[] = []; 
+  @Input() formGroup!: FormGroup;
+  fields: FormField[] = [];
 
   ngOnInit(): void {
-    console.log("Valor de this.data:", this.data);
-    
+    console.log('Valor de this.data:', this.data);
+
     if (this.data != null) {
-        this.fields = this.generateFieldsFromJson(this.data);
+      this.fields = this.generateFieldsFromJson(this.data);
     } else {
-        this.fields = [];
+      this.fields = [];
     }
-  
+
     console.log(this.fields);
-      
   }
 
   get columnKeys(): string[] {
-    return this.data!=null ? Object.keys(this.data) : [];
+    return this.data != null ? Object.keys(this.data) : [];
   }
 
-  
   close() {
     this.closeModal.emit();
     console.log(this.data);
-    
   }
- 
 
   generateFieldsFromJson(json: any): FormField[] {
     return Object.entries(json).map(([key, value]) => ({
@@ -47,14 +42,14 @@ export class ModalComponent {
       type: this.getFieldType(key, value),
       name: key,
       value: Array.isArray(value) ? value.join(', ') : value,
-      validators: this.getValidatorsForKey(key), 
-      disable: key == 'id'? true : false,
+      validators: this.getValidatorsForKey(key),
+      disable: key == 'id' ? true : false,
     }));
   }
   private getFieldType(key: string, value: any): string {
     if (typeof value === 'boolean') return 'checkbox';
     if (typeof value === 'number') return 'number';
-    if (Array.isArray(value)) return 'text'; 
+    if (Array.isArray(value)) return 'text';
     return 'text';
   }
 

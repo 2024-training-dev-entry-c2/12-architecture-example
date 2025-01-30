@@ -10,7 +10,7 @@ import { HeaderNavbarComponent } from '../../header/header.component';
   selector: 'lib-main-layout',
   imports: [RouterOutlet, HeaderNavbarComponent],
   templateUrl: './main-layout.component.html',
-  styleUrl: './main-layout.component.css'
+  styleUrl: './main-layout.component.scss'
 })
 export class MainLayoutComponent {
 
