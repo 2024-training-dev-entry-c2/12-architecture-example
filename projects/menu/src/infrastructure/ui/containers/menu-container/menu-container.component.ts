@@ -1,5 +1,5 @@
 import { Component, inject, OnChanges, OnDestroy, OnInit, signal, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { first, map, Observable } from 'rxjs';
 import { IMenu } from '../../../../domain/model/menus.model';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { ListMenusUseCase } from '../../../../application/menus/list-menus.usecase';
@@ -103,16 +103,11 @@ export class MenuContainerComponent implements OnInit, OnDestroy {
       });
     }
   }
-
+  
   private updateMenu(): void {
     const menuId = this.selectedMenuId();
     if (menuId && this.menuName) {
-      const updatedMenu: IMenu = {
-        idMenu: menuId,
-        menuName: this.menuName,
-        dishes: [] 
-      };
-      this._updateUsecase.updateMenu(updatedMenu).subscribe(() => {
+      this._updateUsecase.updateMenu(menuId, this.menuName, this.menu$).subscribe(() => {
         this.loadMenus();
       });
     }

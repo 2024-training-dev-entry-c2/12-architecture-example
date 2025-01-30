@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { UpdateMenuService } from '../../infrastructure/services/update-menu.service';
 import { ListMenusUseCase } from './list-menus.usecase';
-import { Observable } from 'rxjs';
+import { first, map, Observable, switchMap } from 'rxjs';
 import { IMenu } from '../../domain/model/menus.model';
 
 @Injectable({
@@ -11,16 +11,27 @@ export class UpdateMenuUseCase {
   private readonly _updateService = inject(UpdateMenuService);
   private readonly _listUsecase = inject(ListMenusUseCase);
 
-  updateMenu(menu: IMenu): Observable<IMenu> {
-    return new Observable<IMenu>(observer => {
-      this._updateService.updateMenu(menu.idMenu, menu).subscribe({
-        next: (updatedMenu) => {
-          this._listUsecase.loadMenus(); 
-          observer.next(updatedMenu);
-          observer.complete();
-        },
-        error: (err) => observer.error(err)
-      });
-    });
+updateMenu(menuId: number, menuName: string, menus$: Observable<IMenu[]>): Observable<IMenu> {
+    return menus$.pipe(
+      first(),
+      map(menus => menus.find(menu => menu.idMenu === menuId)), 
+      switchMap(menuToUpdate => {
+        if (!menuToUpdate) {
+          throw new Error('Menú no encontrado');
+        }
+
+        const updatedMenu: IMenu = {
+          ...menuToUpdate,
+          menuName: menuName 
+        };
+
+        return this._updateService.updateMenu(menuId, updatedMenu).pipe(
+          map(updatedMenu => {
+            this._listUsecase.loadMenus(); 
+            return updatedMenu;
+          })
+        );
+      })
+    );
   }
 }
