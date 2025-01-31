@@ -36,9 +36,8 @@
                         <button class="entity__edit-button">
                             <fa-icon [icon]="faEdit"></fa-icon>
                         </button>
-                        <button class="entity__delete-button">
-                            <fa-icon [icon]="faTrash"></fa-icon>
-                        </button>
+                        <lib-delete-card [selectedId]="customer.id" [entityName]="'cliente'"
+                            (onDelete)="deleteCustomer($event)"></lib-delete-card>
                         <button class="entity__add-button">Añadir</button>
                     </td>
                 </tr>

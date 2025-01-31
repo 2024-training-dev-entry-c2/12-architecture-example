@@ -4,21 +4,20 @@
 .modal-container {
   @include mixins.container-column();
   justify-content: start;
-  position: fixed;
-  z-index: 1;
-  left: 0;
-  top: 0;
-  width: 100vw;
-  height: 100vh;
   background-color: rgba(0, 0, 0, 0.4);
 }
 
 .delete-card {
-  width: 500px;
-  height: auto;
-  margin-top: 30px;
+  position: absolute; /* Necesario para usar márgenes automáticos */
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 540px;
+  height: 310px;
+
   background-color: white;
   border-radius: 12px;
+  border: none;
   padding: 30px;
   box-shadow: 0px 15px 20px 2px hsla(220, 20%, 30%, 0.4);
 

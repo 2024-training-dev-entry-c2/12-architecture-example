@@ -26,15 +26,14 @@ export class DeleteCardComponent {
 
   @Input() public selectedId!: number;
   @Input() public entityName!: string;
-  @Output() public closeModal = new EventEmitter<void>();
   @Output() public onDelete = new EventEmitter<number>();
+
+  @ViewChild('deleteCard') deleteCard!: ElementRef<HTMLDialogElement>;
 
   delete(): void {
     this.onDelete.emit(this.selectedId);
     this.deleteCard.nativeElement.close();
   }
-
-  @ViewChild('deleteCard') deleteCard!: ElementRef<HTMLDialogElement>;
 
   open() {
     this.deleteCard.nativeElement.showModal();

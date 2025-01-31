@@ -33,36 +33,7 @@
         }
       }
     },
-    "admin": {
-      "projectType": "library",
-      "root": "projects/admin",
-      "sourceRoot": "projects/admin/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular/build:ng-packagr",
-          "options": {
-            "project": "projects/admin/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/admin/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/admin/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "tsConfig": "projects/admin/tsconfig.spec.json",
-            "polyfills": ["zone.js", "zone.js/testing"]
-          }
-        }
-      }
-    },
+
     "app": {
       "projectType": "application",
       "schematics": {
@@ -181,6 +152,11 @@
     },
     "customer": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "projects/customer",
       "sourceRoot": "projects/customer/src",
       "prefix": "lib",
@@ -211,6 +187,11 @@
     },
     "menu": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "projects/menu",
       "sourceRoot": "projects/menu/src",
       "prefix": "lib",
@@ -241,6 +222,11 @@
     },
     "dish": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "projects/dish",
       "sourceRoot": "projects/dish/src",
       "prefix": "lib",
@@ -271,6 +257,11 @@
     },
     "order": {
       "projectType": "library",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "projects/order",
       "sourceRoot": "projects/order/src",
       "prefix": "lib",
