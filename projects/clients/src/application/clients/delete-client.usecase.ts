@@ -14,7 +14,7 @@ export class DeleteClientUsecase {
 
   //#region Observables
   clients$(): Observable<IClient[]> {
-    return this._state.clients.$();
+    return this._state.clients.clients.$();
   }
   //#endregion
 
@@ -32,9 +32,9 @@ export class DeleteClientUsecase {
       this._service.execute(id)
         .pipe(
           tap(() => {
-            const currentClients = this._state.clients.snapshot();
+            const currentClients = this._state.clients.clients.snapshot();
             const updatedClients = currentClients.filter(client => client.id !== id);
-            this._state.clients.set(updatedClients);
+            this._state.clients.clients.set(updatedClients);
           })
         )
         .subscribe()

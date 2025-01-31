@@ -1,10 +1,10 @@
-import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, input, Input, Output } from '@angular/core';
-import { ButtonCloseComponent } from "../bottons/button-close/button-close.component";
+import { CommonModule, NgClass } from '@angular/common';
+import { Component, input } from '@angular/core';
+import { ButtonComponent } from "../button/button.component";
 
 @Component({
   selector: 'lib-modal',
-  imports: [CommonModule, ButtonCloseComponent],
+  imports: [CommonModule, ButtonComponent, NgClass],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.scss'
 })

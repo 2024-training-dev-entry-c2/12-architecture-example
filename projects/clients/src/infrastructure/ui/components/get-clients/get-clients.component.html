@@ -1,3 +1,16 @@
+<lib-modal action="Crear Cliente" #modal>
+  <section class="clients__add" aria-label="Agregar/editar cliente">
+    @if(successMessage) {
+      <div class="cliente__mensaje-exito">
+        {{ successMessage}}
+      </div>
+    }
+    <lib-add-client-form
+    [client]="currentClient()"
+    (onSubmit)="handleSubmit($event)">
+  </lib-add-client-form>
+  </section>
+</lib-modal>
 <section class="content" aria-labelledby="clientes-title">
   <h1 id="clientes-title">Clientes</h1>
   <table class="content__table">
@@ -9,13 +22,10 @@
         <th scope="col">Teléfono</th>
         <th scope="col">Es Frecuente</th>
         <th scope="col">Acciones</th>
-        <th>
-          <lib-button-add (buttonEvent)="addClient()"></lib-button-add>
-        </th>
       </tr>
     </thead>
     <tbody class="content__body">
-      @for(client of clients; track client.id){
+      @for(client of clients(); track client.id){
       <tr class="content__cliente">
         <td>{{client.id}}</td>
         <td>{{client.name}}</td>
@@ -33,7 +43,7 @@
         }
         </td>
         <td>
-          <lib-button-edit  [id]="client.id!" (editEvent)="editClient(client.id!)"></lib-button-edit>
+          <lib-button [id]="client.id!" (editEvent)="editClient(client.id)" [text]="action()" (onClick)="toggle()" />
           <hr>
           <lib-button-delete [id]="client.id!" (deleteEvent)="deleteClient($event)"></lib-button-delete>
         </td>

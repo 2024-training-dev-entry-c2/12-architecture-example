@@ -4,6 +4,7 @@
 .cliente-form {
   @include mixin.container(center);
   flex-direction: column;
+  min-width: 400px;
   max-width: 600px;
   margin: 0 auto;
   height: 100%;
@@ -29,7 +30,9 @@
     font-size: 20px;
     font-weight: bold;
   }
-
+  &__form{
+    width: 80%;
+  }
   &__form-group {
     margin-bottom: 10px;
 
@@ -40,27 +43,21 @@
       font-size: 12px;
       font-weight: 500;
     }
-    input {
-      height: 10px;
-    }
-    input,
-    select {
-      width: 100%;
-      padding: 8px;
-      border: 1px solid variables.$color-gradients;
-      border-radius: 6px;
-      font-size: 12px;
-      transition: border-color 0.3s ease;
-      &:focus {
-        border-color: variables.$color-secondary;
-        outline: none;
-      }
-    }
-    input[type="checkbox"] {
-      width: auto;
+
+  }
+  &__input{
+    height: 15px;
+    width: 100%;
+    padding: 8px;
+    border: 1px solid variables.$color-gradients;
+    border-radius: 6px;
+    font-size: 12px;
+    transition: border-color 0.3s ease;
+    &:focus {
+      border-color: variables.$color-secondary;
+      outline: none;
     }
   }
-
   &__inline-group {
     display: flex;
     gap: 15px;

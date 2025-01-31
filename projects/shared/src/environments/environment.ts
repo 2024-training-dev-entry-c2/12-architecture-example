@@ -3,8 +3,8 @@ export const environment = {
 };
 
 export const urlResources = {
-  clients: `${environment.apiUrl}/clientes`,
-  restaurant: `${environment.apiUrl}/restaurant`,
+  clients: `${environment.apiUrl}/cliente`,
+  restaurant: `${environment.apiUrl}/restaurante`,
   ordenes: `${environment.apiUrl}/ordenes`,
   dishes: `${environment.apiUrl}/dish`,
   clientsOperationsById: (clientId: string) => `${environment.apiUrl}/clientes/${clientId}`,

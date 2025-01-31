@@ -1,12 +1,12 @@
 import { Component, input, output } from '@angular/core';
 
 @Component({
-  selector: 'lib-button-close',
+  selector: 'lib-button',
   imports: [],
-  templateUrl: './button-close.component.html',
-  styleUrl: './button-close.component.scss'
+  templateUrl: './button.component.html',
+  styleUrl: './button.component.scss'
 })
-export class ButtonCloseComponent {
+export class ButtonComponent {
   public text = input.required<string>();
   public theme = input<'primary' | 'info' | 'danger'>('primary');
   public onClick = output<void>();

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ButtonCloseComponent } from './button-close.component';
+import { ButtonCloseComponent } from './button.component';
 
 describe('ButtonCloseComponent', () => {
   let component: ButtonCloseComponent;
