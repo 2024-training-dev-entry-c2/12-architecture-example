@@ -1,5 +1,5 @@
 {
-  "name": "architecture-example",
+  "name": "architecture-hexagonal",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -18,13 +18,13 @@
     "@angular/platform-browser": "^19.1.0",
     "@angular/platform-browser-dynamic": "^19.1.0",
     "@angular/router": "^19.1.0",
+    "@auth0/angular-jwt": "^5.2.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^19.1.4",
-    "@angular/build": "^19.1.4",
+    "@angular-devkit/build-angular": "^19.1.5",
     "@angular/cli": "^19.1.1",
     "@angular/compiler-cli": "^19.1.0",
     "@types/jasmine": "~5.1.0",
@@ -36,6 +36,5 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "^19.1.0",
     "typescript": "~5.7.2"
-  },
-  "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0"
+  }
 }

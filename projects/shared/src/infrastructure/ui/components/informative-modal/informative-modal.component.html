@@ -1,0 +1,6 @@
+<div class="modal" [style.display]="showModal ? 'flex' : 'none'">
+    <div class="modal__content">
+        <span class="modal__close" (click)="closeModal()">×</span>
+        <ng-content></ng-content>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<nav class="navbar" aria-label="Main Navigation Bar">
+    <h1 class="navbar__title" tabindex="0">Bank Account</h1>
+    <div class="navbar__actions">
+        <div class="navbar__user-menu" role="menu">
+            <img
+              src="shared/assets/images/user-1.jpg"
+              alt="User"
+              class="navbar__avatar"
+              (click)="toggleMenu($event)"
+              role="button"
+              aria-label="Open user menu"
+              tabindex="0"
+            />
+            @if (showMenu) {
+            <div class="navbar__dropdown" aria-label="User Menu" role="menu">
+                <a class="navbar__dropdown--item" aria-label="My profile" role="menuitem" tabindex="0">
+                    <i class="navbar__icon">
+                        <img src="shared/assets/images/profile.svg" alt="profile" aria-hidden="true">
+                    </i>
+                    My Profile
+                </a>
+
+                <button class="navbar__logout-btn" (click)="logout()" aria-label="Sign Out" role="menuitem" tabindex="0">
+                    Logout
+                </button>
+            </div>
+            }
+        </div>
+    </div>
+</nav>

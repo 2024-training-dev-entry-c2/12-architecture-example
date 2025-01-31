@@ -1,0 +1,22 @@
+<aside class="sidebar" [class.sidebar--collapsed]="isSidebarCollapsed" aria-label="Main Navigation">
+    <div class="sidebar__user-profile">
+        <div class="sidebar__avatar">
+            <img src="shared/assets/images/user-1.jpg" alt="User Avatar" />
+        </div>
+        @if (username) {
+            <h2>{{ username }}</h2>
+        }
+    </div>
+    <nav aria-label="Secondary Navigation">
+        <button
+            class="sidebar__toggle-btn"
+            (click)="handleToggleSidebar()"
+            aria-label="Toggle sidebar navigation"
+            [attr.aria-expanded]="!isSidebarCollapsed"
+        >
+            <img src="shared/assets/images/menu.png" alt="menu" aria-hidden="true" />
+
+             <span class="sr-only">Toggle Sidebar</span>
+        </button>
+    </nav>
+</aside>

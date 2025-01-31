@@ -1,30 +1,74 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { CreateUserUsecase } from '../../../../application/users/create-user.usecase';
-import { Observable } from 'rxjs';
-import { IUser } from '../../../../domain/model/users.model';
-import { AsyncPipe } from '@angular/common';
-import { CreateUserFormComponent } from '../../forms/create-user-form/create-user-form.component';
-import { HeaderComponent } from '../../components/header/header.component';
+import { Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AuthFormComponent } from "../../forms/auth-form/auth-form.component";
+import { Router } from '@angular/router';
+import { CreateUserUsecase } from '../../../../application/create-user.usecase';
+import { Observable, Subject, takeUntil } from 'rxjs';
+import { IUser } from '../../../../domain/model/user.model';
+import { InformativeModalComponent } from 'shared';
 
 @Component({
   selector: 'lib-create-users',
-  imports: [AsyncPipe, CreateUserFormComponent, HeaderComponent],
-  templateUrl: './create-users.component.html'
+  imports: [AuthFormComponent, InformativeModalComponent],
+  templateUrl: './create-users.component.html',
 })
 export class CreateUsersComponent implements OnInit, OnDestroy {
-  private readonly _useCase = inject(CreateUserUsecase);
+  errorMessage: string | null = null;
+  private readonly _createUserUsecase = inject(CreateUserUsecase);
   public user$: Observable<IUser>;
+  private destroy$ = new Subject<void>();
+  showModal = false;
+  modalMessage = 'Registro exitoso!';
+  @ViewChild(AuthFormComponent) authFormComponent!: AuthFormComponent;
+
+  inputsConfig = [
+    { label: 'Nombre de Usuario', formControlName: 'username', type: 'text' as const },
+    { label: 'Contraseña', formControlName: 'password', type: 'password' as const },
+    {
+      label: 'Rol',
+      formControlName: 'roles',
+      type: 'select' as const,
+      options: [
+        { value: 'USER', label: 'Usuario' },
+        { value: 'ADMIN', label: 'Administrador' },
+      ],
+    },
+  ];
+
+
+  constructor(private router: Router,
+
+  ) {
+  }
 
   ngOnInit(): void {
-    this._useCase.initSubscriptions();
-    this.user$ = this._useCase.user$();
+    this.user$ = this._createUserUsecase.user$();
   }
 
   ngOnDestroy(): void {
-    this._useCase.destroySubscriptions();
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
-  createUser(user: IUser): void {
-    this._useCase.execute(user);
+
+  register(formValue: IUser) {
+    this._createUserUsecase.execute(formValue)
+      .pipe(
+        takeUntil(this.destroy$)
+      )
+      .subscribe({
+        next: () => {
+          this.showModal = true;
+          this.authFormComponent.authForm.reset()
+
+        },
+        error: (error) => {
+          this.errorMessage = 'Error en el registro. Por favor, inténtelo de nuevo.';
+        }
+      });
   }
+
+  handleCloseModal(){
+    this.showModal = false;
+  }
+
 }

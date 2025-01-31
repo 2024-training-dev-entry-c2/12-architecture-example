@@ -1,5 +1,15 @@
-<!-- <app-create-user-form
-></app-create-user-form> -->
-<lib-create-user-form (onSubmit)="createUser($event)" />
+<lib-auth-form
+title="Registro"
+buttonText="Registrar"
+[inputsConfig]="inputsConfig"
+[errorMessage]="errorMessage"
+(formSubmit)="register($event)"
+>
+</lib-auth-form>
 
-<lib-header [user]="user$ | async" />
+<lib-informative-modal
+[showModal]="showModal"
+(closeModalEvent)="handleCloseModal()"
+>
+  {{modalMessage}}
+</lib-informative-modal>
