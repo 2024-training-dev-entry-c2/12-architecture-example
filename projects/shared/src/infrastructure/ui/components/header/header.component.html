@@ -1,4 +1,4 @@
-<header class="header">
+<!-- <header class="header">
     <h2>{{ title }}</h2>
     <button class="header__button" (click)="openModal(modalTemplate)">
         <i class="header__icon" aria-hidden="true">
@@ -12,4 +12,21 @@
     <ng-template #modalTemplate>
         <ng-container *ngTemplateOutlet="modalContent"></ng-container>
     </ng-template>
+</header> -->
+
+<header class="header">
+    <h2>{{ title }}</h2>
+    <button class="header__button" (click)="openModal()">
+        <i class="header__icon" aria-hidden="true">
+            <svg>
+                <use [attr.xlink:href]="iconPath"></use>
+            </svg>
+        </i>
+        {{ buttonText }}
+    </button>
 </header>
+
+<lib-modal *ngIf="isModalOpen" [title]="modalTitle" [buttonName]="'Confirmar'" (submitEvent)="confirmAction()"
+    (closeEvent)="closeModal()">
+    <ng-content></ng-content>
+</lib-modal>

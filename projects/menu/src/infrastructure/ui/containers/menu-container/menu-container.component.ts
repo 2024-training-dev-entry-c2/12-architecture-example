@@ -6,16 +6,18 @@ import { ListMenusUseCase } from '../../../../application/menus/list-menus.useca
 import { MainComponent } from "../../components/main/main.component";
 import { MenuHeaderComponent } from "../../components/menu-header/menu-header.component";
 import { CreateMenuUseCase } from '../../../../application/menus/create-menu.usecase';
-import { ShareComponent, ModalService } from 'shared';
+import { ShareComponent } from 'shared';
 import { SearchMenusUseCase } from '../../../../application/menus/search-menu.usecase';
 import { DeleteMenuUseCase } from '../../../../application/menus/delete-menu.usecase';
 import { UpdateMenuUseCase } from '../../../../application/menus/update-menu.usecase';
 import { FormsModule } from '@angular/forms';
+import { ModalComponent } from "shared";
+import { UpdateMenuFormComponent } from "../../forms/update-menu-form/update-menu-form.component";
 
 
 @Component({
   selector: 'lib-menu-container',
-  imports: [MainComponent, AsyncPipe, MenuHeaderComponent, ShareComponent, CommonModule, FormsModule],
+  imports: [MainComponent, AsyncPipe, MenuHeaderComponent, ShareComponent, CommonModule, FormsModule, ModalComponent, UpdateMenuFormComponent],
   templateUrl: './menu-container.component.html'
 })
 export class MenuContainerComponent implements OnInit, OnDestroy {
@@ -24,29 +26,28 @@ export class MenuContainerComponent implements OnInit, OnDestroy {
   private readonly _searchUsecase = inject(SearchMenusUseCase);
   private readonly _deleteUsecase = inject(DeleteMenuUseCase);
   private readonly _updateUsecase = inject(UpdateMenuUseCase);
-  private readonly _modalService = inject(ModalService);
-  
+
   public menu$: Observable<IMenu[]>;
+
   public isModalOpen = signal<boolean>(false);
   public selectedMenuId = signal<number | null>(null);
+
+  public modalTitle: string = '';
+  public modalContent: string = '';
+  public modalButton: string = '';
 
   public currentMenuName = '';
   public menuName = '';
   public modalType: string = '';
 
-  @ViewChild('modalTemplate') modalTemplate!: TemplateRef<any>;
-
-  @ViewChild('deleteModalTemplate') deleteModalTemplate!: TemplateRef<any>;
-  private menuIdToDelete!: number;
-
-  constructor(private viewContainerRef: ViewContainerRef) {}
+  @ViewChild(UpdateMenuFormComponent) menuEditForm!: UpdateMenuFormComponent;
 
   ngOnInit(): void {
     this._listUsecase.initSubscriptions();
     this._createUsecase.initSubscriptions();
     this.loadMenus();
-    this.menu$ = this._searchUsecase.filteredMenus$(); 
-}
+    this.menu$ = this._searchUsecase.filteredMenus$();
+  }
 
   ngOnDestroy(): void {
     this._listUsecase.destroySubscriptions();
@@ -56,10 +57,9 @@ export class MenuContainerComponent implements OnInit, OnDestroy {
   loadMenus(): void {
     this._listUsecase.loadMenus();
   }
- 
+
   addMenu(menu: IMenu): void {
     this._createUsecase.addMenu(menu);
-    
   }
 
   updateSearchQuery(query: string): void {
@@ -68,30 +68,31 @@ export class MenuContainerComponent implements OnInit, OnDestroy {
 
   openDeleteModal(idMenu: number): void {
     this.selectedMenuId.set(idMenu);
+    this.modalTitle = 'Confirmar Eliminacion';
+    this.modalButton = 'Confirmar';
     this.modalType = 'delete';
-    this._modalService.open(this.modalTemplate, this.viewContainerRef, {
-      title: 'Confirmar Eliminación',
-      buttonName: 'Eliminar'
-    }).subscribe((response) => {
-      if (response === 'confirm') {
-        this.deleteMenu();
-      }
-    });
+    this.isModalOpen.set(true);
   }
 
   openEditModal(menu: IMenu): void {
-    this.currentMenuName = menu.menuName;
-    this.menuName = menu.menuName;
     this.selectedMenuId.set(menu.idMenu);
+    this.modalTitle = 'Editar Menu';
+    this.modalButton = 'Actualizar';
     this.modalType = 'edit';
-    this._modalService.open(this.modalTemplate, this.viewContainerRef, {
-      title: 'Editar Menu',
-      buttonName: 'Actualizar'
-    }).subscribe((response) => {
-      if (response === 'confirm') {
-        this.updateMenu();
-      }
-    });
+    this.isModalOpen.set(true);
+  }
+
+  confirmModal(): void {
+    if (this.modalType === 'delete') {
+      this.deleteMenu();
+    } else if (this.modalType === 'edit') {
+      this.menuEditForm.emitMenuName();
+    }
+    this.isModalOpen.set(false);
+  }
+
+  closeModal(): void {
+    this.isModalOpen.set(false);
   }
 
   private deleteMenu(): void {
@@ -102,14 +103,14 @@ export class MenuContainerComponent implements OnInit, OnDestroy {
       });
     }
   }
-  
-  private updateMenu(): void {
+
+  updateMenu(updatedMenuName: string): void {
     const menuId = this.selectedMenuId();
-    if (menuId && this.menuName) {
-      this._updateUsecase.updateMenu(menuId, this.menuName, this.menu$).subscribe(() => {
+    if (menuId && updatedMenuName) {
+      this._updateUsecase.updateMenu(menuId, updatedMenuName, this.menu$).subscribe(() => {
         this.loadMenus();
       });
     }
   }
-  
+
 }

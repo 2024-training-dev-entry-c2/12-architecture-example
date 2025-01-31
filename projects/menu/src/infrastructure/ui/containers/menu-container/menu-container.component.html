@@ -1,14 +1,15 @@
 <lib-menu-header (onSubmitMenu)="addMenu($event)"></lib-menu-header>
 <lib-share (searchQueryChange)="updateSearchQuery($event)"></lib-share>
-<lib-main [menus]=" menu$ | async" (deleteMenuEvent)="openDeleteModal($event)"
+<lib-main [menus]="menu$ | async" (deleteMenuEvent)="openDeleteModal($event)"
     (editMenuEvent)="openEditModal($event)"></lib-main>
 
-<ng-template #modalTemplate>
-    <div class="modal" *ngIf="modalType === 'edit'; else deleteContent">
-        <label for="menuName">Ingrese el nuevo nombre del Menu</label>
-        <input class="modal__input" [(ngModel)]="menuName" id="menuName" placeholder={{currentMenuName}} />
-    </div>
-    <ng-template #deleteContent>
+<lib-modal *ngIf="isModalOpen()" [title]="modalTitle" [buttonName]="modalButton" (submitEvent)="confirmModal()"
+    (closeEvent)="closeModal()">
+    <ng-container *ngIf="modalType === 'edit'">
+        <lib-update-menu-form #menuEditForm [currentMenuName]="currentMenuName"
+            (submitEvent)="updateMenu($event)"></lib-update-menu-form>
+    </ng-container>
+    <ng-container *ngIf="modalType === 'delete'">
         <p>¿Estas seguro de que deseas eliminar este menu?</p>
-    </ng-template>
-</ng-template>
+    </ng-container>
+</lib-modal>

@@ -14,8 +14,6 @@ export class MainComponent {
   @Output() deleteMenuEvent = new EventEmitter<number>();
   @Output() editMenuEvent = new EventEmitter<IMenu>();
 
-  // modalType: string = '';
-
   getHeaders() {
     return [
       { label: 'Menu ID' },
