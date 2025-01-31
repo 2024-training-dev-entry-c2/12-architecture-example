@@ -1,10 +1,9 @@
-<section class="section">
+<!-- <section class="section">
     <div class="container section__content">
         <div class="section__content-header section__content-header--menu-img">
             <figure class="section__content-container">
               <img src="./logo.png" alt="Gusteau's Logo that is displayed in the header of the page with the logo being a draw of 'Rattatouille'" />
               <h1 class="container__content-title">Gusteau's Menus Details</h1>
-                <!-- <button (click)="openAddModal()" aria-label="Open modal to add a new menu" class="container__content-btn container__content-btn--add">Add Menu</button> -->
             </figure>
         </div>
         <table class="container__content-table" role="table" aria-labelledby="menusTable">
@@ -39,8 +38,75 @@
             </tbody>
         </table>
     </div>
-    <!-- <app-modal-action-edit [modalTitle]="'Edit Menu'" [formData]="formData" [inputForm]="menuForm" [saveAction]="onSaveEdit.bind(this)"></app-modal-action-edit>
-    <app-modal-action-delete [deleteAction]="deleteData.bind(this)"></app-modal-action-delete>
-    <app-modal [modalTitle]="'Add a new Menu'" [inputForm]="menuForm" (onSaveTest)="onSave()" [formData]="formData"></app-modal> -->
   </section>
-  
+   -->
+
+   <section class="section">
+    <div class="container section__content">
+        <div class="section__content-header section__content-header--menu-img">
+            <figure class="section__content-container">
+                <img src="./logo.png" alt="Gusteau's Logo that is displayed in the header of the page with the logo being a draw of 'Rattatouille'" />
+                <h1 class="container__content-title">Gusteau's Menus Details</h1>
+                <button aria-label="Open modal to add a new dish"  (click)="onOpenAddModal()" class="container__content-btn container__content-btn--add">
+                    Add Menu
+                </button>
+            </figure>
+        </div>
+        <table class="container__content-table" role="table" aria-labelledby="Menus Table">
+            <thead class="container__content-table-header">
+                <tr>
+                    @for (header of tableHeaders; track $index) {
+                        <th class="">{{header}}</th>
+                    } 
+                </tr>
+            </thead>
+            <tbody class="container__content-table-body">
+                @for (menu of menus; track menu.id) {
+                    <tr>
+                        <td>{{menu.id}}</td>
+                        <td>{{menu.name}}</td>
+                        <td>{{menu.description}}</td>
+                        <td>
+                            <div class="container__content-dishes--list">
+                                 @for (data of menu.dishes; track $index) {
+                                    <div class="container__content-dishes--items">
+                                        <strong>{{data.name}}</strong> - ({{data.price | currency:'COP' + ' '}} , Ordered: {{data.totalOrdered}})
+                                    </div>
+                                } 
+                            </div>
+                        </td>
+                        <td class="container__content-table-actions">
+                            <button class="container__content-btn container__content-btn--edit" aria-label="Edit menu details" (click)="onOpenEditModal(menu)">Edit</button>
+                            <button class="container__content-btn container__content-btn--delete" aria-label="Delete menu" (click)="onOpenDeleteModal(menu)">Delete</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <lib-modal 
+        [isOpen]="isModalOpen" 
+        [title]="modalType === 'add' ? 'Add Menu' : modalType === 'edit' ? 'Edit Menu' : 'Delete Menu'" 
+        (closeModal)="onCloseModal()">
+
+        <lib-add-modal
+            *ngIf="modalType !== 'delete'"
+            [menuForm]="menuForm"
+            [formData]="formData"
+            (save)="onSave()">
+        </lib-add-modal>
+
+        @if(modalType === 'delete'){
+        <lib-remove-modal
+
+        [menuName]="selectedMenu?.name"
+        (deleteMenu)="onDelete()"
+        (closeModal)="onCloseModal()"
+        >
+    </lib-remove-modal>
+        }
+
+    </lib-modal>
+</section>
+

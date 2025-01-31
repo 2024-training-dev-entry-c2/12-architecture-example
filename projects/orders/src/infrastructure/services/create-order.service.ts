@@ -8,17 +8,16 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class DeleteOrderService {
+export class CreateOrderService {
   private readonly apiUrl = environment.apiUrls.order;
-  private readonly ordersState = inject(OrdersState);
-  private readonly _http = inject(HttpClient);
-
-  geeOrdersState() {
-    return this.ordersState.store();
-  }
-
-  deleteOrder(order: IOrders): Observable<IOrders>{
-   return this._http.delete<IOrders>(this.apiUrl + `/${order.id}`);
-  }
-
+    private readonly ordersState = inject(OrdersState);
+    private readonly _http = inject(HttpClient);
+  
+    getOrdersState() {
+      return this.ordersState.store();
+    }
+  
+    createOrder(order: IOrders): Observable<IOrders> {
+      return this._http.post<IOrders>(this.apiUrl, order);
+    }
 }

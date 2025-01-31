@@ -1,34 +1,62 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IMenu } from '../../../../domain/model/menus.model';
 import { Observable } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { FormGroup } from '@angular/forms';
+import { ModalComponent } from 'shared';
+import { AddModalComponent } from '../add-modal/add-modal.component';
+import { RemoveModalComponent } from '../remove-modal/remove-modal.component';
 
 @Component({
   selector: 'lib-section-menus',
-  imports: [CommonModule],
+  imports: [CommonModule, ModalComponent, AddModalComponent, RemoveModalComponent],
   templateUrl: './section-menus.component.html',
   styleUrl: './section-menus.component.scss'
 })
 export class SectionMenusComponent {
+  @Input() menus: IMenu[] = [];
+  @Input() isModalOpen = false;
+  @Input() modalType: 'add' | 'edit' | 'delete' = 'add';
+  @Input() selectedMenu: IMenu | null = null;
+  @Input() menuForm!: FormGroup;
+  @Input() formData!: { labelName: string; valueLabel: string }[];
 
- @Input() menus$!: Observable<IMenu[]>;
-  
+  @Output() addMenu = new EventEmitter<void>();
+  @Output() editMenu = new EventEmitter<IMenu>();
+  @Output() deleteMenu = new EventEmitter<IMenu>();
+  @Output() saveMenu = new EventEmitter<void>();
+  @Output() confirmDelete = new EventEmitter<void>();
+  @Output() closeModal = new EventEmitter<void>();
 
-  openEditModal(menu: IMenu): void {
-    console.log('Edit client:', menu);
- 
+  readonly tableHeaders = [
+    'ID Menu',
+    'Name',
+    'Description',
+    'Dishes',
+    'Actions',
+  ];
+
+  onOpenAddModal(): void {
+    this.addMenu.emit();
   }
 
-  openAddModal(menu: IMenu): void {
-    console.log('Edit client:', menu);
- 
+  onOpenEditModal(menu: IMenu): void {
+    this.editMenu.emit(menu);
   }
 
-
-  openDeleteModal(menu: IMenu): void {
-    console.log('Delete client:', menu);
-    
+  onOpenDeleteModal(menu: IMenu): void {
+    this.deleteMenu.emit(menu);
   }
 
-  tableContent = () => ['Menu ID', 'Name', 'Description', 'Dishes', 'Actions'];
+  onSave(): void {
+    this.saveMenu.emit();
+  }
+
+  onDelete(): void {
+    this.confirmDelete.emit();
+  }
+
+  onCloseModal(): void {
+    this.closeModal.emit();
+  }
 }

@@ -2,17 +2,17 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { IMenu } from '../../domain/model/menus.model';
 import { Observable } from 'rxjs';
+import { environment } from 'shared';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GetMenusService {
 
-  private apiUrl = 'http://localhost:8080/api/menus';
+ private readonly apiUrl = environment.apiUrls.menu;
   private readonly _http = inject(HttpClient);
-  private readonly baseUrl = this.apiUrl; 
 
   getMenus(): Observable<IMenu[]> {
-    return this._http.get<IMenu[]>(`${this.baseUrl}`);
+    return this._http.get<IMenu[]>(`${this.apiUrl}`);
   }
 }

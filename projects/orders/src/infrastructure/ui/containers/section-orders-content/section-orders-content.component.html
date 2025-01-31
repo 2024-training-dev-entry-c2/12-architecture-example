@@ -1,7 +1,17 @@
 <main aria-labelledby="main-title">
-    <section class="section section--order-details" aria-labelledby="order-details-title">
-    
-          <lib-section-orders  [orders$]="orders$"></lib-section-orders>
+    <lib-section-orders
+      [orders]="orders$ | async"
+      [isModalOpen]="isModalOpen"
+      [modalType]="modalType"
+      [selectedOrder]="selectedOrder"
+      [orderForm]="orderForm"
+      [formData]="formData"
+      (addOrder)="openAddModal()"
+      (editOrder)="openEditModal($event)"
+      (deleteOrder)="openDeleteModal($event)"
+      (saveOrder)="onSave()"
+      (confirmDelete)="deleteOrder()"
+      (closeModal)="closeModal()">
+    </lib-section-orders>
 
-    </section>
 </main>

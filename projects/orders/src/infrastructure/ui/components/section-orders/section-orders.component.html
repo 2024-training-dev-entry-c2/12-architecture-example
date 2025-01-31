@@ -1,48 +1,71 @@
-<section class="section">
+   <section class="section">
     <div class="container section__content">
         <div class="section__content-header section__content-header--orders-img">
             <figure class="section__content-container">
-              <img src="./logo.png" alt="Gusteau's Logo that is displayed in the header of the page with the logo being a draw of 'Rattatouille'" />
-              <h1 class="container__content-title">Gusteau's Orders Details</h1>
-                <!-- <button (click)="openAddModal()" aria-label="Open modal to add a new order" class="container__content-btn container__content-btn--add">Add Order</button> -->
+                <img src="./logo.png" alt="Gusteau's Logo that is displayed in the header of the page with the logo being a draw of 'Rattatouille'" />
+                <h1 class="container__content-title">Gusteau's Orders Details</h1>
+                <button aria-label="Open modal to add a new order"  (click)="onOpenAddModal()" class="container__content-btn container__content-btn--add">
+                    Add Order
+                </button>
             </figure>
         </div>
-        <table class="container__content-table" role="table" aria-labelledby="ordersTable">
+        <table class="container__content-table" role="table" aria-labelledby="Orders Table">
             <thead class="container__content-table-header">
                 <tr>
-                    @for (header of tableContent(); track $index) {
-                        <th>{{header}}</th>
-                    }
+                    @for (header of tableHeaders; track $index) {
+                        <th class="">{{header}}</th>
+                    } 
                 </tr>
             </thead>
-            <tbody>
-                @for (data of orders$ | async; track data.id) {
+            <tbody class="container__content-table-body">
+                @for (order of orders; track order.id) {
                     <tr>
-                        <td>{{data.id}}</td>
-                        <td>{{data.orderDate | date:'medium'}}</td>
-                        <td>{{data.totalPrice | currency:'COP' + ' '}}</td>
-                        <td>{{data.clientId}}</td>
-                        <td>{{data.clientEmail}}</td>
+                        <td>{{order.id}}</td>
+                        <td>{{order.orderDate | date:'medium'}}</td>
+                        <td>{{order.totalPrice | currency:'COP' + ' '}}</td>
+                        <td>{{order.clientId}}</td>
+                        <td>{{order.clientEmail}}</td>
                         <td>
                             <div class="container__content-dishes--list">
-                                @for (data of data.dishes; track $index) {
+                                 @for (data of order.dishes; track $index) {
                                     <div class="container__content-dishes--items">
                                         <strong>{{data.name}}</strong> - {{data.price | currency:'COP' + ' '}}
                                     </div>
-                                }
+                                } 
                             </div>
                         </td>
                         <td class="container__content-table-actions">
-                            <button class="container__content-btn container__content-btn--edit" aria-label="Edit order details" (click)="openEditModal(data)">Edit</button>
-                            <button class="container__content-btn container__content-btn--delete" aria-label="Delete order" (click)="openDeleteModal(data)">Delete</button>
+                            <button class="container__content-btn container__content-btn--edit" aria-label="Edit order details" (click)="onOpenEditModal(order)">Edit</button>
+                            <button class="container__content-btn container__content-btn--delete" aria-label="Delete order" (click)="onOpenDeleteModal(order)">Delete</button>
                         </td>
                     </tr>
                 }
             </tbody>
         </table>
     </div>
-    <!-- <app-modal-action-edit [modalTitle]="'Edit Order'" [formData]="formData" [inputForm]="orderForm" [saveAction]="onSaveEdit.bind(this)"></app-modal-action-edit>
-    <app-modal-action-delete [deleteAction]="deleteData.bind(this)"></app-modal-action-delete>
-    <app-modal [modalTitle]="'Add a new Order'" [inputForm]="orderForm" (onSaveTest)="onSave()" [formData]="formData"></app-modal> -->
-  </section>
-  
+
+    <lib-modal
+        [isOpen]="isModalOpen" 
+        [title]="modalType === 'add' ? 'Add Order' : modalType === 'edit' ? 'Edit Order' : 'Delete Order'" 
+        (closeModal)="onCloseModal()">
+
+        <lib-add-modal
+            *ngIf="modalType !== 'delete'"
+            [orderForm]="orderForm"
+            [formData]="formData"
+            (save)="onSave()">
+        </lib-add-modal>
+
+        @if(modalType === 'delete'){
+        <lib-remove-modal
+
+        [orderName]="selectedOrder?.id"
+        (deleteOrder)="onDelete()"
+        (closeModal)="onCloseModal()"
+        >
+    </lib-remove-modal>
+        }
+
+    </lib-modal>
+</section>
+
