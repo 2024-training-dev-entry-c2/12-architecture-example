@@ -1,20 +1,32 @@
 <header class="header" role="banner" aria-label="Main Header">
-  <nav class="header__nav" role="navigation" aria-label="Main Navigation">
-    <ul class="header__dropdown-menu">
-      <li class="header__dropdown-item">
-        <a routerLink="/customers" class="header__dropdown-link" role="menuitem">Clientes</a>
-      </li>
-      <li class="header__dropdown-item">
-        <a routerLink="/menus" class="header__dropdown-link" role="menuitem">Menús</a>
-      </li>
-      <li class="header__dropdown-item">
-        <a routerLink="/dishes" class="header__dropdown-link" role="menuitem">Platos</a>
-      </li>
-      <li class="header__dropdown-item">
-        <a routerLink="/orders" class="header__dropdown-link" role="menuitem">Órdenes</a>
-      </li>
-    </ul>
-  </nav>
+  <a routerLink="#" class="header__logo">
+    <img
+      src="https://pixabay.com/get/g6534ab26b303c1926f90a865252609be650fbc3c8a0226c2d305c513d1d81ab153e7ed9b3243ef8ee94ebd276c486faf55d5b584be4a4d367d5db5f2bc42fe8c24aa7a55846fd3b45080e563aa05bf5c_640.png"
+      alt="Logo Mi Dulce Abuela" class="header__logo-image" />
+    <span class="header__logo-text">Mi Dulce Abuela</span>
+  </a>
+
+  <div class="header__dropdown">
+    <button class="header__button header__button--dropdown" aria-expanded="false" aria-haspopup="true">
+      <span class="material-icons header__icon">menu</span>
+    </button>
+    <nav class="header__nav" role="navigation" aria-label="Main Navigation">
+      <menu class="header__dropdown-menu">
+        <li class="header__dropdown-item">
+          <a routerLink="/customers" class="header__dropdown-link" role="menuitem">Clientes</a>
+        </li>
+        <li class="header__dropdown-item">
+          <a routerLink="/menus" class="header__dropdown-link" role="menuitem">Menús</a>
+        </li>
+        <li class="header__dropdown-item">
+          <a routerLink="/dishes" class="header__dropdown-link" role="menuitem">Platos</a>
+        </li>
+        <li class="header__dropdown-item">
+          <a routerLink="/orders" class="header__dropdown-link" role="menuitem">Órdenes</a>
+        </li>
+      </menu>
+    </nav>
+  </div>
 
   <div class="header__actions">
     <button class="header__button header__button--new-order" aria-label="Nueva Orden">

@@ -1,16 +1,90 @@
 .header {
-  &__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #e0e0e0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  &__logo {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
-    background-color: #f8f8f8;
-    border-bottom: 1px solid #e0e0e0;
+    text-decoration: none;
+    color: inherit;
+
+    &-image {
+      height: 40px;
+      width: 40px;
+      margin-right: 0.5rem;
+      object-fit: contain;
+    }
+
+    &-text {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #333;
+    }
   }
 
-  &__logo-container {
+  &__dropdown {
+    position: relative;
     display: flex;
     align-items: center;
+
+    &:hover {
+      .header__dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border: none;
+    border-radius: 4px;
+    background: none;
+    cursor: pointer;
+    color: #333;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+
+    &--dropdown {
+      padding: 0.5rem;
+      border-radius: 50%;
+      background-color: transparent;
+
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.05);
+      }
+    }
+  }
+
+  &--new-order {
+    background-color: #4caf50;
+    color: white;
+
+    &:hover {
+      background-color: darken(#4caf50, 5%);
+    }
+  }
+
+  &--add-client {
+    background-color: #2196f3;
+    color: white;
+
+    &:hover {
+      background-color: darken(#2196f3, 5%);
+    }
+  }
+
+  &__icon {
+    font-size: 1.5rem;
   }
 
   &__actions {
@@ -19,92 +93,57 @@
     gap: 1rem;
   }
 
-  &__logo {
-    display: flex;
-    align-items: center;
-
-    &-image {
-      height: 40px;
-      width: 40px;
-      margin-right: 0.5rem;
-    }
-
-    &-text {
-      font-size: 1.25rem;
-      font-weight: bold;
-      text-decoration: none;
-      color: black;
-    }
+  &__dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 200px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 0.5rem 0;
+    margin-top: 0.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    z-index: 1000;
   }
 
-  &__button {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.5rem 1rem;
-    border: none;
-    background: none;
-    cursor: pointer;
+  &__dropdown-item {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__dropdown-link {
+    display: block;
+    padding: 0.75rem 1rem;
     color: #333;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-
-    &--new-order {
-      background-color: #4caf50;
-      color: #fff;
-      border-radius: 4px;
-    }
-
-    &--add-client {
-      background-color: #2196f3;
-      color: #fff;
-      border-radius: 4px;
-    }
+    text-decoration: none;
+    transition: all 0.2s ease;
 
     &:hover {
-      background-color: #ddd;
-    }
-
-    & .header__icon {
-      font-size: 1.5rem;
+      background-color: #f5f5f5;
+      color: #2196f3;
+      padding-left: 1.5rem;
     }
   }
 
-  &__dropdown {
-    position: relative;
+  @media (max-width: 768px) {
+    padding: 1rem;
 
-    &-menu {
-      position: absolute;
-      top: 100%;
-      left: 0;
-      background-color: #fff;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      list-style: none;
-      padding: 0.5rem 0;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(-10px);
-      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    &__logo-text {
+      display: none;
     }
 
-    &:hover &-menu {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
+    &__button span:not(.material-icons) {
+      display: none;
     }
 
-    &-item {
-      padding: 0.5rem 1rem;
-
-      &-link {
-        color: #333;
-        text-decoration: none;
-
-        &:hover {
-          color: #007bff;
-        }
-      }
+    &__actions {
+      gap: 0.5rem;
     }
   }
 }
