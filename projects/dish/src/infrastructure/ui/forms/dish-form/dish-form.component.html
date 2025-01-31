@@ -1,0 +1,27 @@
+<form aria-label="Form" [formGroup]="form" class="form" (ngSubmit)="submit()">
+  <h3 class="form__title">{{form.getRawValue().id ? 'Actualizar plato' : 'Crear plato'}}</h3>
+  <div class="form__inputs">
+    @for (control of controls; track $index) {
+      @if (control.type === 'input') {
+        <lib-input 
+          [text]="control.text" 
+          [type]="control.inputType" 
+          [controlName]="control.controlName"
+          [formGroup]="form"/>
+      }
+      @if (control.type === 'select') {
+        <lib-select 
+          [text]="control.text" 
+          [controlName]="control.controlName"
+          [formGroup]="form"
+          [options]="control.options"
+        ></lib-select>
+      }
+    }
+  </div>
+
+  @if (message()) {
+  <h4 class="form__message">{{message()}}</h4>
+  }
+  <button aria-label="Submit" class="form__button">{{form.getRawValue().id ? 'Actualizar' : 'Crear'}}</button>
+</form>

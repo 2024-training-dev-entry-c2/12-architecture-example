@@ -8,5 +8,6 @@ export { StateFactory } from './domain/state/state.factory';
 export type { IState } from './domain/model/state.model';
 export type { IResponse } from './domain/model/response.model';
 export type { IControls } from './domain/model/controls.model';
+export type { IOptions } from './domain/model/controls.model';
 export { environment } from './infrastructure/ui/environments/environment';
 export { CapitalizeFirstPipe } from './infrastructure/ui/pipes/capitalize-first.pipe';

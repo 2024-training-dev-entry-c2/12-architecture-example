@@ -1,0 +1,19 @@
+<lib-modal
+  [open]="isOpen$ | async"
+  (clickClose)="openModal($event)"
+>
+<lib-dish-form 
+    [message]="message$ | async"
+    [dish]="currentDish$ | async"
+    (onSubmit)="submit($event)"
+  ></lib-dish-form>
+</lib-modal>
+
+<lib-table 
+  [title]="'Platos'" 
+  [data]="dishes$ | async"
+  [columns]="columns" 
+  (openModal)="openModal($event)" 
+  (idDelete)="deleteMenu($event)" 
+  (idUpdate)="updateById($event)"
+/>
