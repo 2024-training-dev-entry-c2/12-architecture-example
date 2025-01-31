@@ -3,5 +3,5 @@ export interface IClient {
     name: string;
     lastName: string;
     email: string;
-    frequent: boolean;
+    frequent?: boolean;
   }

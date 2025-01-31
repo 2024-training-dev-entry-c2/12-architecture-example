@@ -11,13 +11,13 @@ export class ClientState {
 
   //#region Subjects
   private readonly clients$ = new BehaviorSubject<IClient[]>([]);
-
+  private readonly currentClient$ = new BehaviorSubject<IClient>(null);
   //#endregion
 
   store() {
     return {
       allClient: this._factory.state(this.clients$),
-    
+      currentClient: this._factory.state(this.currentClient$)
     }
   }
 }

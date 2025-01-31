@@ -34,9 +34,6 @@ export class GetAllClientsUsecase {
         .pipe(
           tap(result => {
             this._state.clients.allClient.set(result);
-
-            // const users = this._state.users.user.snapshot();
-            // this._state.users.user.set([...users, result])
           })
         )
         .subscribe()

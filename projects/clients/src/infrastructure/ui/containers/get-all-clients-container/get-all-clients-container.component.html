@@ -1,1 +1,7 @@
-<lib-client-page [clients]="clients$ | async"></lib-client-page>
+<lib-client-page
+ [clients]="clients$ | async" 
+ [currentClient]="currentClient$ | async"
+ (onCreateClient)="handleClient($event)"
+ (onSelectClient)="handleSelectClient($event)"
+ (onDelete)="handleDelete($event)"
+ ></lib-client-page>
