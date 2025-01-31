@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
-import { Link } from '../../../../domain/model/link.interface';
+import { Link } from '../../../../domain/model/link.model';
 
 @Component({
   selector: 'lib-sidebar-container',

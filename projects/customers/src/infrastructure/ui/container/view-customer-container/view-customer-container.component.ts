@@ -8,5 +8,15 @@ import { ViewCustomerComponent } from "../../components/view-customer/view-custo
 
 })
 export class ViewCustomerContainerComponent {
-
+  headers: string[] = ['id', 'nombre', 'correo', 'tipo de cliente', 'telefono'];
+  
+  customers = [
+    {
+      id: 1,
+      name: 'Juan',
+      email: 'nuevo cooreo',
+      type: 'normal',
+      phone: '123456789'
+    }
+  ];
 }
