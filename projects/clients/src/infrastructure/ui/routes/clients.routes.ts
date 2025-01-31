@@ -1,9 +1,9 @@
 import { Routes } from "@angular/router";
-import { LayoutComponentClient } from "../layouts/layout/layout.component";
+import { ClientContainerComponent } from "../containers/client-container/client-container.component";
 
 export const clientsRoutes: Routes = [
   {
     path: '',
-    component: LayoutComponentClient,
+    component: ClientContainerComponent,
   }
 ]
