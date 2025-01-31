@@ -1,8 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { NavComponent } from "../../layouts/nav/nav.component";
 import { Router } from '@angular/router';
-import { AuthUserService } from 'users';
-//import { AuthUserService } from 'users';
+import { LogOutUsecase } from 'users';
 
 @Component({
   selector: 'lib-nav-container',
@@ -11,12 +10,8 @@ import { AuthUserService } from 'users';
 })
 export class NavContainerComponent {
   private router = inject(Router);
-  private authService = inject(AuthUserService);
-
+  private readonly _logoutUsecase = inject(LogOutUsecase);
   handleLogout() {
-    this.authService.removeToken();
-    this.authService.removeUsername();
-
-    this.router.navigate(['/login']);
+    this._logoutUsecase.execute();
   }
 }

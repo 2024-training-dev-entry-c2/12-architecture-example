@@ -9,7 +9,6 @@ import { Router } from "@angular/router";
 export class AuthUserUsecase {
     private readonly _authUserService = inject(AuthUserService);
     private readonly _state = inject(State);
-    private readonly authService = inject(AuthUserService);
     private readonly _router = inject(Router);
 
     private subscriptions: Subscription = new Subscription();
