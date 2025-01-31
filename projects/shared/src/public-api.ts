@@ -2,5 +2,7 @@
  * Public API Surface of shared
  */
 
-export * from './lib/shared.service';
-export * from './lib/shared.component';
+export { ModalComponent } from "./infrastructure/ui/components/modal/modal.component";
+export  {DashboardLayoutComponent } from "./infrastructure/ui/layouts/dashboard-layout/dashboard-layout.component";
+
+export * from './environments/environment';

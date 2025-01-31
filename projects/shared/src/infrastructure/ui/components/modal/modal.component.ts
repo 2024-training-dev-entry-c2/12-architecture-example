@@ -1,18 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, input, Input, Output } from '@angular/core';
+import { ButtonCloseComponent } from "../bottons/button-close/button-close.component";
 
 @Component({
   selector: 'lib-modal',
-  imports: [CommonModule],
+  imports: [CommonModule, ButtonCloseComponent],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.scss'
 })
 export class ModalComponent {
-  @Input() isVisible: boolean = false;
-  @Output() close = new EventEmitter<void>();
+  public action = input.required<string>();
+  public visible = false;
 
-  closeModal() {
-    this.isVisible = false;
-    this.close.emit();
+  toggle() {
+    this.visible = !this.visible;
   }
 }
