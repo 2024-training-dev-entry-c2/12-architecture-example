@@ -3,15 +3,13 @@ import { LayoutComponent } from 'shared';
 
 export const routes: Routes = [
   {
-    path: 'inicio',
+    path: '',
     component: LayoutComponent,
     children: [
       {
         path: "client",
         loadChildren: () => import('clients').then(m => m.clientsRoutes)
       },
-
-
     ],
   },
 
