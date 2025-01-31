@@ -16,6 +16,10 @@ export class EditClientUseCase {
         return this._state.clients.client.$();
     }
 
+    initSubscriptions(): void {
+        this.subscriptions = new Subscription();
+      }
+      
     execute(client: IClients): void {
         this.subscriptions.add(
             this._service.editClient(client)

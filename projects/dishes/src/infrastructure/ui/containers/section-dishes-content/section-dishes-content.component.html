@@ -1,7 +1,17 @@
 <main aria-labelledby="main-title">
-    <section class="section section--order-details" aria-labelledby="order-details-title">
-        <!-- <app-main-section-dishes [tableContent]="tableContent.headers" aria-describedby="dishes-table-description"></app-main-section-dishes> -->
-        <lib-section-dishes [dishes$]="dishes$"></lib-section-dishes>
-    
-    </section>
+        <lib-section-dishes
+          [dishes]="dishes$ | async"
+          [isModalOpen]="isModalOpen"
+          [modalType]="modalType"
+          [selectedDish]="selectedDish"
+          [dishForm]="dishForm"
+          [formData]="formData"
+          (addDish)="openAddModal()"
+          (editDish)="openEditModal($event)"
+          (deleteDish)="openDeleteModal($event)"
+          (saveDish)="onSave()"
+          (confirmDelete)="deleteDish()"
+          (closeModal)="closeModal()">
+        </lib-section-dishes>
+
 </main>

@@ -16,6 +16,11 @@ export class DeleteClientUseCase implements OnDestroy {
         return this._state.clients.client.$();
     }
 
+    initSubscriptions(): void {
+        this.subscriptions = new Subscription();
+      }
+      
+
     execute(client: IClients): void {
         this.subscriptions.add(
             this._service.deleteClient(client)

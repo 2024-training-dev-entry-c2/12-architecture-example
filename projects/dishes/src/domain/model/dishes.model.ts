@@ -3,6 +3,7 @@ export interface IDishes{
     name: string;
     price: number;
     menuId: number;
+    menuName: string;
     dishType: string;
     totalOrdered: number;
 }

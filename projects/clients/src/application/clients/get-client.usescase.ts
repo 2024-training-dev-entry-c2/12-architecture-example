@@ -16,6 +16,13 @@ export class GetClientUseCase {
     return this._state.clients.client.$();
   }
 
+
+
+  initSubscriptions(): void {
+    this.subscriptions = new Subscription();
+  }
+
+  
   getClientsSnapshot(): IClients[] {
     return this._state.clients.client.snapshot();
   }

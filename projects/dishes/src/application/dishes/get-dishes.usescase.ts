@@ -1,35 +1,39 @@
 import { inject, Injectable, OnDestroy } from '@angular/core';
 import { GetDishesService } from '../../infrastructure/services/get-dishes.service';
 import { State } from '../../domain/state';
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { IDishes } from '../../domain/model/dishes.model';
-
-
 
 @Injectable({
   providedIn: 'root',
 })
-export class GetDishesUseCase implements OnDestroy {
+
+export class GetDishUseCase {
   private readonly _service = inject(GetDishesService);
   private readonly _state = inject(State);
-  private destroy$ = new Subject<void>();
+ private subscriptions = new Subscription();
 
   dish$(): Observable<IDishes[]> {
     return this._state.dishes.dish.$();
   }
 
-  getClientsSnapshot(): IDishes[] {
+  initSubscriptions(): void {
+    this.subscriptions = new Subscription();
+  }
+
+  
+
+  getDishesSnapshot(): IDishes[] {
     return this._state.dishes.dish.snapshot();
   }
 
   execute(): void {
-    if (this.getClientsSnapshot()?.length) {
+    if (this.getDishesSnapshot()?.length) {
       return;
     }
 
     this._service
       .getDishes()
-      .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (dishes) => {
           this._state.dishes.dish.set(dishes);
@@ -40,8 +44,7 @@ export class GetDishesUseCase implements OnDestroy {
       });
   }
 
-  ngOnDestroy(): void {
-    this.destroy$.next();
-    this.destroy$.complete();
-  }
+  destroySubscriptions(): void {
+    this.subscriptions.unsubscribe();
+}
 }

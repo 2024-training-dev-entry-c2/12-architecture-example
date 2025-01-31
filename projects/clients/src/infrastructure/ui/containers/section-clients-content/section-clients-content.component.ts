@@ -40,6 +40,10 @@ export class SectionClientsContentComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.clients$ = this._getClientUseCase.client$();
     this._getClientUseCase.execute();
+    this._getClientUseCase.initSubscriptions();
+    this._createClientUseCase.initSubscriptions();
+    this._editClientUseCase.initSubscriptions();
+    this._deleteClientUseCase.initSubscriptions();
   }
 
   openAddModal(): void {

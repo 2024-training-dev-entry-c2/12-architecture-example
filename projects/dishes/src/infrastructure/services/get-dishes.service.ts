@@ -3,21 +3,18 @@ import { inject, Injectable } from '@angular/core';
 import { IDishes } from '../../domain/model/dishes.model';
 
 import { Observable } from 'rxjs';
+import { environment } from 'shared';
 
 @Injectable({
   providedIn: 'root'
 })
 export class GetDishesService {
-
-  private apiUrl = 'http://localhost:8080/api/dishes';
+ private readonly apiUrl = environment.apiUrls.dish;
   private readonly _http = inject(HttpClient);
-  private readonly baseUrl = this.apiUrl; 
 
   getDishes(): Observable<IDishes[]> {
-    return this._http.get<IDishes[]>(`${this.baseUrl}`);
+    return this._http.get<IDishes[]>(`${this.apiUrl}`);
   }
 
-  // getClientById(id: number): Observable<IClients> {
-  //   return this._http.get<IClients>(`${this.baseUrl}/${id}`);
-  // }
+
 }

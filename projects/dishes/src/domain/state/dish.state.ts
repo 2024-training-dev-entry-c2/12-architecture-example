@@ -8,8 +8,6 @@ import { IDishes } from '../model/dishes.model';
 })
 export class DishesState {
     private readonly _factory = inject(StateFactory);
-    
-    
     private readonly _dish$ = new BehaviorSubject<IDishes[]>([]); 
 
     store() {

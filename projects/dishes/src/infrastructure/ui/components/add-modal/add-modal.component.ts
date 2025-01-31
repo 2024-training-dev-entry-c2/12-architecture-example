@@ -8,7 +8,7 @@ import { FormGroup, ReactiveFormsModule } from '@angular/forms';
   styleUrl: './add-modal.component.scss'
 })
 export class AddModalComponent {
-  @Input() clientForm!: FormGroup;
-  @Input() formData: { labelName: string; valueLabel: string }[] = [];
-  @Output() save = new EventEmitter<void>();
+ @Input() dishForm!: FormGroup;
+ @Input() formData: { labelName: string; valueLabel: string }[] = [];
+ @Output() save = new EventEmitter<void>();
 }

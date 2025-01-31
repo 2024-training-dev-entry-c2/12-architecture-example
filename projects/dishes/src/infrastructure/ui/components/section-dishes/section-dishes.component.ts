@@ -1,35 +1,64 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IDishes } from '../../../../domain/model/dishes.model';
-import { Observable } from 'rxjs';
+import { FormGroup } from '@angular/forms';
+import { ModalComponent } from "shared";
+import { AddModalComponent } from '../add-modal/add-modal.component';
+import { RemoveModalComponent } from '../remove-modal/remove-modal.component';
 
 @Component({
   selector: 'lib-section-dishes',
-  imports: [CommonModule],
+  imports: [CommonModule, ModalComponent, AddModalComponent, RemoveModalComponent],
   templateUrl: './section-dishes.component.html',
   styleUrl: './section-dishes.component.scss'
 })
 export class SectionDishesComponent {
+  @Input() dishes: IDishes[] = [];
+  @Input() isModalOpen = false;
+  @Input() modalType: 'add' | 'edit' | 'delete' = 'add';
+  @Input() selectedDish: IDishes | null = null;
+  @Input() dishForm!: FormGroup;
+  @Input() formData!: { labelName: string; valueLabel: string }[];
 
- @Input() dishes$!: Observable<IDishes[]>;
-  
+  @Output() addDish = new EventEmitter<void>();
+  @Output() editDish = new EventEmitter<IDishes>();
+  @Output() deleteDish = new EventEmitter<IDishes>();
+  @Output() saveDish = new EventEmitter<void>();
+  @Output() confirmDelete = new EventEmitter<void>();
+  @Output() closeModal = new EventEmitter<void>();
 
-  openEditModal(dish: IDishes): void {
-    console.log('Edit client:', dish);
- 
+  readonly tableHeaders = [
+    'ID Dish',
+    'Name',
+    'Price',
+    'Menu Name',
+    'Total Ordered',
+    'Dish Type',
+    'Actions',
+  ];
+
+  onOpenAddModal(): void {
+    this.addDish.emit();
   }
 
-  openAddModal(dish: IDishes): void {
-    console.log('Edit client:', dish);
- 
+  onOpenEditModal(dish: IDishes): void {
+    this.editDish.emit(dish);
   }
 
-
-  openDeleteModal(dish: IDishes): void {
-    console.log('Delete client:', dish);
-    
+  onOpenDeleteModal(dish: IDishes): void {
+    this.deleteDish.emit(dish);
   }
 
-  tableContent = () => ['ID', 'Name', 'Email', 'Total Orders', 'User Type', 'Actions'];
+  onSave(): void {
+    this.saveDish.emit();
+  }
+
+  onDelete(): void {
+    this.confirmDelete.emit();
+  }
+
+  onCloseModal(): void {
+    this.closeModal.emit();
+  }
 
 }

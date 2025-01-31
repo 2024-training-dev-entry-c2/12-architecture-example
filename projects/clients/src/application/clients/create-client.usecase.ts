@@ -14,18 +14,13 @@ export class CreateClientUseCase{
     private readonly _service = inject(CreateClientService);
     private readonly _state = inject(State);
     private subscriptions = new Subscription();
-  
-    //#region Observables
+
     
     client$(): Observable<IClients[]> {
       return this._state.clients.client.$();
     }
-    
-    //#endregion
-
-
   
-    //#region Public Methods
+
     initSubscriptions(): void {
       this.subscriptions = new Subscription();
     }
@@ -45,10 +40,4 @@ export class CreateClientUseCase{
           .subscribe()
       );
     }
-    //#endregion
-  
-
-
-    //#region Private Methods
-    //#endregion
 }

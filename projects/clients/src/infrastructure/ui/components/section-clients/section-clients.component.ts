@@ -46,6 +46,7 @@ export class SectionClientsComponent {
   }
 
   onOpenDeleteModal(client: IClients): void {
+    
     this.deleteClient.emit(client);
   }
 
