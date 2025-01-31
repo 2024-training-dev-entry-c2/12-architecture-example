@@ -1,9 +1,9 @@
-export interface IDishes{
-    id: number;
-    name: string;
-    price: number;
-    menuId: number;
-    menuName: string;
-    dishType: string;
-    totalOrdered: number;
+export interface IDishes {
+  id: number;
+  name: string;
+  price: number;
+  menuName: string;
+  dishType: string;
+  totalOrdered: number;
+  menuId: number;
 }

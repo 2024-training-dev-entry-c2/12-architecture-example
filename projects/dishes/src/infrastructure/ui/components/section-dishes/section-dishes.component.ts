@@ -27,7 +27,7 @@ export class SectionDishesComponent {
   @Output() confirmDelete = new EventEmitter<void>();
   @Output() closeModal = new EventEmitter<void>();
 
-  readonly tableHeaders = [
+   tableHeaders = [
     'ID Dish',
     'Name',
     'Price',

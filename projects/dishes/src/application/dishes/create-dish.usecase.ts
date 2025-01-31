@@ -33,10 +33,21 @@ export class CreateDishUseCase{
         this._service.createDish(dish)
           .pipe(
             tap(result => {
-                this._state.dishes.dish.set([...this._state.dishes.dish.snapshot(), result]);
+              const currentDishes = this._state.dishes.dish.snapshot();
+              this._state.dishes.dish.set([...currentDishes, result]);
+              const currentMenus = this._state.menus.menu.snapshot();
+              const updatedMenus = currentMenus.map(menu => 
+                menu.id === result.menuId 
+                  ? {...menu, dishes: [...(menu.dishes || []), result]} 
+                  : menu
+              );
+    
+              this._state.menus.menu.set(updatedMenus);
             })
           )
-          .subscribe()
+          .subscribe({
+            error: (error) => console.error('Error creating dish:', error)
+          })
       );
     }
 

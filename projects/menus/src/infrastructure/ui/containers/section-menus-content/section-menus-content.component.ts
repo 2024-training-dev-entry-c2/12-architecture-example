@@ -65,6 +65,7 @@ export class SectionMenusContentComponent {
     this.selectedMenu = menu;
   }
 
+
   onSave(): void {
     if (this.menuForm.valid) {
       if (this.modalType === 'add') {

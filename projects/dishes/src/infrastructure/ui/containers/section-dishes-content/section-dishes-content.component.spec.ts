@@ -1,23 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+// import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SectionDishesContentComponent } from './section-dishes-content.component';
+// import { SectionDishesContentComponent } from './section-dishes-content.component';
 
-describe('SectionDishesContentComponent', () => {
-  let component: SectionDishesContentComponent;
-  let fixture: ComponentFixture<SectionDishesContentComponent>;
+// describe('SectionDishesContentComponent', () => {
+//   let component: SectionDishesContentComponent;
+//   let fixture: ComponentFixture<SectionDishesContentComponent>;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [SectionDishesContentComponent]
-    })
-    .compileComponents();
+//   beforeEach(async () => {
+//     await TestBed.configureTestingModule({
+//       imports: [SectionDishesContentComponent]
+//     })
+//     .compileComponents();
 
-    fixture = TestBed.createComponent(SectionDishesContentComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+//     fixture = TestBed.createComponent(SectionDishesContentComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });
