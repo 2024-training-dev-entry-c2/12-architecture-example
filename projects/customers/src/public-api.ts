@@ -7,3 +7,4 @@
 
 export { customersRoutes } from './infrastructure/ui/routes/customers.routes';
 export { ViewCustomerContainerComponent } from './infrastructure/ui/container/view-customer-container/view-customer-container.component';
+export type {ICustomer} from './domain/model/customer.interface';

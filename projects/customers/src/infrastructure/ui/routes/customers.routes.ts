@@ -1,29 +1,26 @@
 import { Routes } from '@angular/router';
-import { ViewCustomerContainerComponent } from '../container/view-customer-container/view-customer-container.component';
+import { DashboardLayoutComponent, SidebarContainerComponent } from 'shared';
 
 export const customersRoutes: Routes = [
-  {
-    path: 'view',
-    loadComponent: () => import('../components/view-customer/view-customer.component').then(module => module.ViewCustomerComponent)
-    /* children:[
-      {
-        path: 'view',
-        loadComponent: () => import('@components/customer/components/view-customer/view-customer.component').then(module => module.ViewCustomerComponent)
-
-      },
-      {
-        path: 'create',
-        component: CustomerFormComponent
-      },
-      {
-        path: 'update/:id',
-        component: UpdateCustomerFormComponent
-      },
-      ] */
-    },
     {
       path: '',
-      redirectTo: 'view',
-      pathMatch: 'full',
-    }
+      component: DashboardLayoutComponent,
+      children: [
+        {
+          path: '',
+          component: SidebarContainerComponent,
+          outlet: 'secondary',
+        },
+        {
+          path: 'view',
+          loadComponent: () => import('../container/view-customer-container/view-customer-container.component').then(m => m.ViewCustomerContainerComponent)
+        },
+        {
+          path: '',
+          redirectTo: 'view',
+          pathMatch: 'full',
+        }
+      ]
+    },
+
 ]

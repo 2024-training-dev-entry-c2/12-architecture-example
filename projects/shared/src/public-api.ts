@@ -6,3 +6,4 @@ export { SidebarContainerComponent } from './infrastructure/ui/container/sidebar
 export { FooterContainerComponent } from './infrastructure/ui/container/footer-container/footer-container.component';
 export { environment } from './infrastructure/services/environments/environments.development';
 
+export { DashboardLayoutComponent} from './infrastructure/ui/layouts/dashboard-layout/dashboard-layout.component';
