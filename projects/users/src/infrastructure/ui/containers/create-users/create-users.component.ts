@@ -25,6 +25,7 @@ export class CreateUsersComponent implements OnInit, OnDestroy {
   }
 
   createUser(user: IUser): void {
+    console.log("Llega el evento")
     this._useCase.execute(user);
   }
 }

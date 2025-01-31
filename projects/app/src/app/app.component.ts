@@ -11,6 +11,7 @@ export class AppComponent {
   onClick = output<void>();
 
   handleClick() {
+    console.log("Hola mundo............................");
     this.onClick.emit();
   }
 }

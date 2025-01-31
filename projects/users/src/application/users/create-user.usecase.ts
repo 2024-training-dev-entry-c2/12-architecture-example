@@ -32,6 +32,7 @@ export class CreateUserUsecase {
       this._service.create(user)
         .pipe(
           tap(result => {
+            console.log("llega al create");
             this._state.users.user.set(result);
 
             // const users = this._state.users.user.snapshot();
