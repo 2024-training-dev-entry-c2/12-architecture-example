@@ -27,8 +27,17 @@
       "dashboard": [
         "./dist/dashboard"
       ],
+      "dishes": [
+        "./dist/dishes"
+      ],
       "home": [
         "./dist/home"
+      ],
+      "menu": [
+        "./dist/menu"
+      ],
+      "orders": [
+        "./dist/orders"
       ],
       "shared": [
         "./dist/shared"
