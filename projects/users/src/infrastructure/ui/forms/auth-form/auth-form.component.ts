@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { InformativeModalComponent } from 'shared';
 
 
 interface InputConfig {
@@ -12,7 +11,7 @@ interface InputConfig {
 
 @Component({
   selector: 'lib-auth-form',
-  imports: [ReactiveFormsModule, InformativeModalComponent],
+  imports: [ReactiveFormsModule],
   templateUrl: './auth-form.component.html',
   styleUrl: './auth-form.component.scss'
 })

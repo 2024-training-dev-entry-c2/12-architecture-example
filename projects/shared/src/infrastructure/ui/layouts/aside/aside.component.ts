@@ -17,12 +17,7 @@ export class AsideComponent {
   usernameSubscription: Subscription;
 
   constructor(private router: Router
-    //, private authService: AuthService
   ) {
-    //this.usernameSubscription = this.authService.username$.subscribe(username => {
-    //  this.username = username
-    //})
-
   }
 
 

@@ -50,6 +50,7 @@ export class CreateUsersComponent implements OnInit, OnDestroy {
       .subscribe(() => {
         this.showModal = true;
         this.authFormComponent.authForm.reset();
+        this.errorMessage = null;
       });
 
     this._createUserUsecase.onRegistrationError

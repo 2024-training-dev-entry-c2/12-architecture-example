@@ -1,18 +1,17 @@
 import { inject, Inject, Injectable } from "@angular/core";
-import { State } from "../domain/state";
 import { Router } from "@angular/router";
-import { AuthUserService } from "../infrastructure/services/auth-user.service";
+import { TokenService, UserSessionService } from "shared";
 
 @Injectable({
     providedIn: 'root',
 })
 export class LogOutUsecase {
-    private readonly _authService = inject(AuthUserService);
     private readonly _router = inject(Router);
-
+    private readonly _tokenService = inject(TokenService);
+    private readonly _userSessionService = inject(UserSessionService);
     execute(): void {
-        this._authService.removeToken();
-        this._authService.removeUsername();
+        this._tokenService.removeToken();
+        this._userSessionService.removeUsername();
         this._router.navigate(['/login']);
     }
 }
