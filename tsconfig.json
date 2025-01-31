@@ -24,6 +24,9 @@
       "clients": [
         "./dist/clients"
       ],
+      "shared": [
+        "./dist/shared"
+      ],
       "users": [
         "./dist/users"
       ]

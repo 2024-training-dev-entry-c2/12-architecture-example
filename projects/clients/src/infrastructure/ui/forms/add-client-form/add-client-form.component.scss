@@ -1,0 +1,124 @@
+@use "../../styles/variables.scss" as variables;
+@use "../../styles/mixin.scss" as mixin;
+
+.cliente-form {
+  @include mixin.container(center);
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: variables.$color-background;
+  border: 1px solid variables.$color-gradients;
+  border-radius: 10px;
+  font-family: variables.$font-family-secondary;
+
+  &__mensaje-exito {
+    color: variables.$color-background-button;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    text-align: center;
+  }
+
+  h2 {
+    text-align: center;
+    color: variables.$color-secondary;
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  &__form-group {
+    margin-bottom: 10px;
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: variables.$color-text;
+      font-size: 12px;
+      font-weight: 500;
+    }
+    input {
+      height: 10px;
+    }
+    input,
+    select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid variables.$color-gradients;
+      border-radius: 6px;
+      font-size: 12px;
+      transition: border-color 0.3s ease;
+      &:focus {
+        border-color: variables.$color-secondary;
+        outline: none;
+      }
+    }
+    input[type="checkbox"] {
+      width: auto;
+    }
+  }
+
+  &__inline-group {
+    display: flex;
+    gap: 15px;
+
+    &__input-inline {
+      flex: 1;
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input {
+        width: 50%;
+        font-size: 12px;
+      }
+    }
+  }
+
+  &__remove-btn {
+    background: variables.$color-gradients;
+    color: variables.$color-background;
+    padding: 5px 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background: variables.$color-secondary;
+    }
+  }
+
+  &__form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    button {
+      padding: 8px 12px;
+      border: none;
+      color: variables.$color-background;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 12px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: variables.$color-secondary;
+      }
+
+      &:first-of-type {
+        background: variables.$color-background-button;
+        &:hover {
+          background: variables.$color-secondary;
+        }
+      }
+    }
+  }
+}

@@ -2,11 +2,20 @@
 <section class="clients" aria-labelledby="clients-title">
   <h1 id="clients-title" class="visually-hidden">Gestión de Clientes</h1>
   <section class="clients__view" aria-label="Ver clientes">
-    <lib-get-clients [clients]="clients$ | async"></lib-get-clients>
+    <lib-get-clients [clients]="clients$ | async" (deleteClientEvent)="deleteClient($event)"></lib-get-clients>
   </section>
   <section class="clients__add" aria-label="Agregar/editar cliente">
-   <!--<app-modal [isVisible]="isModalVisible" (close)="closeModal()">
-      <app-add-client [clientSelect]="clientEdit" (clientUpdated)="onClientUpdated()"></app-add-client>
-    </app-modal>-->
+   <lib-modal [isVisible]="isModalVisible" (close)="closeModal()">
+    @if(mensajeExito) {
+      <div class="cliente__mensaje-exito">
+        {{ mensajeExito }}
+      </div>
+    }
+    <lib-add-client-form
+      [isEditMode]="isEditMode"
+      [clientData]="clientEdit"
+      (clientSubmitted)="onClientSubmitted($event)">
+      ></lib-add-client-form>
+    </lib-modal>
   </section>
 </section>

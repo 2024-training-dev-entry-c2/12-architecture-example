@@ -1,0 +1,19 @@
+@use "../../styles/variables.scss" as variables;
+
+.content{
+  &__button-delete {
+    background: variables.$color-gradients;
+    color: variables.$color-text;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    color: variables.$color-background;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background: variables.$color-secondary;
+    }
+  }
+}

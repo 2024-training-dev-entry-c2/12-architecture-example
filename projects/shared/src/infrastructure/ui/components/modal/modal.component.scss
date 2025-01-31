@@ -1,0 +1,43 @@
+@use "../../styles/variables.scss" as variables;
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; // Alinea el modal hacia la parte superior de la pantalla
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden; // Evita el scroll en la página cuando el modal está abierto
+  background-color: rgba(0, 0, 0, 0.4);
+  &__content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 60%;
+    max-width: 400px;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    border-radius: 10px;
+}
+
+  &__header {
+    display: flex;
+    justify-content: flex-end;
+
+    &--close {
+      font-size: 28px;
+      font-weight: bold;
+      color: variables.$color-secondary;
+      cursor: pointer;
+    }
+
+    &--close:hover,
+    &--close:focus {
+      color: variables.$color-background-button;
+    }
+  }
+}
