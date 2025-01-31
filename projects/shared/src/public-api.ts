@@ -4,5 +4,8 @@ export { TableComponent } from './infrastructure/ui/components/table/table.compo
 export { ModalComponent } from './infrastructure/ui/components/modal/modal.component';
 export { InputComponent } from './infrastructure/ui/components/input/input.component';
 export { SelectComponent } from './infrastructure/ui/components/select/select.component';
+export { StateFactory } from './domain/state/state.factory';
+export type { IState } from './domain/model/state.model';
 export type { IResponse } from './domain/model/response.model';
+export type { IControls } from './domain/model/controls.model';
 export { environment } from './infrastructure/ui/environments/environment';

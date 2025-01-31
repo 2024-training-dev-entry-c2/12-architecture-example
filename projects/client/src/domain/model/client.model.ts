@@ -1,13 +1,7 @@
 export interface IClient {
+  id?: number;
   name: string;
   lastName: string;
   email: string;
-}
-
-export interface IClients {
-  id: number;
-  name: string;
-  lastName: string;
-  email: string;
-  userType: string;
+  userType?: string;
 }

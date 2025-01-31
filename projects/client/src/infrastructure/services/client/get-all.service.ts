@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { inject, Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { IClients } from "../../../domain/model/client.model";
+import { IClient } from "../../../domain/model/client.model";
 import { environment } from "shared";
 
 @Injectable({
@@ -11,8 +11,8 @@ export class GetAllService {
   private http = inject(HttpClient);
   private apiUrl = environment.apiUrls.client;
 
-  execute(): Observable<IClients[]> {
-    return this.http.get<IClients[]>(this.apiUrl, { headers: this.getHeaders() });
+  execute(): Observable<IClient[]> {
+    return this.http.get<IClient[]>(this.apiUrl, { headers: this.getHeaders() });
   }
 
   private getHeaders() {

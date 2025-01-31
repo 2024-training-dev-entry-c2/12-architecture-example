@@ -1,7 +1,19 @@
-
+<lib-modal
+  [open]="isOpen" 
+  (clickClose)="openModal($event)"
+>
+<lib-client-form 
+    [message]="message$ | async"
+    [client]="currentClient$ | async"
+    (onSubmit)="submit($event)"
+  ></lib-client-form>
+</lib-modal>
 
 <lib-table 
   [title]="'Clientes'" 
-  [data]="users" 
+  [data]="clients$ | async"
   [columns]="columns" 
+  (openModal)="openModal($event)" 
+  (idDelete)="deleteClient($event)" 
+  (idUpdate)="updateById($event)"
 />
