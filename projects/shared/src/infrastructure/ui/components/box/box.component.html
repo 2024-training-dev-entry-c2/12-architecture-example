@@ -1,0 +1,29 @@
+<main class="box">
+  <header class="box__header"
+  [ngClass]="{'box__header-cols-4': isDishes, 'box__header-cols-5': isCustomers}"
+  >
+    @for (col of columns; track $index) {
+      <p class="box__header__item">{{col | uppercase}}</p>
+    }
+  </header>
+
+  <section class="box__content">
+    @if (isCustomers) {
+      @for (item of customers; track $index) {
+        <article class="box__card">
+          <lib-box-card [customer]="item" isCustomer="true" />
+        </article>
+      }@empty {
+        <h2 class="box__subtitle">No hay clientes que mostrar</h2>
+      }
+    }@else {
+        @for (item of  dishes; track $index) {
+          <article class="box__card">
+            <lib-box-card [dish]="item" isDishes="true" />
+          </article>
+        }@empty {
+          <h2 class="box__subtitle">No hay platos que mostrar</h2>
+        }
+      }
+  </section>
+</main>

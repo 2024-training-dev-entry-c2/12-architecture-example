@@ -1,0 +1,23 @@
+<div class="card" [ngClass]="{'card-cols-5': isCustomer, 'card-cols-4': isDishes}">
+  @if (isCustomer) {
+      <div class="card__item">{{customer.id}}</div>
+      <div class="card__item">{{customer.name}}</div>
+      <div class="card__item">{{customer.email}}</div>
+      <div class="card__item">{{customer.type}}</div>
+      <div class="card__item">{{customer.phone}}</div>
+      <div class="card__item">
+        <button class="card__btn" (click)="updateCustomer()">Editar</button>
+        <button class="card__btn card__btn-delete" (click)="removeCustomer()">Borrar</button>
+      </div>
+    }
+    @if (isDishes) {
+      <div class="card__item">{{dish.id}}</div>
+      <div class="card__item">{{dish.name}}</div>
+      <div class="card__item">{{dish.type}}</div>
+      <div class="card__item">{{dish.price | currency: 'USD'}}</div>
+      <div class="card__item">
+        <button class="card__btn" (click)="updateDish()">Editar</button>
+        <button class="card__btn card__btn-delete"(click)="removeDish()">Borrar</button>
+      </div>
+    }
+  </div>
