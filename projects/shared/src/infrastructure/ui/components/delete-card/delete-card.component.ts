@@ -1,6 +1,17 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faX, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import {
+  faX,
+  faTrash,
+  faExclamationCircle,
+} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'lib-delete-card',
@@ -10,6 +21,7 @@ import { faX, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
 })
 export class DeleteCardComponent {
   faX = faX;
+  faTrash = faTrash;
   faExclamationCircle = faExclamationCircle;
 
   @Input() public selectedId!: number;
@@ -17,11 +29,18 @@ export class DeleteCardComponent {
   @Output() public closeModal = new EventEmitter<void>();
   @Output() public onDelete = new EventEmitter<number>();
 
-  close(): void {
-    this.closeModal.emit();
-  }
-
   delete(): void {
     this.onDelete.emit(this.selectedId);
+    this.deleteCard.nativeElement.close();
+  }
+
+  @ViewChild('deleteCard') deleteCard!: ElementRef<HTMLDialogElement>;
+
+  open() {
+    this.deleteCard.nativeElement.showModal();
+  }
+
+  close() {
+    this.deleteCard.nativeElement.close();
   }
 }

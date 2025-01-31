@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { EnvironmentService } from 'shared';
+import { urlResources } from 'shared';
 import {
   ICustomer,
   ICustomerResponse,
@@ -12,12 +12,8 @@ import { Observable } from 'rxjs';
 })
 export class CreateCustomerService {
   private http = inject(HttpClient);
-  private _environmentService: EnvironmentService = inject(EnvironmentService);
 
   execute(payload: ICustomer): Observable<ICustomerResponse> {
-    return this.http.post<ICustomerResponse>(
-      this._environmentService.apiUrl + '/client',
-      payload
-    );
+    return this.http.post<ICustomerResponse>(urlResources.customer, payload);
   }
 }

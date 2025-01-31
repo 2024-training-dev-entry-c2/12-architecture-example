@@ -67,7 +67,8 @@
   }
 
   &__cancel-button,
-  &__delete-button {
+  &__delete-button,
+  &__open-button {
     @include mixins.font(16px, 500);
     padding: 8px 16px;
     background-color: variables.$color-secondary;
@@ -78,6 +79,17 @@
 
     &:hover {
       box-shadow: 0px 3px 6px 0px rgba(160, 160, 160, 1);
+    }
+  }
+
+  &__open-button {
+    background-color: white;
+    color: variables.$color-primary;
+    border: 1px solid variables.$color-primary;
+
+    &:hover {
+      background-color: variables.$color-primary;
+      color: white;
     }
   }
 

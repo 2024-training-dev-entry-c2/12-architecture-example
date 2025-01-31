@@ -1,4 +1,7 @@
-<section class="modal-container">
+<button class="delete-card__open-button" (click)="open()">
+    <fa-icon [icon]="faTrash"></fa-icon>
+</button>
+<dialog class="modal-container" #deleteCard>
     <article class="delete-card">
         <div class="delete-card__header">
             <h2 class="delete-card__title">Eliminar {{ entityName }}</h2>
@@ -16,4 +19,4 @@
             <button class="delete-card__delete-button" type="button" (click)="delete()">Eliminar</button>
         </div>
     </article>
-</section>
+</dialog>

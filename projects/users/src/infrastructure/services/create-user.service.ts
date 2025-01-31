@@ -1,16 +1,14 @@
-import { inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { IUser } from '../../domain/model/users.model';
 import { Observable, of } from 'rxjs';
-import { EnvironmentService } from 'shared';
+import { urlResources } from 'shared';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CreateUserService {
-  private _environmentService: EnvironmentService = inject(EnvironmentService);
-
   create(user: IUser): Observable<IUser> {
-    console.log(this._environmentService.apiUrl + '/users');
+    console.log(urlResources.customer);
     return of(user);
   }
 }

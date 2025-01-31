@@ -2,7 +2,7 @@
  * Public API Surface of shared
  */
 
-export * from './infrastructure/services/environment.service';
+export * from './environments/environment';
 export * from './domain/state/state.factory';
 export * from './infrastructure/ui/components/navbar/navbar.component';
 export * from './infrastructure/ui/components/footer/footer.component';
