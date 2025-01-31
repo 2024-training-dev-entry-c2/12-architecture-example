@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
-import { IState } from "../../../../users/src/domain/model/state.model";
+import { IState } from "../model/state.model";
 
 
 @Injectable({

@@ -1,19 +1,19 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { ICustomer } from '../../domain/model/customer.interface';
+import { ICustomer } from '../../domain/model/customer.model';
+import { urlResources } from 'shared';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FindAllCustomersService {
   http = inject(HttpClient);
-  url: string = `http://localhost:8080/api/v1/customer`;
 
   constructor() { }
 
   execute():Observable<ICustomer[]>{
-    return this.http.get<ICustomer[]>(this.url)
+    return this.http.get<ICustomer[]>(urlResources.customers)
     .pipe(
       tap(console.log)
     );

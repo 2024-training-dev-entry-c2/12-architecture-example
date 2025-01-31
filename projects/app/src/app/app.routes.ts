@@ -1,10 +1,7 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  {
-    path: 'dashboard',
-    loadChildren: () => import('dashboard').then(m => m.dashboardRoutes)
-  },
+
   {
     path: 'dashboard/home',
     loadChildren: () => import('home').then(m => m.homeRoutes)
@@ -16,7 +13,7 @@ export const routes: Routes = [
   },
   {
     path:'',
-    redirectTo: 'dashboard',
+    redirectTo: 'dashboard/home',
     pathMatch: 'full'
   }
   // {

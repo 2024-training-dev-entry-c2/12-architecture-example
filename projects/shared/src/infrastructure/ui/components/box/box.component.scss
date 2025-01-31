@@ -11,7 +11,7 @@
   grid-template-rows: 2fr 10fr;
   grid-template-columns: 1fr;
   gap: 0px 0px;
-  background-color: #ccc;
+  background-color: #8e2c2c16;
   color: variables.$primary-dark;
   border-radius: 10px;
 
@@ -27,7 +27,8 @@
     margin-bottom: 1rem;
     font-weight: 600;
     font-size: .95rem;
-    background-color: variables.$primary-gray;
+    color: variables.$soft-light; 
+    background-color: variables.$header-color;
     border-radius: 10px 10px 0 0;
 
     &-cols-4{
