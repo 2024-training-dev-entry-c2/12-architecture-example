@@ -2,12 +2,7 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { CreateUserUsecase } from '../../../../application/clients/create-user.usecase';
 import { Observable } from 'rxjs';
 import { IClient, IClientRequest } from '../../../../domain/model/client.model';
-import { AsyncPipe, JsonPipe } from '@angular/common';
-
 import { CreateClientFormComponent } from '../../forms/create-client-form/create-client-form.component';
-import { GetUsersListUsecase } from '../../../../application/clients/list-client.usercase';
-import { GetUserUsecase } from '../../../../application/clients/get-client.usercase';
-
 @Component({
   selector: 'lib-create-client',
   imports: [CreateClientFormComponent],
@@ -30,11 +25,7 @@ export class CreateClientComponent implements OnInit, OnDestroy {
   }
 
   create(user:IClientRequest){
-    console.log("user",user);
-    
     this.__useCase.execute(user);
-    console.log('user',user);
-    
   }
   
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, input, Input, Output } from '@angular/core';
 import { FormArray, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ModalComponent } from 'shared';
@@ -8,10 +8,10 @@ import { IDish, IDishRequest } from '../../../../public-api';
   selector: 'lib-update-dish-form',
   imports: [ReactiveFormsModule,ModalComponent],
   templateUrl: './update-dish-form.component.html',
-  styleUrl: './update-dish-form.component.css'
+  styleUrl: './update-dish-form.component.scss'
 })
 export class UpdateDishFormComponent {
-@Input() getData: IDish;
+public getData = input.required<IDish>();
 @Input() getMenuid: number = 0;
 @Output() updateDish = new EventEmitter<any>();
 private formBuilder = inject(FormBuilder);
@@ -27,26 +27,29 @@ public dishfoodUpdatedForm = this.formBuilder.group({
 ngOnInit(): void {
   console.log(this.getData);
   this.setValue();
-}
+} 
 
 setValue(): void {
+  const dishObject = this.getData();
+  console.log(dishObject);
+  
   const orderIdsArray = this.dishfoodUpdatedForm.get(
     'orderList'
   ) as FormArray;
   orderIdsArray.clear();
-  if (this.getData.orderList && Array.isArray(this.getData.orderList)) {
-    this.getData.orderList.forEach((orderId: number) => {
+  if (dishObject.orderList && Array.isArray(dishObject.orderList)) {
+    dishObject.orderList.forEach((orderId: number) => {
       orderIdsArray.push(
         this.formBuilder.control(orderId, Validators.required)
       );
     });
   }
   this.dishfoodUpdatedForm.patchValue({
-    id: this.getData.id,
-    name: this.getData.name,
-    price: this.getData.price,
-    menu: this.getData.menu,
-    isPopular: this.getData.isPopular,
+    id: dishObject.id,
+    name: dishObject.name,
+    price: dishObject.price,
+    menu: dishObject.menu,
+    isPopular: dishObject.isPopular,
   });
 
   orderIdsArray.disable();

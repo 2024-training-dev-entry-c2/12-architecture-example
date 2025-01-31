@@ -11,3 +11,6 @@ export *  from './infrastructure/ui/components/form/form.component'
 export * from './infrastructure/ui/components/modal/modal.component'
 export * from './infrastructure/ui/components/buttons/buttons.component'
 export * from './domain/model/form.interface'
+export * from './infrastructure/ui/components/spinner/spinner.component'
+export * from './infrastructure/ui/components/sales-card/sales-card.component'
+

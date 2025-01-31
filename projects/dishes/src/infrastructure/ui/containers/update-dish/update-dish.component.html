@@ -1,3 +1,2 @@
-@if (dish != null) {
-<lib-update-dish-form [getData]="dish" (updateDish)="UpdateDish($event)"></lib-update-dish-form>
-}
+
+<lib-update-dish-form [getData]="currentDish | async" (updateDish)="UpdateDish($event)"></lib-update-dish-form>

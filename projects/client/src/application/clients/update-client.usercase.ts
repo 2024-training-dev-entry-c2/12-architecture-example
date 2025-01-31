@@ -15,30 +15,21 @@ export class UpdateClientUsecase {
   private subscriptions: Subscription = new Subscription();
 
   //#region Observables
-  user$(): Observable<IClient> {
+  clientFound$(): Observable<IClient> {
     return this._state.clients.user.$();
   }
   //#endregion
 
   //#region Public Methods
   initSubscriptions(): void {
-    if (!this.subscriptions) {
-      this.subscriptions = new Subscription();
-    }
+    this.subscriptions = new Subscription();
   }
 
   destroySubscriptions(): void {
-    if (this.subscriptions) {
-      this.subscriptions.unsubscribe();
-    }
+    this.subscriptions.unsubscribe();
   }
 
   execute(user: IClientRequest, id: number): void {
-    // Initialize subscriptions only if not yet initialized (e.g., if it's undefined)
-    if (!this.subscriptions || this.subscriptions.closed) {
-      this.initSubscriptions(); 
-    }
-
     this.subscriptions.add(
       this._service.updateClient(user, id)
         .pipe(
@@ -56,5 +47,9 @@ export class UpdateClientUsecase {
   //#endregion
 
   //#region Private Methods
+  selectClient(id: number): void {
+    const currentBlog = this._state.clients.users.snapshot().find(user => user.id === id);
+    this._state.clients.user.set(currentBlog);
+  }
   //#endregion
 }

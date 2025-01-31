@@ -2,9 +2,8 @@
     <h1 class="title__home">Menus List</h1>
     <div class="tabs__container">
         <ul class="tabs__buttons">
-            @for(item of getTabs; track $index) {
-            <li class="tab-button" [class.active]="activeTab === $index" (click)="selectTab($index)">
-
+            @for(item of getTabs() ; track $index) {
+            <li class="tab-button" [class.active]="activeTab === $index" (click)="selectTab($index, item.id)">
                 <span>{{item.name}}</span>
                 <div class="actions__items">
                     <lib-buttons [icon]="images[0]" [rowIndex]="$index" (buttonClick)="deleteMenu(item.id)"
@@ -20,18 +19,16 @@
             <div class="slider__indicator" [style.transform]="'translateX(' + (activeTab * 100) + '%)'"></div>
         </div>
         <div class="tab__content">
-            @for(item of getTabs; track $index) {
-            @if(activeTab === $index){
-            <lib-table title="DishFoods" [data]="getMenuDishes(item.name)" (deleteId)="deleteDish($event)" (updateId)="redirectToDishUpdate($event, item.id)">
-            </lib-table>
 
-            <div class="actions__button-dish">
-                <button (click)="redirectToDish(item.id)">Add Dish</button>
-            </div>
-            }
-            }
+            <ng-content></ng-content>
 
         </div>
     </div>
-
 </section>
+@if(showModal){
+<lib-create-menu-form (updateMenu)="createMenu($event)" (closeModal)="closeModal()"></lib-create-menu-form>
+}
+@if(showModalUpdate){
+<lib-update-menu-form [getData]="currentMenu()" (updateMenu)="handleUpdateMenu($event)"
+    (closeModal)="closeModal()"></lib-update-menu-form>
+}

@@ -10,12 +10,11 @@ export class ClientState {
   private readonly _factory = inject(StateFactory);
 
   //#region Subjects
-  private readonly client$ = new BehaviorSubject<IClient | null>(null);
+  private readonly client$ = new BehaviorSubject<IClient>(null);
   private readonly users$ = new BehaviorSubject<IClient[]>([]);
 
   store() {
     return {
-      // Aquí solo gestionamos el estado del cliente único
       user: this._factory.state(this.client$),
       users: this._factory.state(this.users$),
     };

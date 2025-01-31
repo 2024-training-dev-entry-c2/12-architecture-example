@@ -1,0 +1,25 @@
+
+@use "./../../../../../../shared/src/infrastructure/ui/styles/variables.scss" as
+  vars;
+@use "./../../../../../../shared/src/infrastructure/ui/styles/mixins.scss" as
+  mix;
+.actions__button-dish {
+    padding: 2rem;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  
+    & button {
+      cursor: pointer;
+      padding: 0.875rem 3rem;
+      border-radius: vars.$border-radius-small;
+      background-color: vars.$color-menu;
+      color: white;
+      border: none;
+      &:hover {
+        background-color: vars.$color-menu-title;
+        color: white;
+      }
+    }
+  }

@@ -1,18 +1,24 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { PaginationComponent, TableComponent } from 'shared';
-import { IClient } from '../../../../domain/model/client.model';
+import { Component, input, output, viewChild } from '@angular/core';
+import { ModalComponent, PaginationComponent, TableComponent } from 'shared';
+import { IClient, IClientRequest } from '../../../../domain/model/client.model';
 import { Router } from '@angular/router';
+import { AsyncPipe } from '@angular/common';
+import { UpdateClientFormComponent } from '../../forms/update-client-form/update-client-form.component';
 
 @Component({
   selector: 'lib-client-table',
-  imports: [PaginationComponent,TableComponent],
+  imports: [PaginationComponent,TableComponent, UpdateClientFormComponent],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss'
 })
 export class TableClientComponent {
 
-@Input() dataClients: IClient[]=[];
-@Output() deleteClient = new EventEmitter<number>();
+public dataClients = input.required<IClient[]>();
+public deleteClient =  output<number>();
+public currentClient = input<IClient>();
+public onSelectClient = output<number>();
+public clientID: number = 0;
+public updateClient = output<{client: IClientRequest; id: number}>();
 
   tabsList = [
     {
@@ -26,13 +32,21 @@ export class TableClientComponent {
       link:"/client"
     },
   ];
+
   sendToDelete(id: number) {
-    console.log(id);
     this.deleteClient.emit(id);
   }
-
-  constructor(private router: Router) {}
   redirectToClient(id: number): void {
-    this.router.navigate(['/client', id]); 
+    this.onSelectClient.emit(id);
+    this.clientID = id;
+    this.showModal = true;
+  }
+  UpdateClient(user: IClientRequest) {
+    this.updateClient.emit({client: user, id: this.clientID});
+    alert("Client Updated");
+  }
+  showModal = false;
+  closeModal() {
+    this.showModal = false;
   }
 }

@@ -1,5 +1,11 @@
-<lib-pagination [tabs]="tabsList" title="Clients Data" [activeTab]="1" >
+<lib-pagination [tabs]="tabsList" title="Clients Data" [activeTab]="1">
     <div class="tab__content" tabContent1>
-        <lib-table [data]="dataClients" (deleteId)="sendToDelete($event)" (updateId)="redirectToClient($event)"></lib-table>
+        <lib-table [data]="dataClients()" (deleteId)="sendToDelete($event)"
+            (updateId)="redirectToClient($event)"></lib-table>
     </div>
+
 </lib-pagination>
+
+@if(showModal){
+<lib-update-client-form [getData]="currentClient()" (updateClient)="UpdateClient($event)" (closeModal)="closeModal()"></lib-update-client-form>
+}

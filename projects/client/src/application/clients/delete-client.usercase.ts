@@ -25,10 +25,7 @@ export class RemoveClientUsecase {
   }
 
   destroySubscriptions(): void {
-    if (this.subscriptions) {
-      this.subscriptions.unsubscribe();
-      this.subscriptions = new Subscription(); 
-    }
+    this.subscriptions.unsubscribe();
   }
 
   execute(id: number): void {
@@ -48,5 +45,6 @@ export class RemoveClientUsecase {
   //#endregion
 
   //#region Private Methods
+
   //#endregion
 }

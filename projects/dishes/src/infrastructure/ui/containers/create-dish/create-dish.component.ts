@@ -14,15 +14,17 @@ import { ActivatedRoute } from '@angular/router';
 
 export class CreateDishComponent implements OnInit, OnDestroy {
   private readonly route = inject(ActivatedRoute);
-  getMenuid: number = 0;
   private readonly __useCase = inject(CreateDishUsecase);
   public dish$: Observable<IDish>;
+  getMenuid: number = 0;
+  
   ngOnInit(): void {
     this.getMenuid = Number(this.route.snapshot.paramMap.get('menuId')) || 0;
     console.log(this.getMenuid);
     this.__useCase.initSubscriptions();
     this.dish$ = this.__useCase.dish$();
   }
+  
   ngOnDestroy(): void {
     this.__useCase.destroySubscriptions();
   }

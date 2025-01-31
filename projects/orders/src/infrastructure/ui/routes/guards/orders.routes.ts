@@ -7,7 +7,7 @@ import { UpdateOrderComponent } from "../../containers/update-order/update-order
 export const OrderRoutes:Routes=[
     {
         path:'',
-        children: [
+        children: [ 
             {
                 path: '',
                 component: ListOrderComponent

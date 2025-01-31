@@ -1,0 +1,5 @@
+<lib-table title="DishFoods" [data]="getMenuDishes()" (deleteId)="deleteDish($event)" (updateId)="redirectToDishUpdate($event)">
+</lib-table>
+<div class="actions__button-dish">
+    <button (click)="redirectToDish()">Add Dish</button>
+</div>

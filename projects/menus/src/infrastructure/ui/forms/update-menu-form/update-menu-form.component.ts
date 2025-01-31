@@ -8,12 +8,13 @@ import { ModalComponent } from 'shared';
   selector: 'lib-update-menu-form',
   imports: [ReactiveFormsModule ,ModalComponent],
   templateUrl: './update-menu-form.component.html',
-  styleUrl: './update-menu-form.component.css',
+  styleUrl: './update-menu-form.component.scss',
 })
 export class UpdateMenuFormComponent {
   @Input() getData: IMenu ;
   @Input() getMenuId: number = 0;
   @Output() updateMenu = new EventEmitter<any>();
+  @Output() closeModal = new EventEmitter<void>();
   private menuFormBuilder = inject(FormBuilder);
   ngOnInit(): void {
     this.setValue();
@@ -52,6 +53,6 @@ export class UpdateMenuFormComponent {
   }
     constructor(private router: Router) {}
     redirectToMenu(): void {
-      this.router.navigate(['/menu']);
+      this.closeModal.emit();
     }
 }

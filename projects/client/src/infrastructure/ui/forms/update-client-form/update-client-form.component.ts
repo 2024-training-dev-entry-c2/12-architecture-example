@@ -25,6 +25,7 @@ import { ModalComponent } from 'shared';
 export class UpdateClientFormComponent implements OnInit {
   @Input() getData: IClient | null = null;
   @Input() getClientId: number = 0;
+  @Output() closeModal = new EventEmitter<void>();
   @Output() updateClient = new EventEmitter<IClientRequest>();
 
   private formUpdateBuilder = inject(FormBuilder);
@@ -66,11 +67,11 @@ export class UpdateClientFormComponent implements OnInit {
     );
     setTimeout(() => {
       this.redirectToClient();
-    }, 1000);
+    }, 400);
   }
 
   constructor(private router: Router) {}
   redirectToClient(): void {
-    this.router.navigate(['/client']);
+    this.closeModal.emit();
   }
 }

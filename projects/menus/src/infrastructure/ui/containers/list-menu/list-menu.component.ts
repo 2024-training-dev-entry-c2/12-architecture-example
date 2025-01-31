@@ -1,50 +1,65 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { GetMenusListUseCase } from '../../../../application/menus/list-menus.usecase';
 import { IDish, RemoveDishUsecase } from 'dishes';
-import { IMenu } from '../../../../domain/model/menu.model';
+import { IMenu, IMenuRequest } from '../../../../domain/model/menu.model';
 import { TableCardComponent } from '../../components/table-card/table-card.component';
 import { RemoveMenuUsecase } from '../../../../application/menus/remove-menus.usecase';
+import { Observable } from 'rxjs';
+import { AsyncPipe } from '@angular/common';
+import { UpdateMenuUsecase } from '../../../../application/menus/update-menus.usecase';
+import { CreateMenuUsecase } from '../../../../application/menus/create-menus.usecase';
+import { ListDishComponent } from '../list-dish/list-dish.component';
 
 @Component({
   selector: 'lib-list-menu',
-  imports: [TableCardComponent],
+  imports: [TableCardComponent, AsyncPipe, ListDishComponent],
   templateUrl: './list-menu.component.html',
   styleUrl: './list-menu.component.css',
 })
-export class ListMenuComponent {
+export class ListMenuComponent implements OnInit, OnDestroy {
   private readonly __useCaseMenus = inject(GetMenusListUseCase);
   private readonly __useCaseRemoveMenus = inject(RemoveMenuUsecase);
   private readonly __useCaseRemoveDish = inject(RemoveDishUsecase);
-  menus: any[] = [];
-  dish: IDish[] = [];
+  private readonly __useCasecreate = inject(CreateMenuUsecase);
+  private readonly __useCaseUpdate = inject(UpdateMenuUsecase);
+  public menus : Observable<IMenu[]>;
+  public menuFound$: Observable<IMenu>;
+  public currentMenu$: Observable<string>;
+  public menuSelect: number=1;
+
   ngOnInit(): void {
     this.__useCaseMenus.initSubscriptions();
-    this.getMenus();
-  }
-  getMenus() {
+    this.__useCasecreate.initSubscriptions();
+    this.__useCaseUpdate.initSubscriptions();
     this.__useCaseMenus.execute();
-
-    this.__useCaseMenus.menus$().subscribe({
-      next: (menus: IMenu[]) => {
-        this.menus = menus.map((menu) => ({ id: menu.id, name: menu.name }));
-        this.dish =  menus.flatMap(menu => menu.dishfoods.map((dish: any) => ({ ...dish })));
-      },
-      error: (err) => {
-        console.error('Error al obtener menús:', err);
-      },
-    });
+    this.menus = this.__useCaseMenus.menus$();
+    this.menuFound$ = this.__useCaseUpdate.currentMenu$();
+  }
+  ngOnDestroy(): void {
+    this.__useCaseMenus.destroySubscriptions();
+    this.__useCasecreate.destroySubscriptions();
+    this.__useCaseUpdate.destroySubscriptions();
+  }
+  handleCreateMenu(menu: IMenuRequest) {
+    this.__useCasecreate.execute(menu);
+  }
+  handleUpdateMenu({menu, id}: { menu: IMenuRequest; id: number }) {
+    this.__useCaseUpdate.execute(menu, id);
   }
 
   removeMenu(id: number) {
     this.__useCaseRemoveMenus.execute(id);
-    setTimeout(() => {
-      this.getMenus();
-    }, 500);
   }
   removeDish(id: number) {
     this.__useCaseRemoveDish.execute(id);
-    setTimeout(() => {
-      this.getMenus();
-    }, 500);
   }
+  selectMenu(id: number) {
+    this.__useCaseUpdate.selectMenu(id);
+  }
+
+  menuSelected(menu: number) {  
+    this.menuSelect = menu;
+    console.log(menu)
+  }
+
 }

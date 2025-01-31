@@ -22,19 +22,19 @@ export class GetUserUsecase {
   }
   destroySubscriptions(): void {
     if (this.subscriptions) {
-      // Safely unsubscribe if initialized
+  
       this.subscriptions.unsubscribe();
     }
   }
 
   execute(id: number): void {
-    // Adding the subscription directly to the collection
+
     this.subscriptions.add(
       this._service
         .getClientId(id)
         .pipe(
           tap((client: IClient) => {
-            this._state.clients.user.set(client); // Setting the client in state
+            this._state.clients.user.set(client); 
           })
         )
         .subscribe(

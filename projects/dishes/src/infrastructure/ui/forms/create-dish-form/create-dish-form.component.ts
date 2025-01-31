@@ -8,7 +8,7 @@ import { ModalComponent } from 'shared';
   selector: 'lib-create-dish-form',
   imports: [ReactiveFormsModule,ModalComponent],
   templateUrl: './create-dish-form.component.html',
-  styleUrl: './create-dish-form.component.css',
+  styleUrl: './create-dish-form.component.scss',
 })
 export class CreateDishFormComponent {
   private formadBuilder = inject(FormBuilder);

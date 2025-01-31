@@ -31,11 +31,9 @@ export class CreateMenuUsecase {
     this.subscriptions.add(
       this._service.addMenu(menu)
         .pipe(
-          tap(result => {
-            this._state.menus.menu.set(result);
-
-            // const menu = this._state.menu.user.snapshot();
-            // this._state.menu.user.set([...menu, result])
+          tap(result => {          
+            const menu = this._state.menus.menus.snapshot();
+            this._state.menus.menus.set([...menu, result])
           })
         )
         .subscribe()
