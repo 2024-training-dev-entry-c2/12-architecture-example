@@ -1,0 +1,29 @@
+<header class="header" role="banner" aria-label="Main Header">
+  <nav class="header__nav" role="navigation" aria-label="Main Navigation">
+    <ul class="header__dropdown-menu">
+      <li class="header__dropdown-item">
+        <a routerLink="/customers" class="header__dropdown-link" role="menuitem">Clientes</a>
+      </li>
+      <li class="header__dropdown-item">
+        <a routerLink="/menus" class="header__dropdown-link" role="menuitem">Menús</a>
+      </li>
+      <li class="header__dropdown-item">
+        <a routerLink="/dishes" class="header__dropdown-link" role="menuitem">Platos</a>
+      </li>
+      <li class="header__dropdown-item">
+        <a routerLink="/orders" class="header__dropdown-link" role="menuitem">Órdenes</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="header__actions">
+    <button class="header__button header__button--new-order" aria-label="Nueva Orden">
+      <span class="material-icons header__icon" aria-hidden="true">add</span>
+      <span>Nueva Orden</span>
+    </button>
+    <button class="header__button header__button--add-client" aria-label="Añadir Cliente">
+      <span class="material-icons header__icon" aria-hidden="true">person_add</span>
+      <span>Añadir Cliente</span>
+    </button>
+  </div>
+</header>

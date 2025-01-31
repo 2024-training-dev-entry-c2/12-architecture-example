@@ -1,0 +1,110 @@
+.header {
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  &__logo-container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    &-image {
+      height: 40px;
+      width: 40px;
+      margin-right: 0.5rem;
+    }
+
+    &-text {
+      font-size: 1.25rem;
+      font-weight: bold;
+      text-decoration: none;
+      color: black;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #333;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+
+    &--new-order {
+      background-color: #4caf50;
+      color: #fff;
+      border-radius: 4px;
+    }
+
+    &--add-client {
+      background-color: #2196f3;
+      color: #fff;
+      border-radius: 4px;
+    }
+
+    &:hover {
+      background-color: #ddd;
+    }
+
+    & .header__icon {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__dropdown {
+    position: relative;
+
+    &-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      list-style: none;
+      padding: 0.5rem 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
+    }
+
+    &:hover &-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    &-item {
+      padding: 0.5rem 1rem;
+
+      &-link {
+        color: #333;
+        text-decoration: none;
+
+        &:hover {
+          color: #007bff;
+        }
+      }
+    }
+  }
+}
