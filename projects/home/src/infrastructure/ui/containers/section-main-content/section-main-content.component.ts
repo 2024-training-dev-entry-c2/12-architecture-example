@@ -29,10 +29,10 @@ export class SectionMainContentComponent implements OnInit, OnDestroy {
   };
 
   constructor(
-    private ordersService: GetOrdersService,
-    private menusService: GetMenusService,
-    private dishesService: GetDishesService,
-    private clientsService: GetClientService
+    private readonly ordersService: GetOrdersService,
+    private readonly menusService: GetMenusService,
+    private readonly dishesService: GetDishesService,
+    private readonly clientsService: GetClientService
   ) {}
 
   ngOnInit(): void {
