@@ -1,0 +1,10 @@
+<dialog class="modal" [ngClass]="{'modal--visible': visible }" role="dialog" aria-label="Modal">
+  <div class="modal__content" [hidden]="!visible">
+    <ng-content />
+    <span class="modal__close material-icons" aria-hidden="true" (click)="toggle()">
+      close
+    </span>
+  </div>
+</dialog>
+
+<lib-button [text]="action()" (onClick)="toggle()" />
