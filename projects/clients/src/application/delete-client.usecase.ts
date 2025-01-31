@@ -1,15 +1,15 @@
 
+
+
 import { inject, Injectable } from '@angular/core';
-import { Iclient } from '../domain/model/client.model';
-import { ModalComponent } from 'shared';
 import { Subscription, tap } from 'rxjs';
-import { CreateClientService } from '../infrastructure/services/create-client.service';
 import { StateIndexClient } from '../domain/state';
+import { DeleteClientService } from '../infrastructure/services/delete-client.service';
 
 @Injectable({providedIn: 'root'})
-export class createClientUseCase {
+export class DeleteClientUseCase {
 
-  private readonly _createClientService = inject(CreateClientService);
+  private readonly _deleteService = inject(DeleteClientService);
   private readonly _state = inject(StateIndexClient);
   private subscriptions: Subscription;
 
@@ -22,17 +22,16 @@ export class createClientUseCase {
     this.subscriptions.unsubscribe();
   }
 
-  execute(client: Iclient, modal: ModalComponent): void {
+  execute(id: number): void {
     this.subscriptions.add(
-      this._createClientService.execute(client)
+      this._deleteService.execute(id)
         .pipe(
-          tap((cliente) => {
+          tap((client) => {
             const allClients = this._state.clientState.clients.valueState();
-            this._state.clientState.clients.changeState([...allClients, cliente]);
-            modal.toggle();
+            this._state.clientState.clients.changeState(allClients.filter(u => u.id !== id));
           }),
         ).subscribe()
     );
-
   }
+
 }

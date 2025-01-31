@@ -52,16 +52,7 @@
               "tsConfig": "projects/shared/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/shared/tsconfig.lib.json",
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true,
-              "fileReplacements": [
-                {
-                  "replace": "projects/app/src/environments/environment.ts",
-                  "with": "projects/shared/src/environments/environment.development.ts"
-                }
-              ]
+              "tsConfig": "projects/shared/tsconfig.lib.json"
             }
           },
           "defaultConfiguration": "production"

@@ -1,5 +1,10 @@
 <section class="clients" aria-label="pagina Clientes">
-  <button class="clients__add">Añadir cliente</button>
+  <lib-modal [action]="'crear Cliente'" #modal>
+    <lib-form-clients
+      [clients]="currentClient()"
+      (onSubmit)="handleSubmit($event)"
+    ></lib-form-clients>
+  </lib-modal>
   <h1 class="clients__title">Clientes</h1>
   <div class="clients__container">
     <table class="clients__table" aria-label="Tabla de Clientes">
@@ -20,11 +25,17 @@
           <td class="clients__td">{{ user.address }}</td>
           <td class="clients__td">{{ user.fechaCreacion | date }}</td>
           <td class="clients__td clients__td--actions">
-
-
             <button
               class="clients__btn clients__btn--delete"
+              (click)="deleteClient(user.id)"
             >
+              Borrar
+            </button>
+            <button
+              class="clients__btn clients__btn--edit"
+              (click)="selectClient(user.id)"
+            >
+              Editar
             </button>
           </td>
         </tr>

@@ -1,7 +1,8 @@
-
-
 <h1>Container de clients</h1>
-<lib-table-clients [allClients]="clientes$ | async"></lib-table-clients>
-<div>
-  <h1></h1>
-</div>
+<lib-table-clients
+  [allClients]="clientes$ | async"
+  [currentClient]="currentClient$ | async"
+  (onCreateClient)="hanglePatchClient($event)"
+  (onSelectClient)="handleSelectClient($event)"
+  (onDeleteClient)="handleDeleteClient($event)"
+></lib-table-clients>
