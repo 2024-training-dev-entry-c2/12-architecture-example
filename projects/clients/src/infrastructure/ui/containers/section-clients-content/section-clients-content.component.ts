@@ -98,4 +98,6 @@ export class SectionClientsContentComponent implements OnInit, OnDestroy {
     this._editClientUseCase.destroySubscriptions();
     this._deleteClientUseCase.ngOnDestroy();
   }
+
+ 
 }
