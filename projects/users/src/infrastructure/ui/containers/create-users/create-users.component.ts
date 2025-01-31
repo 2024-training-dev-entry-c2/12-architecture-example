@@ -15,9 +15,10 @@ export class CreateUsersComponent implements OnInit, OnDestroy {
   errorMessage: string | null = null;
   private readonly _createUserUsecase = inject(CreateUserUsecase);
   public user$: Observable<IUser>;
-  private destroy$ = new Subject<void>();
   showModal = false;
   modalMessage = 'Registro exitoso!';
+  private destroy$ = new Subject<void>();
+
   @ViewChild(AuthFormComponent) authFormComponent!: AuthFormComponent;
 
   inputsConfig = [
@@ -42,32 +43,34 @@ export class CreateUsersComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.user$ = this._createUserUsecase.user$();
+    this._createUserUsecase.initSubscriptions();
+
+    this._createUserUsecase.onRegistrationSuccess
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.showModal = true;
+        this.authFormComponent.authForm.reset();
+      });
+
+    this._createUserUsecase.onRegistrationError
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((errorMessage) => {
+        this.errorMessage = errorMessage;
+      });
+
   }
 
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
+    this._createUserUsecase.destroySubscriptions();
   }
-
 
   register(formValue: IUser) {
     this._createUserUsecase.execute(formValue)
-      .pipe(
-        takeUntil(this.destroy$)
-      )
-      .subscribe({
-        next: () => {
-          this.showModal = true;
-          this.authFormComponent.authForm.reset()
-
-        },
-        error: (error) => {
-          this.errorMessage = 'Error en el registro. Por favor, inténtelo de nuevo.';
-        }
-      });
   }
 
-  handleCloseModal(){
+  handleCloseModal() {
     this.showModal = false;
   }
 
