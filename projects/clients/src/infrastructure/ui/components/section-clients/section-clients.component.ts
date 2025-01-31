@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IClients } from '../../../../domain/model/clients.model';
 import { FormGroup } from '@angular/forms';
-import { AddModalComponent } from '../add-modal/add-modal.component';
+import { AddModalComponent } from '../../containers/add-modal/add-modal.component';
 import { ModalComponent } from "shared";
 import { RemoveModalComponent } from "../remove-modal/remove-modal.component";
 

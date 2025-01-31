@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IDishes } from '../../../../domain/model/dishes.model';
 import { FormGroup } from '@angular/forms';
 import { ModalComponent } from "shared";
-import { AddModalComponent } from '../add-modal/add-modal.component';
+import { AddModalComponent } from '../../forms/add-modal/add-modal.component';
 import { RemoveModalComponent } from '../remove-modal/remove-modal.component';
 
 @Component({

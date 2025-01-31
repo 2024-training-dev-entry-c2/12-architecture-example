@@ -1,11 +1,10 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
-import { SectionMainComponent } from "../../components/section-main/section-main.component";
-import { catchError, forkJoin, of, Subscription } from "rxjs";
-import { GetOrdersService } from "orders";
-import { GetMenusService } from "menus";
-import { GetDishesService } from "dishes";
-import { GetClientService } from "clients";
-
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { SectionMainComponent } from '../../components/section-main/section-main.component';
+import { catchError, forkJoin, of, Subscription } from 'rxjs';
+import { GetOrdersService } from 'orders';
+import { GetMenusService } from 'menus';
+import { GetDishesService } from 'dishes';
+import { GetClientService } from 'clients';
 
 interface DashboardData {
   orders: any[];
@@ -26,7 +25,7 @@ export class SectionMainContentComponent implements OnInit, OnDestroy {
     orders: [],
     menus: [],
     clients: [],
-    dishes: []
+    dishes: [],
   };
 
   constructor(
@@ -50,7 +49,7 @@ export class SectionMainContentComponent implements OnInit, OnDestroy {
       },
       error: (error) => {
         console.error('Error fetching dashboard data:', error);
-      }
+      },
     });
   }
 
