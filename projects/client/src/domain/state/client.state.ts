@@ -13,13 +13,15 @@ export class ClientState {
   private readonly clients$ = new BehaviorSubject<IClient[]>(null);
   private readonly message$ = new BehaviorSubject<string>(null);
   private readonly currentClient$ = new BehaviorSubject<IClient>(null);
+  private readonly open$ = new BehaviorSubject<boolean>(false);
   //#endregion
 
   store() {
     return {
       listClients: this._factory.state(this.clients$),
       message: this._factory.state(this.message$),
-      currrentClient: this._factory.state(this.currentClient$)
+      currrentClient: this._factory.state(this.currentClient$),
+      open: this._factory.state(this.open$)
     }
   }
 }

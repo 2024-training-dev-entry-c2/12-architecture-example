@@ -1,13 +1,15 @@
+import { TitleCasePipe } from "@angular/common";
 import { inject, Injectable } from "@angular/core";
-import { Observable, Subscription, tap } from "rxjs";
+import { map, Observable, Subscription, tap } from "rxjs";
+import { IClient } from "../../domain/model/client.model";
 import { State } from "../../domain/state";
 import { GetAllService } from "../../infrastructure/services/client/get-all.service";
-import { IClient } from "../../domain/model/client.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class GetClientsUsecase {
+  private titleCasePipe = new TitleCasePipe();
   private readonly _service = inject(GetAllService);
   private readonly _state = inject(State);
   private subscriptions: Subscription;
@@ -30,10 +32,15 @@ export class GetClientsUsecase {
   execute(): void {
     this.subscriptions.add(
       this._service.execute()
-      .pipe(
-        tap(result => this._state.clients.listClients.set(result)),
-      )
-      .subscribe()
+        .pipe(
+          map(result => result.map(client => ({
+            ...client,
+            name: this.titleCasePipe.transform(client.name),
+            lastName: this.titleCasePipe.transform(client.lastName)
+          }))),
+          tap(result => this._state.clients.listClients.set(result)),
+        )
+        .subscribe()
     );
   }
   //#endregion

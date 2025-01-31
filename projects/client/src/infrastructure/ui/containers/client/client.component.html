@@ -1,5 +1,5 @@
 <lib-modal
-  [open]="isOpen" 
+  [open]="isOpen$ | async"
   (clickClose)="openModal($event)"
 >
 <lib-client-form 
