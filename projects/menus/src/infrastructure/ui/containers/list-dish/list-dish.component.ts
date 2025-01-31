@@ -10,7 +10,7 @@ import { AsyncPipe } from '@angular/common';
   selector: 'lib-list-dish',
   imports: [TableDishComponent, AsyncPipe],
   templateUrl: './list-dish.component.html',
-  styleUrl: './list-dish.component.css',
+
 })
 export class ListDishComponent {
   private readonly __useCaseMenus = inject(GetMenusListUseCase);
@@ -46,7 +46,7 @@ export class ListDishComponent {
   handleUpdateDish({ dish, id }: { dish: IDishRequest; id: number }) {
     console.log(dish);
     console.log(id);
-    
+
     
     this.__useCaseUpdate.execute(dish, id);
   }

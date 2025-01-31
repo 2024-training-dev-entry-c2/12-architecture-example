@@ -32,7 +32,6 @@ export class CreateOrderComponent {
   }
   createOrder(order: IOrderRequest): void {
     console.log(order);
-    
     this.__useCase.execute(order);
   }
 

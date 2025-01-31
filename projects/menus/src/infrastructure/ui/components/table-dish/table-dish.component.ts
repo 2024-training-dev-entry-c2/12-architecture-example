@@ -1,9 +1,12 @@
 import { Component, computed, input, Input, output } from '@angular/core';
 import { TableComponent } from 'shared';
 import { IMenu } from '../../../../public-api';
-import { CreateDishFormComponent, IDish, IDishRequest, UpdateDishFormComponent } from 'dishes';
-
-
+import {
+  CreateDishFormComponent,
+  IDish,
+  IDishRequest,
+  UpdateDishFormComponent,
+} from 'dishes';
 
 @Component({
   selector: 'lib-table-dish',
@@ -28,9 +31,9 @@ export class TableDishComponent {
   redirectToDishUpdate($event: number) {
     this.dishId = $event;
     console.log(this.dishId);
-    this.onSelectDish.emit($event)
+    this.onSelectDish.emit($event);
     console.log(this.currentDish());
-    
+
     this.showModalUpdate = true;
   }
   deleteDish($event: number) {
@@ -44,7 +47,7 @@ export class TableDishComponent {
   handleUpdateDish(dish: IDishRequest) {
     console.log(dish);
     dish.menuId = this.item();
-    this.updateDish.emit({ dish, id: this.dishId});
+    this.updateDish.emit({ dish, id: this.dishId });
   }
   getMenuDishes() {
     return this.menu().find((menu) => menu.id === this.item())?.dishfoods;
