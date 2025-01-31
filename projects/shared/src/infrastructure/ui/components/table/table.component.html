@@ -1,0 +1,44 @@
+<div class="table">
+    <div class="table__search grid">
+        @if (buttonData) {
+            <app-button class="col-2" [buttonData]="buttonData" (clickEvent)="onButtonClick($event)"></app-button>
+        }
+        <app-input class="col-4" [inputData]="inputData" [formGroup]="formGroup" (outputData)="onSearch($event)" role="search"></app-input>
+    </div>
+
+    <table class="table__content" role="grid" aria-label="Data Table">
+        <thead class="table__header">
+            <tr role="row">
+                @for (header of dataHeader(); track $index) {
+                   <th class="table__header-cell" scope="col" role="columnheader">
+                        {{ header.name }}
+                    </th> 
+                }                
+            </tr>
+        </thead>
+        <tbody class="table__body">
+            @for (body of dataBodyFiltered; track $index) {
+                <tr class="table__row" role="row">
+                    @for (cell of dataHeader(); track $index) {
+                        <td class="table__cell" role="gridcell">
+                            @if (cell.type === "badge") {
+                                <app-badge [data]="getBadge(body[cell.key])"></app-badge>
+                            }@else if (cell.type === "boolean") {
+                                {{ body | dataKeyTransfromed: cell.key | booleanTransformation }}
+                            } @else {
+                                {{ body | dataKeyTransfromed: cell.key }}
+                            }
+                        </td>
+                    }
+                </tr>
+            }
+            @if(dataBodyFiltered.length === 0) {
+                <tr class="table__row" role="row">
+                    <td class="table__empty-cell" role="gridcell" colspan="100%">
+                        <span>No records found</span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

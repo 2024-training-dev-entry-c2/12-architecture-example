@@ -1,0 +1,13 @@
+@use '../../styles/abstracts/variables' as variables;
+
+.form-container {
+    margin-top: 15px;
+    
+    &__button {
+        grid-column: 9/span 4;
+    }
+
+    &__field {
+        margin-bottom: 1rem;
+    }
+}

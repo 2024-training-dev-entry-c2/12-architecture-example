@@ -1,0 +1,23 @@
+<header class="header">
+    <div class="header__content">
+        <menu class="header__content__right">
+            <li class="header__content__right__item">
+                <div class="header__content__right__info">
+                    <span class="header__user-email">{{emailUser}}</span>
+                    <div class="header__content__user-options" tabindex="0" aria-expanded="false">
+                        <img class="header__content__user-photo" src="assets/images/user.png" alt="Photo profile user">
+
+                        <menu class="header__content__menu">
+                            <li class="header__content__menu__item">
+                                <button (click)="logout()" tabindex="0">
+                                    <img src="assets/svgs/logout.svg" alt="icon of logout">
+                                    <span>Logout</span>
+                                </button>
+                            </li>
+                        </menu>
+                    </div>
+                </div>
+            </li>
+        </menu>
+    </div>
+</header>

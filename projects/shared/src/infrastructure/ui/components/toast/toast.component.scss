@@ -1,0 +1,73 @@
+@use '../../styles/abstracts/variables' as variables;
+
+.toast {
+    position: fixed;
+    top: 70px;
+    right: 10px;
+    border-radius: variables.$global-radius;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    min-width: 300px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+    
+    &--show{
+        display: block;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &__content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px 15px;
+        border-bottom: 1px solid #ddd;
+
+        &__body {
+            color: #ffff;
+           padding: 15px;
+        }
+    }
+
+    &__title {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #ffff;
+    }
+
+    &__close-button {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #b8b8b8;
+        transition: color 0.2s ease;
+
+            &:hover {
+               color: #ffff;
+             }
+    }
+
+    &__body {
+        color: #ffff;
+       padding: 15px;
+    }
+
+    &__description{
+        margin: 0;
+    }
+
+    &--info {
+        background-color: variables.$info-color;
+    }
+
+    &--success {
+        background-color: variables.$success-color;
+    }
+
+    &--error {
+        background-color: variables.$error-color;
+    }
+}

@@ -1,0 +1,18 @@
+@use '../../styles/abstracts/variables' as variables;
+
+.badge {
+    font-size: 80%;
+    padding: .35em .6em;
+    font-weight: 600;
+    border-radius: 4px;
+}
+
+.badge--info {
+    background-color: variables.$info-color;
+    color: white;
+}
+
+.badge--error {
+    background-color: variables.$error-color;
+    color: white;
+}

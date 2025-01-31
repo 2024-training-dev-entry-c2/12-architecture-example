@@ -1,0 +1,14 @@
+<div class="content" [formGroup]="formGroup()!">
+    @if (inputData()?.label) {
+        <label class="content__label" [for]="inputData()?.id">{{ inputData()?.label }}</label>
+    }
+    <input class="content__input" 
+    [id]="inputData()?.id"
+    [type]="inputData()?.type" 
+    (input)="inputEvent($event)" 
+    [placeholder]="inputData()?.placeholder"
+    [formControlName]="inputData()?.formControlName ?? ''"
+    [required]="inputData()?.required ?? false"
+    [attr.aria-label]="inputData()?.label"
+    [attr.aria-required]="inputData()?.required ?? null">
+</div>

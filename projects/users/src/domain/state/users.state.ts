@@ -1,7 +1,8 @@
 import { inject, Injectable } from "@angular/core";
 import { StateFactory } from "./state.factory";
 import { BehaviorSubject } from "rxjs";
-import { IUser } from "../model/users.model";
+import { IUserResponse } from "../model/user-response.model";
+import { IAuthResponse } from "../model/auth-response.model";
 
 @Injectable({
   providedIn: 'root'
@@ -10,16 +11,16 @@ export class UsersState {
   private readonly _factory = inject(StateFactory);
 
   //#region Subjects
-  private readonly user$ = new BehaviorSubject<IUser>(null);
-  private readonly userfgdsadf$ = new BehaviorSubject<IUser>(null);
-  private readonly usesaefsdffr$ = new BehaviorSubject<IUser>(null);
+  private readonly auth$ = new BehaviorSubject<IAuthResponse>(null);
+  private readonly user$ = new BehaviorSubject<IUserResponse>(null);
+  private readonly listUsers$ = new BehaviorSubject<IUserResponse[]>(null);
   //#endregion
 
   store() {
     return {
+      auth: this._factory.state(this.auth$),
       user: this._factory.state(this.user$),
-      userfgdsadf: this._factory.state(this.userfgdsadf$),
-      usesaefsdffr: this._factory.state(this.usesaefsdffr$)
+      listUsers: this._factory.state(this.listUsers$)
     }
   }
 }

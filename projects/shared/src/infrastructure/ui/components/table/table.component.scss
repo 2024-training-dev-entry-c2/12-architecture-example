@@ -1,0 +1,92 @@
+@use '../../styles/abstracts/variables' as variables;
+
+.table {
+
+    &__content{
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    &__search {
+        align-items: end;
+
+        app-input {
+            grid-column: 9 / span 4;
+        }
+    }
+
+    &__header {
+        background-color: inherit;
+        border-bottom: 1px solid #ddd;
+
+        &-cell {
+            border-bottom: 1px solid #e2e5e8;
+            font-size: 13px;
+            color: variables.$primary-color;
+            background-color: #f6f6f6;
+            text-transform: uppercase;
+            padding: 1.20rem .75rem;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        th:first-child {
+            border-top-left-radius: variables.$global-radius;
+        }
+
+        th:last-child {
+            border-top-right-radius: variables.$global-radius;
+        }
+    }
+
+    &__row {
+        border-bottom: 1px solid #eee;
+
+        &:last-child {
+            border-bottom: none;
+        }
+
+    }
+
+    &__row:last-child {
+        td:first-child {
+            border-bottom-left-radius: variables.$global-radius;
+        }
+
+        td:last-child {
+            border-bottom-right-radius: variables.$global-radius;
+        }
+    }
+
+    &__cell, &__empty-cell {
+        border-bottom: 1px solid #e2e5e8;
+        font-size: 13px;
+        color: variables.$primary-color;
+        padding: 1.20rem .75rem;
+        text-align: left;
+    }
+
+    &__cell &:last-child {
+        flex: 0;
+    }
+    
+    &__priority {
+        padding: 5px 10px;
+        border-radius: 4px;
+        color: white;
+        font-size: 0.9rem;
+
+        &--low {
+            background-color: #dc3545;
+        }
+
+        &--medium {
+            background-color: #28a745;
+        }
+
+        &--high {
+            background-color: #17a2b8;
+        }
+    }
+}
+

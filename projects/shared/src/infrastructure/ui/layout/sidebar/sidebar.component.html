@@ -1,0 +1,34 @@
+<section class="sidebar">
+  <div class="sidebar__content">
+    <menu>
+      <a href="#" aria-label="forecastr logo" class="sidebar__content__logo" tabindex="-1">
+        <img src="assets/images/logo.png" aria-hidden="true">
+      </a>
+
+      <ul class="sidebar__content__menu">
+        @for (option of menu; track $index) {
+        <li [class]="option.section ? 'sidebar__content__menu--heading' : ''" 
+          [class.sidebar__content__menu--active]="isActive(option)" 
+          (click)="option.href && goTo(option.href)"
+          (keydown)="option.href && goTo(option.href)">
+          @if (option.section) {
+          <h3>{{option.item}}</h3>
+          } @else {
+          <a [tabindex]="option.section ? -1 : 0">
+            <img [src]="option.svg" aria-hidden="true">
+            <span>{{option.item}}</span>
+          </a>
+          }
+        </li>
+        }
+
+        <li aria-level="1">
+          <button class="sidebar__content__menu__button-collapse" aria-haspopup="true" aria-expanded="true" aria-label="collapse menu" (click)="toggleMenu()" tabindex="0">
+            <img src="assets/svgs/collapse.svg" aria-hidden="true">
+            <span>Collapse</span>
+          </button>
+        </li>
+      </ul>
+    </menu>
+  </div>
+</section>

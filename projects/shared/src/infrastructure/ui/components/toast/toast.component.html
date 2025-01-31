@@ -1,0 +1,17 @@
+<div class="toast" [ngClass]="{
+    'toast--info': toastData?.type == 'info',
+    'toast--success': toastData?.type == 'success',
+    'toast--error': toastData?.type == 'error',
+    'toast--show': show}" 
+     role="alert" aria-live="assertive"
+     >
+  <div class="toast__content">
+    <div class="toast__content__body">
+      <p class="toast__description">{{ toastData?.message }}</p>
+    </div>
+
+    <button type="button" class="toast__close-button" aria-label="Close" (click)="closeToast()">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+</div>

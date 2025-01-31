@@ -1,0 +1,14 @@
+@use './variables' as variables;
+
+@mixin  margin-locale() {
+    width: 100%;
+    max-width: variables.$container-width;
+    margin: 20px auto;
+}
+
+@mixin content-flex($align: start, $justify: start, $gap: 0) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    gap: $gap;
+}

@@ -1,0 +1,44 @@
+@use "sass:color";
+@use '../../styles/abstracts/variables' as variables;
+
+.button {
+    width: 100%;
+    display: inline-block;
+    font-weight: 400;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    margin-bottom: 1rem;
+    padding: .625rem 1.1875rem;
+    font-size: .875rem;
+    line-height: 1.5;
+    border-radius: variables.$global-radius;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+
+    &--info {
+        background-color: variables.$info-color;
+    }
+
+    &--info:hover {
+        background-color: color.adjust(variables.$info-color, $lightness: -10%);
+    }
+
+    &--success {
+        background-color: variables.$success-color;
+    }
+
+    &--success:hover {
+        background-color: color.adjust(variables.$success-color, $lightness: -10%);
+    }
+
+    &--error {
+        background-color: variables.$error-color;
+    }
+
+    &--error:hover {
+        background-color: color.adjust(variables.$error-color, $lightness: -10%);
+    }
+
+}
