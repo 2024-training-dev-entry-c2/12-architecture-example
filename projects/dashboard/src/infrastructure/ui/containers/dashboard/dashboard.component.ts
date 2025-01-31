@@ -45,7 +45,7 @@ export class DashboardComponent implements OnInit {
     });
 
     // Suscribirse a las órdenes
-    this.__useCaseOrder.order$().subscribe({
+    this.__useCaseOrder.orders$().subscribe({
       next: (orders: any[]) => {
         this.orderList = orders;
         this.checkDataLoaded();

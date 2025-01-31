@@ -33,8 +33,9 @@ private subscriptions: Subscription;
       this._service.addDish(dish)
         .pipe(
           tap(result => {
-            this._state.dishes_list.dish.set(result);
-
+            const dishes = this._state.dishes_list.dishes.snapshot();
+            this._state.dishes_list.dishes.set([...dishes, result])
+ 
             // const dishes = this._state.dishes_list.dishes.snapshot();
             // this._state.dishes_list.dishes.set([...dishes, result])
           })

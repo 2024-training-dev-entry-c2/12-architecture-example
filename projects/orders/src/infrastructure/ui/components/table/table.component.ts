@@ -1,16 +1,33 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { IOrder } from '../../../../domain/model/order.model';
+import {
+  Component,
+  EventEmitter,
+  input,
+  Input,
+  output,
+  Output,
+} from '@angular/core';
+import { IOrder, IOrderRequest } from '../../../../domain/model/order.model';
 import { Router } from '@angular/router';
 import { PaginationComponent, TableComponent } from 'shared';
+import { UpdateOrderFormComponent } from '../../forms/update-order-form/update-order-form.component';
+import { IMenu } from 'menus';
+import { IClient } from 'client';
 
 @Component({
   selector: 'lib-orders-table',
-  imports: [PaginationComponent, TableComponent],
+  imports: [PaginationComponent, TableComponent, UpdateOrderFormComponent],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css',
 })
 export class TableOrdersComponent {
-  @Input() dataOrders: any[] = [];
+  public menu = input.required<IMenu[]>();
+  public client = input.required<IClient[]>();
+  public dataOrders = input.required<IOrder[]>();
+  public currentOrder = input<IOrder>();
+  public updateOrderData = output<{ order: IOrderRequest; id: number }>();
+  public onSelectOrder = output<number>();
+  public orderId: number = 0;
+  public order: any[] = [];
   @Output() deleteId = new EventEmitter<number>();
   tabsList = [
     {
@@ -32,6 +49,28 @@ export class TableOrdersComponent {
 
   constructor(private router: Router) {}
   redirectToOrder(id: number): void {
-    this.router.navigate(['/orders', id]);
+    this.orderId = id;
+    this.onSelectOrder.emit(id);
+    this.showModal = true;
+    console.log(this.currentOrder());
+  }
+  showModal = false;
+
+  closeModal() {
+    this.showModal = false;
+  }
+
+  UpdateOrder(order: any) {
+    console.log(order);
+    this.updateOrderData.emit({ order: order, id: this.orderId });
+  }
+  setValue(): any {
+   return this.order = this.dataOrders().map((order) => ({
+      id: order.id,
+      client: order.client.name,
+      localDate: String(order.localDate),
+      dishfoodIds: order.dishfoodIds,
+      price: order.totalPrice,
+    }));
   }
 }

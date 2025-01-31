@@ -35,7 +35,7 @@ export class UpdateClientComponent implements OnInit, OnDestroy {
     this.__useCaseGet.execute(id);
 
     this.__useCaseGet.user$()
-      .pipe(takeUntil(this.destroy$)) // Cancela la suscripción cuando el componente se destruye
+      .pipe(takeUntil(this.destroy$)) 
       .subscribe({
         next: (client: IClient) => {
           console.log('Cliente obtenido:', client);

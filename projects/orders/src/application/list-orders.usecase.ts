@@ -12,7 +12,7 @@ export class ListOrdersUseCase {
   private readonly _state = inject(State);
   private subscriptions: Subscription = new Subscription();
 
-  order$(): Observable<IOrder[]> {
+  orders$(): Observable<IOrder[]> {
     return this._state.orders.orders.$();
   }
 

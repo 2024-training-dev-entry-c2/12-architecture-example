@@ -15,7 +15,7 @@ public getData = input.required<IDish>();
 @Input() getMenuid: number = 0;
 @Output() updateDish = new EventEmitter<any>();
 private formBuilder = inject(FormBuilder);
-
+@Output() closeModal = new EventEmitter<void>();
 public dishfoodUpdatedForm = this.formBuilder.group({
   id: [{ value: 0, disabled: true }, [Validators.required]],
   name: ['', [Validators.required, Validators.minLength(2)]],
@@ -73,7 +73,7 @@ sendToUpdate() {
 }
     constructor(private router: Router) {}
     redirectToMenu(): void {
-      this.router.navigate(['/menu']);
+      this.closeModal.emit();
     }
 
 }

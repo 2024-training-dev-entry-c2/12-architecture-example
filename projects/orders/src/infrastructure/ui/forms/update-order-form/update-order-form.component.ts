@@ -1,9 +1,21 @@
-import {  Component,  EventEmitter,  inject,  Input,  OnInit,  Output,} from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  inject,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { IOrder, IOrderRequest } from '../../../../domain/model/order.model';
 import { IMenu } from 'menus';
 import { IClient } from 'client';
 import { IDish } from 'dishes';
-import {FormArray,FormBuilder,ReactiveFormsModule,Validators,} from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MenuSelectorComponent } from '../control-select/menu-selector/menu-selector.component';
 import { ClientSelectorComponent } from '../control-select/client-selector/client-selector.component';
 import { ModalComponent, PaginationComponent } from 'shared';
@@ -23,6 +35,7 @@ import { Router } from '@angular/router';
   styleUrl: './update-order-form.component.scss',
 })
 export class UpdateOrderFormComponent implements OnInit {
+  @Output() closeModalOrder = new EventEmitter<void>();
   @Output() createOrder = new EventEmitter<IOrderRequest>();
   @Input() menus: IMenu[] = [];
   @Input() clients: IClient[] = [];
@@ -61,7 +74,6 @@ export class UpdateOrderFormComponent implements OnInit {
       alert('Order Created');
       this.updateOrderForm.reset();
       this.dishList.splice(0, this.dishList.length);
-      this.closeModal();
     } else {
       console.log(this.updateOrderForm);
     }
@@ -86,6 +98,7 @@ export class UpdateOrderFormComponent implements OnInit {
   closeModal() {
     this.updateOrderForm.reset();
     this.dishList.splice(0, this.dishList.length);
-    this.router.navigate(['/orders']);
+    this.closeModalOrder.emit();
   }
+
 }

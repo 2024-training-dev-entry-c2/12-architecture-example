@@ -44,7 +44,7 @@ export class UpdateDishUsecase {
   selectDish(id: number): void {
     const currentDish = this._state.dishes_list.dishes
       .snapshot()
-      .find((blog) => blog.id === id);
+      .find((dish) => dish.id === id);
     this._state.dishes_list.dish.set(currentDish);
   }
 }

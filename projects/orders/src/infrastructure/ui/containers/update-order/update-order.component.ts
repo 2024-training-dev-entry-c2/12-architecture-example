@@ -19,6 +19,7 @@ import { UpdateOrderFormComponent } from '../../forms/update-order-form/update-o
 export class UpdateOrderComponent {
   private readonly __useCase = inject(UpdateOrderUsecase);
   private readonly __useCaseget = inject(GetOrderUseCase);
+  
   private _useCaseClients = inject(GetUsersListUsecase);
   private _useCasemenus = inject(GetMenusListUseCase);
   public order: IOrder | null = null;

@@ -1,5 +1,8 @@
 <lib-pagination [tabs]="tabsList" title="Orders Data" [activeTab]="1" >
     <div class="tab__content" tabContent1>
-        <lib-table [data]="dataOrders" (deleteId)="sendToDelete($event)" (updateId)="redirectToOrder($event)"></lib-table>
+        <lib-table [data]="setValue()" (deleteId)="sendToDelete($event)" (updateId)="redirectToOrder($event)" ></lib-table>
     </div>
 </lib-pagination>     
+@if(showModal){
+<lib-update-order-form [order]="currentOrder()" (closeModalOrder)="closeModal()" [menus]="menu()" [clients]="client()" (createOrder)="UpdateOrder($event)" ></lib-update-order-form>  
+}   

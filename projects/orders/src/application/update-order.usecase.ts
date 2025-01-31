@@ -1,8 +1,8 @@
 import { inject, Injectable } from "@angular/core";
-import { IOrderRequest } from "../domain/model/order.model";
+import { IOrder, IOrderRequest } from "../domain/model/order.model";
 import { UpdateOrderService } from "../infrastructure/services/update/update-order.service";
 import { State } from "../domain/state";
-import { Subscription, tap } from "rxjs";
+import { Observable, Subscription, tap } from "rxjs";
 
 
 @Injectable({
@@ -12,6 +12,19 @@ export class UpdateOrderUsecase {
   private readonly _service = inject(UpdateOrderService);
   private readonly _state = inject(State);
   private subscriptions: Subscription = new Subscription();
+
+  
+    //#region Observables
+  currentOrder$(): Observable<IOrder> {
+    return this._state.orders.order.$();
+  }
+  initSubscriptions(): void {
+    this.subscriptions = new Subscription();
+  }
+
+  destroySubscriptions(): void {
+    this.subscriptions.unsubscribe();
+  }
 
   //#region Observables
   execute(order: IOrderRequest, id: number): void {
@@ -29,6 +42,12 @@ export class UpdateOrderUsecase {
         )
         .subscribe()
     );
+  }
+  selectOrder(id: number): void {
+    const currentOrder = this._state.orders.orders
+      .snapshot()
+      .find((order) => order.id === id);
+    this._state.orders.order.set(currentOrder);
   }
   //#endregion
 

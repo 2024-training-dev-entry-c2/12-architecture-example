@@ -16,6 +16,7 @@ import { AsyncPipe } from '@angular/common';
 export class UpdateDishComponent implements OnInit, OnDestroy {
   private readonly __useCaseUpdate = inject(UpdateDishUsecase);
   private readonly __useCaseGet = inject(GetDishUsecase);
+ 
   public currentDish: Observable<IDish>;
   dish: IDish | null = null;
   dishId: number = 0;
@@ -29,7 +30,7 @@ export class UpdateDishComponent implements OnInit, OnDestroy {
     this.dishId = this.route.snapshot.paramMap.get('id') ? Number(this.route.snapshot.paramMap.get('id')) : null;
     this.__useCaseUpdate.initSubscriptions();
     this.__useCaseGet.initSubscriptions();
-    this.__useCaseUpdate.selectDish(1);
+    this.__useCaseUpdate.selectDish(this.dishId);
     this.currentDish = this.__useCaseUpdate.currentDish$();
     console.log(this.currentDish);
 

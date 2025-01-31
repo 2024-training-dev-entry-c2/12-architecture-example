@@ -12,6 +12,7 @@ import { ModalComponent } from 'shared';
 })
 export class CreateDishFormComponent {
   private formadBuilder = inject(FormBuilder);
+  @Output() closeModal = new EventEmitter<void>();
   getData: IDishRequest | any = {
     name: '',
     price: 10.0,
@@ -37,6 +38,6 @@ export class CreateDishFormComponent {
   }
   constructor(private router: Router) {}
   redirectToDish(): void {
-    setTimeout(() => this.router.navigate(['/menu']), 500);
+    this.closeModal.emit();
   }
 }
