@@ -1,13 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-
-
-interface InputConfig {
-  label: string;
-  formControlName: string;
-  type: 'text' | 'password' | 'select';
-  options?: { value: string, label: string }[];
-}
+import { InputConfig } from '../../interfaces/input-config';
 
 @Component({
   selector: 'lib-auth-form',
@@ -15,8 +8,6 @@ interface InputConfig {
   templateUrl: './auth-form.component.html',
   styleUrl: './auth-form.component.scss'
 })
-
-
 
 export class AuthFormComponent {
   @Input() title: string = '';

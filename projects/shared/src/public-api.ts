@@ -9,3 +9,4 @@ export * from './infrastructure/ui/components/informative-modal/informative-moda
 export * from './infrastructure/services/token.service';
 export * from './infrastructure/services/user-sesion.service';
 export * from './infrastructure/services/interceptors/auth.interceptors';
+export * from './infrastructure/guards/auth.guard';

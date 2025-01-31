@@ -16,17 +16,12 @@ export class LoginComponent implements OnInit, OnDestroy {
   private readonly _authUserUsecase = inject(AuthUserUsecase);
   public user$: Observable<IUser>;
   private destroy$ = new Subject<void>();
-
+  
   inputsConfig = [
     { label: 'Nombre de Usuario', formControlName: 'username', type: 'text' as const },
     { label: 'Contraseña', formControlName: 'password', type: 'password' as const },
   ];
 
-
-  constructor(private router: Router,
-  ) {
-
-  }
 
   ngOnInit(): void {
     this.user$ = this._authUserUsecase.user$();
@@ -41,6 +36,8 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
     this._authUserUsecase.destroySubscriptions();
   }
 

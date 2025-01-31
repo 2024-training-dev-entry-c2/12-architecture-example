@@ -71,7 +71,7 @@
               ,
               {
                 "glob": "**/*",
-                "input": "projects/shared/src/assets",
+                "input": "projects/shared/src/infrastructure/ui/assets",
                 "output": "/shared/assets"
               }
             ],

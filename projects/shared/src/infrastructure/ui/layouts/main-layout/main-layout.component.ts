@@ -11,8 +11,6 @@ import { NavContainerComponent } from "../../containers/nav-container/nav-contai
 })
 export class MainLayoutComponent {
   isSidebarCollapsed: boolean = false;
-  constructor(
-  ) { }
 
   toggleSidebar(): void {
     this.isSidebarCollapsed = !this.isSidebarCollapsed;

@@ -1,6 +1,5 @@
 import { Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { AuthFormComponent } from "../../forms/auth-form/auth-form.component";
-import { Router } from '@angular/router';
 import { CreateUserUsecase } from '../../../../application/create-user.usecase';
 import { Observable, Subject, takeUntil } from 'rxjs';
 import { IUser } from '../../../../domain/model/user.model';
@@ -34,12 +33,6 @@ export class CreateUsersComponent implements OnInit, OnDestroy {
       ],
     },
   ];
-
-
-  constructor(private router: Router,
-
-  ) {
-  }
 
   ngOnInit(): void {
     this.user$ = this._createUserUsecase.user$();

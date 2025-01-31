@@ -8,7 +8,7 @@ import { LogOutUsecase } from 'users';
   templateUrl: './nav-container.component.html',
 })
 export class NavContainerComponent {
-  private readonly _logoutUsecase = inject(LogOutUsecase);
+ private readonly _logoutUsecase = inject(LogOutUsecase);
   handleLogout() {
     this._logoutUsecase.execute();
   }

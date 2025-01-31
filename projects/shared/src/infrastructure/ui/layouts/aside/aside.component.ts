@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -12,34 +12,18 @@ export class AsideComponent {
   @Output() toggleSidebar = new EventEmitter<void>();
   @Input() userRoles: string[] = [];
 
-  isSidebarCollapsed = false; 
+  isSidebarCollapsed = false;
   username: string | null = null;
   usernameSubscription: Subscription;
 
-  constructor(private router: Router
-  ) {
-  }
-
-
-  register() {
-    this.router.navigate(['/dashboard/register']);
-  }
-
   handleToggleSidebar() {
-    this.isSidebarCollapsed = !this.isSidebarCollapsed; 
-    this.toggleSidebar.emit(); 
+    this.isSidebarCollapsed = !this.isSidebarCollapsed;
+    this.toggleSidebar.emit();
   }
 
   ngOnDestroy(): void {
-    if(this.usernameSubscription) {
-        this.usernameSubscription.unsubscribe()
+    if (this.usernameSubscription) {
+      this.usernameSubscription.unsubscribe()
     }
-  }
-
-  isAdmin(): boolean {
-    return this.userRoles.includes('ROLE_ADMIN');
-  }
-  isUser(): boolean {
-    return this.userRoles.includes('ROLE_USER');
   }
 }
