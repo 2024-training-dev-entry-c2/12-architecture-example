@@ -1,11 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, input, Input, OnDestroy, OnInit, output } from '@angular/core';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { InputComponent, SelectComponent, IOptions, IControls, CastFormGroupPipe } from 'shared';
-import { IDish } from '../../../../domain/model/dish.model';
-import { ModalUsecase } from '../../../../application/modal.usecase';
+import { FormArray, FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CapitalizeFirstPipe, CastFormGroupPipe, IControls, InputComponent, IOptions, SelectComponent } from 'shared';
 import { GetClientsUsecase } from '../../../../application/client/get-clients.usecase';
 import { GetDishesUsecase } from '../../../../application/dish/get-dishes.usecase';
+import { ModalUsecase } from '../../../../application/modal.usecase';
 import { IOrder } from '../../../../domain/model/order.model';
 
 @Component({
@@ -19,6 +18,7 @@ export class OrderFormComponent implements OnInit, OnDestroy {
   private readonly _useCaseClients = inject(GetClientsUsecase);
   private readonly _useCaseDishes = inject(GetDishesUsecase);
   private formBuilder = inject(FormBuilder);
+  private capitalizeFirstPipe = new CapitalizeFirstPipe();
   public message = input<string>();
   public onSubmit = output<IOrder>();
   public clientOptions: IOptions[] = [];
@@ -26,7 +26,21 @@ export class OrderFormComponent implements OnInit, OnDestroy {
 
   @Input()
   set order(value: IOrder) {
-    this.form.patchValue(value);
+    const orderDetailsArray = this.form.get('orderDetails') as FormArray;
+    orderDetailsArray.clear();
+
+    if (value?.orderDetails?.length) {
+      value?.orderDetails.forEach(orderDetail => {
+        orderDetailsArray.push(this.formBuilder.group({
+          dishId: [orderDetail.dish.id, [Validators.required]],
+          quantity: [orderDetail.quantity, [Validators.required, Validators.min(0)]]
+        }));
+      });
+    } else {
+      this.addDish();
+    }
+
+    this.form.patchValue(value || { id: null, clientId: '', orderDetails: [] });
   }
 
   ngOnInit() {
@@ -39,7 +53,7 @@ export class OrderFormComponent implements OnInit, OnDestroy {
     this._useCaseClients.clients$().subscribe(clients => {
       this.clientOptions = (clients ?? []).map(client => ({
         value: client.id,
-        name: client.name
+        name: this.capitalizeFirstPipe.transform(client.name)
       }));
       this.updateClientsOptions();
     });
@@ -47,7 +61,7 @@ export class OrderFormComponent implements OnInit, OnDestroy {
     this._useCaseDishes.dishes$().subscribe(dishes => {
       this.dishesOptions = (dishes ?? []).map(dish => ({
         value: dish.id,
-        name: dish.name
+        name: this.capitalizeFirstPipe.transform(dish.name)
       }));
       this.updateDishesOptions();
     });
