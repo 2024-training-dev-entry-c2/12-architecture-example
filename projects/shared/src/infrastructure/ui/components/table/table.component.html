@@ -1,0 +1,37 @@
+<section class="data" aria-labelledby="data-title">
+    <div class="data__header">
+        <h1 id="data-title" class="data__title">{{ title() }}:</h1>
+    </div>
+    <table class="data__table" role="table" aria-describedby="data-title">
+        <thead>
+            <tr>
+                @for (column of columns(); track $index) {
+                <th scope="col">{{ column.header }}</th>
+                }
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (data of data(); track $index) {
+            <tr class="data__row">
+                @for (column of columns(); track $index) {
+                <td>
+                    {{
+                        column.field === 'price' || column.field === 'totalPrice'
+                        ? (resolveField(data, column.field) | currency:'USD':'symbol':'1.2-2')
+                        : column.field === 'orderDate'
+                        ? (resolveField(data, column.field) | date:'dd/M/yy, HH:mm a':'es')
+                        : resolveField(data, column.field)
+                        }}
+                </td>
+                }
+                <td>
+                    <a class="data__action" (click)="sendEdit(data.id)" [attr.aria-label]="'Editar ' + title()">✏️</a>
+                    <a class="data__action data__action--delete" (click)="sendDelete(data.id)" [attr.aria-label]="'Eliminar ' + title()">X</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+    <a class="data__button" (click)="openForm()" [attr.aria-label]="'Agregar nuevo ' + title()">Agregar {{title()}} +</a>
+</section>
