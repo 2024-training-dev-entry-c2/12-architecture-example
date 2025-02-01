@@ -22,10 +22,10 @@ export class ListMenuComponent implements OnInit, OnDestroy {
   private readonly __useCaseRemoveDish = inject(RemoveDishUsecase);
   private readonly __useCasecreate = inject(CreateMenuUsecase);
   private readonly __useCaseUpdate = inject(UpdateMenuUsecase);
-  public menus : Observable<IMenu[]>;
+  public menus: Observable<IMenu[]>;
   public menuFound$: Observable<IMenu>;
   public currentMenu$: Observable<string>;
-  public menuSelect: number=1;
+  public menuSelect: { id: number; name: string };
 
   ngOnInit(): void {
     this.__useCaseMenus.initSubscriptions();
@@ -43,7 +43,7 @@ export class ListMenuComponent implements OnInit, OnDestroy {
   handleCreateMenu(menu: IMenuRequest) {
     this.__useCasecreate.execute(menu);
   }
-  handleUpdateMenu({menu, id}: { menu: IMenuRequest; id: number }) {
+  handleUpdateMenu({ menu, id }: { menu: IMenuRequest; id: number }) {
     this.__useCaseUpdate.execute(menu, id);
   }
 
@@ -57,9 +57,8 @@ export class ListMenuComponent implements OnInit, OnDestroy {
     this.__useCaseUpdate.selectMenu(id);
   }
 
-  menuSelected(menu: number) {  
-    this.menuSelect = menu;
-    console.log(menu)
+  menuSelected({ id, name }: { id: number; name: string }) {
+    this.menuSelect = { id, name };
+    console.log(this.menuSelect);
   }
-
 }

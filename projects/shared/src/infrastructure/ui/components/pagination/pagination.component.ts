@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+
 
 @Component({
   selector: 'lib-pagination',
-  imports: [RouterLink],
+  imports: [],
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.scss'
 })
@@ -21,7 +21,7 @@ export class PaginationComponent implements OnInit {
     'assets/icons/form-svgrepo-com.svg#icon-list',
   ];
 
-constructor(private router: Router) {}
+
   selectTab(index: number): void {
     this.activeTab = index;
 

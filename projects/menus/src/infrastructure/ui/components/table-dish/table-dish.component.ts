@@ -16,7 +16,8 @@ import {
 })
 export class TableDishComponent {
   public menu = input.required<IMenu[]>();
-  public item = input.required<number>();
+  public dishes = input.required<IDish[]>();
+  public item = input.required<{id:number, name:string}>();
   public deleteDishfood = output<number>();
   public currentDish = input<IDish>();
   public createDishData = output<IDishRequest>();
@@ -30,7 +31,7 @@ export class TableDishComponent {
   }
   redirectToDishUpdate($event: number) {
     this.dishId = $event;
-    console.log(this.dishId);
+    console.log(this.item());
     this.onSelectDish.emit($event);
     console.log(this.currentDish());
 
@@ -41,16 +42,20 @@ export class TableDishComponent {
     this.deleteDishfood.emit($event);
   }
   createDish(dish: IDishRequest) {
-    dish.menuId = this.item();
+    dish.menuId = this.item().id;
     this.createDishData.emit(dish);
   }
   handleUpdateDish(dish: IDishRequest) {
     console.log(dish);
-    dish.menuId = this.item();
+    dish.menuId = this.item().id;
     this.updateDish.emit({ dish, id: this.dishId });
   }
   getMenuDishes() {
-    return this.menu().find((menu) => menu.id === this.item())?.dishfoods;
+    console.log(this.item());
+    
+    console.log(this.dishes());
+    
+    return this.dishes().filter((dish) => dish.menu === this.item().name);
   }
   closeModal() {
     this.showModal = false;

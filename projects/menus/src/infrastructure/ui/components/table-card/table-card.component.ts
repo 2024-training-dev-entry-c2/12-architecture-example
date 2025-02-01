@@ -8,11 +8,7 @@ import { UpdateMenuFormComponent } from '../../forms/update-menu-form/update-men
 
 @Component({
   selector: 'lib-table-card',
-  imports: [
-    ButtonsComponent,
-    CreateMenuFormComponent,
-    UpdateMenuFormComponent,
-  ],
+  imports: [ButtonsComponent, CreateMenuFormComponent, UpdateMenuFormComponent],
   templateUrl: './table-card.component.html',
   styleUrl: './table-card.component.scss',
 })
@@ -22,7 +18,7 @@ export class TableCardComponent {
   public createMenuData = output<IMenuRequest>();
   public updateMenuData = output<{ menu: IMenuRequest; id: number }>();
   public onSelectMenu = output<number>();
-  public selectMenu = output<number>();
+  public selectMenu = output<{ id: number; name: string }>();
   public getTabs = computed(() =>
     this.menu().map((menu) => ({ id: menu.id, name: menu.name }))
   );
@@ -37,11 +33,12 @@ export class TableCardComponent {
     'assets/icons/form-svgrepo-com.svg#icon-update',
   ];
 
-  selectTab(index: number, menuId: number): void {
+  selectTab(index: number, menuId: any): void {
     this.activeTab = index;
     console.log(this.activeTab);
-    
-    this.selectMenu.emit(menuId);
+    console.log(menuId);
+
+    this.selectMenu.emit({ id: menuId.id, name: menuId.name });
   }
   deleteMenu(id: number) {
     this.deleteMenuData.emit(id);
