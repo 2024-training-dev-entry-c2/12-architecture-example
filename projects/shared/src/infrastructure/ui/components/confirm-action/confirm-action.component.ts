@@ -1,4 +1,4 @@
-import { Component, input, output } from '@angular/core';
+import { Component, output } from '@angular/core';
 
 @Component({
   selector: 'lib-confirm-action',
@@ -7,7 +7,6 @@ import { Component, input, output } from '@angular/core';
   styleUrl: './confirm-action.component.scss'
 })
 export class ConfirmActionComponent {
-  public isOpen = input<boolean>();
   public clickConfirm = output<boolean>();
   public clickCancel = output<boolean>();
 
