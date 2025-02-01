@@ -15,6 +15,7 @@ import {
 import { Router } from '@angular/router';
 import { IClient, IClientRequest } from '../../../../domain/model/client.model';
 import { ModalComponent } from 'shared';
+// import { ModalComponent } from '../../../../../../shared/src/public-api';
 
 @Component({
   selector: 'lib-update-client-form',
@@ -42,23 +43,25 @@ export class UpdateClientFormComponent implements OnInit {
   }
 
   setValue(): void {
-    const orderIdsArray = this.clientUpdatedForm.get('orderIds') as FormArray;
-    orderIdsArray.clear();
-    if (this.getData.orderIds && Array.isArray(this.getData.orderIds)) {
-      this.getData.orderIds.forEach((orderId: number) => {
-        orderIdsArray.push(
-          this.formUpdateBuilder.control(orderId, Validators.required)
-        );
+    if (this.getData) {
+      const orderIdsArray = this.clientUpdatedForm.get('orderIds') as FormArray;
+      orderIdsArray.clear();
+      if (this.getData.orderIds && Array.isArray(this.getData.orderIds)) {
+        this.getData.orderIds.forEach((orderId: number) => {
+          orderIdsArray.push(
+            this.formUpdateBuilder.control(orderId, Validators.required)
+          );
+        });
+      }
+      console.log(this.getData);
+      this.clientUpdatedForm.patchValue({
+        id: this.getData.id,
+        email: this.getData.email,
+        name: this.getData.name,
+        isOften: this.getData.isOften,
       });
+      orderIdsArray.disable();
     }
-    console.log(this.getData);
-    this.clientUpdatedForm.patchValue({
-      id: this.getData.id,
-      email: this.getData.email,
-      name: this.getData.name,
-      isOften: this.getData.isOften,
-    });
-    orderIdsArray.disable();
   }
 
   sendToUpdate() {

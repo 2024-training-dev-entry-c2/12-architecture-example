@@ -32,10 +32,9 @@ export class CreateUserUsecase {
     this.subscriptions.add(
       this._service.addClient(user)
         .pipe(
-          tap(result => {
-            this._state.clients.user.set(result);
-            //  const users = this._state.clients.users.snapshot();
-            //  this._state.clients.users.set([...users, result])
+          tap(result => {   
+             const users = this._state.clients.users.snapshot();
+             this._state.clients.users.set([...users, result])
           })
         )
         .subscribe()

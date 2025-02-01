@@ -1,20 +1,25 @@
 import { Component, input, output, viewChild } from '@angular/core';
-import { ModalComponent, PaginationComponent, TableComponent } from 'shared';
+
 import { IClient, IClientRequest } from '../../../../domain/model/client.model';
 import { Router } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { UpdateClientFormComponent } from '../../forms/update-client-form/update-client-form.component';
+import { PaginationComponent, TableComponent } from 'shared';
+import { CreateClientFormComponent } from '../../forms/create-client-form/create-client-form.component';
+// import { PaginationComponent, TableComponent } from '../../../../../../shared/src/public-api';
+
 
 @Component({
   selector: 'lib-client-table',
-  imports: [PaginationComponent,TableComponent, UpdateClientFormComponent],
+  imports: [PaginationComponent,TableComponent, UpdateClientFormComponent,CreateClientFormComponent],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss'
 })
 export class TableClientComponent {
 
-public dataClients = input.required<IClient[]>();
+public dataClients = input.required<IClient[]>() ;
 public deleteClient =  output<number>();
+public createClient = output<IClientRequest>();
 public currentClient = input<IClient>();
 public onSelectClient = output<number>();
 public clientID: number = 0;
@@ -32,6 +37,11 @@ public updateClient = output<{client: IClientRequest; id: number}>();
       link:"/client"
     },
   ];
+  sendTocreate(user: IClientRequest) {
+    console.log(user);
+    this.createClient.emit(user);
+  }
+ 
 
   sendToDelete(id: number) {
     this.deleteClient.emit(id);

@@ -1,7 +1,10 @@
-<lib-pagination [tabs]="tabsList" title="Clients Data" [activeTab]="1">
+<lib-pagination [tabs]="tabsList" title="Clients Data" >
     <div class="tab__content" tabContent1>
         <lib-table [data]="dataClients()" (deleteId)="sendToDelete($event)"
             (updateId)="redirectToClient($event)"></lib-table>
+    </div>
+    <div class="tab__content" tabContent0>
+        <lib-create-client-form (onSubmit)="sendTocreate($event)" (closeModal)="closeModal()"></lib-create-client-form>
     </div>
 
 </lib-pagination>

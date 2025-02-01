@@ -7,9 +7,6 @@
     "types": [
       "jasmine"
     ],
-    "paths": {
-      "@shared/*": ["projects/shared/src/*"]
-    }
   },
   "include": [
     "**/*.spec.ts",

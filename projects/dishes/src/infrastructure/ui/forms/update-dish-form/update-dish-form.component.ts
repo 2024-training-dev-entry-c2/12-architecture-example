@@ -1,8 +1,9 @@
 import { Component, EventEmitter, inject, input, Input, Output } from '@angular/core';
 import { FormArray, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ModalComponent } from 'shared';
+
 import { IDish, IDishRequest } from '../../../../public-api';
+import { ModalComponent } from '../../../../../../shared/src/public-api';
 
 @Component({
   selector: 'lib-update-dish-form',

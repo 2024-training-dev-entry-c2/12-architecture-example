@@ -1,7 +1,10 @@
 import { Component, EventEmitter, inject, Output, output } from '@angular/core';
 import { IClient, IClientRequest } from '../../../../domain/model/client.model';
-import { FormComponent, FormField, PaginationComponent } from 'shared';
+
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormComponent, FormField, PaginationComponent } from 'shared';
+// import { FormComponent, FormField, PaginationComponent } from '../../../../../../shared/src/public-api';
+
 
 @Component({
   selector: 'lib-create-client-form',
@@ -14,18 +17,6 @@ export class CreateClientFormComponent {
   private formBuilder = inject(FormBuilder);
   onSubmit = output<IClientRequest>();
 
-  tabsList = [
-    {
-      title: 'Add client',
-      tabContent: '"assets/icons/form-svgrepo-com.svg#icon-twitter"',
-      link: '/client/add',
-    },
-    {
-      title: 'List',
-      tabContent: '"assets/icons/form-svgrepo-com.svg#icon-list"',
-      link: '/client',
-    },
-  ];
   public fields: FormField[] = [
     {
       label: 'Email',
@@ -52,14 +43,21 @@ export class CreateClientFormComponent {
   });
 
   submit() {
+    console.log(this.clientForm.getRawValue());
+    
     if (this.clientForm.valid) {
       this.onSubmit.emit(
         this.clientForm.getRawValue() as unknown as IClientRequest
       );
       alert('Client Created');
-      this.clientForm.reset();
+      
     } else {
       console.log(this.clientForm);
     }
+    setTimeout(() => {
+      this.clientForm.reset();
+    }, 1000);
+    
   }
+
 }

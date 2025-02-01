@@ -24,7 +24,7 @@ export class PaginationComponent implements OnInit {
 constructor(private router: Router) {}
   selectTab(index: number): void {
     this.activeTab = index;
-    this.router.navigate([this.tabs[index].link]);
+
   }
   show(value: string): void {
     console.log(value);
