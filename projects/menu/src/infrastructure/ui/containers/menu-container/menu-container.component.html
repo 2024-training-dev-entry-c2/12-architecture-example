@@ -1,0 +1,9 @@
+<lib-panel-menu
+  (onCreateMenu)="handleCreateMenu($event)"
+  (onDeleteMenu)="handleDeleteMenu($event)"
+  (onSelectMenu)="handleSelectMenu($event)"
+  [allDishes]="platos$ | async"
+  [allMenus]="allMenus$ | async"
+  [currentMenu]="currentMenu$ | async"
+></lib-panel-menu>
+

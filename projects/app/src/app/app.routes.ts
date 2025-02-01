@@ -14,6 +14,10 @@ export const routes: Routes = [
         path: 'dish',
         loadChildren: () => import('dish').then((m) => m.dishRoutes),
       },
+      {
+        path: 'menu',
+        loadChildren: () => import('menu').then((m) => m.menuRoutes),
+      },
     ],
   },
 ];

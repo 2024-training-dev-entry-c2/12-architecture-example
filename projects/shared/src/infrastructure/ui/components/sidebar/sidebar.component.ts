@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'lib-sidebar',
-  imports: [RouterLink],
+  imports: [RouterLink, MatIconModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent {
-
   public navItems: any = [
     {
       name: 'Home',
@@ -18,17 +18,17 @@ export class SidebarComponent {
     {
       name: 'Clientes',
       icon: 'group',
-      path: '/clientes',
+      path: '/client',
     },
     {
       name: 'Menu',
       icon: 'menu_book',
-      path: '/menus',
+      path: '/menu',
     },
     {
       name: 'Platos',
       icon: 'restaurant',
-      path: '/platos',
+      path: '/dish',
     },
     {
       name: 'Orders',
@@ -36,5 +36,4 @@ export class SidebarComponent {
       path: '/ordenes',
     },
   ];
-
 }

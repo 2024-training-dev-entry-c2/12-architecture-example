@@ -42,8 +42,4 @@ export class PanelDishComponent {
   deleteDish(id: number) {
     this.onDeleteDish.emit(id);
   }
-
-  ver(){
-    console.log("ver platos" + this.dishes);
-  }
 }

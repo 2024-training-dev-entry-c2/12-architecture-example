@@ -1,9 +1,9 @@
-import { Idish } from "../../../../dish/src/domain/model/dish.model";
+import { Idish } from 'dish';
 
 export interface Imenu {
   id: number;
   name: string;
   description: string;
-  dishIds: Idish[];
+  dishes: Idish[];
   restaurantId?: number;
 }

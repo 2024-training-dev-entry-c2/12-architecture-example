@@ -15,16 +15,14 @@ import { DeleteClientUseCase } from '../../../../application/delete-client.useca
   templateUrl: './client-container.component.html',
   styleUrl: './client-container.component.scss',
 })
-export class ClientContainerComponent {
-  public clientes$:Observable<Iclient[]>;
+export class ClientContainerComponent implements OnInit {
+  public clientes$: Observable<Iclient[]>;
   public currentClient$: Observable<Iclient>;
 
-  private readonly _getClientCase = inject(GetClientUseCase)
-  private readonly _createUseCase = inject(createClientUseCase)
-  private readonly _updateUseCase = inject(UpdateClientUseCase)
-  private readonly _deleteUseCase = inject(DeleteClientUseCase)
-
-
+  private readonly _getClientCase = inject(GetClientUseCase);
+  private readonly _createUseCase = inject(createClientUseCase);
+  private readonly _updateUseCase = inject(UpdateClientUseCase);
+  private readonly _deleteUseCase = inject(DeleteClientUseCase);
 
   ngOnInit(): void {
     this._getClientCase.initSubscriptions();
@@ -32,16 +30,21 @@ export class ClientContainerComponent {
     this._updateUseCase.initSubscriptions();
     this._deleteUseCase.initSubscriptions();
     this._getClientCase.execute();
-    this.clientes$ = this._getClientCase.client$()
+    this.clientes$ = this._getClientCase.client$();
     this.currentClient$ = this._updateUseCase.clientCurrent$();
-
   }
 
-  ngOndestroy():void{
+  ngOndestroy(): void {
     this._getClientCase.destroySubscriptions();
   }
 
-  hanglePatchClient({ client, modal }: { client: Iclient; modal: ModalComponent }) {
+  hanglePatchClient({
+    client,
+    modal,
+  }: {
+    client: Iclient;
+    modal: ModalComponent;
+  }) {
     const usecase = client.id ? this._updateUseCase : this._createUseCase;
     usecase.execute(client, modal);
   }
@@ -51,7 +54,7 @@ export class ClientContainerComponent {
   }
 
   handleDeleteClient(id: number) {
-    console.log("funcion para borrar cliente", id);
+    console.log('funcion para borrar cliente', id);
 
     this._deleteUseCase.execute(id);
   }
