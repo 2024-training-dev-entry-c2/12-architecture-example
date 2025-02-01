@@ -1,6 +1,3 @@
+export { ModalComponent } from './insfrastructure/ui/components/modal/modal.component';
 export { MainLayoutComponent } from './insfrastructure/ui/layouts/main-layout/main-layout.component';
-/*
- * Public API Surface of shared
- */
-
 export * from './environments/environment';
