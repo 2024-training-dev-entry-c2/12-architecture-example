@@ -21,7 +21,7 @@ export class SearchClientsUseCase {
     ]).pipe(
       map(([clients, query]) =>
         clients.filter(client => 
-          client.clientName.toLowerCase().includes(query.toLowerCase())
+          client.clientName && client.clientName.toLowerCase().includes(query.toLowerCase())
         )
       )
     );

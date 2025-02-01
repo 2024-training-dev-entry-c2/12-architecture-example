@@ -45,7 +45,7 @@ export class ClientContainerComponent implements OnInit, OnDestroy{
    public modalType: string = '';
  
    @ViewChild(ClientFormComponent) clientEditForm!: ClientFormComponent;
- 
+
    ngOnInit(): void {
      this._listUsecase.initSubscriptions();
      this._createUsecase.initSubscriptions();

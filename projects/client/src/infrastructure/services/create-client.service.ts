@@ -11,6 +11,6 @@ export class CreateClientService {
   private readonly _http = inject(HttpClient);
 
   createClient(client: IClient): Observable<IClient> {
-    return this._http.post<IClient>(environment.apiUrl + '/clients', client);
+    return this._http.post<IClient>(environment.apiUrl + '/clients', client,  { responseType: 'text' as 'json' });
   }
 }
