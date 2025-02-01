@@ -1,4 +1,7 @@
-<p>Ingresa el nombre de tu nuevo Menu</p>
+<p *ngIf="!isEditForm">Ingresa el nombre de tu nuevo Menu</p>
+<p *ngIf="isEditForm">Ingrese el nuevo nombre del Menu</p>
+
 <form [formGroup]="form">
-    <input class="modal-input" formControlName="menuName" placeholder="Nombre del menu" />
+    <input class="modal-input" formControlName="menuName"
+        [placeholder]="isEditForm ? currentMenuName : 'Nombre del menú'" />
 </form>

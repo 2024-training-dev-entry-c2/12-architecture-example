@@ -1,5 +1,5 @@
 import { Component, inject, OnChanges, OnDestroy, OnInit, signal, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
-import { first, map, Observable } from 'rxjs';
+import {  Observable } from 'rxjs';
 import { IMenu } from '../../../../domain/model/menus.model';
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { ListMenusUseCase } from '../../../../application/menus/list-menus.usecase';
@@ -12,12 +12,12 @@ import { DeleteMenuUseCase } from '../../../../application/menus/delete-menu.use
 import { UpdateMenuUseCase } from '../../../../application/menus/update-menu.usecase';
 import { FormsModule } from '@angular/forms';
 import { ModalComponent } from "shared";
-import { UpdateMenuFormComponent } from "../../forms/update-menu-form/update-menu-form.component";
+import { MenuFormComponent } from '../../forms/menu-form/menu-form.component';
 
 
 @Component({
   selector: 'lib-menu-container',
-  imports: [MainComponent, AsyncPipe, MenuHeaderComponent, ShareComponent, CommonModule, FormsModule, ModalComponent, UpdateMenuFormComponent],
+  imports: [MainComponent, AsyncPipe, MenuHeaderComponent, ShareComponent, CommonModule, FormsModule, ModalComponent, MenuFormComponent],
   templateUrl: './menu-container.component.html'
 })
 export class MenuContainerComponent implements OnInit, OnDestroy {
@@ -40,7 +40,7 @@ export class MenuContainerComponent implements OnInit, OnDestroy {
   public menuName = '';
   public modalType: string = '';
 
-  @ViewChild(UpdateMenuFormComponent) menuEditForm!: UpdateMenuFormComponent;
+  @ViewChild(MenuFormComponent) menuEditForm!: MenuFormComponent;
 
   ngOnInit(): void {
     this._listUsecase.initSubscriptions();
@@ -78,6 +78,7 @@ export class MenuContainerComponent implements OnInit, OnDestroy {
     this.selectedMenuId.set(menu.idMenu);
     this.modalTitle = 'Editar Menu';
     this.modalButton = 'Actualizar';
+    this.currentMenuName = menu.menuName;
     this.modalType = 'edit';
     this.isModalOpen.set(true);
   }
@@ -85,8 +86,11 @@ export class MenuContainerComponent implements OnInit, OnDestroy {
   confirmModal(): void {
     if (this.modalType === 'delete') {
       this.deleteMenu();
-    } else if (this.modalType === 'edit') {
-      this.menuEditForm.emitMenuName();
+    } else  if (this.modalType === 'edit' && this.menuEditForm) {
+      const updatedMenu = this.menuEditForm.getFormData();
+      if (updatedMenu) {
+        this.updateMenu(updatedMenu.menuName);
+      }
     }
     this.isModalOpen.set(false);
   }

@@ -6,8 +6,7 @@
 <lib-modal *ngIf="isModalOpen()" [title]="modalTitle" [buttonName]="modalButton" (submitEvent)="confirmModal()"
     (closeEvent)="closeModal()">
     <ng-container *ngIf="modalType === 'edit'">
-        <lib-update-menu-form #menuEditForm [currentMenuName]="currentMenuName"
-            (submitEvent)="updateMenu($event)"></lib-update-menu-form>
+        <lib-menu-form #menuEditForm [isEditForm]="true" [currentMenuName]="currentMenuName"></lib-menu-form>
     </ng-container>
     <ng-container *ngIf="modalType === 'delete'">
         <p>¿Estas seguro de que deseas eliminar este menu?</p>
