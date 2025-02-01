@@ -7,13 +7,16 @@
         [placeholder]="isEditForm ? currentClientName : 'Nombre del cliente'" />
 
     <label for="email">Correo Electronico</label>
-    <input class="modal__input" id="email" formControlName="email" placeholder="Correo electrónico" type="email" />
+    <input class="modal__input" id="email" formControlName="email"
+        [placeholder]="isEditForm ? currentEmail : 'correo electronico' " type="email" />
 
     <label for="phoneNumber">Telefono</label>
-    <input class="modal__input" id="phoneNumber" formControlName="phoneNumber" placeholder="Teléfono" type="text" />
+    <input class="modal__input" id="phoneNumber" formControlName="phoneNumber"
+        [placeholder]="isEditForm ? currentPhoneNumber : 'telefono'" type="text" />
 
     <label for="address">Direccion</label>
-    <input class="modal__input" id="address" formControlName="address" placeholder="Dirección" />
+    <input class="modal__input" id="address" formControlName="address"
+        [placeholder]="isEditForm ? currentAddress : 'direccion'" type="text" />
 
     <label for="registrationDate">Fecha de Registro</label>
     <input class="modal__input" id="registrationDate" formControlName="registrationDate" placeholder="Fecha de registro"
