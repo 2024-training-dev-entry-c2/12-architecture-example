@@ -27,6 +27,9 @@
       "dish": [
         "./dist/dish"
       ],
+      "menu": [
+        "./dist/menu"
+      ],
       "shared": [
         "./dist/shared"
       ],
