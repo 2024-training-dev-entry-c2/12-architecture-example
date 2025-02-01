@@ -1,0 +1,28 @@
+@use "../../styles/variables.scss" as variables;
+
+.layout {
+  width: calc(100% - 30px);
+  height: calc(100vh - 30px);
+  border-radius: 15px;
+  display: grid;
+  grid:
+    "sidebar body" 1fr
+    / auto 1fr;
+  box-shadow: variables.$box-shadow; 
+  border: 0.5px solid rgb(255, 255, 255);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #151515;
+  
+  &__aside { 
+    grid-area: sidebar; 
+    border-right: 0.5px solid rgb(255, 255, 255);
+
+  }
+  
+  &__body { 
+    grid-area: body; 
+  }
+}
