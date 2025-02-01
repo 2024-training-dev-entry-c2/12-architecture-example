@@ -18,7 +18,13 @@ export class AddClientFormComponent {
     if (value && value.id) {
       this.clientForm.patchValue(value);
     } else {
-      this.clientForm.reset();
+      this.clientForm.reset({
+        name: '',
+        email: '',
+        numberPhone: '',
+        id: null,
+        isFrecuent: false
+      });
     }
   }
 

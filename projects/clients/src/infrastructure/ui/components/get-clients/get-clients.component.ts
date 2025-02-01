@@ -24,7 +24,6 @@ export class GetClientsComponent {
   message(): string {
     return this.clientsState.store().successMessage.snapshot();
   }
-
   editClient(id: number) {
     this.onSelectClient.emit(id);
     this.modal().toggle();

@@ -37,7 +37,6 @@ export class DeleteClientUsecase {
             const currentClients = this._state.clients.clients.snapshot();
             const updatedClients = currentClients.filter(client => client.id !== id);
             this._state.clients.clients.set(updatedClients);
-            this._state.clients.successMessage.set('¡Cliente eliminado con éxito!');
           })
         )
         .subscribe()
