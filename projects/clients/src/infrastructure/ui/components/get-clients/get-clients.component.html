@@ -1,8 +1,8 @@
 <lib-modal action="Crear Cliente" #modal>
   <section class="clients__add" aria-label="Agregar/editar cliente">
-    @if(successMessage) {
+    @if(message()) {
       <div class="cliente__mensaje-exito">
-        {{ successMessage}}
+        {{message()}}
       </div>
     }
     <lib-add-client-form
@@ -43,9 +43,18 @@
         }
         </td>
         <td>
-          <lib-button [id]="client.id!" (editEvent)="editClient(client.id)" [text]="action()" (onClick)="toggle()" />
+          <lib-button
+            [text]="'Editar'"
+            [theme]="'primary'"
+            (onClick)="editClient(client.id)"
+            >
+          </lib-button>
           <hr>
-          <lib-button-delete [id]="client.id!" (deleteEvent)="deleteClient($event)"></lib-button-delete>
+          <lib-button
+            [text]="'Eliminar'"
+            [theme]="'danger'"
+            (onClick)="deleteClient(client.id)">
+          </lib-button>
         </td>
       </tr>
       }

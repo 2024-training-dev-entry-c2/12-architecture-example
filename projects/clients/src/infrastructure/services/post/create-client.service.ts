@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { IClient } from '../../domain/model/client.model';
+import { IClient } from '../../../domain/model/client.model';
 import { Observable } from 'rxjs';
 import { urlResources } from 'shared';
 

@@ -2,16 +2,21 @@ import { inject, Injectable } from '@angular/core';
 import { State } from '../../domain/state';
 import { IClient } from '../../domain/model/client.model';
 import { Observable, Subscription, tap } from 'rxjs';
-import { CreateClientService } from '../../infrastructure/services/post/create-client.service';
 import { ModalComponent } from 'shared';
+import { UpdateClientService } from '../../infrastructure/services/update/update-client.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CreateClientUsecase {
-  private readonly _service = inject(CreateClientService);
+export class UpdateClientUseCase {
+  private readonly _service = inject(UpdateClientService);
   private readonly _state = inject(State);
   private subscriptions: Subscription;
+
+   //#region Observables
+   currentClient$(): Observable<IClient> {
+    return this._state.clients.currentClient.$();
+  }
 
   successMessage$(): Observable<string | null> {
     return this._state.clients.successMessage.$();
@@ -26,24 +31,28 @@ export class CreateClientUsecase {
   }
   execute(client: IClient, modal: ModalComponent): void {
     this.subscriptions.add(
-    this._service.createClient(client)
+    this._service.updateClient(client)
     .pipe(
       tap((client) => {
-        const currentClients = this._state.clients.clients.snapshot();
-        this._state.clients.clients.set([...currentClients, client]);
-        this._state.clients.successMessage.set('¡Cliente creado con éxito!')
+        const clients = this._state.clients.clients.snapshot();
+            const newClient = clients.map(c => c.id === client.id ? client : c);
+            this._state.clients.clients.set(newClient);
+            this._state.clients.successMessage.set('¡Cliente actualizado con éxito!')
+            this._state.clients.currentClient.set(null);
 
         setTimeout(() => {
           modal.toggle();
           this._state.clients.successMessage.set('')
-
-        }, 2000);
-
+        }, 1000);
       }),
     ).subscribe()
   )
   }
-
+  selectClient(id: number): void {
+    const currentClient = this._state.clients.clients.snapshot().find(client => client.id === id);
+    console.log("select dentro de caso de uso")
+    this._state.clients.currentClient.set(currentClient);
+  }
   //#endregion
 
   //#region Private Methods

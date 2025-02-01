@@ -1,15 +1,13 @@
 import { Component, EventEmitter, inject, input, Input, output, Output, viewChild } from '@angular/core';
 import { IClient } from '../../../../domain/model/client.model';
-import { ButtonDeleteComponent } from '../button-delete/button-delete.component';
-import { ButtonEditComponent } from "../button-edit/button-edit.component";
 import { ModalComponent } from "shared";
 import { AddClientFormComponent } from '../../forms/add-client-form/add-client-form.component';
 import { ClientsState } from '../../../../domain/state/clients.state';
-import { ButtonComponent } from "../../../../../../shared/src/infrastructure/ui/components/button/button.component";
+import { ButtonComponent } from "shared";
 
 @Component({
   selector: 'lib-get-clients',
-  imports: [ButtonDeleteComponent, ButtonEditComponent, ModalComponent, AddClientFormComponent, ButtonComponent],
+  imports: [ ModalComponent, AddClientFormComponent, ButtonComponent],
   templateUrl: './get-clients.component.html',
   styleUrl: './get-clients.component.scss'
 })
@@ -23,7 +21,9 @@ export class GetClientsComponent {
   public onSelectClient = output<number>();
   public onSubmit = output<IClient>();
 
-  public successMessage = this.clientsState.store().successMessage.snapshot();
+  message(): string {
+    return this.clientsState.store().successMessage.snapshot();
+  }
 
   editClient(id: number) {
     this.onSelectClient.emit(id);

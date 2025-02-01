@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
-import { IClient } from '../../domain/model/client.model';
+import { IClient } from '../../../domain/model/client.model';
 import { urlResources } from 'shared';
 
 @Injectable({

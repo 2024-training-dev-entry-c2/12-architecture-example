@@ -1,11 +1,11 @@
-import { Component, EventEmitter, inject, Input, output, Output } from '@angular/core';
+import { Component, inject, Input, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IClient } from '../../../../domain/model/client.model';
-import { ModalComponent } from 'shared';
+
 
 @Component({
   selector: 'lib-add-client-form',
-  imports: [ReactiveFormsModule, ModalComponent],
+  imports: [ReactiveFormsModule],
   templateUrl: './add-client-form.component.html',
   styleUrl: './add-client-form.component.scss'
 })
@@ -15,7 +15,11 @@ export class AddClientFormComponent {
 
   @Input()
   set client(value: IClient) {
-    this.clientForm.patchValue(value);
+    if (value && value.id) {
+      this.clientForm.patchValue(value);
+    } else {
+      this.clientForm.reset();
+    }
   }
 
   public clientForm = this.formBuilder.group({
@@ -28,9 +32,7 @@ export class AddClientFormComponent {
 
   submit(): void {
     if (!this.clientForm.valid) return
-
     this.onSubmit.emit(this.clientForm.getRawValue());
-    this.clientForm.reset();
 
   }
 }

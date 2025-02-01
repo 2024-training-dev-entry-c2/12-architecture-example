@@ -2,7 +2,8 @@ import { inject, Injectable } from "@angular/core";
 import { State } from "../../domain/state";
 import { IClient } from "../../domain/model/client.model";
 import { Observable, Subscription, tap } from "rxjs";
-import { DeleteClientService } from "../../infrastructure/services/delete-client.service";
+import { DeleteClientService } from "../../infrastructure/services/delete/delete-client.service";
+
 
 @Injectable({
   providedIn: 'root'

@@ -2,7 +2,7 @@ import { inject, Injectable } from "@angular/core";
 import { State } from "../../domain/state";
 import { IClient } from "../../domain/model/client.model";
 import { Observable, Subscription, tap } from "rxjs";
-import { GetClientsService } from "../../infrastructure/services/get-clients.service";
+import { GetClientsService } from "../../infrastructure/services/get/get-clients.service";
 
 @Injectable({
   providedIn: 'root'

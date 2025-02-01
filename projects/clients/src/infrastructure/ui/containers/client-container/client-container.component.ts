@@ -7,6 +7,7 @@ import { AsyncPipe } from '@angular/common';
 import { DeleteClientUsecase } from '../../../../application/clients/delete-client.usecase';
 import { CreateClientUsecase } from '../../../../application/clients/create-client.usecase';
 import { ModalComponent } from 'shared';
+import { UpdateClientUseCase } from '../../../../application/clients/update-client.usecase';
 
 
 @Component({
@@ -16,33 +17,40 @@ import { ModalComponent } from 'shared';
 })
 export class ClientContainerComponent implements OnInit, OnDestroy {
   private readonly _getClientUseCase = inject(GetClientsUsecase);
-  private readonly _deleteClientUsecase = inject(DeleteClientUsecase);
-  private readonly _createClientUsecase = inject(CreateClientUsecase);
+  private readonly _deleteClientUseCase = inject(DeleteClientUsecase);
+  private readonly _createClientUseCase = inject(CreateClientUsecase);
+  private readonly _updateClientUseCase = inject(UpdateClientUseCase);
   public clients$: Observable<IClient[]>;
-  mensajeExito: string | null = null;
+  public currentClient$: Observable<IClient>;
+
 
   ngOnInit(): void {
     this._getClientUseCase.initSubscriptions();
     this._getClientUseCase.execute();
     this.getClients();
-    this._createClientUsecase.initSubscriptions();
-    this._deleteClientUsecase.initSubscriptions();
+    this._createClientUseCase.initSubscriptions();
+    this._updateClientUseCase.initSubscriptions();
+    this._deleteClientUseCase.initSubscriptions();
+    this.currentClient$ = this._updateClientUseCase.currentClient$();
   }
 
   getClients(): void {
     this.clients$ = this._getClientUseCase.clients$();
   }
   deleteClient(id: number): void {
-    this._deleteClientUsecase.execute(id)
+    this._deleteClientUseCase.execute(id)
   }
-  onClientSubmitted({client, modal}:{client: IClient; modal:ModalComponent}){
-    this._createClientUsecase.execute(client, modal);
+  handlePatchClient({ client, modal }: { client: IClient; modal: ModalComponent }) {
+    const usecase = client.id ? this._updateClientUseCase : this._createClientUseCase;
+    usecase.execute(client, modal);
   }
-
   ngOnDestroy(): void {
     this._getClientUseCase.destroySubscriptions();
-    this._createClientUsecase.destroySubscriptions();
-    this._deleteClientUsecase.destroySubscriptions();
+    this._createClientUseCase.destroySubscriptions();
+    this._deleteClientUseCase.destroySubscriptions();
+    this._updateClientUseCase.destroySubscriptions();
   }
-
+  handleSelectClient(id: number){
+    this._updateClientUseCase.selectClient(id);
+  }
 }
