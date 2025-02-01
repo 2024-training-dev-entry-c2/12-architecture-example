@@ -9,7 +9,7 @@ export const routes: Routes = [
             {
                 path: 'client',
                 loadChildren: () => import('../../../clients/src/infrastructure/ui/routes/client.routes').then(m => m.clientsRoutes)
-            },
+            }
         ]
     }
 ];

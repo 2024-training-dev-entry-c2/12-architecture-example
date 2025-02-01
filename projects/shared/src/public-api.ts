@@ -6,3 +6,6 @@ export { StateFactory } from "./domain/state/state.factory";
 export type { IState } from "./domain/model/state.model";
 export type { IColumn } from "./domain/model/column.model";
 export { AnimationWrapperComponent } from "./infrastructure/ui/components/animation-wrapper/animation-wrapper.component";
+export type { IResponse } from "./domain/model/response.model";
+export type { IOptions } from "./domain/model/controls.model";
+export type { IControls } from "./domain/model/controls.model";

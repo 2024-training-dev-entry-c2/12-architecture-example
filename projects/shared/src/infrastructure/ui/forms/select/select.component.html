@@ -1,0 +1,13 @@
+<label class="label" [formGroup]="formGroup()">
+    <span class="label__text">{{ span() }}</span>
+    <select class="label__select" [formControlName]="formControlName()">
+        @for (option of options(); track $index) {
+            <option class="label__option" [value]="option.value">{{ option.label }}</option>
+        }
+    </select>
+    <span class="label__error" aria-live="polite">
+        @if (notValid) {
+            {{ errorMessage}}
+        }
+    </span>
+</label>
