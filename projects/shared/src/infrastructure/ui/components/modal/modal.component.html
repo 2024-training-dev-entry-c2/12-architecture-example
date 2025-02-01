@@ -1,0 +1,7 @@
+<dialog class="modal" [class.modal--open]="open()" aria-labelledby="modal-title" aria-describedby="modal-description"
+  role="dialog">
+  <div class="modal__close" (click)="closeModal()"></div>
+  <div class="modal__content" role="document">
+    <ng-content></ng-content>
+  </div>
+</dialog>

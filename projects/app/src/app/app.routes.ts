@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { MainLayoutComponent } from 'shared';
-import { TestComponent } from './test.component';
 
 export const routes: Routes = [
     {
@@ -8,9 +7,9 @@ export const routes: Routes = [
         component: MainLayoutComponent,
         children: [
             {
-                path: '',
-                component: TestComponent,
-            }
+                path: 'client',
+                loadChildren: () => import('../../../clients/src/infrastructure/ui/routes/client.routes').then(m => m.clientsRoutes)
+            },
         ]
     }
 ];

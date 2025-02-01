@@ -1,0 +1,7 @@
+<lib-animation-wrapper>
+    <lib-table 
+    [title]="'Clientes'" 
+    [data]="clients$ | async" 
+    [columns]="columns"
+    (openModal)="openModal($event)"></lib-table>
+</lib-animation-wrapper>

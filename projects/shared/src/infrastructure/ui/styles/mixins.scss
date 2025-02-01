@@ -61,12 +61,6 @@
   gap: $gap;
 }
 
-@mixin radius($width, $height, $radius) {
-  width: $width;
-  height: $height;
-  border-radius: $radius;
-}
-
 @mixin fixed($padding, $z-index) {
   position: fixed;
   padding: $padding;

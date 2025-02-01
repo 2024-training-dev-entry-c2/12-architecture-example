@@ -1,0 +1,17 @@
+@use "../../../ui/styles/mixins.scss" as mixins;
+section {
+    @include mixins.flex-center-horizontal(center);
+    flex-wrap: wrap;
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 1200px;
+    animation: slideUp 1s ease-in-out, fadeIn 1.5s ease-in-out;
+}
+
+@keyframes slideUp {
+  @include mixins.slide-up
+}
+
+@keyframes fadeIn {
+  @include mixins.fade-in
+}
