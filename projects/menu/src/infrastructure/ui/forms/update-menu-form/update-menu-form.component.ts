@@ -23,7 +23,7 @@ export class UpdateMenuFormComponent {
     if (this.menuEditForm.valid) {
       this.submitEvent.emit(this.menuEditForm.value.menuName);
     } else {
-      console.log('Formulario no válido');
+      console.log('Formulario no valido');
     }
   }
 }
