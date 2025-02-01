@@ -1,15 +1,19 @@
 import { inject, Injectable } from "@angular/core";
-import { delay, finalize, map, Observable, Subscription, tap } from "rxjs";
+import { delay, finalize, map, mergeMap, Observable, Subscription, tap } from "rxjs";
 import { CapitalizeFirstPipe } from "shared";
 import { IDish } from "../../domain/model/dish.model";
 import { State } from "../../domain/state";
 import { UpdateService } from "../../infrastructure/services/dish/update.service";
+import { GetNamesUsecase } from "../menu/get-name.usecase";
+import { CurrencyPipe } from "@angular/common";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UpdateDishUsecase {
   private capitalizeFirstPipe = new CapitalizeFirstPipe();
+  private currencyPipe = new CurrencyPipe('en');
+  private readonly _useCaseName = inject(GetNamesUsecase);
   private readonly _service = inject(UpdateService);
   private readonly _state = inject(State);
   private subscriptions: Subscription;
@@ -33,23 +37,59 @@ export class UpdateDishUsecase {
     this.subscriptions.unsubscribe();
   }
 
+  // execute(dish: IDish) {
+  //   this.subscriptions.add(
+  //     this._service.execute(dish.id, dish).pipe(
+  //       map(result => ({
+  //         ...result,
+  //         details: {
+  //           ...result.details,
+  //           name: this.capitalizeFirstPipe.transform(result.details.name),
+  //           description: this.capitalizeFirstPipe.transform(result.details.description),
+  //         }
+  //       })),
+  //       tap(result => {
+  //         this._state.dishes.message.set(result.message);
+  //         const currentDishes = this._state.dishes.listDishes.snapshot();
+  //         const updatedDishes = currentDishes.map(current => current.id === result.details.id ? result.details : current);
+  //         this._state.dishes.listDishes.set(updatedDishes);
+  //       }),
+  //       delay(2000),
+  //       finalize(() => {
+  //         this._state.dishes.currentDish.set(null);
+  //         this._state.dishes.open.set(false);
+  //         this._state.dishes.message.set(null);
+  //       })
+  //     ).subscribe()
+  //   );
+  // }
+
   execute(dish: IDish) {
     this.subscriptions.add(
       this._service.execute(dish.id, dish).pipe(
-        map(result => ({
-          ...result,
-          details: {
-            ...result.details,
-            name: this.capitalizeFirstPipe.transform(result.details.name),
-            description: this.capitalizeFirstPipe.transform(result.details.description),
-          }
-        })),
-        tap(result => {
-          this._state.dishes.message.set(result.message);
-          const currentDishes = this._state.dishes.listDishes.snapshot();
-          const updatedDishes = currentDishes.map(current => current.id === result.details.id ? result.details : current);
-          this._state.dishes.listDishes.set(updatedDishes);
-        }),
+        mergeMap(result => (
+          this._useCaseName.execute(result.details.id).pipe(
+            map(menu => (
+              {
+                message: result.message,
+                details: {
+                  ...result.details,
+                  name: this.capitalizeFirstPipe.transform(result.details.name),
+                  description: this.capitalizeFirstPipe.transform(result.details.description),
+                  price: this.currencyPipe.transform(result.details.price, 'COP'),
+                  menuName: this.capitalizeFirstPipe.transform(menu.name),
+                  menuId: menu?.id,
+                }
+              })
+            ),
+            tap(result => {
+              this._state.dishes.message.set(result.message);
+              const currentDishes = this._state.dishes.listDishes.snapshot();
+              const updatedDishes = currentDishes.map(current => current.id === result.details.id ? result.details : current);
+              this._state.dishes.listDishes.set(updatedDishes);
+            }),
+          )
+        )),
         delay(2000),
         finalize(() => {
           this._state.dishes.currentDish.set(null);

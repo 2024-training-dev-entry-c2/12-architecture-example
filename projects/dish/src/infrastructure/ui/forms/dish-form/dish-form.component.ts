@@ -1,6 +1,6 @@
 import { Component, inject, input, Input, OnDestroy, OnInit, output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IControls, InputComponent, IOptions, SelectComponent } from 'shared';
+import { CapitalizeFirstPipe, IControls, InputComponent, IOptions, SelectComponent } from 'shared';
 import { ModalUsecase } from '../../../../application/modal.usecase';
 import { IDish } from '../../../../domain/model/dish.model';
 import { CommonModule } from '@angular/common';
@@ -15,6 +15,7 @@ import { GetMenusUsecase } from '../../../../application/menu/get-menus.usecase'
 export class DishFormComponent implements OnInit, OnDestroy {
   private readonly _useCaseModal = inject(ModalUsecase);
   private readonly _useCaseMenus = inject(GetMenusUsecase);
+  private capitalizeFirstPipe = new CapitalizeFirstPipe();
   private formBuilder = inject(FormBuilder);
   public message = input<string>();
   public onSubmit = output<IDish>();
@@ -33,7 +34,7 @@ export class DishFormComponent implements OnInit, OnDestroy {
     this._useCaseMenus.menus$().subscribe(menus => {
       this.menuOptions = (menus ?? []).map(menu => ({
         value: menu.id,
-        name: menu.name
+        name: this.capitalizeFirstPipe.transform(menu.name)
       }));
       this.updateMenuOptions();
     });
