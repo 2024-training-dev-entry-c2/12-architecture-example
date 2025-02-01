@@ -1,0 +1,14 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <lib-form-field
+    [formGroup]="form"
+    controlName="name"
+    label="Nombre"
+    placeholder="Ingresa el nombre del menú"
+    />
+    <lib-theme-button
+    [form]="form"
+    [text]="action()"
+    [theme]="theme()"
+    type="submit"
+    />
+ </form>

@@ -8,8 +8,8 @@ Injectable({
     providedIn : 'root'
 })
 export class DeleteMenuUsecase {
-    private _service = inject(DeleteMenuService);
-    private _state = inject(State);
+    private readonly _service = inject(DeleteMenuService);
+    private readonly _state = inject(State);
     private subscriptions : Subscription;
 
     //#region Observables

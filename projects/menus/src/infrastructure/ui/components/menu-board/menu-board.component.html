@@ -1,0 +1,27 @@
+<table class="menu-table" role="table">
+    <thead class="menu-table__head" role="rowgroup">
+        <tr class="menu-table__column" role="row">
+            @for (title of titles; track $index) {
+                <th class="menu-table__title" role="columnheader">{{title | titlecase}}</th>
+            }
+            <th class="menu-table__title" role="columnheader">Acciones</th>
+        </tr>
+    </thead>
+    <tbody class="menu-table__body" role="rowgroup">
+        @for (menu of menus(); track $index) {
+            <tr class="menu-table__column" role="row">               
+                <td class="menu-table__item" role="cell" [innerHTML]="menu.name | titlecase"></td>
+                <td class="menu-table__item" role="cell">
+                    <lib-dishes-list [dishes]="menu.dishes"/>
+                </td>
+                <td class="menu-table__item" role="cell">
+                    <lib-cell-options 
+                    [idItem]="menu.id" 
+                    (onSelectUpdate)="handleSelectUpdate($event)"
+                    (onSelectDelete)="handleSelectDelete($event)"
+                    />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

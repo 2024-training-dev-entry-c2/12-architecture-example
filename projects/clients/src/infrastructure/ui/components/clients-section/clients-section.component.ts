@@ -12,9 +12,8 @@ import { ClientBoardComponent } from "../client-board/client-board.component";
   styleUrl: './clients-section.component.scss'
 })
 export class ClientsSectionComponent {
-  public titles = ['#', 'Nombre', 'Correo electrónico', '¿Es frecuente?']
   public modalTitle = 'Crear Cliente';
-  public formAction : string = 'Crear Cliente';
+  public formAction : string = 'Crear';
   public formTheme: 'success' | 'warning' = 'success';
   public isEditing = false;
 
@@ -64,7 +63,7 @@ export class ClientsSectionComponent {
   openCreateModal() {
     this.isEditing = false;
     this.modalTitle = 'Crear Cliente';
-    this.formAction = 'Crear Cliente';
+    this.formAction = 'Crear';
     this.formTheme = 'success';
   }
 }

@@ -11,6 +11,6 @@ export class CreateClientService {
   private http = inject(HttpClient);
 
   execute(clientRequest : IClient): Observable<IClient>{
-    return this.http.post<IClient>(urlResources.clients,clientRequest);
+    return this.http.post<IClient>(urlResources.clients, clientRequest);
   }
 }

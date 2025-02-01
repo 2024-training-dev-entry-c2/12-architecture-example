@@ -11,11 +11,13 @@ export class MenusState {
 
     //#region Subjects
     private readonly menus$ = new BehaviorSubject<IMenu[]>(null);
+    private readonly currentMenu$ = new BehaviorSubject<IMenu>(null);    
     //#endregion
 
     store(){
         return {
-            menus: this._factory.state(this.menus$)
+            menus: this._factory.state(this.menus$),
+            currentMenu: this._factory.state(this.currentMenu$)
         };
     }
 }

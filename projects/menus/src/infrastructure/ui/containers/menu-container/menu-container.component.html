@@ -1,0 +1,7 @@
+<lib-menu-section
+[menus]="menus$ | async"
+[currentMenu] = "currentMenu$ | async"
+(onSave)="handlePatchMenu($event)"
+(onSelectToUpdate)="handleSelectUpdateMenu($event)"
+(onDelete)="handleDeleteMenu($event)"
+/>
