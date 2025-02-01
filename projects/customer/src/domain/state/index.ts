@@ -7,7 +7,7 @@ import { CustomersState } from './customers.state';
 export class State {
   private readonly _customers = inject(CustomersState);
 
-  get users() {
+  get customerState() {
     return this._customers.store();
   }
 }
