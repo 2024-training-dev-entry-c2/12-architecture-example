@@ -1,0 +1,15 @@
+@use '../../../styles/variables.scss' as vr;
+@use '../../../styles/mixins.scss' as mx;
+
+.menu{
+    @include mx.flex-container(start,start, 25px);
+    list-style: none;
+
+    &__link{
+        color: vr.$color-back;
+        text-decoration: none;
+        &--active{
+            font-weight: 600;
+        }
+    }
+}

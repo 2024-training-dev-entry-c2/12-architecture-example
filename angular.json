@@ -176,8 +176,8 @@
               "tsConfig": "projects/shared/tsconfig.lib.prod.json"
             },
             "development": {
-              "tsConfig": "projects/shared/tsconfig.lib.json"
-            }
+              "tsConfig": "projects/shared/tsconfig.lib.json"              
+            }            
           },
           "defaultConfiguration": "production"
         },

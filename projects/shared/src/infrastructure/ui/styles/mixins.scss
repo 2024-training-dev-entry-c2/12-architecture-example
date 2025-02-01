@@ -21,6 +21,45 @@
     gap: $gap;
 }
 
+@mixin table-styles {
+    background: vr.$color-white;
+    border-radius: 6px;
+    border-spacing: 0;
+    overflow: hidden;
+    box-shadow: 1px -3px 10px #00000028;
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+
+    &__title {
+        padding: 10px;
+        font-weight: 600;
+        background-color: vr.$color-back;
+        color: vr.$color-white;
+        border: none;
+    }
+
+    &__column {
+        &:hover {
+            background-color: vr.$color-gray-secondary;
+        }
+    }
+
+    &__item {
+        padding: 8px 30px;
+        border-bottom: 1px solid vr.$color-gray-secondary;
+        text-align: center;
+    }
+}
+
+@mixin section-properties {
+    @include flex-container(start, center , 0, column);
+    width: 85%;
+    max-width: 85%;    
+    margin: 0 auto;
+    margin-top: 150px;
+}
+
 @function px-to-rem($px, $base: 16) {
     @return $px / $base * 1rem;
 }

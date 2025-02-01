@@ -1,0 +1,20 @@
+@use '../../styles/variables.scss' as vr;
+
+.theme-button {
+    padding: 10px 25px;
+    border: none;
+    cursor: pointer;
+    
+
+    &--success {
+        background: vr.$color-green;
+    }
+
+    &--warning {
+        background: vr.$color-yellow;
+    }
+
+    &--danger {
+        background: vr.$color-red;
+    }
+}

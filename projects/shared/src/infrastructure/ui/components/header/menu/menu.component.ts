@@ -1,9 +1,10 @@
+import { UpperCasePipe } from '@angular/common';
 import { Component, input } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'lib-menu',
-  imports: [RouterLink, RouterLinkActive],
+  imports: [RouterLink, RouterLinkActive, UpperCasePipe],
   templateUrl: './menu.component.html',
   styleUrl: './menu.component.scss'
 })

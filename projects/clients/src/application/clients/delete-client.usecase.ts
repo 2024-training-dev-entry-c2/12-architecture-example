@@ -34,6 +34,7 @@ export class DeleteClientUsecase {
                     const clients = this._state.clients.clients.snapshot()
                     .filter(client => client.id != id);
                     this._state.clients.clients.set(clients);
+                    this._state.clients.currentClient.set(null);  
                 })                    
             ).subscribe()
         );

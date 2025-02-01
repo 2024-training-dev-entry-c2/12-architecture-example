@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { IClientRequest } from '../../domain/model/client-request.model';
 import { Observable } from 'rxjs';
 import { IClient } from '../../domain/model/client.model';
+import { urlResources } from 'shared';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ import { IClient } from '../../domain/model/client.model';
 export class UpdateClientService {
   private http = inject(HttpClient);
     
-  execute(id: string, clientRequest: IClientRequest): Observable<IClient> {
-    return this.http.put<IClient>(`/clientes/${id}`, clientRequest);
+  execute(id: string, clientRequest: IClient): Observable<IClient> {
+    return this.http.put<IClient>(urlResources.clientOperationsById(id), clientRequest);
   }
 }

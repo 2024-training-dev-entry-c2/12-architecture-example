@@ -1,7 +1,1 @@
-/*
- * Public API Surface of clients
- */
-
-//export * from './lib/clients.service';
-//export * from './lib/clients.component';
-export * from './domain/model/client.model';
+export {clientsRoutes} from './infrastructure/ui/routes/clients.routes';

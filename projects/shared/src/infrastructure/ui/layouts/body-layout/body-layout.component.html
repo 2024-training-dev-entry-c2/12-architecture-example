@@ -1,7 +1,7 @@
-<section class="layout">
-    <lib-header/>
-    <main role="main" class="layout__main container__wrapper">        
-        <ng-content/>
+<div class="body-layout">
+    <lib-header [iconUrl]="iconUrl" [items]="items" [user]="user"/>
+    <main role="main" class="body-layout__main">        
+        <router-outlet/>
     </main>
     <lib-footer/>
-</section>
+</div>

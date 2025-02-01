@@ -1,4 +1,4 @@
-<ul class="menu" role="menu">
+<menu class="menu" role="menu">
     @for (item of items(); track $index) {
         <li class="menu__item" >
             <a class="menu__link"
@@ -9,7 +9,7 @@
             ariaCurrentWhenActive="page"
             [attr.aria-posinset] = "$index +1"
             [attr.aria-setsize] = "items().length"
-            >{{item.text}}</a>
+            >{{item.text | uppercase}}</a>
         </li>
     }
-</ul>
+</menu>

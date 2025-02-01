@@ -1,0 +1,7 @@
+<lib-clients-section
+[clients]="clients$ | async"
+[currentClient] = "currentClient$ | async"
+(onSave)="handlePatchClient($event)"
+(onSelectToUpdate)="handleSelectUpdateClient($event)"
+(onDelete)="handleDeleteClient($event)"
+/>

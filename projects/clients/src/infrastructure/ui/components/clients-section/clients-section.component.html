@@ -1,0 +1,20 @@
+<section class="clients">
+    <h1 class="clients_title">Dashboard de Clientes</h1>
+    <div>
+        <lib-modal [title]="modalTitle" action="Crear cliente" [themeButton]="'success'" (onOpenByBtn)="openCreateModal()" (onClose)="handleCloseModal()" #modal>
+            <lib-client-form 
+            [client] ="currentClient()"
+            [action]="formAction"
+            [theme]="formTheme"
+            (onSubmit)="handleSubmit($event)"            
+            #clientForm/>
+        </lib-modal> 
+        <lib-delete-modal item="cliente" (onDelete)="handleDelete($event)" #deleteModal/>
+        <lib-search-bar [data]="clients()" (onFilteredData)="handleFilteredData($event)"/>
+    </div>
+    <lib-client-board
+    [clients]="filteredClients"
+    (onSelectClientToUpdate)="selectClientToUpdate($event)"
+    (onSelectClientToDelete)="selectClientToDelete($event)"
+    />
+</section>

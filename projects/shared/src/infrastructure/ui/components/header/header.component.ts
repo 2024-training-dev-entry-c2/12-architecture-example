@@ -11,4 +11,6 @@ import { MenuComponent } from './menu/menu.component';
 })
 export class HeaderComponent {
   public iconUrl = input<string>();
+  public items = input<{url: string, text: string}[]>();
+  public user = input<string>();
 }

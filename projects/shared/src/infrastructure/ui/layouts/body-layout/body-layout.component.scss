@@ -1,0 +1,14 @@
+@use '../../styles/variables.scss' as vr;
+@use '../../styles/mixins.scss' as mx;
+
+.layout{
+    width: 100vw;
+    height: 100vh;
+    padding-bottom: 120px;
+    background: linear-gradient(vr.$color-gray, vr.$color-white);
+    overflow: auto;
+
+    &__main{
+        padding-top: 130px;
+    }
+}
