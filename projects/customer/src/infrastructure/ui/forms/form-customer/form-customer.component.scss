@@ -1,22 +1,24 @@
-@use "../../styles/variables.scss" as variables;
-@use "../../styles/mixins.scss" as mixins;
+@use "../../../../../../shared/src/infrastructure/ui/styles/variables.scss" as
+  variables;
+@use "../../../../../../shared/src/infrastructure/ui/styles/mixins.scss" as
+  mixins;
 
-.delete-modal {
+.form-modal {
   position: absolute;
   top: 30%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 540px;
-  height: 310px;
+  width: 700px;
+  height: auto;
+  margin-top: 30px;
   background-color: white;
   border-radius: 12px;
-  border: none;
   padding: 30px;
   box-shadow: 0px 15px 20px 2px hsla(220, 20%, 30%, 0.4);
 
   &__header {
     @include mixins.center-container(space-between);
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 
     button {
       background-color: transparent;
@@ -32,25 +34,14 @@
     color: variables.$color-font;
   }
 
-  &__content {
-    @include mixins.container-column();
-    margin-bottom: 30px;
+  &__form {
+    width: 100%;
   }
 
-  &__icon {
-    font-size: 50px;
-    color: variables.$color-tertiary;
-    margin-bottom: 10px;
-  }
-
-  &__content-title {
-    @include mixins.font(18px, 500);
-    margin-bottom: 10px;
-  }
-
-  &__content-text {
-    @include mixins.font(18px);
-    color: variables.$color-font;
+  &__form-group {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
   }
 
   &__buttons {
@@ -59,8 +50,8 @@
   }
 
   &__cancel-button,
-  &__delete-button,
-  &__open-button {
+  &__save-button,
+  &__create-button {
     @include mixins.font(16px, 500);
     padding: 8px 16px;
     background-color: variables.$color-secondary;
@@ -74,13 +65,17 @@
     }
   }
 
-  &__open-button {
+  &__create-button {
+    @include mixins.item-center-container();
+    gap: 10px;
     background-color: white;
-    color: variables.$color-primary;
-    border: 1px solid variables.$color-primary;
+    color: variables.$color-brown;
+    border: 1px solid variables.$color-brown;
+    margin-bottom: 20px;
 
     &:hover {
-      background-color: variables.$color-primary;
+      background-color: variables.$color-tertiary;
+      border: 1px solid variables.$color-tertiary;
       color: white;
     }
   }

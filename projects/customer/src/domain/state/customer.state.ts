@@ -13,11 +13,13 @@ export class CustomerState {
   private readonly customerResponse$ = new BehaviorSubject<ICustomerResponse[]>(
     []
   );
+  private readonly customer$ = new BehaviorSubject<ICustomerResponse>(null);
   //#endregion
 
   store() {
     return {
       customerResponse: this._factory.state(this.customerResponse$),
+      customer: this._factory.state(this.customer$),
     };
   }
 }

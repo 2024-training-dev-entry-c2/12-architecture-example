@@ -5,7 +5,6 @@ import { ShowHomeComponent } from '../containers/show-home/show-home.component';
 export const homeRoutes: Routes = [
   {
     path: '',
-    component: HomeLayoutComponent,
-    children: [{ path: '', component: ShowHomeComponent }],
+    component: ShowHomeComponent,
   },
 ];

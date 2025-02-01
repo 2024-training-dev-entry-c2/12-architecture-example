@@ -4,10 +4,7 @@
             <h1>Clientes</h1>
         </div>
         <div class="entity__create-button-container">
-            <button aria-expanded="false" class="entity__create-button">
-                <fa-icon [icon]="faPlus"></fa-icon>
-                <span>Crear nuevo cliente</span>
-            </button>
+            <lib-form-customer (onSubmit)="handleSubmit($event)"></lib-form-customer>
         </div>
         <table>
             <thead>

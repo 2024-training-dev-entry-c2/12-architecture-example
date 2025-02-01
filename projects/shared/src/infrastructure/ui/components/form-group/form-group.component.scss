@@ -1,0 +1,29 @@
+@use "../../styles/variables.scss" as variables;
+@use "../../styles/mixins.scss" as mixins;
+
+.form-group {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 30px;
+
+  &__error {
+    color: variables.$color-primary;
+  }
+
+  label {
+    @include mixins.font(16px, 500);
+    color: variables.$color-font;
+  }
+
+  input {
+    @include mixins.full-width(40px);
+    @include mixins.font(16px);
+    margin-top: 8px;
+    padding-left: 10px;
+    border-radius: 12px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  input::placeholder {
+    @include mixins.font(16px);
+  }
+}

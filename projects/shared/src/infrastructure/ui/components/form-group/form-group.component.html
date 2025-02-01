@@ -1,0 +1,7 @@
+<div class="form-group">
+    <label [for]="id">{{ label }}</label>
+    <input [formControl]="control" [type]="type" [id]="id" [placeholder]="placeholder" />
+    <span *ngIf="control?.invalid && isSubmitted" class="form-group__error">
+        Campo inválido.
+    </span>
+</div>

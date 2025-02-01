@@ -7,6 +7,7 @@ export const environment = {
 
 export const urlResources = {
   customer: `${environment.apiUrl}/client`,
+  customerOperationsById: (id: number) => `${environment.apiUrl}/client/${id}`,
   menu: `${environment.apiUrl}/menu`,
   dish: `${environment.apiUrl}/dish`,
   order: `${environment.apiUrl}/order`,

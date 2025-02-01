@@ -15,7 +15,7 @@ export class UpdateCustomerService {
 
   execute(id: number, payload: ICustomer): Observable<ICustomerResponse> {
     return this.http.put<ICustomerResponse>(
-      urlResources.customer + '/' + id,
+      urlResources.customerOperationsById(id),
       payload
     );
   }

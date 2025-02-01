@@ -10,6 +10,6 @@ export class DeleteCustomerService {
   private http = inject(HttpClient);
 
   execute(id: number): Observable<void> {
-    return this.http.delete<void>(urlResources.customer + '/' + id);
+    return this.http.delete<void>(urlResources.customerOperationsById(id));
   }
 }
