@@ -10,14 +10,14 @@ export class CustomersState {
   private readonly _factory = inject(StateFactory);
 
   //#region Subjects
-
   private readonly customers$ = new BehaviorSubject<ICustomer[]>([]);
-
+  private readonly currentCustomer$ = new BehaviorSubject<ICustomer>(null);
   //#endregion
 
   store() {
     return {
       customers: this._factory.state(this.customers$),
+      currentCustomer: this._factory.state(this.currentCustomer$),
     };
   }
 }
