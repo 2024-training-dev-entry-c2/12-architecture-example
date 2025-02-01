@@ -11,3 +11,4 @@ export type { IControls } from './domain/model/controls.model';
 export type { IOptions } from './domain/model/controls.model';
 export { environment } from './infrastructure/ui/environments/environment';
 export { CapitalizeFirstPipe } from './infrastructure/ui/pipes/capitalize-first.pipe';
+export { CastFormGroupPipe } from './infrastructure/ui/pipes/cast-form-group.pipe';
