@@ -2,13 +2,13 @@ import { Component, EventEmitter, inject, Output, output } from '@angular/core';
 import { IClient, IClientRequest } from '../../../../domain/model/client.model';
 
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { FormComponent, FormField, PaginationComponent } from 'shared';
+import { FormComponent, FormField } from 'shared';
 // import { FormComponent, FormField, PaginationComponent } from '../../../../../../shared/src/public-api';
 
 
 @Component({
   selector: 'lib-create-client-form',
-  imports: [PaginationComponent, FormComponent, ReactiveFormsModule],
+  imports: [ FormComponent, ReactiveFormsModule],
   templateUrl: './create-client-form.component.html',
   styleUrl: './create-client-form.component.scss',
 })
