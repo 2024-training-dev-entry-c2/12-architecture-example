@@ -82,16 +82,17 @@ export class ClientContainerComponent implements OnInit, OnDestroy{
    }
  
    confirmModal(): void {
-     if (this.modalType === 'delete') {
-       this.deleteClient();
-     } else  if (this.modalType === 'edit' && this.clientEditForm) {
-       const updatedClient = this.clientEditForm.getFormData();
-       if (updatedClient) {
-         this.updateClient(updatedClient.clientName);
-       }
-     }
-     this.isModalOpen.set(false);
-   }
+    if (this.modalType === 'delete') {
+      this.deleteClient();
+    } else if (this.modalType === 'edit' && this.clientEditForm) {
+      const updatedClient = this.clientEditForm.getFormData();
+      if (updatedClient) {
+        this.updateClient(updatedClient);
+      }
+    }
+    this.isModalOpen.set(false);
+  }
+  
  
    closeModal(): void {
      this.isModalOpen.set(false);
@@ -106,12 +107,13 @@ export class ClientContainerComponent implements OnInit, OnDestroy{
      }
    }
  
-   updateClient(updatedClientName: string): void {
-     const clientId = this.selectedClientId();
-     if (clientId && updatedClientName) {
-       this._updateUsecase.updateClient(clientId, updatedClientName, this.client$).subscribe(() => {
-         this.loadClients();
-       });
-     }
-   }
+   updateClient(updatedClient: IClient): void {
+    const clientId = this.selectedClientId();
+    if (clientId) {
+      this._updateUsecase.updateClient(clientId, updatedClient, this.client$).subscribe(() => {
+        this.loadClients();
+      });
+    }
+  }
+  
 }

@@ -11,7 +11,7 @@ export class UpdateClientUseCase {
   private readonly _updateService = inject(UpdateClientService);
   private readonly _listUsecase = inject(ListClientsUseCase);
 
-updateClient(clientId: number, clientName: string, clients$: Observable<IClient[]>): Observable<IClient> {
+  updateClient(clientId: number, updatedClientData: IClient, clients$: Observable<IClient[]>): Observable<IClient> {
     return clients$.pipe(
       first(),
       map(clients => clients.find(client => client.idClient === clientId)), 
@@ -22,7 +22,7 @@ updateClient(clientId: number, clientName: string, clients$: Observable<IClient[
 
         const updatedClient: IClient = {
           ...clientToUpdate,
-          clientName: clientName 
+          ...updatedClientData
         };
 
         return this._updateService.updateClient(clientId, updatedClient).pipe(
@@ -34,4 +34,5 @@ updateClient(clientId: number, clientName: string, clients$: Observable<IClient[
       })
     );
   }
+
 }
