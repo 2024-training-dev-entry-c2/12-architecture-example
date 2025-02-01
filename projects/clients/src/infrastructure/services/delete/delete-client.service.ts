@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { urlResources } from 'shared';
+import { IClient } from '../../../domain/model/client.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,14 +10,13 @@ import { Observable } from 'rxjs';
 export class DeleteClientService {
 
   private http = inject(HttpClient);
-  private urlbase = 'http://localhost:8080/api/cliente';
 
-  execute(id: number): Observable<void> {
+  execute(id : number): Observable<void> {
     const confirmed = window.confirm(
       '¿Estás seguro de que deseas eliminar a este cliente?'
     );
     if (confirmed) {
-      return this.http.delete<void>(`${this.urlbase}/${id}`);
+      return this.http.delete<void>(urlResources.clientsOperationsById(id.toString()));
     } else {
       return new Observable<void>();
     }

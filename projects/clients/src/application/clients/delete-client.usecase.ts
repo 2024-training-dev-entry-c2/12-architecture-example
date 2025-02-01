@@ -3,6 +3,7 @@ import { State } from "../../domain/state";
 import { IClient } from "../../domain/model/client.model";
 import { Observable, Subscription, tap } from "rxjs";
 import { DeleteClientService } from "../../infrastructure/services/delete/delete-client.service";
+import { ModalComponent } from "shared";
 
 
 @Injectable({
@@ -14,8 +15,8 @@ export class DeleteClientUsecase {
   private subscriptions: Subscription = new Subscription();
 
   //#region Observables
-  clients$(): Observable<IClient[]> {
-    return this._state.clients.clients.$();
+  currentClient$(): Observable<IClient> {
+    return this._state.clients.currentClient.$();
   }
   //#endregion
 
@@ -36,10 +37,15 @@ export class DeleteClientUsecase {
             const currentClients = this._state.clients.clients.snapshot();
             const updatedClients = currentClients.filter(client => client.id !== id);
             this._state.clients.clients.set(updatedClients);
+            this._state.clients.successMessage.set('¡Cliente eliminado con éxito!');
           })
         )
         .subscribe()
     );
+  }
+  selectClient(id: number): void {
+    const currentClient = this._state.clients.clients.snapshot().find(client => client.id === id)
+    this._state.clients.currentClient.set(currentClient);
   }
   //#endregion
 

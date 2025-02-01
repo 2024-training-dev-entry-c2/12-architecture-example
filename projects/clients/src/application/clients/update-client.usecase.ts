@@ -13,8 +13,8 @@ export class UpdateClientUseCase {
   private readonly _state = inject(State);
   private subscriptions: Subscription;
 
-   //#region Observables
-   currentClient$(): Observable<IClient> {
+  //#region Observables
+  currentClient$(): Observable<IClient> {
     return this._state.clients.currentClient.$();
   }
 
@@ -31,26 +31,33 @@ export class UpdateClientUseCase {
   }
   execute(client: IClient, modal: ModalComponent): void {
     this.subscriptions.add(
-    this._service.updateClient(client)
-    .pipe(
-      tap((client) => {
-        const clients = this._state.clients.clients.snapshot();
-            const newClient = clients.map(c => c.id === client.id ? client : c);
+      this._service
+        .updateClient(client)
+        .pipe(
+          tap((client) => {
+            const clients = this._state.clients.clients.snapshot();
+            const newClient = clients.map((c) =>
+              c.id === client.id ? client : c
+            );
             this._state.clients.clients.set(newClient);
-            this._state.clients.successMessage.set('¡Cliente actualizado con éxito!')
-            this._state.clients.currentClient.set(null);
+            this._state.clients.successMessage.set(
+              '¡Cliente actualizado con éxito!'
+            );
 
-        setTimeout(() => {
-          modal.toggle();
-          this._state.clients.successMessage.set('')
-        }, 1000);
-      }),
-    ).subscribe()
-  )
+            setTimeout(() => {
+              modal.toggle();
+              this._state.clients.currentClient.set(null);
+              this._state.clients.successMessage.set('');
+            }, 1000);
+          })
+        )
+        .subscribe()
+    );
   }
   selectClient(id: number): void {
-    const currentClient = this._state.clients.clients.snapshot().find(client => client.id === id);
-    console.log("select dentro de caso de uso")
+    const currentClient = this._state.clients.clients
+      .snapshot()
+      .find((client) => client.id === id);
     this._state.clients.currentClient.set(currentClient);
   }
   //#endregion

@@ -30,7 +30,8 @@ export class GetClientsComponent {
     this.modal().toggle();
   }
   deleteClient(id: number): void {
-   this.onDeleteClient.emit(Number(id));
+    console.log("Intentando eliminar cliente con ID:", id);
+   this.onDeleteClient.emit(id);
   }
   handleSubmit(client: IClient) {
     this.onCreateClient.emit({client, modal: this.modal()});

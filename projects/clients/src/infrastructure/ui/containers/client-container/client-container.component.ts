@@ -23,7 +23,6 @@ export class ClientContainerComponent implements OnInit, OnDestroy {
   public clients$: Observable<IClient[]>;
   public currentClient$: Observable<IClient>;
 
-
   ngOnInit(): void {
     this._getClientUseCase.initSubscriptions();
     this._getClientUseCase.execute();
@@ -38,7 +37,8 @@ export class ClientContainerComponent implements OnInit, OnDestroy {
     this.clients$ = this._getClientUseCase.clients$();
   }
   deleteClient(id: number): void {
-    this._deleteClientUseCase.execute(id)
+    //this._deleteClientUseCase.selectClient(id);
+    this._deleteClientUseCase.execute(id);
   }
   handlePatchClient({ client, modal }: { client: IClient; modal: ModalComponent }) {
     const usecase = client.id ? this._updateClientUseCase : this._createClientUseCase;

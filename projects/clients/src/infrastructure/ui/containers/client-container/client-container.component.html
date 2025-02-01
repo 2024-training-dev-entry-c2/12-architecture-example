@@ -6,7 +6,8 @@
     [clients]="clients$ | async"
     [currentClient]="currentClient$ | async"
     (onCreateClient)="handlePatchClient($event)"
-    (onSelectClient)=" handleSelectClient($event)"
+    (onSelectClient)="handleSelectClient($event)"
+    (onDeleteClient)="deleteClient($event)"
     ></lib-get-clients>
   </section>
 </section>
