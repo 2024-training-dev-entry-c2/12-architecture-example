@@ -24,6 +24,9 @@
       "clients": [
         "./dist/clients"
       ],
+      "restaurant": [
+        "./dist/restaurant"
+      ],
       "shared": [
         "./dist/shared"
       ],

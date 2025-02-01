@@ -7,6 +7,10 @@ export const routes: Routes = [
     component: DashboardLayoutComponent,
     children: [
       {
+        path:'',
+        loadChildren: () => import('restaurant').then(r => r.restaurantRoutes)
+      },
+      {
         path: 'clientes',
         loadChildren: () => import('clients').then(m => m.clientsRoutes)
       }
