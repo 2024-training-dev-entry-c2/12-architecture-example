@@ -10,23 +10,6 @@ import { CommonModule } from '@angular/common';
   styleUrl: './modal.component.scss'
 })
 export class ModalComponent {
-  // @Output() closeEvent = new EventEmitter<void>();
-  // @Output() submitEvent = new EventEmitter<void>();
-
-  // @ViewChild('contentContainer', { read: ViewContainerRef, static: true })
-  // viewContainerRef!: ViewContainerRef;
-
-  // title?: string;
-  // buttonName?: string;
-
-  // close() {
-  //   this.closeEvent.emit();
-  // }
-
-  // submit() {
-  //   this.submitEvent.emit();
-  // }
-
   @Input() title!: string;
   @Input() buttonName!: string;
   @Input() content!: string;

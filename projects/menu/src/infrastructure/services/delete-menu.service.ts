@@ -1,16 +1,15 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'shared';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeleteMenuService {
-private baseUrl = 'http://localhost:8080/api/menus';
-
-  constructor(private http: HttpClient) {}
+  private readonly _http = inject(HttpClient);
 
   deleteMenu(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+    return this._http.delete<void>(environment.apiUrl + `/menus/${id}`);
   }
 }
