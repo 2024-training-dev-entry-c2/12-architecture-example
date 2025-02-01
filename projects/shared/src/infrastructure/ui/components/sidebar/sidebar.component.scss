@@ -55,4 +55,17 @@
       text-shadow: 1px 1px 3px variables.$color-background;
     }
   }
+  &__link{
+    background: none;
+    border: none;
+    color: variables.$color-background;
+    font-family: variables.$font-family-secondary;
+    font-weight: bold;
+
+    &:hover{
+      text-shadow: 0.5px 1px 5px white;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  }
 }

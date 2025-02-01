@@ -1,8 +1,10 @@
 @use "../../styles/variables.scss" as variables;
 
-.clients{
+
+.clients {
   width: 70dvw;
-  &__mensaje-exito{
+  padding: 20px;
+  &__mensaje-exito {
     color: variables.$color-background-button;
     font-size: 1.4rem;
     font-weight: bold;
@@ -11,12 +13,12 @@
   }
   &__content {
     padding-right: 5px;
-     h1{
+    h1 {
       color: variables.$color-secondary;
       text-align: center;
       margin: 0 0 10px 0;
       font-size: 20px;
-     }
+    }
   }
 
   &__table {
@@ -46,7 +48,7 @@
     tr:hover {
       color: variables.$color-gradients;
     }
-    hr{
+    hr {
       opacity: 0;
     }
   }
