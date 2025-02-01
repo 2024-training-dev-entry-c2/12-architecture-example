@@ -6,7 +6,10 @@
 <lib-modal *ngIf="isModalOpen()" [title]="modalTitle" [buttonName]="modalButton" (submitEvent)="confirmModal()"
     (closeEvent)="closeModal()">
     <ng-container *ngIf="modalType === 'edit'">
-        <lib-client-form #clientEditForm [isEditForm]="true" [currentClientName]="currentClientName"></lib-client-form>
+        <lib-client-form #clientEditForm [isEditForm]="true" [currentClientName]="currentClientName"
+            [currentEmail]="currentEmail" [currentPhoneNumber]="currentPhoneNumber" [currentAddress]="currentAddress"
+            [currentRegistrationDate]="currentRegistrationDate" [currentFrequentUser]="currentFrequentUser"
+            [currentVip]="currentVip"></lib-client-form>
     </ng-container>
     <ng-container *ngIf="modalType === 'delete'">
         <p>¿Estas seguro de que deseas eliminar este Cliente?</p>

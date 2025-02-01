@@ -35,6 +35,12 @@ export class ClientContainerComponent implements OnInit, OnDestroy{
    public modalButton: string = '';
  
    public currentClientName = '';
+   public currentEmail = '';
+   public currentPhoneNumber = '';
+   public currentAddress = '';
+   public currentRegistrationDate = new Date();
+   public currentFrequentUser = false;
+   public currentVip = false;
    public clientName = '';
    public modalType: string = '';
  
@@ -77,6 +83,12 @@ export class ClientContainerComponent implements OnInit, OnDestroy{
      this.modalTitle = 'Editar Cliente';
      this.modalButton = 'Actualizar';
      this.currentClientName = client.clientName;
+     this.currentEmail = client.email;
+     this.currentPhoneNumber = client.phoneNumber;
+     this.currentAddress = client.address;
+     this.currentRegistrationDate = client.registrationDate;
+     this.currentFrequentUser = client.frequentUser;
+     this.currentVip = client.vip;
      this.modalType = 'edit';
      this.isModalOpen.set(true);
    }

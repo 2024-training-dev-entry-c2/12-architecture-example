@@ -32,18 +32,19 @@ private readonly fb = inject(FormBuilder);
   });
 
   ngOnChanges(): void {
-    if (this.isEditForm && this.currentClientName ) {
-      this.form.patchValue(
-        { clientName: this.currentClientName,
-          email: this.currentEmail,
-          phoneNumber: this.currentPhoneNumber,
-          address: this.currentAddress,
-          registrationDate: this.currentRegistrationDate,
-          frequentUser: this.currentFrequentUser,
-          vip: this.currentVip
-        });
+    if (this.isEditForm) {
+      this.form.patchValue({
+        clientName: this.currentClientName,
+        email: this.currentEmail,
+        phoneNumber: this.currentPhoneNumber,
+        address: this.currentAddress,
+        registrationDate: this.currentRegistrationDate,
+        frequentUser: this.currentFrequentUser,
+        vip: this.currentVip
+      });
     }
   }
+  
 
   getFormData(): IClient | null {
     if (!this.form.valid) {
