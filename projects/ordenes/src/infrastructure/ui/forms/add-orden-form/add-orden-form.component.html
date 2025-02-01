@@ -1,1 +1,60 @@
-<p>add-orden-form works!</p>
+<section class="orden-form" role="form" aria-labelledby="formTitle">
+  <h2 id="formTitle">{{ ordenForm.getRawValue().id ? 'Editar Orden' : 'Crear Orden'}}</h2>
+  <form [formGroup]="ordenForm" >
+    <div class="orden-form__form-group" id="group1">
+      <div class="orden-form__input-inline">
+        <label>Total Precio:</label>
+        <input formControlName="priceTotal" type="number" step="0.01" aria-required="true"/>
+      </div>
+      <div>
+        <label>ID del Cliente:</label>
+        <input formControlName="clientId" type="number" aria-required="true"/>
+      </div>
+    </div>
+    <div class="orden-form__form-group">
+      <div class="orden-form__input-inline">
+        <label>Estado de la Orden:</label>
+        <select formControlName="statusOrder">
+          @for(status of statusOptions; track status){
+          <option [value]="status">{{ status }}</option>
+          }
+        </select>
+      </div>
+    </div>
+    <div formArrayName="items">
+        <div *ngFor="let item of items.controls; let i=index" [formGroupName]="i">
+          <div class="orden-form__form-group" >
+            <label for="item-id-{{ i }}"></label>
+            <label for="item-name-{{ i }}">Nombre del Plato:</label>
+            <input id="item-name-{{ i }}" formControlName="name" type="text" />
+            <div class="orden-form__inline-group">
+              <div class="orden-form__input-inline">
+                <label for="item-price-{{ i }}">Precio:</label>
+                <input id="item-price-{{ i }}"  formControlName="price" type="number" step="0.01" aria-required="true"/>
+              </div>
+              <div class="orden-form__input-inline">
+                <label for="item-quantity-{{ i }}">Cantidad:</label>
+                <input id="item-quantity-{{ i }}" formControlName="quantity" type="number" aria-required="true"/>
+              </div>
+            </div>
+            <div class="orden-form__inline-group">
+              <div class="orden-form__input-inline">
+                <label for="item-restaurantId-{{ i }}">ID del Restaurante:</label>
+                <input id="item-restaurantId-{{ i }}" formControlName="restaurantId"type="number" aria-required="true"/>
+              </div>
+              <div class="orden-form__input-inline">
+                <label for="item-menuId-{{ i }}">ID del Menú:</label>
+                <input id="item-menuId-{{ i }}" formControlName="menuId" type="number" aria-required="true"/>
+              </div>
+            </div>
+          </div>
+          <button type="button" class="orden-form__remove-btn"(click)="removeItem(i)">Eliminar Item</button>
+        </div>
+    </div>
+  <div class="orden-form__form-actions">
+    <button type="button" (click)="addItem()">Agregar Item</button>
+    <button type="submit" id="submit">{{ ordenForm.getRawValue().id ? 'Editar Orden' : 'Crear Orden'}}</button>
+    </div>
+  </form>
+</section>
+

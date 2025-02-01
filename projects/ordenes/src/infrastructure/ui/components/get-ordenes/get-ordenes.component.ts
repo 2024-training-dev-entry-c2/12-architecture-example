@@ -17,7 +17,7 @@ export class GetOrdenesComponent {
   public ordenes = input.required<IViewOrden[]>();
   public modal = viewChild<ModalComponent>('modal');
   public onSubmit = output<IViewOrden>();
-
+  public onSelection = output<string>();
   message(): string {
     return this.ordenState.store().successMessage.snapshot();
   }
@@ -41,4 +41,5 @@ export class GetOrdenesComponent {
   handleSubmit(orden: IViewOrden){
     this.onSubmit.emit(orden);
   }
+
 }
