@@ -1,0 +1,7 @@
+<lib-form-by-id-client (clientSubmit)="handleGetId($event)"></lib-form-by-id-client>
+
+@if(client){
+<lib-get-by-id-client-comp [client]="client$ | async">
+
+</lib-get-by-id-client-comp>
+}

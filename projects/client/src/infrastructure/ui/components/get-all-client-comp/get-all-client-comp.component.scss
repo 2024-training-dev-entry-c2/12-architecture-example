@@ -1,0 +1,56 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
+
+.get-all-client {
+
+    &__title {
+        text-align: center;
+        font-size: 33px;
+        margin-bottom: 60px;
+    }
+
+
+    &__table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+
+        thead{
+            background-color: #615A57;
+            color: white;
+        }
+
+        tbody{
+            font-weight: 500;
+            
+        }
+
+        th,
+        td {
+            padding: 10px;
+            vertical-align: middle;
+        }
+    }
+
+    &__buttons{
+       display: flex;
+       @include mixins.contColumn(5px, 0px);
+    }
+
+    &__button{
+        @include mixins.button();
+        color: #49D676;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+
+    &__button--secundary{
+        @include mixins.button();
+        color: rgb(199, 31, 31);
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+
+}

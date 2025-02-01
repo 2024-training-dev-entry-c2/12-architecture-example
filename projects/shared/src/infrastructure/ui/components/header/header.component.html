@@ -1,0 +1,12 @@
+<header class="header" role="banner" >
+    <div>
+        <h1><a rol="button" aria-label="title" class="header__restaurant-name" routerLink=''>(Sazón)²</a></h1>
+    </div>
+    <nav class="header__navigation" role="navigation" aria-label="header menu">
+        <ul class="header__options">
+            @for(option of options; track $index){
+                <li><a rol="button" class="header__option" [routerLink]="option.url">{{option.name}}</a></li>
+            }
+        </ul>
+    </nav>
+</header>

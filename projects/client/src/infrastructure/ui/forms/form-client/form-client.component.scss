@@ -1,0 +1,43 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
+
+.form {
+    @include mixins.form(center, 40px, 30px);
+    @include mixins.styleContainer(#615A57, variables.$colorWhite, 30px, 20px);
+    width: 520px;
+    height: 500px;
+
+    &__title {
+        font-size: 27px;
+    }
+
+    &__label {
+        display: flex;
+        gap: 15px
+    }
+
+    &__input {
+        border-radius: 5px;
+        width: 250px;
+        height: 25px;
+        border: 1px solid #ccc;
+
+        &:focus {
+            outline: none;
+            border-color: white;
+            box-shadow: 0 0 10px black;
+        }
+    }
+
+    &__button {
+        border: 1px solid #ccc;
+        font-size: 15px;
+        font-weight: 600;
+        cursor: pointer;
+        @include mixins.styleContainer(#F0E7E4,#000000, 10px 22px 10px 22px,40px);
+        &:hover{
+            @include mixins.styleContainer(#888888,#FFFFFF, 10px 22px 10px 22px,40px);
+        }
+    }
+
+}

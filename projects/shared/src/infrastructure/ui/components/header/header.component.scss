@@ -1,0 +1,27 @@
+@use '../../styles/mixins.scss' as mixins;
+@use '../../styles/variables.scss' as variables;
+
+.header{
+    @include mixins.contLine(space-between);
+    @include mixins.styleContainer(variables.$colorLightBeige,#000000, 30px, 10px);
+    
+    &__restaurant-name{
+        text-decoration: none;
+        font-size: 40px;
+        color: #000000;
+    }
+
+    &__options{
+        @include mixins.contLine(space-between);
+        gap: 60px;
+        list-style: none;
+    }
+
+    &__option{
+        @include mixins.button();
+        &:hover{
+            @include mixins.styleContainer(#888888,#FFFFFF, 10px 22px 10px 22px,40px);
+        }
+    }
+
+}

@@ -1,0 +1,33 @@
+@mixin contLine($justify: start) {
+    display: flex;
+    align-items: center;
+    justify-content: $justify;
+}
+
+@mixin contColumn($gap, $padding) {
+    flex-direction: column;
+    gap: $gap;
+    padding: $padding;
+}
+
+@mixin styleContainer($background, $fontColor, $padding, $bordeRadius) {
+    background-color: $background;
+    color: $fontColor;
+    padding: $padding;
+    text-decoration: none;
+    border-radius: $bordeRadius;
+}
+
+@mixin form($justify: start, $gap, $padding){
+    margin-top: 10%;
+    @include contLine($justify); 
+    @include contColumn($gap, $padding);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+@mixin button(){
+    text-decoration: none;
+    color: #000000;
+    font-size: 17px;
+    font-weight: 500;
+}

@@ -1,0 +1,12 @@
+<section class="layout-client" aria-label="Client layout">
+    <aside class="layout-client__aside-left" aria-label="Sidebar">
+        <nav class="layout-client__nav" aria-label="Main navigation">
+            <ul class="layout-client__options" role="menubar">
+                @for(option of options; track $index){
+                <li class="layout-client__option"><a role="button" [routerLink]="option.url">{{option.name}}</a></li>
+                }
+            </ul>
+        </nav>
+    </aside>
+    <main class="layout-client__main" aria-label="Main content"><router-outlet></router-outlet></main>
+</section>

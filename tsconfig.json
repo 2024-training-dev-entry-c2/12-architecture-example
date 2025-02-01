@@ -21,6 +21,15 @@
       "admin": [
         "./dist/admin"
       ],
+      "client": [
+        "./dist/client"
+      ],
+      "dish": [
+        "./dist/dish"
+      ],
+      "shared": [
+        "./dist/shared"
+      ],
       "users": [
         "./dist/users"
       ]

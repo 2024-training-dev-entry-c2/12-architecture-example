@@ -1,0 +1,15 @@
+@use '../../styles/mixins.scss' as mixins;
+@use '../../styles/variables.scss' as variables;
+
+.footer{
+    @include mixins.styleContainer(variables.$colorLightBeige,variables.$colorMediumGray, 8px, 10px);
+    
+    &__title{
+        font-weight: 400;
+        letter-spacing: 1.2px;
+    }
+
+    &__author{
+        font-weight: 700;
+    }
+}

@@ -1,0 +1,14 @@
+<!-- <form [formGroup]="form" class="get-by-id-form" (ngSubmit)="Submit()" aria-label="form">
+    <label class="get-by-id-form__label">
+        <span>ID:</span>
+        <input type="text" formControlName="id" class="get-by-id-form__input" aria-required="true">
+    </label>
+    <button class="get-by-id-form__button" aria-label="send form">Enviar</button>
+</form> -->
+<form [formGroup]="form" class="get-by-id__form" (ngSubmit)="Submit($event)" aria-label="form">
+    <label class="get-by-id__label">
+        <span>ID:</span>
+        <input type="text" formControlName="id" class="get-by-id__input" aria-required="true">
+    </label>
+    <button type="submit" class="get-by-id__button" aria-label="send form">Enviar</button>
+</form>
