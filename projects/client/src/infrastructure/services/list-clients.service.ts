@@ -1,18 +1,17 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IClient } from '../../domain/model/clients.model';
+import { environment } from 'shared';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ListClientsService {
-private baseUrl = 'http://localhost:8080/api/clients';
-
-  constructor(private http: HttpClient) {}
+  private readonly _http = inject(HttpClient);
 
   getClients(): Observable<IClient[]> {
-    return this.http.get<IClient[]>(this.baseUrl);
+    return this._http.get<IClient[]>(environment.apiUrl + '/clients');
   }
 
 }

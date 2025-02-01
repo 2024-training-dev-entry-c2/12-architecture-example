@@ -1,17 +1,15 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { observableToBeFn } from 'rxjs/internal/testing/TestScheduler';
+import { environment } from 'shared';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeleteClientService {
-private baseUrl = 'http://localhost:8080/api/clients';
-
-  constructor(private http: HttpClient) {}
+  private readonly _http = inject(HttpClient);
 
   deleteClient(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.baseUrl}/${id}`);
+    return this._http.delete<void>(environment.apiUrl + `/clients/${id}`);
   }
 }

@@ -25,8 +25,8 @@ export class MainComponent {
 
   getActions() {
     return [
-      { label: 'Editar', link: '/edit', type: 'edit', icon: 'svg/edit.svg#edit' },
-      { label: 'Eliminar', link: '/delete', type: 'delete', icon: 'svg/delete.svg#delete' }
+      { label: 'Editar', type: 'edit', icon: 'svg/edit.svg#edit' },
+      { label: 'Eliminar', type: 'delete', icon: 'svg/delete.svg#delete' }
     ]
   }
 

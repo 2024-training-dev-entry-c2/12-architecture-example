@@ -1,7 +1,8 @@
-<lib-header title="Clientes" buttonText="Agregar Cliente" iconPath="svg/plus.svg#plus"
-    [modalContent]="clientModalTemplate" (actionConfirmed)="submitClient()"></lib-header>
-
-<ng-template #clientModalTemplate>
+<lib-header title="Clientes" buttonText="Agregar Cliente" iconPath="svg/plus.svg#plus" modalTitle="Agregar Nuevo Menu"
+    (actionConfirmed)="submitClient()">
+    <lib-client-form></lib-client-form>
+</lib-header>
+<!-- <ng-template #clientModalTemplate>
     <div class="modal">
         <label for="clientName">Nombre del Cliente</label>
         <input class="modal__input" [(ngModel)]="clientName" id="clientName" placeholder="Nombre del cliente" />
@@ -24,4 +25,4 @@
             <input class="modal__input modal__input--checkbox" [(ngModel)]="vip" id="vip" type="checkbox" />
         </div>
     </div>
-</ng-template>
+</ng-template> -->

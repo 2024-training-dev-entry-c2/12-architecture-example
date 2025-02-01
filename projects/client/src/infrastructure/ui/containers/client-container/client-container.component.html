@@ -1,1 +1,14 @@
 <lib-client-header (onSubmitClient)="addClient($event)"></lib-client-header>
+<lib-share (searchQueryChange)="updateSearchQuery($event)"></lib-share>
+<lib-client-main [clients]="client$ | async" (deleteClientEvent)="openDeleteModal($event)"
+    (editClientEvent)="openEditModal($event)"></lib-client-main>
+
+<lib-modal *ngIf="isModalOpen()" [title]="modalTitle" [buttonName]="modalButton" (submitEvent)="confirmModal()"
+    (closeEvent)="closeModal()">
+    <ng-container *ngIf="modalType === 'edit'">
+        <lib-client-form #clientEditForm [isEditForm]="true" [currentClientName]="currentClientName"></lib-client-form>
+    </ng-container>
+    <ng-container *ngIf="modalType === 'delete'">
+        <p>¿Estas seguro de que deseas eliminar este Cliente?</p>
+    </ng-container>
+</lib-modal>

@@ -4,9 +4,9 @@ import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'lib-main-layout',
   imports: [RouterOutlet],
-  templateUrl: './main-layout.component.html',
-  styleUrl: './main-layout.component.scss'
+  templateUrl: './client-main-layout.component.html',
+  styleUrl: './client-main-layout.component.scss'
 })
-export class MainLayoutComponent {
+export class ClientMainLayoutComponent {
 
 }
