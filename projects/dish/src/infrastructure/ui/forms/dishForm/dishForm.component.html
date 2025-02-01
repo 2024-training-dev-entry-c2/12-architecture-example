@@ -1,0 +1,39 @@
+<form
+  class="clientForm__form"
+  aria-label="Formulario para crear menú"
+  [formGroup]="formDish"
+  (ngSubmit)="submit()"
+>
+  <h2 class="clientForm__title">
+    {{ formDish.getRawValue().id ? "Editar Cliente" : "Crear Cliente" }}
+  </h2>
+  <div class="clientForm__form-group">
+    <input
+      type="text"
+      formControlName="name"
+      class="clientForm__input"
+      placeholder="nombre del menú"
+    />
+  </div>
+
+  <div class="clientForm__form-group">
+    <input
+      type="text"
+      formControlName="description"
+      class="clientForm__input"
+      placeholder="descripción del menú"
+    />
+  </div>
+
+  <div class="clientForm__form-group">
+    <input
+      type="number"
+      formControlName="price"
+      class="clientForm__input"
+      placeholder="descripción del menú"
+    />
+  </div>
+  <button type="submit" class="clientForm__submit">
+    {{ formDish.getRawValue().id ? "Editar" : "Crear" }}
+  </button>
+</form>

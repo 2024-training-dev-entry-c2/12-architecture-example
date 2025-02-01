@@ -1,0 +1,191 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
+
+.dishes {
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 500;
+    color: variables.$typografy-color;
+  }
+
+  &__add-btn {
+    position: absolute;
+    right: 25%;
+    background: variables.$primary-color;
+    color: variables.$color-white;
+    border: 1px solid variables.$color-white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: variables.$tercery-color;
+      transition: background-color 0.2s;
+      color: variables.$typografy-color;
+      border: 1px solid variables.$color-white;
+      font-weight: bold;
+    }
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__grid {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;
+    height: 100vh;
+  }
+}
+
+.dish-card {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  border-radius: 12px;
+
+  overflow: auto;
+
+  &__badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    background-color: #991b1b;
+
+  }
+
+  &__content {
+    background: white;
+    padding: 1.5rem;
+    border: 1px solid variables.$primary-color;
+    width: 200px;
+    height: 160px;
+    border-radius: 8px;
+
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a1f36;
+    margin-bottom: 0.5rem;
+  }
+
+  &__description {
+    color: #64748b;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  &__details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  &__price {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: variables.$primary-color;
+  }
+
+  &__category {
+    font-size: 0.875rem;
+    color: variables.$typografy-color;
+    padding: 0.25rem 0.75rem;
+    background-color: variables.$tercery-color;
+    border-radius: 9999px;
+  }
+
+  &__ingredients {
+    margin-bottom: 1rem;
+
+    &-title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: #1a1f36;
+      margin-bottom: 0.5rem;
+    }
+
+    &-list {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+
+      li {
+        font-size: 0.875rem;
+        color: #64748b;
+        background-color: #f1f5f9;
+        padding: 0.25rem 0.5rem;
+        border-radius: 4px;
+      }
+    }
+  }
+
+  &__actions {
+    position: relative;
+    top: 1px;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+    border-top: 1px solid #e2e8f0;
+  }
+
+  &__btn {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+
+    &--edit {
+      color: #4299e1;
+
+      &:hover {
+        background-color: rgba(66, 153, 225, 0.1);
+      }
+    }
+
+    &--delete {
+      color: #e53e3e;
+
+      &:hover {
+        background-color: rgba(229, 62, 62, 0.1);
+      }
+    }
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

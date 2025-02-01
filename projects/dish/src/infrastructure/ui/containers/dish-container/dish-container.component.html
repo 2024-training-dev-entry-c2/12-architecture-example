@@ -1,0 +1,8 @@
+<lib-panel-dish
+  [allDishes]="dishs$ | async"
+  [currentDish]="currentDish$ | async"
+  (onCreateDish)="hanglePatchDish($event)"
+  (onSelectDish)="handleSelectDish($event)"
+  (onDeleteDish)="handleDeleteDish($event)"
+>
+</lib-panel-dish>

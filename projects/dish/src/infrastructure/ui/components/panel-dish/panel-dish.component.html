@@ -1,0 +1,45 @@
+<section class="dishes" aria-label="pagina Platos">
+  <lib-modal [action]="'Crear plato'" #modal>
+    <lib-dish-form
+      [dishes]="currentDish()"
+      (onSubmit)="handleSubmit($event)"
+    ></lib-dish-form>
+  </lib-modal>
+  <header
+    class="dishes__header"
+    aria-label="header Platos contiene navegación y botón para agregar plato"
+  >
+    <h1 class="dishes__title">Platos</h1>
+  </header>
+
+  <div class="dishes__grid" aria-label="grid de platos">
+    <h1>Aqui estan los platos</h1>
+    <button (click)="ver()">ver platos</button>
+    <article class="dish-card">
+      @for(plato of allDishes(); track $index) {
+      <h1>Aqui estan los platos x2</h1>
+      <div class="dish-card__content">
+        <h3 class="dish-card__title">{{ plato.name }}</h3>
+        <p class="dish-card__description">
+          {{ plato.description }}
+        </p>
+
+        <div class="dish-card__details">
+          <div class="dish-card__price">{{ plato.price | currency }}</div>
+          <div class="dish-card__category">Plato tipico</div>
+        </div>
+
+        <div class="dish-card__actions">
+          <button class="dish-card__btn dish-card__btn--edit">
+            <mat-icon aria-hidden="false" fontIcon="edit"></mat-icon>
+          </button>
+
+          <button class="dish-card__btn dish-card__btn--delete">
+            <mat-icon aria-hidden="false" fontIcon="delete"></mat-icon>
+          </button>
+        </div>
+      </div>
+      }
+    </article>
+  </div>
+</section>
