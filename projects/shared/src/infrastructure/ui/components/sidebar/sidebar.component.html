@@ -1,0 +1,17 @@
+<nav class="navbar">
+  <menu class="navbar__menu">
+    @for (item of menus(); track $index) {
+    <lib-menu-item
+      [imageSrc]="item.iconSrc"
+      [title]="item.menuTitle"
+      [href]="item.href"
+    ></lib-menu-item>
+    }
+  </menu>
+  <div class="sidebar__actions">
+    <button class="sidebar__actions__button" (click)="logOut()">
+      <img src="assets/shared/svg/logout_side.svg" aria-hidden="true" alt="" width="40" height="40" />
+      <span>Logout</span>
+    </button>
+  </div>
+</nav>

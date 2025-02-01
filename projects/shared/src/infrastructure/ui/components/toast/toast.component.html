@@ -1,0 +1,14 @@
+<div class="toast" [class]="{
+    'toast--info': toastData()?.type == 'info',
+    'toast--success': toastData()?.type == 'success',
+    'toast--error': toastData()?.type == 'error',
+    'toast--show': show()}" 
+     role="alert" aria-live="assertive"
+     >
+  <div class="toastheader">
+    <h2 class="toasttitle">{{ toastData()?.title }}</h2>
+  </div>
+  <div class="toastbody">
+    <p class="toast__description">{{ toastData()?.message }}</p>
+  </div>
+  </div>

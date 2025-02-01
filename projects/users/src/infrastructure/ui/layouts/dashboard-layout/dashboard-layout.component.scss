@@ -1,0 +1,34 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #f0f0f0; 
+    --header-height: 100px;
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: 20px;
+    max-width: calc(
+      100% - 250px
+    );
+    margin: 0 auto;
+  }
+  
+  .main {
+    display: flex;
+    flex: 1;
+    background-image: url('../../assets/images/green-paint-white_2_1.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: bottom;
+  }
+  
+  
+  
+  .container {
+    padding-top: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

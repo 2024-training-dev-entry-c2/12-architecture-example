@@ -1,0 +1,18 @@
+.login-layout {
+    display: flex;
+    height: 100vh;
+  
+    &__image {
+      flex: 1;
+    }
+  
+    &__form {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f8f9fa;
+    }
+  }
+
+  
