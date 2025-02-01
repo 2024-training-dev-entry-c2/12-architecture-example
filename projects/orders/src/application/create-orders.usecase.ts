@@ -32,7 +32,8 @@ export class CreateOrderUseCase {
         .addOrder(order)
         .pipe(
           tap((result) => {
-            this._state.orders.order.set(result);
+            const orders = this._state.orders.orders.snapshot();
+            this._state.orders.orders.set([...orders, result]);
           })
         )
         .subscribe()

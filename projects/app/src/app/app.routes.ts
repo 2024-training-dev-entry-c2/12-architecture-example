@@ -17,13 +17,12 @@ export const routes: Routes = [
       {      
         path: 'menu',   
         loadChildren: () => import('menus').then((m) => m.menusRoutes),
-      },   
-
-      { 
+      }, 
+      {  
         path: 'orders', 
         loadChildren: () => import('orders').then((m) => m.OrderRoutes),
       },  
-      {   
+      {    
         path: 'dashboard', 
         loadChildren: () => import('dashboard').then((m) => m.dashboardRoutes),
       }  

@@ -1,31 +1,27 @@
-<lib-pagination [tabs]="tabsList" title="Clients Data" [activeTab]="0">
-    <div class="form_update" tabContent0>
-        <form [formGroup]="addOrderForm" aria-label="form to update Client" class="form__update-order">
-            <lib-client-selector  class="order-form__group" [clients]="clients" [formGroup]="addOrderForm" (clientSelected)="getClient($event)"></lib-client-selector>
+<form [formGroup]="addOrderForm" aria-label="form to update Client" class="form__update-order">
+    <lib-client-selector class="order-form__group" [clients]="clients" [formGroup]="addOrderForm"
+        (clientSelected)="getClient($event)"></lib-client-selector>
 
-            <div class="order-form__group">
-                <label for="localDate" class="order-form__label">Date:</label>
-                <input id="localDate" type="date" formControlName="localDate" class="order-form__input" />
-            </div>
-            <lib-menu-selector  class="order-form__group" [menusList]="menus" [formGroup]="addOrderForm"
-                (dishfoodsSelected)="addDish($event)"></lib-menu-selector>
-                @if (dishList.length > 0) {
-            <div class="order-form__group">
-                <h3 class="order-form__subheading">Selected Dishes:</h3>
-                <ul class="order-form__list">
-                    @for(item of dishList; track $index) {
-                    <li class="order-form__list-item">
-                        {{item.name}} - {{item.price | currency}}
-                        <button type="button" (click)="removeDish(item)"
-                            class="order-form__remove-button">Remove</button>
-                    </li>
-                    }
-                </ul>
-            </div>
-        }
-            <div class="order-form__actions">
-                <button type="button" (click)="submit()"class="order-form__submit-button">Submit Order</button>
-            </div>
-        </form>
+    <div class="order-form__group">
+        <label for="localDate" class="order-form__label">Date:</label>
+        <input id="localDate" type="date" formControlName="localDate" class="order-form__input" />
     </div>
-</lib-pagination>
+    <lib-menu-selector class="order-form__group" [menusList]="menus" [formGroup]="addOrderForm"
+        (dishfoodsSelected)="addDish($event)"></lib-menu-selector>
+    @if (dishList.length > 0) {
+    <div class="order-form__group">
+        <h3 class="order-form__subheading">Selected Dishes:</h3>
+        <ul class="order-form__list">
+            @for(item of dishList; track $index) {
+            <li class="order-form__list-item">
+                {{item.name}} - {{item.price | currency}}
+                <button type="button" (click)="removeDish(item)" class="order-form__remove-button">Remove</button>
+            </li>
+            }
+        </ul>
+    </div>
+    }
+    <div class="order-form__actions">
+        <button type="button" (click)="submit()" class="order-form__submit-button">Submit Order</button>
+    </div>
+</form>

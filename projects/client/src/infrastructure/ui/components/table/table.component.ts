@@ -41,7 +41,6 @@ public updateClient = output<{client: IClientRequest; id: number}>();
     console.log(user);
     this.createClient.emit(user);
   }
- 
 
   sendToDelete(id: number) {
     this.deleteClient.emit(id);

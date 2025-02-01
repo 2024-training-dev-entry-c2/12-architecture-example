@@ -8,6 +8,7 @@ import { GetMenusListUseCase, IMenu } from 'menus';
 import { Observable } from 'rxjs';
 import { UpdateOrderUsecase } from '../../../../application/update-order.usecase';
 import { AsyncPipe } from '@angular/common';
+import { CreateOrderUseCase } from '../../../../application/create-orders.usecase';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class ListOrderComponent {
   private readonly _useCaseClients = inject(GetUsersListUsecase);
   private readonly _useCasemenus = inject(GetMenusListUseCase);
   private readonly __useCaseUpdate = inject(UpdateOrderUsecase);
+  private readonly __useCasecreate = inject(CreateOrderUseCase);
   public orders$: Observable<IOrder[]>;
   public menu$: Observable<IMenu[]>;
   public client$: Observable<IClient[]>;    
@@ -32,6 +34,7 @@ export class ListOrderComponent {
     this._useCaseClients.initSubscriptions();
     this._useCasemenus.initSubscriptions();
     this.__useCaseUpdate.initSubscriptions();
+    this.__useCasecreate.initSubscription()
     this.__useCaseList.execute();
     this.orders$ = this.__useCaseList.orders$();
     this._useCasemenus.execute();
@@ -45,6 +48,12 @@ export class ListOrderComponent {
     this.__useCaseList.destroySubscriptions();
     this._useCaseClients.destroySubscriptions();
     this._useCasemenus.destroySubscriptions();
+    this.__useCasecreate.destroySubcriptions();
+    this.__useCaseUpdate.destroySubscriptions();
+  }
+  handleCreateOrder(order: IOrderRequest) {
+    console.log(order);
+    this.__useCasecreate.execute(order);  
   }
   handleUpdateOrder({ order, id }: { order: IOrderRequest; id: number }) {
     this.__useCaseUpdate.execute(order,id);

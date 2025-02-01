@@ -12,10 +12,11 @@ import { PaginationComponent, TableComponent } from 'shared';
 import { UpdateOrderFormComponent } from '../../forms/update-order-form/update-order-form.component';
 import { IMenu } from 'menus';
 import { IClient } from 'client';
+import { CreateOrderFormComponent } from '../../forms/create-order-form/create-order-form.component';
 
 @Component({
   selector: 'lib-orders-table',
-  imports: [PaginationComponent, TableComponent, UpdateOrderFormComponent],
+  imports: [PaginationComponent, TableComponent, UpdateOrderFormComponent, CreateOrderFormComponent],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css',
 })
@@ -26,6 +27,7 @@ export class TableOrdersComponent {
   public currentOrder = input<IOrder>();
   public updateOrderData = output<{ order: IOrderRequest; id: number }>();
   public onSelectOrder = output<number>();
+  public createOrderData = output<IOrderRequest>();
   public orderId: number = 0;
   public order: any[] = [];
   @Output() deleteId = new EventEmitter<number>();
@@ -59,7 +61,10 @@ export class TableOrdersComponent {
   closeModal() {
     this.showModal = false;
   }
-
+ createOrder(order: IOrderRequest){
+  console.log(order);
+   this.createOrderData.emit(order);
+ }
   UpdateOrder(order: any) {
     console.log(order);
     this.updateOrderData.emit({ order: order, id: this.orderId });

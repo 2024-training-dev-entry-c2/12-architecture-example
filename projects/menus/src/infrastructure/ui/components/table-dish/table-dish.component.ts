@@ -31,10 +31,7 @@ export class TableDishComponent {
   }
   redirectToDishUpdate($event: number) {
     this.dishId = $event;
-    console.log(this.item());
     this.onSelectDish.emit($event);
-    console.log(this.currentDish());
-
     this.showModalUpdate = true;
   }
   deleteDish($event: number) {
@@ -51,10 +48,6 @@ export class TableDishComponent {
     this.updateDish.emit({ dish, id: this.dishId });
   }
   getMenuDishes() {
-    console.log(this.item());
-    
-    console.log(this.dishes());
-    
     return this.dishes().filter((dish) => dish.menu === this.item().name);
   }
   closeModal() {

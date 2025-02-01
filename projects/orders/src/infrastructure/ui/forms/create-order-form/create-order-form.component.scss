@@ -1,5 +1,7 @@
-@use "../../../../../../shared/src/infrastructure/ui/styles/mixins.scss" as mixins;
-@use "../../../../../../shared/src/infrastructure/ui/styles/variables.scss" as vars;
+@use "../../../../../../shared/src/infrastructure/ui/styles/mixins.scss" as
+  mixins;
+@use "../../../../../../shared/src/infrastructure/ui/styles/variables.scss" as
+  vars;
 $primary-color: #4a90e2;
 $error-color: #e74c3c;
 $text-color: #333;
@@ -16,13 +18,14 @@ $transition-time: 0.3s;
 // Estilo del formulario de pedidos
 
 .form_update {
-    padding: 1rem 3rem;
+  padding: 1rem 3rem;
+  background-color: var(--background-color);
 }
 .order-form {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  background-color: $background-color;
+  background-color: var(--background-color);
   padding: 2rem;
   border-radius: $border-radius;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -35,7 +38,7 @@ $transition-time: 0.3s;
 
   &__label {
     font-weight: bold;
-    color: var( --title-color);
+    color: var(--title-color);
   }
 
   &__input,
@@ -65,7 +68,7 @@ $transition-time: 0.3s;
     font-size: 1.25rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
-    color: var( --title-color);
+    color: var(--title-color);
   }
 
   &__list {

@@ -1,5 +1,10 @@
 import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
-import {FormArray, FormBuilder,ReactiveFormsModule, Validators,} from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { MenuSelectorComponent } from '../control-select/menu-selector/menu-selector.component';
 import { ClientSelectorComponent } from '../control-select/client-selector/client-selector.component';
 import { IClient } from 'client';
@@ -15,13 +20,11 @@ import { CurrencyPipe } from '@angular/common';
     MenuSelectorComponent,
     ClientSelectorComponent,
     ReactiveFormsModule,
-    PaginationComponent,
-    CurrencyPipe
+    CurrencyPipe,
   ],
   templateUrl: './create-order-form.component.html',
   styleUrl: './create-order-form.component.scss',
-  
-}) 
+})
 export class CreateOrderFormComponent {
   @Output() createOrder = new EventEmitter<IOrderRequest>();
   @Input() menus: IMenu[] = [];
@@ -29,18 +32,6 @@ export class CreateOrderFormComponent {
   @Input() order: IOrder;
   public dishList: IDish[] = [];
   public clientSelected: number = 0;
-  tabsList = [
-    {
-      title: 'Add Order',
-      tabContent: '"assets/icons/form-svgrepo-com.svg#icon-twitter"',
-      link: '/orders/add',
-    },
-    {
-      title: 'List',
-      tabContent: '"assets/icons/form-svgrepo-com.svg#icon-list"',
-      link: '/orders',
-    },
-  ];
   private formBuilder = inject(FormBuilder);
   public addOrderForm = this.formBuilder.group({
     clientId: [0, [Validators.required]],
@@ -76,5 +67,4 @@ export class CreateOrderFormComponent {
       console.log(this.addOrderForm);
     }
   }
-
 }

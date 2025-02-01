@@ -35,9 +35,6 @@ export class TableCardComponent {
 
   selectTab(index: number, menuId: any): void {
     this.activeTab = index;
-    console.log(this.activeTab);
-    console.log(menuId);
-
     this.selectMenu.emit({ id: menuId.id, name: menuId.name });
   }
   deleteMenu(id: number) {

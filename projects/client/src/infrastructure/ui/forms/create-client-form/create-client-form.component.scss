@@ -15,11 +15,13 @@
   }
   
   .form{
+    background-color: var(--background-color);
     &__client{
+      background-color: var(--background-color);
     padding: 2rem 2rem;
     border-radius: 5px;
     box-shadow:  4px 6px rgba(0, 0, 0, 0.1); 
-    background-color: #fff;
+    color: var(--text-color);
     border:1px solid #ccc;
     }
     &__button{
