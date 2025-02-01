@@ -6,3 +6,10 @@ export interface ICustomer {
   phone: string;
   orderIds: number[];
 }
+
+export interface ICustomerCreateRequest {
+  name: string;
+  lastName: string;
+  email: string;
+  phone: string;
+}
