@@ -2,8 +2,8 @@ export { MainLayoutComponent } from './infrastructure/ui/layouts/main-layout/mai
 export { BodyComponent } from './infrastructure/ui/components/body/body.component';
 export { TableComponent } from './infrastructure/ui/components/table/table.component';
 export { ModalComponent } from './infrastructure/ui/components/modal/modal.component';
-export { InputComponent } from './infrastructure/ui/components/input/input.component';
-export { SelectComponent } from './infrastructure/ui/components/select/select.component';
+export { InputComponent } from './infrastructure/ui/forms/input/input.component';
+export { SelectComponent } from './infrastructure/ui/forms/select/select.component';
 export { StateFactory } from './domain/state/state.factory';
 export type { IState } from './domain/model/state.model';
 export type { IResponse } from './domain/model/response.model';
