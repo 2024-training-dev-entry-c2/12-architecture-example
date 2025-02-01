@@ -11,6 +11,10 @@ export const routes: Routes = [
         loadChildren: () => import('restaurant').then(r => r.restaurantRoutes)
       },
       {
+        path:'ordenes',
+        loadChildren: ()=> import('ordenes').then(o=> o.ordenesRoutes)
+      },
+      {
         path: 'clientes',
         loadChildren: () => import('clients').then(m => m.clientsRoutes)
       }
