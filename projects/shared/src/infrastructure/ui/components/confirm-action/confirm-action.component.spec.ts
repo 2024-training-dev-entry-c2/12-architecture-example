@@ -10,9 +10,9 @@ describe('ConfirmActionComponent', () => {
   });
 
   it('should create', () => {
-      const fixture = TestBed.createComponent(ConfirmActionComponent);
-      const component = fixture.componentInstance;
-      expect(component).toBeTruthy();
+    const fixture = TestBed.createComponent(ConfirmActionComponent);
+    const component = fixture.componentInstance;
+    expect(component).toBeTruthy();
   });
 
   it('should render the title', () => {
@@ -52,14 +52,14 @@ describe('ConfirmActionComponent', () => {
 
   it('should emit the clickCancel', () => {
     const fixture = TestBed.createComponent(ConfirmActionComponent);
-  const component = fixture.componentInstance;
-  const compiled = fixture.nativeElement as HTMLElement;
-  const cancelButton = compiled.querySelector('.confirm__button--cancel') as HTMLElement;
-  
-  spyOn(component.clickCancel, 'emit');
+    const component = fixture.componentInstance;
+    const compiled = fixture.nativeElement as HTMLElement;
+    const cancelButton = compiled.querySelector('.confirm__button--cancel') as HTMLElement;
 
-  cancelButton.click();
+    spyOn(component.clickCancel, 'emit');
 
-  expect(component.clickCancel.emit).toHaveBeenCalled();
+    cancelButton.click();
+
+    expect(component.clickCancel.emit).toHaveBeenCalled();
   });
 });

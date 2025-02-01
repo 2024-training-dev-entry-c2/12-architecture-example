@@ -1,23 +1,17 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 
 import { AsideLayoutComponent } from './aside-layout.component';
 
 describe('AsideLayoutComponent', () => {
-  let component: AsideLayoutComponent;
-  let fixture: ComponentFixture<AsideLayoutComponent>;
-
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AsideLayoutComponent]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(AsideLayoutComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    }).compileComponents();
   });
 
   it('should create', () => {
+    const fixture = TestBed.createComponent(AsideLayoutComponent);
+    const component = fixture.componentInstance;
     expect(component).toBeTruthy();
   });
 });
