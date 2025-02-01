@@ -1,0 +1,45 @@
+<div class="form__group" [formGroup]="formGroup()!">
+  <label [for]="controlName()">{{ label() }}</label>
+
+  @if (fieldType() === 'select') {
+  <select
+    [id]="controlName()"
+    [formControlName]="controlName()"
+    class="form-control"
+  >
+    @for (option of options(); track $index) {
+    <option [value]="option.value">
+      {{ option.label }}
+    </option>
+    }
+  </select>
+  } @else {
+  <input
+    [type]="type()"
+    [id]="controlName()"
+    [formControlName]="controlName()"
+    class="form-control"
+  />
+
+  } @if(formGroup()){ @if (formGroup()!.get(controlName())?.invalid &&
+  (formGroup()!.get(controlName())?.dirty ||
+  formGroup()!.get(controlName())?.touched)) {
+  <span class="form__error">
+    @if (formGroup()!.get(controlName())?.errors?.['required']) {
+    <span>{{ label() }} is required.</span>
+    } @if (formGroup()!.get(controlName())?.errors?.['email']) {
+    <span>Invalid email format.</span>
+    } @if (formGroup()!.get(controlName())?.errors?.['insufficientBalance']) {
+    <span
+      >{{ label() }} Insufficient balance
+    </span>
+    } @if (formGroup()!.get(controlName())?.errors?.['maxlength']) {
+    <span
+      >{{ label() }} must contain no more than
+      {{formGroup()!.get(controlName())?.errors?.['maxlength'].requiredLength}}
+      of characters.</span
+    >
+    }
+  </span>
+  } }
+</div>

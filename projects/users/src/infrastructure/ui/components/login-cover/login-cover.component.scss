@@ -1,0 +1,27 @@
+.cover {
+  
+    &__illustration-container {
+      width: 100%;
+      .illustration {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+
+    &__text-container {
+      text-align: center;
+      padding: 20px;
+
+      & h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        color: #244037;
+        font-weight: 700;
+      }
+
+      & p {
+        font-size: 1em;
+        color: #658078;
+      }
+    }
+  }

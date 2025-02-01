@@ -1,0 +1,135 @@
+@use "sass:color";
+.form {
+  width: 100%;
+  min-width: 400px;
+  padding: 40px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 20px 16px 3px 0px #658078;
+  &__logo-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    & .logo {
+      width: 70%;
+      max-width: 200px;
+    }
+  }
+  &__group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+
+    & label {
+      font-size: 1em;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    & input {
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+
+      &:focus {
+        outline: none;
+        border-color: #5cb85c;
+      }
+    }
+  }
+
+  &__forgot-password-link {
+    text-align: right;
+    margin-bottom: 20px;
+    & a {
+      text-decoration: none;
+      color: #5cb85c;
+    }
+  }
+
+  &__sign-in-btn {
+    background-color: #244037;
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: color.adjust(#244037, $lightness: -10%);
+    }
+  }
+
+  &__separator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    color: #bbb;
+
+    & span {
+      margin: 0 10px;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background-color: #ddd;
+    }
+  }
+
+  &__google-sign-in-btn {
+    background-color: white;
+    color: #666;
+    border: 1px solid #ddd;
+    padding: 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
+      background-color: #f2f2f2;
+    }
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+      background-image: url("/assets/svg/add-new-user-svgrepo-com.svg");
+      background-size: cover;
+    }
+  }
+  &__create-account-link {
+    text-align: center;
+    margin-top: 20px;
+    color: #666;
+
+    & a {
+      color: #5cb85c;
+      text-decoration: none;
+    }
+  }
+}
+
+.form__error {
+  color: red;
+  font-size: 0.7rem;
+  display: flex;
+  margin-top: 4px;
+  justify-content: end;
+}
+
+.form__sign-in-btn:disabled {
+  background-color: #ddd;
+  color: #888;
+  cursor: not-allowed;
+  opacity: 0.7;
+}

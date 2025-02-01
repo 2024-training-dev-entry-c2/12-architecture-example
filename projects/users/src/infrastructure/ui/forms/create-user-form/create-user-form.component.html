@@ -1,1 +1,27 @@
-<button (click)="submit()">Create User</button>
+<form class="form" [formGroup]="createUserForm" (ngSubmit)="submit()">
+    <div class="form__logo-container">
+      <img
+        src="/assets/users/images/account_manager_logo_bg.png"
+        alt="Mastery Hub Logo"
+        class="logo"
+      />
+    </div>
+    @for (item of formFields; track $index) {
+    <lib-input-control
+      [label]="item.label"
+      [controlName]="item.controlName"
+      [formGroup]="item.formGroup!"
+      [fieldType]="item.type"
+      [options]="item.options"
+      [type]="item.inputType || 'text'"
+    ></lib-input-control>
+    }
+    <button
+      class="form__sign-in-btn"
+      type="submit"
+      [disabled]="trySend && createUserForm.invalid"
+    >
+      Create user
+    </button>
+  </form>
+  

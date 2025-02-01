@@ -1,13 +1,13 @@
-import { inject, Injectable } from "@angular/core";
-import { UsersState } from "./users.state";
+import { Injectable, inject } from "@angular/core";
+import { UserState } from "./user.state";
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class State {
-  private readonly _users = inject(UsersState);
+    private readonly _users = inject(UserState);
 
-  get users() {
-    return this._users.store();
-  }
+    get users() {
+        return this._users.store();
+    }
 }

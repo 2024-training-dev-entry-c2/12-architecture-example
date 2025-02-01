@@ -1,0 +1,68 @@
+
+.toast {
+    position: fixed;
+    z-index: 14;
+    top: 70px;
+    right: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    min-width: 300px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s, visibility 0.2s;
+
+    &--show{
+        display: block;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 15px;
+        padding-bottom: 0px;
+    }
+
+    &title {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #ffff;
+    }
+
+    &close-button {
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: #b8b8b8;
+        transition: color 0.2s ease;
+
+            &:hover {
+               color: #ffff;
+             }
+    }
+
+    &body {
+        color: #ffff;
+       padding: 15px;
+    }
+
+    &__description{
+        margin: 0;
+    }
+
+    &--info {
+        background-color: cornflowerblue;
+    }
+
+    &--success {
+        background-color: green;
+    }
+
+    &--error {
+        background-color: rgb(215, 75, 75);
+    }
+}

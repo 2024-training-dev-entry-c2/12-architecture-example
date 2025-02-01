@@ -18,8 +18,11 @@
     "target": "ES2022",
     "module": "ES2022",
     "paths": {
-      "admin": [
-        "./dist/admin"
+      "accounts": [
+        "./dist/accounts"
+      ],
+      "shared": [
+        "./dist/shared"
       ],
       "users": [
         "./dist/users"
