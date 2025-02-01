@@ -37,33 +37,6 @@ export class UpdateDishUsecase {
     this.subscriptions.unsubscribe();
   }
 
-  // execute(dish: IDish) {
-  //   this.subscriptions.add(
-  //     this._service.execute(dish.id, dish).pipe(
-  //       map(result => ({
-  //         ...result,
-  //         details: {
-  //           ...result.details,
-  //           name: this.capitalizeFirstPipe.transform(result.details.name),
-  //           description: this.capitalizeFirstPipe.transform(result.details.description),
-  //         }
-  //       })),
-  //       tap(result => {
-  //         this._state.dishes.message.set(result.message);
-  //         const currentDishes = this._state.dishes.listDishes.snapshot();
-  //         const updatedDishes = currentDishes.map(current => current.id === result.details.id ? result.details : current);
-  //         this._state.dishes.listDishes.set(updatedDishes);
-  //       }),
-  //       delay(2000),
-  //       finalize(() => {
-  //         this._state.dishes.currentDish.set(null);
-  //         this._state.dishes.open.set(false);
-  //         this._state.dishes.message.set(null);
-  //       })
-  //     ).subscribe()
-  //   );
-  // }
-
   execute(dish: IDish) {
     this.subscriptions.add(
       this._service.execute(dish.id, dish).pipe(
