@@ -2,8 +2,7 @@ import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { IDishRequest } from '../../../../public-api';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ModalComponent } from '../../../../../../shared/src/public-api';
-
+import { ModalComponent } from 'shared';
 
 @Component({
   selector: 'lib-create-dish-form',

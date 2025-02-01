@@ -26,6 +26,7 @@ export class TableDishComponent {
   public dishId: number = 0;
   public showModal = false;
   public showModalUpdate = false;
+  
   redirectToDish() {
     this.showModal = true;
   }
