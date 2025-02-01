@@ -1,6 +1,6 @@
-<header class="header">
+<header class="header" role="banner" aria-roledescription="cabecera">
     <h2>{{ title }}</h2>
-    <button class="header__button" (click)="openModal()">
+    <button role="button" aria-roledescription="boton de accion" class="header__button" (click)="openModal()">
         <i class="header__icon" aria-hidden="true">
             <svg>
                 <use [attr.xlink:href]="iconPath"></use>

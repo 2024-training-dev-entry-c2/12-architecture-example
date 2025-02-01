@@ -1,5 +1,5 @@
 <main class="menu">
-    <table class="menu__table" aria-label="table">
+    <table class="menu__table" aria-label="table" role="table" aria-roledescription="tabla">
         <thead>
             <tr>
                 @for (header of getHeaders(); track header.label) {
@@ -11,7 +11,7 @@
             @for (menu of menus(); track $index) {
             <tr>
                 <td>{{ menu.idMenu }}</td>
-                <td>{{ menu.menuName }}</td>
+                <td>{{ menu.menuName | titlecase}}</td>
                 <td>
                     <button class="accordion" (click)="toggleAccordion($event)">Ver platos del Menu</button>
                     <div class="panel">

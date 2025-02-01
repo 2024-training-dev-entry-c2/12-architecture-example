@@ -1,10 +1,10 @@
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule, DatePipe, LowerCasePipe, TitleCasePipe, UpperCasePipe } from '@angular/common';
 import { Component, EventEmitter, input, Output } from '@angular/core';
 import { IClient } from '../../../../domain/model/clients.model';
 
 @Component({
   selector: 'lib-client-main',
-  imports: [DatePipe, CommonModule],
+  imports: [DatePipe, CommonModule, UpperCasePipe, TitleCasePipe, LowerCasePipe],
   templateUrl: './client-main.component.html',
   styleUrl: './client-main.component.scss'
 })

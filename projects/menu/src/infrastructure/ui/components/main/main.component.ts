@@ -1,11 +1,11 @@
 import { Component, EventEmitter, Input, input, Output } from '@angular/core';
 import { IMenu } from '../../../../domain/model/menus.model';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'lib-main',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, TitleCasePipe],
   templateUrl: './main.component.html',
   styleUrl: './main.component.scss'
 })

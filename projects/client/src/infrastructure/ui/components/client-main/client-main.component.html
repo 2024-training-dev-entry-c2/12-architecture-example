@@ -1,5 +1,5 @@
 <main class="client">
-    <table class="client__table" aria-label="table">
+    <table class="client__table" aria-label="table" role="table" aria-roledescription="tabla">
         <thead>
             <tr>
                 @for (header of getHeaders(); track header.label) {
@@ -11,13 +11,13 @@
             @for (client of clients(); track $index) {
             <tr>
                 <td>{{ client.idClient }}</td>
-                <td>{{ client.clientName }}</td>
-                <td>{{ client.email }}</td>
+                <td>{{ client.clientName | titlecase}}</td>
+                <td>{{ client.email | lowercase }}</td>
                 <td>{{ client.phoneNumber }}</td>
-                <td>{{ client.address }}</td>
+                <td>{{ client.address | lowercase }}</td>
                 <td>{{ client.registrationDate | date: 'shortDate' }}</td>
-                <td>{{ client.frequentUser ? 'Si' : 'No' }}</td>
-                <td>{{ client.vip ? 'Si' : 'No' }}</td>
+                <td>{{ client.frequentUser ? 'Si' : 'No' | uppercase}}</td>
+                <td>{{ client.vip ? 'Si' : 'No' | uppercase}}</td>
                 <td class="client__action">
                     @for (action of getActions(); track action.label) {
                     <a class="client__button client__button--{{ action.type }}" (click)="action.type === 'delete' ? openDeleteModal(client.idClient) :  

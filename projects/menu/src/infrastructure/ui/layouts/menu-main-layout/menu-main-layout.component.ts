@@ -5,7 +5,7 @@ import { RouterOutlet } from '@angular/router';
   selector: 'lib-menu-main-layout',
   imports: [RouterOutlet],
   templateUrl: './menu-main-layout.component.html',
-  styleUrl: './menu-main-layout.component.css'
+  styleUrl: './menu-main-layout.component.scss'
 })
 export class MenuMainLayoutComponent {
 
