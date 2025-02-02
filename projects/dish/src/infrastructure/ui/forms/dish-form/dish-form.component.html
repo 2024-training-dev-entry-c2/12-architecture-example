@@ -1,0 +1,20 @@
+<form [formGroup]="form" class="dish-form" (ngSubmit)="submit()">
+    <label class="dish-form__label">
+        <span class="dish-form__text">Nombre</span>
+        <input class="dish-form__input" type="text" formControlName="name">
+    </label>
+
+    <label class="dish-form__label">
+        <span class="dish-form__text">Precio</span>
+        <input class="dish-form__input" type="number" formControlName="price" min="0">
+    </label>
+
+    <label class="dish-form__label">
+        <span class="dish-form__text">Menú ID</span>
+        <input class="dish-form__input" type="number" formControlName="menuId" min="1">
+    </label>
+
+    <button type="submit" [disabled]="!form.valid">
+        {{ form.getRawValue().id ? 'Actualizar' : 'Crear' }}
+    </button>
+</form>
