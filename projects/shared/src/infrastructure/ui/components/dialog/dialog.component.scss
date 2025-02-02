@@ -1,0 +1,30 @@
+.toast {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1000;
+
+  &--success {
+    background-color: #4caf50;
+    color: white;
+  }
+
+  &--error {
+    background-color: #f44336;
+    color: white;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+  }
+
+  &__message {
+    margin-right: 10px;
+  }
+}

@@ -1,0 +1,26 @@
+<section class="sidebar" aria-label="Navigation Sidebar">
+  <div class="sidebar__container">
+    <img
+      class="sidebar__logo"
+      src="assets/images/logo.png"
+      alt="Application Logo"
+    />
+  </div>
+  <nav class="sidebar__links" aria-label="Main Navigation">
+    @for (link of links; track $index) {
+    <a
+      [routerLink]="link.link"
+      rel="noopener"
+      class="sidebar__links__item"
+      tabindex="0"
+    >
+      <fa-icon
+        [icon]="link.icon"
+        class="sidebar__links__icon"
+        aria-hidden="true"
+      ></fa-icon>
+      <span>{{ link.name }}</span>
+    </a>
+    }
+  </nav>
+</section>

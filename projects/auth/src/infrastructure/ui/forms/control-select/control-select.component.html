@@ -1,0 +1,21 @@
+<div class="form-group">
+  <label class="form-group__label" [for]="id()">{{ title() }}</label>
+  <select
+    [id]="id()"
+    [formControl]="control()"
+    class="form-group__input"
+    required
+    (change)="onValueChange()"
+    [ngClass]="{
+      'form-group__input--invalid': error()
+    }"
+  >
+    <option value="" disabled selected>{{ default() }}</option>
+    @for (option of options(); track $index) {
+    <option [value]="option">{{ option }}</option>
+    }
+  </select>
+  @if(error()){
+  <span class="form-group__error"> {{ errorMessage() }} </span>
+  }
+</div>

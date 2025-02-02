@@ -1,0 +1,42 @@
+@use "../../../../../../shared/src/infrastructure/ui/styles/variables" as *;
+
+.users {
+  &__card {
+    width: 300px;
+    background-color: $white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__avatar {
+      display: flex;
+      justify-content: center;
+
+      &--img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+
+    &__details {
+      text-align: center;
+    }
+
+    &__email {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+
+    &__role {
+      font-size: 0.9rem;
+      color: $grey-strong;
+    }
+  }
+}
