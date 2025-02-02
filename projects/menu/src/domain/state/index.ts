@@ -7,7 +7,7 @@ import { MenuState } from './menu.state';
 export class State {
   private readonly _menus = inject(MenuState);
 
-  get menus() {
-    return this._menus.store().menus;
+  get menuState() {
+    return this._menus.store();
   }
 }
