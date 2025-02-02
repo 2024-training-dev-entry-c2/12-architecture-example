@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
-import { DeleteCustomerService } from '../infrastructure/services/delete-customer.service';
+import { catchError, Observable, Subscription, tap, throwError } from 'rxjs';
 import { State } from '../domain/state';
-import { Observable, tap, finalize, catchError, throwError } from 'rxjs';
+import { DeleteCustomerService } from '../infrastructure/services/delete-customer.service';
 
 @Injectable({
   providedIn: 'root',
@@ -9,6 +9,17 @@ import { Observable, tap, finalize, catchError, throwError } from 'rxjs';
 export class DeleteCustomerUseCase {
   private readonly _service = inject(DeleteCustomerService);
   private readonly _state = inject(State);
+  private subscriptions: Subscription;
+
+  //#region Public methods
+
+  initSubscriptions(): void {
+    this.subscriptions = new Subscription();
+  }
+
+  destroySubscriptions(): void {
+    this.subscriptions.unsubscribe();
+  }
 
   execute(customerId: number): Observable<void> {
     return this._service.execute(customerId).pipe(
@@ -30,4 +41,5 @@ export class DeleteCustomerUseCase {
       })
     );
   }
+  //#endregion
 }
