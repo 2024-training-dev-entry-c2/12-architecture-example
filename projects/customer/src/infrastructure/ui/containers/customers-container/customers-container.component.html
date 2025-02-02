@@ -1,0 +1,6 @@
+<lib-list-customers 
+  [customers]="customers$ | async" 
+  [currentCustomer]="currentCustomer$ | async"
+  (onCreateCustomer)="handlePatchCustomer($event)"
+  (onSelectCustomer)="handleSelectCustomer($event)" 
+></lib-list-customers>
