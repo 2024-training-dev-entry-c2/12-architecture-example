@@ -1,5 +1,10 @@
 import { Component, inject, input, Input, output } from '@angular/core';
-import { FormArray, FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormArray,
+  FormBuilder,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ICreateOrden } from '../../../../domain/model/create-orden.model';
 
@@ -7,12 +12,12 @@ import { ICreateOrden } from '../../../../domain/model/create-orden.model';
   selector: 'lib-add-orden-form',
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './add-orden-form.component.html',
-  styleUrl: './add-orden-form.component.scss'
+  styleUrl: './add-orden-form.component.scss',
 })
 export class AddOrdenFormComponent {
-private readonly formBuilder = inject(FormBuilder);
+  private readonly formBuilder = inject(FormBuilder);
   public onSubmit = output<ICreateOrden>();
-  public statusChange= output<{ idOrden: number, statusOrder: string }>();
+  public statusChange = output<{ idOrden: number; statusOrder: string }>();
 
   @Input()
   set Orden(value: ICreateOrden) {
@@ -27,13 +32,19 @@ private readonly formBuilder = inject(FormBuilder);
       });
     }
   }
-statusOptions = ['PENDING', 'IN_PREPARATION', 'COMPLETED', 'CANCELLED', 'DELIVERED'];
+  statusOptions = [
+    'PENDING',
+    'IN_PREPARATION',
+    'COMPLETED',
+    'CANCELLED',
+    'DELIVERED',
+  ];
   public ordenForm = this.formBuilder.group({
     id: [null],
     priceTotal: [0],
     statusOrder: ['PENDING'],
     clientId: [0, [Validators.required]],
-    items: this.formBuilder.array([])
+    items: this.formBuilder.array([]),
   });
 
   get items() {
@@ -47,7 +58,7 @@ statusOptions = ['PENDING', 'IN_PREPARATION', 'COMPLETED', 'CANCELLED', 'DELIVER
       quantity: [1, Validators.required],
       restaurantId: [0, Validators.required],
       menuId: [0, Validators.required],
-      ordenId: [0]
+      ordenId: [0],
     });
     this.items.push(newItem);
   }
@@ -56,7 +67,21 @@ statusOptions = ['PENDING', 'IN_PREPARATION', 'COMPLETED', 'CANCELLED', 'DELIVER
     this.items.removeAt(index);
   }
   submit(): void {
-    if (!this.ordenForm.valid) return
-   // this.onSubmit.emit(this.ordenForm.getRawValue());
+    if (!this.ordenForm.valid) return;
+    const formValue = this.ordenForm.getRawValue();
+
+    const orden: ICreateOrden = {
+      ...formValue,
+      items: formValue.items.map((item: any) => ({
+        id: item.id,
+        name: item.name || '',
+        price: item.price || 0,
+        quantity: item.quantity || 1,
+        restaurantId: item.restaurantId || 0,
+        menuId: item.menuId || 0,
+        ordenId: item.ordenId || 0,
+      })),
+    };
+    this.onSubmit.emit(orden);
   }
 }

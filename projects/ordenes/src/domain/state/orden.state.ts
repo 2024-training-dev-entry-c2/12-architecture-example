@@ -1,8 +1,7 @@
 import { inject, Injectable } from "@angular/core";
 import {StateFactory} from 'shared';
 import { BehaviorSubject } from "rxjs";
-import { IViewOrden } from "../model/orden.model";
-
+import { ICreateOrden } from "../model/create-orden.model";
 
 
 @Injectable({
@@ -12,8 +11,8 @@ export class OrdenState {
   private readonly _factory = inject(StateFactory);
 
   //#region Subjectsi
-  private readonly ordenes$ = new BehaviorSubject<IViewOrden[]>([]);
-  private readonly currentOrdenes$ = new BehaviorSubject<IViewOrden>(null);
+  private readonly ordenes$ = new BehaviorSubject<ICreateOrden[]>([]);
+  private readonly currentOrdenes$ = new BehaviorSubject<ICreateOrden>(null);
   private readonly successMessage$ = new BehaviorSubject<string | null>(null);
 
   //#endregion

@@ -1,6 +1,6 @@
 <section class="orden-form" role="form" aria-labelledby="formTitle">
   <h2 id="formTitle">{{ ordenForm.getRawValue().id ? 'Editar Orden' : 'Crear Orden'}}</h2>
-  <form [formGroup]="ordenForm" >
+  <form [formGroup]="ordenForm" (ngSubmit)="submit()">
     <div class="orden-form__form-group" id="group1">
       <div class="orden-form__input-inline">
         <label>Total Precio:</label>

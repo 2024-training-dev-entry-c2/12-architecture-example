@@ -1,8 +1,8 @@
 import { inject, Injectable } from "@angular/core";
 import { State } from "../../domain/state";
 import { Observable, Subscription, tap } from "rxjs";
-import { GetOrdenesService } from "../../infrastructure/services/get-ordenes.service";
-import { IViewOrden } from "../../domain/model/orden.model";
+import { GetOrdenesService } from "../../infrastructure/services/get/get-ordenes.service";
+import { ICreateOrden } from "../../domain/model/create-orden.model";
 
 
 @Injectable({
@@ -14,7 +14,7 @@ export class GetOrdenesUsecase {
   private subscriptions: Subscription;
 
   //#region Observables
-  ordenes$(): Observable<IViewOrden[]> {
+  ordenes$(): Observable<ICreateOrden[]> {
     return this._state.ordenes.ordenes.$();
   }
   //#endregion
