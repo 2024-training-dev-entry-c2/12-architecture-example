@@ -35,15 +35,12 @@ export class UpdateStatusOrdenUseCase {
           tap((updatedOrden) => {
             this._state.ordenes.statusOrden.set(orden.statusOrder)
             this._state.ordenes.currentOrdenes.set(updatedOrden)
-
             const ordenes = this._state.ordenes.ordenes.snapshot();
             const index = ordenes.findIndex(o => o.id === updatedOrden.id);
             if (index !== -1) {
               ordenes[index] = updatedOrden;
             }
             this._state.ordenes.ordenes.set(ordenes);
-
-
           })
         )
         .subscribe()

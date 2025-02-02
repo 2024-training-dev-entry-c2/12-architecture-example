@@ -24,6 +24,9 @@
       "clients": [
         "./dist/clients"
       ],
+      "menu": [
+        "./dist/menu"
+      ],
       "ordenes": [
         "./dist/ordenes"
       ],
