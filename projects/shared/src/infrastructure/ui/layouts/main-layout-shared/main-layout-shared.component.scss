@@ -1,0 +1,42 @@
+@use "../../styles/variables.scss" as variables;
+
+.layout {
+  width: 100%;
+  min-height: 100vh;
+  display: grid;
+  background-image: url(https://www.befunky.com/images/prismic/391d50e3-1268-45e1-aaaa-3cfe6f2fb90d_hero-blur-image-2.jpg?auto=avif,webp&format=jpg&width=896);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  grid:
+    "header header header" auto
+    "leftSide body rightSide" 1fr
+    "footer footer footer" auto
+    / auto 1fr auto;
+  gap: 8px;
+}
+
+.header {
+  grid-area: header;
+}
+.leftSide {
+  grid-area: leftSide;
+}
+.body {
+  grid-area: body;
+}
+.rightSide {
+  grid-area: rightSide;
+}
+.footer {
+  grid-area: footer;
+}
+
+body {
+  font-family: Helvetica;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}

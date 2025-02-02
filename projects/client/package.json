@@ -1,0 +1,13 @@
+{
+  "name": "client",
+  "version": "0.0.1",
+  "peerDependencies": {
+    "@angular/common": "^19.1.0",
+    "@angular/core": "^19.1.0"
+  },
+  "dependencies": {
+    "client": "file:",
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

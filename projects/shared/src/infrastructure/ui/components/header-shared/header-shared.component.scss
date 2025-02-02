@@ -1,0 +1,32 @@
+@use '../../styles/variables.scss' as variables;
+
+.site-header {
+  border-bottom: 1px solid #ffffff;
+  padding: 0.5em 1em;
+  display: flex;
+  justify-content: space-between;
+  background-color: variables.$elementColor;
+}
+
+.site-identity h1 {
+  font-size: 1.5em;
+  margin: 0.6em 0;
+  display: inline-block;
+}
+
+.site-navigation ul,
+.site-navigation li {
+  margin: 0;
+  padding: 0;
+}
+
+.site-navigation li {
+  display: inline-block;
+  margin: 1.4em 1em 1em 1em;
+}
+
+.nav a {
+  text-decoration: none;
+  color: variables.$textNavFooter;
+  font-size: 25px;
+}

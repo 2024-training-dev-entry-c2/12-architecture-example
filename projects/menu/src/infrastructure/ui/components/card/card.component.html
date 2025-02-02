@@ -1,0 +1,22 @@
+<article class="simple-card">
+  <a class="simple-card__a" [routerLink]="link()">
+    @if (image() == null) {
+    <div
+      class="simple-card__img"
+      style="
+        background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png');
+      "
+    ></div>
+    }@else {
+    <div
+      class="simple-card__img"
+      style="background-image: url({{ image() }})"
+    ></div>
+    }
+    <h2 class="simple-card__title">{{ title() }}</h2>
+  </a>
+  <div class="simple-card__button">
+    <lib-modify-button-shared (buttonClicked)="onClickModifyButton()" />
+    <lib-remove-button-shared (buttonClicked)="onClickRemoveButton()" />
+  </div>
+</article>

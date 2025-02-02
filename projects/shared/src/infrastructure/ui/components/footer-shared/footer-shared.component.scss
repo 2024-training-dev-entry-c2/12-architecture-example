@@ -1,0 +1,6 @@
+@use "../../styles/variables.scss" as variables;
+
+.footer {
+  background-color: variables.$elementColor;
+  color: variables.$textNavFooter;
+}
