@@ -17,6 +17,11 @@ export class ClientFormComponent implements OnInit {
   public open$ = input<Observable<boolean>>();
   public onSubmit = output<IClient>();
 
+  @Input()
+  set client(value: IClient) {
+    this.form.patchValue(value);
+  }
+
   public form: FormGroup = this.formBuilder.group({
     id: [null],
     name: ['', [Validators.required]],
@@ -30,12 +35,7 @@ export class ClientFormComponent implements OnInit {
     { type: 'input', text: 'Correo', inputType: 'email', controlName: 'email' }
   ];
 
-  @Input()
-  set client(value: IClient) {
-    this.form.patchValue(value);
-  }
-
-  ngOnInit() {
+  ngOnInit(): void {
     this.open$().subscribe(result => {
       if (!result) {
         this.form.reset();

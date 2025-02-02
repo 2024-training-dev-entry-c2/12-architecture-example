@@ -5,6 +5,7 @@
 <lib-menu-form 
     [message]="message$ | async"
     [menu]="currentMenu$ | async"
+    [open$]="isOpen$"
     (onSubmit)="submit($event)"
   ></lib-menu-form>
 </lib-modal>
