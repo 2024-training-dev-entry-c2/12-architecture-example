@@ -1,12 +1,11 @@
-import { inject, Injectable } from "@angular/core";
-import { State } from "../../domain/state";
-import { Observable, Subscription, tap } from "rxjs";
-import { DeleteOrdenService } from "../../infrastructure/services/delete/delete-orden.service";
-import { ICreateOrden } from "../../domain/model/create-orden.model";
-
+import { inject, Injectable } from '@angular/core';
+import { State } from '../../domain/state';
+import { Observable, Subscription, tap } from 'rxjs';
+import { DeleteOrdenService } from '../../infrastructure/services/delete/delete-orden.service';
+import { ICreateOrden } from '../../domain/model/create-orden.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DeleteOrdenUsecase {
   private readonly _service = inject(DeleteOrdenService);
@@ -30,11 +29,14 @@ export class DeleteOrdenUsecase {
 
   execute(id: number): void {
     this.subscriptions.add(
-      this._service.deleteOrderById(id)
+      this._service
+        .deleteOrderById(id)
         .pipe(
           tap(() => {
             const currentOrden = this._state.ordenes.ordenes.snapshot();
-            const updatedOrdenes = currentOrden.filter(orden => orden.id !== id);
+            const updatedOrdenes = currentOrden.filter(
+              (orden) => orden.id !== id
+            );
             this._state.ordenes.ordenes.set(updatedOrdenes);
           })
         )
@@ -42,7 +44,9 @@ export class DeleteOrdenUsecase {
     );
   }
   selectOrden(id: number): void {
-    const currentOrden = this._state.ordenes.ordenes.snapshot().find(ordenes => ordenes.id === id)
+    const currentOrden = this._state.ordenes.ordenes
+      .snapshot()
+      .find((ordenes) => ordenes.id === id);
     this._state.ordenes.currentOrdenes.set(currentOrden);
   }
   //#endregion

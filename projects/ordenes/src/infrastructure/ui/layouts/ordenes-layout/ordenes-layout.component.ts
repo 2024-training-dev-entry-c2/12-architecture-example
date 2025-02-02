@@ -5,8 +5,6 @@ import { RouterOutlet } from '@angular/router';
   selector: 'lib-ordenes-layout',
   imports: [RouterOutlet],
   templateUrl: './ordenes-layout.component.html',
-  styleUrl: './ordenes-layout.component.scss'
+  styleUrl: './ordenes-layout.component.scss',
 })
-export class OrdenesLayoutComponent {
-
-}
+export class OrdenesLayoutComponent {}

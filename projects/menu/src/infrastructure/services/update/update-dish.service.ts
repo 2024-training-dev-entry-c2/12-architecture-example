@@ -5,13 +5,15 @@ import { Observable } from 'rxjs';
 import { urlResources } from 'shared';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UpdateDishService {
-
   private http = inject(HttpClient);
 
   updateDish(dish: IDish): Observable<IDish> {
-    return this.http.put<IDish>(urlResources.dishesOperationsById(dish.id.toString()), dish);
+    return this.http.put<IDish>(
+      urlResources.dishesOperationsById(dish.id.toString()),
+      dish
+    );
   }
 }

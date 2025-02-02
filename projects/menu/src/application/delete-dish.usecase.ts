@@ -4,7 +4,6 @@ import { State } from '../domain/state';
 import { IDish } from '../domain/model/menu.model';
 import { DeleteDishService } from '../infrastructure/services/delete/delete-dish.service';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -31,11 +30,14 @@ export class DeleteDishUseCase {
   }
   execute(id: number): void {
     this.subscriptions.add(
-      this._service.deleteDishById(id)
+      this._service
+        .deleteDishById(id)
         .pipe(
           tap(() => {
             const currentDishes = this._state.menu.dishes.snapshot();
-            const updatedDishes = currentDishes.filter(dish => dish.id !== id);
+            const updatedDishes = currentDishes.filter(
+              (dish) => dish.id !== id
+            );
             this._state.menu.dishes.set(updatedDishes);
           })
         )

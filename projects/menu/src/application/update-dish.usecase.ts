@@ -5,7 +5,6 @@ import { UpdateDishService } from '../infrastructure/services/update/update-dish
 import { State } from '../domain/state';
 import { IDish } from '../domain/model/menu.model';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -30,16 +29,14 @@ export class UpdateDishUseCase {
   destroySubscriptions(): void {
     this.subscriptions.unsubscribe();
   }
-  execute(dish : IDish, modal: ModalComponent): void {
+  execute(dish: IDish, modal: ModalComponent): void {
     this.subscriptions.add(
       this._service
         .updateDish(dish)
         .pipe(
           tap((dish) => {
             const dishes = this._state.menu.dishes.snapshot();
-            const newDish = dishes.map((d) =>
-              d.id === dish.id ? dish : d
-            );
+            const newDish = dishes.map((d) => (d.id === dish.id ? dish : d));
             this._state.menu.dishes.set(newDish);
             this._state.menu.successMessage.set(
               '¡Plato actualizado con éxito!'

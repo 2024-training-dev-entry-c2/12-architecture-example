@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { urlResources } from 'shared';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CreateOrdenService {
   private http = inject(HttpClient);

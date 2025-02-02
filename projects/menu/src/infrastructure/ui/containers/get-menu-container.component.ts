@@ -51,7 +51,7 @@ export class GetMenuContainerComponent implements OnInit, OnDestroy {
   handleSelectDish(id: number) {
     this._updateDishUseCase.selectDish(id);
   }
-  handleDeleteDish(id: number){
+  handleDeleteDish(id: number) {
     this._deleteDishUseCase.execute(id);
   }
   ngOnDestroy(): void {

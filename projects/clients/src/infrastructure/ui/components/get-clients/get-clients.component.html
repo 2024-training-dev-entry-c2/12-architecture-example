@@ -2,14 +2,12 @@
   <lib-modal action="Crear Cliente" #modal>
     <section class="clients__clients-add" aria-label="Agregar/editar cliente">
       @if(message()) {
-        <div class="clients__mensaje-exito">
-          {{message()}}
-        </div>
+      <div class="clients__mensaje-exito">
+        {{message()}}
+      </div>
       }
-      <lib-add-client-form
-      [client]="currentClient()"
-      (onSubmit)="handleSubmit($event)">
-    </lib-add-client-form>
+      <lib-add-client-form [client]="currentClient()" (onSubmit)="handleSubmit($event)">
+      </lib-add-client-form>
     </section>
   </lib-modal>
   <section class="clients__content" aria-labelledby="clientes-title">
@@ -37,24 +35,17 @@
             <p class="clients__content-items--frecuent-true">
               {{client.isFrecuent ? 'Si' : 'No'}}
             </p>
-          }@else{
+            }@else{
             <p class="clients__content-items--frecuent-false">
               {{ client.isFrecuent ? 'Si' : 'No' }}
             </p>
-          }
+            }
           </td>
           <td>
-            <lib-button
-              [text]="'Editar'"
-              [theme]="'primary'"
-              (click)="editClient(client.id)"
-              >
+            <lib-button [text]="'Editar'" [theme]="'primary'" (click)="editClient(client.id)">
             </lib-button>
             <hr>
-            <lib-button
-              [text]="'Eliminar'"
-              [theme]="'danger'"
-              (click)="deleteClient(client.id)">
+            <lib-button [text]="'Eliminar'" [theme]="'danger'" (click)="deleteClient(client.id)">
             </lib-button>
           </td>
         </tr>
@@ -64,4 +55,3 @@
     </table>
   </section>
 </section>
-

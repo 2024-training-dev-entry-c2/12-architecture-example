@@ -1,9 +1,8 @@
-import { inject, Injectable } from "@angular/core";
-import { MenuState } from "./menu.state";
-
+import { inject, Injectable } from '@angular/core';
+import { MenuState } from './menu.state';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class State {
   private readonly _menu = inject(MenuState);

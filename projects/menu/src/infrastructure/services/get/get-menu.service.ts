@@ -5,13 +5,14 @@ import { Observable } from 'rxjs';
 import { urlResources } from 'shared';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GetMenuService {
-  private http = inject(HttpClient)
+  private http = inject(HttpClient);
 
-
-    execute(restaurantId: number): Observable<IRestaurant> {
-        return this.http.get<IRestaurant>(urlResources.restautantOperationsById(restaurantId.toString()));
-      }
+  execute(restaurantId: number): Observable<IRestaurant> {
+    return this.http.get<IRestaurant>(
+      urlResources.restautantOperationsById(restaurantId.toString())
+    );
+  }
 }

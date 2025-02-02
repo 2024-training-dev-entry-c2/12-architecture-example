@@ -1,9 +1,8 @@
-import { inject, Injectable } from "@angular/core";
-import { OrdenState } from "./orden.state";
-
+import { inject, Injectable } from '@angular/core';
+import { OrdenState } from './orden.state';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class State {
   private readonly _ordenes = inject(OrdenState);

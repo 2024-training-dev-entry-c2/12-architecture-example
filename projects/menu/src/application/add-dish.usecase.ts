@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import {  Observable, Subscription, tap } from 'rxjs';
+import { Observable, Subscription, tap } from 'rxjs';
 import { ModalComponent } from 'shared';
 import { AddDishService } from '../infrastructure/services/post/add-dish.service';
 import { IDish } from '../domain/model/menu.model';
@@ -13,10 +13,9 @@ export class AddDishUsecase {
   private readonly _state = inject(State);
   private subscriptions: Subscription;
 
-
   //#region Observables
 
-    currentDishes$(): Observable<IDish[]> {
+  currentDishes$(): Observable<IDish[]> {
     return this._state.menu.dishes.$();
   }
   //#endregion
@@ -30,22 +29,22 @@ export class AddDishUsecase {
   }
   execute(dish: IDish, modal: ModalComponent): void {
     this.subscriptions.add(
-    this._service.addDish(dish)
-    .pipe(
-      tap((dish) => {
-        const currentDishes = this._state.menu.dishes.snapshot();
-        this._state.menu.dishes.set([...currentDishes, dish]);
-        this._state.menu.successMessage.set('¡Plato creado con éxito!')
+      this._service
+        .addDish(dish)
+        .pipe(
+          tap((dish) => {
+            const currentDishes = this._state.menu.dishes.snapshot();
+            this._state.menu.dishes.set([...currentDishes, dish]);
+            this._state.menu.successMessage.set('¡Plato creado con éxito!');
 
-        setTimeout(() => {
-          modal.toggle();
-          this._state.menu.successMessage.set('')
-
-        }, 2000);
-
-      }),
-    ).subscribe()
-  )
+            setTimeout(() => {
+              modal.toggle();
+              this._state.menu.successMessage.set('');
+            }, 2000);
+          })
+        )
+        .subscribe()
+    );
   }
 
   //#endregion

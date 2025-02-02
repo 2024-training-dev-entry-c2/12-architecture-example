@@ -1,13 +1,11 @@
-import { inject, Injectable } from "@angular/core";
-import { State } from "../../domain/state";
-import { IClient } from "../../domain/model/client.model";
-import { Observable, Subscription, tap } from "rxjs";
-import { DeleteClientService } from "../../infrastructure/services/delete/delete-client.service";
-import { ModalComponent } from "shared";
-
+import { inject, Injectable } from '@angular/core';
+import { State } from '../../domain/state';
+import { IClient } from '../../domain/model/client.model';
+import { Observable, Subscription, tap } from 'rxjs';
+import { DeleteClientService } from '../../infrastructure/services/delete/delete-client.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DeleteClientUsecase {
   private readonly _service = inject(DeleteClientService);
@@ -31,11 +29,14 @@ export class DeleteClientUsecase {
 
   execute(id: number): void {
     this.subscriptions.add(
-      this._service.execute(id)
+      this._service
+        .execute(id)
         .pipe(
           tap(() => {
             const currentClients = this._state.clients.clients.snapshot();
-            const updatedClients = currentClients.filter(client => client.id !== id);
+            const updatedClients = currentClients.filter(
+              (client) => client.id !== id
+            );
             this._state.clients.clients.set(updatedClients);
           })
         )
@@ -43,7 +44,9 @@ export class DeleteClientUsecase {
     );
   }
   selectClient(id: number): void {
-    const currentClient = this._state.clients.clients.snapshot().find(client => client.id === id)
+    const currentClient = this._state.clients.clients
+      .snapshot()
+      .find((client) => client.id === id);
     this._state.clients.currentClient.set(currentClient);
   }
   //#endregion

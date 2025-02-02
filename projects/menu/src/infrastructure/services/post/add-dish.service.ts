@@ -5,10 +5,9 @@ import { Observable } from 'rxjs';
 import { urlResources } from 'shared';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AddDishService {
-
   private http = inject(HttpClient);
 
   addDish(payload: IDish): Observable<IDish> {

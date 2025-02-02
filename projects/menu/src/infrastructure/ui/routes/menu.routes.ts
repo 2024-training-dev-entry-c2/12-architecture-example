@@ -1,6 +1,6 @@
-import { Routes } from "@angular/router";
-import { GetMenuLayoutComponent } from "../layouts/get-menu-layout/get-menu-layout.component";
-import { GetMenuContainerComponent } from "../containers/get-menu-container.component";
+import { Routes } from '@angular/router';
+import { GetMenuLayoutComponent } from '../layouts/get-menu-layout/get-menu-layout.component';
+import { GetMenuContainerComponent } from '../containers/get-menu-container.component';
 
 export const menuRoutes: Routes = [
   {
@@ -9,8 +9,8 @@ export const menuRoutes: Routes = [
     children: [
       {
         path: '',
-        component: GetMenuContainerComponent
-      }
-    ]
-  }
+        component: GetMenuContainerComponent,
+      },
+    ],
+  },
 ];

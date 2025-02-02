@@ -30,7 +30,6 @@ export class AddOrdenFormComponent {
       this.items.clear();
       this.addItem();
     } else {
-
       this.ordenForm.patchValue({
         id: value.id,
         priceTotal: value.priceTotal,
@@ -68,7 +67,7 @@ export class AddOrdenFormComponent {
   addItem(item?: any): void {
     const newItem = this.formBuilder.group({
       id: [item?.id || this.items.length + 1],
-      name: [item?.name || "" , Validators.required],
+      name: [item?.name || '', Validators.required],
       price: [item?.price || 0, Validators.required],
       quantity: [item?.quantity || 1, Validators.required],
       restaurantId: [item?.restaurantId || 1, Validators.required],

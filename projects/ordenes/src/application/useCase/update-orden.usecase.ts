@@ -5,7 +5,6 @@ import { ModalComponent } from 'shared';
 import { UpdateOrdenService } from '../../infrastructure/services/update/update-orden.service';
 import { ICreateOrden } from '../../domain/model/create-orden.model';
 
-
 @Injectable({
   providedIn: 'root',
 })

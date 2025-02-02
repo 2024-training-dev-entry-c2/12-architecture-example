@@ -1,20 +1,20 @@
 <section class="cliente-form">
   <h2>{{ clientForm.getRawValue().id ? 'Editar Cliente' : 'Crear Cliente' }}</h2>
-    <form [formGroup]="clientForm" (ngSubmit)="submit()" class="cliente-form__form">
-      <div class="cliente-form__form-group">
-        <label>Nombre:</label>
-        <input formControlName="name" type="text" class="cliente-form__input"/>
-      </div>
-      <div class="cliente-form__form-group">
-        <label>Email:</label>
-        <input formControlName="email" type="email" class="cliente-form__input"/>
-      </div>
-      <div class="cliente-form__form-group">
-        <label>Teléfono:</label>
-        <input formControlName="numberPhone" type="text" class="cliente-form__input"/>
-      </div>
-      <div class="cliente-form__form-actions">
-        <button type="submit" id="submit">{{ clientForm.getRawValue().id ? 'Editar Cliente' : 'Crear Cliente' }}</button>
-      </div>
-    </form>
+  <form [formGroup]="clientForm" (ngSubmit)="submit()" class="cliente-form__form">
+    <div class="cliente-form__form-group">
+      <label>Nombre:</label>
+      <input formControlName="name" type="text" class="cliente-form__input" />
+    </div>
+    <div class="cliente-form__form-group">
+      <label>Email:</label>
+      <input formControlName="email" type="email" class="cliente-form__input" />
+    </div>
+    <div class="cliente-form__form-group">
+      <label>Teléfono:</label>
+      <input formControlName="numberPhone" type="text" class="cliente-form__input" />
+    </div>
+    <div class="cliente-form__form-actions">
+      <button type="submit" id="submit">{{ clientForm.getRawValue().id ? 'Editar Cliente' : 'Crear Cliente' }}</button>
+    </div>
+  </form>
 </section>

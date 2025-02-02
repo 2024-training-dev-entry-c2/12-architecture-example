@@ -1,10 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { State } from '../../domain/state';
 import { Observable, Subscription, tap } from 'rxjs';
-import { ModalComponent } from 'shared';
 import { UpdateOrdenService } from '../../infrastructure/services/update/update-orden.service';
 import { ICreateOrden } from '../../domain/model/create-orden.model';
-
 
 @Injectable({
   providedIn: 'root',
@@ -33,10 +31,10 @@ export class UpdateStatusOrdenUseCase {
         .updateStatusOrden(orden.id, orden.statusOrder)
         .pipe(
           tap((updatedOrden) => {
-            this._state.ordenes.statusOrden.set(orden.statusOrder)
-            this._state.ordenes.currentOrdenes.set(updatedOrden)
+            this._state.ordenes.statusOrden.set(orden.statusOrder);
+            this._state.ordenes.currentOrdenes.set(updatedOrden);
             const ordenes = this._state.ordenes.ordenes.snapshot();
-            const index = ordenes.findIndex(o => o.id === updatedOrden.id);
+            const index = ordenes.findIndex((o) => o.id === updatedOrden.id);
             if (index !== -1) {
               ordenes[index] = updatedOrden;
             }

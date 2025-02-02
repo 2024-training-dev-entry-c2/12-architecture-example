@@ -5,13 +5,12 @@ import { urlResources } from 'shared';
 import { ICreateOrden } from '../../../domain/model/create-orden.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GetOrdenesService {
+  private http = inject(HttpClient);
 
-   private http = inject(HttpClient);
-
-   execute(): Observable<ICreateOrden[]> {
+  execute(): Observable<ICreateOrden[]> {
     return this.http.get<ICreateOrden[]>(urlResources.ordenes);
   }
 }

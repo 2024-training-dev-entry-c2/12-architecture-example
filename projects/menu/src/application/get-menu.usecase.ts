@@ -1,24 +1,22 @@
-import { inject, Injectable } from "@angular/core";
+import { inject, Injectable } from '@angular/core';
 
-import { Observable, Subscription, tap } from "rxjs";
-import { GetMenuService } from "../infrastructure/services/get/get-menu.service";
-import { State } from "../domain/state";
-import { IAddMenuResponse, IRestaurant } from "../domain/model/menu.model";
-
+import { Observable, Subscription, tap } from 'rxjs';
+import { GetMenuService } from '../infrastructure/services/get/get-menu.service';
+import { State } from '../domain/state';
+import { IAddMenuResponse, IRestaurant } from '../domain/model/menu.model';
 
 @Injectable({
-   providedIn: 'root'
+  providedIn: 'root',
 })
 export class GetMenuUseCase {
-
   private readonly _service = inject(GetMenuService);
   private readonly _state = inject(State);
   private subscriptions: Subscription;
 
-//#region Observables
+  //#region Observables
   restaurant$(): Observable<IRestaurant> {
-  return this._state.menu.restaurant.$();
-}
+    return this._state.menu.restaurant.$();
+  }
   menu$(): Observable<IAddMenuResponse> {
     return this._state.menu.menu.$();
   }
@@ -38,14 +36,16 @@ export class GetMenuUseCase {
 
   execute(restaurantId: number): void {
     this.subscriptions.add(
-      this._service.execute(restaurantId).pipe(
-        tap((restaurant: IRestaurant) => {
-          this._state.menu.restaurant.set(restaurant);
-          this._state.menu.menu.set(restaurant.menuRestaurant);
-          this._state.menu.dishes.set(restaurant.menuRestaurant.dishes);
-        })
-      ).subscribe()
+      this._service
+        .execute(restaurantId)
+        .pipe(
+          tap((restaurant: IRestaurant) => {
+            this._state.menu.restaurant.set(restaurant);
+            this._state.menu.menu.set(restaurant.menuRestaurant);
+            this._state.menu.dishes.set(restaurant.menuRestaurant.dishes);
+          })
+        )
+        .subscribe()
     );
   }
 }
-

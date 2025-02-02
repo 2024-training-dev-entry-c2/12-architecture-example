@@ -2,12 +2,11 @@ import { Component, inject, Input, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IClient } from '../../../../domain/model/client.model';
 
-
 @Component({
   selector: 'lib-add-client-form',
   imports: [ReactiveFormsModule],
   templateUrl: './add-client-form.component.html',
-  styleUrl: './add-client-form.component.scss'
+  styleUrl: './add-client-form.component.scss',
 })
 export class AddClientFormComponent {
   private readonly formBuilder = inject(FormBuilder);
@@ -23,7 +22,7 @@ export class AddClientFormComponent {
         email: '',
         numberPhone: '',
         id: null,
-        isFrecuent: false
+        isFrecuent: false,
       });
     }
   }
@@ -33,12 +32,11 @@ export class AddClientFormComponent {
     email: ['', [Validators.email]],
     numberPhone: ['', [Validators.required]],
     id: [null],
-    isFrecuent: [false]
+    isFrecuent: [false],
   });
 
   submit(): void {
-    if (!this.clientForm.valid) return
+    if (!this.clientForm.valid) return;
     this.onSubmit.emit(this.clientForm.getRawValue());
-
   }
 }

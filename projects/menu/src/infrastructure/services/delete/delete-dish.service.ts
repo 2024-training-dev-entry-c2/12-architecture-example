@@ -4,20 +4,21 @@ import { Observable } from 'rxjs';
 import { urlResources } from 'shared';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DeleteDishService {
-
   private http = inject(HttpClient);
 
   deleteDishById(id: number): Observable<void> {
-      const confirmed = window.confirm(
-        '¿Estás seguro de que deseas eliminar este plato?'
+    const confirmed = window.confirm(
+      '¿Estás seguro de que deseas eliminar este plato?'
+    );
+    if (confirmed) {
+      return this.http.delete<void>(
+        urlResources.dishesOperationsById(id.toString())
       );
-      if (confirmed) {
-        return this.http.delete<void>(urlResources.dishesOperationsById(id.toString()));
-      } else {
-        return new Observable<void>();
-      }
+    } else {
+      return new Observable<void>();
     }
+  }
 }

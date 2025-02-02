@@ -20,15 +20,14 @@ export class GetDishesComponent {
   public dishEdit = input<IDish>();
   public onDeleteDisH = output<number>();
 
-
   message(): string {
     return this.menuState.store().successMessage.snapshot();
   }
-  editDish(id: number){
+  editDish(id: number) {
     this.onSelectDish.emit(id);
     this.modal().toggle();
   }
-  deleteDish(id: number){
+  deleteDish(id: number) {
     this.onDeleteDisH.emit(id);
   }
   handleSubmit(dish: IDish) {

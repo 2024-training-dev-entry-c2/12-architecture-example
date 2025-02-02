@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { urlResources } from 'shared';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DeleteOrdenService {
   private http = inject(HttpClient);
@@ -14,7 +14,9 @@ export class DeleteOrdenService {
       '¿Estás seguro de que deseas eliminar esta orden?'
     );
     if (confirmed) {
-      return this.http.delete<void>(urlResources.ordenesOperationsById(id.toString()));
+      return this.http.delete<void>(
+        urlResources.ordenesOperationsById(id.toString())
+      );
     } else {
       return new Observable<void>();
     }

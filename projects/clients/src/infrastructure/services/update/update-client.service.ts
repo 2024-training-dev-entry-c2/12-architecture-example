@@ -5,12 +5,15 @@ import { Observable } from 'rxjs';
 import { urlResources } from 'shared';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UpdateClientService {
-private http = inject(HttpClient);
+  private http = inject(HttpClient);
 
-updateClient(client: IClient): Observable<IClient> {
-  return this.http.put<IClient>(urlResources.clientsOperationsById(client.id.toString()), client);
-}
+  updateClient(client: IClient): Observable<IClient> {
+    return this.http.put<IClient>(
+      urlResources.clientsOperationsById(client.id.toString()),
+      client
+    );
+  }
 }

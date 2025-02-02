@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { SidebarComponent } from "../../components/sidebar/sidebar.component";
+import { SidebarComponent } from '../../components/sidebar/sidebar.component';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from '../../components/header/header.component';
 
@@ -7,8 +7,6 @@ import { HeaderComponent } from '../../components/header/header.component';
   selector: 'lib-dashboard-layout',
   imports: [RouterOutlet, SidebarComponent, HeaderComponent],
   templateUrl: './dashboard-layout.component.html',
-  styleUrl: './dashboard-layout.component.scss'
+  styleUrl: './dashboard-layout.component.scss',
 })
-export class DashboardLayoutComponent {
-
-}
+export class DashboardLayoutComponent {}
