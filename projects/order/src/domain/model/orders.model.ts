@@ -7,7 +7,7 @@ export interface IOrder {
 
 export interface IOrderItem {
   idItem?: number;
-  dishName: string;
+  idDish: number;
   quantity: number;
   price: number;
 }
