@@ -1,0 +1,18 @@
+<header class="header">
+  <div class="header__admin-group">
+    <a [routerLink]="'/register'" class="header__button">Create admin</a>
+  </div>
+  <div class="header__admin-group">
+    <span class="header__admin-email" aria-label="Administrator email">
+      {{ admin()?.email }}</span
+    >
+    <button
+      aria-label="Button for logout"
+      class="header__logout"
+      (click)="logout()"
+      tabindex="0"
+    >
+      Logout
+    </button>
+  </div>
+</header>

@@ -1,0 +1,30 @@
+<section class="main">
+  <div class="main__container">
+    <h1 class="main__container__title">Bank</h1>
+    <form class="main__form" [formGroup]="loginForm" (ngSubmit)="submit()">
+      <lib-control-input
+        (change)="onValueChange('emailError')"
+        [error]="loginErrors.emailError"
+        [id]="'email'"
+        [title]="'Email'"
+        [control]="getFormControl('email')"
+        [errorMessage]="'Email is required.'"
+        [type]="'email'"
+        [placeholder]="'tu@email.com'"
+      ></lib-control-input>
+
+      <lib-control-input
+        (change)="onValueChange('passwordError')"
+        [error]="loginErrors.passwordError"
+        [id]="'password'"
+        [title]="'Password'"
+        [control]="getFormControl('password')"
+        [errorMessage]="'Passowrd is required.'"
+        [type]="'password'"
+        [placeholder]="'*********'"
+      ></lib-control-input>
+
+      <lib-button-submit [text]="'Login'"></lib-button-submit>
+    </form>
+  </div>
+</section>

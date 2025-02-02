@@ -1,0 +1,27 @@
+@use "../../styles/mixins" as mixins;
+@use "../../../../../../shared/src/infrastructure/ui/styles/variables" as *;
+.main {
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f3f4f6;
+
+  &__container {
+    background-color: $white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 448px;
+
+    &__title {
+      text-align: center;
+      font-weight: bold;
+      color: $bg-blue;
+      font-size: 32px;
+    }
+  }
+
+  &__form {
+    @include mixins.form-container;
+  }
+}

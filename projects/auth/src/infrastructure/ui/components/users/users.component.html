@@ -1,0 +1,5 @@
+<section class="container">
+  @for (user of users(); track $index) {
+  <lib-user-card [role]="user.role" [email]="user.email"></lib-user-card>
+  }
+</section>

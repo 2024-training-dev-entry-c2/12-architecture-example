@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+@use "../../shared/src/infrastructure/ui/styles/variables" as *;
+
+html {
+    margin: 0 auto;
+    box-sizing: border-box;
+    min-height: 100vh;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0 auto;
+    background-image: $background-image;
+    font-family: $font-family;
+  }
+  

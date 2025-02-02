@@ -1,0 +1,17 @@
+@use "../../../../../../shared/src/infrastructure/ui/styles/variables" as *;
+
+.button {
+  width: 100%;
+  color: #ffffff;
+  background-color: $bg-blue;
+  padding: 12px 0;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  border: none;
+
+  &:hover {
+    background-color: #1d4ed8;
+  }
+}

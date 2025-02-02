@@ -1,0 +1,43 @@
+<section class="main">
+  <div class="main__container">
+    <h1 class="main__container__title">Create a new admin</h1>
+    <form class="main__form" [formGroup]="registerForm" (ngSubmit)="submit()">
+      <lib-control-input
+        (change)="onValueChange('emailError')"
+        [error]="registerErrors.emailError"
+        [id]="'email'"
+        [title]="'Email'"
+        [control]="getFormControl('email')"
+        [errorMessage]="'Email is required.'"
+        [type]="'email'"
+        [placeholder]="'tu@email.com'"
+      ></lib-control-input>
+
+      <lib-control-input
+        (change)="onValueChange('passwordError')"
+        [error]="registerErrors.passwordError"
+        [id]="'password'"
+        [title]="'Password'"
+        [control]="getFormControl('password')"
+        [errorMessage]="
+          'Password is required and must have at least one uppercase letter, one lowercase letter, one number and one special character.'
+        "
+        [type]="'password'"
+        [placeholder]="'*********'"
+      ></lib-control-input>
+
+      <lib-control-select
+        (change)="onValueChange('roleError')"
+        [id]="'role'"
+        [control]="getFormControl('role')"
+        [title]="'Role'"
+        [default]="'Select a role'"
+        [errorMessage]="'Role is required'"
+        [error]="registerErrors.roleError"
+        [options]="['ADMIN', 'GOD']"
+      ></lib-control-select>
+
+      <lib-button-submit [text]="'Register'"></lib-button-submit>
+    </form>
+  </div>
+</section>

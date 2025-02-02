@@ -1,0 +1,16 @@
+<div class="form-group">
+  <label class="form-group__label" [for]="id()">{{ title() }}:</label>
+  <input
+    [type]="type()"
+    [id]="id()"
+    class="form-group__input"
+    [formControl]="control()"
+    (focus)="onValueChange()"
+    (change)="onValueChange()"
+    [ngClass]="{ 'form-group__input--invalid': error() }"
+    [placeholder]="placeholder()"
+  />
+  @if(error()){
+  <span class="form-group__error"> {{ errorMessage() }} </span>
+  }
+</div>
