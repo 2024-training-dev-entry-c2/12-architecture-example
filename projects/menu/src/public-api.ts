@@ -1,6 +1,1 @@
-/*
- * Public API Surface of menu
- */
-
-export * from './lib/menu.service';
-export * from './lib/menu.component';
+export { MenusContainerComponent } from './infrastructure/ui/containers/menus-container/menus-container.component';
