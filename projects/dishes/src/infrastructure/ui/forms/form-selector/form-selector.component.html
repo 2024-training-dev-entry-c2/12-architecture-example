@@ -1,0 +1,19 @@
+<div class="form-selector__group" [formGroup]="formGroup()">
+    <label [for]="controlName()">
+        <span class="form-selector__label">{{ label() }}</span>
+        <select
+            [formControlName]="controlName()"
+            class="form-selector__control"
+            [ngClass]="{'form-selector__control--invalid': isInvalid}"
+        >
+        @for (menu of menus(); track $index) {
+            <option [value]="menu.id"> {{ menu.name }}</option>
+        }
+        </select>
+    </label>
+    @if (isInvalid) {
+        <div class="form-selector__feedback">
+            <p>{{ getErrorMessage() }}</p>
+        </div>
+    }
+</div>

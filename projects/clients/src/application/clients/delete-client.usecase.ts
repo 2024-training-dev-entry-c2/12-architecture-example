@@ -33,8 +33,7 @@ export class DeleteClientUsecase {
                 tap(() => {
                     const clients = this._state.clients.clients.snapshot()
                     .filter(client => client.id != id);
-                    this._state.clients.clients.set(clients);
-                    this._state.clients.currentClient.set(null);  
+                    this._state.clients.clients.set(clients);            
                 })                    
             ).subscribe()
         );

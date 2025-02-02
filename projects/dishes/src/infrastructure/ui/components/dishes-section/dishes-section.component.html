@@ -1,0 +1,22 @@
+<section class="dishes">
+    <h1 class="dishes_title">Dashboard de Menús</h1>
+    <div>
+        <lib-modal [title]="modalTitle" action="Crear plato" [themeButton]="'success'" (onOpenByBtn)="openCreateModal()" (onClose)="handleCloseModal()" #modal>
+            <lib-dish-form 
+            [dish] ="currentDish()"
+            [menus]="menus()"
+            [action]="formAction"
+            [theme]="formTheme"
+            (onSubmit)="handleSubmit($event)"            
+            #dishForm/>
+        </lib-modal> 
+        <lib-delete-modal item="plato" (onDelete)="handleDelete($event)" #deleteModal/>
+        <lib-search-bar [data]="dishes()" (onFilteredData)="handleFilteredData($event)"/>
+    </div>
+    <lib-dish-board
+    [dishes]="filteredDishes"
+    [menus]="menus()"
+    (onSelectDishToUpdate)="selectDishToUpdate($event)"
+    (onSelectDishToDelete)="selectDishToDelete($event)"
+    />
+</section>

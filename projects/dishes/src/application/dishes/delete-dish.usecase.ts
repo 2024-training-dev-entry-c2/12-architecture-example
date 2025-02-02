@@ -8,8 +8,8 @@ import { IDish } from "../../domain/model/dish.model";
     providedIn: 'root'
 })
 export class DeleteDishUsecase {
-    private _service = inject(DeleteDishService);
-    private _state = inject(State);
+    private readonly _service = inject(DeleteDishService);
+    private readonly _state = inject(State);
     private subscriptions : Subscription;
 
     //#region Observables

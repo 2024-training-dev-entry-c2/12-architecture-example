@@ -1,9 +1,9 @@
 import { inject, Injectable } from "@angular/core";
 import { UpdateDishService } from "../../infrastructure/services/update-dish.service";
 import { State } from "../../domain/state";
-import { Observable, Subscription, tap } from "rxjs";
+import { finalize, Observable, Subscription, tap } from "rxjs";
 import { IDish } from "../../domain/model/dish.model";
-import { IDishRequest } from "../../domain/model/dish-request.model";
+import { ModalComponent } from "shared";
 
 @Injectable({
     providedIn: 'root'
@@ -14,8 +14,8 @@ export class UpdateDishUsecase {
     private subscriptions: Subscription;
     
     //#region Observables
-    dishes$(): Observable<IDish[]> {
-        return this._state.dishes.dishes.$();
+    currentDish$(): Observable<IDish> {
+        return this._state.dishes.currentDish.$();
     }
     //#endregion
 
@@ -28,14 +28,20 @@ export class UpdateDishUsecase {
         this.subscriptions.unsubscribe();
     }
 
-    execute(id:number, dish: IDishRequest): void {
+    selectDish(id:number) : void {
+        const currentDish = this._state.dishes.dishes.snapshot().find(dish => dish.id == id);
+        this._state.dishes.currentDish.set(currentDish);
+    }
+
+    execute(dish: IDish, modal : ModalComponent): void {
         this.subscriptions.add(
-            this._service.execute(id.toString(), dish).pipe(
+            this._service.execute(dish.id.toString(), dish).pipe(
                 tap(result => {
                     const dishes = this._state.dishes.dishes.snapshot()
                     .map(dish => dish.id === result.id ? result : dish);
                     this._state.dishes.dishes.set(dishes);
-                })                    
+                }),
+                finalize(()=> modal.toggle())                    
             ).subscribe()
         );
     }

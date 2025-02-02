@@ -1,0 +1,8 @@
+<lib-dishes-section
+[dishes]="dishes$ | async"
+[menus]="menus$ | async"
+[currentDish] = "currentDish$ | async"
+(onSave)="handlePatchDish($event)"
+(onSelectToUpdate)="handleSelectUpdateDish($event)"
+(onDelete)="handleDeleteDish($event)"
+/>

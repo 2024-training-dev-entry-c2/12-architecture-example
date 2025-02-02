@@ -1,6 +1,1 @@
-/*
- * Public API Surface of dishes
- */
-
-export * from './domain/model/dish.model';
-
+export { dishesRoutes } from "./infrastructure/ui/routes/dishes.routes";
