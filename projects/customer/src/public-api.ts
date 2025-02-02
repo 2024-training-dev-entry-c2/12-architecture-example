@@ -1,6 +1,1 @@
-/*
- * Public API Surface of customer
- */
-
-export * from './lib/customer.service';
-export * from './lib/customer.component';
+export { customerRoutes } from './infrastructure/ui/routes/customer.routes';
