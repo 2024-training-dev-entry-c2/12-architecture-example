@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RESOURCES } from 'shared';
 
@@ -7,7 +7,7 @@ import { RESOURCES } from 'shared';
   providedIn: 'root',
 })
 export class DeleteCustomerService {
-  private readonly _httpClient: HttpClient;
+  private readonly _httpClient = inject(HttpClient);
   execute(customerId: number): Observable<void> {
     return this._httpClient.delete<void>(RESOURCES.customerById(customerId));
   }
