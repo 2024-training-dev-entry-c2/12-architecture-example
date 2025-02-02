@@ -21,7 +21,7 @@ export class CustomerFormComponent {
     name: ['', Validators.required],
     lastName: ['', Validators.required],
     email: ['', Validators.required],
-    phone: ['', Validators.required],
+    phone: ['', Validators.required, Validators.pattern('^[0-9#+\\-\\s]+$')],
     orderIds: [[]],
     // --------------------------------
     customerId: [null],

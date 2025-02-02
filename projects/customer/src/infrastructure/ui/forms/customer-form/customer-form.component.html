@@ -1,4 +1,5 @@
-<form [formGroup]="form" class="customer-form" (ngSubmit)="submit()" role="form" aria-labelledby="formTitle">
+<form [formGroup]="form" class="customer-form" (ngSubmit)="submit()" role="form" aria-labelledby="formTitle" novalidate>
+
   <h3 id="formTitle" class="customer-form__title" tabindex="0">
     {{ form.getRawValue().customerId ? 'Editar Cliente' : 'Crear Cliente' }}
   </h3>
@@ -6,27 +7,45 @@
   <label class="customer-form__label" for="name">
     <span class="customer-form__text">Nombre <span class="customer-form__required" aria-hidden="true">*</span></span>
     <input id="name" class="customer-form__input" type="text" name="name" formControlName="name"
-      [attr.aria-invalid]="form.get('name')?.invalid && form.get('name')?.touched" aria-required="true">
+      [attr.aria-invalid]="form.get('name')?.invalid && form.get('name')?.touched" aria-required="true"
+      aria-describedby="nameError">
     @if (form.get('name')?.invalid && form.get('name')?.touched) {
-    <span class="customer-form__error" role="alert">El nombre es requerido</span>
+    <span id="nameError" class="customer-form__error" role="alert">El nombre es requerido</span>
     }
   </label>
 
   <label class="customer-form__label" for="lastName">
     <span class="customer-form__text">Apellido <span class="customer-form__required" aria-hidden="true">*</span></span>
     <input id="lastName" class="customer-form__input" type="text" name="lastName" formControlName="lastName"
-      [attr.aria-invalid]="form.get('lastName')?.invalid && form.get('lastName')?.touched" aria-required="true">
+      [attr.aria-invalid]="form.get('lastName')?.invalid && form.get('lastName')?.touched" aria-required="true"
+      aria-describedby="lastNameError">
     @if (form.get('lastName')?.invalid && form.get('lastName')?.touched) {
-    <span class="customer-form__error" role="alert">El apellido es requerido</span>
+    <span id="lastNameError" class="customer-form__error" role="alert">El apellido es requerido</span>
     }
   </label>
 
   <label class="customer-form__label" for="email">
     <span class="customer-form__text">Email <span class="customer-form__required" aria-hidden="true">*</span></span>
     <input id="email" class="customer-form__input" type="email" name="email" formControlName="email"
-      [attr.aria-invalid]="form.get('email')?.invalid && form.get('email')?.touched" aria-required="true">
+      [attr.aria-invalid]="form.get('email')?.invalid && form.get('email')?.touched" aria-required="true"
+      aria-describedby="emailError">
     @if (form.get('email')?.invalid && form.get('email')?.touched) {
-    <span class="customer-form__error" role="alert">El email es requerido y debe ser válido</span>
+    <span id="emailError" class="customer-form__error" role="alert">El email es requerido y debe ser válido</span>
     }
   </label>
+
+  <label class="customer-form__label" for="phone">
+    <span class="customer-form__text">Teléfono <span class="customer-form__required" aria-hidden="true">*</span></span>
+    <input id="phone" class="customer-form__input" type="tel" name="phone" formControlName="phone"
+      [attr.aria-invalid]="form.get('phone')?.invalid && form.get('phone')?.touched" aria-required="true"
+      aria-describedby="phoneError" pattern="[0-9]{10}">
+    @if (form.get('phone')?.invalid && form.get('phone')?.touched) {
+    <span id="phoneError" class="customer-form__error" role="alert">El teléfono es requerido (10 dígitos)</span>
+    }
+  </label>
+
+  <button type="submit" class="customer-form__button" [disabled]="form.invalid"
+    [attr.aria-label]="form.getRawValue().customerId ? 'Editar cliente' : 'Crear nuevo cliente'">
+    {{ form.getRawValue().customerId ? 'Editar' : 'Crear' }}
+  </button>
 </form>
