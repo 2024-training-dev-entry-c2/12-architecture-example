@@ -1,9 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, Input, input, OnDestroy, OnInit, output } from '@angular/core';
+import { Component, inject, Input, input, OnInit, output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { IControls, InputComponent } from 'shared';
-import { ModalUsecase } from '../../../../application/modal.usecase';
 import { IClient } from '../../../../domain/model/client.model';
 
 @Component({
@@ -12,28 +11,15 @@ import { IClient } from '../../../../domain/model/client.model';
   templateUrl: './client-form.component.html',
   styleUrl: './client-form.component.scss'
 })
-export class ClientFormComponent implements OnInit, OnDestroy {
+export class ClientFormComponent implements OnInit {
   private formBuilder = inject(FormBuilder);
-  private readonly _useCaseModal = inject(ModalUsecase);
   public message = input<string>();
+  public open$ = input<Observable<boolean>>();
   public onSubmit = output<IClient>();
 
   @Input()
   set client(value: IClient) {
     this.form.patchValue(value);
-  }
-
-  ngOnInit() {
-    this._useCaseModal.initSubscriptions();
-    this._useCaseModal.open$().subscribe(result => {
-      if (!result) {
-        this.form.reset();
-      }
-    });
-  }
-
-  ngOnDestroy() {
-    this._useCaseModal.destroySubscriptions();
   }
 
   public form: FormGroup = this.formBuilder.group({
@@ -49,7 +35,15 @@ export class ClientFormComponent implements OnInit, OnDestroy {
     { type: 'input', text: 'Correo', inputType: 'email', controlName: 'email' }
   ];
 
-  submit() {
+  ngOnInit() {
+    this.open$().subscribe(result => {
+      if (!result) {
+        this.form.reset();
+      }
+    });
+  }
+
+  public submit(): void {
     if (!this.form.valid) return;
     this.onSubmit.emit(this.form.getRawValue());
   }

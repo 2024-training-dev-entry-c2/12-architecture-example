@@ -5,6 +5,7 @@
 <lib-client-form 
     [message]="message$ | async"
     [client]="currentClient$ | async"
+    [open$]="isOpen$"
     (onSubmit)="submit($event)"
   ></lib-client-form>
 </lib-modal>
