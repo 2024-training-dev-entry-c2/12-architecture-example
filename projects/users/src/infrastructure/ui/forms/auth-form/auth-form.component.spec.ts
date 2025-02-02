@@ -3,7 +3,8 @@ import { AuthFormComponent } from './auth-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 import { InputConfig } from '../../interfaces/input-config';
-/*
+
+
 describe('AuthFormComponent', () => {
   let component: AuthFormComponent;
   let fixture: ComponentFixture<AuthFormComponent>;
@@ -11,21 +12,21 @@ describe('AuthFormComponent', () => {
    const mockInputs: InputConfig[] = [
         {
             type: 'text',
-            label: 'Username',
+            label: 'Nombre de Usuario',
             formControlName: 'username',
         },
         {
             type: 'password',
-            label: 'Password',
+            label: 'Contraseña',
             formControlName: 'password',
         },
        {
           type: 'select',
-           label: 'Country',
-          formControlName: 'country',
+           label: 'Rol',
+          formControlName: 'roles',
            options: [
-                { value: 'us', label: 'United States' },
-                { value: 'ca', label: 'Canada' },
+                { value: 'USER', label: 'Usuario' },
+                { value: 'ADMIN', label: 'Administrador' },
             ],
         }
     ];
@@ -64,8 +65,8 @@ describe('AuthFormComponent', () => {
       const selectElement = fixture.debugElement.query(By.css('select'));
        const options = selectElement.nativeElement.querySelectorAll('option');
           expect(options.length).toBe(mockInputs[2].options.length+1); 
-         expect(options[1].value).toBe('us');
-         expect(options[2].value).toBe('ca');
+         expect(options[1].value).toBe('USER');
+         expect(options[2].value).toBe('ADMIN');
     });
 
     it('should render the submit button with the provided buttonText', () => {
@@ -86,7 +87,7 @@ describe('AuthFormComponent', () => {
           component.authForm.setValue({
              username: 'testuser',
               password: 'testpassword',
-              country: 'us'
+              roles: 'USER'
          });
          fixture.detectChanges();
 
@@ -138,11 +139,11 @@ describe('AuthFormComponent', () => {
           component.authForm.setValue({
              username: 'testuser',
               password: 'testpassword',
-              country: 'us'
+              roles: 'USER'
          });
         fixture.detectChanges();
          const buttonElement = fixture.debugElement.query(By.css('.auth-form__button'));
           expect(buttonElement.nativeElement.disabled).toBe(false);
      });
 
-});*/
+});

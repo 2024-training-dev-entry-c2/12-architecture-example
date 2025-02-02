@@ -52,9 +52,8 @@ describe('InformativeModalComponent', () => {
     component.showModal = true;
     fixture.detectChanges();
     
-    component.closeModal(); // llamamos al metodo del componente
-    component.showModal = false; // Modificamos la propiedad showModal para que el estilo se actualice
-
+    component.closeModal(); 
+    component.showModal = false; 
     fixture.detectChanges();
     
     const modalElement = fixture.debugElement.query(By.css('.modal'));

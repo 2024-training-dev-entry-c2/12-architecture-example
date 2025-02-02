@@ -1,6 +1,5 @@
 @use './variables.scss' as variables;
 
-// Mixins
 @mixin flex-center {
     display: flex;
     justify-content: center;

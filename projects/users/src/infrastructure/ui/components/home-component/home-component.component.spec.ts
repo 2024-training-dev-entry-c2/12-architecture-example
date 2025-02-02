@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomeComponentComponent } from './home-component.component';
 import { By } from '@angular/platform-browser';
-/*
+
 describe('HomeComponentComponent', () => {
     let component: HomeComponentComponent;
     let fixture: ComponentFixture<HomeComponentComponent>;
@@ -27,8 +27,8 @@ describe('HomeComponentComponent', () => {
 
   it('should render the ng-content',async () => {
         const contentText = 'This is the home content';
-        fixture.nativeElement.querySelector('.container').innerHTML = `<lib-home-component>${contentText}</lib-home-component>`; //Modificamos la forma en que asignamos el texto
-        await fixture.whenStable(); // Esperamos a que se actualice el template
+        fixture.nativeElement.querySelector('.container').innerHTML = `<lib-home-component>${contentText}</lib-home-component>`; 
+        await fixture.whenStable(); 
         fixture.detectChanges();
 
 
@@ -36,4 +36,4 @@ describe('HomeComponentComponent', () => {
         const renderedContent = content?.nativeElement.textContent;
         expect(renderedContent).toContain(contentText);
   });
-});*/
+});

@@ -11,7 +11,7 @@ describe('MainLayoutComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MainLayoutComponent, RouterOutlet, AsideComponent, NavContainerComponent], // Importamos los componentes necesarios
+      imports: [MainLayoutComponent, RouterOutlet, AsideComponent, NavContainerComponent], 
     }).compileComponents();
 
     fixture = TestBed.createComponent(MainLayoutComponent);

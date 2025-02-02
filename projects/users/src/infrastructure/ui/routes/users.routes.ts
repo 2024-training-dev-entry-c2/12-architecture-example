@@ -10,7 +10,6 @@ export const usersRoutes: Routes = [
     },
     {
       path: 'dashboard',
-      //component: MainLayoutComponent, canActivate: [authGuard],
       component: MainLayoutComponent, canActivate: [authGuard],
 
       children: [
