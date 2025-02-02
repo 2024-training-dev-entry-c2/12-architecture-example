@@ -13,15 +13,14 @@ import { ClientFormComponent } from "../../forms/client-form/client-form.compone
 @Component({
   selector: 'lib-client',
   imports: [TableComponent, ModalComponent, ClientFormComponent, AsyncPipe],
-  templateUrl: './client.component.html',
-  styleUrl: './client.component.scss'
+  templateUrl: './client.component.html'
 })
 export class ClientComponent implements OnInit, OnDestroy {
   private readonly _useCaseCreate = inject(CreateClientUsecase);
   private readonly _useCaseGet = inject(GetClientsUsecase);
   private readonly _useCaseDelete = inject(DeleteClientUsecase);
   private readonly _useCaseUpdate = inject(UpdateClientUsecase);
-  public readonly _useCaseModal = inject(ModalUsecase);
+  private readonly _useCaseModal = inject(ModalUsecase);
 
   public clients$: Observable<IClient[]>;
   public message$: Observable<string>;
@@ -35,29 +34,14 @@ export class ClientComponent implements OnInit, OnDestroy {
     { field: 'userType', header: 'Tipo de Usuario' }
   ];
 
-  openModal(event: boolean) {
-    this._useCaseModal.execute(event);
-  }
-
   ngOnInit(): void {
-    this._useCaseCreate.initSubscriptions();
-    this._useCaseGet.initSubscriptions();
-    this._useCaseUpdate.initSubscriptions();
-    this._useCaseDelete.initSubscriptions();
-    this._useCaseModal.initSubscriptions();
+    this.init();
     this._useCaseGet.execute();
-    this.clients$ = this._useCaseGet.clients$();
-    this.currentClient$ = this._useCaseUpdate.currentClient$();
-    this.message$ = this._useCaseCreate.message$();
-    this.isOpen$ = this._useCaseModal.open$();
+    this.initializeObservables();
   }
 
   ngOnDestroy(): void {
-    this._useCaseCreate.destroySubscriptions();
-    this._useCaseGet.destroySubscriptions();
-    this._useCaseDelete.destroySubscriptions();
-    this._useCaseUpdate.destroySubscriptions();
-    this._useCaseModal.destroySubscriptions();
+    this.destroy();
   }
 
   public deleteClient(clientId: number): void {
@@ -68,8 +52,35 @@ export class ClientComponent implements OnInit, OnDestroy {
     this._useCaseUpdate.selectClient(clientId);
   }
 
-  public submit(client: IClient) {
+  public submit(client: IClient): void {
     const usecase = client.id ? this._useCaseUpdate : this._useCaseCreate;
     usecase.execute(client);
+  }
+
+  public openModal(event: boolean): void {
+    this._useCaseModal.execute(event);
+  }
+
+  private init(): void {
+    this._useCaseCreate.initSubscriptions();
+    this._useCaseGet.initSubscriptions();
+    this._useCaseUpdate.initSubscriptions();
+    this._useCaseDelete.initSubscriptions();
+    this._useCaseModal.initSubscriptions();
+  }
+
+  private destroy(): void {
+    this._useCaseCreate.destroySubscriptions();
+    this._useCaseGet.destroySubscriptions();
+    this._useCaseDelete.destroySubscriptions();
+    this._useCaseUpdate.destroySubscriptions();
+    this._useCaseModal.destroySubscriptions();
+  }
+
+  private initializeObservables(): void {
+    this.clients$ = this._useCaseGet.clients$();
+    this.currentClient$ = this._useCaseUpdate.currentClient$();
+    this.message$ = this._useCaseCreate.message$();
+    this.isOpen$ = this._useCaseModal.open$();
   }
 }

@@ -9,9 +9,9 @@ import { GetAllService } from "../../infrastructure/services/client/get-all.serv
   providedIn: 'root'
 })
 export class GetClientsUsecase {
-  private titleCasePipe = new TitleCasePipe();
   private readonly _service = inject(GetAllService);
   private readonly _state = inject(State);
+  private titleCasePipe = new TitleCasePipe();
   private subscriptions: Subscription;
 
   //#region Observables

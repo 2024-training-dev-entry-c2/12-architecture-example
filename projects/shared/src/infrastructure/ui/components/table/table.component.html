@@ -40,7 +40,7 @@
           />
         </td>
         <ng-container *ngFor="let column of columns(); let i = index">
-          <td role="cell">{{data[column.field]}}</td>
+          <td role="cell">{{data?.[column.field]}}</td>
           @if (column.header === 'Cliente') {
           <td role="cell">
             <lib-button 
