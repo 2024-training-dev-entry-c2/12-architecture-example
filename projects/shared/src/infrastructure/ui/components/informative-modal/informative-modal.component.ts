@@ -13,5 +13,4 @@ export class InformativeModalComponent {
   closeModal() {
     this.closeModalEvent.emit(); 
   }
-
 }
