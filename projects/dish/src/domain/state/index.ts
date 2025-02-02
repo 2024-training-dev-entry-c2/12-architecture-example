@@ -7,7 +7,7 @@ import { DishesState } from './dish.state';
 export class State {
   private readonly _dishes = inject(DishesState);
 
-  get dishes() {
-    return this._dishes.store().dishes;
+  get dishesState() {
+    return this._dishes.store();
   }
 }

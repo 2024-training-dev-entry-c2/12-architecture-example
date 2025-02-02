@@ -11,11 +11,13 @@ export class DishesState {
 
   //#region Subjects
   private readonly dishes$ = new BehaviorSubject<IDish[]>([]);
+  private readonly currentDish$ = new BehaviorSubject<IDish>(null);
   //#endregion
 
   store() {
     return {
       dishes: this._factory.state(this.dishes$),
+      currentDish: this._factory.state(this.dishes$),
     };
   }
 }
