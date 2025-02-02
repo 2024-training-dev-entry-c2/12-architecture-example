@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .dish-form {
   display: flex;
   flex-direction: column;
@@ -61,7 +63,7 @@
     transition: background-color 0.2s;
 
     &:hover {
-      background-color: darken(#2196f3, 10%);
+      background-color: color.adjust(#2196f3, $lightness: -10%);
     }
 
     &:disabled {

@@ -1,3 +1,5 @@
+@use "sass:color";
+
 .dishes-table {
   width: 90%;
   max-width: 1200px;
@@ -57,7 +59,7 @@
       color: white;
 
       &:hover {
-        background-color: darken(#2196f3, 10%);
+        background-color: color.adjust(#2196f3, $lightness: -10%);
       }
     }
 
@@ -66,7 +68,7 @@
       color: white;
 
       &:hover {
-        background-color: darken(#f44336, 10%);
+        background-color: color.adjust(#f44336, $lightness: -10%);
       }
     }
 
@@ -118,7 +120,7 @@
       color: #333;
 
       &:hover {
-        background-color: darken(#e0e0e0, 10%);
+        background-color: color.adjust(#e0e0e0, $lightness: -10%);
       }
     }
 
@@ -127,7 +129,7 @@
       color: white;
 
       &:hover {
-        background-color: darken(#f44336, 10%);
+        background-color: color.adjust(#f44336, $lightness: -10%);
       }
     }
   }
