@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output, ViewChild } from '@angular/core';
-import { HeaderComponent } from "../../../../../../shared/src/infrastructure/ui/components/header/header.component";
+import { HeaderComponent } from "shared";
 import { OrderFormComponent } from "../../forms/order-form/order-form.component";
 import { IOrder } from '../../../../domain/model/orders.model';
 
@@ -11,16 +11,16 @@ import { IOrder } from '../../../../domain/model/orders.model';
 })
 export class OrderHeaderComponent {
   @Output() onSubmitOrder = new EventEmitter<IOrder>();
-  @ViewChild(OrderFormComponent) menuForm!: OrderFormComponent;
+  @ViewChild(OrderFormComponent) orderForm!: OrderFormComponent;
 
   submitOrder(): void {
-    // if (this.menuForm && this.menuForm.form.valid) {
-    //   const menu = this.menuForm.getFormData();
-    //   if (menu) {
-    //     console.log('Sending menu data:', menu);
-    //     this.onSubmitMenu.emit(menu);
-    //     this.menuForm.resetForm();
-    //   }
-    // }
+    if (this.orderForm && this.orderForm.form.valid) {
+      const order = this.orderForm.getFormData();
+      if (order) {
+        console.log('Sending order data:', order);
+        this.onSubmitOrder.emit(order);
+        this.orderForm.resetForm();
+      }
+    }
   }
 }

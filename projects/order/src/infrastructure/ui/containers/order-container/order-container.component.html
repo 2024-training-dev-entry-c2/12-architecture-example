@@ -1,1 +1,15 @@
-<p>order-container works!</p>
+<lib-order-header (onSubmitOrder)="addOrder($event)"></lib-order-header>
+<lib-share (searchQueryChange)="updateSearchQuery($event)"></lib-share>
+<lib-order-main [orders]="order$ | async" (deleteOrderEvent)="openDeleteModal($event)"
+    (editOrderEvent)="openEditModal($event)"></lib-order-main>
+
+<lib-modal *ngIf="isModalOpen()" [title]="modalTitle" [buttonName]="modalButton" (submitEvent)="confirmModal()"
+    (closeEvent)="closeModal()">
+    <ng-container *ngIf="modalType === 'edit'">
+        <lib-order-form #orderEditForm [isEditForm]="true" [currentClientName]="currentClientName"
+            [currentOrderItems]="currentOrderItems"></lib-order-form>
+    </ng-container>
+    <ng-container *ngIf="modalType === 'delete'">
+        <p>¿Estas seguro de que deseas eliminar esta orden?</p>
+    </ng-container>
+</lib-modal>

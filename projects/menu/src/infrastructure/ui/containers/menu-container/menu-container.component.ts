@@ -1,4 +1,4 @@
-import { Component, inject, OnChanges, OnDestroy, OnInit, signal, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, signal, ViewChild } from '@angular/core';
 import {  Observable } from 'rxjs';
 import { IMenu } from '../../../../domain/model/menus.model';
 import { AsyncPipe, CommonModule } from '@angular/common';
