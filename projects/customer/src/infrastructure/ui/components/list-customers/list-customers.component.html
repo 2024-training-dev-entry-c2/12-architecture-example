@@ -1,26 +1,34 @@
-<lib-modal action="Crear customer" #modal>
+<lib-modal action="Crear Cliente" #modal>
   <lib-customer-form [customer]="currentCustomer()" (onSubmit)="handleSubmit($event)"></lib-customer-form>
 </lib-modal>
 
-<table>
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Email</th>
-      <th>Telefono</th>
-      <th>Acciones</th>
+<table class="customers-table" role="table" aria-label="Lista de clientes">
+  <thead class="customers-table__head">
+    <tr class="customers-table__row">
+      <th class="customers-table__header" scope="col">Nombre</th>
+      <th class="customers-table__header" scope="col">Apellido</th>
+      <th class="customers-table__header" scope="col">Email</th>
+      <th class="customers-table__header" scope="col">Teléfono</th>
+      <th class="customers-table__header" scope="col">Acciones</th>
     </tr>
   </thead>
-  <tbody>
-    <tr *ngFor="let customer of customers()">
-      <td>{{customer.name}}</td>
-      <td>{{customer.lastName}}</td>
-      <td>{{customer.email}}</td>
-      <td>{{customer.phone}}</td>
-      <td>
-        <button (click)="selectCustomer(customer.customerId)">Editar</button>
-        <button>Eliminar</button>
+  <tbody class="customers-table__body">
+    <tr class="customers-table__row" *ngFor="let customer of customers()">
+      <td class="customers-table__cell">{{customer.name}}</td>
+      <td class="customers-table__cell">{{customer.lastName}}</td>
+      <td class="customers-table__cell">{{customer.email}}</td>
+      <td class="customers-table__cell">{{customer.phone}}</td>
+      <td class="customers-table__cell customers-table__cell--actions">
+        <button class="customers-table__button customers-table__button--edit"
+          (click)="selectCustomer(customer.customerId)" [attr.aria-label]="'Editar cliente ' + customer.name">
+          <span class="material-icons" aria-hidden="true">edit</span>
+          <span>Editar</span>
+        </button>
+        <button class="customers-table__button customers-table__button--delete"
+          [attr.aria-label]="'Eliminar cliente ' + customer.name">
+          <span class="material-icons" aria-hidden="true">delete</span>
+          <span>Eliminar</span>
+        </button>
       </td>
     </tr>
   </tbody>

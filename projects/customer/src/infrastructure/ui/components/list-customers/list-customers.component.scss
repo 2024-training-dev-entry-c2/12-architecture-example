@@ -1,20 +1,27 @@
-table {
+.customers-table {
   width: 100%;
   border-collapse: collapse;
+  margin: 1rem 0;
 
-  thead {
+  &__head {
     background-color: rgb(130, 8, 191);
     color: white;
   }
 
-  th {
-    padding: 10px;
+  &__header {
+    padding: 1rem;
     text-align: left;
+    font-weight: 600;
   }
 
-  tbody {
-    tr {
-      border-bottom: 1px solid rgb(130, 8, 191);
+  &__body {
+    .customers-table__row {
+      border-bottom: 1px solid rgba(130, 8, 191, 0.2);
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: rgba(130, 8, 191, 0.05);
+      }
 
       &:last-child {
         border-bottom: none;
@@ -22,8 +29,52 @@ table {
     }
   }
 
-  td {
-    padding: 10px;
+  &__cell {
+    padding: 1rem;
     text-align: left;
+
+    &--actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+
+    &--edit {
+      background-color: #2196f3;
+      color: white;
+
+      &:hover {
+        background-color: darken(#2196f3, 10%);
+      }
+    }
+
+    &--delete {
+      background-color: #f44336;
+      color: white;
+
+      &:hover {
+        background-color: darken(#f44336, 10%);
+      }
+    }
+
+    .material-icons {
+      font-size: 1.25rem;
+    }
+
+    &:focus-visible {
+      outline: 2px solid rgb(130, 8, 191);
+      outline-offset: 2px;
+    }
   }
 }
