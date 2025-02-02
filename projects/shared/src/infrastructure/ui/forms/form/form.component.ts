@@ -14,7 +14,10 @@ export class FormComponent {
   @Input() formGroup!: FormGroup; 
   
   ngOnInit(): void {
+    if (!this.formGroup || !(this.formGroup instanceof FormGroup)) {
+      console.error('formGroup is not provided or is not an instance of FormGroup.');
+      this.formGroup = new FormGroup({}); // Asignar un FormGroup vacío como fallback
+    }
     console.log(this.formFields);
-    
   }
 }

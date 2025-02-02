@@ -26,6 +26,10 @@ export class UpdateMenuFormComponent {
   });
 
   setValue(): void {
+    if (!this.getData) {
+      console.warn('getData is undefined');
+      return;
+    }
     const dishfoodsArray = this.menuUpdatedForm.get('dishfoods') as FormArray;
     dishfoodsArray.clear();
     if (this.getData.dishfoods && Array.isArray(this.getData.dishfoods) && this.getData.dishfoods.length > 0) {

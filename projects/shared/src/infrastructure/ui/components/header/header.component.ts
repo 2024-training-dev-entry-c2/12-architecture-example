@@ -1,7 +1,7 @@
 
 import { Component, HostListener } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { ThemeService } from '../toogle-theme/theme.service';
+import { ThemeService } from '../../../services/toogle-theme/theme.service';
 
 @Component({
   selector: 'lib-header-navbar',

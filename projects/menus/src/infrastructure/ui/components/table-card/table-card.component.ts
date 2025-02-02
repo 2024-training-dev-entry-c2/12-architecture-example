@@ -19,9 +19,13 @@ export class TableCardComponent {
   public updateMenuData = output<{ menu: IMenuRequest; id: number }>();
   public onSelectMenu = output<number>();
   public selectMenu = output<{ id: number; name: string }>();
-  public getTabs = computed(() =>
-    this.menu().map((menu) => ({ id: menu.id, name: menu.name }))
-  );
+  public getTabs = computed(() => {
+    if (!this.menu()) {
+      console.warn('menu is undefined');
+      return [];
+    }
+    return this.menu().map((menu) => ({ id: menu.id, name: menu.name }));
+  });
   public menuId: number = 0;
   showModal = false;
   showModalUpdate = false;

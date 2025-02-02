@@ -49,6 +49,10 @@ export class TableDishComponent {
     this.updateDish.emit({ dish, id: this.dishId });
   }
   getMenuDishes() {
+    if(!this.dishes()){
+      console.warn('dishes is undefined');
+      return [];
+    }
     return this.dishes().filter((dish) => dish.menu === this.item().name);
   }
   closeModal() {

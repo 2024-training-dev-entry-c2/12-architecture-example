@@ -16,7 +16,7 @@ import { CreateOrderFormComponent } from '../../forms/create-order-form/create-o
 
 @Component({
   selector: 'lib-orders-table',
-  imports: [PaginationComponent, TableComponent, UpdateOrderFormComponent, CreateOrderFormComponent],
+  imports: [ PaginationComponent,TableComponent,UpdateOrderFormComponent,CreateOrderFormComponent ],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css',
 })
@@ -61,21 +61,25 @@ export class TableOrdersComponent {
   closeModal() {
     this.showModal = false;
   }
- createOrder(order: IOrderRequest){
-  console.log(order);
-   this.createOrderData.emit(order);
- }
+  createOrder(order: IOrderRequest) {
+    console.log(order);
+    this.createOrderData.emit(order);
+  }
   UpdateOrder(order: any) {
     console.log(order);
     this.updateOrderData.emit({ order: order, id: this.orderId });
   }
   setValue(): any {
-   return this.order = this.dataOrders().map((order) => ({
+    if (!Array.isArray(this.dataOrders())) {
+      console.error('Data is null or not an array:', this.order);
+      return [];
+    }
+    return (this.order = this.dataOrders().map((order) => ({
       id: order.id,
       client: order.client.name,
       localDate: String(order.localDate),
       dishfoodIds: order.dishfoodIds,
       price: order.totalPrice,
-    }));
+    })));
   }
 }

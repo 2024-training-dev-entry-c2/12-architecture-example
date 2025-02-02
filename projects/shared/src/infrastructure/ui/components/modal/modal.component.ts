@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { FormField } from '../../../../domain/model/form.interface';
-import { FormComponent } from '../form/form.component';
+import { FormComponent } from '../../forms/form/form.component';
 
 @Component({
   selector: 'lib-modal',

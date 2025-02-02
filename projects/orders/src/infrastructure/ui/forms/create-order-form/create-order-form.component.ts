@@ -52,6 +52,11 @@ export class CreateOrderFormComponent {
   }
 
   submit() {
+
+    if (!Array.isArray(this.dishList)) {
+      console.error('Data is null or not an array:', this.dishList);
+      return;
+    }
     if (this.addOrderForm.valid) {
       const payload = {
         clientId: this.clientSelected,

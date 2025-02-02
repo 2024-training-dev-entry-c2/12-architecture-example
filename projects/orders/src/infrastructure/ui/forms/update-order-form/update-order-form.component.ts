@@ -43,6 +43,7 @@ export class UpdateOrderFormComponent implements OnInit {
   public dishList: IDish[] = [];
   public clientSelected: number = 0;
   private formBuilder = inject(FormBuilder);
+  
   ngOnInit(): void {
     setTimeout(() => this.setValue(), 300);
   }
@@ -52,6 +53,8 @@ export class UpdateOrderFormComponent implements OnInit {
     menuId: [null],
     dishfoodIds: this.formBuilder.array([]),
   });
+
+  
   getClient(id: number) {
     this.clientSelected = id;
   }
@@ -79,6 +82,10 @@ export class UpdateOrderFormComponent implements OnInit {
     }
   }
   setValue(): void {
+    if (!Array.isArray(this.menus)) {
+      console.error('Data is null or not an array:', this.menus);
+      return;
+    }
     this.clientSelected = this.order.client.id;
     this.menus.map((menu) =>
       menu.dishfoods.map((dish) => {
