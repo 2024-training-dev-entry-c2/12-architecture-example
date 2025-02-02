@@ -7,13 +7,9 @@
         {{ message()}}
       </div>
       }
-      <lib-add-dish
-         [dish]="dishEdit()"
-        (onSubmit)="handleSubmit($event)"
-      ></lib-add-dish>
+      <lib-add-dish [dish]="dishEdit()" (onSubmit)="handleSubmit($event)"></lib-add-dish>
     </section>
   </lib-modal>
-
   <section class="menu__content" role="main">
     <h1>Menú del Restaurante</h1>
     <p>Descripción: {{menu().description}}</p>
@@ -53,8 +49,6 @@
           </td>
         </tr>
         }
-
       </tbody>
     </table>
-
   </section>
