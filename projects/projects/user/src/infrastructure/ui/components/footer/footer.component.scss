@@ -1,0 +1,14 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.footer {
+    &__container {
+        padding: $spacing-base;
+        text-align: center;
+    }
+
+    &__text {
+        color: $color-gray-400;
+        font-size: $font-size-xs;
+    }
+}

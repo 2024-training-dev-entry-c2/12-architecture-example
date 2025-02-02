@@ -1,0 +1,24 @@
+<div class="login">
+  <div class="login__card">
+    <h1 class="login__title">Create new User</h1>
+
+    <lib-auth-form 
+      [formGroup]="loginForm"
+      formClass="login__form"
+      (onSubmit)="onSubmit()">
+
+      <lib-app-form-input [formGroup]="loginForm" type="email" controlName="email" inputClass="login__input"
+        placeholder="Email">
+      </lib-app-form-input>
+
+      <lib-app-form-input [formGroup]="loginForm" type="password" controlName="password" inputClass="login__input"
+        placeholder="Password">
+      </lib-app-form-input>
+
+      <button type="submit" class="login__button">
+        Login
+      </button>
+      
+    </lib-auth-form>
+  </div>
+</div>

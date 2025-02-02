@@ -1,0 +1,33 @@
+// Mixins
+@mixin alert-base {
+    min-width: $alert-min-width;
+    padding: $alert-padding-y $alert-padding-x;
+    border-radius: $alert-border-radius;
+    font-size: $alert-font-size;
+    font-weight: bold;
+    text-align: center;
+    color: $alert-text-color;
+  }
+  
+  @mixin alert-shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  @mixin alert-animation {
+    animation: fadeInOut $alert-animation-duration ease-in-out forwards;
+  }
+  
+  @mixin alert-variant($background-color) {
+    background-color: $background-color;
+  }
+  
+  @mixin alert-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: none;
+  }

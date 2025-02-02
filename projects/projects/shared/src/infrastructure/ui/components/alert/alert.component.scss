@@ -1,0 +1,44 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variable.scss';
+
+.alert-container {
+  @include alert-container;
+}
+
+.alert {
+  @include alert-base;
+  @include alert-shadow;
+  @include alert-animation;
+  pointer-events: all;
+
+  &--success {
+    @include alert-variant($alert-success);
+  }
+
+  &--error {
+    @include alert-variant($alert-error);
+  }
+
+  &--warning {
+    @include alert-variant($alert-warning);
+  }
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateY($alert-transform-distance);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY($alert-transform-distance);
+  }
+}
