@@ -1,19 +1,19 @@
+import { NgFor } from '@angular/common';
 import { Component, input, output, viewChild } from '@angular/core';
 import { ModalComponent } from 'shared';
-import { MenuFormComponent } from '../../forms/menu-form/menu-form.component';
-import { CurrencyPipe, NgFor } from '@angular/common';
 import { IMenu } from '../../../../domain/models/menu.model';
+import { MenuFormComponent } from '../../forms/menu-form/menu-form.component';
 
 @Component({
-  selector: 'lib-list-menues',
-  imports: [ModalComponent, MenuFormComponent, NgFor, CurrencyPipe],
+  selector: 'lib-list-menus',
+  imports: [ModalComponent, MenuFormComponent, NgFor],
   templateUrl: './list-menus.component.html',
   styleUrl: './list-menus.component.scss',
 })
 export class ListMenusComponent {
   public modal = viewChild<ModalComponent>('modal');
   public deleteModal = viewChild<ModalComponent>('deleteModal');
-  public menues = input.required<IMenu[]>();
+  public menus = input.required<IMenu[]>();
   public currentMenu = input<IMenu>();
   public menuToDelete: IMenu | null = null;
 
