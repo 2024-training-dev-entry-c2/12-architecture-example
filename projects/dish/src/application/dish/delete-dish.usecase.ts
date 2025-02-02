@@ -33,9 +33,7 @@ export class DeleteDishUsecase {
         const currentDishes = this._state.dishes.listDishes.snapshot();
         this._state.dishes.listDishes.set(currentDishes.filter(dish => dish.id !== dishId));
       }),
-      finalize(() => {
-        this._state.dishes.message.set(null);
-      })
+      finalize(() => this._state.dishes.message.set(null))
     ).subscribe();
   }
   //#endregion

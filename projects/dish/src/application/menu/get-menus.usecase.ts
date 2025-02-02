@@ -1,7 +1,7 @@
 import { inject, Injectable } from "@angular/core";
 import { map, Observable, Subscription } from "rxjs";
-import { State } from "../../domain/state";
 import { IMenu } from "../../domain/model/menu.model";
+import { State } from "../../domain/state";
 import { GetAllService } from "../../infrastructure/services/menu/get-all.service";
 
 @Injectable({
@@ -30,10 +30,10 @@ export class GetMenusUsecase {
   execute(): void {
     this.subscriptions.add(
       this._service.execute()
-      .pipe(
-        map(result => this._state.dishes.listMenus.set(result))
-      )
-      .subscribe()
+        .pipe(
+          map(result => this._state.dishes.listMenus.set(result))
+        )
+        .subscribe()
     );
   }
   //#endregion
