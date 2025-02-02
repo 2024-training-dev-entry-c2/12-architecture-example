@@ -1,7 +1,6 @@
 import {
   Component,
   EventEmitter,
-  inject,
   input,
   Input,
   OnInit,
@@ -12,7 +11,6 @@ import { faPlus, faTrash, faEdit } from '@fortawesome/free-solid-svg-icons';
 import { IMenuResponse, IMenu } from '../../../../domain/model/menu.model';
 import { Observable } from 'rxjs';
 import { DeleteCardComponent } from 'shared';
-import { Router } from '@angular/router';
 import { FormMenuComponent } from '../../forms/form-menu/form-menu.component';
 
 @Component({
@@ -22,8 +20,6 @@ import { FormMenuComponent } from '../../forms/form-menu/form-menu.component';
   styleUrl: './menus.component.scss',
 })
 export class MenusComponent implements OnInit {
-  private readonly router = inject(Router);
-
   faPlus = faPlus;
   faTrash = faTrash;
   faEdit = faEdit;

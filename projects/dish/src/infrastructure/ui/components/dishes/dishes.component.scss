@@ -1,0 +1,17 @@
+@use "../../../../../../shared/src/infrastructure/ui/styles/mixins.scss" as
+  mixins;
+@use "../../../../../../shared/src/infrastructure/ui/styles/variables.scss" as
+  variables;
+@import "../../../../../../shared/src/infrastructure/ui/styles/component.scss";
+
+.entity {
+  &__group-title {
+    @include mixins.font(24px, 500);
+    color: variables.$color-font;
+    margin-bottom: 20px;
+  }
+
+  table {
+    margin-bottom: 40px;
+  }
+}

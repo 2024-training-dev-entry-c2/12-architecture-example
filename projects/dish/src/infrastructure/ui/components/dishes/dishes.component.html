@@ -1,0 +1,50 @@
+<section class="container">
+    <article class="entity">
+        <div class="entity__header">
+            <h1>Platos</h1>
+        </div>
+
+        @for(dishList of dishes; track $index; let idx = $index){
+        <div class="entity__create-button-container">
+            <button aria-expanded="false" class="entity__create-button" (click)="showCreateDish()">
+                <fa-icon [icon]="faPlus"></fa-icon>
+                <span>Crear nuevo plato</span>
+            </button>
+
+        </div>
+        <h2 class="entity__group-title">{{ menus[$index].menuName }}</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NOMBRE</th>
+                    <th>Descripción</th>
+                    <th>Precio base</th>
+                    <th>Popular</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for ( dish of dishList; track dish.id) {
+                <tr>
+                    <td>{{ dish.id }}</td>
+                    <td>{{ dish.dishName }}</td>
+                    <td>{{ dish.description }}</td>
+                    <td>{{ dish.basePrice | number:'1.0-0':'es-ES' }}</td>
+                    <td>{{ dish.isPopular ? 'Si' : 'No' }}</td>
+
+                    <td class="entity__buttons">
+                        <button class="entity__edit-button" (click)="showUpdateDish(dish.id, idx)">
+                            <fa-icon [icon]="faEdit"></fa-icon>
+                        </button>
+                        <lib-delete-card [selectedId]="dish.id" [entityName]="'cliente'"
+                            (onDelete)="deleteDish($event)"></lib-delete-card>
+                        <button class="entity__add-button">Añadir</button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+        }
+    </article>
+</section>
