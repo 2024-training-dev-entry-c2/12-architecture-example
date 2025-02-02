@@ -14,6 +14,10 @@ export const routes: Routes = [
       {
         path: 'platos',
         loadChildren: () => import('../../../dish/src/infrastructure/ui/routes/dishes.routes').then((DishestRoutes)=>DishestRoutes.routes)
+      },
+      {
+        path: 'menus',
+        loadChildren: () => import('../../../menu/src/infrastructure/ui/routers/menu.routes').then((MenusRoutes)=>MenusRoutes.routes)
       }
     ]
     // loadChildren: () => import('../../../shared/src/infrastructure/ui/routes/layout.routes').then((LayoutRoutes)=>LayoutRoutes.routes)

@@ -2,15 +2,15 @@ import { Component, inject, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'lib-form-by-id-dish',
+  selector: 'lib-form-by-id-menu',
   imports: [ReactiveFormsModule],
-  templateUrl: './form-by-id-dish.component.html',
-  styleUrl: './form-by-id-dish.component.scss'
+  templateUrl: './form-by-id-menu.component.html',
+  styleUrl: './form-by-id-menu.component.scss'
 })
-export class FormByIdDishComponent {
+export class FormByIdMenuComponent {
   private formBuilder = inject(FormBuilder);
 
-  @Output() public dishSubmit = new EventEmitter<number>();
+  @Output() public menuSubmit = new EventEmitter<number>();
 
   public form = this.formBuilder.group({
     id: [0, [Validators.required, Validators.pattern(/^[0-9]+$/)]]
@@ -20,6 +20,6 @@ export class FormByIdDishComponent {
     event.preventDefault(); // Prevenir el evento nativo
     if (!this.form.valid) return;
     const idValue = this.form.get('id')?.value;
-    this.dishSubmit.emit(idValue);
+    this.menuSubmit.emit(idValue);
   }
 }

@@ -1,0 +1,20 @@
+<article class="get-by-id-menu__menu-info">
+    <h3 class="get-by-id-menu__menu-title">{{ menu.nombre }}</h3>
+    <div class="get-by-id-menu__menu-container">
+        @if (menu.platos) {
+        <h4 class="get-by-id-menu__menu-subtitle">Platos:</h4>
+        <div class="get-by-id-menu__menu-dishes">
+            @for (plato of menu.platos; track $index) {
+            <div class="get-by-id-menu__dish-content">
+                <div class="get-by-id-menu__dish-header">
+                    <p class="get-by-id-menu__dish-name">{{ plato.nombre }} <span>({{ plato.tipo }})</span></p>
+                    <p class="get-by-id-menu__dish-price">{{ plato.precio | currency }}</p>
+                </div>
+                <p class="get-by-id-menu__dish-description">- {{ plato.descripcion }}</p>
+            </div>
+            <hr>
+            }
+        </div>
+        }
+    </div>
+</article>

@@ -1,0 +1,8 @@
+<form [formGroup]="form" class="form" (ngSubmit)="submit()">
+    <h3 class="form__title">{{ title }}</h3>
+    <label class="form__label" aria-label="name-label">
+        <span>Nombre:</span>
+        <input type="text" formControlName="nombre" class="form__input">
+    </label>
+    <button class="form__button" aria-label="send form">Enviar</button>
+</form>
