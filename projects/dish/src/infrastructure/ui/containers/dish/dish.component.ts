@@ -6,24 +6,27 @@ import { CreateDishUsecase } from '../../../../application/dish/create-dish.usec
 import { DeleteDishUsecase } from '../../../../application/dish/delete-dish.usecase';
 import { GetDishesUsecase } from '../../../../application/dish/get-dishes.usecase';
 import { UpdateDishUsecase } from '../../../../application/dish/update-dish.usecase';
+import { GetMenusUsecase } from '../../../../application/menu/get-menus.usecase';
 import { ModalUsecase } from '../../../../application/modal.usecase';
 import { IDish } from '../../../../domain/model/dish.model';
+import { IMenu } from '../../../../domain/model/menu.model';
 import { DishFormComponent } from '../../forms/dish-form/dish-form.component';
 
 @Component({
   selector: 'lib-dish',
   imports: [TableComponent, ModalComponent, DishFormComponent, AsyncPipe],
-  templateUrl: './dish.component.html',
-  styleUrl: './dish.component.scss'
+  templateUrl: './dish.component.html'
 })
 export class DishComponent implements OnInit, OnDestroy {
-  private readonly _useCaseCreate = inject(CreateDishUsecase);
-  private readonly _useCaseGet = inject(GetDishesUsecase);
-  private readonly _useCaseDelete = inject(DeleteDishUsecase);
-  private readonly _useCaseUpdate = inject(UpdateDishUsecase);
-  public readonly _useCaseModal = inject(ModalUsecase);
+  private readonly _createUseCase = inject(CreateDishUsecase);
+  private readonly _getUseCase = inject(GetDishesUsecase);
+  private readonly _deleteUseCase = inject(DeleteDishUsecase);
+  private readonly _updateUseCase = inject(UpdateDishUsecase);
+  private readonly _modalUseCase = inject(ModalUsecase);
+  private readonly _menusUseCase = inject(GetMenusUsecase);
 
   public dishes$: Observable<IDish[]>;
+  public menus$: Observable<IMenu[]>;
   public message$: Observable<string>;
   public isOpen$: Observable<boolean>;
   public currentDish$: Observable<IDish>;
@@ -36,43 +39,56 @@ export class DishComponent implements OnInit, OnDestroy {
     { field: 'menuName', header: 'Menu' }
   ];
 
-  openModal(event: boolean) {
-    this._useCaseModal.execute(event);
-  }
-
   ngOnInit(): void {
-    this._useCaseCreate.initSubscriptions();
-    this._useCaseGet.initSubscriptions();
-    this._useCaseUpdate.initSubscriptions();
-    this._useCaseDelete.initSubscriptions();
-    this._useCaseModal.initSubscriptions();
-
-    this._useCaseGet.execute();
-    this.dishes$ = this._useCaseGet.dishes$();
-    
-    this.currentDish$ = this._useCaseUpdate.currentDish$();
-    this.message$ = this._useCaseCreate.message$();
-    this.isOpen$ = this._useCaseModal.open$();
+    this.init();
+    this._getUseCase.execute();
+    this._menusUseCase.execute();
+    this.initializeObservables();
   }
 
   ngOnDestroy(): void {
-    this._useCaseCreate.destroySubscriptions();
-    this._useCaseGet.destroySubscriptions();
-    this._useCaseDelete.destroySubscriptions();
-    this._useCaseUpdate.destroySubscriptions();
-    this._useCaseModal.destroySubscriptions();
+    this.destroy();
   }
 
   public deleteMenu(menuId: number): void {
-    this._useCaseDelete.execute(menuId);
+    this._deleteUseCase.execute(menuId);
   }
 
   public updateById(menuId: number): void {
-    this._useCaseUpdate.selectDish(menuId);
+    this._updateUseCase.selectDish(menuId);
   }
 
-  public submit(dish: IDish) {
-    const usecase = dish.id ? this._useCaseUpdate : this._useCaseCreate;
+  public submit(dish: IDish): void {
+    const usecase = dish.id ? this._updateUseCase : this._createUseCase;
     usecase.execute(dish);
+  }
+
+  public openModal(event: boolean): void {
+    this._modalUseCase.execute(event);
+  }
+
+  private init(): void {
+    this._createUseCase.initSubscriptions();
+    this._getUseCase.initSubscriptions();
+    this._updateUseCase.initSubscriptions();
+    this._deleteUseCase.initSubscriptions();
+    this._modalUseCase.initSubscriptions();
+    this._menusUseCase.initSubscriptions();
+  }
+
+  private destroy(): void {
+    this._createUseCase.destroySubscriptions();
+    this._getUseCase.destroySubscriptions();
+    this._deleteUseCase.destroySubscriptions();
+    this._updateUseCase.destroySubscriptions();
+    this._modalUseCase.destroySubscriptions();
+  }
+
+  private initializeObservables(): void {
+    this.dishes$ = this._getUseCase.dishes$();
+    this.menus$ = this._menusUseCase.menus$();
+    this.currentDish$ = this._updateUseCase.currentDish$();
+    this.message$ = this._createUseCase.message$();
+    this.isOpen$ = this._modalUseCase.open$();
   }
 }

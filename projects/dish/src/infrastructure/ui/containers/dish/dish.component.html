@@ -5,6 +5,8 @@
 <lib-dish-form 
     [message]="message$ | async"
     [dish]="currentDish$ | async"
+    [open$]="isOpen$"
+    [menus$]="menus$"
     (onSubmit)="submit($event)"
   ></lib-dish-form>
 </lib-modal>

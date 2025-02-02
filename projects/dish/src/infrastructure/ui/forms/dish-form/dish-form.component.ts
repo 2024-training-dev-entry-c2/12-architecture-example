@@ -1,10 +1,10 @@
-import { Component, inject, input, Input, OnDestroy, OnInit, output } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CapitalizeFirstPipe, IControls, InputComponent, IOptions, SelectComponent } from 'shared';
-import { ModalUsecase } from '../../../../application/modal.usecase';
-import { IDish } from '../../../../domain/model/dish.model';
 import { CommonModule } from '@angular/common';
-import { GetMenusUsecase } from '../../../../application/menu/get-menus.usecase';
+import { Component, inject, input, Input, OnInit, output } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { CapitalizeFirstPipe, IControls, InputComponent, IOptions, SelectComponent } from 'shared';
+import { IDish } from '../../../../domain/model/dish.model';
+import { IMenu } from '../../../../domain/model/menu.model';
 
 @Component({
   selector: 'lib-dish-form',
@@ -12,43 +12,18 @@ import { GetMenusUsecase } from '../../../../application/menu/get-menus.usecase'
   templateUrl: './dish-form.component.html',
   styleUrl: './dish-form.component.scss'
 })
-export class DishFormComponent implements OnInit, OnDestroy {
-  private readonly _useCaseModal = inject(ModalUsecase);
-  private readonly _useCaseMenus = inject(GetMenusUsecase);
+export class DishFormComponent implements OnInit {
   private capitalizeFirstPipe = new CapitalizeFirstPipe();
   private formBuilder = inject(FormBuilder);
   public message = input<string>();
+  public open$ = input<Observable<boolean>>();
+  public menus$ = input<Observable<IMenu[]>>();
   public onSubmit = output<IDish>();
   public menuOptions: IOptions[] = [];
 
   @Input()
   set dish(value: IDish) {
     this.form.patchValue(value);
-  }
-
-  ngOnInit() {
-    this._useCaseModal.initSubscriptions();
-    this._useCaseMenus.initSubscriptions();
-    this._useCaseMenus.execute();
-
-    this._useCaseMenus.menus$().subscribe(menus => {
-      this.menuOptions = (menus ?? []).map(menu => ({
-        value: menu.id,
-        name: this.capitalizeFirstPipe.transform(menu.name)
-      }));
-      this.updateMenuOptions();
-    });
-
-    this._useCaseModal.open$().subscribe(result => {
-      if (!result) {
-        this.form.reset();
-      }
-    });
-  }
-
-  ngOnDestroy() {
-    this._useCaseModal.destroySubscriptions();
-    this._useCaseMenus.destroySubscriptions();
   }
 
   public form: FormGroup = this.formBuilder.group({
@@ -69,12 +44,28 @@ export class DishFormComponent implements OnInit, OnDestroy {
     }
   ];
 
-  submit() {
+  ngOnInit(): void {
+    this.menus$().subscribe(menus => {
+      this.menuOptions = (menus ?? []).map(menu => ({
+        value: menu.id,
+        name: this.capitalizeFirstPipe.transform(menu.name)
+      }));
+      this.updateMenuOptions();
+    });
+
+    this.open$().subscribe(result => {
+      if (!result) {
+        this.form.reset();
+      }
+    });
+  }
+
+  public submit(): void {
     if (!this.form.valid) return;
     this.onSubmit.emit(this.form.getRawValue());
   }
 
-  private updateMenuOptions() {
+  private updateMenuOptions(): void {
     const menuControl = this.controls.find(control => control.controlName === 'menuId');
     if (menuControl) {
       menuControl.options = this.menuOptions;
