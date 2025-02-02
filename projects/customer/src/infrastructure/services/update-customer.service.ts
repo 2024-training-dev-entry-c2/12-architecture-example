@@ -13,7 +13,7 @@ export class UpdateCustomerService {
   private readonly _http = inject(HttpClient);
 
   execute(customer: ICustomer) {
-    return this._http.put<ICustomerCreateRequest>(
+    return this._http.put<ICustomer>(
       RESOURCES.customerById(customer.customerId),
       customer
     );
