@@ -15,7 +15,7 @@ export class CreateCustomerUseCase {
   private subscriptions: Subscription;
 
   //   #region Public methods
-  initSubscription() {
+  initSubscriptions() {
     this.subscriptions = new Subscription();
   }
 
@@ -24,7 +24,7 @@ export class CreateCustomerUseCase {
   }
 
   execute(customer: ICustomerCreateRequest, modal: ModalComponent): void {
-    this.initSubscription();
+    this.initSubscriptions();
     this.subscriptions.add(
       this._service
         .execute(customer)
