@@ -1,0 +1,14 @@
+<div class="form__field__options">
+    <div class="form__field__buttons-container">
+        <button class="form__button" (click)="decrementQuantity()" 
+        aria-label="Decrementar cantidad">-</button>
+        <span>{{quantityControl.value}}</span>
+        <button class="form__button" (click)="incrementQuantity()" 
+        aria-label="Incrementar cantidad">+</button>
+    </div>
+    <button class="form__button form__button--delete" type="button" (click)="onDeleteClick()">
+        <svg aria-hidden="true">
+            <use xlink:href ="images/svg/delete.svg#delete-id"></use>
+        </svg>  
+    </button>
+</div>

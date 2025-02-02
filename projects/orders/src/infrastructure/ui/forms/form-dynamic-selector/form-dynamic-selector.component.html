@@ -1,0 +1,17 @@
+<div [formGroup]="form()!">
+    <div class="form__group" formArrayName="dishes">
+        <div class="form__group-name"  [formGroupName]="index().toString()">
+            <lib-form-dish-selector
+            [dishes]="dishes()"
+            [form]="form()"
+            [formArray]="formArray()"
+            [index]="index()"
+            />                
+            <lib-form-quantity-control
+            [formArray]="formArray()"
+            controlName="quantity"
+            [index]="index()"
+            />
+        </div>
+    </div>
+</div>

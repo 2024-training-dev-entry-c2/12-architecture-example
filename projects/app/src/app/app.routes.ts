@@ -18,6 +18,10 @@ export const routes: Routes = [
             {
                 path: 'platos',
                 loadChildren: () => import('dishes').then(d => d.dishesRoutes)
+            },
+            {
+                path: 'pedidos',
+                loadChildren: () => import('orders').then(o => o.ordersRoutes)
             }
         ]
     }

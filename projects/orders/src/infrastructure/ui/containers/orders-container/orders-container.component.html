@@ -1,0 +1,9 @@
+<lib-orders-section
+[orders]="orders$ | async"
+[dishes]="dishes$ | async"
+[clients]="clients$ | async"
+[currentOrder] = "currentOrder$ | async"
+(onSave)="handlePatchOrder($event)"
+(onSelectToUpdate)="handleSelectUpdateOrder($event)"
+(onDelete)="handleDeleteOrder($event)"
+/>

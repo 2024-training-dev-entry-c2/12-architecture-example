@@ -1,0 +1,37 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <lib-form-field
+    [formGroup]="form"
+    controlName="date"
+    label="Fecha"
+    type="date"
+    placeholder="Ingresa la fecha del pedido"
+    />
+
+    <lib-form-selector
+    [formGroup]="form"
+    [clients]="clients()"
+    controlName="clientId"
+    label="Cliente"
+    />
+
+    <div formArrayName="dishes">
+        @for (control of getFormArrayControls(); track control; let i = $index) {
+                <lib-form-dynamic-selector
+                [form]="form"
+                [formArray]="dishes"
+                formArrayname="dishes"
+                [index]="i"
+                [dishes]="dishesList()"
+                (onDelete)="deleteDish(i)"
+                />
+        }
+    </div>
+    <lib-theme-button [theme]="'cancel'" text="Agregar plato" (onClick)="addDish()"/>
+
+    <lib-theme-button
+    [form]="form"
+    [text]="action()"
+    [theme]="theme()"
+    type="submit"
+    />
+ </form>

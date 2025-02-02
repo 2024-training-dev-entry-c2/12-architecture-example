@@ -1,21 +1,21 @@
-import { Observable, Subscription, tap } from "rxjs";
-import { IOrderRequest } from "../../domain/model/order-request";
+import { finalize, Observable, Subscription, tap } from "rxjs";
 import { inject, Injectable } from "@angular/core";
 import { UpdateOrderService } from "../../infrastructure/services/update-order.service";
 import { State } from "../../domain/state";
 import { IOrder } from "../../domain/model/order.model";
+import { ModalComponent } from "shared";
 
 @Injectable({
     providedIn : 'root'
 })
-export class DeleteOrderUsecase {
+export class UpdateOrderUsecase {
     private readonly _service = inject(UpdateOrderService);
     private readonly _state = inject(State);
     private subscriptions : Subscription;
 
     //#region Observables
-    orders$() : Observable<IOrder[]> {
-        return this._state.orders.orders.$();
+    currentOrder$() : Observable<IOrder> {
+        return this._state.orders.currentOrder.$();
     }
     //#endregion 
 
@@ -28,14 +28,21 @@ export class DeleteOrderUsecase {
         this.subscriptions.unsubscribe();
     }
 
-    execute(id: number, order: IOrderRequest): void{
+    selectOrder(id:number) : void {
+        const currentOrder = this._state.orders.orders.snapshot().find(order => order.id == id);
+        this._state.orders.currentOrder.set(currentOrder);
+    }
+
+    execute(order: IOrder, modal: ModalComponent): void{
         this.subscriptions.add(
-            this._service.execute(id.toString(), order).pipe(
+            this._service.execute(order.id.toString(), order).pipe(
                 tap(result =>{
                     const orders = this._state.orders.orders.snapshot()
-                    .map( order => order.id == id ? result : order );
+                    .map( order => order.id == result.id ? result : order );
                     this._state.orders.orders.set(orders);
-                })
+                    this._state.orders.currentOrder.set(null);
+                }),
+                finalize(()=> modal.toggle())  
             ).subscribe()
         );
     }

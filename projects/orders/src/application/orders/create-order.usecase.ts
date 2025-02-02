@@ -1,9 +1,9 @@
 import { inject, Injectable } from "@angular/core";
 import { CreateOrderService } from "../../infrastructure/services/create-order.service";
 import { State } from "../../domain/state";
-import { Observable, Subscription, tap } from "rxjs";
+import { finalize, Observable, Subscription, tap } from "rxjs";
 import { IOrder } from "../../domain/model/order.model";
-import { IOrderRequest } from "../../domain/model/order-request";
+import { ModalComponent } from "shared";
 
 @Injectable({
     providedIn : 'root'
@@ -28,13 +28,14 @@ export class CreateOrderUsecase {
         this.subscriptions.unsubscribe();
     }
 
-    execute(order: IOrderRequest): void{
+    execute(order: IOrder, modal : ModalComponent): void{
         this.subscriptions.add(
             this._service.execute(order).pipe(
                 tap(result =>{
                     const orders = this._state.orders.orders.snapshot();
                     this._state.orders.orders.set([...orders, result]);
-                })
+                }),
+                finalize(()=> modal.toggle())   
             ).subscribe()
         );
     }

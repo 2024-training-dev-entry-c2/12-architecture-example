@@ -5,6 +5,6 @@ export interface IOrder{
     id: number;
     client: IClient;
     dishes: IDishOrder[];
-    date: Date;
+    date: Date | null;
     total: number;
 }

@@ -65,5 +65,6 @@ export class ClientsSectionComponent {
     this.modalTitle = 'Crear Cliente';
     this.formAction = 'Crear';
     this.formTheme = 'success';
+    this.form().resetForm();
   }
 }

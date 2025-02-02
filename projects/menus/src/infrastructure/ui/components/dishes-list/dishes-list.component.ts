@@ -10,5 +10,4 @@ import { IDish } from 'dishes';
 })
 export class DishesListComponent {
   public dishes = input<IDish[]>();
-
 }

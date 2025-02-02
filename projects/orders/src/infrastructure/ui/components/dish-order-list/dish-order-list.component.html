@@ -1,0 +1,7 @@
+<ul class="dish-order-list">
+    @for (dish of dishes(); track $index) {
+        <li class="dish-order-list__item">{{ dish.dishName| titlecase }}, 
+            {{dish.price | currency:'COP':'symbol'}}  ×  
+            {{dish.quantity}}</li>
+    }
+</ul>   

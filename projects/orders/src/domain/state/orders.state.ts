@@ -11,11 +11,13 @@ export class OrdersState {
     
     //#region Subjects
     private readonly orders$ = new BehaviorSubject<IOrder[]>(null);
+    private readonly currentOrder$ = new BehaviorSubject<IOrder>(null);
     //#endregion
 
     store(){
         return {
-            orders: this._factory.state(this.orders$)
+            orders: this._factory.state(this.orders$),
+            currentOrder: this._factory.state(this.currentOrder$)
         };
     }
 }
