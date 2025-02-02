@@ -1,0 +1,25 @@
+<div class="content" role="main">
+  <nav class="content__navbar" role="navigation" aria-label="User Navigation">
+    <div class="container-fluid">
+      <ul class="content__navbar-nav" role="list">
+        <li class="content__navbar-item" role="listitem">
+          <div class="content__navbar-link" role="presentation">
+            <span class="content__navbar-text" role="text" >{{ username }}</span>
+            <div class="content__navbar-image-container" role="button" tabindex="0" aria-haspopup="true" [attr.aria-expanded]="showLogout" (click)="toggleLogout($event)">
+              <img
+                src="../../assets/images/login1.jpg"
+                alt="User Image"
+                class="content__navbar-icon"
+                aria-hidden="true"
+              />
+              @if(showLogout) {
+              <div class="content__navbar-logout" (click)="logout()" role="menuitem">Logout</div>
+              }
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>
+<app-loader [isVisible]="loader"></app-loader>

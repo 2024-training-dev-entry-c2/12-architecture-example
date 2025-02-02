@@ -1,8 +1,8 @@
-import { inject, Injectable } from "@angular/core";
-import { UsersState } from "./users.state";
+import { inject, Injectable } from '@angular/core';
+import { UsersState } from './users.state';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class State {
   private readonly _users = inject(UsersState);

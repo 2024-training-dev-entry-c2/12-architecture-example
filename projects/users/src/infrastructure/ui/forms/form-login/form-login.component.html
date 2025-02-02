@@ -1,1 +1,42 @@
-<p>form-login works!</p>
+<div class="login-page">
+    <div class="login-box">
+      <div class="login-box__illustration-wrapper">
+        <img
+          src="../../assets/images/bank_final.jpg"
+          alt="Login Illustration"
+          class="login-box__illustration-img"
+        />
+      </div>
+      <form [formGroup]="loginForm()" id="login-form" class="login-form" (ngSubmit)="onSubmit()">
+        <p class="login-form__title">Welcome to Bank</p>
+        <p class="login-form__subtitle">Login for our clients</p>
+  
+        <div class="login-form__item">
+          <label for="username" class="login-form__label">Username</label>
+          <input
+            type="email"
+            id="username"
+            name="email"
+            placeholder="Username"
+            formControlName="email"
+            required
+            class="login-form__input"
+          />
+        </div>
+  
+        <div class="login-form__item">
+            <label for="password" class="login-form__label">Password</label>
+            <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Password"
+                formControlName="password"
+                required
+                class="login-form__input"
+            />
+        </div>
+        <button type="submit" class="login-form__button">LOGIN</button>
+      </form>
+    </div>
+  </div>

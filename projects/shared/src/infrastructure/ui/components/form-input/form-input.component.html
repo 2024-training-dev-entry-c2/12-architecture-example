@@ -1,0 +1,13 @@
+<div class="register-modal__form-item">
+    <span class="register-modal__form-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" [innerHTML]="safeIcon">
+
+        </svg>
+    </span>
+    <input [type]="type"
+            [placeholder]="placeholder" 
+            [value]="value" 
+            (input)="onInputChange($event)"
+            [disabled]="disabled" 
+            class="register-modal__form-input" />
+</div>
