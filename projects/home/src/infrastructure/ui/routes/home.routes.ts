@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { NavbarContainerComponent } from 'shared';
 import { MainLayoutComponent } from 'shared';
 import { FooterContainerComponent } from 'shared';
+import { SectionMainContentComponent } from '../containers/section-main-content/section-main-content.component';
 
 
 export const homeRoutes: Routes = [
@@ -15,10 +16,10 @@ export const homeRoutes: Routes = [
         component: NavbarContainerComponent,
         outlet: 'header',
       },
-    //   {
-    //     path: '',
-    //     component: ,
-    //   },
+      {
+        path: '',
+        component: SectionMainContentComponent,
+      },
       {
         path: '', 
         component: FooterContainerComponent,

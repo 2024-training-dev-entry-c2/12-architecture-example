@@ -1,0 +1,88 @@
+   <section class="section">
+    <div class="container section__content">
+        <div class="section__content-header section__content-header--clients-img">
+            <figure class="section__content-container">
+                <img src="./logo.png" alt="Gusteau's Logo that is displayed in the header of the page with the logo being a draw of 'Rattatouille'" />
+                <h1 class="container__content-title">Gusteau's Dishes Details</h1>
+                <button aria-label="Open modal to add a new dish"  (click)="onOpenAddModal()" class="container__content-btn container__content-btn--add">
+                    Add Dish
+                </button>
+            </figure>
+        </div>
+        <table class="container__content-table" role="table" aria-labelledby="DishesTable">
+            <thead class="container__content-table-header">
+                <tr>
+                    @for (header of tableHeaders; track $index) {
+                        <th class="">{{header}}</th>
+                    } 
+                </tr>
+            </thead>
+            <tbody class="container__content-table-body">
+                @for (dish of dishes; track dish.id) {
+                    <tr>
+                        <td>{{dish.id}}</td>
+                        <td>{{dish.name}}</td>
+                        <td>{{dish.price | currency:'COP' + ' '}}</td>
+                        <td>{{dish.menuName}}</td>
+                        <td>
+                            <span>{{dish.dishType}}</span>
+                        </td>
+                        <td>{{dish.totalOrdered}}</td>
+                        <td class="container__content-table-actions">
+                            <button aria-label="Edit dish details" (click)="onOpenEditModal(dish)" class="container__content-btn container__content-btn--edit">
+                                Edit
+                            </button>
+                            <button aria-label="Delete dish" (click)="onOpenDeleteModal(dish)" class="container__content-btn container__content-btn--delete">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <!-- <lib-modal 
+        [isOpen]="isModalOpen" 
+        [title]="modalType === 'add' ? 'Add Dish' : modalType === 'edit' ? 'Edit Dish' : 'Delete Dish'" 
+        (closeModal)="onCloseModal()">
+
+        <lib-add-modal
+            *ngIf="modalType !== 'delete'"
+            [dishForm]="dishForm"
+            [formData]="formData"
+            (save)="onSave()">
+        </lib-add-modal>
+
+        @if(modalType === 'delete'){
+        <lib-remove-modal 
+
+        [dishName]="selectedDish?.name"
+        (deleteDish)="onDelete()"
+        (closeModal)="onCloseModal()"
+        >
+    </lib-remove-modal>
+        }
+
+    </lib-modal> -->
+
+    <lib-modal 
+    [isOpen]="isModalOpen" 
+    [title]="modalType === 'add' ? 'Add Dish' : modalType === 'edit' ? 'Edit Dish' : 'Delete Dish'" 
+    (closeModal)="onCloseModal()">
+
+    <lib-add-modal
+        *ngIf="modalType !== 'delete'"
+        [editData]="selectedDish"
+        (save)="onSave($event)">
+    </lib-add-modal>
+
+    @if(modalType === 'delete'){
+        <lib-remove-modal 
+            [dishName]="selectedDish?.name"
+            (deleteDish)="onDelete()"
+            (closeModal)="onCloseModal()">
+        </lib-remove-modal>
+    }
+</lib-modal>
+</section>

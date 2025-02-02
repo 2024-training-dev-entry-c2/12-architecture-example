@@ -1,0 +1,31 @@
+.modal{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &__title{
+     padding: 20px 0px 0px 0px;
+    }
+  &__btn-container{
+    display: flex;
+    gap: 15px;
+   
+  }
+&__btn {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 14px;
+  &--confirm{
+    background-color: #4caf50;
+    color: white;
+  }
+  &--cancel{
+    background-color: #f44336;
+    color: white;
+  }
+}
+
+
+}

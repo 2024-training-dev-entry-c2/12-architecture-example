@@ -1,0 +1,16 @@
+<main aria-labelledby="main-title">
+  <lib-section-menus
+  [menus]="menus$ | async"
+  [isModalOpen]="isModalOpen"
+  [modalType]="modalType"
+  [selectedMenu]="selectedMenu"
+  (addMenu)="openAddModal()"
+  (editMenu)="openEditModal($event)"
+  (deleteMenu)="openDeleteModal($event)"
+  (confirmDelete)="deleteMenu()"
+  (saveMenu)="onSave($event)"
+  (closeModal)="closeModal()">
+  
+</lib-section-menus>
+
+</main>

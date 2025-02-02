@@ -1,0 +1,8 @@
+@use "../../../../../../shared/src/infrastructure/ui/styles/_section";
+@use "../../../../../../shared/src/infrastructure/ui/styles/_container";
+@use '../../../../../../shared/src/infrastructure/ui/styles/_mixin' as mixin;
+
+
+.section {
+  @include mixin.section();
+}
