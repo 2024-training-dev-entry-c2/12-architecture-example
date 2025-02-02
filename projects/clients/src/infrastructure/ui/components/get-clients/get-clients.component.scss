@@ -1,13 +1,25 @@
 @use "../../styles/variables.scss" as variables;
 
-.content {
-  padding-right: 5px;
-  h1 {
-    color: variables.$color-secondary;
+.clients {
+  width: 80dvw;
+  padding: 20px;
+  &__mensaje-exito {
+    color: variables.$color-background-button;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: 1rem;
     text-align: center;
-    margin: 0 0 10px 0;
-    font-size: 20px;
   }
+  &__content {
+    padding-right: 5px;
+    h1 {
+      color: variables.$color-secondary;
+      text-align: center;
+      margin: 0 0 10px 0;
+      font-size: 20px;
+    }
+  }
+
   &__table {
     width: 100%;
     border-collapse: collapse;
@@ -35,28 +47,12 @@
     tr:hover {
       color: variables.$color-gradients;
     }
-    hr{
+    hr {
       opacity: 0;
     }
   }
 
-  &__button-edit {
-    background: variables.$color-background-button;
-    color: variables.$color-text;
-    border: none;
-    padding: 8px 12px;
-    cursor: pointer;
-    border-radius: 4px;
-    color: variables.$color-background;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-
-    &:hover {
-      background: variables.$color-secondary;
-    }
-  }
-
-  &__items {
+  &__content-items {
     list-style-type: none;
     padding: 0;
 

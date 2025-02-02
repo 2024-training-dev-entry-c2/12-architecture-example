@@ -1,0 +1,20 @@
+<section class="plato-form" role="form">
+  <h2>{{ dishForm.getRawValue().id ? 'Editar Plato' : 'Crear Plato' }}</h2>
+  <form [formGroup]="dishForm" (ngSubmit)="submit()">
+    <div class="plato-form__form-group">
+      <label for="name">Nombre:</label>
+      <input id="name" formControlName="name" type="text" aria-required="true" />
+    </div>
+    <div class="plato-form__form-group">
+      <label for="price">Precio:</label>
+      <input id="price" formControlName="price" type="number" aria-required="true" />
+    </div>
+    <div class="plato-form__form-group">
+      <label for="menuRestaurantId">ID del Menú del Restaurante:</label>
+      <input id="menuRestaurantId" formControlName="menuRestaurantId" type="number" aria-required="true" />
+    </div>
+    <div class="plato-form__form-actions">
+      <button type="submit" id="submit">{{ dishForm.getRawValue().id ? 'Editar Plato' : 'Crear Plato' }}</button>
+    </div>
+  </form>
+</section>

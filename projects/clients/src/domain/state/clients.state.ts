@@ -1,5 +1,5 @@
 import { inject, Injectable } from "@angular/core";
-import { StateFactory } from "./state.factory";
+import {StateFactory} from 'shared';
 import { BehaviorSubject } from "rxjs";
 import { IClient } from "../model/client.model";
 
@@ -12,11 +12,19 @@ export class ClientsState {
 
   //#region Subjects
   private readonly clients$ = new BehaviorSubject<IClient[]>([]);
-
+  private readonly currentclients$ = new BehaviorSubject<IClient>(null);
+  private readonly successMessage$ = new BehaviorSubject<string | null>(null);
 
   //#endregion
 
   store() {
-    return this._factory.state(this.clients$);
+    return {
+      clients: this._factory.state(this.clients$),
+      currentClient: this._factory.state(this.currentclients$),
+      successMessage: this._factory.state(this.successMessage$)
+    }
+  }
+  setSuccessMessage(message: string | null) {
+    this.successMessage$.next(message);
   }
 }

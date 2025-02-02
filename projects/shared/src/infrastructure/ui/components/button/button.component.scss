@@ -1,0 +1,26 @@
+@use "../../styles/variables.scss" as variables;
+
+.button{
+  color: variables.$color-background;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+
+  &--primary {
+    background: variables.$color-background-button;
+  }
+
+  &--info {
+    background: variables.$color-background-button;
+  }
+
+  &--danger {
+    background: variables.$color-gradients;
+  }
+  &:hover {
+    background: variables.$color-secondary;
+  }
+}

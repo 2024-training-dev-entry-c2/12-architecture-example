@@ -1,45 +1,57 @@
-<section class="content" aria-labelledby="clientes-title">
-  <h1 id="clientes-title">Clientes</h1>
-  <table class="content__table">
-    <thead class="content__head">
-      <tr>
-        <th scope="col">ID Cliente</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Email</th>
-        <th scope="col">Teléfono</th>
-        <th scope="col">Es Frecuente</th>
-        <th scope="col">Acciones</th>
-        <th>
-          <lib-button-add (buttonEvent)="addClient()"></lib-button-add>
-        </th>
-      </tr>
-    </thead>
-    <tbody class="content__body">
-      @for(client of clients; track client.id){
-      <tr class="content__cliente">
-        <td>{{client.id}}</td>
-        <td>{{client.name}}</td>
-        <td>{{client.email}}</td>
-        <td>{{client.numberPhone}}</td>
-        <td>
-          @if(client.isFrecuent){
-          <p class="content__items--frecuent-true">
-            {{client.isFrecuent ? 'Si' : 'No'}}
-          </p>
-        }@else{
-          <p class="content__items--frecuent-false">
-            {{ client.isFrecuent ? 'Si' : 'No' }}
-          </p>
-        }
-        </td>
-        <td>
-          <lib-button-edit  [id]="client.id!" (editEvent)="editClient(client.id!)"></lib-button-edit>
-          <hr>
-          <lib-button-delete [id]="client.id!" (deleteEvent)="deleteClient($event)"></lib-button-delete>
-        </td>
-      </tr>
+<section class="clients">
+  <lib-modal action="Crear Cliente" #modal>
+    <section class="clients__clients-add" aria-label="Agregar/editar cliente">
+      @if(message()) {
+      <div class="clients__mensaje-exito">
+        {{message()}}
+      </div>
       }
+      <lib-add-client-form [client]="currentClient()" (onSubmit)="handleSubmit($event)">
+      </lib-add-client-form>
+    </section>
+  </lib-modal>
+  <section class="clients__content" aria-labelledby="clientes-title">
+    <h1 id="clients__title">Clientes</h1>
+    <table class="clients__table">
+      <thead class="clients__head">
+        <tr>
+          <th scope="col">ID Cliente</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Email</th>
+          <th scope="col">Teléfono</th>
+          <th scope="col">Es Frecuente</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="clients__body">
+        @for(client of clients(); track client.id){
+        <tr class="clients__content-cliente">
+          <td>{{client.id}}</td>
+          <td>{{client.name}}</td>
+          <td>{{client.email}}</td>
+          <td>{{client.numberPhone}}</td>
+          <td>
+            @if(client.isFrecuent){
+            <p class="clients__content-items--frecuent-true">
+              {{client.isFrecuent ? 'Si' : 'No'}}
+            </p>
+            }@else{
+            <p class="clients__content-items--frecuent-false">
+              {{ client.isFrecuent ? 'Si' : 'No' }}
+            </p>
+            }
+          </td>
+          <td>
+            <lib-button [text]="'Editar'" [theme]="'primary'" (click)="editClient(client.id)">
+            </lib-button>
+            <hr>
+            <lib-button [text]="'Eliminar'" [theme]="'danger'" (click)="deleteClient(client.id)">
+            </lib-button>
+          </td>
+        </tr>
+        }
 
-    </tbody>
-  </table>
+      </tbody>
+    </table>
+  </section>
 </section>

@@ -1,11 +1,11 @@
-import { inject, Injectable } from "@angular/core";
-import { State } from "../../domain/state";
-import { IClient } from "../../domain/model/client.model";
-import { Observable, Subscription, tap } from "rxjs";
-import { GetClientsService } from "../../infrastructure/services/get-clients.service";
+import { inject, Injectable } from '@angular/core';
+import { State } from '../../domain/state';
+import { IClient } from '../../domain/model/client.model';
+import { Observable, Subscription, tap } from 'rxjs';
+import { GetClientsService } from '../../infrastructure/services/get/get-clients.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GetClientsUsecase {
   private readonly _service = inject(GetClientsService);
@@ -14,7 +14,7 @@ export class GetClientsUsecase {
 
   //#region Observables
   clients$(): Observable<IClient[]> {
-    return this._state.clients.$();
+    return this._state.clients.clients.$();
   }
   //#endregion
 
@@ -29,10 +29,9 @@ export class GetClientsUsecase {
 
   execute(): void {
     this.subscriptions.add(
-      this._service.execute()
-        .pipe(
-          tap(clients => this._state.clients.set(clients))
-        )
+      this._service
+        .execute()
+        .pipe(tap((clients) => this._state.clients.clients.set(clients)))
         .subscribe()
     );
   }

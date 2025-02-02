@@ -4,7 +4,7 @@ import { ClientContainerComponent } from "../containers/client-container/client-
 
 export const clientsRoutes: Routes = [
   {
-    path: 'get',
+    path: '',
     component: GetClientsLayoutComponent,
     children: [
       {

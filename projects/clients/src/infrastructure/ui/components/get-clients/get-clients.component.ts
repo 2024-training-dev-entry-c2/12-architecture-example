@@ -1,30 +1,42 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  Component,
+  inject,
+  input,
+  output,
+  viewChild,
+} from '@angular/core';
 import { IClient } from '../../../../domain/model/client.model';
-import { ButtonAddComponent } from '../button-add/button-add.component';
-import { ButtonEditComponent } from '../button-edit/button-edit.component';
-import { ButtonDeleteComponent } from '../button-delete/button-delete.component';
+import { ModalComponent } from 'shared';
+import { AddClientFormComponent } from '../../forms/add-client-form/add-client-form.component';
+import { ClientsState } from '../../../../domain/state/clients.state';
+import { ButtonComponent } from 'shared';
 
 @Component({
   selector: 'lib-get-clients',
-  imports: [ButtonAddComponent, ButtonEditComponent, ButtonDeleteComponent],
+  imports: [ModalComponent, AddClientFormComponent, ButtonComponent],
   templateUrl: './get-clients.component.html',
-  styleUrl: './get-clients.component.scss'
+  styleUrl: './get-clients.component.scss',
 })
 export class GetClientsComponent {
-  @Input() clients: IClient[] = [];
-  @Output() editClientEvent = new EventEmitter<number>();
-  @Output() addClientEvent = new EventEmitter<void>();
-  @Output() deleteClientEvent = new EventEmitter<number>();
+  private clientsState = inject(ClientsState);
+  public modal = viewChild<ModalComponent>('modal');
+  public clients = input.required<IClient[]>();
+  public currentClient = input<IClient>();
+  public onCreateClient = output<{ client: IClient; modal: ModalComponent }>();
+  public onDeleteClient = output<number>();
+  public onSelectClient = output<number>();
 
-
- addClient() {
-    this.addClientEvent.emit();
+  message(): string {
+    return this.clientsState.store().successMessage.snapshot();
   }
   editClient(id: number) {
-    this.editClientEvent.emit(id);
+    this.onSelectClient.emit(id);
+    this.modal().toggle();
   }
   deleteClient(id: number): void {
-   this.deleteClientEvent.emit(id);
+    this.onDeleteClient.emit(id);
   }
-
+  handleSubmit(client: IClient) {
+    this.onCreateClient.emit({ client, modal: this.modal() });
+  }
 }

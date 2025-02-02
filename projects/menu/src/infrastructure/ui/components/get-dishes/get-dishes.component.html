@@ -1,0 +1,54 @@
+<section class="menu">
+  <lib-modal action="Crear Plato" #modal>
+    <section class="menu__add" aria-label="Agregar/editar plato">
+      <h2 id="addTitle" class="visually-hidden">Agregar Plato</h2>
+      @if(message()) {
+      <div class="menu__mensaje-exito" role="status">
+        {{ message()}}
+      </div>
+      }
+      <lib-add-dish [dish]="dishEdit()" (onSubmit)="handleSubmit($event)"></lib-add-dish>
+    </section>
+  </lib-modal>
+  <section class="menu__content" role="main">
+    <h1>Menú del Restaurante</h1>
+    <p>Descripción: {{menu().description}}</p>
+    <table class="menu__table">
+      <thead class="menu__head" role="rowgroup">
+        <tr>
+          <th scope="col">Platos</th>
+          <th scope="col">Popularidad</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="menu__body">
+        @for(dish of dishes(); track dish.id) {
+        <tr class="menu__menu">
+          <ul class="menu__items">
+            <td>
+              <li><strong>Nombre:</strong> {{dish.name}}</li>
+              <li> <strong>Precio:</strong> ${{dish.price}}</li>
+            </td>
+          </ul>
+          <td>
+            @if(dish.popular){
+            <p class="menu__items--popular-true">
+              {{ dish.popular ? 'Popular' : 'No Popular' }}
+            </p>
+            }@else{
+            <p class="menu__items--popular-false">
+              {{ dish.popular ? 'Popular' : 'No Popular' }}
+            </p>
+            }
+          </td>
+          <td>
+            <lib-button [text]="'Editar'" [theme]="'primary'" (click)="editDish(dish.id)">
+            </lib-button>
+            <hr>
+            <lib-button [text]="'Eliminar'" [theme]="'danger'" (click)="deleteDish(dish.id)"></lib-button>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </section>

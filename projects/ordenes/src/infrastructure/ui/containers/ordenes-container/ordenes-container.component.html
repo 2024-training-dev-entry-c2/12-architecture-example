@@ -1,0 +1,9 @@
+<lib-get-ordenes
+  [ordenes]= "ordenes$ | async"
+  (onCreateOrden)="handlePatchOrden($event)"
+  (onSelectOrden)="handleSelectOrden($event)"
+  [currentOrden]="currentOrden$ | async"
+  (onDeleteOrden)="deleteOrden($event)"
+  (onStatusChange)="handleStatusChange($event)"
+  ></lib-get-ordenes>
+
