@@ -1,0 +1,6 @@
+<lib-list-dishes 
+  [dishes]="dishes$ | async" 
+  [currentDish]="currentDish$ | async" 
+  (onCreateDish)="handlePatchDish($event)"
+  (onSelectDish)="handleSelectDish($event)">
+</lib-list-dishes>
