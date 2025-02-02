@@ -3,5 +3,6 @@
   (onCreateOrden)="handlePatchOrden($event)"
   (onSelectOrden)="handleSelectOrden($event)"
   [currentOrden]="currentOrden$ | async"
+  (onDeleteOrden)="deleteOrden($event)"
   ></lib-get-ordenes>
 

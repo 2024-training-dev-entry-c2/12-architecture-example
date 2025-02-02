@@ -27,10 +27,10 @@ export class AddOrdenFormComponent {
         statusOrder: 'PENDING',
         clientId: null,
       });
-      this.items.clear(); // Limpiamos los ítems solo si estamos creando una nueva orden
-      this.addItem(); // Agregamos un ítem vacío para la creación
+      this.items.clear();
+      this.addItem();
     } else {
-      // Si estamos editando, actualizamos los valores sin resetear todo
+
       this.ordenForm.patchValue({
         id: value.id,
         priceTotal: value.priceTotal,
@@ -38,14 +38,11 @@ export class AddOrdenFormComponent {
         clientId: value.client.id || null,
       });
 
-      // Limpiamos el FormArray antes de añadir los nuevos ítems
       this.items.clear();
 
-      // Agregamos los ítems de la orden
       if (value.items && value.items.length > 0) {
         value.items.forEach((item) => this.addItem(item));
       } else {
-        // Si no tiene ítems, añadimos uno vacío
         this.addItem();
       }
     }

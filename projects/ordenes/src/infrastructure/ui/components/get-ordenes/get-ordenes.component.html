@@ -61,7 +61,9 @@
          <hr>
          <lib-button
          [text]="'Eliminar'"
-         [theme]="'danger'"></lib-button>
+         [theme]="'danger'"
+         (click) ="deleteOrden(orden.id)"
+         ></lib-button>
         </td>
       </tr>
       }

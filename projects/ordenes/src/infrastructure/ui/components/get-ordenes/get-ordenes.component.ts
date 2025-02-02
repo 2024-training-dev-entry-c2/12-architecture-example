@@ -19,6 +19,7 @@ export class GetOrdenesComponent {
   public modal = viewChild<ModalComponent>('modal');
   public onSelectOrden = output<number>();
   public onCreateOrden = output<{orden: ICreateOrden; modal: ModalComponent}>();
+  public onDeleteOrden = output<number>();
   message(): string {
     return this.ordenState.store().successMessage.snapshot();
   }
@@ -39,11 +40,14 @@ export class GetOrdenesComponent {
   getButtonClass(status: string): string {
     return this.statusClassMap.get(status) || '';
   }
- handleSubmit(orden: ICreateOrden) {
-     this.onCreateOrden.emit({orden, modal: this.modal()});
+  handleSubmit(orden: ICreateOrden) {
+      this.onCreateOrden.emit({orden, modal: this.modal()});
    }
    editOrden(id: number) {
     this.onSelectOrden.emit(id);
     this.modal().toggle();
+  }
+  deleteOrden(id: number){
+    this.onDeleteOrden.emit(id);
   }
 }
