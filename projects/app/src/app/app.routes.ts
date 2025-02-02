@@ -5,5 +5,8 @@ export const routes: Routes = [
     path: '',
     loadChildren: () => import('menu').then((m) => m.menuRoutes),
   },
+  {
+    path: 'client',
+    loadChildren: () => import('client').then((m) => m.LibRoutes),
+  },
 ];
-   
