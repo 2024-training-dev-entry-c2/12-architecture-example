@@ -1,0 +1,29 @@
+table {
+  width: 100%;
+  border-collapse: collapse;
+
+  thead {
+    background-color: rgb(130, 8, 191);
+    color: white;
+  }
+
+  th {
+    padding: 10px;
+    text-align: left;
+  }
+
+  tbody {
+    tr {
+      border-bottom: 1px solid rgb(130, 8, 191);
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  td {
+    padding: 10px;
+    text-align: left;
+  }
+}

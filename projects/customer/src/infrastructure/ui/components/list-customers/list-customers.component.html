@@ -1,0 +1,27 @@
+<lib-modal action="Crear customer" #modal>
+  <lib-customer-form [customer]="currentCustomer()" (onSubmit)="handleSubmit($event)"></lib-customer-form>
+</lib-modal>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Email</th>
+      <th>Telefono</th>
+      <th>Acciones</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let customer of customers()">
+      <td>{{customer.name}}</td>
+      <td>{{customer.lastName}}</td>
+      <td>{{customer.email}}</td>
+      <td>{{customer.phone}}</td>
+      <td>
+        <button (click)="selectCustomer(customer.customerId)">Editar</button>
+        <button>Eliminar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
