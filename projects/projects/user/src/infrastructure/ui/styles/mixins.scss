@@ -1,0 +1,106 @@
+// Mixins
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@mixin fullscreen-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+
+@mixin button-base {
+    cursor: pointer;
+    transition: $transition-base;
+
+    &:active {
+        transform: translateY(0);
+    }
+}
+
+@mixin glass-effect {
+    backdrop-filter: blur(5px);
+    background: $color-transparent-light;
+}
+
+@mixin responsive-text($desktop-size, $mobile-size) {
+    font-size: $desktop-size;
+
+    @media (max-width: $breakpoint-tablet) {
+        font-size: $mobile-size;
+    }
+}
+
+@mixin padding-responsive($desktop, $mobile) {
+    padding: $desktop;
+
+    @media (max-width: $breakpoint-tablet) {
+        padding: $mobile;
+    }
+}
+
+@mixin fullscreen-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  @mixin card-base {
+    background: $color-white;
+    padding: $spacing-2xl;
+    border-radius: $border-radius-sm;
+    width: $full-width;
+    max-width: $max-width-card;
+  }
+  
+  @mixin form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  @mixin form-title {
+    font-size: $font-size-lg;
+    text-align: center;
+    margin-bottom: $spacing-xl;
+  }
+  
+  @mixin button-auth {
+    border: none;
+    border-radius: $border-radius-sm;
+    cursor: pointer;
+    padding: $spacing-sm $spacing-base;
+    color: $color-white;
+    transition: $transition-base;
+  }
+  
+  @mixin link-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font: inherit;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
+  @mixin form-layout {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-base;
+  }

@@ -1,0 +1,10 @@
+<div class="alert-container" role="alert" aria-live="polite">
+    @if(alert(); as alert) {
+      <div 
+        class="alert alert--{{alert.type}}" 
+        role="status" 
+        aria-label="notification">
+        {{alert.message}}
+      </div>
+    }
+   </div>

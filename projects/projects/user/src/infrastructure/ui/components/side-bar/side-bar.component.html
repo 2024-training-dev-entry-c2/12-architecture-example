@@ -1,0 +1,22 @@
+<nav class="sidebar" [class.collapsed]="isCollapsed" role="navigation" aria-label="Main navigation">
+    <button 
+      class="sidebar__toggle" 
+      (click)="toggleSidebar()"
+      aria-label="Toggle sidebar menu">
+    </button>
+   
+    <ul class="sidebar__menu" role="menubar">
+      <li class="sidebar__item" role="none">
+        <a 
+          (click)="selectMenu('users')" 
+          [class.active]="menuService.selectedMenu() === 'users'"
+          role="menuitem"
+          aria-label="Go to users section"
+          [attr.aria-current]="menuService.selectedMenu() === 'users' ? 'page' : null">
+          <i class="fas fa-chart-line" aria-hidden="true"></i>
+          <span>Users</span>
+        </a>
+      </li>      
+      
+    </ul>
+   </nav>

@@ -1,0 +1,81 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+.header {
+  $self: &;
+  @include flex-between;
+  @include padding-responsive($spacing-2xl $spacing-base, $spacing-base);
+  background: $color-primary;
+  box-shadow: $shadow-sm;
+
+  &__brand {
+    @include flex-center;
+    gap: $spacing-base;
+
+    img {
+      width: 40px; // Podríamos crear variables para tamaños de imagen si se repiten
+      height: 40px;
+      filter: brightness(0) invert(1);
+      transition: $transition-base;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    h1 {
+      color: $color-white;
+      @include responsive-text($font-size-lg, $font-size-md);
+      font-weight: $font-weight-semibold;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  &__user {
+    @include flex-center;
+    gap: $spacing-xl;
+
+    @media (max-width: $breakpoint-tablet) {
+      gap: $spacing-md;
+    }
+  }
+
+  &__user-name {
+    color: $color-white;
+    font-size: $font-size-sm;
+    padding: $spacing-sm $spacing-base;
+    @include glass-effect;
+    border-radius: $border-radius-lg;
+
+    @media (max-width: $breakpoint-tablet) {
+      padding: $spacing-xs $spacing-sm;
+    }
+  }
+
+  &__balance {
+    padding: $spacing-sm $spacing-base;
+    background-color: $color-gray-100;
+    border-radius: $border-radius-sm;
+    font-weight: $font-weight-semibold;
+    color: $color-gray-600;
+  }
+
+  &__logout {
+    @include button-base;
+    padding: $spacing-sm $spacing-lg;
+    border: 2px solid $color-transparent-white;
+    border-radius: $border-radius-lg;
+    background: transparent;
+    color: $color-white;
+    font-weight: $font-weight-medium;
+
+    &:hover {
+      background: $color-white;
+      color: $color-primary;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: $breakpoint-tablet) {
+      padding: $spacing-xs $spacing-base;
+    }
+  }
+}

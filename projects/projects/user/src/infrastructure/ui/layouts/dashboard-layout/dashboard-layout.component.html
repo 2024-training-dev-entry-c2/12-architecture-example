@@ -1,0 +1,21 @@
+<div class="layout" role="application" aria-label="Banking system layout">
+    <header class="layout__header" role="banner" aria-label="Main header">
+      <lib-header 
+      (logoutRequested)="handleLogout()"></lib-header>
+    </header>
+   
+    <nav class="layout__sidebar" role="navigation" aria-label="Main navigation">
+      <lib-side-bar></lib-side-bar>
+    </nav>
+   
+    <main class="layout__content" role="main" aria-label="Main content">
+        <lib-register
+        [registerForm]="registerForm"
+        (submited)="onSubmit()"
+        ></lib-register>
+    </main>
+   
+    <footer class="layout__footer" role="contentinfo" aria-label="Page footer">
+      <lib-footer></lib-footer>
+    </footer>
+  </div>

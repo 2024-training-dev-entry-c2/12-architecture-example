@@ -1,0 +1,58 @@
+// Colors
+$color-primary: #1a1a1a;
+$color-white: #ffffff;
+$color-gray-100: #f8f9fa;
+$color-gray-400: #666666;
+$color-gray-600: #2c3e50;
+$color-transparent-white: rgba(255, 255, 255, 0.8);
+$color-transparent-light: rgba(255, 255, 255, 0.1);
+
+// Typography
+$font-size-xs: 0.9rem;
+$font-size-sm: 1rem;
+$font-size-md: 1.2rem;
+$font-size-lg: 1.5rem;
+
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+
+// Spacing
+$spacing-xs: 0.4rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 0.75rem;
+$spacing-base: 1rem;
+$spacing-lg: 1.25rem;
+$spacing-xl: 1.5rem;
+$spacing-2xl: 2rem;
+
+// Border radius
+$border-radius-sm: 4px;
+$border-radius-lg: 20px;
+
+// Breakpoints
+$breakpoint-tablet: 768px;
+
+// Shadows
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+// Transitions
+$transition-base: all 0.3s ease;
+
+$color-dark: #000000;
+$color-dark-hover: #333333;
+$color-blue: #2196F3;
+$color-dark-blue: #1f2937;
+$color-shadow-dark: rgb(94, 74, 74);
+
+// Layout
+$max-width-card: 400px;
+$full-width: 100%;
+$button-width-large: 110%;
+$button-width-medium: 60%;
+
+// Spacing (adicionales)
+$spacing-button-offset: 26px;
+
+// Card
+$card-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+$card-shadow-dark: 0 2px 10px $color-shadow-dark;

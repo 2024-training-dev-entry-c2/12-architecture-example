@@ -1,0 +1,46 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.login {
+  @include fullscreen-center;
+  background-color: $color-white;
+
+  &__card {
+    @include card-base;
+    @include form-container;
+    box-shadow: $card-shadow-dark;
+  }
+
+  &__title {
+    @include form-title;
+    color: $color-dark-blue;
+  }
+
+  &__button {
+    @include button-auth;
+    width: $button-width-large;
+    padding: $spacing-sm;
+    background: $color-primary;
+    margin-top: $spacing-base;
+    margin-left: $spacing-button-offset;
+    border-radius: $border-radius-sm;
+
+    &:hover {
+      background: $color-dark-hover;
+    }
+  }
+
+  &__register {
+    text-align: center;
+    margin-top: $spacing-base;
+
+    p {
+      color: $color-gray-400;
+    }
+  }
+
+  &__register-link {
+    @include link-button;
+    color: $color-blue;
+  }
+}
