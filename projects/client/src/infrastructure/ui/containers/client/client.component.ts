@@ -16,11 +16,11 @@ import { ClientFormComponent } from "../../forms/client-form/client-form.compone
   templateUrl: './client.component.html'
 })
 export class ClientComponent implements OnInit, OnDestroy {
-  private readonly _useCaseCreate = inject(CreateClientUsecase);
-  private readonly _useCaseGet = inject(GetClientsUsecase);
-  private readonly _useCaseDelete = inject(DeleteClientUsecase);
-  private readonly _useCaseUpdate = inject(UpdateClientUsecase);
-  private readonly _useCaseModal = inject(ModalUsecase);
+  private readonly _createUseCase = inject(CreateClientUsecase);
+  private readonly _getUseCase = inject(GetClientsUsecase);
+  private readonly _deleteUseCase = inject(DeleteClientUsecase);
+  private readonly _updateUseCase = inject(UpdateClientUsecase);
+  private readonly _modalUseCase = inject(ModalUsecase);
 
   public clients$: Observable<IClient[]>;
   public message$: Observable<string>;
@@ -36,7 +36,7 @@ export class ClientComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.init();
-    this._useCaseGet.execute();
+    this._getUseCase.execute();
     this.initializeObservables();
   }
 
@@ -45,42 +45,42 @@ export class ClientComponent implements OnInit, OnDestroy {
   }
 
   public deleteClient(clientId: number): void {
-    this._useCaseDelete.execute(clientId);
+    this._deleteUseCase.execute(clientId);
   }
 
   public updateById(clientId: number): void {
-    this._useCaseUpdate.selectClient(clientId);
+    this._updateUseCase.selectClient(clientId);
   }
 
   public submit(client: IClient): void {
-    const usecase = client.id ? this._useCaseUpdate : this._useCaseCreate;
+    const usecase = client.id ? this._updateUseCase : this._createUseCase;
     usecase.execute(client);
   }
 
   public openModal(event: boolean): void {
-    this._useCaseModal.execute(event);
+    this._modalUseCase.execute(event);
   }
 
   private init(): void {
-    this._useCaseCreate.initSubscriptions();
-    this._useCaseGet.initSubscriptions();
-    this._useCaseUpdate.initSubscriptions();
-    this._useCaseDelete.initSubscriptions();
-    this._useCaseModal.initSubscriptions();
+    this._createUseCase.initSubscriptions();
+    this._getUseCase.initSubscriptions();
+    this._updateUseCase.initSubscriptions();
+    this._deleteUseCase.initSubscriptions();
+    this._modalUseCase.initSubscriptions();
   }
 
   private destroy(): void {
-    this._useCaseCreate.destroySubscriptions();
-    this._useCaseGet.destroySubscriptions();
-    this._useCaseDelete.destroySubscriptions();
-    this._useCaseUpdate.destroySubscriptions();
-    this._useCaseModal.destroySubscriptions();
+    this._createUseCase.destroySubscriptions();
+    this._getUseCase.destroySubscriptions();
+    this._deleteUseCase.destroySubscriptions();
+    this._updateUseCase.destroySubscriptions();
+    this._modalUseCase.destroySubscriptions();
   }
 
   private initializeObservables(): void {
-    this.clients$ = this._useCaseGet.clients$();
-    this.currentClient$ = this._useCaseUpdate.currentClient$();
-    this.message$ = this._useCaseCreate.message$();
-    this.isOpen$ = this._useCaseModal.open$();
+    this.clients$ = this._getUseCase.clients$();
+    this.currentClient$ = this._updateUseCase.currentClient$();
+    this.message$ = this._createUseCase.message$();
+    this.isOpen$ = this._modalUseCase.open$();
   }
 }

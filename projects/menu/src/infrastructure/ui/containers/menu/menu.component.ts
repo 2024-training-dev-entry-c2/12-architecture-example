@@ -16,11 +16,11 @@ import { MenuFormComponent } from '../../forms/menu-form/menu-form.component';
   templateUrl: './menu.component.html'
 })
 export class MenuComponent implements OnInit, OnDestroy {
-  private readonly _useCaseCreate = inject(CreateMenuUsecase);
-  private readonly _useCaseGet = inject(GetMenusUsecase);
-  private readonly _useCaseDelete = inject(DeleteMenuUsecase);
-  private readonly _useCaseUpdate = inject(UpdateMenuUsecase);
-  private readonly _useCaseModal = inject(ModalUsecase);
+  private readonly _createUseCase = inject(CreateMenuUsecase);
+  private readonly _getUseCase = inject(GetMenusUsecase);
+  private readonly _deleteUseCase = inject(DeleteMenuUsecase);
+  private readonly _updateUseCase = inject(UpdateMenuUsecase);
+  private readonly _modalUseCase = inject(ModalUsecase);
 
   public menus$: Observable<IMenu[]>;
   public message$: Observable<string>;
@@ -34,7 +34,7 @@ export class MenuComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.init();
-    this._useCaseGet.execute();
+    this._getUseCase.execute();
     this.initializeObservables();
   }
 
@@ -43,42 +43,42 @@ export class MenuComponent implements OnInit, OnDestroy {
   }
 
   public deleteMenu(menuId: number): void {
-    this._useCaseDelete.execute(menuId);
+    this._deleteUseCase.execute(menuId);
   }
 
   public updateById(menuId: number): void {
-    this._useCaseUpdate.selectMenu(menuId);
+    this._updateUseCase.selectMenu(menuId);
   }
 
   public submit(menu: IMenu): void {
-    const usecase = menu.id ? this._useCaseUpdate : this._useCaseCreate;
+    const usecase = menu.id ? this._updateUseCase : this._createUseCase;
     usecase.execute(menu);
   }
 
   public openModal(event: boolean): void {
-    this._useCaseModal.execute(event);
+    this._modalUseCase.execute(event);
   }
 
   private init(): void {
-    this._useCaseCreate.initSubscriptions();
-    this._useCaseGet.initSubscriptions();
-    this._useCaseUpdate.initSubscriptions();
-    this._useCaseDelete.initSubscriptions();
-    this._useCaseModal.initSubscriptions();
+    this._createUseCase.initSubscriptions();
+    this._getUseCase.initSubscriptions();
+    this._updateUseCase.initSubscriptions();
+    this._deleteUseCase.initSubscriptions();
+    this._modalUseCase.initSubscriptions();
   }
 
   private destroy(): void {
-    this._useCaseCreate.destroySubscriptions();
-    this._useCaseGet.destroySubscriptions();
-    this._useCaseDelete.destroySubscriptions();
-    this._useCaseUpdate.destroySubscriptions();
-    this._useCaseModal.destroySubscriptions();
+    this._createUseCase.destroySubscriptions();
+    this._getUseCase.destroySubscriptions();
+    this._deleteUseCase.destroySubscriptions();
+    this._updateUseCase.destroySubscriptions();
+    this._modalUseCase.destroySubscriptions();
   }
 
   private initializeObservables(): void {
-    this.menus$ = this._useCaseGet.menus$();
-    this.currentMenu$ = this._useCaseUpdate.currentMenu$();
-    this.message$ = this._useCaseCreate.message$();
-    this.isOpen$ = this._useCaseModal.open$();
+    this.menus$ = this._getUseCase.menus$();
+    this.currentMenu$ = this._updateUseCase.currentMenu$();
+    this.message$ = this._createUseCase.message$();
+    this.isOpen$ = this._modalUseCase.open$();
   }
 }
