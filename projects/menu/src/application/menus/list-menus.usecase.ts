@@ -15,6 +15,9 @@ export class ListMenusUsecase {
   menuResponse$(): Observable<IMenuResponse[]> {
     return this._state.menus.menuResponse.$();
   }
+  snapshotMenuResponse(): IMenuResponse[] {
+    return this._state.menus.menuResponse.snapshot();
+  }
 
   initSubscriptions(): void {
     this.subscriptions = new Subscription();

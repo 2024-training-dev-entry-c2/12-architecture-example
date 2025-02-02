@@ -1,2 +1,2 @@
 <lib-menus [menus$]="menus$" [currentMenu]="currentMenu$ | async" (onSaveMenu)="createMenu($event)"
-    (onSelectMenu)="handleSelectMenu($event)"></lib-menus>
+    (onSelectMenu)="handleSelectMenu($event)" (onDelete)="deleteMenu($event)"></lib-menus>
