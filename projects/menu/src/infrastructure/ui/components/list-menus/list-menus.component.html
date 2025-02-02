@@ -37,7 +37,7 @@
     <tr class="menus-table__row" *ngFor="let menu of menus()">
       <td class="menus-table__cell">{{menu.name}}</td>
       <td class="menus-table__cell">{{menu.description}}</td>
-      <td class="menus-table__cell">{{menu.dishes.length}}</td>
+      <td class="menus-table__cell">{{menu.dishes?.length ?? 0}}</td>
       <td class="menus-table__cell menus-table__cell--actions">
         <button class="menus-table__button menus-table__button--edit" (click)="selectMenu(menu.menuId)"
           [attr.aria-label]="'Editar menú ' + menu.name">
