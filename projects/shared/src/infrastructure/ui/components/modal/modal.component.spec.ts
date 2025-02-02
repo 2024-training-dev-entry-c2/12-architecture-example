@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModalComponent } from './modal.component';
 import { FormGroup } from '@angular/forms';
+import { By } from '@angular/platform-browser';
 
 describe('ModalComponent', () => {
   let component: ModalComponent;
@@ -9,9 +10,8 @@ describe('ModalComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ModalComponent]
-    })
-    .compileComponents();
+      imports: [ModalComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(ModalComponent);
     component = fixture.componentInstance;
@@ -39,6 +39,11 @@ describe('ModalComponent', () => {
     expect(component.fields.length).toBe(3);
     expect(component.fields[0].name).toBe('name');
     expect(component.fields[1].name).toBe('email');
-
+  });
+  it('should close modal whe overlay is clicked', () => {
+    spyOn(component.closeModal, 'emit');
+    const overlay = fixture.debugElement.query(By.css('.modal-overlay'));
+    overlay.triggerEventHandler('click', null);
+    expect(component.closeModal.emit).toHaveBeenCalled();
   });
 });
