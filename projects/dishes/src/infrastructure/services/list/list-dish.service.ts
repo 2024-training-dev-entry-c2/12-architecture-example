@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { IDish } from '../../../public-api';
+import { urlResources } from '../../../../../shared/src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class ListDishService {
 
   private http = inject(HttpClient);
   getDishes(): Observable<IDish[]> {
-    return this.http.get<any>(`http://localhost:8080/dishfoods`).pipe(
+    return this.http.get<any>(urlResources.dish).pipe(
       map((response) => this.validateResponse(response)),
       catchError((error) => {
         console.error('Error fetching menus:', error);

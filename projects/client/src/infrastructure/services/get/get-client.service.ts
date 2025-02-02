@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { IClient } from '../../../domain/model/client.model';
 import { HttpClient } from '@angular/common/http';
+import { urlResources } from '../../../../../shared/src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ export class GetClientService {
 
 
   getClientId(id: number): Observable<IClient> {
-    return this.http.get<any>(`http://localhost:8080/clients/${id}`).pipe(
+    return this.http.get<any>(`${urlResources.client}/${id}`).pipe(
       map((response) => this.validateObjectResponse(response)),
       catchError((error) => {
         console.error('Error fetching clients:', error);

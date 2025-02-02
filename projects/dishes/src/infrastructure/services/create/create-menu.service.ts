@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 
 import { IDish, IDishRequest } from '../../../public-api';
 import { catchError, map, Observable, throwError } from 'rxjs';
+import { urlResources } from '../../../../../shared/src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class CreateMenuService {
     console.log("Valor de dish", dish);
     
     return this.http
-      .post<IDish>('http://localhost:8080/dishfoods', dish)
+      .post<IDish>(urlResources.dish, dish)
       .pipe(
         map((response) => this.validateObjectResponse(response)),
         catchError((error) => {

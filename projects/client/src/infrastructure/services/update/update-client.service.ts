@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { IClient, IClientRequest } from '../../../domain/model/client.model';
 import { catchError, map, Observable, of, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { urlResources } from '../../../../../shared/src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +12,7 @@ export class UpdateClientService {
 
   updateClient(client: IClientRequest, id: number): Observable<IClient> {
     return this.http
-      .put<any>(`http://localhost:8080/clients/${id}`, client)
+      .put<any>(`${urlResources.client}/${id}`, client)
       .pipe(
         map((response) => this.validateObjectResponse(response)),
         catchError((error) => {

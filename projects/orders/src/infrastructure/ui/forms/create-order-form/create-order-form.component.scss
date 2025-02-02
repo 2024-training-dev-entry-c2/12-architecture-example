@@ -82,6 +82,7 @@ $transition-time: 0.3s;
       align-items: center;
       padding: $padding;
       border: 1px solid lighten($text-color, 50%);
+      color: var(--text-color);
       border-radius: $border-radius;
       margin-bottom: 0.5rem;
       @include transition(background-color, $transition-time);
