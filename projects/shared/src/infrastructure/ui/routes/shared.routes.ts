@@ -1,7 +1,16 @@
 import { Routes } from "@angular/router";
-import { MainLayoutComponent } from "../layouts/main-layout/main-layout.component";
-import { CreateUsersComponent } from "../../../../../users/src/infrastructure/ui/containers/create-users/create-users.component";
+import { HomeComponent } from "../components/home/home.component";
+import { SubLayoutComponent } from "../layouts/sub-layout/sub-layout.component";
 
 export const sharedRoutes: Routes = [
-
+    {
+        path: '',
+        component: SubLayoutComponent,
+        children: [
+            {
+                path: '',
+                component: HomeComponent
+            },
+        ]
+    }
 ];

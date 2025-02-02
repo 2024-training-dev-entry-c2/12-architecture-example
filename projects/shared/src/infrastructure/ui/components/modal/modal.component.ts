@@ -1,5 +1,5 @@
 import { NgClass } from '@angular/common';
-import { Component, input } from '@angular/core';
+import { Component, Input, input } from '@angular/core';
 import { ButtonComponent } from '../button/button.component';
 
 @Component({
@@ -9,7 +9,7 @@ import { ButtonComponent } from '../button/button.component';
   styleUrl: './modal.component.scss'
 })
 export class ModalComponent {
-  public action = input.required<string>();
+  @Input({ required: true }) action!: string;
   public visible = false;
 
   toggle() {

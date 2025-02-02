@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { Component, inject, Input, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IMenu } from '../../../../domain/model/menu.model';
+import { DynamicInputComponent } from 'shared';
 
 @Component({
   selector: 'lib-menu-form',
-  imports: [ReactiveFormsModule ,CommonModule],
+  imports: [ReactiveFormsModule ,CommonModule, DynamicInputComponent],
   templateUrl: './menu-form.component.html',
   styleUrl: './menu-form.component.scss'
 })
@@ -22,13 +23,13 @@ export class MenuFormComponent  {
     }
   }
  
-  // menuConfig = {
-  //   name: 'name',
-  //   label: 'Nombre del Menú',
-  //   type: 'text',
-  //   placeholder: 'Escribe el nuevo nombre',
-  //   required: true
-  // };
+  menuConfig = {
+    name: 'name',
+    label: 'Nombre del Menú',
+    type: 'text',
+    placeholder: 'Escribe el nuevo nombre',
+    required: true
+  };
 
   public menuForm = this._fb.group({
     name: ['', Validators.required],

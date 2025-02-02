@@ -1,3 +1,4 @@
+
 export interface IMenu {
   id: number;
   name: string;
@@ -5,12 +6,12 @@ export interface IMenu {
 }
 
 export interface IDish {
-  id: number;
+  id?: number;
   name: string;
   description: string;
   price: number;
-  specialDish: boolean;
-  menu: {
+  specialDish?: boolean;
+  menu?: {
       id:number;
       name: string;
   }

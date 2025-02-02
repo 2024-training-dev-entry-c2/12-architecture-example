@@ -1,0 +1,112 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss';
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss';
+
+
+.order {
+    padding: 2rem;
+    background-color: rgb(206, 206, 206) ;
+  
+    &__title {
+      font-size: 2rem;
+      font-weight: bold;
+      color:variables.$title;
+      margin-bottom: 1rem;
+    }
+  
+    &__description {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+  }
+  
+  .order__list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: space-between;
+    }
+    
+    .order__card {
+      background-color: variables.$orange;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      width: 350px;
+      padding: 1.5rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+      }
+    
+      &-header {
+        margin-bottom: 1rem;
+    
+        & .order__card-title {
+          font-size: 1.5rem;
+          font-weight: bold;
+          color: #050505;
+        }
+    
+        & .order__card-client {
+          font-size: 1rem;
+          color: #141414;
+          margin-top: 0.5rem;
+        }
+      }
+    
+      &-dishes {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1.5rem 0;
+    
+        &-dish {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 0.5rem 0;
+          border-bottom: 1px solid #eee;
+    
+          &:last-child {
+            border-bottom: none;
+          }
+    
+          &-name {
+            font-size: 1rem;
+            color: #333;
+          }
+    
+          &-price {
+            font-size: 1.125rem;
+            color: #28a745;
+            font-weight: bold;
+          }
+        }
+      }
+    
+      &-footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 1rem;
+        }
+      
+        &-actions {
+          display: flex;
+          gap: 0.5rem;
+        }
+      
+        &-btn {
+          &--edit {
+            @include mixins.button-styles(#007bff, white, #0056b3);
+    
+          }
+      
+          &--delete {
+            @include mixins.button-styles(#dc3545, white, #c82333);
+          }
+        }
+    }
+    
+  

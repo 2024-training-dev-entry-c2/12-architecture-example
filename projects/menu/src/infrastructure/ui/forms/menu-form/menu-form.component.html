@@ -1,14 +1,11 @@
 <section class="menu-form">
   <form [formGroup]="menuForm"(ngSubmit)="submit()" class="menu-form__form">
     <h3 class="blog-form__title">{{ menuForm.getRawValue().id ? 'Editar Menu' : 'Crear menu' }}</h3>
-    <label for="name" class="menu-form__label">Nombre del menú</label>
-    <input 
-      type="text" 
-      id="name" 
-      class="menu-form__input" 
-      formControlName="name" 
-      placeholder="Escribe el nombre del menú">
-      
+      <lib-dynamic-input 
+      [config]="menuConfig" 
+      [formGroup]="menuForm">
+    </lib-dynamic-input>
+        
     <button type="submit" class="menu-form__submit" [disabled]="menuForm.invalid">
       {{ menuForm.getRawValue().id ? 'Editar' : 'Crear' }}
     </button>

@@ -1,0 +1,45 @@
+<section class="order">
+    <header>
+      <h2 class="order__title">Lista de Órdenes</h2>
+      <p class="order__description">Aquí puedes ver todas las órdenes realizadas por los orderes.</p>
+      <lib-modal action="Crear Ordere" #modal>
+        <lib-order-form
+        [order]="currentOrder()"
+        [dishes]="dishes()"
+        [clients]="clients()"
+        (onSubmit)="handleSubmit($event)"
+        ></lib-order-form>
+    </lib-modal>
+      <div class="order__list" aria-label="Lista de órdenes">
+        @for (order of orders(); track $index) {
+          <article class="order__card">
+            <header class="order__card-header">
+              <h3 class="order__card-title" aria-label="Número de orden">Orden #{{ order.id }}</h3>
+              <p class="order__card-order" aria-label="ID del ordere">Ordere ID: {{ order.id }}</p>
+            </header>
+    
+            <ul class="order__card-dishes" aria-label="Lista de platillos en la orden">
+                @for( dish of order.dishes; track $index) {
+              <li class="order__card-dish">
+                <span class="order__card-dish-name" aria-label="Nombre del platillo">{{ dish.name }}</span>
+                <span class="order__card-dish-price" aria-label="Precio del platillo">${{ dish.price | number:'1.2-2' }}</span>
+              </li>
+            }
+            </ul>
+        
+            <footer class="order__card-footer">
+              <strong class="order__card-total" aria-label="Total de la orden">
+                Total: {{ order.total | currency:'USD':'symbol':'1.2-2'}}
+              </strong>
+              
+              <div class="order__card-actions">
+                <button class="order__card-btn order__card-btn--edit" (click)="selectOrder(order.id)">✏️ Editar</button>
+                <button class="order__card-btn order__card-btn--delete" (click)="deleteOrder(order.id)">🗑️ Eliminar</button>
+              </div>
+            </footer>
+          </article>
+        }
+      </div>
+    </header>
+  </section>
+  

@@ -1,0 +1,23 @@
+<section class="order-form">
+    <form [formGroup]="orderForm" (ngSubmit)="submit()" class="order-form__form">
+        <h3 class="blog-form__title">{{ orderForm.getRawValue().id ? 'Editar Plato' : 'Crear Plato' }}</h3>
+        <div class="order-form__group">
+            <lib-dynamic-input
+              [formGroup]="orderForm"
+              [config]="clientConfig"
+            ></lib-dynamic-input>
+          </div>
+      
+          <div class="order-form__group">
+            <lib-dynamic-input
+              [formGroup]="orderForm"
+              [config]="dishConfig"
+            ></lib-dynamic-input>
+          </div>
+        <button type="submit" class="order-form__submit" [disabled]="orderForm.invalid">
+          {{ orderForm.getRawValue().id ? 'Editar' : 'Crear' }}
+        </button>
+      </form>
+    </section>
+    
+  

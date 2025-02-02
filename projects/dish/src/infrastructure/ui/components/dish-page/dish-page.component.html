@@ -1,0 +1,44 @@
+<section class="dish">
+    <header class="dish__header">
+      <h1 class="dish__title">Listado de Platos</h1>
+      <p class="dish__description">Aquí puedes ver todos los platos disponibles en el menú.</p>
+      <lib-modal action="Crear Plato" #modal>
+        <lib-dish-form
+          [dish]="currentDish()"
+          [menus]="menus()"
+          (onSubmit)="handleSubmit($event)"
+          class="dish__form"
+        ></lib-dish-form>
+      </lib-modal>
+    </header>
+    <main class="dish__content">
+        <div class="dish-table">
+            <div class="dish-table__grid">         
+                @for (dish of dishes(); track dish.id) {
+                  <article class="dish-card" aria-label="Tarjeta de platillo">
+                    <div class="dish-card__content">
+                      <small class="dish-card__menu" aria-label="Menú al que pertenece el platillo">
+                        {{ dish.menu.name }}
+                      </small>
+                      <h2 class="dish-card__title" aria-label="Nombre del platillo">
+                        {{ dish.name }}
+                      </h2>
+                      <p class="dish-card__description" aria-label="Descripción del platillo">
+                        {{ dish.description }}
+                      </p>
+                      <p class="dish-card__price" aria-label="Precio del platillo">
+                        {{ dish.price | currency:'USD':'symbol':'1.2-2' }}
+                      </p>
+                      <div class="dish-card__actions">
+                          <button class="dish-card__button dish-card__button--edit" (click)="selectDish(dish.id)">✏️ Editar</button>
+                          <button class="dish-card__button dish-card__button--delete" (click)="deleteDish(dish.id)">🗑️ Eliminar</button>
+                      </div>
+                    </div>
+                  </article>
+                }
+              </div>
+        </div>  
+        </main>  
+  </section>
+  
+

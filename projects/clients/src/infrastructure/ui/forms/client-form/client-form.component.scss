@@ -2,8 +2,6 @@
     margin: 50px auto;
     width: 500px;
     padding: 50px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     gap: 30px;
@@ -17,39 +15,18 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
-  
-      &--row {
-        flex-direction: row;
-        align-items: center;
-  
-        span {
-          cursor: pointer;
-        }
-      }
+      margin-top: 15px;
     }
   
-    &__input,
-    &__button {
-      border-radius: 5px;
-      border: none;
-      outline: none;
-      box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
-      padding: 10px;
-    }
-  
-    &__button {
-      cursor: pointer;
-      background-color: rgb(18, 139, 64);
-      color: white;
-      font-weight: bold;
-      font-size: 17px;
-  
-      &--rounded {
-        font-size: 15px;
-        margin-inline: 30px;
-        background-color: rgb(110, 220, 152);
-        color: black;
-      }
+    &__submit {
+        display: flex;
+        cursor: pointer;
+        background-color: rgb(18, 139, 64);
+        color: white;
+        font-weight: bold;
+        font-size: 17px;
+        margin-top: 15px;
+        border-radius: 10px;
     }
   
     &__section {

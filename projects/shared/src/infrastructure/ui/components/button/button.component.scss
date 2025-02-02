@@ -6,9 +6,14 @@
     font-size: 1.2rem;
     font-weight: bold;
     color: white;
+    margin-bottom: 50px;
+
+    &:hover{
+      background-color:  rgb(211, 132, 15);;
+    }
   
     &--primary {
-      background-color: rgb(130, 8, 191);
+      background-color: rgb(233, 152, 30);
     }
   
     &--info {

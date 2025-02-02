@@ -1,0 +1,82 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss';
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss';
+
+.dish {
+  background-color: rgb(206, 206, 206) ;
+  padding: 0.2rem;
+
+  &__header {
+    margin-bottom: 1rem;
+    padding-left: 40px;
+  }
+
+  &__title {
+    font-size: 2rem;
+    color:variables.$title;
+  }
+
+  &__description {
+    font-size: 1rem;
+    color: #666;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+    padding: 2rem;
+}
+}
+
+.dish-table {
+  padding-left: 2rem;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4 , 1fr);
+    gap: 1.5rem;
+  }
+
+  .dish-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; 
+    height: 100%; 
+    background: variables.$orange;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+  
+    &:hover {
+      transform: scale(1.05);
+    }
+  
+    &__content {
+      flex-grow: 1; 
+      padding: 1rem 1rem 0 1rem;
+      text-align: center;
+    }
+  
+    &__actions {
+      display: flex;
+      justify-content: center; 
+      gap: 1rem;
+      margin-top: auto; 
+      padding: 1rem;
+    }
+  
+    &__button {
+  
+      &--edit {
+        @include mixins.button-styles(#3498db, white, #2980b9);
+      }
+
+      &--delete {
+        @include mixins.button-styles(#e74c3c, white, #c0392b);
+      }
+    }
+  }
+}
+
+  

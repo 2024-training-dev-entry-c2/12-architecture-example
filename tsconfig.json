@@ -24,8 +24,14 @@
       "clients": [
         "./dist/clients"
       ],
+      "dish": [
+        "./dist/dish"
+      ],
       "menu": [
         "./dist/menu"
+      ],
+      "order": [
+        "./dist/order"
       ],
       "shared": [
         "./dist/shared"
