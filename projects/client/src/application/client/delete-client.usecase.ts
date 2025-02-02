@@ -1,5 +1,5 @@
 import { inject, Injectable } from "@angular/core";
-import { Observable, Subscription, tap } from "rxjs";
+import { finalize, Observable, Subscription, tap } from "rxjs";
 import { State } from "../../domain/state";
 import { DeleteService } from "../../infrastructure/services/client/delete.service";
 
@@ -32,7 +32,8 @@ export class DeleteClientUsecase {
         this._state.clients.message.set(result.message);
         const currentClients = this._state.clients.listClients.snapshot();
         this._state.clients.listClients.set(currentClients.filter(client => client.id !== clientId));
-      })
+      }),
+      finalize(() => this._state.clients.message.set(null))
     ).subscribe();
   }
   //#endregion

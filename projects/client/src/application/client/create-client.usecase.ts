@@ -61,7 +61,7 @@ export class CreateClientUsecase {
   }
 
   private resetClientState() {
-    this._state.clients.message.set(null);
+    this._state.clients.currrentClient.set(null);
     this._state.clients.open.set(false);
     this._state.clients.message.set(null);
   }
