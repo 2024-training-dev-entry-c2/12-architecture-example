@@ -14,6 +14,7 @@ export class OrdenState {
   private readonly ordenes$ = new BehaviorSubject<ICreateOrden[]>([]);
   private readonly currentOrdenes$ = new BehaviorSubject<ICreateOrden>(null);
   private readonly successMessage$ = new BehaviorSubject<string | null>(null);
+  private readonly statusOrden$ = new BehaviorSubject<string>(null);
 
   //#endregion
 
@@ -21,7 +22,8 @@ export class OrdenState {
     return {
       ordenes: this._factory.state(this.ordenes$),
       currentOrdenes: this._factory.state(this.currentOrdenes$),
-      successMessage: this._factory.state(this.successMessage$)
+      successMessage: this._factory.state(this.successMessage$),
+      statusOrden : this._factory.state(this.statusOrden$)
     }
   }
   setSuccessMessage(message: string | null) {

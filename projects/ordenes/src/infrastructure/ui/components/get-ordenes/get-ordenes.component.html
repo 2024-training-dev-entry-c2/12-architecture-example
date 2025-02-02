@@ -34,8 +34,8 @@
         <td>{{ orden.id }}</td>
         <td>{{ orden.priceTotal | currency}}</td>
         <td>
-          <button type="button"  [class]="getButtonClass(orden.statusOrder)">
-            <!-- (click)="changeStatus(orden)"-->
+          <button type="button"  [class]="getButtonClass(orden.statusOrder)"
+            (click)="statusChange(orden)">
             {{ orden.statusOrder }}
 
           </button>

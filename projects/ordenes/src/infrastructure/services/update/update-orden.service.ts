@@ -10,7 +10,12 @@ import { urlResources } from 'shared';
 export class UpdateOrdenService {
 
   private http = inject(HttpClient);
+
   updateOrden(orden: ICreateOrden): Observable<ICreateOrden> {
     return this.http.put<ICreateOrden>(urlResources.ordenesOperationsById(orden.id.toString()), orden);
+  }
+  updateStatusOrden(id: number, statusOrder: string): Observable<ICreateOrden> {
+    return this.http.put<ICreateOrden>(`${urlResources.ordenesOperationsById(id.toString())}/${statusOrder}`,
+    {});
   }
 }

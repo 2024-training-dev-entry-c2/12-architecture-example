@@ -8,6 +8,7 @@ import { ICreateOrden } from '../../../../domain/model/create-orden.model';
 import { ModalComponent } from 'shared';
 import { UpdateOrdenUseCase } from '../../../../application/useCase/update-orden.usecase';
 import { DeleteOrdenUsecase } from '../../../../application/useCase/delete-orden.usecase';
+import { UpdateStatusOrdenUseCase } from '../../../../application/useCase/update-status-orden.usecase';
 
 @Component({
   selector: 'lib-ordenes-container',
@@ -19,8 +20,11 @@ export class OrdenesContainerComponent implements OnInit, OnDestroy {
    private readonly _createOrdenUseCase = inject(CreateOrdenUsecase);
    private readonly _updateOrdenUseCase = inject(UpdateOrdenUseCase);
    private readonly _deleteOrdenUseCase = inject(DeleteOrdenUsecase);
+   private readonly _updateStatusOrdenUseCase= inject(UpdateStatusOrdenUseCase);
    public ordenes$: Observable<ICreateOrden[]>;
    public currentOrden$: Observable<ICreateOrden>;
+   public statusOrden$ : Observable<ICreateOrden>;
+;
 
   ngOnInit(): void {
     this._getUseCase.initSubscriptions();
@@ -30,6 +34,8 @@ export class OrdenesContainerComponent implements OnInit, OnDestroy {
     this._updateOrdenUseCase.initSubscriptions();
     this.currentOrden$ = this._updateOrdenUseCase.currentOrden$();
     this._deleteOrdenUseCase.initSubscriptions();
+    this._updateStatusOrdenUseCase.initSubscriptions();
+
 
   }
   handlePatchOrden({ orden, modal }: { orden: ICreateOrden; modal: ModalComponent }) {
@@ -49,5 +55,7 @@ export class OrdenesContainerComponent implements OnInit, OnDestroy {
     this._deleteOrdenUseCase.destroySubscriptions();
   }
 
-
+  handleStatusChange(orden: ICreateOrden): void {
+    this._updateStatusOrdenUseCase.execute(orden);
+  }
 }
