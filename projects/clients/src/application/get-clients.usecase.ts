@@ -14,7 +14,7 @@ export class GetClientsUseCase {
 
     //#region Observables
     client$(): Observable<IClient[]> {
-        return this._state.clients.clients.$() as Observable<IClient[]>;
+        return this._state.clients.showClients.$() as Observable<IClient[]>;
     }
     //#endregion
 
@@ -31,7 +31,7 @@ export class GetClientsUseCase {
         this.subscriptions.add(
             this._service.execute()
                 .pipe(
-                    tap(this._state.clients.clients.set)
+                    tap(this._state.clients.showClients.set)
                 )
                 .subscribe()
             )

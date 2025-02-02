@@ -8,14 +8,17 @@ import { IClient } from "../model/client.model";
 })
 export class ClientState {
     private readonly _factory = inject(StateFactory);
+
+    //#region Subjects
     private readonly clients$ = new BehaviorSubject<IClient[]>([]);
     private readonly currentClient$ = new BehaviorSubject<IClient | null>(null);
     private readonly open$ = new BehaviorSubject<boolean>(false);
     private readonly message$ = new BehaviorSubject<string>('');
+    //#endregion
 
     store() {
         return {
-            clients: this._factory.state(this.clients$),
+            showClients: this._factory.state(this.clients$),
             currentClient: this._factory.state(this.currentClient$),
             open: this._factory.state(this.open$),
             message: this._factory.state(this.message$),

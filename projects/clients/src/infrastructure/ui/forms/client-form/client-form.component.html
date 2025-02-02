@@ -1,0 +1,19 @@
+<form aria-label="Form" [formGroup]="form" class="form" (ngSubmit)="submit()" aria-labelledby="form-title">
+
+    <h3 id="form-title" class="form__title">{{ form.getRawValue().id }}</h3>
+    <div class="form__group">
+        @for (control of controls; track $index) {
+        <lib-input 
+        [formControlName]="control.controlName" 
+        [formGroup]="form" 
+        [text]="control.text"
+        [type]="control.type" 
+        [placeholder]="control.placeholder" />
+        }
+    </div>
+
+    @if (message()) {
+    <h3 id="form-message" class="form__message">{{ message() }}</h3>
+    }
+    <button class="form__button" aria-label="Submit">{{ form.getRawValue().id ? 'Actualizar' : 'Crear'}}</button>
+</form>

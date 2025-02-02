@@ -9,3 +9,6 @@ export { AnimationWrapperComponent } from "./infrastructure/ui/components/animat
 export type { IResponse } from "./domain/model/response.model";
 export type { IOptions } from "./domain/model/controls.model";
 export type { IControls } from "./domain/model/controls.model";
+export { InputComponent } from "./infrastructure/ui/forms/input/input.component";
+export { SelectComponent } from "./infrastructure/ui/forms/select/select.component";
+export { TextareaComponent } from "./infrastructure/ui/forms/textarea/textarea.component";

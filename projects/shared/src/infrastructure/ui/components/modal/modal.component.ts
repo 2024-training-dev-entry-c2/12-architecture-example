@@ -1,15 +1,15 @@
+import { NgClass } from '@angular/common';
 import { Component, input, output } from '@angular/core';
 
 @Component({
   selector: 'lib-modal',
-  imports: [],
+  imports: [NgClass],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.scss'
 })
 export class ModalComponent {
-  public open = input<boolean>();
+  public open = input.required<boolean>();
   public close = output<boolean>();
-  public message = '';
 
   public closeModal() {
     this.close.emit(false);

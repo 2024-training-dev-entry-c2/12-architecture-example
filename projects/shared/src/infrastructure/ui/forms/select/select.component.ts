@@ -1,6 +1,7 @@
 import { Component, input } from '@angular/core';
 import { FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { IOptions } from 'shared';
+import { IOptions } from '../../../../public-api';
+
 
 @Component({
   selector: 'lib-select',

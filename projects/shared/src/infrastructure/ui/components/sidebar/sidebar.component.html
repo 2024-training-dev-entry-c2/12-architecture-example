@@ -3,7 +3,7 @@
         <img src="./images/logo-full.svg" alt="Restaurant Logo" width="200px" />
     </a>
     <nav class="sidebar__nav" aria-label="Menú principal">
-        <menu class="sidebar__menu">
+        <ul class="sidebar__menu">
             @for (item of items; track $index) {
             <li>
                 <a [routerLink]="item.link" class="sidebar__link" routerLinkActive="sidebar__link--active" [attr.aria-label]="'Ir a ' + item.title">
@@ -11,7 +11,7 @@
                 </a>
             </li>
             }
-        </menu>
+        </ul>
     </nav>
 
     <!-- <app-footer></app-footer> -->

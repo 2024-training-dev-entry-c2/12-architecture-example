@@ -2,16 +2,16 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { IClient } from '../../domain/model/client.model';
 import { Observable } from 'rxjs';
-import { IResponse, urlResources } from 'shared';
+import { environment, IResponse, urlResources } from 'shared';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CreateClientService {
-  private _http = inject(HttpClient);
+export class UpdateClientService {
+  private http = inject(HttpClient);
 
-  execute(client: IClient): Observable<IResponse> {
-    return this._http.post<IResponse>(urlResources.clients, { headers: this.getHeaders() });
+  execute(clientId: number, client: IClient): Observable<IResponse> {
+    return this.http.put<IResponse>(`${urlResources.clients}/${clientId}`, client, { headers: this.getHeaders() });
   }
 
   private getHeaders() {

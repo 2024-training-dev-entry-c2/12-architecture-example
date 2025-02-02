@@ -1,0 +1,45 @@
+@use "../../../../../../shared/src/infrastructure/ui/styles/mixins.scss" as mixins;
+@use "../../../../../../shared/src/infrastructure/ui/styles/variables.scss" as variables;
+
+
+.form {
+  @include mixins.flex-column;
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+  padding: 20px 40px;
+  gap: 20px;
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: variables.$white;
+    text-align: center;
+  }
+
+  &__message {
+    color: variables.$white;
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  &__button {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: variables.$white;
+    background-color: variables.$primary-color;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: variables.$secondary-color;
+    }
+  }
+}
+

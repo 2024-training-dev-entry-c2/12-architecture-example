@@ -1,6 +1,12 @@
-<label class="label" [formGroup]="formGroup()" aria-labelledby="label-title">
-    <span id="label-title" class="label__text">{{span()}}</span>
-    <input class="label__input" type="{{type()}}" formControlName="{{formControlName()}}" [placeholder]="placeholder()">   
+<label class="label" aria-labelledby="label-title">
+    <span id="label-title" class="label__span">{{text()}}</span>
+    <input
+      class="label__input"
+      type="{{type()}}"
+      [formControlName]="formControlName()"
+      [formGroup]="formGroup()"
+      [placeholder]="placeholder()"
+    />
     <span class="label__error" aria-live="polite">
         @if (notValid()) {
             {{errorMessage}}

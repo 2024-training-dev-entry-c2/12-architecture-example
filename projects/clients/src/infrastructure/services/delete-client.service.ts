@@ -1,21 +1,21 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { IClient } from '../../domain/model/client.model';
 import { Observable } from 'rxjs';
 import { IResponse, urlResources } from 'shared';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CreateClientService {
+export class DeleteClientService {
   private _http = inject(HttpClient);
-
-  execute(client: IClient): Observable<IResponse> {
-    return this._http.post<IResponse>(urlResources.clients, { headers: this.getHeaders() });
+  
+  execute(clientId: number): Observable<IResponse> {
+    return this._http.delete<IResponse>(`${urlResources.clients}/${clientId}`, { headers: this.getHeaders() });
   }
 
   private getHeaders() {
     return new HttpHeaders()
-      .append('Content-Type', 'application/json')
+    .append('Content-Type', 'application/json')
   }
+
 }
