@@ -1,0 +1,72 @@
+@use "../../styles/variables.scss" as variables;
+
+.menu {
+  &__mensaje-exito {
+    color: variables.$color-background-button;
+    font-size: 1.4rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    text-align: center;
+  }
+  &__content {
+    padding-right: 5px;
+    h1 {
+      color: variables.$color-secondary;
+      text-align: center;
+      margin: 0 0 10px 0;
+      font-size: 20px;
+    }
+  }
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: variables.$color-background;
+    font-family: variables.$font-family-secondary;
+
+    th,
+    td {
+      border: 1px solid variables.$color-gradients;
+      padding: 10px 12px;
+      font-size: 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background-color: variables.$color-secondary;
+      color: variables.$color-background;
+      font-size: 14px;
+      font-weight: bold;
+    }
+    tr {
+      border-bottom: 1px solid variables.$color-lines;
+    }
+    tr:hover {
+      color: variables.$color-gradients;
+    }
+    hr {
+      opacity: 0;
+    }
+  }
+
+  &__items {
+    padding: 0;
+
+    li {
+      margin-bottom: 10px;
+      list-style-type: none;
+
+      p {
+        margin: 0 0 5px 0;
+      }
+    }
+    &--popular-true {
+      color: green;
+      font-weight: bold;
+    }
+
+    &--popular-false {
+      color: gray;
+    }
+  }
+}

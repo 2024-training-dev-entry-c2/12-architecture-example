@@ -30,7 +30,7 @@ export class AddClientFormComponent {
 
   public clientForm = this.formBuilder.group({
     name: ['', [Validators.required]],
-    email: ['', [Validators.required]],
+    email: ['', [Validators.email]],
     numberPhone: ['', [Validators.required]],
     id: [null],
     isFrecuent: [false]

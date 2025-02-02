@@ -19,7 +19,6 @@ export class GetClientsComponent {
   public onCreateClient = output<{client: IClient; modal: ModalComponent}>();
   public onDeleteClient = output<number>();
   public onSelectClient = output<number>();
-  public onSubmit = output<IClient>();
 
   message(): string {
     return this.clientsState.store().successMessage.snapshot();
