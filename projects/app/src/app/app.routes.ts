@@ -18,6 +18,10 @@ export const routes: Routes = [
       {
         path: 'menus',
         loadChildren: () => import('../../../menu/src/infrastructure/ui/routers/menu.routes').then((MenusRoutes)=>MenusRoutes.routes)
+      },
+      {
+        path: 'pedidos',
+        loadChildren: () => import('../../../order/src/infrastructure/ui/routes/order.routes').then((OrdersRoutes)=>OrdersRoutes.routes)
       }
     ]
     // loadChildren: () => import('../../../shared/src/infrastructure/ui/routes/layout.routes').then((LayoutRoutes)=>LayoutRoutes.routes)

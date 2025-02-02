@@ -1,0 +1,25 @@
+<form [formGroup]="form" class="form" (ngSubmit)="submit()">
+    <h3 class="form__title">{{ title }}</h3>
+    <label class="form__label">
+        <span>ID Cliente:</span>
+        <input type="text" formControlName="idCliente" class="form__input">
+    </label>
+
+    <div formArrayName="detalles" class="form__details">
+        <h4 class="form__subtitle">Detalles</h4>
+        <div *ngFor="let detalle of detalles.controls; let i = index" [formGroupName]="i" class="form__detalle">
+            <label class="form__label">
+                <span>ID Plato:</span>
+                <input type="text" formControlName="idPlato" class="form__input">
+            </label>
+            <label class="form__label">
+                <span>Cantidad:</span>
+                <input type="text" formControlName="cantidad" class="form__input">
+            </label>
+            <button type="button" (click)="removeDetalle(i)" class="form__button--delete">Eliminar</button>
+        </div>
+    </div>
+
+    <button type="button" (click)="addDetalle()" class="form__button--add">Añadir Detalle</button>
+    <button type="submit" class="form__button--submit">Enviar</button>
+</form>

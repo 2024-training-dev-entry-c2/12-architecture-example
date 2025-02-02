@@ -30,6 +30,9 @@
       "menu": [
         "./dist/menu"
       ],
+      "order": [
+        "./dist/order"
+      ],
       "shared": [
         "./dist/shared"
       ],
