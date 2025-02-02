@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'lib-footer',
@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
+
+  @Input() socialLinks: { name: string; url: string; ariaLabel: string }[] = [];
 
 }

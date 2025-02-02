@@ -42,3 +42,28 @@
     color: white;
   }
   }
+
+
+  .dish-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .dish-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  
+  .selected-dishes ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .selected-dishes li {
+    background: #ffeeba;
+    padding: 5px;
+    margin: 5px 0;
+  }
+  

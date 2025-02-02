@@ -9,9 +9,14 @@ import { RemoveModalComponent } from '../remove-modal/remove-modal.component';
 
 @Component({
   selector: 'lib-section-menus',
-  imports: [CommonModule, ModalComponent, AddModalComponent, RemoveModalComponent],
+  imports: [
+    CommonModule,
+    ModalComponent,
+    AddModalComponent,
+    RemoveModalComponent,
+  ],
   templateUrl: './section-menus.component.html',
-  styleUrl: './section-menus.component.scss'
+  styleUrl: './section-menus.component.scss',
 })
 export class SectionMenusComponent {
   @Input() menus: IMenu[] = [];
@@ -35,7 +40,6 @@ export class SectionMenusComponent {
     'Dishes',
     'Actions',
   ];
-
   onOpenAddModal(): void {
     this.addMenu.emit();
   }
@@ -48,8 +52,8 @@ export class SectionMenusComponent {
     this.deleteMenu.emit(menu);
   }
 
-  onSave(): void {
-    this.saveMenu.emit();
+  onSave(formValue: any): void {
+    this.saveMenu.emit(formValue);
   }
 
   onDelete(): void {

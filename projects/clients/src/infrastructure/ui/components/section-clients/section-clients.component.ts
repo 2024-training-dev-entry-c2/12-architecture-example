@@ -1,14 +1,14 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { IClients } from '../../../../domain/model/clients.model';
-import { ModalComponent } from 'shared';
-import { AddModalComponent } from '../../forms/add-modal/add-modal.component';
-import { RemoveModalComponent } from '../remove-modal/remove-modal.component';
-import { FormGroup } from '@angular/forms';
+import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { IClients } from "../../../../public-api";
+import { FormGroup } from "@angular/forms";
+import { ModalComponent } from "shared";
+import { CommonModule } from "@angular/common";
+import { AddModalComponent } from "../../forms/add-modal/add-modal.component";
+import { RemoveModalComponent } from "../remove-modal/remove-modal.component";
+
 
 @Component({
   selector: 'lib-section-clients',
-  standalone: true,
   imports: [CommonModule, ModalComponent, AddModalComponent, RemoveModalComponent],
   templateUrl: './section-clients.component.html',
   styleUrl: './section-clients.component.scss'
@@ -37,28 +37,27 @@ export class SectionClientsComponent {
     'Actions',
   ];
 
-  onOpenAddModal(): void {
-    this.addClient.emit();
-  }
-
-  onOpenEditModal(client: IClients): void {
-    this.editClient.emit(client);
-  }
-
-  onOpenDeleteModal(client: IClients): void {
-    
-    this.deleteClient.emit(client);
-  }
-
-  onSave(): void {
-    this.saveClient.emit();
-  }
-
-  onDelete(): void {
-    this.confirmDelete.emit();
-  }
-
-  onCloseModal(): void {
-    this.closeModal.emit();
-  }
+    onOpenAddModal(): void {
+      this.addClient.emit();
+    }
+  
+    onOpenEditModal(client: IClients): void {
+      this.editClient.emit(client);
+    }
+  
+    onOpenDeleteModal(client: IClients): void {
+      this.deleteClient.emit(client);
+    }
+  
+    onSave(formValue: any): void {
+      this.saveClient.emit(formValue);
+    }
+  
+    onDelete(): void {
+      this.confirmDelete.emit();
+    }
+  
+    onCloseModal(): void {
+      this.closeModal.emit();
+    }
 }

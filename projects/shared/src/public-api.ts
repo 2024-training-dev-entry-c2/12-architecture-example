@@ -7,5 +7,5 @@ export { HeaderContainerComponent } from './infrastructure/ui/container/header-c
 export { NavbarContainerComponent } from './infrastructure/ui/container/navbar-container/navbar-container.component';
 export { MainLayoutComponent } from './infrastructure/ui/layouts/main-layout/main-layout.component';
 export { environment } from './infrastructure/ui/enviroments/environment';
-export { ModalComponent } from './infrastructure/ui/components/modal/modal.component';
+export * from './infrastructure/ui/components/modal/modal.component';
 

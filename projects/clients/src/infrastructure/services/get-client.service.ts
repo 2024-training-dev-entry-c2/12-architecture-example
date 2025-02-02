@@ -16,6 +16,5 @@ export class GetClientService {
     return this._http.get<IClients[]>(`${this.apiUrl}`);
   }
 
-
 }
 

@@ -1,17 +1,18 @@
 <main aria-labelledby="main-title">
-    <lib-section-orders
-      [orders]="orders$ | async"
-      [isModalOpen]="isModalOpen"
-      [modalType]="modalType"
-      [selectedOrder]="selectedOrder"
-      [orderForm]="orderForm"
-      [formData]="formData"
-      (addOrder)="openAddModal()"
-      (editOrder)="openEditModal($event)"
-      (deleteOrder)="openDeleteModal($event)"
-      (saveOrder)="onSave()"
-      (confirmDelete)="deleteOrder()"
-      (closeModal)="closeModal()">
-    </lib-section-orders>
+  <lib-section-orders
+  [orders]="order$ | async"
+  [availableDishes]="availableDishes"
+  [isModalOpen]="isModalOpen"
+  [modalType]="modalType"
+  [selectedOrder]="selectedOrders"
+  (addOrder)="openAddModal()"
+  (editOrder)="openEditModal($event)"
+  (deleteOrder)="openDeleteModal($event)"
+  (confirmDelete)="deleteOrders()"
+  (saveOrder)="onSave($event)"
+  (closeModal)="closeModal()">
+  
+</lib-section-orders>
+
 
 </main>

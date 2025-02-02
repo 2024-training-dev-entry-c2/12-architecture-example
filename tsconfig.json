@@ -3,6 +3,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    
     "paths": {
       "clients": [
         "./dist/clients"

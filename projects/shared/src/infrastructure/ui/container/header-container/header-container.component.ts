@@ -5,7 +5,6 @@ import { NavbarComponent } from "../../components/navbar/navbar.component";
   selector: 'lib-header-container',
   imports: [NavbarComponent],
   templateUrl: './header-container.component.html',
-  styleUrl: './header-container.component.css'
 })
 export class HeaderContainerComponent {
 

@@ -25,13 +25,12 @@ export class EditOrderUseCase {
     const optimisticUpdate = currentOrders.map((o) =>
       o.id === order.id ? { ...o, ...order } : o
     );
-    
+  
     this._state.orders.order.set(optimisticUpdate);
-
+  
     return this._service.editOrders(order).pipe(
       tap((updatedOrder) => {
-        const currentOrders = this._state.orders.order.snapshot();
-        const updatedOrders = currentOrders.map((o) =>
+        const updatedOrders = this._state.orders.order.snapshot().map((o) =>
           o.id === updatedOrder.id ? updatedOrder : o
         );
         this._state.orders.order.set(updatedOrders);
@@ -43,7 +42,6 @@ export class EditOrderUseCase {
       })
     );
   }
-  
 
   destroySubscriptions(): void {
     this.subscriptions.unsubscribe();

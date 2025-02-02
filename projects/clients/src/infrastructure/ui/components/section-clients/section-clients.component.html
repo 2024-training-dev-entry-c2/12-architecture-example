@@ -41,28 +41,23 @@
             </tbody>
         </table>
     </div>
-
     <lib-modal 
-        [isOpen]="isModalOpen" 
-        [title]="modalType === 'add' ? 'Add Client' : modalType === 'edit' ? 'Edit Client' : 'Delete Client'" 
-        (closeModal)="onCloseModal()">
+    [isOpen]="isModalOpen" 
+    [title]="modalType === 'add' ? 'Add Client' : modalType === 'edit' ? 'Edit Client' : 'Delete Client'" 
+    (closeModal)="onCloseModal()">
 
-        <lib-add-modal
-            *ngIf="modalType !== 'delete'"
-            [clientForm]="clientForm"
-            [formData]="formData"
-            (save)="onSave()">
-        </lib-add-modal>
+    <lib-add-modal
+        *ngIf="modalType !== 'delete'"
+        [editData]="selectedClient"
+        (save)="onSave($event)">
+    </lib-add-modal>
 
-        @if(modalType === 'delete'){
+    @if(modalType === 'delete'){
         <lib-remove-modal 
-
-        [clientName]="selectedClient?.name"
-        (deleteClient)="onDelete()"
-        (closeModal)="onCloseModal()"
-        >
-    </lib-remove-modal>
-        }
-
-    </lib-modal>
+            [clientName]="selectedClient?.name"
+            (deleteClient)="onDelete()"
+            (closeModal)="onCloseModal()">
+        </lib-remove-modal>
+    }
+</lib-modal>
 </section>

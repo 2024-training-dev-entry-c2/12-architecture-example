@@ -42,16 +42,8 @@ fdescribe('SectionDishesComponent', () => {
     formBuilder = TestBed.inject(FormBuilder);
     fixture = TestBed.createComponent(SectionDishesComponent);
     component = fixture.componentInstance;
-    
+ 
 
-    component.dishForm = formBuilder.group({
-      name: [''],
-      price: [''],
-      menuName: [''],
-      dishType: [''],
-      menuId: ['']
-    });
-    
     component.dishes = mockDishes;
     fixture.detectChanges();
   });
@@ -100,7 +92,7 @@ fdescribe('SectionDishesComponent', () => {
 
   it('should emit saveDish event when onSave is called', () => {
     spyOn(component.saveDish, 'emit');
-    component.onSave();
+    component.onSave({});
     expect(component.saveDish.emit).toHaveBeenCalled();
   });
 

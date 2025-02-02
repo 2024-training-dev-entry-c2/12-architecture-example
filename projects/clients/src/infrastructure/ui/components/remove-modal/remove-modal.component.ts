@@ -8,7 +8,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class RemoveModalComponent {
  
-
     @Output() closeModal = new EventEmitter<void>();
 
     @Input() clientName: string;

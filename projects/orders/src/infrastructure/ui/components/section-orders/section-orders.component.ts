@@ -2,9 +2,11 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { IOrders } from '../../../../domain/model/orders.model';
 import { CommonModule, CurrencyPipe, DatePipe } from '@angular/common';
 import { FormGroup } from '@angular/forms';
-import { ModalComponent } from 'shared';
+
 import { AddModalComponent } from '../../forms/add-modal/add-modal.component';
 import { RemoveModalComponent } from '../remove-modal/remove-modal.component';
+import { ModalComponent } from 'shared';
+import { IDishes } from 'dishes';
 
 
 @Component({
@@ -16,6 +18,7 @@ import { RemoveModalComponent } from '../remove-modal/remove-modal.component';
 export class SectionOrdersComponent {
 
      @Input() orders: IOrders[] = [];
+     @Input() availableDishes: IDishes[] = [];
      @Input() isModalOpen = false;
      @Input() modalType: 'add' | 'edit' | 'delete' = 'add';
      @Input() selectedOrder: IOrders | null = null;
@@ -39,28 +42,28 @@ export class SectionOrdersComponent {
        'Actions',
      ];
    
-     onOpenAddModal(): void {
-       this.addOrder.emit();
-     }
-   
-     onOpenEditModal(order: IOrders): void {
-       this.editOrder.emit(order);
-     }
-   
-     onOpenDeleteModal(order: IOrders): void {
-       this.deleteOrder.emit(order);
-     }
-   
-     onSave(): void {
-       this.saveOrder.emit();
-     }
-   
-     onDelete(): void {
-       this.confirmDelete.emit();
-     }
-   
-     onCloseModal(): void {
-       this.closeModal.emit();
-     }
+    onOpenAddModal(): void {
+        this.addOrder.emit();
+      }
+    
+      onOpenEditModal(order: IOrders): void {
+        this.editOrder.emit(order);
+      }
+    
+      onOpenDeleteModal(order: IOrders): void {
+        this.deleteOrder.emit(order);
+      }
+    
+      onSave(formValue: any): void {
+        this.saveOrder.emit(formValue);
+      }
+    
+      onDelete(): void {
+        this.confirmDelete.emit();
+      }
+    
+      onCloseModal(): void {
+        this.closeModal.emit();
+      }
 
 }

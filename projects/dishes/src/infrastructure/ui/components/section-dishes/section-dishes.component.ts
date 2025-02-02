@@ -13,21 +13,67 @@ import { RemoveModalComponent } from '../remove-modal/remove-modal.component';
   styleUrl: './section-dishes.component.scss'
 })
 export class SectionDishesComponent {
+  // @Input() dishes: IDishes[] = [];
+  // @Input() isModalOpen = false;
+  // @Input() modalType: 'add' | 'edit' | 'delete' = 'add';
+  // @Input() selectedDish: IDishes | null = null;
+  // @Input() dishForm!: FormGroup;
+  // @Input() formData!: { labelName: string; valueLabel: string }[];
+
+  // @Output() addDish = new EventEmitter<void>();
+  // @Output() editDish = new EventEmitter<IDishes>();
+  // @Output() deleteDish = new EventEmitter<IDishes>();
+  // @Output() saveDish = new EventEmitter<void>();
+  // @Output() confirmDelete = new EventEmitter<void>();
+  // @Output() closeModal = new EventEmitter<void>();
+
+  // readonly tableHeaders = [
+  //   'ID Dish',
+  //   'Name',
+  //   'Price',
+  //   'Menu Name',
+  //   'Total Ordered',
+  //   'Dish Type',
+  //   'Actions',
+  // ];
+
+  // onOpenAddModal(): void {
+  //   this.addDish.emit();
+  // }
+
+  // onOpenEditModal(dish: IDishes): void {
+  //   this.editDish.emit(dish);
+  // }
+
+  // onOpenDeleteModal(dish: IDishes): void {
+  //   this.deleteDish.emit(dish);
+  // }
+
+  // onSave(): void {
+  //   this.saveDish.emit();
+  // }
+
+  // onDelete(): void {
+  //   this.confirmDelete.emit();
+  // }
+
+  // onCloseModal(): void {
+  //   this.closeModal.emit();
+  // }
+
   @Input() dishes: IDishes[] = [];
   @Input() isModalOpen = false;
   @Input() modalType: 'add' | 'edit' | 'delete' = 'add';
   @Input() selectedDish: IDishes | null = null;
-  @Input() dishForm!: FormGroup;
-  @Input() formData!: { labelName: string; valueLabel: string }[];
 
   @Output() addDish = new EventEmitter<void>();
   @Output() editDish = new EventEmitter<IDishes>();
   @Output() deleteDish = new EventEmitter<IDishes>();
-  @Output() saveDish = new EventEmitter<void>();
+  @Output() saveDish = new EventEmitter<any>();
   @Output() confirmDelete = new EventEmitter<void>();
   @Output() closeModal = new EventEmitter<void>();
 
-   tableHeaders = [
+  tableHeaders = [
     'ID Dish',
     'Name',
     'Price',
@@ -49,8 +95,8 @@ export class SectionDishesComponent {
     this.deleteDish.emit(dish);
   }
 
-  onSave(): void {
-    this.saveDish.emit();
+  onSave(formValue: any): void {
+    this.saveDish.emit(formValue);
   }
 
   onDelete(): void {

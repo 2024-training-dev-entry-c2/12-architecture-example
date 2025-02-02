@@ -1,15 +1,27 @@
 <form [formGroup]="orderForm" class="form">
-    <div class="form__content">
-        @for(item of formData; track $index) {
-      <label [for]="item.valueLabel" class="form__label">{{ item.labelName }}</label>
-      <input [id]="item.valueLabel" class="form__input" type="text" [formControlName]="item.valueLabel" />
-     }
+  <div class="form__content">
+    <label for="clientName" class="form__label">Name</label>
+    <input id="clientName" class="form__input" type="text" formControlName="clientName" />
 
+    <label for="clientEmail" class="form__label">Email</label>
+    <input id="clientEmail" class="form__input" type="email" formControlName="clientEmail" />
+
+    <label for="dishes" class="form__label">Select Dishes</label>
+    <div class="dish-selection">
+      <label *ngFor="let dish of availableDishes" class="dish-checkbox">
+        <input 
+          type="checkbox"
+          [value]="dish"
+          [checked]="isDishSelected(dish.id)"
+          (change)="toggleDishSelection($event, dish)" />
+        {{ dish.name }} - {{ dish.price | currency:'COP' }}
+      </label>
     </div>
+  </div>
+
   <div class="form__btn-container">
-    <button  class="form__btn" type="button" [disabled]="!orderForm.valid" (click)="save.emit()">
+    <button class="form__btn" type="button" [disabled]="!orderForm.valid" (click)="onSave()">
       Guardar
     </button>
   </div>
 </form>
-  

@@ -87,26 +87,22 @@
 
     <lib-modal 
         [isOpen]="isModalOpen" 
-        [title]="modalType === 'add' ? 'Add Menu' : modalType === 'edit' ? 'Edit Menu' : 'Delete Menu'" 
+        [title]="modalType === 'add' ? 'Add Client' : modalType === 'edit' ? 'Edit Client' : 'Delete Client'" 
         (closeModal)="onCloseModal()">
 
         <lib-add-modal
             *ngIf="modalType !== 'delete'"
-            [menuForm]="menuForm"
-            [formData]="formData"
-            (save)="onSave()">
+            [editData]="selectedMenu"
+            (save)="onSave($event)">
         </lib-add-modal>
 
         @if(modalType === 'delete'){
-        <lib-remove-modal
-
-        [menuName]="selectedMenu?.name"
-        (deleteMenu)="onDelete()"
-        (closeModal)="onCloseModal()"
-        >
-    </lib-remove-modal>
-        }
-
+            <lib-remove-modal 
+                [menuName]="selectedMenu?.name"
+                (deleteMenu)="onDelete()"
+                (closeModal)="onCloseModal()">
+            </lib-remove-modal>
+            }
     </lib-modal>
 </section>
 

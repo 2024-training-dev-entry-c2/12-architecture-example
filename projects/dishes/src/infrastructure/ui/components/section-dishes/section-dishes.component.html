@@ -42,7 +42,7 @@
         </table>
     </div>
 
-    <lib-modal 
+    <!-- <lib-modal 
         [isOpen]="isModalOpen" 
         [title]="modalType === 'add' ? 'Add Dish' : modalType === 'edit' ? 'Edit Dish' : 'Delete Dish'" 
         (closeModal)="onCloseModal()">
@@ -64,5 +64,25 @@
     </lib-remove-modal>
         }
 
-    </lib-modal>
+    </lib-modal> -->
+
+    <lib-modal 
+    [isOpen]="isModalOpen" 
+    [title]="modalType === 'add' ? 'Add Dish' : modalType === 'edit' ? 'Edit Dish' : 'Delete Dish'" 
+    (closeModal)="onCloseModal()">
+
+    <lib-add-modal
+        *ngIf="modalType !== 'delete'"
+        [editData]="selectedDish"
+        (save)="onSave($event)">
+    </lib-add-modal>
+
+    @if(modalType === 'delete'){
+        <lib-remove-modal 
+            [dishName]="selectedDish?.name"
+            (deleteDish)="onDelete()"
+            (closeModal)="onCloseModal()">
+        </lib-remove-modal>
+    }
+</lib-modal>
 </section>

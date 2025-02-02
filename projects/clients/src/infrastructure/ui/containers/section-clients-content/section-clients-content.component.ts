@@ -15,89 +15,81 @@ import { DeleteClientUseCase } from '../../../../application/clients/delete-clie
   imports: [SectionClientsComponent, CommonModule],
   templateUrl: './section-clients-content.component.html',
 })
-export class SectionClientsContentComponent implements OnInit, OnDestroy {
-  private readonly _deleteClientUseCase = inject(DeleteClientUseCase);
-  private readonly _createClientUseCase = inject(CreateClientUseCase);
-  private readonly _editClientUseCase = inject(EditClientUseCase);
-  private readonly _getClientUseCase = inject(GetClientUseCase);
-  private readonly _formBuilder = inject(FormBuilder);
-
-  clients$: Observable<IClients[]>;
-  isModalOpen = false;
-  modalType: 'add' | 'edit' | 'delete' = 'add';
-  selectedClient: IClients | null = null;
-
-  clientForm: FormGroup = this._formBuilder.group({
-    name: ['', [Validators.required, Validators.minLength(3)]],
-    email: ['', [Validators.required, Validators.email]],
-  });
-
-  formData = [
-    { labelName: 'Name', valueLabel: 'name' },
-    { labelName: 'Email', valueLabel: 'email' },
-  ];
-
-  ngOnInit(): void {
-    this.clients$ = this._getClientUseCase.client$();
-    this._getClientUseCase.execute();
-    this._getClientUseCase.initSubscriptions();
-    this._createClientUseCase.initSubscriptions();
-    this._editClientUseCase.initSubscriptions();
-    this._deleteClientUseCase.initSubscriptions();
-  }
-
-  openAddModal(): void {
-    this.modalType = 'add';
-    this.isModalOpen = true;
-    this.selectedClient = null;
-    this.clientForm.reset();
-  }
-
-  openEditModal(client: IClients): void {
-    this.modalType = 'edit';
-    this.isModalOpen = true;
-    this.selectedClient = client;
-    this.clientForm.patchValue(client);
-  }
-
-  openDeleteModal(client: IClients): void {
-    this.modalType = 'delete';
-    this.isModalOpen = true;
-    this.selectedClient = client;
-  }
-
-  onSave(): void {
-    if (this.clientForm.valid) {
+export class SectionClientsContentComponent  {
+    clients$: Observable<IClients[]>;
+    isModalOpen = false;
+    modalType: 'add' | 'edit' | 'delete' = 'add';
+    selectedClient: IClients | null = null;
+  
+    editData: any = null;
+  
+    constructor(
+      private readonly _deleteClientUseCase: DeleteClientUseCase,
+      private readonly _createClientUseCase: CreateClientUseCase,
+      private readonly _editClientUseCase: EditClientUseCase,
+      private readonly _getClientUseCase: GetClientUseCase
+    ) {}
+  
+    ngOnInit(): void {
+      this.clients$ = this._getClientUseCase.client$();
+      this._getClientUseCase.execute();
+      this._getClientUseCase.initSubscriptions();
+      this._createClientUseCase.initSubscriptions();
+      this._editClientUseCase.initSubscriptions();
+      this._deleteClientUseCase.initSubscriptions();
+    }
+  
+    openAddModal(): void {
+      this.modalType = 'add';
+      this.selectedClient = null;
+      this.isModalOpen = true;
+      this.editData = null;
+  
+    }
+  
+    openEditModal(client: IClients): void {
+      this.modalType = 'edit';
+      this.isModalOpen = true;
+      this.selectedClient = client;
+      this.editData = client; // GUARDAR LA VARIABLEEEEEEEEEEEEEEEEEEEEE
+      console.log(this.editData)
+    }
+  
+      openDeleteModal(client: IClients): void {
+        this.modalType = 'delete';
+        this.isModalOpen = true;
+        this.selectedClient = client;
+      }
+  
+      deleteClient(): void {
+        if (this.selectedClient) {
+          this._deleteClientUseCase.execute(this.selectedClient);
+          this.closeModal();
+      }
+      }
+  
+    onSave(formValue: any): void {
       if (this.modalType === 'add') {
-        this._createClientUseCase.execute(this.clientForm.value);
+        this._createClientUseCase.execute(formValue);
       } else if (this.modalType === 'edit' && this.selectedClient) {
-        const updatedClient = { ...this.selectedClient, ...this.clientForm.value }
+        const updatedClient = { ...this.selectedClient, ...formValue };
         this._editClientUseCase.execute(updatedClient);
-        console.log(this.selectedClient)
       }
       this.closeModal();
     }
-  }
+  
+    
+    closeModal(): void {
+      this.isModalOpen = false;
+      this.selectedClient = null;
+      this.editData = null;
+    }
 
-  deleteClient(): void {
-    if (this.selectedClient) {
-      this._deleteClientUseCase.execute(this.selectedClient);
-      this.closeModal();
-  }
-  }
-
-  closeModal(): void {
-    this.isModalOpen = false;
-    this.selectedClient = null;
-    this.clientForm.reset();
-  }
-
-  ngOnDestroy(): void {
-    this._getClientUseCase.destroySubscriptions();
-    this._createClientUseCase.destroySubscriptions();
-    this._editClientUseCase.destroySubscriptions();
-    this._deleteClientUseCase.ngOnDestroy();
-  }
-
+    OnDestroy(): void {
+      this._getClientUseCase.destroySubscriptions();
+      this._createClientUseCase.destroySubscriptions();
+      this._editClientUseCase.destroySubscriptions();
+      this._deleteClientUseCase.ngOnDestroy();
+    }
  
 }

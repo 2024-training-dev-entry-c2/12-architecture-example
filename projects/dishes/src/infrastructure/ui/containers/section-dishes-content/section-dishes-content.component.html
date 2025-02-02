@@ -1,5 +1,5 @@
 <main aria-labelledby="main-title">
-        <lib-section-dishes
+        <!-- <lib-section-dishes
           [dishes]="dishes$ | async"
           [isModalOpen]="isModalOpen"
           [modalType]="modalType"
@@ -12,6 +12,22 @@
           (saveDish)="onSave()"
           (confirmDelete)="deleteDish()"
           (closeModal)="closeModal()">
-        </lib-section-dishes>
+        </lib-section-dishes> -->
 
+
+<lib-section-dishes
+[dishes]="dishes$ | async"
+[isModalOpen]="isModalOpen"
+[modalType]="modalType"
+[selectedDish]="selectedDish"
+(addDish)="openAddModal()"
+(editDish)="openEditModal($event)"
+(deleteDish)="openDeleteModal($event)"
+(confirmDelete)="deleteDish()"
+(saveDish)="onSave($event)"
+(closeModal)="closeModal()">
+>
+
+</lib-section-dishes>
+        
 </main>

@@ -1,13 +1,17 @@
 <form [formGroup]="clientForm" class="form">
-    <div class="form__content">
-        @for(item of formData; track $index) {
-      <label [for]="item.valueLabel" class="form__label">{{ item.labelName }}</label>
-      <input [id]="item.valueLabel" class="form__input" type="text" [formControlName]="item.valueLabel" />
-     }
-
-    </div>
+  <div class="form__content">
+    @for(field of formFields; track field.valueLabel) {
+      <label [for]="field.valueLabel" class="form__label">{{ field.labelName }}</label>
+      <input 
+        [id]="field.valueLabel" 
+        class="form__input" 
+        [type]="field.type"
+        [formControlName]="field.valueLabel" 
+      />
+    }
+  </div>
   <div class="form__btn-container">
-    <button  class="form__btn" type="button" [disabled]="!clientForm.valid" (click)="save.emit()">
+    <button class="form__btn" type="button" [disabled]="!clientForm.valid" (click)="onSave()">
       Guardar
     </button>
   </div>

@@ -3,11 +3,12 @@ import { SectionOrdersComponent } from '../../components/section-orders/section-
 import { Observable } from 'rxjs';
 import { GetOrdersUseCase } from '../../../../application/orders/get-order.usecase';
 import { DeleteOrderUseCase } from '../../../../application/orders/delete-order.usecase';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { EditOrderUseCase } from '../../../../application/orders/edit-order.usecase';
 import { CreateOrderUseCase } from '../../../../application/orders/create-order.usecase';
 import { IOrders } from '../../../../domain/model/orders.model';
 import { CommonModule } from '@angular/common';
+import { GetDishUseCase, IDishes } from 'dishes';
 
 @Component({
   selector: 'lib-section-orders-content',
@@ -15,110 +16,91 @@ import { CommonModule } from '@angular/common';
   templateUrl: './section-orders-content.component.html',
 })
 export class SectionOrdersContentComponent {
-   private readonly _deleteOrderUseCase = inject(DeleteOrderUseCase);
-   private readonly _createOrderUseCase = inject(CreateOrderUseCase);
-   private readonly _editOrderUseCase = inject(EditOrderUseCase);
-   private readonly _getOrderUseCase = inject(GetOrdersUseCase);
-   private readonly _formBuilder = inject(FormBuilder);
- 
-   orders$: Observable<IOrders[]>;
+   order$: Observable<IOrders[]>;
+   dishes$: Observable<IDishes[]>;
+
+   availableDishes: IDishes[] = []; // Lista de platos
+  
    isModalOpen = false;
    modalType: 'add' | 'edit' | 'delete' = 'add';
-   selectedOrder: IOrders | null = null;
+   selectedOrders: IOrders | null = null;
  
-   orderForm: FormGroup = this._formBuilder.group({
-    clientName: ['', [Validators.required, Validators.minLength(3)]],
-    clientEmail: ['', [Validators.required, Validators.email]],
-    dishesText: ['', Validators.required],
-   });
+   editData: any = null;
  
-   formData = [
-    { labelName: 'Name', valueLabel: 'clientName' },
-    { labelName: 'Email', valueLabel: 'clientEmail' },
-    { labelName: 'Dishes', valueLabel: 'dishesText' },
-  ];
-
-   get dishesText() {
-    return this.orderForm.get('dishesText');
-  }
+   constructor(
+     private readonly _deleteOrdersUseCase: DeleteOrderUseCase,
+     private readonly _createOrdersUseCase: CreateOrderUseCase,
+     private readonly _editOrdersUseCase: EditOrderUseCase,
+     private readonly _getOrdersUseCase: GetOrdersUseCase,
+     private readonly _getDishesUseCase: GetDishUseCase
+   ) {}
  
    ngOnInit(): void {
-     this.orders$ = this._getOrderUseCase.order$();
-     this._getOrderUseCase.execute();
-     this._getOrderUseCase.initSubscriptions();
-     this._createOrderUseCase.initSubscriptions();
-     this._editOrderUseCase.initSubscriptions();
-     this._deleteOrderUseCase.initSubscriptions();
+    this._getDishesUseCase.execute();
+
+     this.order$ = this._getOrdersUseCase.order$();
+
+     this.dishes$ = this._getDishesUseCase.dish$();
+
+
+     this.dishes$.subscribe(dishes => this.availableDishes = dishes);
+     
+     this._getOrdersUseCase.execute();
+     this._getOrdersUseCase.initSubscriptions();
+     this._createOrdersUseCase.initSubscriptions();
+     this._editOrdersUseCase.initSubscriptions();
+     this._deleteOrdersUseCase.initSubscriptions();
    }
  
    openAddModal(): void {
      this.modalType = 'add';
+     this.selectedOrders = null;
      this.isModalOpen = true;
-     this.selectedOrder = null;
-     this.orderForm.reset();
    }
  
-   openEditModal(order: IOrders): void {
-     this.modalType = 'edit';
-     this.isModalOpen = true;
-     this.selectedOrder = order;
-     this.orderForm.patchValue(order);
+   openEditModal(menu: IOrders): void {
+    this.modalType = 'edit';
+    this.isModalOpen = true;
+    this.selectedOrders = menu;
+    this.editData = menu; // GUARDAR LA VARIABLEEEEEEEEEEEEEEEEEEEEE
    }
  
-   openDeleteModal(order: IOrders): void {
+   openDeleteModal(menu: IOrders): void {
      this.modalType = 'delete';
      this.isModalOpen = true;
-     this.selectedOrder = order;
+     this.selectedOrders = menu;
    }
  
-   onSave(): void {
-  if (this.orderForm.valid) {
-    const dishesText = this.dishesText?.value ?? '';
-    const dishesArray = dishesText
-      .split(',')
-      .filter(dish => dish.trim() !== '')
-      .map(dish => ({ name: dish.trim() })); 
-
-    const payload = {
-      ...this.orderForm.value,
-      dishes: dishesArray,
-    };
-
-    if (this.modalType === 'add') {
-      this._createOrderUseCase.execute(payload);
-    } else if (this.modalType === 'edit' && this.selectedOrder) {
-      const updatedOrder = { ...this.selectedOrder, ...payload };
-      this._editOrderUseCase.execute(updatedOrder)
-        .subscribe({
-          next: () => {
-            this.closeModal();
-          },
-          error: (error) => {
-            console.error('Error updating order:', error);
-          }
-        });
-    }
-  }
-}
- 
-   deleteOrder(): void {
-    console.log(this.selectedOrder)
-     if (this.selectedOrder) {
-       this._deleteOrderUseCase.execute(this.selectedOrder);
+   deleteOrders(): void {
+     if (this.selectedOrders) {
+       this._deleteOrdersUseCase.execute(this.selectedOrders);
        this.closeModal();
-   }
+     }
    }
  
+   onSave(formValue: any): void {
+    if (this.modalType === 'add') {
+      this._createOrdersUseCase.execute(formValue);
+    } else if (this.modalType === 'edit' && this.selectedOrders) {
+      const updatedOrders = { ...this.selectedOrders, ...formValue };
+      this._editOrdersUseCase.execute(updatedOrders).subscribe(() => {
+        this._getOrdersUseCase.execute();
+      });
+    }
+    this.closeModal();
+  }
+
+  
    closeModal(): void {
      this.isModalOpen = false;
-     this.selectedOrder = null;
-     this.orderForm.reset();
+     this.selectedOrders = null;
+     this.editData = null;
    }
  
    ngOnDestroy(): void {
-     this._getOrderUseCase.destroySubscriptions();
-     this._createOrderUseCase.destroySubscriptions();
-     this._editOrderUseCase.destroySubscriptions();
-     this._deleteOrderUseCase.ngOnDestroy();
+     this._getOrdersUseCase.destroySubscriptions();
+     this._createOrdersUseCase.destroySubscriptions();
+     this._editOrdersUseCase.destroySubscriptions();
+     this._deleteOrdersUseCase.ngOnDestroy();
    }
 }

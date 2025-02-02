@@ -5,12 +5,9 @@ import { ClientsState } from "./client.state";
     providedIn: 'root'
 })
 
-
 export class State{
 
     private readonly _clients = inject(ClientsState);
-
-
     get clients(){
         return this._clients.store();
     }

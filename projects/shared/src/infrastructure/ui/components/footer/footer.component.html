@@ -1,27 +1,15 @@
 <menu class="menu footer__menu footer" role="menubar" aria-label="Social media navigation">
-    <div class="footer__menu-content">
-      <ul class="footer__navigation">
-        <li class="menu__item" role="none">
-          <a href="" aria-label="Visit our Facebook page" role="menuitem">
-            <span>Facebook</span>
-          </a>
-        </li>
-        <li class="menu__item" role="none">
-          <a href="" aria-label="Visit our Instagram page" role="menuitem">
-            <span>Instagram</span>
-          </a>
-        </li>
-        <li class="menu__item" role="none">
-          <a href="" aria-label="Visit our Twitter page" role="menuitem">
-            <span>Twitter</span>
-          </a>
-        </li>
-        <li class="menu__item" role="none">
-          <a href="" aria-label="Visit our Tiktok page" role="menuitem">
-            <span>Tiktok</span>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </menu>
-  
+  <div class="footer__menu-content">
+    <ul class="footer__navigation">
+
+@for (link of socialLinks; track $index) {
+
+      <li class="menu__item" role="none">
+        <a [href]="link.url" [attr.aria-label]="link.ariaLabel" role="menuitem">
+          <span>{{ link.name }}</span>
+        </a>
+      </li>
+    }
+    </ul>
+  </div>
+</menu>

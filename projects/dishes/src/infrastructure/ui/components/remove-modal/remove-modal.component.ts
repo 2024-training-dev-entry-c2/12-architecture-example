@@ -10,7 +10,7 @@ export class RemoveModalComponent {
 
   @Output() closeModal = new EventEmitter<void>();
   
-  @Input() dishName: string;
+  @Input() dishName: string | null = null;
   
   @Output() deleteDish = new EventEmitter<void>();
 

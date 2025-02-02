@@ -4,13 +4,12 @@
     [isModalOpen]="isModalOpen"
     [modalType]="modalType"
     [selectedClient]="selectedClient"
-    [clientForm]="clientForm"
-    [formData]="formData"
     (addClient)="openAddModal()"
     (editClient)="openEditModal($event)"
     (deleteClient)="openDeleteModal($event)"
-    (saveClient)="onSave()"
     (confirmDelete)="deleteClient()"
+    (saveClient)="onSave($event)"
     (closeModal)="closeModal()">
+    
   </lib-section-clients>
 </main>
