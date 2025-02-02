@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build-alls": "ng build clients && ng build dish && ng build menu && ng build orders && ng build shared"
   },
   "private": true,
   "dependencies": {

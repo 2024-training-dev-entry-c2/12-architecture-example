@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { ModalComponent } from 'shared';
 import { DeleteDishUseCase } from '../../../../application/delete-dish.usecase';
 import { GetDishesUseCase } from '../../../../application/get-dishes.usecase';
@@ -15,7 +15,7 @@ import { PanelDishComponent } from '../../components/panel-dish/panel-dish.compo
   templateUrl: './dish-container.component.html',
   styleUrl: './dish-container.component.scss',
 })
-export class DishContainerComponent {
+export class DishContainerComponent implements OnInit {
 
 
   private readonly _getDishCase = inject(GetDishesUseCase)

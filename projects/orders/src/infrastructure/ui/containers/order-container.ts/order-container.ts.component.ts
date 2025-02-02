@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { GetOrdersUsecase } from '../../../../application/get-orders.usecase';
 import { CreateOrdersUseCase } from '../../../../application/create-orders.usecase';
 import { DeleteOrdersUseCase } from '../../../../application/delete-orders.usecase';
@@ -16,7 +16,7 @@ import { GetClientUseCase, Iclient } from 'clients';
   templateUrl: './order-container.ts.component.html',
   styleUrl: './order-container.ts.component.scss',
 })
-export class OrderContainerTsComponent {
+export class OrderContainerTsComponent implements OnInit {
   private readonly _getOrdersUseCase = inject(GetOrdersUsecase);
   private readonly _createOrdersUseCase = inject(CreateOrdersUseCase);
   private readonly _DeleteOrdersUseCase = inject(DeleteOrdersUseCase);
