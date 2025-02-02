@@ -1,14 +1,11 @@
-<p *ngIf="!isEditForm">Ingresa los detalles de la nueva orden</p>
-<p *ngIf="isEditForm">Ingrese los nuevos detalles de la orden</p>
+<p class="initial-message" *ngIf="!isEditForm">Ingresa los detalles de la nueva orden</p>
+<p class="initial-message" *ngIf="isEditForm">Ingrese los nuevos detalles de la orden</p>
 
-<form [formGroup]="form" aria-label="form" aria-roledescription="formulario">
-    <input aria-roledescription="nombre del cliente" class="modal-input" formControlName="clientName"
+<form class="order-form" [formGroup]="form" aria-label="form" aria-roledescription="formulario">
+    <label aria-roledescription="nombre del cliente" for="clientName">Nombre del cliente</label>
+    <input aria-roledescription="nombre del cliente" class="order-form__input" formControlName="clientName"
         [placeholder]="isEditForm ? currentClientName : 'Nombre del cliente'" />
-    <div formArrayName="orderItems">
-        <div *ngFor="let item of orderItems.controls; let i = index" [formGroupName]="i">
-            <input formControlName="dishName" placeholder="Nombre del plato" />
-            <input formControlName="quantity" type="number" placeholder="Cantidad" />
-            <input formControlName="price" type="number" placeholder="Precio" />
-        </div>
-    </div>
+    <label aria-roledescription="precio total" for="totalAmount">Precio total</label>
+    <input aria-roledescription="precio total" class="order-form__input" formControlName="totalAmount" type="number"
+        [placeholder]="isEditForm ? currentTotalAmount : 'Precio total'" />
 </form>

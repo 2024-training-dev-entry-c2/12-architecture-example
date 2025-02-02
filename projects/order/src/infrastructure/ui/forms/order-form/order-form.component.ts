@@ -14,44 +14,37 @@ export class OrderFormComponent {
 
   @Input() isEditForm: boolean = false;
   @Input() currentClientName: string = '';
-  @Input() currentOrderItems: any[] = [];
+  @Input() currentTotalAmount: number = 0;
 
   public form: FormGroup = this.fb.group({
     clientName: ['', Validators.required],
-    orderItems: this.fb.array([])
+    totalAmount: [0, Validators.required],
+    orderItems: [[]]
   });
 
   ngOnChanges(): void {
     if (this.isEditForm && this.currentClientName) {
-      this.form.patchValue({ clientName: this.currentClientName });
-      this.setOrderItems(this.currentOrderItems);
+      this.form.patchValue({ 
+        clientName: this.currentClientName,
+        totalAmount: this.currentTotalAmount
+       });
+    } else {
+      this.form.reset();
     }
-  }
-
-  get orderItems() {
-    return (this.form.get('orderItems') as FormArray);
-  }
-
-  setOrderItems(items: any[]) {
-    const control = this.form.get('orderItems') as FormArray;
-    items.forEach(item => {
-      control.push(this.fb.group({
-        dishName: [item.dishName, Validators.required],
-        quantity: [item.quantity, Validators.required],
-        price: [item.price, Validators.required]
-      }));
-    });
   }
 
   getFormData(): IOrder | null {
     if (!this.form.valid) {
       return null;
     }
-    return this.form.getRawValue();
+    const formData = this.form.getRawValue();
+    if (!formData.orderItems) {
+      formData.orderItems = [];
+    }
+    return formData;
   }
 
   resetForm(): void {
     this.form.reset();
-    this.orderItems.clear();
   }
 }

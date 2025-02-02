@@ -28,18 +28,19 @@ export class CreateOrderUseCase {
     }
 
     addOrder(order: IOrder, clientName: string): void {
-        this.subscriptions.add(
-          this._service.addOrder(order, clientName)
-            .pipe(
-              tap(result => {
-                console.log('Order created:', result);
-                const orders = this._state.orders.order.snapshot();
-                this._state.orders.order.set([...orders, result]);
-              })
-            )
-            .subscribe()
-        );
-      }
+      this.subscriptions.add(
+        this._service.addOrder(order, clientName)
+          .pipe(
+            tap(result => {
+              console.log('Order created:', result);
+              const orders = this._state.orders.order.snapshot();
+              this._state.orders.order.set([...orders, result]);
+            })
+          )
+          .subscribe()
+      );
+    }
+    
     //#endregion
 
     //#region Private Methods

@@ -11,6 +11,7 @@ export class UpdateOrderService {
   private readonly _http = inject(HttpClient);
 
   updateOrder(id: number, payload: IOrder): Observable<IOrder> {
-    return this._http.put<IOrder>(environment.apiUrl + `/orders/${id}`, payload);
+    return this._http.put<IOrder>(`${environment.apiUrl}/orders/${id}`, payload);
+
   }
 }

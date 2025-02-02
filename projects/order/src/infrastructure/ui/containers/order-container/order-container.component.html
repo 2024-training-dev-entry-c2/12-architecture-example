@@ -7,7 +7,7 @@
     (closeEvent)="closeModal()">
     <ng-container *ngIf="modalType === 'edit'">
         <lib-order-form #orderEditForm [isEditForm]="true" [currentClientName]="currentClientName"
-            [currentOrderItems]="currentOrderItems"></lib-order-form>
+            [currentTotalAmount]="currentTotalAmount"></lib-order-form>
     </ng-container>
     <ng-container *ngIf="modalType === 'delete'">
         <p>¿Estas seguro de que deseas eliminar esta orden?</p>

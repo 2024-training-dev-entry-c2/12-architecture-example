@@ -11,6 +11,6 @@ export class CreateOrderService {
    private readonly _http = inject(HttpClient);
    
   addOrder(order: IOrder, clientName: string): Observable<IOrder> {
-    return this._http.post<IOrder>(`environment.apiUrl + /orders/${clientName}`, order);
+    return this._http.post<IOrder>(`${environment.apiUrl}/orders/${clientName}`, order);
   }
 }

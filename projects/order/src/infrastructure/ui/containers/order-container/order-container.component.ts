@@ -16,8 +16,7 @@ import { AsyncPipe, CommonModule } from '@angular/common';
 @Component({
   selector: 'lib-order-container',
   imports: [OrderHeaderComponent, ShareComponent, OrderMainComponent, ModalComponent, OrderFormComponent, AsyncPipe, CommonModule],
-  templateUrl: './order-container.component.html',
-  styleUrl: './order-container.component.scss'
+  templateUrl: './order-container.component.html'
 })
 export class OrderContainerComponent {
   private readonly _listUsecase = inject(ListOrdersUseCase);
@@ -36,7 +35,7 @@ export class OrderContainerComponent {
   public modalButton: string = '';
 
   public currentClientName = '';
-  public currentOrderItems = [];
+  public currentTotalAmount = 0;
   public modalType: string = '';
 
   @ViewChild(OrderFormComponent) orderEditForm!: OrderFormComponent;
@@ -78,7 +77,7 @@ export class OrderContainerComponent {
     this.modalTitle = 'Editar Orden';
     this.modalButton = 'Actualizar';
     this.currentClientName = order.clientName;
-    this.currentOrderItems = order.orderItems;
+    this.currentTotalAmount = order.totalAmount;
     this.modalType = 'edit';
     this.isModalOpen.set(true);
   }

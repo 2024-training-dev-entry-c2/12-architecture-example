@@ -1,36 +1,36 @@
-<p *ngIf="!isEditForm">Ingresa los datos del nuevo Cliente</p>
-<p *ngIf="isEditForm">Edita los datos del Cliente</p>
+<p class="initial-message" *ngIf="!isEditForm">Ingresa los datos del nuevo Cliente</p>
+<p class="initial-message" *ngIf="isEditForm">Edita los datos del Cliente</p>
 
-<form [formGroup]="form" aria-label="form" aria-roledescription="formulario">
+<form class="client-form" [formGroup]="form" aria-label="form" aria-roledescription="formulario">
     <label aria-roledescription="nombre del cliente" for="clientName">Nombre del Cliente</label>
-    <input aria-roledescription="nombre del cliente" class="modal__input" id="clientName" formControlName="clientName"
-        [placeholder]="isEditForm ? currentClientName : 'Nombre del cliente'" />
+    <input aria-roledescription="nombre del cliente" class="client-form__input" id="clientName"
+        formControlName="clientName" [placeholder]="isEditForm ? currentClientName : 'Nombre del cliente'" />
 
     <label aria-roledescription="correo electronico" for="email">Correo Electronico</label>
-    <input aria-roledescription="correo electronico" class="modal__input" id="email" formControlName="email"
+    <input aria-roledescription="correo electronico" class="client-form__input" id="email" formControlName="email"
         [placeholder]="isEditForm ? currentEmail : 'correo electronico' " type="email" />
 
     <label aria-roledescription="telefono" for="phoneNumber">Telefono</label>
-    <input aria-roledescription="telefono" class="modal__input" id="phoneNumber" formControlName="phoneNumber"
+    <input aria-roledescription="telefono" class="client-form__input" id="phoneNumber" formControlName="phoneNumber"
         [placeholder]="isEditForm ? currentPhoneNumber : 'telefono'" type="text" />
 
     <label aria-roledescription="direccion" for="address">Direccion</label>
-    <input aria-roledescription="direccion" class="modal__input" id="address" formControlName="address"
+    <input aria-roledescription="direccion" class="client-form__input" id="address" formControlName="address"
         [placeholder]="isEditForm ? currentAddress : 'direccion'" type="text" />
 
     <label aria-roledescription="fecha de registro" for="registrationDate">Fecha de Registro</label>
-    <input aria-roledescription="fecha de registro" class="modal__input" id="registrationDate"
+    <input aria-roledescription="fecha de registro" class="client-form__input" id="registrationDate"
         formControlName="registrationDate" placeholder="Fecha de registro" type="date" />
 
-    <div role="checkbox" aria-roledescription="casilla de verificacion" lass="modal__checkbox">
+    <div role="checkbox" aria-roledescription="casilla de verificacion" class="client-form__checkbox">
         <label aria-roledescription="usuario frecuente" for="frequentUser">¿Es usuario frecuente?</label>
-        <input aria-roledescription="usuario frecuente" class="modal__input modal__input--checkbox" id="frequentUser"
-            formControlName="frequentUser" type="checkbox" />
+        <input aria-roledescription="usuario frecuente" class="client-form__input client-form__input--checkbox"
+            id="frequentUser" formControlName="frequentUser" type="checkbox" />
     </div>
 
-    <div role="checkbox" aria-roledescription="casilla de verificacion" lass="modal__checkbox">
+    <div role="checkbox" aria-roledescription="casilla de verificacion" class="client-form__checkbox">
         <label aria-roledescription="es vip" for="vip">¿Es VIP?</label>
-        <input aria-roledescription="es vip" class="modal__input modal__input--checkbox" id="vip" formControlName="vip"
-            type="checkbox" />
+        <input aria-roledescription="es vip" class="client-form__input client-form__input--checkbox" id="vip"
+            formControlName="vip" type="checkbox" />
     </div>
 </form>
