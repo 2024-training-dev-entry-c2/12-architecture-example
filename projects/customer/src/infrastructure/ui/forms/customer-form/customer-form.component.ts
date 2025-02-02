@@ -14,17 +14,23 @@ export class CustomerFormComponent {
 
   @Input()
   set customer(value: ICustomer) {
-    this.form.patchValue(value as any);
+    this.form.patchValue(value);
   }
 
   public form = this._fb.group({
-    name: ['', Validators.required],
-    lastName: ['', Validators.required],
-    email: ['', Validators.required],
-    phone: ['', Validators.required, Validators.pattern('^[0-9#+\\-\\s]+$')],
-    orderIds: [[]],
-    // --------------------------------
-    customerId: [null],
+    name: ['', [Validators.required]],
+    lastName: ['', [Validators.required]],
+    email: ['', [Validators.required, Validators.email]],
+    phone: [
+      '',
+      [
+        Validators.required,
+        Validators.minLength(10),
+        Validators.pattern('^[0-9#+\\-\\s]+$'),
+      ],
+    ],
+    orderIds: [[] as number[]],
+    customerId: [null as number | null],
   });
 
   submit() {
