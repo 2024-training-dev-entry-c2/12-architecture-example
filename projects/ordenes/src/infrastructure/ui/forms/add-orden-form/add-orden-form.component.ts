@@ -1,4 +1,4 @@
-import { Component, inject, input, Input, output } from '@angular/core';
+import { Component, inject, Input, output } from '@angular/core';
 import {
   FormArray,
   FormBuilder,
@@ -20,16 +20,34 @@ export class AddOrdenFormComponent {
   public statusChange = output<{ idOrden: number; statusOrder: string }>();
 
   @Input()
-  set Orden(value: ICreateOrden) {
-    if (value && value.id) {
-      this.ordenForm.patchValue(value);
-    } else {
+  set orden(value: ICreateOrden) {
+    if (!value || !value.id) {
       this.ordenForm.reset({
-        priceTotal: null,
-        statusOrder: '',
+        priceTotal: 0,
+        statusOrder: 'PENDING',
         clientId: null,
-        items: null,
       });
+      this.items.clear(); // Limpiamos los ítems solo si estamos creando una nueva orden
+      this.addItem(); // Agregamos un ítem vacío para la creación
+    } else {
+      // Si estamos editando, actualizamos los valores sin resetear todo
+      this.ordenForm.patchValue({
+        id: value.id,
+        priceTotal: value.priceTotal,
+        statusOrder: value.statusOrder,
+        clientId: value.client.id || null,
+      });
+
+      // Limpiamos el FormArray antes de añadir los nuevos ítems
+      this.items.clear();
+
+      // Agregamos los ítems de la orden
+      if (value.items && value.items.length > 0) {
+        value.items.forEach((item) => this.addItem(item));
+      } else {
+        // Si no tiene ítems, añadimos uno vacío
+        this.addItem();
+      }
     }
   }
   statusOptions = [
@@ -50,15 +68,15 @@ export class AddOrdenFormComponent {
   get items() {
     return this.ordenForm.get('items') as FormArray;
   }
-  addItem(): void {
+  addItem(item?: any): void {
     const newItem = this.formBuilder.group({
-      id: [this.items.length + 1],
-      name: ['', Validators.required],
-      price: [0, Validators.required],
-      quantity: [1, Validators.required],
-      restaurantId: [0, Validators.required],
-      menuId: [0, Validators.required],
-      ordenId: [0],
+      id: [item?.id || this.items.length + 1],
+      name: [item?.name || "" , Validators.required],
+      price: [item?.price || 0, Validators.required],
+      quantity: [item?.quantity || 1, Validators.required],
+      restaurantId: [item?.restaurantId || 1, Validators.required],
+      menuId: [item?.menuId || 1, Validators.required],
+      ordenId: [item?.ordenId || 0],
     });
     this.items.push(newItem);
   }
@@ -74,11 +92,11 @@ export class AddOrdenFormComponent {
       ...formValue,
       items: formValue.items.map((item: any) => ({
         id: item.id,
-        name: item.name || '',
-        price: item.price || 0,
-        quantity: item.quantity || 1,
-        restaurantId: item.restaurantId || 0,
-        menuId: item.menuId || 0,
+        name: item.name,
+        price: item.price,
+        quantity: item.quantity,
+        restaurantId: item.restaurantId || 1,
+        menuId: item.menuId || 1,
         ordenId: item.ordenId || 0,
       })),
     };

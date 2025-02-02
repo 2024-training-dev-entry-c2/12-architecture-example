@@ -1,5 +1,7 @@
 <lib-get-ordenes
   [ordenes]= "ordenes$ | async"
   (onCreateOrden)="handlePatchOrden($event)"
+  (onSelectOrden)="handleSelectOrden($event)"
+  [currentOrden]="currentOrden$ | async"
   ></lib-get-ordenes>
 

@@ -8,6 +8,7 @@
       }
       <lib-add-orden-form
       (onSubmit)="handleSubmit($event)"
+      [orden]="currentOrden()"
       >
     </lib-add-orden-form>
     </section>
@@ -54,6 +55,7 @@
           <lib-button
           [text]="'Editar'"
           [theme]="'primary'"
+          (click)="editOrden(orden.id)"
           >
         </lib-button>
          <hr>

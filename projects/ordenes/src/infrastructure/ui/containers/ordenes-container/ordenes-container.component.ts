@@ -32,11 +32,14 @@ export class OrdenesContainerComponent implements OnInit, OnDestroy {
   handlePatchOrden({ orden, modal }: { orden: ICreateOrden; modal: ModalComponent }) {
       const usecase = orden.id ? this._updateOrdenUseCase : this._createOrdenUseCase;
       usecase.execute(orden, modal);
-
     }
+  handleSelectOrden(id: number){
+    this._updateOrdenUseCase.selectOrden(id);
+  }
   ngOnDestroy(): void {
     this._getUseCase.destroySubscriptions();
     this._createOrdenUseCase.destroySubscriptions();
+    this._updateOrdenUseCase.destroySubscriptions();
   }
 
 

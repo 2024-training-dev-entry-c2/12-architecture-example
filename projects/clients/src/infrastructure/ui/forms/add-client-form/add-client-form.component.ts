@@ -10,7 +10,7 @@ import { IClient } from '../../../../domain/model/client.model';
   styleUrl: './add-client-form.component.scss'
 })
 export class AddClientFormComponent {
- private readonly formBuilder = inject(FormBuilder);
+  private readonly formBuilder = inject(FormBuilder);
   public onSubmit = output<IClient>();
 
   @Input()
