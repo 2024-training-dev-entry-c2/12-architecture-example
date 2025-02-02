@@ -17,7 +17,7 @@ export class DishesState {
   store() {
     return {
       dishes: this._factory.state(this.dishes$),
-      currentDish: this._factory.state(this.dishes$),
+      currentDish: this._factory.state(this.currentDish$),
     };
   }
 }
