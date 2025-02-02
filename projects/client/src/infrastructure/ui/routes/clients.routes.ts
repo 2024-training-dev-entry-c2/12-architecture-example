@@ -11,7 +11,6 @@ export const routes: Routes = [
             { path: '', component: GetAllClientComponent },
             { path: 'agregar', component: FormClientConteinerComponent },
             { path: 'actualizar/:id', component: FormClientConteinerComponent },
-            // { path: 'eliminar/:id', component: DeleteComponent },
             { path: 'buscar', component: FormGetByIdClientComponent },
         ],
     },

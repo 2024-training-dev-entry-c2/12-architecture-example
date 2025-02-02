@@ -1,0 +1,32 @@
+<section class="get-all-dish">
+    <h1 class="get-all-dish__title">PLATOS</h1>
+    <article class="get-all-dish__info" aria-label="dishes information">
+        <table class="get-all-dish__table">
+            <thead>
+                <tr role="row">
+                    @for(item of items(); track $index){
+                        <th role="columnheader">{{item}}</th>
+                    } 
+                </tr>
+            </thead>
+            <tbody>
+                @for(dish of dishes(); track $index){
+                <tr>
+                    <td role="cell">{{ dish.nombre }}</td>
+                    <td role="cell">{{ dish.id }}</td>
+                    <td role="cell">{{ dish.descripcion }}</td>
+                    <td role="cell">{{ dish.precio | currency }}</td>
+                    <td role="cell">{{ dish.tipo }}</td>
+                    <td role="cell">{{ dish.idMenu }}</td>
+                    <td>
+                        <div class="get-all-dish__buttons">
+                            <button role="button" aria-label="update dish" class="get-all-dish__button" (click)="updateDish(dish.id)">Actualizar</button>
+                            <button role="button" aria-label="delete dish" class="get-all-dish__button--secundary" (click)="deleteDish(dish.id)">Eliminar</button>
+                        </div>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </article>
+</section>

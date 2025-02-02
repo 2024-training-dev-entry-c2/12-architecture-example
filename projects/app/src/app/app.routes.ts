@@ -10,6 +10,10 @@ export const routes: Routes = [
       {
         path: 'clientes',
         loadChildren: () => import('../../../client/src/infrastructure/ui/routes/clients.routes').then((ClientstRoutes)=>ClientstRoutes.routes)
+      },
+      {
+        path: 'platos',
+        loadChildren: () => import('../../../dish/src/infrastructure/ui/routes/dishes.routes').then((DishestRoutes)=>DishestRoutes.routes)
       }
     ]
     // loadChildren: () => import('../../../shared/src/infrastructure/ui/routes/layout.routes').then((LayoutRoutes)=>LayoutRoutes.routes)
