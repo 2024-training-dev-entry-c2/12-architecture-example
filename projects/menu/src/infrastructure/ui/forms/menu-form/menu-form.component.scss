@@ -1,6 +1,6 @@
 @use "sass:color";
 
-.dish-form {
+.menu-form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -45,6 +45,11 @@
     }
   }
 
+  textarea.menu-form__input {
+    min-height: 100px;
+    resize: vertical;
+  }
+
   &__error {
     color: #f44336;
     font-size: 0.875rem;
@@ -54,7 +59,7 @@
   &__button {
     margin-top: 1rem;
     padding: 0.75rem;
-    background-color: #2196f3;
+    background-color: rgb(130, 8, 191);
     color: white;
     border: none;
     border-radius: 4px;
@@ -63,7 +68,7 @@
     transition: background-color 0.2s;
 
     &:hover {
-      background-color: color.adjust(#2196f3, $lightness: -10%);
+      background-color: color.adjust(rgb(130, 8, 191), $lightness: -10%);
     }
 
     &:disabled {
@@ -72,7 +77,7 @@
     }
 
     &:focus-visible {
-      outline: 2px solid #2196f3;
+      outline: 2px solid rgb(130, 8, 191);
       outline-offset: 2px;
     }
   }
