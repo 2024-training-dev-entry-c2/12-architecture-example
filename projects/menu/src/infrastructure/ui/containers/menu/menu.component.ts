@@ -13,15 +13,14 @@ import { MenuFormComponent } from '../../forms/menu-form/menu-form.component';
 @Component({
   selector: 'lib-menu',
   imports: [TableComponent, ModalComponent, MenuFormComponent, AsyncPipe],
-  templateUrl: './menu.component.html',
-  styleUrl: './menu.component.scss'
+  templateUrl: './menu.component.html'
 })
 export class MenuComponent implements OnInit, OnDestroy {
   private readonly _useCaseCreate = inject(CreateMenuUsecase);
   private readonly _useCaseGet = inject(GetMenusUsecase);
   private readonly _useCaseDelete = inject(DeleteMenuUsecase);
   private readonly _useCaseUpdate = inject(UpdateMenuUsecase);
-  public readonly _useCaseModal = inject(ModalUsecase);
+  private readonly _useCaseModal = inject(ModalUsecase);
 
   public menus$: Observable<IMenu[]>;
   public message$: Observable<string>;
@@ -29,33 +28,18 @@ export class MenuComponent implements OnInit, OnDestroy {
   public currentMenu$: Observable<IMenu>;
 
   public columns = [
-    {field: 'name', header: 'Nombre'},
-    {field: 'description', header: 'Descripcion'},
+    { field: 'name', header: 'Nombre' },
+    { field: 'description', header: 'Descripcion' },
   ];
 
-  openModal(event: boolean) {
-    this._useCaseModal.execute(event);
-  }
-
   ngOnInit(): void {
-    this._useCaseCreate.initSubscriptions();
-    this._useCaseGet.initSubscriptions();
-    this._useCaseUpdate.initSubscriptions();
-    this._useCaseDelete.initSubscriptions();
-    this._useCaseModal.initSubscriptions();
+    this.init();
     this._useCaseGet.execute();
-    this.menus$ = this._useCaseGet.menus$();
-    this.currentMenu$ = this._useCaseUpdate.currentMenu$();
-    this.message$ = this._useCaseCreate.message$();
-    this.isOpen$ = this._useCaseModal.open$();
+    this.initializeObservables();
   }
 
   ngOnDestroy(): void {
-    this._useCaseCreate.destroySubscriptions();
-    this._useCaseGet.destroySubscriptions();
-    this._useCaseDelete.destroySubscriptions();
-    this._useCaseUpdate.destroySubscriptions();
-    this._useCaseModal.destroySubscriptions();
+    this.destroy();
   }
 
   public deleteMenu(menuId: number): void {
@@ -66,8 +50,35 @@ export class MenuComponent implements OnInit, OnDestroy {
     this._useCaseUpdate.selectMenu(menuId);
   }
 
-  public submit(menu: IMenu) {
+  public submit(menu: IMenu): void {
     const usecase = menu.id ? this._useCaseUpdate : this._useCaseCreate;
     usecase.execute(menu);
+  }
+
+  public openModal(event: boolean): void {
+    this._useCaseModal.execute(event);
+  }
+
+  private init(): void {
+    this._useCaseCreate.initSubscriptions();
+    this._useCaseGet.initSubscriptions();
+    this._useCaseUpdate.initSubscriptions();
+    this._useCaseDelete.initSubscriptions();
+    this._useCaseModal.initSubscriptions();
+  }
+
+  private destroy(): void {
+    this._useCaseCreate.destroySubscriptions();
+    this._useCaseGet.destroySubscriptions();
+    this._useCaseDelete.destroySubscriptions();
+    this._useCaseUpdate.destroySubscriptions();
+    this._useCaseModal.destroySubscriptions();
+  }
+
+  private initializeObservables(): void {
+    this.menus$ = this._useCaseGet.menus$();
+    this.currentMenu$ = this._useCaseUpdate.currentMenu$();
+    this.message$ = this._useCaseCreate.message$();
+    this.isOpen$ = this._useCaseModal.open$();
   }
 }
