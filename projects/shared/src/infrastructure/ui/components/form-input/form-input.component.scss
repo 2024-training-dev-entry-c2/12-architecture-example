@@ -1,0 +1,45 @@
+/* form-input.component.scss */
+.register-modal {
+  &__form {
+    &-item {
+      position: relative;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    &-icon {
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(0, 0, 0, 0.3);
+      pointer-events: none;
+      transition: color 0.3s ease;
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    &-input {
+      width: 100%;
+      padding: 12px 15px 12px 40px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      &:hover {
+        border-color: #bbb;
+      }
+      &:focus {
+        border-color: #29abe2;
+        box-shadow: 0 0 5px rgba(41, 171, 226, 0.5);
+      }
+
+      &::placeholder {
+        color: #999;
+      }
+    }
+  }
+}

@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&display=swap");
+
+body {
+  font-family: "Open Sans", sans-serif;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Open Sans", sans-serif;
+}
+
+@font-face {
+  font-family: "Roboto", serif;
+  font-style: normal;
+  font-weight: 500;
+  src: url("/assets/fonts/Roboto-Thin-webfont.woff") format("woff2");
+}

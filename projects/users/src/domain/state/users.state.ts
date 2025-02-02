@@ -1,25 +1,24 @@
-import { inject, Injectable } from "@angular/core";
-import { StateFactory } from "./state.factory";
-import { BehaviorSubject } from "rxjs";
-import { IUser } from "../model/users.model";
+import { inject, Injectable } from '@angular/core';
+import { StateFactory } from './state.factory';
+import { BehaviorSubject } from 'rxjs';
+import { IAuthResponseDTO } from '../model/auth.response.model';
+import { IUserResponseDTO } from '../model/user.response.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsersState {
   private readonly _factory = inject(StateFactory);
 
   //#region Subjects
-  private readonly user$ = new BehaviorSubject<IUser>(null);
-  private readonly userfgdsadf$ = new BehaviorSubject<IUser>(null);
-  private readonly usesaefsdffr$ = new BehaviorSubject<IUser>(null);
+  private readonly user$ = new BehaviorSubject<IAuthResponseDTO>(null);
+  private readonly userSave$ = new BehaviorSubject<IUserResponseDTO>(null);
   //#endregion
 
   store() {
     return {
       user: this._factory.state(this.user$),
-      userfgdsadf: this._factory.state(this.userfgdsadf$),
-      usesaefsdffr: this._factory.state(this.usesaefsdffr$)
-    }
+      userSave: this._factory.state(this.userSave$),
+    };
   }
 }

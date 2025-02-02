@@ -1,0 +1,14 @@
+@mixin container($justify: start) {
+  align-items: center;
+  justify-content: $justify;
+}
+
+@mixin container-display {
+  display: flex;
+}
+
+@mixin container-text-align($align: start) {
+  text-align: $align;
+}
+
+

@@ -1,16 +1,27 @@
-import { Routes } from "@angular/router";
-import { MainLayoutComponent } from "../layouts/main-layout/main-layout.component";
-import { CreateUsersComponent } from "../containers/create-users/create-users.component";
+import { Routes } from '@angular/router';
+import { LoginUserComponent } from '../containers/login-user/login-user.component';
+import { adminGuard, MainComponent } from 'shared';
+import { DashboardComponent } from '../containers/dashboard/dashboard.component';
+import { CreateUserComponent } from '../containers/create-user/create-user.component';
 
 export const usersRoutes: Routes = [
   {
-    path: 'create',
-    component: MainLayoutComponent,
+    path: 'login',
+    component: LoginUserComponent,
+  },
+  {
+    path: 'app',
+    component: MainComponent,
+    canActivate: [adminGuard],
     children: [
       {
-        path: '',
-        component: CreateUsersComponent
-      }
-    ]
-  }
+        path: 'dashboard',
+        component: DashboardComponent,
+      },
+      {
+        path: 'users',
+        component: CreateUserComponent,
+      },
+    ],
+  },
 ];

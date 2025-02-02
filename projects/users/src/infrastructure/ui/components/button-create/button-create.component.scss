@@ -1,0 +1,57 @@
+@use "../../styles/mixins.scss" as mixins;
+@use "../../styles/variables.scss" as variables;
+.users {
+  padding: 20px;
+  position: relative;
+
+  &__title {
+    margin-bottom: 30px;
+    @include mixins.container-text-align(center);
+  }
+
+  &__register-container {
+    @include mixins.container-display;
+    @include mixins.container(center);
+  }
+
+  &__register-text {
+    color: variables.$grey;
+    margin-right: 15px;
+  }
+
+  &__register-button {
+    background-color: variables.$bakground-button;
+    color: variables.$white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    @include mixins.container-display;
+    align-items: center;
+    cursor: pointer;
+    &-icon {
+      margin-right: 10px;
+      svg {
+        width: 24px;
+        height: 24px;
+        fill: white;
+      }
+    }
+    &-text {
+      font-weight: 550;
+    }
+  }
+
+  &__modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    @include mixins.container-display;
+    @include mixins.container(center);
+    z-index: 9999;
+  }
+  &__alert {
+  }
+}

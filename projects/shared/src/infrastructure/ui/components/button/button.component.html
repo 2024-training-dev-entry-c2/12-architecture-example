@@ -1,0 +1,6 @@
+<button [type]="type" 
+[disabled]="disabled" 
+(click)="onButtonClick()"
+[ngClass]="{'register-modal__form-button': style === 'primary', 'register-modal__form-close': style === 'secondary'}">
+  {{ text }}
+</button>

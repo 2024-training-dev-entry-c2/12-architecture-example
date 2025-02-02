@@ -1,0 +1,15 @@
+<div class="users">
+  <h2 class="users__title">{{title()}}</h2>
+  <div class="users__register-container">
+    <p class="users__register-text">
+      {{subtitle()}}
+    </p>
+    <button class="users__register-button" (click)="action()">
+      <div class="users__register-button-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path [attr.d]="icon()" />
+        </svg>
+      </div>
+      <span class="users__register-button-text">{{button_name() | uppercase}}</span>
+    </button>
+  </div>
