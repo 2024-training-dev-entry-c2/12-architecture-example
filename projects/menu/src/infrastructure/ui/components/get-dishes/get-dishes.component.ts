@@ -18,6 +18,7 @@ export class GetDishesComponent {
   public onCreateDish = output<{ dish: IDish; modal: ModalComponent }>();
   public onSelectDish = output<number>();
   public dishEdit = input<IDish>();
+  public onDeleteDisH = output<number>();
 
 
   message(): string {
@@ -26,6 +27,9 @@ export class GetDishesComponent {
   editDish(id: number){
     this.onSelectDish.emit(id);
     this.modal().toggle();
+  }
+  deleteDish(id: number){
+    this.onDeleteDisH.emit(id);
   }
   handleSubmit(dish: IDish) {
     this.onCreateDish.emit({ dish, modal: this.modal() });

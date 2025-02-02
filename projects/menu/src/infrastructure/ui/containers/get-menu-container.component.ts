@@ -12,6 +12,7 @@ import { MenuState } from '../../../domain/state/menu.state';
 import { ModalComponent } from 'shared';
 import { AddDishUsecase } from '../../../application/add-dish.usecase';
 import { UpdateDishUseCase } from '../../../application/update-dish.usecase';
+import { DeleteDishUseCase } from '../../../application/delete-dish.usecase';
 
 @Component({
   selector: 'lib-get-menu-container',
@@ -22,6 +23,7 @@ export class GetMenuContainerComponent implements OnInit, OnDestroy {
   private readonly _getMenuUseCase = inject(GetMenuUseCase);
   private readonly _addDishUseCase = inject(AddDishUsecase);
   private readonly _updateDishUseCase = inject(UpdateDishUseCase);
+  private readonly _deleteDishUseCase = inject(DeleteDishUseCase);
   private readonly menuState = inject(MenuState);
   public restaurant$: Observable<IRestaurant>;
   public menu$: Observable<IAddMenuResponse>;
@@ -30,12 +32,13 @@ export class GetMenuContainerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this._getMenuUseCase.initSubscriptions();
+    this._addDishUseCase.initSubscriptions();
+    this._updateDishUseCase.initSubscriptions();
+    this._deleteDishUseCase.initSubscriptions();
     this.getMenu();
     this.restaurant$ = this._getMenuUseCase.restaurant$();
-    this._addDishUseCase.initSubscriptions();
     this.menu$ = this._getMenuUseCase.menu$();
     this.dishes$ = this._addDishUseCase.currentDishes$();
-    this._updateDishUseCase.initSubscriptions();
     this.currentDish$ = this._updateDishUseCase.currentDish$();
   }
   getMenu(): void {
@@ -48,9 +51,13 @@ export class GetMenuContainerComponent implements OnInit, OnDestroy {
   handleSelectDish(id: number) {
     this._updateDishUseCase.selectDish(id);
   }
+  handleDeleteDish(id: number){
+    this._deleteDishUseCase.execute(id);
+  }
   ngOnDestroy(): void {
     this._getMenuUseCase.destroySubscriptions();
     this._addDishUseCase.destroySubscriptions();
     this._updateDishUseCase.destroySubscriptions();
+    this._deleteDishUseCase.destroySubscriptions();
   }
 }

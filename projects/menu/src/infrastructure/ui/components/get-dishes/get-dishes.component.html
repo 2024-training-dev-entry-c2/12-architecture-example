@@ -49,7 +49,7 @@
             <lib-button [text]="'Editar'" [theme]="'primary'" (click)="editDish(dish.id)">
             </lib-button>
             <hr>
-            <lib-button [text]="'Eliminar'" [theme]="'danger'"></lib-button>
+            <lib-button [text]="'Eliminar'" [theme]="'danger'" (click)="deleteDish(dish.id)"></lib-button>
           </td>
         </tr>
         }
