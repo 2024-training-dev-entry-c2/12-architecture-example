@@ -1,0 +1,50 @@
+<section class="container">
+    <article class="entity">
+        <div class="entity__header">
+            <h1>Menús</h1>
+        </div>
+        <div class="entity__create-button-container">
+            <button aria-expanded="false" class="entity__create-button" (click)="showCreateMenu()">
+                <fa-icon [icon]="faPlus"></fa-icon>
+                <span>Crear nuevo menú</span>
+            </button>
+            @if(showCreateModal){
+            <lib-form-menu [menu]="currentMenu()" (onClose)="closeModal()"
+                (onSubmit)="handleSubmit($event)"></lib-form-menu>
+            }
+            @if(showUpdateModal){
+            <lib-form-menu [menu]="currentMenu()" (onClose)="closeModal()"
+                (onSubmit)="handleSubmit($event)"></lib-form-menu>
+            }
+
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>NOMBRE</th>
+                    <th>Descripción</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for ( menu of menus; track menu.id) {
+                <tr>
+                    <td>{{ menu.id }}</td>
+                    <td>{{ menu.menuName }}</td>
+                    <td>{{ menu.description }}</td>
+
+                    <td class="entity__buttons">
+                        <button class="entity__edit-button" (click)="showUpdateMenu(menu.id)">
+                            <fa-icon [icon]="faEdit"></fa-icon>
+                        </button>
+                        <lib-delete-card [selectedId]="menu.id" [entityName]="'cliente'"
+                            (onDelete)="deleteMenu($event)"></lib-delete-card>
+                        <button class="entity__add-button">Añadir</button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </article>
+</section>

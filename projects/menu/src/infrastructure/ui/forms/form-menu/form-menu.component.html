@@ -1,0 +1,38 @@
+<section class="modal-container">
+    <article class="form-modal">
+        <div class="form-modal__header">
+            <h2 class="form-modal__title">
+                @if(selectedMenu){
+                Editar menú
+                } @else {
+                Crear nuevo menú
+                }
+            </h2>
+            <button (click)="close()"><fa-icon [icon]="faX"></fa-icon></button>
+        </div>
+
+        @if(menuForm){
+        <form [formGroup]="menuForm" class="form-modal__form" (submit)="submit($event)">
+
+            <app-form-group label="Nombre menú" placeholder="Nombre del menú" [control]="menuNameControl" type="text"
+                id="menuName" [isSubmitted]="isSubmitted">
+            </app-form-group>
+
+            <app-form-group label="Descripción" placeholder="Descripción del menú" [control]="descriptionControl"
+                type="text" id="description" [isSubmitted]="isSubmitted">
+            </app-form-group>
+
+            <div class="form-modal__buttons">
+                <button class="form-modal__cancel-button" type="button" (click)="close()">Cancelar</button>
+                <button class="form-modal__save-button" type="submit">
+                    @if(selectedMenu){
+                    Actualizar
+                    } @else {
+                    Guardar
+                    }
+                </button>
+            </div>
+        </form>
+        }
+    </article>
+</section>

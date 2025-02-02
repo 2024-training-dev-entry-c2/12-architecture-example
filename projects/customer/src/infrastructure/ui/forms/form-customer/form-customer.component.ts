@@ -1,4 +1,11 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  inject,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -26,7 +33,7 @@ import {
   templateUrl: './form-customer.component.html',
   styleUrl: './form-customer.component.scss',
 })
-export class FormCustomerComponent {
+export class FormCustomerComponent implements OnInit {
   private formBuilder = inject(FormBuilder);
 
   @Input() set customer(value: ICustomerResponse) {
