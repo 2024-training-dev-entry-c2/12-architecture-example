@@ -7,7 +7,7 @@ import { RESOURCES } from 'shared';
 })
 export class DeleteCustomerService {
   private readonly _httpClient: HttpClient;
-  deleteCustomer(customerId: number): void {
+  execute(customerId: number): void {
     this._httpClient.delete(RESOURCES.customerById(customerId));
   }
 }
