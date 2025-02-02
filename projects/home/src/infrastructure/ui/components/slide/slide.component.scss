@@ -1,0 +1,39 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
+
+.slide {
+  @include mixins.flex-style(column, nowrap, 0px);
+  align-items: center;
+  justify-content: center;
+  font-family: variables.$font-family-raleway;
+  border-radius: 3px;
+  padding: 10px;
+  background-color: variables.$color-white;
+  width: 400px;
+  color: variables.$typografy-color;
+
+  &__title {
+    @include mixins.text-style(16px, 900, normal);
+    margin: 5px 0px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: start;
+    color: variables.$primary-color;
+    border-bottom: 1px solid variables.$tercery-color;
+  }
+
+  &__container {
+    @include mixins.flex-style(row, nowrap, 8px);
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+  }
+
+  &__image {
+    width: 8rem;
+    height: 105px;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+}

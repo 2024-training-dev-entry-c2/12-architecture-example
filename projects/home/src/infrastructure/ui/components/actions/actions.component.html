@@ -1,0 +1,14 @@
+<section class="actions">
+  <h5 class="actions__title">Acciones Rapidas</h5>
+  <div class="actions__container">
+    @for(button of buttons; track $index) {
+    <button class="actions__btn">
+      <mat-icon
+        aria-hidden="false"
+        fontIcon="{{ button.icon }}"
+      ></mat-icon>
+      <span class="actions__btn-text">{{ button.name }}</span>
+    </button>
+    }
+  </div>
+</section>

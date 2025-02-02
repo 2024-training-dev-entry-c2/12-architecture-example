@@ -1,0 +1,25 @@
+<table class="general-metrics" aria-label="General metrics">
+  <caption class="general-metrics__caption">
+    Historico ultimos clientes
+  </caption>
+  <thead class="general-metrics__thead">
+    <tr>
+      <th class="general-metrics__th">Cliente</th>
+      <th class="general-metrics__th general-metrics__th--date">Fecha</th>
+    </tr>
+  </thead>
+
+  <tbody class="general-metrics__tbody">
+    @for(cliente of clientes(); track $index) {
+    <tr class="general-metrics__tr">
+      <td class="general-metrics__td">{{ cliente.name }}</td>
+      <td class="general-metrics__td">{{ cliente.fechaCreacion | date }}</td>
+    </tr>
+    }
+    <tr class="general-metrics__tr--placeholder">
+      <td class="general-metrics__td general-metrics__td--placeholder">
+        . . .
+      </td>
+    </tr>
+  </tbody>
+</table>

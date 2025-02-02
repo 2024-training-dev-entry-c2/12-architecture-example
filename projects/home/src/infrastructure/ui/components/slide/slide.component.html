@@ -1,0 +1,17 @@
+<section class="slide" aria-label="Platos más vendidos">
+  <h5 class="slide__title">Platos más pedidos</h5>
+  <div class="slide__container">
+    @for(imagen of images; track $index) {
+    <img class="slide__image" src="{{ imagen.src }}" alt="{{ imagen.alt }}" />
+    }
+  </div>
+</section>
+<br />
+<section class="slide">
+  <h5 class="slide__title">Bebidas preferidas</h5>
+  <div class="slide__container">
+    @for(bebidas of imagesBebidas; track $index) {
+    <img class="slide__image" src="{{ bebidas.src }}" alt="{{ bebidas.alt }}" />
+    }
+  </div>
+</section>

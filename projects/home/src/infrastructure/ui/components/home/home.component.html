@@ -1,0 +1,19 @@
+<section class="home" aria-label="Titulo de la pagina principal">
+  <h1 class="home__title">Bienvenido a tu Panel de control</h1>
+  <div class="home__portainer">
+    <p class="home__description">
+      Bienvenido al panel de administración de tu restaurante. Aquí podrás
+      gestionar tus menús, pedidos, reservas y toda la información necesaria
+      para que tu negocio funcione de manera eficiente y organizada.
+    </p>
+  </div>
+
+  <div class="home__container">
+    <lib-general-metrics [clientes]="clientes()"></lib-general-metrics>
+    <lib-slide></lib-slide>
+  </div>
+
+  <div class="home__actions">
+    <lib-actions></lib-actions>
+  </div>
+</section>

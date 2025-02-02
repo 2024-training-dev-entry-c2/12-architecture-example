@@ -1,0 +1,69 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
+
+.actions {
+  min-width: 100%;
+
+  &__title {
+    @include mixins.text-style(16px, 900, normal);
+    margin: 5px 0px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: start;
+    color: variables.$primary-color;
+    border-bottom: 1px solid variables.$tercery-color;
+    font-family: variables.$font-family-raleway;
+  }
+
+  &__container {
+    @include mixins.flex-style(row, nowrap, 20px);
+    align-items: center;
+    width: 100%;
+  }
+
+  &__btn {
+    @include mixins.flex-style(row, nowrap, 10px);
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border: 2px solid variables.$tercery-color;
+    border-radius: 8px;
+    background-color: variables.$primary-color;
+    cursor: pointer;
+    height: 130px;
+
+    &:hover {
+      transition: all 0.1s;
+      opacity: 1;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      &:nth-child(1) {
+        background-image: url('https://marketplace.canva.com/EAGOADQey2g/1/0/1600w/canva-brown-simple-circle-restaurant-logo-BiB84MUi2zQ.jpg');
+      }
+
+      &:nth-child(2) {
+        background-image: url('https://marketplace.canva.com/EAGOADQey2g/1/0/1600w/canva-brown-simple-circle-restaurant-logo-BiB84MUi2zQ.jpg');
+      }
+
+      &:nth-child(3) {
+        background-image: url('https://marketplace.canva.com/EAGOADQey2g/1/0/1600w/canva-brown-simple-circle-restaurant-logo-BiB84MUi2zQ.jpg');
+      }
+
+      &:nth-child(4) {
+        background-image: url('https://marketplace.canva.com/EAGOADQey2g/1/0/1600w/canva-brown-simple-circle-restaurant-logo-BiB84MUi2zQ.jpg');
+      }
+    }
+
+    & mat-icon {
+      color: variables.$color-white;
+    }
+  }
+
+  &__btn-text {
+    @include mixins.text-style(16px, 700, normal);
+    color: variables.$color-white;
+    font-family: variables.$font-family-raleway;
+  }
+}

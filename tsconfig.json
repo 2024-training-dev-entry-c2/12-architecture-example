@@ -27,6 +27,9 @@
       "dish": [
         "./dist/dish"
       ],
+      "home": [
+        "./dist/home"
+      ],
       "menu": [
         "./dist/menu"
       ],

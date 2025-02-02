@@ -1,8 +1,8 @@
-import {  Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { HeaderComponent } from '../../components/header/header.component';
 import { BoxComponent } from '../../components/box/box.component';
 import { SidebarComponent } from '../../components/sidebar/sidebar.component';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'lib-layout',
@@ -10,4 +10,9 @@ import { RouterOutlet } from '@angular/router';
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss',
 })
-export class LayoutComponent { }
+export class LayoutComponent {
+
+  public urlActual: string = '';
+  private router = inject(Router);
+
+}
