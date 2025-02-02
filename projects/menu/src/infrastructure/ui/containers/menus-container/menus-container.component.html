@@ -1,6 +1,3 @@
-<lib-list-dishes 
-  [dishes]="dishes$ | async" 
-  [currentDish]="currentDish$ | async" 
-  (onCreateDish)="handlePatchDish($event)"
-  (onSelectDish)="handleSelectDish($event)">
-</lib-list-dishes>
+<lib-list-menus [menus]="menus$ | async" [currentMenu]="currentMenu$ | async" (onCreateMenu)="handlePatchMenu($event)"
+  (onSelectMenu)="handleSelectMenu($event)">
+</lib-list-menus>

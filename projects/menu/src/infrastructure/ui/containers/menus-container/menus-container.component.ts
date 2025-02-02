@@ -2,11 +2,11 @@ import { AsyncPipe } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ModalComponent } from 'shared';
-import { IMenu } from '../../../../domain/models/menu.model';
-import { ListMenusComponent } from '../../components/list-dishes/list-menus.component';
 import { CreateMenuUseCase } from '../../../../application/create-menu.usecase';
 import { GetMenusUseCase } from '../../../../application/get-menus.usecase';
 import { UpdateMenuUseCase } from '../../../../application/update-menu.usecase';
+import { IMenu } from '../../../../domain/models/menu.model';
+import { ListMenusComponent } from '../../components/list-menus/list-menus.component';
 
 @Component({
   selector: 'lib-menus-container',
