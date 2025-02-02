@@ -13,7 +13,7 @@ export class ModalComponent {
   public idModal = input<string>();
   public title = input<string>();
   public action = input<string>();
-  public themeButton = input<'success' | "warning" | 'danger' | 'cancel'>();
+  public themeButton = input<'success' | "warning" | 'danger' | 'cancel' | 'secundary'>();
   public form = input<FormGroup>();
   public onOpen = output<void>();
   public onOpenByBtn = output<void>();
