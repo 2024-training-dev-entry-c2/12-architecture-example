@@ -2,6 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { catchError, Observable, Subscription, tap, throwError } from 'rxjs';
 import { State } from '../domain/state';
 import { DeleteCustomerService } from '../infrastructure/services/delete-customer.service';
+import { ModalComponent } from 'shared';
 
 @Injectable({
   providedIn: 'root',
@@ -21,9 +22,10 @@ export class DeleteCustomerUseCase {
     this.subscriptions.unsubscribe();
   }
 
-  execute(customerId: number): Observable<void> {
+  execute(customerId: number, modal: ModalComponent): Observable<void> {
     return this._service.execute(customerId).pipe(
       tap(() => {
+        modal.toggle();
         const customers = this._state.customerState.customers.snapshot();
         const newCustomers = customers.filter(
           (cust) => cust.customerId !== customerId
