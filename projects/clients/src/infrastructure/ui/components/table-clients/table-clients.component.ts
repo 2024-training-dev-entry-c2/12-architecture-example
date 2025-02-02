@@ -1,21 +1,21 @@
 import { Component, input, output, viewChild } from '@angular/core';
 import { Iclient } from '../../../../domain/model/client.model';
-import { AsyncPipe, DatePipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 import { ModalComponent } from 'shared';
 import { FormClientsComponent } from '../../forms/formClients/formClients.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'lib-table-clients',
-  imports: [DatePipe, ModalComponent, FormClientsComponent],
+  imports: [DatePipe, ModalComponent, FormClientsComponent, MatIconModule],
   templateUrl: './table-clients.component.html',
   styleUrl: './table-clients.component.scss',
 })
 export class TableClientsComponent {
-
   public modal = viewChild<ModalComponent>('modal');
   public allClients = input<Iclient[]>([]);
   public currentClient = input<Iclient>();
-  public onCreateClient = output<{client: Iclient; modal: ModalComponent}>();
+  public onCreateClient = output<{ client: Iclient; modal: ModalComponent }>();
   public onSelectClient = output<number>();
   public onDeleteClient = output<number>();
   public itemsTable: string[] = [
@@ -28,7 +28,7 @@ export class TableClientsComponent {
   ];
 
   handleSubmit(client: Iclient) {
-    this.onCreateClient.emit({client: client, modal: this.modal()});
+    this.onCreateClient.emit({ client: client, modal: this.modal() });
   }
 
   selectClient(id: number) {
@@ -40,9 +40,4 @@ export class TableClientsComponent {
   deleteClient(id: number) {
     this.onDeleteClient.emit(id);
   }
-
-
-
-
-
 }

@@ -1,6 +1,6 @@
 <form
   class="clientForm__form"
-  aria-label="Formulario para crear menú"
+  aria-label="Formulario para crear un usuario"
   [formGroup]="form"
   (ngSubmit)="submit()"
 >
@@ -12,7 +12,7 @@
       type="text"
       formControlName="name"
       class="clientForm__input"
-      placeholder="nombre del menú"
+      placeholder="Nombre del usuario"
     />
   </div>
 
@@ -21,7 +21,7 @@
       type="email"
       formControlName="email"
       class="clientForm__input"
-      placeholder="descripción del menú"
+      placeholder="Email del usuario"
     />
   </div>
 
@@ -30,7 +30,7 @@
       type="text"
       formControlName="phone"
       class="clientForm__input"
-      placeholder="descripción del menú"
+      placeholder="Numero celular del usuario"
     />
   </div>
 
@@ -39,7 +39,7 @@
       type="text"
       formControlName="address"
       class="clientForm__input"
-      placeholder="descripción del menú"
+      placeholder="Dirección de residencia del usuario (para enviar domicilios)"
     />
   </div>
 

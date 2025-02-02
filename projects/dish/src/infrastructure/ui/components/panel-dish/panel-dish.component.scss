@@ -2,6 +2,9 @@
 @use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
 
 .dishes {
+  padding: 2rem;
+  font-family: variables.$font-family-merriweather;
+  position: relative;
 
   &__header {
     display: flex;

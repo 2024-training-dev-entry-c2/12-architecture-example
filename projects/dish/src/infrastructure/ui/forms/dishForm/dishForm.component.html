@@ -1,18 +1,18 @@
 <form
   class="clientForm__form"
-  aria-label="Formulario para crear menú"
+  aria-label="Formulario para crear un plato"
   [formGroup]="formDish"
   (ngSubmit)="submit()"
 >
   <h2 class="clientForm__title">
-    {{ formDish.getRawValue().id ? "Editar plato" : "Crear plato" }}
+    {{ formDish.getRawValue().id ? "Editar Plato" : "Crear Plato" }}
   </h2>
   <div class="clientForm__form-group">
     <input
       type="text"
       formControlName="name"
       class="clientForm__input"
-      placeholder="nombre del menú"
+      placeholder="Nombre del plato"
     />
   </div>
 
@@ -21,7 +21,7 @@
       type="text"
       formControlName="description"
       class="clientForm__input"
-      placeholder="descripción del menú"
+      placeholder="Descripción del plato"
     />
   </div>
 
@@ -30,7 +30,7 @@
       type="number"
       formControlName="price"
       class="clientForm__input"
-      placeholder="descripción del menú"
+      placeholder="Precio del plato"
     />
   </div>
   <button type="submit" class="clientForm__submit">

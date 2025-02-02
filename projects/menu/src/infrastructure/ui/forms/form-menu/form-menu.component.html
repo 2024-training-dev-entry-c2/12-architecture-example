@@ -5,7 +5,7 @@
   (ngSubmit)="submit()"
 >
   <h2 class="clientForm__title">
-    {{ form.getRawValue().id ? "Editar Cliente" : "Crear Cliente" }}
+    {{ form.getRawValue().id ? "Editar Menu" : "Crear Menu" }}
   </h2>
   <div class="clientForm__form-group">
     <input
@@ -27,6 +27,7 @@
 
   <div class="clientForm__form-group">
     <select formControlName="dishes" class="clientForm__input">
+      <option value="">Seleccione un plato</option>
       @for(item of dishes; track $index) {
       <option value="{{ item.id }}">{{ item.name }}</option>
       }

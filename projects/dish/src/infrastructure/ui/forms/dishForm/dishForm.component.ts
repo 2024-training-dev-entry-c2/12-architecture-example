@@ -35,5 +35,6 @@ export class DishFormComponent {
   submit() {
     if (!this.formDish.valid) return;
     this.onSubmit.emit(this.formDish.getRawValue());
+    this.formDish.reset();
   }
 }

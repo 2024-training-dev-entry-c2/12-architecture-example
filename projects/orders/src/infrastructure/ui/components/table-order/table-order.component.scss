@@ -4,6 +4,7 @@
 .orders {
   padding: 2rem;
   font-family: variables.$font-family-merriweather;
+  position: relative;
 
   &__title {
     font-size: 2rem;

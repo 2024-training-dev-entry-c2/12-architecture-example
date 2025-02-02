@@ -13,13 +13,9 @@
     <table class="orders__table">
       <thead class="orders__thead">
         <tr class="orders__tr orders__tr--header">
-          <th class="orders__th">ID Orden</th>
-          <th class="orders__th">Cliente</th>
-          <th class="orders__th">Platos</th>
-          <th class="orders__th">Total</th>
-          <th class="orders__th">Estado</th>
-          <th class="orders__th">Fecha</th>
-          <th class="orders__th">Acciones</th>
+          @for(item of items; track $index) {
+          <th class="orders__th">{{ item.name }}</th>
+          }
         </tr>
       </thead>
 
@@ -52,10 +48,10 @@
           </td>
           <td class="orders__td">{{ order.date }}</td>
           <td class="orders__td orders__td--actions">
-            <button class="orders__btn orders__btn--view">
-              <mat-icon aria-hidden="false" fontIcon="visibility"></mat-icon>
-            </button>
-            <button class="orders__btn orders__btn--edit" (click)="selectOrder(order.id)">
+            <button
+              class="orders__btn orders__btn--edit"
+              (click)="selectOrder(order.id)"
+            >
               <mat-icon aria-hidden="false" fontIcon="edit"></mat-icon>
             </button>
             <button

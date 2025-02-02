@@ -6,6 +6,10 @@ import { Idish } from 'dish';
 import { FormOrdersComponent } from '../../forms/form-orders/form-orders.component';
 import { Iclient } from 'clients';
 
+interface tableItems {
+  name: string;
+}
+
 @Component({
   selector: 'lib-table-order',
   imports: [MatIconModule, ModalComponent, FormOrdersComponent],
@@ -44,4 +48,29 @@ export class TableOrderComponent {
   deleteOrder(id: number) {
     this.onDeleteOrder.emit(id);
   }
+
+  public items: tableItems[] = [
+    {
+      name: 'ID Orden',
+    },
+    {
+      name: 'Cliente',
+    },
+    {
+      name: 'Platos',
+    },
+    {
+      name: 'Total',
+    },
+    {
+      name: 'Estado',
+    },
+    {
+      name: 'Fecha',
+    },
+    {
+      name: 'Acciones',
+    },
+  ];
+
 }

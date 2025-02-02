@@ -32,7 +32,6 @@ export class FormMenuComponent {
   submit() {
     if (!this.form.valid) return;
     this.onSubmit.emit(this.form.getRawValue());
-    console.log(this.form.value);
-    console.log(this.dishes);
+    this.form.reset();
   }
 }

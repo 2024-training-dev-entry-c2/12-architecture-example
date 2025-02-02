@@ -1,18 +1,18 @@
 <form
   class="clientForm__form"
-  aria-label="Formulario para crear menú"
+  aria-label="Formulario para una nueva orden"
   [formGroup]="form"
   (ngSubmit)="submit()"
 >
   <h2 class="clientForm__title">
-    {{ form.getRawValue().id ? "Editar Cliente" : "Crear Cliente" }}
+    {{ form.getRawValue().id ? "Editar Orden" : "Crear Orden" }}
   </h2>
   <div class="clientForm__form-group">
     <input
       type="date"
       formControlName="date"
       class="clientForm__input"
-      placeholder="nombre del menú"
+      placeholder="Fecha de la orden"
     />
   </div>
 
@@ -21,12 +21,13 @@
       type="number"
       formControlName="total"
       class="clientForm__input"
-      placeholder="descripción del menú"
+      placeholder="Precio total de la orden"
     />
   </div>
 
   <div class="clientForm__form-group">
     <select formControlName="user" class="clientForm__input">
+      <option value="">Seleccione un usuario</option>
       @for(itemUser of users; track $index) {
       <option value="{{ itemUser.id }}">{{ itemUser.name }}</option>
       }
@@ -35,6 +36,7 @@
 
   <div class="clientForm__form-group">
     <select formControlName="dish" class="clientForm__input">
+      <option value="">Seleccione un plato</option>
       @for(item of dishes; track $index) {
       <option value="{{ item.id }}">{{ item.name }}</option>
       }
@@ -46,7 +48,7 @@
       type="number"
       formControlName="quantity"
       class="clientForm__input"
-      placeholder="descripción del menú"
+      placeholder="Cantidad de platos"
     />
   </div>
 
