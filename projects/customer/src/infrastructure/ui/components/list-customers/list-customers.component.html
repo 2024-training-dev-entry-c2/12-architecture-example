@@ -1,7 +1,27 @@
 <lib-modal action="Crear Cliente" #modal>
   <lib-customer-form [customer]="currentCustomer()" (onSubmit)="handleSubmit($event)"></lib-customer-form>
 </lib-modal>
-
+<lib-modal action="Eliminar" #deleteModal>
+  <div class="confirmation-dialog">
+    <h2 class="confirmation-dialog__title">Confirmar eliminación</h2>
+    <p class="confirmation-dialog__message">
+      ¿Está seguro que desea eliminar al cliente {{customerToDelete?.name}} {{customerToDelete?.lastName}}?
+      Esta acción no se puede deshacer.
+    </p>
+    <div class="confirmation-dialog__actions">
+      <button class="confirmation-dialog__button confirmation-dialog__button--cancel" (click)="handleCancelDelete()"
+        aria-label="Cancelar eliminación">
+        <span class="material-icons" aria-hidden="true">close</span>
+        Cancelar
+      </button>
+      <button class="confirmation-dialog__button confirmation-dialog__button--confirm" (click)="handleConfirmDelete()"
+        aria-label="Confirmar eliminación">
+        <span class="material-icons" aria-hidden="true">delete_forever</span>
+        Eliminar
+      </button>
+    </div>
+  </div>
+</lib-modal>
 <table class="customers-table" role="table" aria-label="Lista de clientes">
   <thead class="customers-table__head">
     <tr class="customers-table__row">
@@ -24,11 +44,12 @@
           <span class="material-icons" aria-hidden="true">edit</span>
           <span>Editar</span>
         </button>
-        <button class="customers-table__button customers-table__button--delete"
+        <button class="customers-table__button customers-table__button--delete" (click)="handleDeleteClick(customer)"
           [attr.aria-label]="'Eliminar cliente ' + customer.name">
           <span class="material-icons" aria-hidden="true">delete</span>
           <span>Eliminar</span>
         </button>
+
       </td>
     </tr>
   </tbody>
