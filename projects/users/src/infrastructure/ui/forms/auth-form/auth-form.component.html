@@ -1,0 +1,52 @@
+<main class="auth-container">
+  <div class="auth-form">
+    <h1 class="auth-form__title">{{title}}</h1>
+ 
+    <form [formGroup]="authForm" (ngSubmit)="onSubmit()" class="auth-form__form">
+       @for (input of inputsConfig; track input.formControlName) {
+          <div class="auth-form__group">
+            <label [for]="input.formControlName" class="auth-form__label">{{input.label}}</label>
+           
+            @if (input.type === 'text' || input.type === 'password') {
+                <input 
+                [type]="input.type" 
+                [id]="input.formControlName" 
+                [formControlName]="input.formControlName" 
+                class="auth-form__input" 
+                [attr.aria-describedby]="input.formControlName + '-error'" >
+            }
+            @if (input.type === 'select') {
+              <select
+                [id]="input.formControlName"
+                [formControlName]="input.formControlName"
+                class="auth-form__input"
+                [attr.aria-describedby]="input.formControlName + '-error'"
+              >
+               <option value="" disabled selected>Seleccionar</option>
+                @for (option of input.options; track option.value) {
+                  <option [value]="option.value">{{option.label}}</option>
+               }
+              </select>
+          }
+            @if(getControl(input.formControlName)?.invalid && (getControl(input.formControlName)?.dirty || getControl(input.formControlName)?.touched)) {
+              <div class="auth-form__error" [id]="input.formControlName + '-error'">
+                  @if (getControl(input.formControlName)?.errors?.['required']) {
+                      <div>Este campo es requerido.</div>
+                  }
+              </div>
+            }
+          </div>
+        }
+      <button type="submit" class="auth-form__button" [disabled]="authForm.invalid">{{buttonText}}</button>
+    </form>
+ 
+    <p class="auth-form__link">
+      {{linkText}} <a class="auth-form__link-button" (click)="handleLinkClick()">{{linkRoute}}</a>
+    </p>
+      @if (errorMessage) {
+          <div class="auth-form__message auth-form__message--error" aria-live="polite">
+           {{ errorMessage }}
+        </div>
+      }
+  </div>
+ </main>

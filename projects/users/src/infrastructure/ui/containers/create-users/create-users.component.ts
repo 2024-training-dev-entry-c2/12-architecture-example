@@ -1,30 +1,71 @@
-import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { CreateUserUsecase } from '../../../../application/users/create-user.usecase';
-import { Observable } from 'rxjs';
-import { IUser } from '../../../../domain/model/users.model';
-import { AsyncPipe } from '@angular/common';
-import { CreateUserFormComponent } from '../../forms/create-user-form/create-user-form.component';
-import { HeaderComponent } from '../../components/header/header.component';
+import { Component, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AuthFormComponent } from "../../forms/auth-form/auth-form.component";
+import { CreateUserUsecase } from '../../../../application/create-user.usecase';
+import { Observable, Subject, takeUntil } from 'rxjs';
+import { IUser } from '../../../../domain/model/user.model';
+import { InformativeModalComponent } from 'shared';
 
 @Component({
   selector: 'lib-create-users',
-  imports: [AsyncPipe, CreateUserFormComponent, HeaderComponent],
-  templateUrl: './create-users.component.html'
+  imports: [AuthFormComponent, InformativeModalComponent],
+  templateUrl: './create-users.component.html',
 })
 export class CreateUsersComponent implements OnInit, OnDestroy {
-  private readonly _useCase = inject(CreateUserUsecase);
+  errorMessage: string | null = null;
+  private readonly _createUserUsecase = inject(CreateUserUsecase);
   public user$: Observable<IUser>;
+  showModal = false;
+  modalMessage = 'Registro exitoso!';
+  private destroy$ = new Subject<void>();
+
+  @ViewChild(AuthFormComponent) authFormComponent!: AuthFormComponent;
+
+  inputsConfig = [
+    { label: 'Nombre de Usuario', formControlName: 'username', type: 'text' as const },
+    { label: 'Contraseña', formControlName: 'password', type: 'password' as const },
+    {
+      label: 'Rol',
+      formControlName: 'roles',
+      type: 'select' as const,
+      options: [
+        { value: 'USER', label: 'Usuario' },
+        { value: 'ADMIN', label: 'Administrador' },
+      ],
+    },
+  ];
 
   ngOnInit(): void {
-    this._useCase.initSubscriptions();
-    this.user$ = this._useCase.user$();
+    this.user$ = this._createUserUsecase.user$();
+    this._createUserUsecase.initSubscriptions();
+
+    this._createUserUsecase.onRegistrationSuccess
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        this.showModal = true;
+        this.authFormComponent.authForm.reset();
+        this.errorMessage = null;
+      });
+
+    this._createUserUsecase.onRegistrationError
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((errorMessage) => {
+        this.errorMessage = errorMessage;
+      });
+
   }
 
   ngOnDestroy(): void {
-    this._useCase.destroySubscriptions();
+    this.destroy$.next();
+    this.destroy$.complete();
+    this._createUserUsecase.destroySubscriptions();
   }
 
-  createUser(user: IUser): void {
-    this._useCase.execute(user);
+  register(formValue: IUser) {
+    this._createUserUsecase.execute(formValue)
   }
+
+  handleCloseModal() {
+    this.showModal = false;
+  }
+
 }

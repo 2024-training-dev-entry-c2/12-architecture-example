@@ -1,0 +1,125 @@
+@use '../../styles/mixins.scss' as mixins;
+@use '../../styles/variables.scss' as variables;
+.sidebar {
+  width: 16rem;
+  height: 100vh;
+  background: variables.$white-color;
+  border-right: 1px solid variables.$light-gray;
+  transition: width variables.$transition;
+  display: flex;
+  flex-direction: column;
+
+  &--collapsed {
+      width: 4rem;
+      transition: width variables.$transition;
+
+      .sidebar__user-profile {
+          display: none;
+      }
+
+      .sidebar__toggle-btn {
+          justify-content: center;
+          span {
+              display: none;
+          }
+      }
+
+      nav {
+          a {
+              justify-content: center;
+
+              span {
+                  display: none;
+              }
+          }
+      }
+  }
+
+  &__user-profile {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      h2 {
+          font-size: 1.125rem;
+          font-weight: 600;
+      }
+  }
+
+  &__avatar {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      background: variables.$light-gray;
+      margin-bottom: 1rem;
+
+      img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+      }
+  }
+
+  &__icon {
+      width: 1.5rem;
+      height: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img{
+          width: 100%;
+        }
+  }
+
+  nav {
+      a {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 0.75rem 1.5rem;
+          color: variables.$secondary-color;
+          text-decoration: none;
+          cursor: pointer;
+
+          &:hover {
+              background: variables.$light-gray-2;
+          }
+
+          &.active {
+              background: variables.$light-blue;
+              color: variables.$dark-blue;
+          }
+      }
+  }
+
+  &__toggle-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1.5rem;
+      color: variables.$secondary-color;
+      text-decoration: none;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      font-size: 1.5rem;;
+
+      &:hover {
+          background: variables.$light-gray-2;
+      }
+
+      &.active {
+          background: variables.$light-blue;
+          color: variables.$dark-blue;
+      }
+      span{
+        font-size: 1.05rem;
+        color: variables.$secondary-color;
+        gap: 1rem;
+
+      }
+  }
+
+}

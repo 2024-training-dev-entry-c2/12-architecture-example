@@ -1,1 +1,28 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --primary: #2563eb;
+    --secondary: #ec4899;
+    --gray-100: #f3f4f6;
+    --gray-200: #e5e7eb;
+    --gray-700: #374151;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    color: var(--gray-700);
+}
+
+button {
+    font-family: inherit;
+}
+
+body::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    background: transparent;
+}

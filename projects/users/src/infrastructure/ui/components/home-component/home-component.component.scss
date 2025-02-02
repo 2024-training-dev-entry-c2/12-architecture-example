@@ -1,0 +1,5 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
+.container {
+    height: 100vh;
+    background-color: variables.$background-color;
+}
