@@ -10,6 +10,6 @@ export class CreateMenuService {
   private _http = inject(HttpClient);
 
   execute(menu: IMenu) {
-    return this._http.post<IMenu>(RESOURCES.CUSTOMERS, menu);
+    return this._http.post<IMenu>(RESOURCES.MENUS, menu);
   }
 }

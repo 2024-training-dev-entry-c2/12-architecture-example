@@ -11,6 +11,6 @@ export class GetMenusService {
   private readonly _http = inject(HttpClient);
 
   execute(): Observable<IMenu[]> {
-    return this._http.get<IMenu[]>(RESOURCES.CUSTOMERS);
+    return this._http.get<IMenu[]>(RESOURCES.MENUS);
   }
 }
