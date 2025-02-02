@@ -26,7 +26,9 @@
           <td class="orders__td">
             <div class="orders__user">
               <div class="orders__user-info">
-                <span class="orders__user-name">{{ order.user?.name }}</span>
+                <span class="orders__user-name">{{
+                  order.user ? order.user?.name : "nada"
+                }}</span>
                 <span class="orders__user-email">{{ order.user?.email }}</span>
               </div>
             </div>

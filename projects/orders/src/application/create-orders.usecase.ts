@@ -26,6 +26,11 @@ export class CreateOrdersUseCase {
           tap((order) => {
             const orders = this._state.ordersStates.orders.valueState();
             this._state.ordersStates.orders.changeState([...orders, order]);
+            console.log(order, 'crear orden desde usecase');
+            console.log(
+              this._state.ordersStates.orders.valueState(),
+              'crear orden desde usecase'
+            );
           })
         )
         .subscribe()

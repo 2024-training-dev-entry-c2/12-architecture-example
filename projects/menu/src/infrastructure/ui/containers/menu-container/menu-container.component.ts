@@ -30,10 +30,13 @@ export class MenuContainerComponent implements OnInit {
     this._createMenuCase.initSubscriptions();
     this._updateMenuCase.initSubscriptions();
     this._deleteMenuCase.initSubscriptions();
+    this._getDishCase.initSubscriptions();
+    this._getDishCase.execute();
     this._getMenuCase.execute();
     this.allMenus$ = this._getMenuCase.menus$();
     this.currentMenu$ = this._updateMenuCase.currentMenu$();
     this.platos$ = this._getDishCase.dishes$();
+
   }
 
   ngOnDestroy(): void {
@@ -53,7 +56,4 @@ export class MenuContainerComponent implements OnInit {
     this._deleteMenuCase.execute(id);
   }
 
-  handleCreateMenu(menu: Imenu) {
-    this._createMenuCase.execute(menu);
-  }
 }

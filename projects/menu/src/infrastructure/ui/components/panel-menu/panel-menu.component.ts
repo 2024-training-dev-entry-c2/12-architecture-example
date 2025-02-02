@@ -26,6 +26,7 @@ export class PanelMenuComponent {
   }
 
   selectMenu(id: number) {
+    console.log('id del menu', id);
     this.onSelectMenu.emit(id);
     this.modal().toggle();
   }

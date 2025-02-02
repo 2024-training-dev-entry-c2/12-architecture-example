@@ -16,15 +16,12 @@ import { PanelDishComponent } from '../../components/panel-dish/panel-dish.compo
   styleUrl: './dish-container.component.scss',
 })
 export class DishContainerComponent implements OnInit {
-
-
-  private readonly _getDishCase = inject(GetDishesUseCase)
-  private readonly _createUseCase = inject(CreateDishesUseCase)
-  private readonly _updateUseCase = inject(UpdateDishUseCase)
-  private readonly _deleteUseCase = inject(DeleteDishUseCase)
-  public dishs$:Observable<Idish[]>;
+  private readonly _getDishCase = inject(GetDishesUseCase);
+  private readonly _createUseCase = inject(CreateDishesUseCase);
+  private readonly _updateUseCase = inject(UpdateDishUseCase);
+  private readonly _deleteUseCase = inject(DeleteDishUseCase);
+  public dishs$: Observable<Idish[]>;
   public currentDish$: Observable<Idish>;
-
 
   ngOnInit(): void {
     this._getDishCase.initSubscriptions();
@@ -32,18 +29,21 @@ export class DishContainerComponent implements OnInit {
     this._updateUseCase.initSubscriptions();
     this._deleteUseCase.initSubscriptions();
     this._getDishCase.execute();
-    this.dishs$ = this._getDishCase.dishes$()
+    this.dishs$ = this._getDishCase.dishes$();
     this.currentDish$ = this._updateUseCase.dishCurrent$();
-
   }
 
-  ngOndestroy():void{
+  ngOndestroy(): void {
     this._getDishCase.destroySubscriptions();
   }
 
   hanglePatchDish(dish: Idish) {
+    console.log('es el dish que trae', dish);
+
     const usecase = dish.id ? this._updateUseCase : this._createUseCase;
     usecase.execute(dish);
+    console.log('funcion para crear dish desde el container', dish);
+    console.log(this.dishs$, 'Esto es el dishes');
   }
 
   handleSelectDish(id: number) {
@@ -51,9 +51,6 @@ export class DishContainerComponent implements OnInit {
   }
 
   handleDeleteDish(id: number) {
-    console.log("funcion para borrar dish", id);
-
     this._deleteUseCase.execute(id);
   }
-
 }

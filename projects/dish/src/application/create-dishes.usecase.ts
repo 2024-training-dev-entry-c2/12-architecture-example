@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { StateIndesDish } from '../domain/state';
-import { Observable, Subscription, tap } from 'rxjs';
+import { Subscription, tap } from 'rxjs';
 import { Idish } from '../domain/model/dish.model';
 import { CreateDishService } from '../infrastructure/services/create-dish.service';
 
@@ -23,9 +23,9 @@ export class CreateDishesUseCase {
       this._service
         .execute(dish)
         .pipe(
-          tap((dish) => {
+          tap((dishd) => {
             const dishes = this._state.dishState.dishes.valueState();
-            this._state.dishState.dishes.changeState([...dishes, dish]);
+            this._state.dishState.dishes.changeState([...dishes, dishd]);
           })
         )
         .subscribe()

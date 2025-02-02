@@ -4,7 +4,7 @@
 >
   <header class="menu__header" aria-label="header menu">
     <h1 class="menu__title">Menú</h1>
-    <lib-modal [action]="'Agregar Menú'">
+    <lib-modal [action]="'Agregar Menú'" #modal>
       <lib-form-menu
         [menus]="currentMenu()"
         (onSubmit)="handleSubmit($event)"

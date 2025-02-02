@@ -8,9 +8,11 @@ export class CreateOrdersService {
   private readonly _http = inject(HttpClient);
 
   execute(order: Iorder): Observable<Iorder> {
+    console.log(order, "crear orden desde servicio");
     return this._http.post<Iorder>(
       'http://localhost:8080/api/orders/add',
       order
     );
+
   }
 }

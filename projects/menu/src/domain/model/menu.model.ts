@@ -1,9 +1,10 @@
 import { Idish } from 'dish';
 
 export interface Imenu {
-  id: number;
+  id?: number;
   name: string;
   description: string;
-  dishes: Idish[];
+  dishes?: Idish[];
+  dishIds: number[];
   restaurantId?: number;
 }

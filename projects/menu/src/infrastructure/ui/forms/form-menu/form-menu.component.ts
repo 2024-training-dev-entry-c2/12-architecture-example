@@ -12,26 +12,29 @@ import { Idish } from 'dish';
 export class FormMenuComponent {
   private readonly _fb = inject(FormBuilder);
   public onSubmit = output<Imenu>();
-  @Input() dishes: Idish[] = [];
-
-  constructor() {
-    console.log('dishes', this.dishes);
-  }
-
+  public dishes = input<Idish[]>([]);
   @Input()
   set menus(value: any) {
     this.form.patchValue(value);
   }
+
   public form = this._fb.group({
     name: ['', Validators.required],
     description: ['', Validators.required],
-    dishes: [[], Validators.required],
+    dishIds: [[], Validators.required],
     id: [null],
     restaurantId: [null],
   });
   submit() {
     if (!this.form.valid) return;
-    this.onSubmit.emit(this.form.getRawValue());
+    const formData = {
+      id: this.form.get('id').value,
+      name: this.form.get('name').value,
+      description: this.form.get('description').value,
+      dishIds: this.form.get('dishIds').value,
+      restaurantId: 5,
+    };
+    this.onSubmit.emit(formData);
     this.form.reset();
   }
 }

@@ -31,11 +31,13 @@ export class PanelDishComponent {
 
   handleSubmit(dish: Idish) {
     this.onCreateDish.emit(dish);
+    console.log('funcion para crear dish desde el panel', dish);
+
   }
 
   selectDish(id: number) {
     this.onSelectDish.emit(id);
-    console.log('usuario seleccionado', id);
+    console.log('usuario seleccionado desde el panel', id);
     this.modal().toggle();
   }
 

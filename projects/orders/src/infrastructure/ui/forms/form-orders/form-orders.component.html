@@ -17,15 +17,6 @@
   </div>
 
   <div class="clientForm__form-group">
-    <input
-      type="number"
-      formControlName="total"
-      class="clientForm__input"
-      placeholder="Precio total de la orden"
-    />
-  </div>
-
-  <div class="clientForm__form-group">
     <select formControlName="user" class="clientForm__input">
       <option value="">Seleccione un usuario</option>
       @for(itemUser of users; track $index) {
@@ -34,7 +25,7 @@
     </select>
   </div>
 
-  <div class="clientForm__form-group">
+  <div class="clientForm__form-group" multiple>
     <select formControlName="dish" class="clientForm__input">
       <option value="">Seleccione un plato</option>
       @for(item of dishes; track $index) {

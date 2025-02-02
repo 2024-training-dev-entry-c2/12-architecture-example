@@ -54,8 +54,6 @@ export class ClientContainerComponent implements OnInit {
   }
 
   handleDeleteClient(id: number) {
-    console.log('funcion para borrar cliente', id);
-
     this._deleteUseCase.execute(id);
   }
 }

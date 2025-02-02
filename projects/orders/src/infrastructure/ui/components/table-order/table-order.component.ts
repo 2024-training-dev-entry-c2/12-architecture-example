@@ -35,6 +35,11 @@ export class TableOrderComponent {
     'Acciones',
   ];
 
+  constructor() {
+    console.log(this.allDishes, "panel tabla dishes");
+
+  }
+
   handleSubmit(order: Iorder) {
     this.onCreateOrder.emit(order);
   }

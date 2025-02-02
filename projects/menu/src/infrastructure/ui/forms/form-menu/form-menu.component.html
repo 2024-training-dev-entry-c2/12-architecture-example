@@ -26,9 +26,9 @@
   </div>
 
   <div class="clientForm__form-group">
-    <select formControlName="dishes" class="clientForm__input">
+    <select formControlName="dishIds" class="clientForm__input" multiple>
       <option value="">Seleccione un plato</option>
-      @for(item of dishes; track $index) {
+      @for(item of dishes(); track $index) {
       <option value="{{ item.id }}">{{ item.name }}</option>
       }
     </select>

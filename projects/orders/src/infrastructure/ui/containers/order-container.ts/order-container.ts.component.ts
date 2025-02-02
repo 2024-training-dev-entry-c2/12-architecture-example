@@ -34,8 +34,12 @@ export class OrderContainerTsComponent implements OnInit {
     this._DeleteOrdersUseCase.initSubscriptions();
     this._UpdateOrdersUseCase.initSubscriptions();
     this._createOrdersUseCase.initSubscriptions();
+    this._getDishCase.initSubscriptions();
+    this._getClients.initSubscriptions();
 
     this._getOrdersUseCase.execute();
+    this._getDishCase.execute();
+    this._getClients.execute();
     this.orders$ = this._getOrdersUseCase.orders$();
     this.orderUnique$ = this._UpdateOrdersUseCase.menuUnique$();
     this.platos$ = this._getDishCase.dishes$();
