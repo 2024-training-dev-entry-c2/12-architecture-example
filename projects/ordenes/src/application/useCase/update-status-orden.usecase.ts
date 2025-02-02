@@ -15,7 +15,9 @@ export class UpdateStatusOrdenUseCase {
   private subscriptions: Subscription;
 
   //#region Observables
-
+  statusOrden$(): Observable<string> {
+    return this._state.ordenes.statusOrden.$();
+  }
 
   //#region Public Methods
   initSubscriptions(): void {

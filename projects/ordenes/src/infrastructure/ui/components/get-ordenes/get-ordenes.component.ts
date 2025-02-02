@@ -22,31 +22,23 @@ export class GetOrdenesComponent {
   public onCreateOrden = output<{orden: ICreateOrden; modal: ModalComponent}>();
   public onDeleteOrden = output<number>();
   public onStatusChange = output<ICreateOrden>();
+
   message(): string {
     return this.ordenState.store().successMessage.snapshot();
   }
 
   statusClassMap: Map<string, string> = new Map([
-    ['PENDING', 'content__btn-pending'],
-    ['IN_PREPARATION', 'content__btn-in-preparation'],
-    ['COMPLETED', 'content__btn-completed'],
-    ['CANCELLED', 'content__btn-cancelled'],
-    ['DELIVERED', 'content__btn-delivered'],
+    ['PENDING', 'ordenes__btn-pending'],
+    ['IN_PREPARATION', 'ordenes__btn-in-preparation'],
+    ['COMPLETED', 'ordenes__btn-completed'],
+    ['CANCELLED', 'ordenes__btn-cancelled'],
+    ['DELIVERED', 'ordenes__btn-delivered'],
   ]);
   getButtonClass(status: string): string {
+    console.log("getButton", status)
     return this.statusClassMap.get(status) || '';
   }
-  statusChange(orden: ICreateOrden) {
-    const nextStatus = this.getNextStatus(orden.statusOrder);
-    const updatedOrden = { ...orden, statusOrder: nextStatus };
-    this.onStatusChange.emit(updatedOrden);
-  }
 
-  getNextStatus(currentStatus: string): string {
-    const statusOptions = ['PENDING', 'IN_PREPARATION', 'COMPLETED', 'CANCELLED', 'DELIVERED'];
-    const currentIndex = statusOptions.indexOf(currentStatus);
-    return statusOptions[(currentIndex + 1) % statusOptions.length];
-  }
   handleSubmit(orden: ICreateOrden) {
       this.onCreateOrden.emit({orden, modal: this.modal()});
    }
@@ -57,4 +49,9 @@ export class GetOrdenesComponent {
   deleteOrden(id: number){
     this.onDeleteOrden.emit(id);
   }
+
+  statusChange(orden: ICreateOrden) {
+    this.onStatusChange.emit(orden);
+  }
+
 }

@@ -20,10 +20,10 @@ export class OrdenesContainerComponent implements OnInit, OnDestroy {
    private readonly _createOrdenUseCase = inject(CreateOrdenUsecase);
    private readonly _updateOrdenUseCase = inject(UpdateOrdenUseCase);
    private readonly _deleteOrdenUseCase = inject(DeleteOrdenUsecase);
-   private readonly _updateStatusOrdenUseCase= inject(UpdateStatusOrdenUseCase);
+   private readonly _updateStatusOrdenUseCase = inject(UpdateStatusOrdenUseCase);
    public ordenes$: Observable<ICreateOrden[]>;
    public currentOrden$: Observable<ICreateOrden>;
-   public statusOrden$ : Observable<ICreateOrden>;
+   public statusOrden$ : Observable<string>;
 ;
 
   ngOnInit(): void {
@@ -35,8 +35,7 @@ export class OrdenesContainerComponent implements OnInit, OnDestroy {
     this.currentOrden$ = this._updateOrdenUseCase.currentOrden$();
     this._deleteOrdenUseCase.initSubscriptions();
     this._updateStatusOrdenUseCase.initSubscriptions();
-
-
+    this.statusOrden$ = this._updateStatusOrdenUseCase.statusOrden$();
   }
   handlePatchOrden({ orden, modal }: { orden: ICreateOrden; modal: ModalComponent }) {
       const usecase = orden.id ? this._updateOrdenUseCase : this._createOrdenUseCase;
@@ -55,7 +54,15 @@ export class OrdenesContainerComponent implements OnInit, OnDestroy {
     this._deleteOrdenUseCase.destroySubscriptions();
   }
 
-  handleStatusChange(orden: ICreateOrden): void {
-    this._updateStatusOrdenUseCase.execute(orden);
+  getNextStatus(currentStatus: string): string {
+    const statusOptions = ['PENDING', 'IN_PREPARATION', 'COMPLETED', 'CANCELLED', 'DELIVERED'];
+    const currentIndex = statusOptions.indexOf(currentStatus);
+    return statusOptions[(currentIndex + 1) % statusOptions.length];
   }
+  handleStatusChange(orden: ICreateOrden): void {
+    const nextStatus = this.getNextStatus(orden.statusOrder);
+    const updatedOrden = { ...orden, statusOrder: nextStatus };
+    this._updateStatusOrdenUseCase.execute(updatedOrden);
+  }
+
 }
