@@ -13,7 +13,7 @@ export class GraphOrderComponent implements OnInit {
   darkTheme = false;
   background_color = ' #d6d6d6';
   color_text = '#272727';
-  @Input() ordersPerWeek: any[] = [];
+  @Input() ordersPerMonth: any[] = [];
 
   ngOnInit(): void {
     this.themeService.themeState$.subscribe((isDark) => {
@@ -21,57 +21,46 @@ export class GraphOrderComponent implements OnInit {
       this.background_color = isDark ? '#3b3b3b' : '#d6d6d6';
       this.color_text = isDark ? '#d6d6d6' : '#272727';
     });
-    this.getOrdersPerWeekOfMonth(this.ordersPerWeek);
+    this.getOrdersPerWeekOfMonth(this.ordersPerMonth);
     setTimeout(() => {
       this.renderOrdersPerMonthChart();
     });
   }
   getOrdersPerWeekOfMonth(orders: any[]): void {
-    const currentMonth = new Date().getMonth();
-    const currentYear = new Date().getFullYear();
+    const ordersByMonth: { [key: string]: number } = {};
 
-    const filteredOrders = orders.filter((order) => {
+    orders.forEach((order) => {
       const orderDate = new Date(order.localDate);
-      return (
-        orderDate.getMonth() === currentMonth &&
-        orderDate.getFullYear() === currentYear
-      );
+      const monthKey = `${orderDate.getFullYear()}-${orderDate.getMonth() + 1}`;
+      ordersByMonth[monthKey] = (ordersByMonth[monthKey] || 0) + 1;
     });
 
-    const ordersByWeek: { [key: number]: number } = {};
-
-    filteredOrders.forEach((order) => {
-      const orderDate = new Date(order.localDate);
-      const week = Math.ceil(orderDate.getDate() / 7);
-      ordersByWeek[week] = (ordersByWeek[week] || 0) + 1;
-    });
-
-    const ordersPerWeek = Object.entries(ordersByWeek).map(
-      ([week, totalOrder]) => ({
-        week: Number(week),
-        totalOrder,
-      })
+    this.ordersPerMonth = Object.entries(ordersByMonth).map(
+      ([month, totalOrder]) => ({ month, totalOrder })
     );
 
-    console.log('Órdenes por semana del mes actual:', ordersPerWeek);
-    this.ordersPerWeek = ordersPerWeek;
+    console.log('Órdenes por mes:', this.ordersPerMonth);
     this.renderOrdersPerMonthChart();
   }
 
   renderOrdersPerMonthChart() {
-    console.log(this.ordersPerWeek);
+    const existingChart = (window as any).chartInstance;
+    if (existingChart) {
+      existingChart.destroy();
+    }
+    console.log(this.ordersPerMonth);
 
     const ctx = document.getElementById(
       'ordersPerMonthChart'
     ) as HTMLCanvasElement;
-    new Chart(ctx, {
+    const newChart = new Chart(ctx, {
       type: 'line',
       data: {
-        labels: this.ordersPerWeek.map((order) => `Week ${order.week}`),
+        labels: this.ordersPerMonth.map((order) => order.month),
         datasets: [
           {
             label: 'Orders',
-            data: this.ordersPerWeek.map((order) => order.totalOrder),
+            data: this.ordersPerMonth.map((order) => order.totalOrder),
             backgroundColor: 'rgb(83, 81, 199)',
             borderColor: 'rgba(153, 102, 255, 1)',
             borderWidth: 2,
@@ -100,5 +89,7 @@ export class GraphOrderComponent implements OnInit {
         },
       },
     });
+    (window as any).chartInstance = newChart;
   }
+  
 }

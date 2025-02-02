@@ -1,12 +1,3 @@
-@if (isLoading) {
-    <div class="loader"></div>
-  }
-  @if (isError) {
-    <div class="error">
-      <h2 class="error__title">Error</h2>
-      <p class="error__message">{{isError}}</p>
-    </div>
-  }
   @if (!isLoading && !isError && data && columnKeys) {
     <div class="card">
       <h2 class="card__title">{{title}}</h2>
@@ -38,18 +29,8 @@
             }
             <td class="styled-table__cell actions">
               <div class="actions__items">
-                <lib-buttons
-                  [icon]="images[0]"
-                  [rowIndex]="$index"
-                  (buttonClick)="deleteData(item.id)"
-                  ariaLabel="Remove"
-                ></lib-buttons>
-                <lib-buttons
-                  [icon]="images[1]"
-                  [rowIndex]="$index"
-                  (buttonClick)="updateData(item.id)"
-                  ariaLabel="Edit"
-                ></lib-buttons>
+                <lib-buttons [icon]="images[0]" [rowIndex]="$index" (buttonClick)="deleteData(item.id)" ariaLabel="Remove" ></lib-buttons>
+                <lib-buttons [icon]="images[1]" [rowIndex]="$index" (buttonClick)="updateData(item.id)" ariaLabel="Edit" ></lib-buttons>
               </div>
             </td>
           </tr>
