@@ -21,7 +21,6 @@ export class MenusCardsComponent implements OnInit {
     this.updateCardWidth();
   }
   
-
   @HostListener('window:resize')
   updateCardWidth() {
     const cardElement = document.querySelector('.card') as HTMLElement;
@@ -52,7 +51,6 @@ export class MenusCardsComponent implements OnInit {
       this.currentPosition += this.cardWidth;
     }
   }
-
 
   ngOnInit(): void {
     console.log(this.menu$);
