@@ -12,3 +12,26 @@
     justify-content: $justify;
     gap: $gap;
 }
+
+@mixin border-radius-locale() {
+    border-radius: variables.$global-radius;
+}
+
+@mixin visibility-element($visibility: visible, $opacity: 1, $transition: 0.5s) {
+    visibility: $visibility;
+    opacity: $opacity;
+    transition: $transition;
+}
+
+@mixin close-button($font-size, $color, $hover-color) {
+    background: none;
+    border: none;
+    font-size: $font-size;
+    cursor: pointer;
+    color: $color;
+    transition: color 0.2s ease;
+
+    &:hover {
+        color: $hover-color;
+    }
+}

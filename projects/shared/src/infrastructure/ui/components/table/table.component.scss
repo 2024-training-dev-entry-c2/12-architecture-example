@@ -1,4 +1,5 @@
 @use '../../styles/abstracts/variables' as variables;
+@use '../../styles/abstracts/mixins' as mixins;
 
 .table {
 
@@ -71,8 +72,8 @@
     }
     
     &__priority {
+        @include mixins.border-radius-locale();
         padding: 5px 10px;
-        border-radius: 4px;
         color: white;
         font-size: 0.9rem;
 

@@ -1,32 +1,28 @@
 @use '../../styles/abstracts/variables' as variables;
+@use '../../styles/abstracts/mixins' as mixins;
 
 .toast {
+    @include mixins.visibility-element(hidden, 0, all 0.2s);
     position: fixed;
     top: 70px;
     right: 10px;
     border-radius: variables.$global-radius;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     min-width: 300px;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s, visibility 0.2s;
     
     &--show{
+        @include mixins.visibility-element(visible, 1);
         display: block;
-        opacity: 1;
-        visibility: visible;
     }
 
     &__content {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
+        @include mixins.content-flex(center, space-between);
         padding: 5px 15px;
         border-bottom: 1px solid #ddd;
 
         &__body {
             color: #ffff;
-           padding: 15px;
+            padding: 15px;
         }
     }
 
@@ -38,16 +34,7 @@
     }
 
     &__close-button {
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        cursor: pointer;
-        color: #b8b8b8;
-        transition: color 0.2s ease;
-
-            &:hover {
-               color: #ffff;
-             }
+        @include mixins.close-button(1.5rem, #b8b8b8, #ffff);
     }
 
     &__body {

@@ -1,10 +1,11 @@
 @use '../../styles/abstracts/variables' as variables;
+@use '../../styles/abstracts/mixins' as mixins;
 
 .badge {
+    @include mixins.border-radius-locale();
     font-size: 80%;
     padding: .35em .6em;
     font-weight: 600;
-    border-radius: 4px;
 }
 
 .badge--info {

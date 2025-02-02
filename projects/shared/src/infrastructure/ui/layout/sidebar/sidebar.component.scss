@@ -125,6 +125,7 @@
         }
 
         &__menu {
+            @include mixins.visibility-element(hidden, 0, all 0.2s);
             position: absolute;
             left: 98px;
             top: 57px;
@@ -132,10 +133,7 @@
             z-index: 2;
             border-radius: variables.$sidebar-border-radius;
             background: variables.$sidebar-bgColor;
-            visibility: hidden;
-            opacity: 0;
             transform: scale(0.95);
-            transition: all 0.2s;
 
             li:nth-last-child(2) {
                 margin-bottom: 12px;

@@ -1,22 +1,21 @@
 @use '../../styles/abstracts/variables' as variables;
+@use '../../styles/abstracts/mixins' as mixins;
 
 .load-container {
+    @include mixins.content-flex(center, center);
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     z-index: 9999;
     background: variables.$loader-bg-color;
 
     &__item {
+        @include mixins.border-radius-locale();
         background: rgba(255, 255, 255, 0.1);
         display: grid;
         place-items: center;
-        border-radius: 4px;
         transition: opacity 0.4s ease;
 
         &__loader {
