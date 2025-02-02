@@ -1,0 +1,197 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
+
+.orders {
+  padding: 2rem;
+  font-family: variables.$font-family-merriweather;
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    color: variables.$typografy-color;
+  }
+
+  &__add-btn {
+    position: absolute;
+    top: 11rem;
+    right: 25%;
+    background: variables.$primary-color;
+    color: variables.$color-white;
+    border: 1px solid variables.$color-white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: variables.$tercery-color;
+      transition: background-color 0.2s;
+      color: variables.$typografy-color;
+      border: 1px solid variables.$color-white;
+      font-weight: bold;
+    }
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__container {
+    background: variables.$color-white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px variables.$typografy-color;
+    overflow: auto;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1000px;
+  }
+
+  &__thead {
+    background-color: variables.$tercery-color;
+    color: variables.$color-white;
+    border-bottom: 2px solid variables.$color-white;
+  }
+
+  &__th {
+    color: variables.$color-white;
+    font-weight: 600;
+    text-align: left;
+    padding: 1rem;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__tbody {
+    .orders__tr {
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: #f7fafc;
+      }
+    }
+  }
+
+  &__td {
+    padding: 1rem;
+    font-size: 0.875rem;
+    color: variables.$typografy-color;
+    border-bottom: 1px solid #edf2f7;
+    vertical-align: middle;
+
+    &--actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+  }
+
+  &__user {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    &-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-name {
+      font-weight: 500;
+      color: variables.$typografy-color;
+    }
+
+    &-email {
+      font-size: 0.75rem;
+      color: #718096;
+    }
+  }
+
+  &__dishes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  &__dish {
+    font-size: 0.875rem;
+    color: variables.$typografy-color;
+  }
+
+  &__status {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+
+    &--pending {
+      background-color: #fef3c7;
+      color: #92400e;
+    }
+
+    &--completed {
+      background-color: #dcfce7;
+      color: #166534;
+    }
+
+    &--cancelled {
+      background-color: #fee2e2;
+      color: #991b1b;
+    }
+  }
+
+  &__btn {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+
+    &--view {
+      color: #6366f1;
+
+      &:hover {
+        background-color: rgba(99, 102, 241, 0.1);
+      }
+    }
+
+    &--edit {
+      color: #4299e1;
+
+      &:hover {
+        background-color: rgba(66, 153, 225, 0.1);
+      }
+    }
+
+    &--delete {
+      color: #e53e3e;
+
+      &:hover {
+        background-color: rgba(229, 62, 62, 0.1);
+      }
+    }
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

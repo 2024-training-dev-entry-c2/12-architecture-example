@@ -1,7 +1,3 @@
-/*
- * Public API Surface of clients
- */
-
-// export * from './lib/clients.service';
-// export * from './lib/clients.component';
+export { GetClientUseCase } from './application/get-client.usecase';
 export * from './infrastructure/ui/routes/clients.routes';
+export type { Iclient } from './domain/model/client.model';

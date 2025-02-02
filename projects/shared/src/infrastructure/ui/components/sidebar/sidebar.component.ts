@@ -33,7 +33,7 @@ export class SidebarComponent {
     {
       name: 'Orders',
       icon: 'draftsOrders',
-      path: '/ordenes',
+      path: '/order',
     },
   ];
 }

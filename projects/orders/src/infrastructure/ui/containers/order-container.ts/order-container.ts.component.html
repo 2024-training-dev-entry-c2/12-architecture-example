@@ -1,0 +1,10 @@
+<lib-table-order
+  [orders]="orders$ | async"
+  [currentOrder]="orderUnique$ | async"
+  (onCreateOrder)="handleCreateOrder($event)"
+  (onSelectOrder)="handleSelectOrder($event)"
+  (onDeleteOrder)="handleDeleteOrder($event)"
+  [allDishes]="platos$ | async"
+  [allClients]="user$ | async"
+>
+</lib-table-order>

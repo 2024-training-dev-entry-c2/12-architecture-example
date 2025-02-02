@@ -1,0 +1,73 @@
+<section class="orders" aria-label="pagina Órdenes">
+  <h1 class="orders__title">Órdenes</h1>
+  <lib-modal #modal [action]="'Crear Orden'">
+    <lib-form-orders
+      [dishes]="allDishes()"
+      [users]="allClients()"
+      (onSubmit)="handleSubmit($event)"
+    >
+    </lib-form-orders>
+  </lib-modal>
+
+  <div class="orders__container" aria-label="grid de ordenes">
+    <table class="orders__table">
+      <thead class="orders__thead">
+        <tr class="orders__tr orders__tr--header">
+          <th class="orders__th">ID Orden</th>
+          <th class="orders__th">Cliente</th>
+          <th class="orders__th">Platos</th>
+          <th class="orders__th">Total</th>
+          <th class="orders__th">Estado</th>
+          <th class="orders__th">Fecha</th>
+          <th class="orders__th">Acciones</th>
+        </tr>
+      </thead>
+
+      @for(order of orders(); track $index) {
+      <tbody class="orders__tbody">
+        <tr class="orders__tr">
+          <td class="orders__td">#ORD-{{ order.id }}</td>
+          <td class="orders__td">
+            <div class="orders__user">
+              <div class="orders__user-info">
+                <span class="orders__user-name">{{ order.user?.name }}</span>
+                <span class="orders__user-email">{{ order.user?.email }}</span>
+              </div>
+            </div>
+          </td>
+          <td class="orders__td">
+            <div class="orders__dishes">
+              @for(detail of order.orderDetails; track $index) {
+              <span class="orders__dish">{{ detail.dish?.name }}</span>
+              }
+            </div>
+          </td>
+          <td class="orders__td">
+            ${{ 25 * $index + ((16 * 2) % 4) || "N/A" }}
+          </td>
+          <td class="orders__td">
+            <span class="orders__status orders__status--pending"
+              >Pendiente</span
+            >
+          </td>
+          <td class="orders__td">{{ order.date }}</td>
+          <td class="orders__td orders__td--actions">
+            <button class="orders__btn orders__btn--view">
+              <mat-icon aria-hidden="false" fontIcon="visibility"></mat-icon>
+            </button>
+            <button class="orders__btn orders__btn--edit" (click)="selectOrder(order.id)">
+              <mat-icon aria-hidden="false" fontIcon="edit"></mat-icon>
+            </button>
+            <button
+              class="orders__btn orders__btn--delete"
+              (click)="deleteOrder(order.id)"
+            >
+              <mat-icon aria-hidden="false" fontIcon="delete"></mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      }
+    </table>
+  </div>
+</section>
