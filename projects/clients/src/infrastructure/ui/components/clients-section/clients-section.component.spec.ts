@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ClientsSectionComponent } from './clients-section.component';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { DeleteModalComponent, ModalComponent, SearchBarComponent } from 'shared';
+import { ModalComponent, SearchBarComponent } from 'shared';
 
 describe('ClientsSectionComponent', () => {
   let fixture: ComponentFixture<ClientsSectionComponent>;
