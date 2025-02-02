@@ -14,12 +14,18 @@ export class GetDishesComponent {
   public menu = input.required<IAddMenuResponse>();
   private menuState = inject(MenuState);
   public modal = viewChild<ModalComponent>('modal');
-  public onCreateDish = output<{ dish: IDish; modal: ModalComponent }>();
   public dishes = input<IDish[]>();
+  public onCreateDish = output<{ dish: IDish; modal: ModalComponent }>();
+  public onSelectDish = output<number>();
+  public dishEdit = input<IDish>();
 
 
   message(): string {
     return this.menuState.store().successMessage.snapshot();
+  }
+  editDish(id: number){
+    this.onSelectDish.emit(id);
+    this.modal().toggle();
   }
   handleSubmit(dish: IDish) {
     this.onCreateDish.emit({ dish, modal: this.modal() });

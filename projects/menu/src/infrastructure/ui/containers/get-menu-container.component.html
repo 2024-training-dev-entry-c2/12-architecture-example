@@ -2,4 +2,6 @@
 [menu]="menu$ | async"
 [dishes]="dishes$ | async"
 (onCreateDish)="handlePatchMenu($event)"
+(onSelectDish)="handleSelectDish($event)"
+[dishEdit]="currentDish$ | async"
 ></lib-get-dishes>

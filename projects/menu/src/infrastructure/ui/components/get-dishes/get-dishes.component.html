@@ -8,6 +8,7 @@
       </div>
       }
       <lib-add-dish
+         [dish]="dishEdit()"
         (onSubmit)="handleSubmit($event)"
       ></lib-add-dish>
     </section>
@@ -45,7 +46,7 @@
             }
           </td>
           <td>
-            <lib-button [text]="'Editar'" [theme]="'primary'">
+            <lib-button [text]="'Editar'" [theme]="'primary'" (click)="editDish(dish.id)">
             </lib-button>
             <hr>
             <lib-button [text]="'Eliminar'" [theme]="'danger'"></lib-button>

@@ -35,7 +35,6 @@ export class AddDishUsecase {
       tap((dish) => {
         const currentDishes = this._state.menu.dishes.snapshot();
         this._state.menu.dishes.set([...currentDishes, dish]);
-        this._state.menu.currentDishes.set([...currentDishes, dish]);
         this._state.menu.successMessage.set('¡Plato creado con éxito!')
 
         setTimeout(() => {
