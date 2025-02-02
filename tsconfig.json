@@ -17,10 +17,7 @@
     "importHelpers": true,
     "target": "ES2022",
     "module": "ES2022",
-    "paths": {
-      "admin": [
-        "./dist/admin"
-      ],
+    "paths": {      
       "customer": [
         "./dist/customer"
       ],
@@ -38,10 +35,7 @@
       ],
       "shared": [
         "./dist/shared"
-      ],
-      "users": [
-        "./dist/users"
-      ]
+      ],      
     }
   },
   "angularCompilerOptions": {

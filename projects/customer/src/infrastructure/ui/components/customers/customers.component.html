@@ -4,7 +4,18 @@
             <h1>Clientes</h1>
         </div>
         <div class="entity__create-button-container">
-            <lib-form-customer (onSubmit)="handleSubmit($event)"></lib-form-customer>
+            <button aria-expanded="false" class="entity__create-button" (click)="showCreateCustomer()">
+                <fa-icon [icon]="faPlus"></fa-icon>
+                <span>Crear nuevo cliente</span>
+            </button>
+            @if(showCreateModal){
+            <lib-form-customer [customer]="currentCustomer()" (onClose)="closeModal()"
+                (onSubmit)="handleSubmit($event)"></lib-form-customer>
+            }
+            @if(showUpdateModal){
+            <lib-form-customer [customer]="currentCustomer()" (onClose)="closeModal()"
+                (onSubmit)="handleSubmit($event)"></lib-form-customer>
+            }
         </div>
         <table>
             <thead>
@@ -30,7 +41,7 @@
                     <td>{{ customer.address }}</td>
                     <td>{{ customer.isFrequent ? 'Si' : 'No' }}</td>
                     <td class="entity__buttons">
-                        <button class="entity__edit-button">
+                        <button class="entity__edit-button" (click)="showUpdateCustomer(customer.id)">
                             <fa-icon [icon]="faEdit"></fa-icon>
                         </button>
                         <lib-delete-card [selectedId]="customer.id" [entityName]="'cliente'"

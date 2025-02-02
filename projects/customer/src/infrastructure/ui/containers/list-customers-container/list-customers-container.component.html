@@ -1,2 +1,3 @@
-<lib-customers [customers$]="customers$" (onDelete)="deleteCustomer($event)"
-    (onSaveCustomer)="createCustomer($event)"></lib-customers>
+<lib-customers [customers$]="customers$" [currentCustomer]="currentCustomer$ | async"
+    (onDelete)="deleteCustomer($event)" (onSaveCustomer)="createCustomer($event)"
+    (onSelectCustomer)="handleSelectCustomer($event)"></lib-customers>

@@ -1,7 +1,10 @@
 import { inject, Injectable } from '@angular/core';
 import { State } from '../../domain/state';
-import { Subscription, tap } from 'rxjs';
-import { ICustomer } from '../../domain/model/customer.model';
+import { Observable, Subscription, tap } from 'rxjs';
+import {
+  ICustomer,
+  ICustomerResponse,
+} from '../../domain/model/customer.model';
 import { UpdateCustomerService } from '../../infrastructure/services/update-customer.service';
 
 @Injectable({
@@ -12,6 +15,14 @@ export class UpdateCustomerUsecase {
   private readonly _state = inject(State);
   private subscriptions: Subscription;
 
+  currentCustomer$(): Observable<ICustomerResponse> {
+    return this._state.customers.currentCustomer.$();
+  }
+
+  snapshotCurrentCustomer(): ICustomerResponse {
+    return this._state.customers.currentCustomer.snapshot();
+  }
+
   initSubscriptions(): void {
     this.subscriptions = new Subscription();
   }
@@ -20,23 +31,31 @@ export class UpdateCustomerUsecase {
     this.subscriptions.unsubscribe();
   }
 
-  execute(id: number, payload: ICustomer): void {
+  execute(customerId: number, payload: ICustomer): void {
     this.subscriptions.add(
       this._updateCustomerService
-        .execute(id, payload)
+        .execute(customerId, payload)
         .pipe(
           tap((updatedCustomer) => {
             const customers = this._state.customers.customerResponse.snapshot();
-            const index = customers.findIndex(
-              (c) => c.id === updatedCustomer.id
+            const newCustomers = customers.map((c) =>
+              c.id === updatedCustomer.id ? updatedCustomer : c
             );
-            if (index !== -1) {
-              customers[index] = updatedCustomer;
-              this._state.customers.customerResponse.set(customers);
-            }
+            this._state.customers.customerResponse.set(newCustomers);
+            this._state.customers.currentCustomer.set(null);
           })
         )
         .subscribe()
+    );
+  }
+
+  selectCustomer(id: number): void {
+    if (id === 0) {
+      this._state.customers.currentCustomer.set(null);
+      return;
+    }
+    this._state.customers.currentCustomer.set(
+      this._state.customers.customerResponse.snapshot().find((c) => c.id === id)
     );
   }
 }

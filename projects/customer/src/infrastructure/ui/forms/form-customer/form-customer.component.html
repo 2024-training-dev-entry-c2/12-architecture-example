@@ -1,55 +1,54 @@
-<button aria-expanded="false" class="form-modal__create-button" (click)="open()">
-    <fa-icon [icon]="faPlus"></fa-icon>
-    <span>Crear nuevo cliente</span>
-</button>
-<dialog class="form-modal" #saveCustomerModal>
-    <div class="form-modal__header">
-        <h2 class="form-modal__title">
-            @if(selectedCustomer){
-            Editar cliente
-            } @else {
-            Crear nuevo cliente
-            }
-        </h2>
-        <button (click)="close()"><fa-icon [icon]="faX"></fa-icon></button>
-    </div>
-
-    @if(customerForm){
-    <form [formGroup]="customerForm" class="form-modal__form" (submit)="submit($event)">
-        <div class="form-modal__form-group">
-            <app-form-group label="Nombres" placeholder="Sus nombres" [control]="nameControl" type="text" id="name"
-                [isSubmitted]="isSubmitted">
-            </app-form-group>
-
-            <app-form-group label="Apellidos" placeholder="Sus apellidos" [control]="lastNameControl" type="text"
-                id="lastName" [isSubmitted]="isSubmitted">
-            </app-form-group>
-        </div>
-
-        <div class="form-modal__form-group">
-            <app-form-group label="Correo electrónico" placeholder="Su correo electrónico" [control]="emailControl"
-                type="email" id="email" [isSubmitted]="isSubmitted">
-            </app-form-group>
-
-            <app-form-group label="Teléfono" placeholder="Su teléfono" [control]="phoneControl" type="text" id="phone"
-                [isSubmitted]="isSubmitted">
-            </app-form-group>
-        </div>
-
-        <app-form-group label="Dirección" placeholder="Su dirección" [control]="addressControl" type="text" id="address"
-            [isSubmitted]="isSubmitted">
-        </app-form-group>
-
-        <div class="form-modal__buttons">
-            <button class="form-modal__cancel-button" type="button" (click)="close()">Cancelar</button>
-            <button class="form-modal__save-button" type="submit">
+<section class="modal-container">
+    <article class="form-modal">
+        <div class="form-modal__header">
+            <h2 class="form-modal__title">
                 @if(selectedCustomer){
-                Actualizar
+                Editar cliente
                 } @else {
-                Guardar
+                Crear nuevo cliente
                 }
-            </button>
+            </h2>
+            <button (click)="close()"><fa-icon [icon]="faX"></fa-icon></button>
         </div>
-    </form>
-    }
-</dialog>
+
+        @if(customerForm){
+        <form [formGroup]="customerForm" class="form-modal__form" (submit)="submit($event)">
+            <div class="form-modal__form-group">
+
+                <app-form-group label="Nombres" placeholder="Sus nombres" [control]="nameControl" type="text" id="name"
+                    [isSubmitted]="isSubmitted">
+                </app-form-group>
+
+                <app-form-group label="Apellidos" placeholder="Sus apellidos" [control]="lastNameControl" type="text"
+                    id="lastName" [isSubmitted]="isSubmitted">
+                </app-form-group>
+            </div>
+
+            <div class="form-modal__form-group">
+                <app-form-group label="Correo electrónico" placeholder="Su correo electrónico" [control]="emailControl"
+                    type="email" id="email" [isSubmitted]="isSubmitted">
+                </app-form-group>
+
+                <app-form-group label="Teléfono" placeholder="Su teléfono" [control]="phoneControl" type="text"
+                    id="phone" [isSubmitted]="isSubmitted">
+                </app-form-group>
+            </div>
+
+            <app-form-group label="Dirección" placeholder="Su dirección" [control]="addressControl" type="text"
+                id="address" [isSubmitted]="isSubmitted">
+            </app-form-group>
+
+            <div class="form-modal__buttons">
+                <button class="form-modal__cancel-button" type="button" (click)="close()">Cancelar</button>
+                <button class="form-modal__save-button" type="submit">
+                    @if(selectedCustomer){
+                    Actualizar
+                    } @else {
+                    Guardar
+                    }
+                </button>
+            </div>
+        </form>
+        }
+    </article>
+</section>

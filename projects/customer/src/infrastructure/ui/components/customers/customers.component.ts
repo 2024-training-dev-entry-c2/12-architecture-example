@@ -2,6 +2,7 @@ import {
   Component,
   EventEmitter,
   inject,
+  input,
   Input,
   OnInit,
   Output,
@@ -31,22 +32,34 @@ export class CustomersComponent implements OnInit {
   faEdit = faEdit;
 
   customers: ICustomerResponse[] = [];
+  showCreateModal = false;
+  showUpdateModal = false;
 
   @Input() public customers$: Observable<ICustomerResponse[]>;
+  public currentCustomer = input<ICustomerResponse>();
 
   @Output() public onDelete = new EventEmitter<number>();
   @Output() public onSaveCustomer = new EventEmitter<ICustomer>();
+  @Output() public onSelectCustomer = new EventEmitter<number>();
 
   ngOnInit(): void {
     this.customers$.subscribe((customers) => (this.customers = customers));
   }
 
   showCreateCustomer(): void {
-    this.router.navigate(['/customers/create']);
+    this.onSelectCustomer.emit(0);
+    this.showCreateModal = true;
   }
 
   showUpdateCustomer(idCustomer: number): void {
-    this.router.navigate(['/customers/update', idCustomer]);
+    this.onSelectCustomer.emit(idCustomer);
+    this.showUpdateModal = true;
+  }
+
+  closeModal(): void {
+    this.onSelectCustomer.emit(0);
+    this.showCreateModal = false;
+    this.showUpdateModal = false;
   }
 
   handleSubmit(customer: ICustomer): void {

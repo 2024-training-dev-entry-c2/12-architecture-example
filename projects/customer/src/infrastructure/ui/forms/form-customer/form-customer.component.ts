@@ -1,13 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  EventEmitter,
-  inject,
-  Input,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -18,7 +9,7 @@ import {
 import { CommonModule } from '@angular/common';
 import { FormGroupComponent } from 'shared';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { faX, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faX, faPlus, faEdit } from '@fortawesome/free-solid-svg-icons';
 import {
   ICustomer,
   ICustomerResponse,
@@ -35,17 +26,23 @@ import {
   templateUrl: './form-customer.component.html',
   styleUrl: './form-customer.component.scss',
 })
-export class FormCustomerComponent implements OnInit {
+export class FormCustomerComponent {
   private formBuilder = inject(FormBuilder);
 
-  @Input() public selectedCustomer: ICustomerResponse | null = null;
+  @Input() set customer(value: ICustomerResponse) {
+    //this.customerForm.reset();
+    this.selectedCustomer = value;
+    //this.customerForm.patchValue(value);
+  }
 
   @Output() public onSubmit = new EventEmitter<ICustomer>();
-  @Output() public clearSelected = new EventEmitter<void>();
+  @Output() public onClose = new EventEmitter<void>();
 
+  selectedCustomer: ICustomerResponse | null = null;
   isSubmitted = false;
   faX = faX;
   faPlus = faPlus;
+  faEdit = faEdit;
 
   customerForm?: FormGroup;
 
@@ -97,28 +94,21 @@ export class FormCustomerComponent implements OnInit {
     return this.customerForm!.get('address') as FormControl;
   }
 
-  @ViewChild('saveCustomerModal')
-  saveCustomerModal!: ElementRef<HTMLDialogElement>;
-
-  open() {
-    this.saveCustomerModal.nativeElement.showModal();
-  }
-
   close() {
-    this.saveCustomerModal.nativeElement.close();
-  }
-
-  xclose(): void {
-    this.clearSelected.emit();
+    this.isSubmitted = false;
+    this.customerForm.reset();
+    this.onClose.emit();
   }
 
   submit(event: Event): void {
     event.preventDefault();
     if (!this.customerForm!.valid) {
       this.isSubmitted = true;
+      console.log('Formulario no válido');
       return;
     }
     this.onSubmit.emit(this.customerForm.getRawValue() as unknown as ICustomer);
-    this.saveCustomerModal.nativeElement.close();
+    this.onClose.emit();
+    this.customerForm.reset();
   }
 }
