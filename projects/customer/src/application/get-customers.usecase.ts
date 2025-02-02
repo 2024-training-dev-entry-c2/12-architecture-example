@@ -7,7 +7,7 @@ import { GetCustomersService } from '../infrastructure/services/get-customers.se
 @Injectable({
   providedIn: 'root',
 })
-export class GetCustomersUsecase {
+export class GetCustomersUseCase {
   private readonly _service = inject(GetCustomersService);
   private readonly _state = inject(State);
   private subscriptions: Subscription;
