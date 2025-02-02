@@ -1,0 +1,14 @@
+.client-card{
+  outline: 1px solid #101010;
+  overflow: hidden;
+  background-color: #fff;
+
+  &__name {
+    text-align: center;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+  }
+}

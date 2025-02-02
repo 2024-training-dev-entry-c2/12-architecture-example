@@ -7,4 +7,8 @@ export const urlResources = {
     baseUrl: `${environment.apiUrl}/menus`,
     operationsById: (id: number) => `${environment.apiUrl}/menus/${id}`,
   },
+  client:{
+    baseUrl: `${environment.apiUrl}/clientes`,
+    operationsById: (id: number) => `${environment.apiUrl}/clientes/${id}`,
+  }
 };

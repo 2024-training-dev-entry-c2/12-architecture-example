@@ -1,0 +1,27 @@
+<form [formGroup]="clientForm" class="form-client" (ngSubmit)="submit()">
+  <div>
+    <label>Nombre</label>
+    <input
+      formControlName="nombre"
+      [value]="clientSelected()?.nombre"
+      type="text"
+    />
+  </div>
+  <div>
+    <label>Email</label>
+    <input
+      formControlName="email"
+      [value]="clientSelected()?.email"
+      type="email"
+    />
+  </div>
+  <div>
+    <label>Telefono</label>
+    <input
+      formControlName="telefono"
+      [value]="clientSelected()?.telefono"
+      type="text"
+    />
+  </div>
+  <button>Enviar</button>
+</form>

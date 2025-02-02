@@ -6,6 +6,7 @@
     "@angular/core": "^19.1.0"
   },
   "dependencies": {
+    "pedido": "file:",
     "tslib": "^2.3.0"
   },
   "sideEffects": false
