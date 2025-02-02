@@ -1,0 +1,55 @@
+<lib-modal action="Crear Menú" #modal>
+  <lib-menu-form [menu]="currentMenu()" (onSubmit)="handleSubmit($event)"></lib-menu-form>
+</lib-modal>
+
+<lib-modal action="Eliminar" #deleteModal>
+  <div class="confirmation-dialog">
+    <h2 class="confirmation-dialog__title">Confirmar eliminación</h2>
+    <p class="confirmation-dialog__message">
+      ¿Está seguro que desea eliminar el menú {{menuToDelete?.name}}?
+      Esta acción no se puede deshacer.
+    </p>
+    <div class="confirmation-dialog__actions">
+      <button class="confirmation-dialog__button confirmation-dialog__button--cancel" (click)="handleCancelDelete()"
+        aria-label="Cancelar eliminación">
+        <span class="material-icons" aria-hidden="true">close</span>
+        Cancelar
+      </button>
+      <button class="confirmation-dialog__button confirmation-dialog__button--confirm" (click)="handleConfirmDelete()"
+        aria-label="Confirmar eliminación">
+        <span class="material-icons" aria-hidden="true">delete_forever</span>
+        Eliminar
+      </button>
+    </div>
+  </div>
+</lib-modal>
+
+<table class="menus-table" role="table" aria-label="Lista de menús">
+  <thead class="menus-table__head">
+    <tr class="menus-table__row">
+      <th class="menus-table__header" scope="col">Nombre</th>
+      <th class="menus-table__header" scope="col">Descripción</th>
+      <th class="menus-table__header" scope="col">Platos</th>
+      <th class="menus-table__header" scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody class="menus-table__body">
+    <tr class="menus-table__row" *ngFor="let menu of menus()">
+      <td class="menus-table__cell">{{menu.name}}</td>
+      <td class="menus-table__cell">{{menu.description}}</td>
+      <td class="menus-table__cell">{{menu.dishes.length}}</td>
+      <td class="menus-table__cell menus-table__cell--actions">
+        <button class="menus-table__button menus-table__button--edit" (click)="selectMenu(menu.menuId)"
+          [attr.aria-label]="'Editar menú ' + menu.name">
+          <span class="material-icons" aria-hidden="true">edit</span>
+          <span>Editar</span>
+        </button>
+        <button class="menus-table__button menus-table__button--delete" (click)="handleDeleteClick(menu)"
+          [attr.aria-label]="'Eliminar menú ' + menu.name">
+          <span class="material-icons" aria-hidden="true">delete</span>
+          <span>Eliminar</span>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
