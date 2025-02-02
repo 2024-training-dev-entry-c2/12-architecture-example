@@ -11,6 +11,10 @@ export const routes: Routes = [
         path: '',
         component: TestComponent,
       },
+      {
+        path: 'customers',
+        loadChildren: () => import('customer').then((m) => m.customerRoutes),
+      },
     ],
   },
 ];
