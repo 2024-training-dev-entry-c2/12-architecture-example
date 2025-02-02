@@ -3,10 +3,11 @@ import { Component, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ModalComponent } from 'shared';
 import { CreateCustomerUseCase } from '../../../../application/create-customer.usecase';
+import { DeleteCustomerUseCase } from '../../../../application/delete-customer.usecase';
 import { GetCustomersUseCase } from '../../../../application/get-customers.usecase';
 import { UpdateCustomerUseCase } from '../../../../application/update-customer.usecase';
 import { ICustomer } from '../../../../domain/models/customer.model';
-import { ListCustomersComponent } from "../../components/list-customers/list-customers.component";
+import { ListCustomersComponent } from '../../components/list-customers/list-customers.component';
 
 @Component({
   selector: 'lib-customers-container',
@@ -14,15 +15,16 @@ import { ListCustomersComponent } from "../../components/list-customers/list-cus
   templateUrl: './customers-container.component.html',
 })
 export class CustomersContainerComponent {
-customers(): ICustomer[] {
-throw new Error('Method not implemented.');
-}
-selectCustomer($event: Event) {
-throw new Error('Method not implemented.');
-}
+  customers(): ICustomer[] {
+    throw new Error('Method not implemented.');
+  }
+  selectCustomer($event: Event) {
+    throw new Error('Method not implemented.');
+  }
   private readonly _getUseCase = inject(GetCustomersUseCase);
   private readonly _createUseCase = inject(CreateCustomerUseCase);
   private readonly _updateUseCase = inject(UpdateCustomerUseCase);
+  private readonly _deleteUseCase = inject(DeleteCustomerUseCase);
 
   public customers$: Observable<ICustomer[]>;
   public currentCustomer$: Observable<ICustomer>;
@@ -32,6 +34,7 @@ throw new Error('Method not implemented.');
     this._getUseCase.initSubscriptions();
     this._createUseCase.initSubscriptions();
     this._updateUseCase.initSubscriptions();
+    this._deleteUseCase.initSubscriptions();
 
     this._getUseCase.execute();
 
@@ -43,6 +46,7 @@ throw new Error('Method not implemented.');
     this._getUseCase.destroySubscriptions();
     this._createUseCase.destroySubscriptions();
     this._updateUseCase.destroySubscriptions();
+    this._deleteUseCase.destroySubscriptions();
   }
   //#endregion
 
@@ -63,5 +67,21 @@ throw new Error('Method not implemented.');
   handleSelectCustomer(customerId: number) {
     this._updateUseCase.selectCustomer(customerId);
   }
+
+  handleDeleteCustomer({
+    customerId,
+    modal,
+  }: {
+    customerId: number;
+    modal: ModalComponent;
+  }) {
+    this._deleteUseCase.execute(customerId, modal).subscribe({
+      error: (error) => {
+        console.error('Error deleting customer:', error);
+        // Handle error (show message, etc.)
+      },
+    });
+  }
+
   // #endregion
 }
