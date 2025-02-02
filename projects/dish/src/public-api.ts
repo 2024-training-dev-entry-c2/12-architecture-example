@@ -1,6 +1,1 @@
-/*
- * Public API Surface of dish
- */
-
-export * from './lib/dish.service';
-export * from './lib/dish.component';
+export { dishRoutes } from './infrastructure/ui/routes/dish.routes';
