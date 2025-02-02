@@ -1,17 +1,17 @@
 import { inject, Injectable } from "@angular/core";
 import { map, Observable, Subscription, tap } from "rxjs";
+import { CapitalizeFirstPipe } from "shared";
 import { IMenu } from "../../domain/model/menu.model";
 import { State } from "../../domain/state";
 import { GetAllService } from "../../infrastructure/services/menu/get-all.service";
-import { CapitalizeFirstPipe } from "shared";
 
 @Injectable({
   providedIn: 'root'
 })
 export class GetMenusUsecase {
-  private capitalizeFirstPipe = new CapitalizeFirstPipe();
   private readonly _service = inject(GetAllService);
   private readonly _state = inject(State);
+  private capitalizeFirstPipe = new CapitalizeFirstPipe();
   private subscriptions: Subscription;
 
   //#region Observables

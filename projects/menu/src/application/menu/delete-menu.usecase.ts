@@ -1,5 +1,5 @@
 import { inject, Injectable } from "@angular/core";
-import { Observable, Subscription, tap } from "rxjs";
+import { finalize, Observable, Subscription, tap } from "rxjs";
 import { State } from "../../domain/state";
 import { DeleteService } from "../../infrastructure/services/menu/delete.service";
 
@@ -32,7 +32,8 @@ export class DeleteMenuUsecase {
         this._state.menus.message.set(result.message);
         const currentMenus = this._state.menus.listMenus.snapshot();
         this._state.menus.listMenus.set(currentMenus.filter(menu => menu.id !== menuId));
-      })
+      }),
+      finalize(() => this._state.menus.message.set(null))
     ).subscribe();
   }
   //#endregion
