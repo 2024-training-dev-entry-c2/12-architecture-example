@@ -1,10 +1,9 @@
 import { inject, Injectable } from '@angular/core';
-import { CreateCustomerService } from '../infrastructure/services/create-customer.service';
-import { State } from '../domain/state';
 import { Subscription, tap } from 'rxjs';
 import { ModalComponent } from 'shared';
-import { ICustomerCreateRequest } from '../domain/models/customer.model';
-import { CustomersState } from '../domain/state/customers.state';
+import { ICustomer } from '../domain/models/customer.model';
+import { State } from '../domain/state';
+import { CreateCustomerService } from '../infrastructure/services/create-customer.service';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +22,7 @@ export class CreateCustomerUseCase {
     this.subscriptions.unsubscribe();
   }
 
-  execute(customer: ICustomerCreateRequest, modal: ModalComponent): void {
+  execute(customer: ICustomer, modal: ModalComponent): void {
     this.initSubscriptions();
     this.subscriptions.add(
       this._service
