@@ -1,0 +1,55 @@
+<lib-modal action="Crear Plato" #modal>
+  <lib-dish-form [dish]="currentDish()" (onSubmit)="handleSubmit($event)"></lib-dish-form>
+</lib-modal>
+
+<lib-modal action="Eliminar" #deleteModal>
+  <div class="confirmation-dialog">
+    <h2 class="confirmation-dialog__title">Confirmar eliminación</h2>
+    <p class="confirmation-dialog__message">
+      ¿Está seguro que desea eliminar el plato {{dishToDelete?.name}}?
+      Esta acción no se puede deshacer.
+    </p>
+    <div class="confirmation-dialog__actions">
+      <button class="confirmation-dialog__button confirmation-dialog__button--cancel" (click)="handleCancelDelete()"
+        aria-label="Cancelar eliminación">
+        <span class="material-icons" aria-hidden="true">close</span>
+        Cancelar
+      </button>
+      <button class="confirmation-dialog__button confirmation-dialog__button--confirm" (click)="handleConfirmDelete()"
+        aria-label="Confirmar eliminación">
+        <span class="material-icons" aria-hidden="true">delete_forever</span>
+        Eliminar
+      </button>
+    </div>
+  </div>
+</lib-modal>
+
+<table class="dishes-table" role="table" aria-label="Lista de platos">
+  <thead class="dishes-table__head">
+    <tr class="dishes-table__row">
+      <th class="dishes-table__header" scope="col">Nombre</th>
+      <th class="dishes-table__header" scope="col">Precio</th>
+      <th class="dishes-table__header" scope="col">ID Menú</th>
+      <th class="dishes-table__header" scope="col">Acciones</th>
+    </tr>
+  </thead>
+  <tbody class="dishes-table__body">
+    <tr class="dishes-table__row" *ngFor="let dish of dishes()">
+      <td class="dishes-table__cell">{{dish.name}}</td>
+      <td class="dishes-table__cell">{{dish.price | currency}}</td>
+      <td class="dishes-table__cell">{{dish.menuId}}</td>
+      <td class="dishes-table__cell dishes-table__cell--actions">
+        <button class="dishes-table__button dishes-table__button--edit" (click)="selectDish(dish.id)"
+          [attr.aria-label]="'Editar plato ' + dish.name">
+          <span class="material-icons" aria-hidden="true">edit</span>
+          <span>Editar</span>
+        </button>
+        <button class="dishes-table__button dishes-table__button--delete" (click)="handleDeleteClick(dish)"
+          [attr.aria-label]="'Eliminar plato ' + dish.name">
+          <span class="material-icons" aria-hidden="true">delete</span>
+          <span>Eliminar</span>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
