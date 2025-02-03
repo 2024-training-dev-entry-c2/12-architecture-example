@@ -1,5 +1,6 @@
 <lib-modal action="Crear Menú" #modal>
-  <lib-menu-form [menu]="currentMenu()" (onSubmit)="handleSubmit($event)"></lib-menu-form>
+  <lib-menu-form [initialMenu]="currentMenu()" (onSubmit)="handleSubmit($event)">
+  </lib-menu-form>
 </lib-modal>
 
 <lib-modal action="Eliminar" #deleteModal>
