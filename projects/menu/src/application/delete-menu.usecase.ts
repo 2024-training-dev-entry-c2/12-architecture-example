@@ -1,13 +1,13 @@
 import { inject, Injectable } from "@angular/core";
-import { DeleteClientService } from "../infrastructure/services/delete-client.service";
 import { State } from "../domain/state";
 import { Subscription, tap } from "rxjs";
+import { DeleteMenuService } from "../infrastructure/services/delete-menu.service";
 
 @Injectable({
     providedIn: 'root'
 })
-export class DeleteClientUseCase {
-    private readonly _service = inject(DeleteClientService);
+export class DeleteMenuUseCase {
+    private readonly _service = inject(DeleteMenuService);
     private readonly _state = inject(State);
     private subscriptions: Subscription;
 
@@ -20,12 +20,12 @@ export class DeleteClientUseCase {
         this.subscriptions.unsubscribe();
     }
 
-    execute(clientId: number) {
+    execute(menuId: number) {
         this.subscriptions.add(
-            this._service.execute(clientId).pipe(
+            this._service.execute(menuId).pipe(
                 tap(result => {
-                    const currentClients = this._state.clients.showClients.snapshot();
-                    this._state.clients.showClients.set(currentClients.filter(c => c.id !== clientId));
+                    const currentMenus = this._state.menu.showMenus.snapshot();
+                    this._state.menu.showMenus.set(currentMenus.filter(c => c.id !== menuId));
                 })
             ).subscribe()
         );

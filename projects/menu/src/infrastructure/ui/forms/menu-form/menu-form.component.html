@@ -3,12 +3,13 @@
     <h3 id="form-title" class="form__title">{{ form.getRawValue().id ? 'Actualizar' : 'Crear'}}</h3>
     <div class="form__group">
         @for (control of controls; track $index) {
-        <lib-input 
-        [formControlName]="control.controlName" 
-        [formGroup]="form" 
-        [text]="control.text"
-        [type]="control.inputType" 
-        [placeholder]="control.placeholder" />
+        @if (control.type === 'textarea') {
+        <lib-textarea [formControlName]="control.controlName" [formGroup]="form"
+            [placeholder]="control.placeholder" [span]="control.text"></lib-textarea>
+        } @else {
+            <lib-input [formControlName]="control.controlName" [formGroup]="form" [text]="control.text"
+            [type]="control.inputType" [placeholder]="control.placeholder" />
+        }
         }
     </div>
     <h3 id="form-message" class="form__message">{{ message() }}</h3>

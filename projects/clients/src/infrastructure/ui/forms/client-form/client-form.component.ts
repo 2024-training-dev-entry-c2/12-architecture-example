@@ -1,10 +1,8 @@
-import { Component, inject, Input, input, OnDestroy, OnInit, output } from '@angular/core';
+import { Component, inject, Input, input, OnInit, output } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { IClient } from '../../../../domain/model/client.model';
-import { IControls } from 'shared';
-import { InputComponent } from 'shared';
+import { IControls, InputComponent } from 'shared';
 import { CommonModule } from '@angular/common';
-import { ModalUseCase } from '../../../../application/modal.usecase';
 import { Observable } from 'rxjs';
 
 @Component({

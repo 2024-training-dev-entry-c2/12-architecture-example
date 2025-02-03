@@ -1,0 +1,13 @@
+<lib-animation-wrapper>
+    <lib-table [title]="'Menú'" [data]="menus$ | async" [columns]="columns" (openModal)="openModal($event)"
+        (update)="updateMenuById($event)" (delete)="deleteMenuById($event)"></lib-table>
+
+    <lib-modal [open]="isModalOpen$ | async" (close)="openModal($event)">
+        <lib-menu-form 
+        [menu]="(selectedMenu$ | async)" 
+        (onSubmit)="submit($event)" 
+        [_isOpen]="isModalOpen$"
+        [message]="message$ | async"
+        ></lib-menu-form>
+    </lib-modal>
+</lib-animation-wrapper>

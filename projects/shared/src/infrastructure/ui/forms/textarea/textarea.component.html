@@ -1,5 +1,5 @@
 <label class="label" [formGroup]="formGroup()" aria-labelledby="label-title">
-    <span id="label-title" class="label__text">{{span()}}</span>
+    <span id="label-title" class="label__span">{{span()}}</span>
     <textarea class="label__input" formControlName="{{formControlName()}}" [placeholder]="placeholder()" aria-labelledby="label-title"></textarea>
     <span class="label__error" aria-live="polite">
         @if (notValid()) {
