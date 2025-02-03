@@ -7,7 +7,7 @@ describe('HomeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HomeComponent],
+      imports: [HomeComponent],  // Importar HomeComponent en lugar de declararlo
     }).compileComponents();
 
     fixture = TestBed.createComponent(HomeComponent);

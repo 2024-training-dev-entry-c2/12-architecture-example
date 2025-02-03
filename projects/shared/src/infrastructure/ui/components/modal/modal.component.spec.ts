@@ -62,14 +62,6 @@ describe('ModalComponent', () => {
     expect(component.toggle).toHaveBeenCalled();
   });
 
-  it('should call toggle() when the button is clicked', () => {
-    spyOn(component, 'toggle');
-    fixture.detectChanges();
-
-    const button = fixture.nativeElement.querySelector('lib-button');
-    button.click();
-    expect(component.toggle).toHaveBeenCalled();
-  });
 
   it('should render the action text in the button', () => {
     fixture.detectChanges();

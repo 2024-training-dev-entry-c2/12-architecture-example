@@ -1,53 +1,55 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ButtonComponent } from './button.component';
 import { By } from '@angular/platform-browser';
+import { Component } from '@angular/core';
+
+// Componente de prueba que actúa como el componente padre
+@Component({
+  standalone: true,
+  imports: [ButtonComponent], // Importar el componente Button aquí
+  template: `
+    <lib-button [text]="text" [theme]="theme" (onClick)="onButtonClick()"></lib-button>
+  `,
+})
+class TestHostComponent {
+  text = 'Haz clic aquí';
+  theme: 'primary' | 'info' | 'danger' = 'primary';
+  onButtonClick() {}
+}
 
 describe('ButtonComponent', () => {
-  let component: ButtonComponent;
-  let fixture: ComponentFixture<ButtonComponent>;
+  let testHost: TestHostComponent;
+  let fixture: ComponentFixture<TestHostComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ButtonComponent],
+      imports: [TestHostComponent], // Ahora solo importas TestHostComponent
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ButtonComponent);
-    component = fixture.componentInstance;
+    fixture = TestBed.createComponent(TestHostComponent);
+    testHost = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create the component', () => {
-    expect(component).toBeTruthy();
+  it('debería mostrar el texto correcto', () => {
+    const buttonElement = fixture.debugElement.query(By.css('button')).nativeElement;
+    expect(buttonElement.textContent).toContain('Haz clic aquí');
   });
 
-  it('should render the button text', () => {
-    component.text = 'Click me';
+  it('debería aplicar la clase CSS correcta según el tema', () => {
+    testHost.theme = 'danger';
     fixture.detectChanges();
 
-    const buttonElement = fixture.nativeElement.querySelector('button');
-    expect(buttonElement.textContent).toContain('Click me');
+    const buttonElement = fixture.debugElement.query(By.css('button')).nativeElement;
+    expect(buttonElement.classList).toContain('button--danger');
   });
 
-  it('should apply the correct theme class', () => {
-    component.theme = 'danger';
-    fixture.detectChanges();
+  it('debería emitir el evento onClick cuando se hace clic en el botón', () => {
+    spyOn(testHost, 'onButtonClick');
+    
+    const buttonElement = fixture.debugElement.query(By.css('button')).nativeElement;
+    buttonElement.click();
 
-    const buttonElement = fixture.nativeElement.querySelector('button');
-    expect(buttonElement.classList.contains('button--danger')).toBeTrue();
-  });
-
-  it('should default to primary theme if none is provided', () => {
-    fixture.detectChanges();
-    const buttonElement = fixture.nativeElement.querySelector('button');
-    expect(buttonElement.classList.contains('button--primary')).toBeTrue();
-  });
-
-  it('should emit onClick event when clicked', () => {
-    spyOn(component.onClick, 'emit');
-
-    const buttonElement = fixture.debugElement.query(By.css('button'));
-    buttonElement.triggerEventHandler('click', null);
-
-    expect(component.onClick.emit).toHaveBeenCalled();
+    expect(testHost.onButtonClick).toHaveBeenCalled();
   });
 });

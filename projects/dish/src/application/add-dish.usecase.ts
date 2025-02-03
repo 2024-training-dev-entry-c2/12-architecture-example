@@ -32,13 +32,12 @@ export class AddDishUsecase {
   }
 
   execute(dish: Partial<IDish>, modal:ModalComponent): void {
-    this.initSubscriptions();
     this.subscriptions.add(
       this._service.create(dish).pipe(
-        tap((dish) => {
+        tap((result) => {
             console.log(`Plato ${dish} creado`);
             const dishes = this._state.dishes.allDishes.snapshot();
-            this._state.dishes.allDishes.set([...dishes, dish]);
+            this._state.dishes.allDishes.set([...dishes, result]);
             modal.toggle();
         }),
       ).subscribe()

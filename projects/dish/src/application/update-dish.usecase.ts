@@ -30,19 +30,13 @@ export class UpdateDishUsecase {
   }
 
   execute(dish: IDish, modal: ModalComponent): void {
-    this.initSubscriptions();
     this.subscriptions.add(
       this._service.execute(dish).pipe(
         tap((updatedDish) => {
           const dishes = this._state.dishes.allDishes.snapshot();
-          const selectedMenu = this._state.dishes.allMenus.snapshot().find(menu => menu.id === updatedDish.menu.id);
-          if (selectedMenu) {
-            updatedDish.menu = selectedMenu;
-          }
-          const updatedDishes = dishes.map(d => 
-            d.id === updatedDish.id ? { ...d, ...updatedDish } : d
-          );
-          this._state.dishes.allDishes.set(updatedDishes);
+          const updatedDishes = dishes.map(d => d.id === updatedDish.id ? updatedDish : d);
+          this._state.dishes.allDishes.set(dishes);
+          console.log(updatedDishes);
           modal.toggle();
         }),
       ).subscribe()
@@ -51,11 +45,7 @@ export class UpdateDishUsecase {
 
   selectDish(id: number): void {
     const currentDish = this._state.dishes.allDishes.snapshot().find(dish => dish.id === id);
-    if(currentDish) {
-      this._state.dishes.currentDish.set(currentDish);
-    } else {
-      this._state.dishes.currentDish.set(null);
-    }
+    this._state.dishes.currentDish.set(currentDish);
   }
   //#endregion
 
