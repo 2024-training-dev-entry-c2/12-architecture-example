@@ -2,42 +2,57 @@
 @use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
 
 .form {
-    @include mixins.form(center, 40px, 30px);
-    @include mixins.styleContainer(#615A57, variables.$colorWhite, 30px, 20px);
-    width: 520px;
-    height: 500px;
+  @include mixins.form(center, 1.5rem, 2rem);
+  @include mixins.styleContainer(variables.$colorWhite,variables.$colorDarkGray,2rem,8px);
+  max-width: 400px;
+  margin: 3% auto 0;
 
-    &__title {
-        font-size: 27px;
+  &__label {
+    @include mixins.contColumn(0.5rem, 0);
+    width: 100%;
+    
+    span {
+      font-weight: 500;
+      color: variables.$colorDarkGray;
+    }
+  }
+
+  &__input {
+    @include mixins.styleContainer(variables.$colorLightBeige,variables.$colorBlack,0.75rem,4px);
+    
+    border: 1px solid variables.$colorMediumGray;
+    width: 100%;
+    transition: border-color 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: variables.$colorDarkGray;
     }
 
-    &__label {
-        display: flex;
-        gap: 15px
+    &[aria-required="true"] {
+      border-left: 3px solid variables.$colorDarkGray;
+    }
+  }
+
+  &__button {
+    @include mixins.button;
+    @include mixins.styleContainer(
+      variables.$colorDarkGray,
+      variables.$colorWhite,
+      0.75rem 1.5rem,
+      4px
+    );
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 1rem;
+
+    &:hover {
+      background-color: lighten(variables.$colorDarkGray, 10%);
     }
 
-    &__input {
-        border-radius: 5px;
-        width: 250px;
-        height: 25px;
-        border: 1px solid #ccc;
-
-        &:focus {
-            outline: none;
-            border-color: white;
-            box-shadow: 0 0 10px black;
-        }
+    &:focus {
+      outline: 2px solid variables.$colorMediumGray;
     }
-
-    &__button {
-        border: 1px solid #ccc;
-        font-size: 15px;
-        font-weight: 600;
-        cursor: pointer;
-        @include mixins.styleContainer(#F0E7E4,#000000, 10px 22px 10px 22px,40px);
-        &:hover{
-            @include mixins.styleContainer(#888888,#FFFFFF, 10px 22px 10px 22px,40px);
-        }
-    }
-
+  }
 }

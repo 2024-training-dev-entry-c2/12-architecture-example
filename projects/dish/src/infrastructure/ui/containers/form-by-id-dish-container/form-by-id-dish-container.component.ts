@@ -10,7 +10,7 @@ import { AsyncPipe, NgIf } from '@angular/common';
   selector: 'lib-form-by-id-dish-container',
   imports: [FormByIdDishComponent, GetByIdDishCompComponent, AsyncPipe],
   templateUrl: './form-by-id-dish-container.component.html',
-  styleUrl: './form-by-id-dish-container.component.scss'
+  styles: ''
 })
 export class FormByIdDishContainerComponent implements OnInit, OnDestroy{
 

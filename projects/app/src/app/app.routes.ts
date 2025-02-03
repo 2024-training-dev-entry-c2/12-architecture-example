@@ -8,6 +8,11 @@ export const routes: Routes = [
     component: MainLayoutComponent,
     children:[
       {
+        path: '', 
+        redirectTo: 'menus', 
+        pathMatch: 'full' 
+      },
+      {
         path: 'clientes',
         loadChildren: () => import('../../../client/src/infrastructure/ui/routes/clients.routes').then((ClientstRoutes)=>ClientstRoutes.routes)
       },
@@ -24,11 +29,5 @@ export const routes: Routes = [
         loadChildren: () => import('../../../order/src/infrastructure/ui/routes/order.routes').then((OrdersRoutes)=>OrdersRoutes.routes)
       }
     ]
-    // loadChildren: () => import('../../../shared/src/infrastructure/ui/routes/layout.routes').then((LayoutRoutes)=>LayoutRoutes.routes)
   }
-
-  // {
-  //   path: '',
-  //   loadChildren: () => import('home').then(m => m.homeRoutes)
-  // }
 ];

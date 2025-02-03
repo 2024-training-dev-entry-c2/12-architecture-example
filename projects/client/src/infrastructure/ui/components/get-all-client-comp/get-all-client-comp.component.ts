@@ -8,13 +8,12 @@ import { RouterLink } from '@angular/router';
   templateUrl: './get-all-client-comp.component.html',
   styleUrl: './get-all-client-comp.component.scss'
 })
+
 export class GetAllClientCompComponent {
   clients = input<IClient[]>();
   items = input<string[]>();
   public onDeleteClient = output<number>();
   public onUpdateClient = output<number>();
-
-    // private router = inject(Router);
 
   deleteClient(id:number){
     this.onDeleteClient.emit(id);
@@ -23,9 +22,5 @@ export class GetAllClientCompComponent {
   updateClient(id:number){
     this.onUpdateClient.emit(id);
   }
-
-  // saveClient(){
-  //   this.router.navigate(['clientes/agregar']);
-  // }
 
 }

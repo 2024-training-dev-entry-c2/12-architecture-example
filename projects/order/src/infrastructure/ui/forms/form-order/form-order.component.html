@@ -7,7 +7,7 @@
 
     <div formArrayName="detalles" class="form__details">
         <h4 class="form__subtitle">Detalles</h4>
-        <div *ngFor="let detalle of detalles.controls; let i = index" [formGroupName]="i" class="form__detalle">
+        <div *ngFor="let detalle of detalles.controls; let i = index" [formGroupName]="i" class="form__detail">
             <label class="form__label">
                 <span>ID Plato:</span>
                 <input type="text" formControlName="idPlato" class="form__input">

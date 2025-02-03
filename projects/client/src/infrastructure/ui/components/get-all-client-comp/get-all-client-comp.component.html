@@ -1,9 +1,6 @@
 <section class="get-all-client">
     <h1 class="get-all-client__title">CLIENTES</h1>
 
-    <!-- <button (click)="saveClient()">Agregar</button> -->
-    <!-- <p>HOLAAAAAAAAAAAAAAAAAA</p> -->
-
     <article class="get-all-client__info" aria-label="clients information">
         <table class="get-all-client__table">
             <thead>
@@ -26,7 +23,6 @@
                         <div class="get-all-client__buttons">
                             <button role="button" aria-label="update client" class="get-all-client__button" (click)="updateClient(client.id)">Actualizar </button>
                             <button class="get-all-client__button--secundary" (click)="deleteClient(client.id)">Eliminar</button>
-                            <!-- <a role="button" aria-label="delete client" class="get-all-client__button--secundary" [routerLink]="['eliminar', client.id]">Eliminar</a> -->
                         </div>
                     </td>
                 </tr>
@@ -35,4 +31,3 @@
         </table>
     </article>
 </section>
-<!-- [routerLink]="['actualizar', client.id]" -->

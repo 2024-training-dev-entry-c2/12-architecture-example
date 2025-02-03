@@ -1,11 +1,11 @@
-<article class="get-by-id__order-info" aria-label="info">
-    <h3 class="get-by-id__order-title">Pedido ID: {{ order.id }}</h3>
+<article class="get-by-id-order" aria-label="info">
+    <h3 class="get-by-id-order__title">Pedido ID: {{ order.id }}</h3>
     <p><strong>Cliente ID:</strong> {{ order.idCliente }}</p>
     @if(order.detalles) {
-    <h4 aria-label="datails" class="get-by-id__datails-title">Detalles:</h4>
+    <h4 aria-label="datails" class="get-by-id-order__datails-title">Detalles:</h4>
     <div>
         @for (detalle of order.detalles; track $index) {
-        <div class="get-by-id__detail">
+        <div class="get-by-id-order__detail">
             <p><strong>Plato:</strong> {{ detalle.nombrePlato }}</p>
             <p><strong>Cantidad:</strong> {{ detalle.cantidad }}</p>
             <p><strong>Precio del plato:</strong> {{ detalle.precio | currency }}</p>

@@ -14,8 +14,6 @@ export class GetAllDishCompComponent {
   public onDeleteDish = output<number>();
   public onUpdateDish = output<number>();
 
-  // private router = inject(Router);
-
   deleteDish(id: number) {
     this.onDeleteDish.emit(id);
   }

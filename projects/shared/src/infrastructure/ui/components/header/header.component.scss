@@ -1,27 +1,99 @@
 @use '../../styles/mixins.scss' as mixins;
 @use '../../styles/variables.scss' as variables;
 
-.header{
-    @include mixins.contLine(space-between);
-    @include mixins.styleContainer(variables.$colorLightBeige,#000000, 30px, 10px);
+.header {
+  @include mixins.contLine(space-between);
+  @include mixins.styleContainer(
+    variables.$colorLightBeige,
+    variables.$colorDarkGray,
+    1.5rem 3rem,
+    0
+  );
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-radius: 11px;
+
+  &__left {
+    @include mixins.contLine(center);
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+  }
+
+  &__logo {
+    width: 80px;
+    height: auto;
+    transition: transform 0.3s ease;
     
-    &__restaurant-name{
-        text-decoration: none;
-        font-size: 40px;
-        color: #000000;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__restaurant-name {
+    text-decoration: none;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: variables.$colorDarkGray;
+    position: relative;
+    transition: color 0.3s ease;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: variables.$colorDarkGray;
+      transition: width 0.3s ease;
     }
 
-    &__options{
-        @include mixins.contLine(space-between);
-        gap: 60px;
-        list-style: none;
+    &:hover {
+      color: lighten(variables.$colorDarkGray, 15%);
+      
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &__options {
+    @include mixins.contLine(center);
+    gap: 3rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__option {
+    @include mixins.button;
+    @include mixins.styleContainer(
+      transparent,
+      variables.$colorDarkGray,
+      0.75rem 1.5rem,
+      30px
+    );
+    text-decoration: none;
+    font-weight: 500;
+    position: relative;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+
+    &:hover {
+      @include mixins.styleContainer(
+        variables.$colorMediumGray,
+        variables.$colorWhite,
+        0.75rem 1.5rem,
+        30px
+      );
+      transform: translateY(-2px);
+      box-shadow: 0 3px 8px rgba(variables.$colorBlack, 0.15);
     }
 
-    &__option{
-        @include mixins.button();
-        &:hover{
-            @include mixins.styleContainer(#888888,#FFFFFF, 10px 22px 10px 22px,40px);
-        }
+    &[aria-current="page"] {
+      border-color: variables.$colorDarkGray;
+      font-weight: 600;
     }
-
+  }
 }

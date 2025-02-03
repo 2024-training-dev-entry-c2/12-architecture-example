@@ -1,0 +1,46 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
+
+.get-by-id-order {
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  &__datails-title {
+    font-size: 1.2rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  &__detail {
+    @include mixins.contColumn(0.5rem, 0px);
+    background-color: lighten(variables.$colorLightBeige, 5%);
+    border: 1px solid variables.$colorMediumGray;
+    border-radius: 4px;
+    padding: 1rem;
+    margin-bottom: 1rem; 
+
+    p {
+      margin: 0;
+    }
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid variables.$colorMediumGray;
+    margin: 1rem 0;
+  }
+
+  &__info {
+    margin-top: 50px;
+    @include mixins.styleContainer(variables.$colorLightBeige, variables.$colorDarkGray, 20px, 10px);
+    border: 1px solid variables.$colorMediumGray;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+  }
+}
+
