@@ -1,0 +1,23 @@
+@use '../../styles/variables.scss' as variables;
+
+:host {
+  display: block;
+}
+
+.link{
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  font-size: 1rem;
+  padding: .5rem 1rem;
+  color: variables.$soft-light;
+  margin: .25rem;
+  border-radius: .5rem;
+  transition: .5s all;
+
+  &:hover{
+    color: variables.$soft-light;
+    background-color: variables.$link-hover;
+    transform: scale(1.1);
+  }
+}

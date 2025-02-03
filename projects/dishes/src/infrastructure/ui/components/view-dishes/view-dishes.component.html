@@ -1,0 +1,8 @@
+<main class="dishes">
+  <header class="dishes__header">
+    <h1>Platos</h1>
+  </header>
+  <section class="dishes__content">
+    <lib-box [columns]="headers()" [dishes]="dishes" isDishes="true" (onDeleteDishes)="handleDelete($event)"  />
+  </section>
+</main>

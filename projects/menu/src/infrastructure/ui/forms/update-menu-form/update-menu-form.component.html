@@ -1,0 +1,9 @@
+<main class="form">
+  <form [formGroup]="updateMenuForm" (submit)="onSubmit()">
+    @for (item of inputs; track $index) {
+      <lib-input [data]="item"></lib-input>
+    }
+    <button [disabled]="!updateMenuForm.valid" type="submit" class="form__btn">Guardar</button>
+  </form>
+</main>
+

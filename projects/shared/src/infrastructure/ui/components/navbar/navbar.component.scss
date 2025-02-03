@@ -1,0 +1,38 @@
+@use '../../styles/variables.scss' as variables;
+
+:host {
+  display: block;
+}
+
+.menu{
+
+  width: 100%;
+  min-height: 100%;
+  display: grid;
+  grid-template-rows: repeat(12, 1fr);
+
+
+  &__logo{
+    margin-bottom: 1rem;
+    font-size: 28px;
+    font-weight: 700;
+    color: variables.$soft-light;
+  }
+  &__wrapper{
+    display: grid;
+    grid-row-start: 2;
+  }
+  &__item{
+    width: 100%;
+    list-style: none;
+    transition: .3s all;
+    border-radius: 5px;
+
+    &:hover{
+      transform: translateX(15px);
+    }
+
+  }
+
+}
+

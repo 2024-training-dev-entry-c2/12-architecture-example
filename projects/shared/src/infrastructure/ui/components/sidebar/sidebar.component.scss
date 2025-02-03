@@ -1,0 +1,20 @@
+@use '../../styles/variables.scss' as variables;
+
+:host {
+  display: block;
+}
+
+.sidebar{
+  height: 100dvh;
+  width: 100%;
+  padding: 1rem;
+  position: relative;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  background-color: variables.$primary-red;
+  z-index: 10;
+  border-radius: 0px 1rem 75px 0px;
+  box-shadow: 0px 0px 10px 0px rgba(variables.$primary-dark,0.6);
+
+}

@@ -1,0 +1,60 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
+
+:host {
+  display: block;
+}
+
+.orders {
+  display: grid;
+  grid-template-columns: 1fr;
+  height: 65vh;
+  padding: 1rem;
+  margin-block: 1rem;
+  overflow: hidden;
+
+  &__header{
+    @include mixins.header-page();
+  }
+
+  &__title{
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    overflow-y: scroll;
+
+    &__item {
+      background-color: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 1rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      p {
+        margin: 0.25rem 0;
+        font-size: 0.9rem;
+      }
+
+      menu {
+        padding-left: 1.5rem;
+        margin: 0.5rem 0;
+
+        li {
+          font-size: 0.85rem;
+        }
+      }
+    }
+  }
+}
