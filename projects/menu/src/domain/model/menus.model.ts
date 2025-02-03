@@ -7,6 +7,10 @@ export interface IMenu {
 export interface IDish {
     idDish: number;
     dishName: string;
+    price: number;
+    description: string;
+    isPopular: boolean;
+    idMenu: number;
 }
   
 export interface IMenuResponse {

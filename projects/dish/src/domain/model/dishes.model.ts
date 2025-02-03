@@ -9,6 +9,8 @@ export interface IDish {
     dishName: string;
     price: number;
     description: string;
+    isPopular: boolean;
+    idMenu: number;
 }
   
 export interface IMenuResponse {

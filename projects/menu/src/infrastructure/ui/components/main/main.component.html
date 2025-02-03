@@ -23,10 +23,18 @@
                                         <use xlink:href="svg/food.svg#food"></use>
                                     </svg>
                                 </i>
-                                {{ dish.dishName }}
+                                {{"Plato: " + dish.dishName }} <br> - {{"Precio: " + dish.price }} <br> -
+                                {{"Descripción: " + dish.description}}
+                                <button class="panel__button panel__button--edit"
+                                    (click)="editDish(menu.idMenu, dish)">Editar</button>
+                                <button class="panel__button panel__button--delete"
+                                    (click)="deleteDish(menu.idMenu, dish.idDish)">Eliminar</button>
                             </li>
+                            <hr class="panel__hr">
                             }
                         </ul>
+                        <button class="panel__button panel__button--add" (click)="addDish(menu.idMenu)">Agregar
+                            Plato</button>
                     </div>
                 </td>
                 <td class="menu__action">
@@ -47,3 +55,6 @@
         </tbody>
     </table>
 </main>
+
+<lib-dish-modal [isVisible]="isModalVisible" [dish]="currentDish" [isEditMode]="isEditMode" [modalTitle]="modalTitle"
+    [modalButton]="modalButton" (close)="closeModal()" (submit)="submitDish($event)"></lib-dish-modal>

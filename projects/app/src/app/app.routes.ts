@@ -12,10 +12,11 @@ export const routes: Routes = [
         component: MainLayoutComponent,
         loadChildren: () => import('client').then(m => m.clientRoutes),
     },
-    // {
-    //     path: 'dishes',
-    //     loadChildren: () => import('dish').then(m => m.dishRoutes)
-    // },
+    {
+        path: 'dishes',
+        component: MainLayoutComponent,
+        loadChildren: () => import('dish').then(m => m.dishRoutes),
+    },
     {
         path: 'orders',
         component: MainLayoutComponent,

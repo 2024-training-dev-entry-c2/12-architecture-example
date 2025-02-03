@@ -108,8 +108,6 @@ export class OrderMainComponent {
 
   editOrderItem(orderId: number, orderItem: IOrderItem): void {
     this.openModal('edit', orderId, orderItem);
-    // this.updateOrderItemUseCase.updateOrderItem(orderId, orderItem.idOrderItem, orderItem);
-
   }
 
   submitOrderItem(orderItem: IOrderItem): void {
@@ -120,7 +118,6 @@ export class OrderMainComponent {
       this.createOrderItemUseCase.addOrderItem(this.selectedOrderId(), orderItem);
       this.loadOrders();
     }
-    
     this.closeModal();
   }
 
