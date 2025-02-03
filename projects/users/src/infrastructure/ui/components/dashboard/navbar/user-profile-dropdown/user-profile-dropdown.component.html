@@ -2,7 +2,7 @@
     <div class="user-profile-dropdown__header">
         <h2 id="user-profile-dropdown-title" class="visually-hidden">User Profile Menu</h2>
         <span>Signed in as</span>
-        <span class="user-profile-dropdown__email" aria-live="polite">{{ userEmail }}</span>
+        <span class="user-profile-dropdown__email" aria-live="polite">{{ userEmail | uppercase }}</span>
     </div>
     <hr>
     <ul class="user-profile-dropdown__list">

@@ -2,10 +2,11 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthSharedService } from 'shared';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'lib-user-profile-dropdown',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './user-profile-dropdown.component.html',
   styleUrl: './user-profile-dropdown.component.scss'
 })
