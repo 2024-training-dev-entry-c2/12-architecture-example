@@ -1,5 +1,5 @@
 @use "../../../../../../shared/src/insfrastructure/ui/styles/variables.scss" as var;
-@use "../../../../../../shared/src/insfrastructure/ui/styles/mixins.scss";
+@use "../../../../../../shared/src/insfrastructure/ui/styles/mixins.scss" as mix;
 
 .modal {
   position: fixed;
@@ -8,7 +8,7 @@
   width: 100dvw;
   height: 100dvh;
   background-color: rgba(0, 0, 0, 0.5);
-  @include flex-center;
+  @include mix.flex-center;
   z-index: 10;
 
   &--visible {
