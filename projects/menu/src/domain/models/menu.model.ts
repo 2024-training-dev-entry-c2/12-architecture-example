@@ -7,9 +7,9 @@ export interface IMenu {
   dishes: IDish[];
 }
 
-export interface IMenuResponse {
-  menuId: number;
+export interface IMenuFormDto {
+  menuId: number | null;
   name: string;
   description: string;
-  dishesIds: number[];
+  dishIds: number[];
 }
