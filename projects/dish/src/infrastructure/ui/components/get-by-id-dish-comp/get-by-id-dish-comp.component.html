@@ -1,0 +1,14 @@
+<article class="get-by-id-dish">
+    <h3 class="get-by-id-dish__dish-title">Plato</h3>
+    <div class="get-by-id-dish__dish-container">
+        <div class="get-by-id-dish__dish-name">
+            <h4>{{ dish.nombre }}</h4>
+        </div>
+        <ul class="get-by-id-dish__dish-details" aria-label="result">
+            <li class="get-by-id-dish__dish-item"><span>Descripción:</span> {{ dish.descripcion }}</li>
+            <li class="get-by-id-dish__dish-item"><span>Precio:</span> {{ dish.precio | currency }}</li>
+            <li class="get-by-id-dish__dish-item"><span>Tipo:</span> {{ dish.tipo }}</li>
+            <li class="get-by-id-dish__dish-item"><span>ID Menú:</span> {{ dish.idMenu }}</li>
+        </ul>
+    </div>
+</article>

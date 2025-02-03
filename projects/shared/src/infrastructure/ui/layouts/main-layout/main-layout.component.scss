@@ -1,0 +1,20 @@
+.layout {
+    height: 90vh;
+
+    display: grid;
+    grid:
+        "header" auto "main" 1fr "footer" auto / 1fr;
+    gap: 8px;
+
+    &__header {
+        grid-area: header;
+    }
+    
+    &__main {
+        grid-area: main;
+    }
+    
+    &__footer {
+        grid-area: footer;
+    }
+}

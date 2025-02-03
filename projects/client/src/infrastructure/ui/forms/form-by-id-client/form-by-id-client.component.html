@@ -1,0 +1,7 @@
+<form [formGroup]="form" class="form" (ngSubmit)="Submit($event)" aria-label="form">
+    <label class="form__label">
+        <span>ID:</span>
+        <input type="text" formControlName="id" class="form__input" aria-required="true">
+    </label>
+    <button type="submit" class="form__button" aria-label="send form">Enviar</button>
+</form>

@@ -1,0 +1,16 @@
+<section class="layout-menu" aria-label="Menu layout">
+    <aside class="layout-menu__aside-left" aria-label="Sidebar">
+        <nav class="layout-menu__nav" aria-label="Main navigation">
+            <ul class="layout-menu__options" role="menubar">
+                @for(option of options; track $index){
+                <li class="layout-menu__option">
+                    <a role="button" [routerLink]="option.url">{{option.name}}</a>
+                </li>
+                }
+            </ul>
+        </nav>
+    </aside>
+    <main class="layout-menu__main" aria-label="Main content">
+        <router-outlet></router-outlet>
+    </main>
+</section>

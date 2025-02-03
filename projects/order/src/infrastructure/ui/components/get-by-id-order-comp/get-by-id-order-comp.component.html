@@ -1,0 +1,20 @@
+<article class="get-by-id-order" aria-label="info">
+    <h3 class="get-by-id-order__title">Pedido ID: {{ order.id }}</h3>
+    <p><strong>Cliente ID:</strong> {{ order.idCliente }}</p>
+    @if(order.detalles) {
+    <h4 aria-label="datails" class="get-by-id-order__datails-title">Detalles:</h4>
+    <div>
+        @for (detalle of order.detalles; track $index) {
+        <div class="get-by-id-order__detail">
+            <p><strong>Plato:</strong> {{ detalle.nombrePlato }}</p>
+            <p><strong>Cantidad:</strong> {{ detalle.cantidad }}</p>
+            <p><strong>Precio del plato:</strong> {{ detalle.precio | currency }}</p>
+        </div>
+        <hr>
+        }
+    </div>
+    <p><strong>Estado:</strong> {{ order.estado }}</p>
+    <p><strong>Fecha Pedido:</strong> {{ order.fechaPedido  }}</p>
+    <p><strong>Total:</strong> {{ order.total | currency }}</p>
+    }
+</article>

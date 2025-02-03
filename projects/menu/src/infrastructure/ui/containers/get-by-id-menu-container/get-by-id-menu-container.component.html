@@ -1,0 +1,5 @@
+<lib-form-by-id-menu (menuSubmit)="handleGetId($event)"></lib-form-by-id-menu>
+
+@if(menu) {
+  <lib-get-by-id-menu-comp [menu]="menu$ | async"></lib-get-by-id-menu-comp>
+}
