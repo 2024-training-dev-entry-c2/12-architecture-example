@@ -1,0 +1,11 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
+:host {
+  display: block;
+}
+
+.form{
+
+  &__btn{
+    @include mixins.primary-button(22%, 0, 1rem);
+  }
+}

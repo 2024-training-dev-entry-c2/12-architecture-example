@@ -18,18 +18,27 @@
     "target": "ES2022",
     "module": "ES2022",
     "paths": {
-      "admin": [
-        "./dist/admin"
-      ],
       "customers": [
         "./dist/customers"
+      ],
+      "dashboard": [
+        "./dist/dashboard"
+      ],
+      "dishes": [
+        "./dist/dishes"
+      ],
+      "home": [
+        "./dist/home"
+      ],
+      "menu": [
+        "./dist/menu"
+      ],
+      "orders": [
+        "./dist/orders"
       ],
       "shared": [
         "./dist/shared"
       ],
-      "users": [
-        "./dist/users"
-      ]
     }
   },
   "angularCompilerOptions": {

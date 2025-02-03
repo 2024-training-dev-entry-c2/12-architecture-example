@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { NavbarContainerComponent } from "../../container/navbar-container/navbar-container.component";
-import { Link } from '../../../../domain/model/link.interface';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { Link } from '../../../../domain/model/link.model';
 
 @Component({
   selector: 'lib-sidebar',
   standalone: true,
-  imports: [NavbarContainerComponent],
+  imports: [NavbarComponent],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss'
 })

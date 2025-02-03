@@ -1,0 +1,33 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
+
+:host {
+  display: block;
+}
+
+.customer{
+  width: 100%;
+  height: 100vh;
+  max-width: 100%;
+  max-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(12, 1fr);
+  gap: 0px 28px;
+  overflow: hidden;
+
+  &__header{
+    @include mixins.header-page();
+
+  }
+
+  &__content{
+    grid-row: span 10;
+    max-height: 60vh;
+    overflow: hidden;
+  }
+
+  &__btn{
+    @include mixins.primary-button(196px, 0, 2rem);
+  }
+}

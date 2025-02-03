@@ -1,0 +1,17 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
+
+:host {
+  display: block;
+}
+
+.dishes{
+
+  &__header{
+    @include mixins.header-page();
+  }
+
+  &__content{
+    position: relative;
+    top: 5rem;
+  }
+}

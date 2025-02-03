@@ -1,0 +1,4 @@
+<div [attr.aria-label]="data.aria" class="input">
+  <label class="input__label" for="{{data.name}}">{{data.title | titlecase}}</label>
+  <input class="input__content" [type]="data.type" [formControlName]="data.control" [name]="data.name" [placeholder]="data.placeholder || 'Opcional...'" />
+</div>

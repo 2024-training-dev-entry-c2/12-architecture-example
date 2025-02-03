@@ -1,0 +1,14 @@
+<main class="form">
+  <form [formGroup]="menuForm" (submit)="onSubmit()">
+    @for (item of inputs; track $index) {
+      <lib-input [data]="item"></lib-input>
+    }
+    <fieldset class="form__section" formGroupName="menu_dishes">
+      <h3 class="form__section__title">Plato</h3>
+      @for (item of dishes; track $index) {
+        <lib-input [data]="item"></lib-input>
+      }
+    </fieldset>
+    <button [disabled]="!menuForm.valid" type="submit" class="form__btn">Guardar</button>
+  </form>
+</main>

@@ -1,0 +1,9 @@
+<main class="customer">
+  <header class="customer__header">
+    <h1>Clientes</h1>
+    <button (click)="createCustomer()" class="customer__btn">Nuevo cliente</button>
+  </header>
+<section class="customer__content">
+  <lib-box [columns]="headers()" [customers]="customers"  isCustomers="true" (onDeleteCustomer)="handleDelete($event)"  />
+</section>
+</main>

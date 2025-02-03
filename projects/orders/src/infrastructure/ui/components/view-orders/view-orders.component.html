@@ -1,0 +1,22 @@
+<main class="orders">
+  <header class="orders__header">
+    <h1>Ordenes</h1>
+  </header>
+  <section class="orders__grid">
+    @for(order of orders | async; track $index) {
+      <div class="orders__grid__item">
+        <h3 class="orders__title">Orden #{{ order.id }}</h3>
+        <p><strong>Cliente:</strong> {{ order.customer }}</p>
+        <p><strong>Platos:</strong></p>
+        <menu>
+          @for(dish of order.dishes; track $index) {
+            <li>{{ dish.name }} - {{ dish.price | currency: 'USD' }}</li>
+          }
+        </menu>
+        <p><strong>Cantidad:</strong> {{ order.quantity }}</p>
+        <p><strong>Total:</strong> ${{ order.total }}</p>
+        <p><strong>Fecha:</strong> {{ order.createdAt | date }}</p>
+      </div>
+    }
+  </section>
+</main>

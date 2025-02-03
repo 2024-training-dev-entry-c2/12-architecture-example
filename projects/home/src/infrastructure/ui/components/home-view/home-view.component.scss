@@ -1,0 +1,20 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
+
+:host {
+  display: block;
+}
+.home{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  text-justify: kashida;
+
+  &__header{
+    color: variables.$header-color;
+  }
+  &__subtitle{
+    text-wrap: pretty;
+    color: variables.$secondary-orange;
+  }
+}

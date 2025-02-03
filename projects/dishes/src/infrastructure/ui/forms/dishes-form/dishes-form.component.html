@@ -1,0 +1,8 @@
+<main class="dishes__form">
+  <form [formGroup]="dishesForm" (submit)="onSubmit()">
+    @for (item of inputs; track $index) {
+      <lib-input [data]="item"></lib-input>
+    }
+    <button [disabled]="(!dishesForm.valid)" type="submit" class="dishes__btn">Guardar</button>
+  </form>
+</main>
