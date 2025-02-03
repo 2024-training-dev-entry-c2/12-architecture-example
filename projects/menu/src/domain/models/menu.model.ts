@@ -1,9 +1,4 @@
-export interface IDish {
-  id: number;
-  name: string;
-  price: number;
-  menuId: number;
-}
+import { IDish } from './dish.model';
 
 export interface IMenu {
   menuId: number;

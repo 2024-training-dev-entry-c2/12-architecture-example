@@ -1,6 +1,7 @@
 import { Component, inject, Input, input, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { IDish, IMenu } from '../../../../domain/models/menu.model';
+import { IMenu } from '../../../../domain/models/menu.model';
+import { IDish } from '../../../../domain/models/dish.model';
 
 @Component({
   selector: 'lib-menu-form',
