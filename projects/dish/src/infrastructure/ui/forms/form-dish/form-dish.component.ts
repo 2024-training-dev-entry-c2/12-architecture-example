@@ -68,7 +68,6 @@ export class FormDishComponent implements OnInit {
         active: true,
       });
     }
-    console.log('menuId', this.menuId);
   }
 
   get dishNameControl(): FormControl {

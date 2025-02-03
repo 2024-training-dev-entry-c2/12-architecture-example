@@ -59,7 +59,7 @@ export class MenusComponent implements OnInit {
     this.onSaveMenu.emit(menu);
   }
 
-  deleteMenu(idMenu: number): void {
-    this.onDelete.emit(idMenu);
+  deleteMenu(data: { id: number; index: number }): void {
+    this.onDelete.emit(data.id);
   }
 }

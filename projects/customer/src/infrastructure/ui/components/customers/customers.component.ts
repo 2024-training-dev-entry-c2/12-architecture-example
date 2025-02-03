@@ -66,7 +66,7 @@ export class CustomersComponent implements OnInit {
     this.onSaveCustomer.emit(customer);
   }
 
-  deleteCustomer(idCustomer: number): void {
-    this.onDelete.emit(idCustomer);
+  deleteCustomer(data: { id: number; index: number }): void {
+    this.onDelete.emit(data.id);
   }
 }

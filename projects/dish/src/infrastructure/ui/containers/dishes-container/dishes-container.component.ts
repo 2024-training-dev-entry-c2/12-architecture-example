@@ -48,10 +48,9 @@ export class DishesContainerComponent implements OnInit, OnDestroy {
     }
   }
 
-  deleteDish(dishId: number, index: number): void {
-    const menus = this._listUseCase.snapshotMenuResponse();
+  deleteDish(data: { dishId: number; index: number; menuId: number }): void {
     const dishes = this._listUseCase.snapshotDishResponse();
-    const dish = dishes[index].find((m) => m.id === dishId);
+    const dish = dishes[data.index].find((d) => d.id === data.dishId);
     if (!dish) {
       return;
     }
@@ -60,10 +59,10 @@ export class DishesContainerComponent implements OnInit, OnDestroy {
       description: dish.description,
       basePrice: dish.basePrice,
       isPopular: dish.isPopular,
-      menuId: menus[index].id,
+      menuId: data.menuId,
       active: false,
     };
-    this._deleteUseCase.execute(dishId, deletedDish);
+    this._deleteUseCase.execute(data.dishId, deletedDish, data.index);
   }
 
   handleSelectDish(data: { id: number; index: number }): void {

@@ -44,7 +44,7 @@
                         <button class="entity__edit-button" (click)="showUpdateDish(dish.id, idx)">
                             <fa-icon [icon]="faEdit"></fa-icon>
                         </button>
-                        <lib-delete-card [selectedId]="dish.id" [entityName]="'plato'"
+                        <lib-delete-card [selectedId]="dish.id" [index]="idx" [entityName]="'plato'"
                             (onDelete)="deleteDish($event)"></lib-delete-card>
                         <button class="entity__add-button">Añadir</button>
                     </td>

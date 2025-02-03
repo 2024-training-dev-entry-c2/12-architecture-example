@@ -25,13 +25,14 @@ export class DeleteCardComponent {
   faExclamationCircle = faExclamationCircle;
 
   @Input() public selectedId!: number;
+  @Input() public index: number = 0;
   @Input() public entityName!: string;
-  @Output() public onDelete = new EventEmitter<number>();
+  @Output() public onDelete = new EventEmitter<{ id: number; index: number }>();
 
   @ViewChild('deleteCard') deleteCard!: ElementRef<HTMLDialogElement>;
 
   delete(): void {
-    this.onDelete.emit(this.selectedId);
+    this.onDelete.emit({ id: this.selectedId, index: this.index });
     this.deleteCard.nativeElement.close();
   }
 

@@ -46,7 +46,11 @@ export class DishesComponent implements OnInit {
   @Input() public menus$: Observable<IMenuResponse[]>;
   public currentDish = input<IDishResponse>();
 
-  @Output() public onDelete = new EventEmitter<number>();
+  @Output() public onDelete = new EventEmitter<{
+    dishId: number;
+    index: number;
+    menuId: number;
+  }>();
   @Output() public onSaveDish = new EventEmitter<{
     dish: IDish;
     selectedIndex: number;
@@ -85,7 +89,12 @@ export class DishesComponent implements OnInit {
     this.onSaveDish.emit({ dish, selectedIndex: this.selectedIndex });
   }
 
-  deleteDish(idDish: number): void {
-    this.onDelete.emit(idDish);
+  deleteDish(data: { id: number; index: number }): void {
+    this.selectedMenuId = this.menus[data.index].id;
+    this.onDelete.emit({
+      dishId: data.id,
+      index: data.index,
+      menuId: this.selectedMenuId,
+    });
   }
 }

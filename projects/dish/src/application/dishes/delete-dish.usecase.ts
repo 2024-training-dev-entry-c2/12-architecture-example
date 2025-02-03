@@ -20,20 +20,15 @@ export class DeleteDishUsecase {
     this.subscriptions.unsubscribe();
   }
 
-  execute(dishId: number, payload: IDish): void {
+  execute(dishId: number, payload: IDish, index: number): void {
     this.subscriptions.add(
       this._updateDishService
         .execute(dishId, payload)
         .pipe(
           tap(() => {
-            const menus = this._state.dishes.menuResponse.snapshot();
-            const index = menus.findIndex((m) => m.id === payload.menuId);
-            if (index !== -1) {
-              const dishes = this._state.dishes.dishResponse.snapshot();
-              this._state.dishes.dishResponse[index].set(
-                dishes[index].filter((d) => d.id !== dishId)
-              );
-            }
+            const dishes = this._state.dishes.dishResponse.snapshot();
+            dishes[index] = dishes[index].filter((d) => d.id !== dishId);
+            this._state.dishes.dishResponse.set(dishes);
           })
         )
         .subscribe()
