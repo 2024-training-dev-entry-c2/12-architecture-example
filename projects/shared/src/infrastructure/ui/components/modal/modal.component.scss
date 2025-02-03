@@ -1,0 +1,55 @@
+@use "../../../ui/styles/mixins.scss" as mixins;
+@use "../../../ui/styles/variables.scss" as variables;
+
+.modal {
+    all: unset;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: none;
+    border-radius: 15px;
+    z-index: 1000;
+    transition: opacity 0.3s ease;
+
+    &--open {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__content {
+        @include mixins.flex(column, center, center, 16px);
+        width: auto;
+        height: auto;
+        border-radius: 20px;
+        @include mixins.fixed(30px 40px, 1);
+        background-color: variables.$background-color;
+        box-shadow: variables.$box-shadow;
+        transform: translateY(-10px);
+        animation: slideIn 0.3s ease forwards;
+    }
+
+    &__close {
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 10px;
+        right: 10px;
+    }
+
+    @keyframes slideIn {
+        from {
+            transform: translateY(-20px);
+            opacity: 0;
+        }
+
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+}

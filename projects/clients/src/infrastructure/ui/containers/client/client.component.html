@@ -1,0 +1,13 @@
+<lib-animation-wrapper>
+    <lib-table [title]="'Clientes'" [data]="clients$ | async" [columns]="columns"
+        (openModal)="openModal($event)" (update)="updateClientById($event)" (delete)="deleteClientById($event)"></lib-table>
+
+    <lib-modal [open]="isModalOpen$ | async" (close)="openModal($event)">
+        <lib-client-form 
+        [client]="(selectedClient$ | async)" 
+        (onSubmit)="submit($event)"
+        [_isOpen]="isModalOpen$"
+        [message]="message$ | async"
+        ></lib-client-form>
+    </lib-modal>
+</lib-animation-wrapper>

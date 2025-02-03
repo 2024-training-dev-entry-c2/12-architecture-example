@@ -1,0 +1,60 @@
+@use '../../../ui/styles/mixins.scss' as mixins;
+@use '../../../ui/styles/variables.scss' as variables;
+
+.sidebar {
+    @include mixins.flex-column(center);
+    min-height: 100%;
+    width: 100%;
+    padding: 1rem;
+    border-radius: 15px 0 0 15px;
+    font-weight: bold;
+    background-color: variables.$primary-color;
+
+    &__nav {
+        margin-top: 100px;
+    }
+
+    &__menu {
+        @include mixins.flex-column;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        
+        li {
+            text-align: center;
+            border-radius: 5px;
+            letter-spacing: 2px;
+            background-color: transparent;
+            width: 200px;
+            color: #fff;
+        }
+    }
+
+    &__link {
+        text-decoration: none;
+        color: variables.$white; 
+        display: inline-block;
+        width: 200px;
+        padding: 15px 0;
+        text-align: center;
+        transition: all 0.5s ease-in-out; 
+        border-radius: 5px;
+
+
+        &:hover {
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.284);
+        }
+
+        &--active {
+            background-color: variables.$white; 
+            padding: 30px 0;
+            color: variables.$primary-color; 
+            text-decoration: none; 
+
+            &:hover {
+                background-color: variables.$white; 
+            }
+        }
+    }
+}

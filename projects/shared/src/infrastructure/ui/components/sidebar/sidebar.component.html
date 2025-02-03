@@ -1,0 +1,18 @@
+<aside class="sidebar" role="complementary" aria-labelledby="sidebar-title">
+    <a routerLink="/home" class="sidebar__logo" aria-label="Ir a la página principal">
+        <img src="./images/logo-full.svg" alt="Restaurant Logo" width="200px" />
+    </a>
+    <nav class="sidebar__nav" aria-label="Menú principal">
+        <ul class="sidebar__menu">
+            @for (item of items; track $index) {
+            <li>
+                <a [routerLink]="item.link" class="sidebar__link" routerLinkActive="sidebar__link--active" [attr.aria-label]="'Ir a ' + item.title">
+                    {{item.title}}
+                </a>
+            </li>
+            }
+        </ul>
+    </nav>
+
+    <!-- <app-footer></app-footer> -->
+</aside>
