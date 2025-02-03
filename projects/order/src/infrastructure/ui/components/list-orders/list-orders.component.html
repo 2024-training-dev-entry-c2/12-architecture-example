@@ -1,0 +1,24 @@
+<lib-modal action="Crear Orden" #modal>
+    <lib-order-form [customerOptions]="customerOptions()" [dishOptions]="dishOptions()"
+        (onSubmit)="handleSubmit($event)">
+    </lib-order-form>
+</lib-modal>
+
+<table class="orders-table" role="table" aria-label="Lista de órdenes">
+    <thead class="orders-table__head">
+        <tr class="orders-table__row">
+            <th class="orders-table__header" scope="col">ID Orden</th>
+            <th class="orders-table__header" scope="col">Cliente</th>
+            <th class="orders-table__header" scope="col">Fecha</th>
+            <th class="orders-table__header" scope="col">Total</th>
+        </tr>
+    </thead>
+    <tbody class="orders-table__body">
+        <tr class="orders-table__row" *ngFor="let order of orders()">
+            <td class="orders-table__cell">#{{order.orderId}}</td>
+            <td class="orders-table__cell">{{order.customer.name}} {{order.customer.lastName}}</td>
+            <td class="orders-table__cell">{{order.date | date:'dd/MM/yyyy HH:mm'}}</td>
+            <td class="orders-table__cell">${{order.totalOrderPrice}}</td>
+        </tr>
+    </tbody>
+</table>
