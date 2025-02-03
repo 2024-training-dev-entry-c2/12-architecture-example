@@ -5,6 +5,7 @@
       @if (menu().length > 0) { @for (item of menu(); track $index) {
       <li role="listitem">
         <lib-card
+          [IdMenu]="item.id"
           [image]="item.urlImage"
           [link]="'/menu/' + item.id"
           [title]="item.nombre"

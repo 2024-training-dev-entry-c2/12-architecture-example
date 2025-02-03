@@ -21,6 +21,7 @@ export class CardComponent {
   public buttonModifyClick = output();
   public buttonRemoveClick = output();
 
+  public IdMenu = input<number>();
   public title = input<string>();
   public image = input<string>();
   public link = input<string>();

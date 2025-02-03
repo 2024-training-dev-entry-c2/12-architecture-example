@@ -14,6 +14,7 @@ export class CardComponent {
   public buttonModifyClick = output();
   public buttonRemoveClick = output();
 
+  public idClient = input<number>();
   public name = input<string>();
   public email = input<string>();
   public tel = input<string>();

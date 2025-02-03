@@ -1,5 +1,4 @@
-/* From Uiverse.io by OnCloud125252 */
-/* Note that you only needs to edit the config to customize the button! */
+@use '../../../styles/mixins.scss' as mixins;
 
 .plusButton {
   /* Config start */
@@ -53,11 +52,9 @@
 }
 
 .plusButton:hover > .plusIcon {
-  fill: black;
-  transform: rotate(180deg);
+  @include mixins.rotateButton();
 }
 
 .plusButton:focus-visible > .plusIcon {
-  fill: black;
-  transform: rotate(180deg);
+  @include mixins.rotateButton();
 }

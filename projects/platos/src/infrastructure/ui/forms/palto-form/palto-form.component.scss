@@ -1,8 +1,11 @@
+@use "../../styles//variables.scss" as variables;
+@use "../../styles/mixins.scss" as mixins;
+
 .form-plato {
   width: 300px;
   height: 100%;
-  background-color: white;
-  border: 4px solid black;
+  background-color: variables.$formBackground;
+  border: 4px solid variables.$borderColor;
   border-radius: 20px;
   margin-left: 20px;
   display: flex;
@@ -17,11 +20,7 @@
 
   input {
     padding: 5px;
-    border: none;
-    border-bottom: 1px solid black;
-    border-left: 2px solid black;
-    border-right: 2px solid black;
-    border-top: 1px solid black;
+    @include mixins.customBorder(1px, 2px, 1px, 2px);
   }
 
   button {

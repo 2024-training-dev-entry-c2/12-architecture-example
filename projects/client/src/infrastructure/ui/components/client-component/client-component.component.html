@@ -4,6 +4,7 @@
       @if (clients().length > 0) { @for (item of clients(); track $index) {
       <li>
         <lib-card
+          [idClient]="item.id"
           [name]="item.nombre"
           [email]="item.email"
           [tel]="item.telefono"

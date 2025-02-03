@@ -15,6 +15,7 @@
     }
     <h2 class="simple-card__title">{{ title() }}</h2>
   </a>
+  <span>Id: {{IdMenu()}}</span>
   <div class="simple-card__button">
     <lib-modify-button-shared (buttonClicked)="onClickModifyButton()" />
     <lib-remove-button-shared (buttonClicked)="onClickRemoveButton()" />
