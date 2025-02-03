@@ -1,19 +1,19 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { provideRouter } from '@angular/router';
-import { HomeComponent } from './home.component';
+import { NavbarComponent } from './navbar.component';
 import { By } from '@angular/platform-browser';
 
-describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
+describe('NavbarComponent', () => {
+  let component: NavbarComponent;
+  let fixture: ComponentFixture<NavbarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomeComponent],
+      imports: [NavbarComponent],
       providers: [provideRouter([])],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(HomeComponent);
+    fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -22,16 +22,16 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should render 4 menu items', () => {
-    const menuItems = fixture.debugElement.queryAll(By.css('.home__menu li'));
-    expect(menuItems.length).toBe(4);
+  it('should render 5 menu items', () => {
+    const menuItems = fixture.debugElement.queryAll(By.css('.navbar__menu li'));
+    expect(menuItems.length).toBe(5);
   });
 
   it('should have correct links for each menu item', () => {
-    const expectedLinks = ['/customers', '/menus', '/dishes', '/orders'];
-    const links = fixture.debugElement.queryAll(By.css('.home__link'));
+    const expectedLinks = ['', '/customers', '/menus', '/dishes', '/orders'];
+    const links = fixture.debugElement.queryAll(By.css('.navbar__link'));
 
-    expect(links.length).toBe(4);
+    expect(links.length).toBe(5);
     links.forEach((link, index) => {
       expect(link.nativeElement.getAttribute('ng-reflect-router-link')).toBe(
         expectedLinks[index]

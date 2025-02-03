@@ -8,9 +8,8 @@ describe('DeleteCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DeleteCardComponent]
-    })
-    .compileComponents();
+      imports: [DeleteCardComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(DeleteCardComponent);
     component = fixture.componentInstance;
@@ -19,5 +18,16 @@ describe('DeleteCardComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should render the title "Eliminar"', () => {
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('h2').textContent).toContain('Eliminar');
+  });
+
+  it('should recive the entity name', () => {
+    fixture.componentRef.setInput('entityName', 'Plato');
+    fixture.detectChanges();
+    expect(component.entityName).toBe('Plato');
   });
 });
