@@ -1,5 +1,5 @@
 <section class="dishes">
-    <h1 class="dishes__title">Dashboard de Menús</h1>
+    <h1 class="dishes__title">Dashboard de Platos</h1>
     <div class="dishes__container">
         <lib-search-bar [data]="dishes()" (onFilteredData)="handleFilteredData($event)"/>
         <lib-modal [title]="modalTitle" action="Crear plato" [themeButton]="'success'" (onOpenByBtn)="openCreateModal()" (onClose)="handleCloseModal()" #modal>

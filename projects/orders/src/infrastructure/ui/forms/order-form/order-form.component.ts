@@ -44,7 +44,6 @@ export class OrderFormComponent {
       });
       this.dishes.push(dishGroup);
     });
-    console.log(this.getFormArrayControls());
   }
 
   public form = this.formBuilder.group({
@@ -84,7 +83,6 @@ export class OrderFormComponent {
 
   getFormArrayControls() {
     const formArray = this.form.get('dishes');
-    console.log(formArray.value);
     if (formArray instanceof FormArray) {
       return formArray.controls;
     }

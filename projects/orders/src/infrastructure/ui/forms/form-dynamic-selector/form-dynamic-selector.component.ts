@@ -18,10 +18,6 @@ export class FormDynamicSelectorComponent {
   public dishes = input<IDish[]>();
   public onDelete = output<number>();  
 
-  ngOnInit() {
-    console.log('formArrayName:', this.formArrayName()); 
-  }
-
   onDeleteClick():void{
     this.onDelete.emit(this.index());
   }

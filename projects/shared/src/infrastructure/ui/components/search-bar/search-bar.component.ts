@@ -12,7 +12,6 @@ export class SearchBarComponent<T> implements OnInit, OnChanges{
   
   ngOnInit(): void {
     this.onFilteredData.emit(this.data());
-    console.log(this.data());
   }
 
   ngOnChanges(changes: SimpleChanges): void {

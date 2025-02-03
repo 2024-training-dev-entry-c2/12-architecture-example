@@ -55,7 +55,6 @@ describe('MenuComponent', () => {
   it('should have correct attributes on menu links', () => {
     const menuItems = component.items();
     const menuLinks = compiled.querySelectorAll('a.menu__link');
-    console.log(menuLinks);
     menuItems.forEach((item, index) => {
       const link = menuLinks[index];    
 

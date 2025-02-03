@@ -1,5 +1,5 @@
 <section class="menus">
-    <h1 class="menus__title">Dashboard de menús</h1>
+    <h1 class="menus__title">Dashboard de Menús</h1>
     <div class="menus__container">
         <lib-search-bar [data]="menus()" (onFilteredData)="handleFilteredData($event)"/>
         <lib-modal [title]="modalTitle" action="Crear menú" [themeButton]="'success'" (onOpenByBtn)="openCreateModal()" (onClose)="handleCloseModal()" #modal>
