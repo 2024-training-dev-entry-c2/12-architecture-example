@@ -1,0 +1,82 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss';
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss';
+
+
+.client-page {
+    padding: 0.5rem;
+    background-color: rgb(206, 206, 206) ;
+  
+    &__header {
+      padding-left: 30px;
+      margin-bottom: 2rem;
+    }
+  
+    &__title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color:variables.$title;
+    }
+  
+    &__description {
+      font-size: 1rem;
+      color: #222222;
+    }
+  
+    &__list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; 
+        margin-top: 2rem;
+        padding: 2rem;
+    }
+
+    .client-table {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem 3rem;
+        justify-content: flex-start;
+      
+        &__card {
+          background-color: variables.$orange;
+          border-radius: 12px;
+          box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+          width: calc(25.333% - 1.33rem);
+          padding: 1.5rem;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+      
+          &-info {
+            margin-bottom: 0.1rem;
+          }
+      
+          &-name {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+          }
+      
+          &-email,
+          &-frequent {
+            color: #111111;
+          }
+      
+          &-actions {
+            display: flex;
+            justify-content: space-between; 
+            margin-top: 1rem;
+    
+            .btn--edit {
+              @include mixins.button-styles(#4d90ff, white, #357ae8);
+            }
+        
+            .btn--delete {
+              @include mixins.button-styles(#ff4d4f, white, #d9363e);
+            }
+          }
+      
+        }
+      
+      }
+  }

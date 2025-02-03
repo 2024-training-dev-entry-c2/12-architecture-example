@@ -4,7 +4,7 @@ import { CreateUsersComponent } from "../containers/create-users/create-users.co
 
 export const usersRoutes: Routes = [
   {
-    path: 'create',
+    path: '',
     component: MainLayoutComponent,
     children: [
       {

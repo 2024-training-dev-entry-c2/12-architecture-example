@@ -1,0 +1,8 @@
+<lib-dish-page
+    [dishes]="dishes$ | async"
+    [menus]="menus$ | async"
+    [currentDish]="currentDish$ | async"
+    (onCreateDish)="handleDish($event)"
+    (onSelectDish)="handleSelectDish($event)"
+    (onDelete)="handleDelete($event)"
+></lib-dish-page>

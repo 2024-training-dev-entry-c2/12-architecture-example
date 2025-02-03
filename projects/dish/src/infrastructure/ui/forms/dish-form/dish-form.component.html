@@ -1,0 +1,35 @@
+<section class="dish-form">
+    <form [formGroup]="dishForm" (ngSubmit)="submit()" class="dish-form__form">
+        <h3 class="blog-form__title">{{ dishForm.getRawValue().id ? 'Editar Plato' : 'Crear Plato' }}</h3>
+        <div class="dish-form__group">
+            <lib-dynamic-input
+              [formGroup]="dishForm"
+              [config]="nameConfig"
+            ></lib-dynamic-input>
+          </div>
+      
+          <div class="dish-form__group">
+            <lib-dynamic-input
+              [formGroup]="dishForm"
+              [config]="descriptionConfig"
+            ></lib-dynamic-input>
+          </div>
+          <div class="dish-form__group">
+            <lib-dynamic-input
+              [formGroup]="dishForm"
+              [config]="priceConfig"
+            ></lib-dynamic-input>
+          </div>
+          <div class="dish-form__group">
+            <lib-dynamic-input
+              [formGroup]="dishForm"
+              [config]="menuConfig"
+            ></lib-dynamic-input>
+          </div>
+        <button type="submit" class="dish-form__submit" [disabled]="dishForm.invalid">
+          {{ dishForm.getRawValue().id ? 'Editar' : 'Crear' }}
+        </button>
+      </form>
+    </section>
+    
+  
