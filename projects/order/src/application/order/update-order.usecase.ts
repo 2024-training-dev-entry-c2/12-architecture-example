@@ -4,13 +4,13 @@ import { delay, finalize, map, mergeMap, Observable, Subscription, tap } from "r
 import { IOrder } from "../../domain/model/order.model";
 import { State } from "../../domain/state";
 import { UpdateService } from "../../infrastructure/services/order/update.service";
-import { GetNamesUsecase } from "../client/get-name.usecase";
+import { GetNamesClientsUsecase } from "../client/get-name.usecase";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UpdateOrderUsecase {
-  private readonly _useCaseName = inject(GetNamesUsecase);
+  private readonly _useCaseName = inject(GetNamesClientsUsecase);
   private readonly _service = inject(UpdateService);
   private readonly _state = inject(State);
   private currencyPipe = new CurrencyPipe('en');

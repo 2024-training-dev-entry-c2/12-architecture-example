@@ -1,21 +1,19 @@
-import { CurrencyPipe, DatePipe, TitleCasePipe } from "@angular/common";
+import { CurrencyPipe, DatePipe, registerLocaleData, TitleCasePipe } from "@angular/common";
+import localeEs from '@angular/common/locales/es';
 import { inject, Injectable } from "@angular/core";
 import { forkJoin, map, mergeMap, Observable, Subscription, tap } from "rxjs";
-import { State } from "../../domain/state";
 import { IOrder } from "../../domain/model/order.model";
-import { GetNamesUsecase } from "../client/get-name.usecase";
+import { State } from "../../domain/state";
 import { GetAllService } from "../../infrastructure/services/order/get-all.service";
-import { registerLocaleData } from '@angular/common';
-import localeEs from '@angular/common/locales/es';
+import { GetNamesClientsUsecase } from "../client/get-name.usecase";
 
 registerLocaleData(localeEs);
 
 @Injectable({
   providedIn: 'root'
 })
-
 export class GetOrdersUsecase {
-  private readonly _useCaseName = inject(GetNamesUsecase);
+  private readonly _useCaseName = inject(GetNamesClientsUsecase);
   private readonly _service = inject(GetAllService);
   private readonly _state = inject(State);
   private titleCasePipe = new TitleCasePipe();

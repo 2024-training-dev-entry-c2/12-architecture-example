@@ -1,6 +1,7 @@
 import { inject, Injectable } from "@angular/core";
 import { map, Observable, Subscription } from "rxjs";
-import { State } from "../../domain/state";import { IDish } from "../../domain/model/dish.model";
+import { IDish } from "../../domain/model/dish.model";
+import { State } from "../../domain/state";
 import { GetAllService } from "../../infrastructure/services/dish/get-all.service";
 
 @Injectable({
@@ -29,10 +30,10 @@ export class GetDishesUsecase {
   execute(): void {
     this.subscriptions.add(
       this._service.execute()
-      .pipe(
-        map(result => this._state.orders.listDishes.set(result))
-      )
-      .subscribe()
+        .pipe(
+          map(result => this._state.orders.listDishes.set(result))
+        )
+        .subscribe()
     );
   }
   //#endregion

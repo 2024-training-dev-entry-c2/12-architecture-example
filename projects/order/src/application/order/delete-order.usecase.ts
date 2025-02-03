@@ -33,9 +33,7 @@ export class DeleteOrderUsecase {
         const currentOrders = this._state.orders.listOrders.snapshot();
         this._state.orders.listOrders.set(currentOrders.filter(order => order.id !== orderId));
       }),
-      finalize(() => {
-        this._state.orders.message.set(null);
-      })
+      finalize(() => this._state.orders.message.set(null))
     ).subscribe();
   }
   //#endregion

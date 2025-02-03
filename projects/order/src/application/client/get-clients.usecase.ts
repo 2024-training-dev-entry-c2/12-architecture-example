@@ -1,8 +1,8 @@
 import { inject, Injectable } from "@angular/core";
 import { map, Observable, Subscription } from "rxjs";
+import { IClient } from "../../domain/model/client.model";
 import { State } from "../../domain/state";
 import { GetAllService } from "../../infrastructure/services/client/get-all.service";
-import { IClient } from "../../domain/model/client.model";
 
 @Injectable({
   providedIn: 'root'
@@ -30,10 +30,10 @@ export class GetClientsUsecase {
   execute(): void {
     this.subscriptions.add(
       this._service.execute()
-      .pipe(
-        map(result => this._state.orders.listClients.set(result))
-      )
-      .subscribe()
+        .pipe(
+          map(result => this._state.orders.listClients.set(result))
+        )
+        .subscribe()
     );
   }
   //#endregion

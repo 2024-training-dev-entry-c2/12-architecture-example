@@ -5,6 +5,9 @@
 <lib-order-form 
     [message]="message$ | async"
     [order]="currentOrder$ | async"
+    [open$]="isOpen$"
+    [clients$]="clients$"
+    [dishes$]="dishes$"
     (onSubmit)="submit($event)"
   ></lib-order-form>
 </lib-modal>

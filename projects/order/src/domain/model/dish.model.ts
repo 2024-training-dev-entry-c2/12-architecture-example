@@ -1,3 +1,5 @@
+import { IOrder } from "./order.model";
+
 export interface IDish {
   id?: number;
   name: string;
@@ -6,4 +8,5 @@ export interface IDish {
   type: string;
   menuId?: number;
   menuName?: string | null;
+  orders?: IOrder[];
 }
