@@ -18,6 +18,9 @@
       "clients": [
         "./dist/clients"
       ],
+      "dishes": [
+        "./dist/dishes"
+      ],
       "menu": [
         "./dist/menu"
       ],

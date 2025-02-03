@@ -8,6 +8,6 @@ export interface IControls {
 }
 
 export interface IOptions {
-    label: string;
-    value: string;
+    name: string;
+    value: number;
 }

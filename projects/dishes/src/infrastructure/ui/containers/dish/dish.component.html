@@ -1,0 +1,14 @@
+<lib-animation-wrapper>
+    <lib-table [title]="'Platos'" [data]="dishes$ | async" [columns]="columns" (openModal)="openModal($event)"
+        (update)="updateDishById($event)" (delete)="deleteDishById($event)"></lib-table>
+
+    <lib-modal [open]="isModalOpen$ | async" (close)="openModal($event)">
+        <lib-dish-form 
+        [dish]="(selectedDish$ | async)" 
+        (onSubmit)="submit($event)" 
+        [isOpen$]="isModalOpen$"
+        [message]="message$ | async"
+        [menus$]="menus$"
+        ></lib-dish-form>
+    </lib-modal>
+</lib-animation-wrapper>

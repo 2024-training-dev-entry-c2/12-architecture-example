@@ -2,6 +2,11 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
   "projects": {
     "app": {
       "projectType": "application",
@@ -199,6 +204,39 @@
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "tsConfig": "projects/menu/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "dishes": {
+      "projectType": "library",
+      "root": "projects/dishes",
+      "sourceRoot": "projects/dishes/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/dishes/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/dishes/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/dishes/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/dishes/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"

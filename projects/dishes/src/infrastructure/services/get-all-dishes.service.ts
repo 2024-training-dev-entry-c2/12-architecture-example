@@ -1,22 +1,21 @@
 import { inject, Injectable } from '@angular/core';
-import { IMenu } from '../../domain/model/menu.model';
 import { Observable } from 'rxjs';
+import { IDish } from '../../domain/model/dish.model';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { urlResources } from 'shared';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CreateMenuService {
-  private _http = inject(HttpClient);
+export class GetAllDishesService {
+  private readonly _http = inject(HttpClient);
 
-  execute(menu: IMenu): Observable<IMenu> {
-    return this._http.post<IMenu>(urlResources.menu, menu, { headers: this.getHeaders() });
+  execute(): Observable<IDish[]> {
+    return this._http.get<IDish[]>(urlResources.dishes, { headers: this.getHeaders()});
   }
 
   private getHeaders() {
     return new HttpHeaders()
       .append('Content-Type', 'application/json')
   }
-
 }

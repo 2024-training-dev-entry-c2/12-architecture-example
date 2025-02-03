@@ -2,6 +2,7 @@
     "conventionalCommits.scopes": [
         "project",
         "shared",
-        "client"
+        "client",
+        "menu"
     ]
 }

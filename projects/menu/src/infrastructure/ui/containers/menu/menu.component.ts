@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { GetAllMenusUseCase } from '../../../../application/get-all-menus.usecase';
 import { ModalUseCase } from '../../../../application/modal.usecase';
 import { CreateMenuUseCase } from '../../../../application/create-menu.usecase';
@@ -16,7 +16,7 @@ import { AnimationWrapperComponent, ModalComponent, TableComponent } from 'share
   imports: [AnimationWrapperComponent, TableComponent, AsyncPipe, ReactiveFormsModule, CommonModule, ModalComponent, MenuFormComponent],
   templateUrl: './menu.component.html',
 })
-export class MenuComponent {
+export class MenuComponent implements OnInit, OnDestroy {
   private readonly _useCaseGet = inject(GetAllMenusUseCase);
   private readonly _useCaseModal = inject(ModalUseCase);
   private readonly _useCaseCreate = inject(CreateMenuUseCase);
@@ -60,7 +60,6 @@ export class MenuComponent {
     }
   
     public submit(menu: IMenu) {
-      console.log(menu);
       const usecase = menu.id ? this._useCaseUpdate : this._useCaseCreate;
       usecase.execute(menu);
     }
