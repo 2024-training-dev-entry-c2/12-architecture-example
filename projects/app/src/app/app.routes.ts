@@ -23,6 +23,10 @@ export const routes: Routes = [
         path: 'menus',
         loadChildren: () => import('menu').then((m) => m.menuRoutes),
       },
+      {
+        path: 'orders',
+        loadChildren: () => import('order').then((m) => m.orderRoutes),
+      },
     ],
   },
 ];
