@@ -1,0 +1,5 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mx;
+
+.form-dish-selector{
+    @include mx.input-properties;
+}

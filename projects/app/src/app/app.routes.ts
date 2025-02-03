@@ -1,12 +1,28 @@
 import { Routes } from '@angular/router';
+import { BodyLayoutComponent } from 'shared';
 
 export const routes: Routes = [
-  {
-    path: 'users',
-    loadChildren: () => import('users').then(m => m.usersRoutes)
-  },
-  // {
-  //   path: '',
-  //   loadChildren: () => import('home').then(m => m.homeRoutes)
-  // }
+    { path: '', redirectTo: '/admin', pathMatch: 'full' },
+    {
+        path: 'admin', 
+        component: BodyLayoutComponent,
+        children: [
+            {
+                path: 'clientes',
+                loadChildren: () => import('clients').then(c => c.clientsRoutes)
+            },
+            {
+                path: '',
+                loadChildren: () => import('menus').then(m => m.menusRoutes)
+            },
+            {
+                path: 'platos',
+                loadChildren: () => import('dishes').then(d => d.dishesRoutes)
+            },
+            {
+                path: 'pedidos',
+                loadChildren: () => import('orders').then(o => o.ordersRoutes)
+            }
+        ]
+    }
 ];

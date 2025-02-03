@@ -1,0 +1,61 @@
+@use '../../styles/variables.scss' as vr;
+@use '../../styles/mixins.scss' as mx;
+
+.modal {
+    @include mx.flex-container(center, center);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100dvw;
+    height: 100dvh;
+    background-color: #0000002b;
+    border: none;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease-in-out;
+
+    &--visible {
+        opacity: 1;
+        pointer-events: all;
+    }
+
+    &__content {
+        @include mx.flex-container(start, center, 10px, column);
+        position: relative;
+        background-color: vr.$color-white;
+        padding: 50px 30px;
+        width: 500px;
+        max-height: 80%;
+        border-radius: 8px;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    &__header {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    &__button-close {
+        @include mx.flex-container(center, center);
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        text-align: center;
+        border: none;
+        background: none;
+
+        &:hover {
+            background-color: vr.$color-gray-secondary;
+        }
+
+        & svg {
+            width: 15px;
+            height: 15px;
+        }
+    }
+}

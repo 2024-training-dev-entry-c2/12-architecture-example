@@ -1,0 +1,26 @@
+<table class="client-table" role="table">
+    <thead class="client-table__head" role="rowgroup">
+        <tr class="client-table__column" role="row">
+            @for (title of titles; track $index) {
+                <th class="client-table__title" role="columnheader">{{title | titlecase}}</th>
+            }
+            <th class="client-table__title" role="columnheader">Acciones</th>
+        </tr>
+    </thead>
+    <tbody class="client-table__body" role="rowgroup">
+        @for (client of clients(); track $index) {
+            <tr class="client-table__column" role="row">               
+                <td class="client-table__item" role="cell">{{client.name | titlecase}}</td>
+                <td class="client-table__item" role="cell">{{client.email}}</td>
+                <td class="client-table__item" role="cell">{{client.frequent | boolean}}</td>
+                <td class="client-table__item" role="cell">
+                    <lib-cell-options 
+                    [idItem]="client.id" 
+                    (onSelectUpdate)="handleSelectUpdate($event)"
+                    (onSelectDelete)="handleSelectDelete($event)"
+                    />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

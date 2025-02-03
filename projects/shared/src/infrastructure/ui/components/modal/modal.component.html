@@ -1,0 +1,22 @@
+<dialog [id]="idModal()" class="modal" [ngClass]="{'modal--visible': visible}" role="dialog" aria-labelledby="modal-title">
+    <div class="modal__content" [hidden]="!visible">
+        <header class="modal__header">
+            <button class="modal__button-close" aria-label="Cerrar el modal" (click)="toggle()">
+                <svg aria-hidden="true">
+                    <use xlink:href ="images/svg/close.svg#close-id"></use>
+                </svg>
+            </button>
+            <h2 class="modal__title" id="modal-title">{{title()}}</h2>
+        </header>
+        <ng-content></ng-content>
+    </div>
+</dialog>
+
+<lib-theme-button
+    [text]="action()"
+    [idPopUp]="idModal()"
+    [theme]="modalhasButton()"
+    [form]="form()"
+    [hasPopup]="true"
+    (onClick)="openWithBtn()"
+/>

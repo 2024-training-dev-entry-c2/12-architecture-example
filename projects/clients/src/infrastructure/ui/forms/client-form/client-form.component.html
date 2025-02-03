@@ -1,0 +1,23 @@
+ <form class="client-form" [formGroup]="form" (ngSubmit)="submit()">
+    <lib-form-field
+    [formGroup]="form"
+    controlName="name"
+    label="Nombre"
+    placeholder="Ingresa el nombre del cliente"
+    />
+    <lib-form-field
+    [formGroup]="form"
+    controlName="email"
+    label="Correo electrónico"
+    type="email"
+    placeholder="Ingresa el correo del cliente"
+    />
+
+    <lib-theme-button
+    class="client-form__button"
+    [form]="form"
+    [text]="action()"
+    [theme]="theme()"
+    type="submit"
+    />
+ </form>

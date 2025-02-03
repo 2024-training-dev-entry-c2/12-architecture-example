@@ -1,0 +1,20 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mx;
+
+.dishes{
+    @include mx.section-properties();
+
+    &__title{
+        font-size: 28px;
+        letter-spacing: 2px;
+    }
+
+    &__container{
+        @include mx.container-wrapper(50px);
+        @include mx.flex-container(end);
+        padding: 0 60px;
+    }
+
+    &__board{
+        @include mx.container-wrapper();
+    }
+}

@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+@use '../../shared/src/infrastructure/ui/styles/reset.scss';
+@use '../../shared/src/infrastructure/ui/styles/variables.scss' as vr;
+
+html {
+    font-family: vr.$font-primary;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+
+::-webkit-scrollbar-track {
+    background:transparent; 
+    border-radius: 10px;
+    box-shadow: inset 0 0 32px -8px #00000020;
+    padding: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: vr.$color-back;
+    border-radius: 10px;
+    margin: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: vr.$color-gray;
+}

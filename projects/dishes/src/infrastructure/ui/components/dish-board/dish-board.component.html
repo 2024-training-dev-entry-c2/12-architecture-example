@@ -1,0 +1,28 @@
+<table class="dish-table" role="table">
+    <thead class="dish-table__head" role="rowgroup">
+        <tr class="dish-table__column" role="row">
+            @for (title of titles; track $index) {
+                <th class="dish-table__title" role="columnheader">{{title | titlecase}}</th>
+            }
+            <th class="dish-table__title" role="columnheader">Acciones</th>
+        </tr>
+    </thead>
+    <tbody class="dish-table__body" role="rowgroup">
+        @for (dish of dishes(); track $index) {
+            <tr class="dish-table__column" role="row">               
+                <td class="dish-table__item" role="cell" [innerHTML]="dish.name | titlecase"></td>
+                <td class="dish-table__item" role="cell" [innerHTML]="dish.description"></td>
+                <td class="dish-table__item" role="cell" [innerHTML]="dish.price | currency:'COP':'symbol'"></td>
+                <td class="dish-table__item" role="cell" [innerHTML]="dish.state | titlecase"></td>
+                <td class="dish-table__item" role="cell" [innerHTML]="getNameMenuById(dish.menuId) | titlecase"></td>
+                <td class="dish-table__item" role="cell">
+                    <lib-cell-options 
+                    [idItem]="dish.id" 
+                    (onSelectUpdate)="handleSelectUpdate($event)"
+                    (onSelectDelete)="handleSelectDelete($event)"
+                    />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

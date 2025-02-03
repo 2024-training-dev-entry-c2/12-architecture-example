@@ -1,0 +1,18 @@
+<div class="form-field__group" [formGroup]="formGroup()">
+    <label class="form-field__label" [for]="controlName()">
+        <span class="form-field__text">{{label()}}</span>
+        <input
+            [type]="type()"
+            name="" id=""
+            [formControlName]="controlName()"
+            [placeholder]="placeholder()"
+            class="form-field__control"
+            [ngClass]="{'form-field__control--invalid': isInvalid}"
+        />
+    </label>
+    @if (isInvalid) {
+        <div class="form-field__feedback">
+            <p>{{ getErrorMessage() }}</p>
+        </div>
+    }
+</div>

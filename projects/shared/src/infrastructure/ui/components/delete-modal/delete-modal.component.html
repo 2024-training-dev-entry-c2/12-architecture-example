@@ -1,0 +1,7 @@
+<lib-modal class="delete-modal" [hasButton]="false" [title]="'¿Seguro desea eliminar este '+ item() +'?'" #modal>
+    <ng-content/>
+    <div class="delete-modal__buttons-container">
+        <lib-theme-button [theme]="'danger'" text="Eliminar" (onClick)="onClickDelete()" />
+        <lib-theme-button [theme]="'secondary'" text="Cancelar" (onClick)="onClickCancel()"/>    
+    </div>
+</lib-modal>

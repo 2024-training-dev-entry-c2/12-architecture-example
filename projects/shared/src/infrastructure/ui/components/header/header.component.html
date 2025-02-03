@@ -1,0 +1,14 @@
+<header class="header">
+    <nav class="navigation" role="navigation">
+        <a [routerLink]="iconUrl()" class="navigation__link" tabindex="1" aria-label="Ir al Inicio">
+            <svg aria-hidden="true">
+                <use xlink:href ="images/svg/logo.svg#logo-id"></use>
+            </svg>
+            <span aria-hidden="true">CHEFLY</span>
+        </a>
+        <div class="navigation__options">
+            <lib-menu [items]="items()"/>
+            <lib-user [user]="user()"/>
+        </div>
+    </nav>
+</header>

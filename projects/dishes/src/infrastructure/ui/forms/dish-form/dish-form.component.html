@@ -1,0 +1,38 @@
+<form class="dish-form" [formGroup]="form" (ngSubmit)="submit()">
+    <lib-form-field
+    [formGroup]="form"
+    controlName="name"
+    label="Nombre"
+    placeholder="Ingresa el nombre del plato"
+    />
+
+    <lib-form-field
+    [formGroup]="form"
+    controlName="description"
+    label="Descripción"
+    placeholder="Ingresa la descripción del plato"
+    />
+
+    <lib-form-field
+    [formGroup]="form"
+    controlName="price"
+    label="Precio"
+    type="number"
+    placeholder="Ingresa el precio del plato"
+    />
+
+    <lib-form-selector
+    [formGroup]="form"
+    [menus]="menus()"
+    controlName="menuId"
+    label="Menú"
+    />
+
+    <lib-theme-button
+    class="dish-form__button"
+    [form]="form"
+    [text]="action()"
+    [theme]="theme()"
+    type="submit"
+    />
+ </form>

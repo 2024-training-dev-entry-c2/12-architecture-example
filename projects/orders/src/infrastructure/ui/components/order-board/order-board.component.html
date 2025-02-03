@@ -1,0 +1,29 @@
+<table class="order-table" role="table">
+    <thead class="order-table__head" role="rowgroup">
+        <tr class="order-table__column" role="row">
+            @for (title of titles; track $index) {
+                <th class="order-table__title" role="columnheader">{{title | titlecase}}</th>
+            }
+            <th class="order-table__title" role="columnheader">Acciones</th>
+        </tr>
+    </thead>
+    <tbody class="order-table__body" role="rowgroup">
+        @for (order of orders(); track $index) {
+            <tr class="order-table__column" role="row">               
+                <td class="order-table__item" role="cell" [innerHTML]="order.date | date"></td>
+                <td class="order-table__item" role="cell" [innerHTML]="order.client.name | titlecase"></td>
+                <td class="order-table__item" role="cell">
+                    <lib-dish-order-list [dishes]="order.dishes" />
+                </td>
+                <td class="order-table__item" role="cell" [innerHTML]="order.total | currency:'COP':'symbol'"></td>
+                <td class="order-table__item" role="cell">
+                    <lib-cell-options
+                    [idItem]="order.id" 
+                    (onSelectUpdate)="handleSelectUpdate($event)"
+                    (onSelectDelete)="handleSelectDelete($event)"
+                    />
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

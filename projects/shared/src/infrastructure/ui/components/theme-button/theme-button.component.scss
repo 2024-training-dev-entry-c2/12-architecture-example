@@ -1,0 +1,56 @@
+@use '../../styles/variables.scss' as vr;
+
+.theme-button {
+    padding: 10px;
+    width: 130px;
+    border: none;
+    border-radius: 100px;
+    box-shadow: vr.$shadow-secondary;
+    color: vr.$color-white;
+    font-weight: 600;
+    cursor: pointer;
+
+    &--success {
+        background: vr.$color-green;
+        &:hover{
+            background: vr.$color-green-hover;
+        }
+    }
+
+    &--warning {
+        background: vr.$color-yellow;
+        &:hover{
+            background: vr.$color-yellow-hover;
+        }
+    }
+
+    &--danger {
+        background: vr.$color-red;
+        &:hover{
+            background: vr.$color-red-hover;
+        }
+    }
+
+    &--cancel {
+        background: vr.$color-gray;
+        color: vr.$color-back;
+
+        &:hover{
+            background: vr.$color-gray-secondary;
+        }
+    }
+
+    &--secondary {
+        background-color: transparent;
+        border: solid 2px vr.$color-gray;
+        color: vr.$color-back;
+
+        &:hover {
+            background: vr.$color-gray;
+        }
+    }
+    
+    &--hidden{
+        display: none;
+    }
+}

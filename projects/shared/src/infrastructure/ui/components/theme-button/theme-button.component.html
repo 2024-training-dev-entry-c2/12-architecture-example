@@ -1,0 +1,11 @@
+<button 
+    class="theme-button theme-button--{{theme()!}}" 
+    [type]="type()"
+    [disabled]="form()?.invalid"
+    [attr.aria-disabled]="form()?.invalid ? 'true' : null" 
+    [attr.aria-label]="text()"
+    [attr.aria-haspopup]="hasPopup()"
+    aria-expanded="false"
+    [attr.aria-controls]="idPopUp()"
+    (click)="handleClick()"
+>{{ text() }}</button>

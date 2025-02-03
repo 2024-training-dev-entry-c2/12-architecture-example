@@ -1,0 +1,22 @@
+<div class="form-dish-selector__group" [formGroup]="form()!">
+  <div formArrayName="dishes">
+    <div [formGroupName]="index().toString()">
+      <label class="form-dish-selector__label" for="dishId">
+        <span class="form-dish-selector__text">Plato</span>
+        <select
+        formControlName="dishId"
+        class="form-dish-selector__control"
+        >
+          @for (dish of dishes(); track $index) {
+          <option [value]="dish.id"> {{ dish.name }}</option>
+          }
+        </select>
+      </label>
+      @if (isInvalid) {
+      <div class="form-dish-selector__feedback">
+        <p>{{ getErrorMessage() }}</p> 
+      </div>
+      }
+    </div>
+  </div>
+</div>

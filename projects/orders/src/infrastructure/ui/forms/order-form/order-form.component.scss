@@ -1,0 +1,9 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mx;
+.order-form{
+    &__button{
+        @include mx.flex-container(center, center);
+        &--secondary{
+            margin-bottom: 15px;
+        }
+    }
+}

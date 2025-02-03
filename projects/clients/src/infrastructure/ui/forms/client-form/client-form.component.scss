@@ -1,0 +1,6 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mx;
+.client-form{
+    &__button{
+        @include mx.flex-container(center, center);
+    }
+}

@@ -1,0 +1,18 @@
+<div class="form-selector__group" [formGroup]="formGroup()">
+    <label class="form-selector__label" [for]="controlName()">
+        <span class="form-selector__text">{{ label() }}</span>
+        <select
+            [formControlName]="controlName()"
+            class="form-selector__control"
+        >
+        @for (client of clients(); track $index) {
+            <option [value]="client.id"> {{ client.name }}</option>
+        }
+        </select>
+    </label>
+    @if (isInvalid) {
+        <div class="form-selector__feedback">
+            <p>{{ getErrorMessage() }}</p>
+        </div>
+    }
+</div>

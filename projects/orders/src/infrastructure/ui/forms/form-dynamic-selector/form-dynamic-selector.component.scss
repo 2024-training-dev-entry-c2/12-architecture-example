@@ -1,0 +1,8 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as vr;
+
+.dynamic-field{
+    padding: 5px;
+    border: solid 1px vr.$color-gray-secondary;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}

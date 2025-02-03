@@ -1,0 +1,44 @@
+@use '../../styles/variables.scss' as vr;
+@use '../../styles/mixins.scss' as mx;
+
+.header {
+    @include mx.flex-container(center);
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    background-color: vr.$color-white;
+    box-shadow: 0px 2px 5px #0000002b;
+    z-index: 5;
+}
+
+.navigation {
+    @include mx.flex-container(space-between);
+    padding: 20px;
+    width: 80%;
+    min-width: 1000px;
+    font-size: 14px;
+
+    &__options{
+        @include mx.flex-container(start, center);
+    }
+
+    &__link{
+        @include mx.flex-container(start, center, 10px);
+        text-decoration: none;
+        color: vr.$color-back;
+        
+        &--bold{
+            font-weight: 600;
+        }
+
+        & svg{
+            width: 32px;
+            height: 32px;
+        }
+
+        & span{
+            @include mx.text-properties(balance, normal, 4px);
+            font-size: 10px;                      
+        }
+    }
+}

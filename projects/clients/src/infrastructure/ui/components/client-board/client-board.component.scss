@@ -1,0 +1,5 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mx;
+
+.client-table {
+    @include mx.table-styles;
+}
