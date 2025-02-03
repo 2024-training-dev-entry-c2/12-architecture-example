@@ -1,0 +1,71 @@
+@use "../../styles/variables.scss" as variables;
+@use "../../styles/mixin.scss" as mixin;
+
+.sidebar {
+  @include mixin.container(space-between);
+  flex-direction: column;
+  background-color: variables.$color-secondary;
+  opacity: 0.8;
+  width: 100%;
+  &__logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+  }
+  &__button {
+    margin-top: 30px;
+    width: 100%;
+    height: 40px;
+    color: variables.$color-secondary;
+    font-weight: bold;
+    font-family: variables.$font-family-secondary;
+    background: variables.$color-background;
+    border: none;
+    cursor: pointer;
+    &:hover {
+      color: variables.$color-background;
+      background: variables.$color-secondary;
+      text-shadow: 1px 1px 2px variables.$color-background;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    width: 100%;
+    height: 80dvh;
+  }
+  &__list {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+    margin: 0;
+  }
+  &__item {
+    @include mixin.container(space-around);
+    width: 100%;
+    height: 100%;
+    a {
+      text-decoration: none;
+      color: variables.$color-background;
+    }
+    &:hover {
+      font-weight: bold;
+      text-shadow: 1px 1px 3px variables.$color-background;
+    }
+  }
+  &__link {
+    background: none;
+    border: none;
+    color: variables.$color-background;
+    font-family: variables.$font-family-secondary;
+    font-weight: bold;
+
+    &:hover {
+      text-shadow: 0.5px 1px 5px white;
+      cursor: pointer;
+      font-size: 16px;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+<section class="dashboard" aria-labelledby="dashboard-title">
+  <h1 id="dashboard-title" class="visually-hidden">Dashboard del Restaurante</h1>
+  <section class="dashboard__sidebar" aria-label="Barra lateral de navegación">
+    <lib-sidebar />
+  </section>
+  <section class="dashboard__content" aria-label="Contenido principal del dashboard">
+    <lib-header />
+    <section class="dashboard__main" aria-label="Área principal">
+      <router-outlet></router-outlet>
+    </section>
+  </section>
+</section>

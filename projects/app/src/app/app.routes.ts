@@ -1,12 +1,28 @@
 import { Routes } from '@angular/router';
+import { DashboardLayoutComponent } from '../../../shared/src/public-api';
 
 export const routes: Routes = [
-  {
-    path: 'users',
-    loadChildren: () => import('users').then(m => m.usersRoutes)
-  },
-  // {
-  //   path: '',
-  //   loadChildren: () => import('home').then(m => m.homeRoutes)
-  // }
+   {
+    path: '',
+    component: DashboardLayoutComponent,
+    children: [
+      {
+        path:'',
+        loadChildren: () => import('restaurant').then(r => r.restaurantRoutes)
+      },
+      {
+        path:'ordenes',
+        loadChildren: ()=> import('ordenes').then(o=> o.ordenesRoutes)
+      },
+      {
+        path: 'clientes',
+        loadChildren: () => import('clients').then(m => m.clientsRoutes)
+      },
+      {
+        path: 'menu',
+        loadChildren: () => import('menu').then(m => m.menuRoutes)
+      }
+
+    ]
+  }
 ];

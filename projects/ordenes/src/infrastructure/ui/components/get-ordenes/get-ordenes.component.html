@@ -1,0 +1,73 @@
+<section class="ordenes">
+  <lib-modal action="Crear Orden" #modal>
+    <section class="ordenes__add" aria-label="Agregar/editar orden">
+      @if(message()) {
+        <div class="ordenes__mensaje-exito">
+          {{message()}}
+        </div>
+      }
+      <lib-add-orden-form
+      (onSubmit)="handleSubmit($event)"
+      [orden]="currentOrden()"
+      >
+    </lib-add-orden-form>
+    </section>
+  </lib-modal>
+<section class="ordenes__content" role="main">
+  <h1>Ordenes</h1>
+  <table class="ordenes__table">
+    <thead role="rowgroup">
+      <tr>
+        <th scope="col">ID Orden</th>
+        <th scope="col">Total Precio</th>
+        <th scope="col">Estado de la Orden</th>
+        <th scope="col">Nombre del Cliente</th>
+        <th scope="col">Teléfono del Cliente</th>
+        <th scope="col">Platos</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody role="rowgroup">
+
+      @for(orden of ordenes(); track orden.id){
+      <tr role="row">
+        <td>{{ orden.id }}</td>
+        <td>{{ orden.priceTotal | currency}}</td>
+        <td>
+          <button type="button"  [class]="getButtonClass(orden.statusOrder)"
+            (click)="statusChange(orden)">
+            {{ orden.statusOrder }}
+
+          </button>
+        </td>
+        <td>{{ orden.client.name }}</td>
+        <td>{{ orden.client.numberPhone }}</td>
+        <td>
+          <ul class="ordenes__items" role="list">
+            @for(item of orden.items; track item.id){
+            <li role="listitem"><strong>Nombre:</strong> {{ item.dish.name }},</li>
+            <li role="listitem"><strong>Precio:</strong> {{ item.dish.price | currency}},</li>
+            <li role="listitem"><strong>Cantidad:</strong> {{ item.quantity }}</li>
+            }
+          </ul>
+        </td>
+        <td>
+          <lib-button
+          [text]="'Editar'"
+          [theme]="'primary'"
+          (click)="editOrden(orden.id)"
+          >
+        </lib-button>
+         <hr>
+         <lib-button
+         [text]="'Eliminar'"
+         [theme]="'danger'"
+         (click) ="deleteOrden(orden.id)"
+         ></lib-button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</section>
+</section>

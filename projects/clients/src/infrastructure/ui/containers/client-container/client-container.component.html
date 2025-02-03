@@ -1,0 +1,8 @@
+<section class="clients" aria-labelledby="clients-title">
+  <h1 id="clients-title" class="visually-hidden">Gestión de Clientes</h1>
+  <section class="clients__view" aria-label="Ver clientes">
+    <lib-get-clients [clients]="clients$ | async" [currentClient]="currentClient$ | async"
+      (onCreateClient)="handlePatchClient($event)" (onSelectClient)="handleSelectClient($event)"
+      (onDeleteClient)="deleteClient($event)"></lib-get-clients>
+  </section>
+</section>

@@ -1,0 +1,28 @@
+@use "../../styles/variables.scss" as variables;
+@use "../../styles/mixin.scss" as mixin;
+
+.dashboard {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 10% 90%;
+  grid-template-rows: 100%;
+
+  &__sidebar {
+    width: 100%;
+    height: 100dvh;
+    grid-column: 1/2;
+    background-color: variables.$color-secondary;
+  }
+  &__content {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+  }
+  &__main {
+    width: 100%;
+    height: 80dvh;
+  }
+}

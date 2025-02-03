@@ -1,0 +1,14 @@
+@use "./variables.scss" as variables;
+
+@mixin allison-regular {
+  font-family: variables.$font-family-title;
+  font-weight: variables.$font-weight-title;
+  font-size: variables.$font-size-title;
+
+}
+
+@mixin container($justify: start) {
+  display: flex;
+  align-items: center;
+  justify-content: $justify;
+}
