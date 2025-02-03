@@ -8,3 +8,8 @@ export interface IOrder {
   customer: ICustomer;
   dishes: IDish[];
 }
+
+export interface IOrderForm {
+  customerIds: number;
+  dishesIds: number[];
+}
