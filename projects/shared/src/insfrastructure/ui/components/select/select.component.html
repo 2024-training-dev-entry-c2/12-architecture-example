@@ -1,13 +1,17 @@
-<div class="select" role="combobox" [attr.aria-expanded]="isOpen" aria-haspopup="listbox">
-    <button class="select__button" type="button" [attr.aria-label]="placeholder()" [attr.aria-expanded]="isOpen"
-        (click)="toggleDropdown()" (keydown.space)="toggleDropdown()" (keydown.enter)="toggleDropdown()">
-        {{ selectedLabel || placeholder() }}
+<div class="select" [class.select--open]="isOpen" role="combobox" [attr.aria-expanded]="isOpen" aria-haspopup="listbox">
+    <button type="button" class="select__button" [attr.aria-label]="placeholder()" [attr.aria-expanded]="isOpen"
+        (click)="toggleDropdown()" (keydown.space)="$event.preventDefault(); toggleDropdown()"
+        (keydown.enter)="$event.preventDefault(); toggleDropdown()">
+        <span>{{ selectedLabel || placeholder() }}</span>
+        <span class="select__arrow" aria-hidden="true"></span>
     </button>
-    <ul class="select__dropdown" role="listbox" [class.select__dropdown--open]="isOpen">
+
+    <ul class="select__options" role="listbox" [class.select__options--open]="isOpen">
         @for (option of options(); track option.value) {
-        <li class="select__option" role="option" [class.select__option--selected]="option.label === selectedLabel"
-            [attr.aria-selected]="option.label === selectedLabel" (click)="onSelect(option)"
-            (keydown.enter)="onSelect(option)" (keydown.space)="onSelect(option)">
+        <li class="select__option" role="option" [id]="'option-' + option.value"
+            [class.select__option--selected]="option.value === value" [attr.aria-selected]="option.value === value"
+            (click)="onSelect(option)" (keydown.enter)="$event.preventDefault(); onSelect(option)"
+            (keydown.space)="$event.preventDefault(); onSelect(option)">
             {{ option.label }}
         </li>
         }

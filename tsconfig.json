@@ -8,21 +8,11 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "paths": {
-      "customer": [
-        "./dist/customer"
-      ],
-      "dish": [
-        "./dist/dish"
-      ],
-      "menu": [
-        "./dist/menu"
-      ],
-      "order": [
-        "./dist/order"
-      ],
-      "shared": [
-        "./dist/shared"
-      ]
+      "customer": ["./dist/customer"],
+      "dish": ["./dist/dish"],
+      "menu": ["./dist/menu"],
+      "order": ["./dist/order"],
+      "shared": ["./dist/shared"]
     },
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
