@@ -1,0 +1,52 @@
+<section class="container">
+    <article class="entity">
+        <div class="entity__header">
+            <h1>Pedidos</h1>
+        </div>
+        <div class="entity__create-button-container">
+            <button aria-expanded="false" class="entity__create-button">
+                <fa-icon [icon]="faPlus"></fa-icon>
+                <span>Nuevo Pedido</span>
+            </button>
+            @if(showOrderDetails && selectedOrder){
+            <app-order-detail [orderDetails]="selectedOrder.orderDetails"
+                (closeModal)="closeOrderDetailsModal()"></app-order-detail>
+            }
+
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>CLIENTE</th>
+                    <th>FECHA</th>
+                    <th>ESTADO</th>
+                    <th>TOTAL</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for ( order of orders; track order.id) {
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.client.name + ' ' + order.client.lastName }}</td>
+                    <td>{{ order.orderDateTime | date: 'medium':'-5':'es-CO' }}</td>
+                    <td>{{ order.status === 'PROCESSING' ? 'PROCESANDO' : order.status === 'COMPLETED' ? 'ENTREGADO' :
+                        'CANCELADO' }}</td>
+                    <td>{{ order.total | number:'1.0-0':'es-ES' }}</td>
+
+                    <td class="entity__buttons">
+                        <button class="entity__detail-button" (click)="showOrderDetailsModal(order)">Detalle </button>
+                        @if(order.status === 'PROCESSING'){
+                        <button class="entity__edit-button" (click)="changeStatus(order, 'COMPLETED')">Entregar
+                        </button>
+                        <button class="entity__delete-button" (click)="changeStatus(order, 'CANCELLED')">Cancelar
+                        </button>
+                        }
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </article>
+</section>

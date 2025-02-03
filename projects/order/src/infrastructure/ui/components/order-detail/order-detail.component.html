@@ -1,0 +1,30 @@
+<section class="modal-container">
+    <article class="form-card">
+        <div class="form-card__header">
+            <h2 class="form-card__title">
+                Detalle pedido
+            </h2>
+            <button (click)="close()"><fa-icon [icon]="faX"></fa-icon></button>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>CANTIDAD</th>
+                    <th>PLATO</th>
+                    <th>SUBTOTAL</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for ( detail of orderDetails; track detail.id) {
+                <tr>
+                    <td>{{ detail.quantity }}</td>
+                    <td>{{ detail.dish.dishName }}</td>
+                    <td>{{ detail.subtotal| number:'1.0-0':'es-ES' }}</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+
+    </article>
+</section>

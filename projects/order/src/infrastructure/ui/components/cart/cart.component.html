@@ -1,0 +1,34 @@
+<section class="modal-container">
+    <article class="form-card">
+        <div class="form-card__header">
+            <h2 class="form-card__title">
+                Nuevo pedido
+            </h2>
+            <button (click)="close()"><fa-icon [icon]="faX"></fa-icon></button>
+        </div>
+        <h3>Cliente: {{ client?.name + ' ' + client?.lastName }}</h3>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>PLATO</th>
+                    <th>CANTIDAD</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for ( dish of dishes; track dish.id) {
+                <tr>
+                    <td>{{ dish.dishName }}</td>
+                    <td>{{ quantities[$index] }}</td>
+                    <td class="form-card__buttons">
+                        <button class="form-card__plus" (click)="increment($index)">+</button>
+                        <button class="form-card__minus" (click)="decrement($index)">-</button>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+        <button class="form-card__plus" (click)="saveOrder()">Guardar</button>
+    </article>
+</section>

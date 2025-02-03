@@ -1,0 +1,31 @@
+@use "../../../../../../shared/src/infrastructure/ui/styles/variables.scss" as
+  variables;
+@use "../../../../../../shared/src/infrastructure/ui/styles/mixins.scss" as
+  mixins;
+@import "../order-detail/order-detail.component.scss";
+
+.form-card {
+  &__buttons {
+    @include mixins.container(end);
+    gap: 20px;
+  }
+
+  &__plus,
+  &__minus {
+    @include mixins.font(16px, 500);
+    padding: 8px 16px;
+    background-color: variables.$color-secondary;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+
+    &:hover {
+      box-shadow: 0px 3px 6px 0px rgba(160, 160, 160, 1);
+    }
+  }
+
+  &__minus {
+    background-color: variables.$color-primary;
+  }
+}
