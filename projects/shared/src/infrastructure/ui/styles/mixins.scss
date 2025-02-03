@@ -12,3 +12,37 @@
       background-color: $hover-bg;
     }
   }
+
+@mixin dish-card-styles($bg-color) {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  background-color: $bg-color;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+@mixin text-style($size, $color: #333) {
+  font-size: $size;
+  color: $color;
+}
+
+
+@mixin flex-container($justify: center, $align: center, $gap: 0) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+@mixin common-border($radius: 0.5rem) {
+  border-radius: $radius;
+  border: none;
+}

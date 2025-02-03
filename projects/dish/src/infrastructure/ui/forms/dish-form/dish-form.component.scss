@@ -17,6 +17,10 @@
       gap: 10px;
       margin-top: 15px;
     }
+
+    &__group {
+      max-width: 300px;
+    }
   
     &__submit {
         display: flex;
