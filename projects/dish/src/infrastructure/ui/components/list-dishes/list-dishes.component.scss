@@ -1,5 +1,5 @@
 @use "../../../../../../shared/src/insfrastructure/ui/styles/variables.scss" as var;
-@use "../../../../../../shared/src/insfrastructure/ui/styles/mixins.scss";
+@use "../../../../../../shared/src/insfrastructure/ui/styles/mixins.scss" as mix;
 @use "sass:color";
 
 .dishes-table {
@@ -39,7 +39,7 @@
     text-align: center;
 
     &--actions {
-      @include flex-center;
+      @include mix.flex-center;
       gap: 0.5rem;
     }
   }

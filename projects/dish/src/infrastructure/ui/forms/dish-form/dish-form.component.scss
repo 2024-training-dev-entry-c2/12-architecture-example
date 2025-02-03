@@ -1,9 +1,9 @@
 @use "../../../../../../shared/src/insfrastructure/ui/styles/variables.scss" as var;
-@use "../../../../../../shared/src/insfrastructure/ui/styles/mixins.scss";
+@use "../../../../../../shared/src/insfrastructure/ui/styles/mixins.scss" as mix;
 @use "sass:color";
 
 .dish-form {
-  @include form-container;
+  @include mix.form-container;
 
   &__title {
     font-size: 1.5rem;
@@ -12,7 +12,7 @@
   }
 
   &__label {
-    @include flex-column;
+    @include mix.flex-column;
     gap: 0.5rem;
   }
 
@@ -26,7 +26,7 @@
   }
 
   &__input {
-    @include form-input;
+    @include mix.form-input;
   }
 
   &__error {
