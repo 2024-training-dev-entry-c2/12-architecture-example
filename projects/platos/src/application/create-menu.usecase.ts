@@ -1,14 +1,14 @@
 import { inject, Injectable } from '@angular/core';
 import { State } from '../domain/state';
 import { Subscription, tap } from 'rxjs';
-import { IClient } from '../domain/model/client.model';
-import { CreateClientService } from '../infrastructure/services/create-client.service';
+import { CreatePlatoService } from '../infrastructure/services/create-plato.service';
+import { IPlato } from '../domain/model/platos.model';
 
 @Injectable({
   providedIn: 'root',
 })
-export class CreateClientUseCase {
-  private readonly _service = inject(CreateClientService);
+export class CreatePlatoUseCase {
+  private readonly _service = inject(CreatePlatoService);
   private readonly _state = inject(State);
   private subscriptions: Subscription;
 
@@ -21,14 +21,14 @@ export class CreateClientUseCase {
     this.subscriptions.unsubscribe();
   }
 
-  execute(client: IClient): void {
+  execute(plato: IPlato): void {
     this.subscriptions.add(
       this._service
-        .execute(client)
+        .execute(plato)
         .pipe(
-          tap((client) => {
-            const clients = this._state.clientState.client.snapshot();
-            this._state.clientState.client.set([...clients, client]);
+          tap((plato) => {
+            const platos = this._state.platoState.plato.snapshot();
+            this._state.platoState.plato.set([...platos, plato]);
           })
         )
         .subscribe()

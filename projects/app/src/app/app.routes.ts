@@ -9,4 +9,8 @@ export const routes: Routes = [
     path: 'client',
     loadChildren: () => import('client').then((m) => m.LibRoutes),
   },
+  {
+    path: 'platos',
+    loadChildren: () => import('platos').then((m) => m.LibRoutes),
+  },
 ];

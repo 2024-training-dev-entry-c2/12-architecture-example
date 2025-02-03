@@ -13,7 +13,7 @@ export class UpdateClientUseCase {
   private subscriptions: Subscription;
 
   //#region Observables
-  currentMenu$(): Observable<IClient> {
+  currentClient$(): Observable<IClient> {
     return this._state.clientState.currenClient.$();
   }
   //#endregion
