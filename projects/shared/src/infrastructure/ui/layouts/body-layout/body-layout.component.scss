@@ -1,14 +1,27 @@
 @use '../../styles/variables.scss' as vr;
 @use '../../styles/mixins.scss' as mx;
 
-.layout{
+.body-layout{
+    position: relative;
     width: 100vw;
     height: 100vh;
     padding-bottom: 120px;
-    background: linear-gradient(vr.$color-gray, vr.$color-white);
     overflow: auto;
 
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(vr.$color-gray, vr.$color-white);
+        opacity: 0.2; 
+        z-index: -1; 
+    }
+
     &__main{
-        padding-top: 130px;
+        overflow-x: hidden;
+        overflow-y: auto;
     }
 }

@@ -2,10 +2,11 @@ import { Component, input, output } from '@angular/core';
 import { IClient } from '../../../../domain/model/client.model';
 import { TitleCasePipe } from '@angular/common';
 import { CellOptionsComponent } from 'shared';
+import { BooleanPipe } from '../../pipes/boolean.pipe';
 
 @Component({
   selector: 'lib-client-board',
-  imports: [CellOptionsComponent ,TitleCasePipe],
+  imports: [CellOptionsComponent ,TitleCasePipe, BooleanPipe],
   templateUrl: './client-board.component.html',
   styleUrl: './client-board.component.scss'
 })

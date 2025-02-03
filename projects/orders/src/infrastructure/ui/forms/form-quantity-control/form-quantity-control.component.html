@@ -1,9 +1,9 @@
 <div class="form-control">
     <div class="form-control__buttons-container">
-        <button class="form-control__button" (click)="decrementQuantity()" 
+        <button class="form-control__button" type="button" (click)="decrementQuantity()" 
         aria-label="Decrementar cantidad">-</button>
         <span>{{quantityControl.value}}</span>
-        <button class="form-control__button" (click)="incrementQuantity()" 
+        <button class="form-control__button" type="button" (click)="incrementQuantity()" 
         aria-label="Incrementar cantidad">+</button>
     </div>
     <button class="form-control__button form-control__button--delete" type="button" (click)="onDeleteClick()">

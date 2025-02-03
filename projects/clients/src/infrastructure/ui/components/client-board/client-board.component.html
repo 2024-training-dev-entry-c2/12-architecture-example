@@ -12,7 +12,7 @@
             <tr class="client-table__column" role="row">               
                 <td class="client-table__item" role="cell">{{client.name | titlecase}}</td>
                 <td class="client-table__item" role="cell">{{client.email}}</td>
-                <td class="client-table__item" role="cell">{{client.frequent}}</td>
+                <td class="client-table__item" role="cell">{{client.frequent | boolean}}</td>
                 <td class="client-table__item" role="cell">
                     <lib-cell-options 
                     [idItem]="client.id" 
