@@ -5,6 +5,7 @@ import { IControls } from 'shared';
 import { InputComponent } from 'shared';
 import { CommonModule } from '@angular/common';
 import { ModalUseCase } from '../../../../application/modal.usecase';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'lib-client-form',
@@ -12,11 +13,11 @@ import { ModalUseCase } from '../../../../application/modal.usecase';
   templateUrl: './client-form.component.html',
   styleUrl: './client-form.component.scss'
 })
-export class ClientFormComponent implements OnInit, OnDestroy {
+export class ClientFormComponent implements OnInit {
   private _fb = inject(FormBuilder);
-  private _useCaseModal = inject(ModalUseCase);
   public message = input<string>();
   public onSubmit = output<IClient>();
+  public _isOpen = input<Observable<boolean>>();
 
 
   @Input()
@@ -43,22 +44,16 @@ export class ClientFormComponent implements OnInit, OnDestroy {
   ]
 
   submit() {
-    if (!this.form.invalid) return;
+    if (this.form.invalid) return;
     this.onSubmit.emit(this.form.getRawValue());
   }
 
   ngOnInit(): void {
-    this._useCaseModal.initSubscriptions();
-    this._useCaseModal.openModal$().subscribe(result => {
-      if (result) {
+    this._isOpen().subscribe(result => {
+      if (!result) {
         this.form.reset();
       }
     })
   }
-
-  ngOnDestroy(): void {
-    this._useCaseModal.destroySubscriptions();
-  }
-
 
 }

@@ -11,12 +11,6 @@ export class DeleteClientUseCase {
     private readonly _state = inject(State);
     private subscriptions: Subscription;
 
-    //#region Observables
-    message$(): Observable<string> {
-        return this._state.clients.message.$();
-    }
-    //#endregion
-
     //#region Public Methods
     initSubscriptions(): void {
         this.subscriptions = new Subscription();
@@ -30,9 +24,8 @@ export class DeleteClientUseCase {
         this.subscriptions.add(
             this._service.execute(clientId).pipe(
                 tap(result => {
-                    this._state.clients.message.set(result.message);
                     const currentClients = this._state.clients.showClients.snapshot();
-                    this._state.clients.showClients.set([...currentClients]);
+                    this._state.clients.showClients.set(currentClients.filter(c => c.id !== clientId));
                 })
             ).subscribe()
         );

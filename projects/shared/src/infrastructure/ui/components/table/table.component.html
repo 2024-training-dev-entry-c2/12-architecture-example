@@ -26,7 +26,7 @@
                 </td>
                 }
                 <td>
-                    <a class="data__action" (click)="sendEdit(data.id)" [attr.aria-label]="'Editar ' + title()">✏️</a>
+                    <a class="data__action" (click)="sendEdit(data.id)" (click)="openForm()" [attr.aria-label]="'Editar ' + title()">✏️</a>
                     <a class="data__action data__action--delete" (click)="sendDelete(data.id)" [attr.aria-label]="'Eliminar ' + title()">X</a>
                 </td>
             </tr>

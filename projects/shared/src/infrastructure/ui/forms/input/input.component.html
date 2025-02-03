@@ -1,10 +1,9 @@
-<label class="label" aria-labelledby="label-title">
+<label class="label" aria-labelledby="label-title" [formGroup]="formGroup()">
     <span id="label-title" class="label__span">{{text()}}</span>
     <input
       class="label__input"
       type="{{type()}}"
-      [formControlName]="formControlName()"
-      [formGroup]="formGroup()"
+      formControlName="{{formControlName()}}"
       [placeholder]="placeholder()"
     />
     <span class="label__error" aria-live="polite">

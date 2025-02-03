@@ -8,7 +8,7 @@ export const routes: Routes = [
         children: [
             {
                 path: 'client',
-                loadChildren: () => import('../../../clients/src/infrastructure/ui/routes/client.routes').then(m => m.clientsRoutes)
+                loadChildren: () => import('clients').then(m => m.clientsRoutes)
             }
         ]
     }

@@ -1,7 +1,7 @@
 import { inject, Injectable } from "@angular/core";
 import { State } from "../domain/state";
 import { UpdateClientService } from "../infrastructure/services/update-client.service";
-import { delay, finalize, Observable, Subscription, tap } from "rxjs";
+import { delay, finalize, map, Observable, Subscription, tap } from "rxjs";
 import { IClient } from "../domain/model/client.model";
 
 @Injectable({
@@ -36,9 +36,9 @@ export class UpdateClientUseCase {
             this._service.execute(client.id, client)
                 .pipe(
                     tap(result => {
-                        this._state.clients.message.set(result.message)
+                        this._state.clients.message.set('Cliente actualizado con éxito');
                         const currentClients = this._state.clients.showClients.snapshot();
-                        const updatedClients = currentClients.map(c => c.id === client.id ? client : c);
+                        const updatedClients = currentClients.map(c => c.id === result.id ? result : c);
                         this._state.clients.showClients.set(updatedClients);
                     }),
                     delay(2000),

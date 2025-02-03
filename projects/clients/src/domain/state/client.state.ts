@@ -21,7 +21,7 @@ export class ClientState {
             showClients: this._factory.state(this.clients$),
             currentClient: this._factory.state(this.currentClient$),
             open: this._factory.state(this.open$),
-            message: this._factory.state(this.message$),
+            message: this._factory.state(this.message$)
         }
     }
 }

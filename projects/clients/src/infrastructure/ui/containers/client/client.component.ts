@@ -22,11 +22,33 @@ export class ClientComponent implements OnInit, OnDestroy {
   private readonly _useCaseCreate = inject(CreateClientUseCase);
   private readonly _useCaseUpdate = inject(UpdateClientUseCase);
   private readonly _useCaseDelete = inject(DeleteClientUseCase);
+  
 
   public clients$: Observable<IClient[]>
   public isModalOpen$: Observable<boolean>;
   public selectedClient$: Observable<IClient>;
   public message$: Observable<string>;
+
+  ngOnInit(): void {
+    this._useCaseCreate.initSubscriptions();
+    this._useCaseUpdate.initSubscriptions();
+    this._useCaseGet.initSubscriptions();
+    this._useCaseDelete.initSubscriptions();
+    this._useCaseModal.initSubscriptions();
+    this._useCaseGet.execute();
+    this.clients$ = this._useCaseGet.client$();
+    this.selectedClient$ = this._useCaseUpdate.currentClient$();
+    this.isModalOpen$ = this._useCaseModal.openModal$();
+    this.message$ = this._useCaseCreate.message$();
+  }
+
+  ngOnDestroy(): void {
+    this._useCaseCreate.destroySubscriptions();
+    this._useCaseUpdate.destroySubscriptions
+    this._useCaseGet.destroySubscriptions();
+    this._useCaseModal.destroySubscriptions();
+    this._useCaseDelete.destroySubscriptions();
+  }
 
   public columns = [
     { field: 'name', header: 'Nombre' },
@@ -40,40 +62,17 @@ export class ClientComponent implements OnInit, OnDestroy {
   }
 
   public submit(client: IClient) {
+    console.log(client);
     const usecase = client.id ? this._useCaseUpdate : this._useCaseCreate;
     usecase.execute(client);
   }
 
-  public updateById(clientId: number): void {
+  public updateClientById(clientId: number): void {
     this._useCaseUpdate.selectClient(clientId);
-  }
-
-  ngOnInit(): void {
-    this._useCaseCreate.initSubscriptions();
-    this._useCaseUpdate.initSubscriptions();
-    this._useCaseGet.initSubscriptions();
-    this._useCaseDelete.initSubscriptions();
-    this._useCaseGet.execute();
-    this.clients$ = this._useCaseGet.client$();
-    this.selectedClient$ = this._useCaseUpdate.currentClient$();
-    this.message$ = this._useCaseCreate.message$();
-    this.isModalOpen$ = this._useCaseModal.openModal$();
-    this.clients$ = this._useCaseGet.client$();
-
-  }
-  ngOnDestroy(): void {
-    this._useCaseCreate.destroySubscriptions();
-    this._useCaseUpdate.destroySubscriptions
-    this._useCaseGet.destroySubscriptions();
-    this._useCaseModal.destroySubscriptions();
-    this._useCaseDelete.destroySubscriptions();
   }
 
   public deleteClientById(clientId: number): void {
     this._useCaseDelete.execute(clientId);
   }
 
-  public updateClientById(clientId: number): void {
-    this._useCaseUpdate.selectClient(clientId);
-  }
 }
