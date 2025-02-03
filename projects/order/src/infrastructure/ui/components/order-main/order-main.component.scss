@@ -1,0 +1,199 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
+
+.order {
+    @include mixins.scroll(25em);
+    margin-top: 10px;
+
+    &__table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    &__table th:nth-child(1) {
+        width: 10%;
+    }
+
+    &__table th:nth-child(2) {
+        width: 10%;
+    }
+
+    &__table th:nth-child(3) {
+        width: 10%;
+    }
+
+    &__table th:nth-child(4) {
+        width: 50%;
+    }
+
+    &__table th:nth-child(5) {
+        width: 20%;
+    }
+
+    &__table td,
+    &__table th {
+        border: 1px solid #dcd8d8;
+        padding: 8px;
+    }
+
+    &__table tr:nth-child(even) {
+        background-color: #e2e7e0;
+    }
+
+    &__table tr:hover {
+        background-color: #a9a9a9;
+    }
+
+    &__table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #000;
+        color: white;
+    }
+
+    &__action {
+        display: flex;
+        justify-content: end;
+        gap: 10px;
+    }
+
+    &__button {
+        @include mixins.container-gap(5px);
+        @include mixins.border(1px solid rgb(139, 139, 139), 5px);
+        text-decoration: none;
+        color: variables.$black;
+        padding: 5px;
+        width: 100px;
+        justify-content: center;
+        cursor: pointer;
+        transition: 0.5s transform;
+
+        &:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+
+        &--edit {
+            background-color: variables.$blue;
+        }
+
+        &--delete {
+            background-color: variables.$red;
+        }
+    }
+
+    &__icon {
+        width: 20px;
+        height: 20px;
+
+        svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+    }
+}
+
+.accordion {
+    background-color: transparent;
+    border: 1px solid black;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 16px;
+    transition: 0.4s;
+}
+
+.accordion:after {
+    content: '\002B';
+    font-weight: bold;
+    float: right;
+    margin-left: 5px;
+}
+
+.active:after {
+    content: "\2212";
+}
+
+.panel {
+    padding: 0 18px;
+    border-radius: 10px;
+    max-height: 0;
+    overflow: hidden;
+    font-size: 16px;
+    transition: max-height 0.2s ease-out;
+    overflow-y: scroll;
+    height: 200px;
+    text-align: center;
+
+    &__list {
+        list-style: none;
+
+        li {
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: space-evenly;
+            gap: 5px;
+
+            svg {
+                width: 20px;
+                height: 20px;
+                fill: none;
+                stroke: currentColor;
+                stroke-width: 2;
+                stroke-linecap: round;
+                stroke-linejoin: round;
+            }
+        }
+    }
+
+    &__hr {
+        margin-bottom: 10px;
+        color: variables.$black;
+    }
+
+    &__button {
+        padding: 5px;
+        border-radius: 5px;
+        border: 1px solid rgba(128, 128, 128, 0.384);
+        height: 30px;
+        cursor: pointer;
+        transition: 0.5s transform;
+
+        &:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+
+        &--edit {
+            background-color: variables.$blue;
+        }
+
+        &--delete {
+            background-color: variables.$red;
+        }
+
+        &--add {
+            background-color: variables.$green;
+        }
+    }
+}
+
+.modal {
+    @include mixins.container-column(10px);
+
+    &__input {
+        padding: 5px;
+        width: 360px;
+    }
+}

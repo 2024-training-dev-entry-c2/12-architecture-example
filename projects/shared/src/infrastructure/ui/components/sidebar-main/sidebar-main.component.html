@@ -1,0 +1,15 @@
+<main role="main" aria-roledescription="contenido principal">
+    <menu class="menu" role="menu" aria-roledescription="menu principal">
+        @for (item of menuItems; track item.label) {
+        <a class="menu__item" [routerLink]="item.link" routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }" rel="noopener">
+            <i aria-hidden="true">
+                <svg>
+                    <use [attr.xlink:href]="item.icon"></use>
+                </svg>
+            </i>
+            <li>{{ item.label }}</li>
+        </a>
+        }
+    </menu>
+</main>

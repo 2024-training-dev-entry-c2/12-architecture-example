@@ -1,0 +1,15 @@
+<lib-dish-header (onSubmitDish)="addDish($event)"></lib-dish-header>
+<lib-share (searchQueryChange)="updateSearchQuery($event)"></lib-share>
+<lib-dish-main [dishes]="dish$ | async" (deleteDishEvent)="openDeleteModal($event)"
+    (editDishEvent)="openEditModal($event)"></lib-dish-main>
+
+<lib-modal *ngIf="isModalOpen()" [title]="modalTitle" [buttonName]="modalButton" (submitEvent)="confirmModal()"
+    (closeEvent)="closeModal()">
+    <ng-container *ngIf="modalType === 'edit'">
+        <lib-dish-form #dishEditForm [isEditForm]="true" [currentDishName]="currentDishName"
+            [currentPrice]="currentPrice" [currentDescription]="currentDescription"></lib-dish-form>
+    </ng-container>
+    <ng-container *ngIf="modalType === 'delete'">
+        <p>¿Estas seguro de que deseas eliminar este plato?</p>
+    </ng-container>
+</lib-modal>

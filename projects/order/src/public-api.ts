@@ -2,5 +2,5 @@
  * Public API Surface of order
  */
 
-export * from './lib/order.service';
-export * from './lib/order.component';
+export {OrderMainLayoutComponent} from './infrastructure/ui/layouts/order-main-layout/order-main-layout.component';
+export * from './infrastructure/ui/routes/order.routes';

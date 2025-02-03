@@ -1,0 +1,30 @@
+<div class="modal-overlay" *ngIf="isVisible" role="dialog" aria-roledescription="dialog modal">
+    <div class="modal-content" role="document" aria-roledescription="contenido del modal">
+        <header role="banner" aria-roledescription="cabecera del modal">
+            <h2 class="modal-content__title">{{ modalTitle }}</h2>
+            <button class="modal-content__close" (click)="closeModal()">X</button>
+        </header>
+        <form role="form" aria-roledescription="formulario" [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="modal-content__form-group">
+                <label aria-roledescription="nombre del plato" for="dishName">Nombre del Plato</label>
+                <input aria-roledescription="nombre del plato" id="dishName" formControlName="dishName" type="text" />
+            </div>
+            <div class="modal-content__form-group">
+                <label aria-roledescription="precio del plato" for="price">Precio</label>
+                <input aria-roledescription="precio del plato" id="price" formControlName="price" type="number"
+                    step="0.01" />
+            </div>
+            <div class="modal-content__form-group">
+                <label aria-roledescription="descripción del plato" for="description">Descripción</label>
+                <textarea aria-roledescription="descripción del plato" id="description"
+                    formControlName="description"></textarea>
+            </div>
+            <div class="modal-content__button">
+                <button class="modal-content__action" role="button" aria-roledescription="boton de accion" type="submit"
+                    [disabled]="form.invalid">
+                    {{ modalButton }}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
+
+.initial-message {
+    font-weight: 700;
+}
+
+.client-form {
+    @include mixins.container-column(5px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 300px;
+    margin-top: 10px;
+
+    &__checkbox {
+        @include mixins.container-gap(5px);
+    }
+
+    &__input {
+        @include mixins.border(1px solid rgba(0, 0, 0, 0.361), 5px);
+        padding: 5px;
+        width: 340px;
+
+        &--checkbox {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+    }
+}

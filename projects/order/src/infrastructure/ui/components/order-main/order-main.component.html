@@ -1,0 +1,60 @@
+<main class="order">
+    <table class="order__table" aria-label="table">
+        <thead>
+            <tr>
+                @for (header of getHeaders(); track header.label) {
+                <th>{{ header.label }}</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @for (order of orders(); track order.idOrder) {
+            <tr>
+                <td>{{ order.idOrder }}</td>
+                <td>{{ order.clientName | titlecase }}</td>
+                <td>{{ order.totalAmount | currency : 'USD' : 'symbol' }}</td>
+                <td>
+                    <button class="accordion" (click)="toggleAccordion($event)">Ver detalles de la Orden</button>
+                    <div class="panel">
+                        <ul class="panel__list">
+                            @for (item of order.orderItems; track $index) {
+                            <li>
+                                <i aria-hidden="true">
+                                    <svg>
+                                        <use xlink:href="svg/food.svg#food"></use>
+                                    </svg>
+                                </i>
+                                {{ "ID del plato: " + item.idDish }} - {{"Cantidad: " + item.quantity }}
+                                <button class="panel__button panel__button--edit"
+                                    (click)="editOrderItem(order.idOrder, item)">Editar</button>
+                                <button class="panel__button panel__button--delete"
+                                    (click)="deleteOrderItem(order.idOrder, item.idOrderItem)">Eliminar</button>
+                            </li>
+                            <hr class="panel__hr">
+                            }
+                        </ul>
+                        <button class="panel__button panel__button--add" (click)="addOrderItem(order.idOrder)">Agregar
+                            Item</button>
+                    </div>
+                </td>
+                <td class="order__action">
+                    @for (action of getActions(); track action.label) {
+                    <a class="order__button order__button--{{ action.type }}" (click)="action.type === 'delete' ? openDeleteModal(order.idOrder) :  
+                        action.type === 'edit' ? openEditModal(order) : null">
+                        <i class="order__icon" aria-hidden="true">
+                            <svg>
+                                <use [attr.xlink:href]="action.icon"></use>
+                            </svg>
+                        </i>
+                        {{ action.label }}
+                    </a>
+                    }
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</main>
+
+<lib-item-modal [isVisible]="isModalVisible" [item]="currentItem" [isEditMode]="isEditMode" [modalTitle]="modalTitle"
+    [modalButton]="modalButton" (close)="closeModal()" (submit)="submitOrderItem($event)"></lib-item-modal>

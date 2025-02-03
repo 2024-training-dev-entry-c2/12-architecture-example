@@ -1,0 +1,83 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
+
+.client {
+    margin-top: 10px;
+    overflow-x: scroll;
+    overflow-y: scroll;
+    height: 25em;
+    width: 66em;
+
+    &__table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    &__table td,
+    &__table th {
+        border: 1px solid #dcd8d8;
+        padding: 8px;
+    }
+
+    &__table tr:nth-child(even) {
+        background-color: #e2e7e0;
+    }
+
+    &__table tr:hover {
+        background-color: #a9a9a9;
+    }
+
+    &__table th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: variables.$black;
+        color: variables.$white;
+    }
+
+    &__action {
+        display: flex;
+        justify-content: end;
+        gap: 10px;
+    }
+
+    &__button {
+        @include mixins.container-gap(5px);
+        @include mixins.border(1px solid rgb(139, 139, 139), 5px);
+        text-decoration: none;
+        color: black;
+        padding: 5px;
+        width: 100px;
+        justify-content: center;
+        cursor: pointer;
+        transition: 0.5s transform;
+
+        &:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+
+        &--edit {
+            background-color: variables.$blue;
+        }
+
+        &--delete {
+            background-color: variables.$red;
+        }
+    }
+
+    &__icon {
+        width: 20px;
+        height: 20px;
+
+        svg {
+            width: 20px;
+            height: 20px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+    }
+}

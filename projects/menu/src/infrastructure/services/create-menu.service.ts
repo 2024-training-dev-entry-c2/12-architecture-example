@@ -1,13 +1,17 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { IMenu } from '../../domain/model/menus.model';
-import { Observable, of } from 'rxjs';
+import { Observable} from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'shared';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CreateMenuService {
-  create(menu: IMenu): Observable<IMenu> {
-    return of(menu)
+  private readonly _http = inject(HttpClient);
+
+  createMenu(menu: IMenu): Observable<IMenu> {
+    return this._http.post<IMenu>(environment.apiUrl + '/menus', menu);
   }
 
 }

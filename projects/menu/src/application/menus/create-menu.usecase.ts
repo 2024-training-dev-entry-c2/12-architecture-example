@@ -13,7 +13,7 @@ export class CreateMenuUseCase {
     private subscriptions: Subscription;
 
     //#region Observables
-    menu$(): Observable<IMenu> {
+    menu$(): Observable<IMenu[]> {
         return this._state.menus.menu.$();
     }
     //#endregion
@@ -27,11 +27,14 @@ export class CreateMenuUseCase {
         this.subscriptions.unsubscribe();
     }
 
-    execute(menu: IMenu): void {
+    addMenu(menu: IMenu): void {
         this.subscriptions.add(
-            this._service.create(menu)
+            this._service.createMenu(menu)
                 .pipe(
-                    tap(result => this._state.menus.menu.set(result))
+                    tap(result => {
+                        const menus = this._state.menus.menu.snapshot();
+                        this._state.menus.menu.set([...menus, result]);
+                    })
                 ).subscribe()
         );
     }

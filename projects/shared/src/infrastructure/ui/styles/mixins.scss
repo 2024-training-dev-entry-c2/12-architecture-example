@@ -1,0 +1,43 @@
+@use './variables.scss' as variables;
+
+@mixin container() {
+    display: flex;
+    align-items: center;
+}
+
+@mixin container-column($gap: 0) {
+    display: flex;
+    flex-direction: column;
+    gap: $gap;
+}
+
+@mixin container-gap($gap: 0) {
+    @include container;
+    gap: $gap;
+}
+
+@mixin scroll($height: 0) {
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: $height;
+}
+
+@mixin text($font-size: 0, $color: variables.$white) {
+    font-size: $font-size;
+    color: $color;
+}
+
+@mixin font($font-size: 0, $font-weight: normal) {
+    font-size: $font-size;
+    font-weight: $font-weight;
+}
+
+@mixin border($border: 1px solid $black, $border-radius: 0) {
+    border: $border;
+    border-radius: $border-radius;
+}
+
+// @include mixins.container-gap(15px);
+
+// @use '../../ui/styles/variables.scss' as variables;
+// @use '../../ui/styles/mixins.scss' as mixins;

@@ -1,0 +1,16 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
+
+.initial-message {
+    font-weight: 700;
+}
+
+.order-form {
+    @include mixins.container-column(15px);
+    margin-top: 10px;
+
+    &__input {
+        padding: 5px;
+        width: 360px;
+    }
+}
