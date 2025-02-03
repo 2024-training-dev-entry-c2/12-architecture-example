@@ -7,31 +7,32 @@
 
   &__title {
     font-size: 1.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
     text-align: center;
-  }
-
-  &__label {
-    @include mix.flex-column;
-    gap: 0.5rem;
-  }
-
-  &__text {
-    font-weight: 500;
     color: var.$text-primary;
   }
 
-  &__required {
-    color: var.$danger-color;
-  }
+  &__field {
+    @include mix.flex-column;
+    gap: 0.5rem;
+    margin-bottom: 1.25rem;
 
-  &__input {
-    @include mix.form-input;
-  }
+    label {
+      font-weight: 500;
+      color: var.$text-primary;
+    }
 
-  textarea.menu-form__input {
-    min-height: 100px;
-    resize: vertical;
+    input,
+    textarea {
+      @include mix.form-input;
+      width: 100%;
+      padding: 0.75rem;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
   }
 
   &__error {
@@ -40,29 +41,94 @@
     margin-top: 0.25rem;
   }
 
-  &__button {
-    margin-top: 1rem;
+  &__dishes {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0;
+    @include mix.flex-column;
+    gap: 0.5rem;
+  }
+
+  &__dish-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem;
+    background-color: var.$background-light;
+    border: 1px solid var.$border-color;
+    border-radius: 4px;
+  }
+
+  &__remove-btn {
+    padding: 0.5rem 1rem;
+    background-color: var.$danger-color;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: color.adjust(var.$danger-color, $lightness: -10%);
+    }
+  }
+
+  &__submit {
+    width: 100%;
     padding: 0.75rem;
     background-color: var.$primary-color;
     color: white;
     border: none;
     border-radius: 4px;
-    font-size: 1rem;
+    font-weight: 500;
     cursor: pointer;
     transition: background-color 0.2s;
-
-    &:hover {
-      background-color: color.adjust(rgb(130, 8, 191), $lightness: -10%);
-    }
 
     &:disabled {
       background-color: var.$border-color;
       cursor: not-allowed;
     }
 
-    &:focus-visible {
-      outline: 2px solid var.$primary-color;
-      outline-offset: 2px;
+    &:hover:not(:disabled) {
+      background-color: color.adjust(var.$primary-color, $lightness: -10%);
+    }
+  }
+
+  // Deep styles for lib-select
+  ::ng-deep lib-select {
+    width: 100%;
+
+    .select {
+      &__button {
+        @include mix.form-input;
+        width: 100%;
+        padding: 0.75rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      &__options {
+        margin-top: 0.25rem;
+        border: 1px solid var.$border-color;
+        border-radius: 4px;
+        background-color: white;
+        max-height: 200px;
+        overflow-y: auto;
+      }
+
+      &__option {
+        padding: 0.75rem;
+        cursor: pointer;
+
+        &:hover {
+          background-color: var.$background-light;
+        }
+
+        &--selected {
+          background-color: color.adjust(var.$primary-color, $alpha: -0.9);
+        }
+      }
     }
   }
 }

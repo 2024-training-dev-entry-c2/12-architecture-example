@@ -1,32 +1,53 @@
-<form [formGroup]="form" class="menu-form" (ngSubmit)="submit()" role="form" aria-labelledby="formTitle" novalidate>
-
-    <h2 id="formTitle" class="menu-form__title" tabindex="0">
-        {{ form.getRawValue().menuId ? 'Editar Menú' : 'Crear Menú' }}
+<form [formGroup]="form" class="menu-form" (ngSubmit)="submit()">
+    <h2 class="menu-form__title">
+        {{ form.get('menuId')?.value ? 'Editar Menú' : 'Crear Menú' }}
     </h2>
 
-    <label class="menu-form__label" for="name">
-        <span class="menu-form__text">Nombre <span class="menu-form__required" aria-hidden="true">*</span></span>
-        <input id="name" class="menu-form__input" type="text" formControlName="name"
-            [attr.aria-invalid]="form.get('name')?.invalid && form.get('name')?.touched" aria-required="true"
-            aria-describedby="nameError">
-        @if (form.get('name')?.invalid && form.get('name')?.touched) {
-        <span id="nameError" class="menu-form__error" role="alert">El nombre es requerido</span>
+    <div class="menu-form__field">
+        <label for="name">Nombre *</label>
+        <input id="name" type="text" formControlName="name">
+        @if (formErrors.name.required && form.get('name')?.touched) {
+        <span class="menu-form__error">El nombre es requerido</span>
         }
-    </label>
-
-    <label class="menu-form__label" for="description">
-        <span class="menu-form__text">Descripción <span class="menu-form__required" aria-hidden="true">*</span></span>
-        <textarea id="description" class="menu-form__input" formControlName="description"
-            [attr.aria-invalid]="form.get('description')?.invalid && form.get('description')?.touched"
-            aria-required="true" aria-describedby="descriptionError">
-        </textarea>
-        @if (form.get('description')?.invalid && form.get('description')?.touched) {
-        <span id="descriptionError" class="menu-form__error" role="alert">La descripción es requerida</span>
+        @if (formErrors.name.minlength && form.get('name')?.touched) {
+        <span class="menu-form__error">Mínimo 3 caracteres</span>
         }
-    </label>
+    </div>
 
-    <button type="submit" class="menu-form__button" [disabled]="!form.valid"
-        [attr.aria-label]="form.getRawValue().menuId ? 'Actualizar menú' : 'Crear nuevo menú'">
-        {{ form.getRawValue().menuId ? 'Actualizar' : 'Crear' }}
+    <div class="menu-form__field">
+        <label for="description">Descripción *</label>
+        <textarea id="description" formControlName="description"></textarea>
+        @if (formErrors.description.required && form.get('description')?.touched) {
+        <span class="menu-form__error">La descripción es requerida</span>
+        }
+        @if (formErrors.description.minlength && form.get('description')?.touched) {
+        <span class="menu-form__error">Mínimo 10 caracteres</span>
+        }
+    </div>
+
+    <div class="menu-form__field">
+        <label>Platos Disponibles *</label>
+        <lib-select [options]="dishOptions()" [placeholder]="'Seleccione un plato'"
+            (selectionChange)="addDishId($event)">
+        </lib-select>
+
+        @if (form.get('dishIds')?.value?.length === 0) {
+        <span class="menu-form__error">Seleccione al menos un plato</span>
+        }
+
+        <ul class="menu-form__dishes">
+            @for (dishId of form.get('dishIds')?.value; track dishId) {
+            <li class="menu-form__dish-item">
+                {{ getDishLabel(dishId) }}
+                <button type="button" class="menu-form__remove-btn" (click)="removeDishId(dishId)">
+                    Eliminar
+                </button>
+            </li>
+            }
+        </ul>
+    </div>
+
+    <button type="submit" class="menu-form__submit" [disabled]="!form.valid">
+        {{ form.get('menuId')?.value ? 'Actualizar' : 'Crear' }}
     </button>
 </form>
