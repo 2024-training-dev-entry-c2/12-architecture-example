@@ -1,0 +1,24 @@
+@use '../../styles/variables.scss' as variables;
+@use '../../styles/mixins.scss' as mixins;
+
+.button {
+  position: absolute;
+  right: 3%;
+  bottom: 95%;
+  background: variables.$primary-color;
+  color: variables.$color-white;
+  border: 1px solid variables.$color-white;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: variables.$tercery-color;
+    transition: background-color 0.2s;
+    color: variables.$typografy-color;
+    border: 1px solid variables.$color-white;
+    font-weight: bold;
+  }
+}

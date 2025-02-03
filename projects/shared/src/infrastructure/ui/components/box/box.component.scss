@@ -1,0 +1,61 @@
+@use '../../styles/variables.scss' as variables;
+@use '../../styles/mixins.scss' as mixins;
+
+.box {
+  padding: 2rem;
+  font-family: variables.$font-family-merriweather;
+  border-radius: 8px;
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 2rem;
+    color: variables.$primary-color;
+    text-align: center;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  &__client {
+    color: rgb(167, 231, 71);
+  }
+
+  &__menu {
+    color: rgb(231, 71, 71);
+  }
+
+  &__dish {
+    color: rgb(63, 110, 197);
+  }
+
+  &__item {
+    @include mixins.flex-style(row, wrap, 5px);
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 0.5rem;
+    background-color: variables.$color-white;
+    border-radius: 6px;
+    padding: 1rem;
+    height: 7rem;
+    border: 1px solid variables.$primary-color;
+    overflow: auto;
+    justify-content: center;
+
+    &-title {
+      @include mixins.text-style(0.875rem, 600, normal);
+      margin: 0px;
+      color: variables.$primary-color;
+      width: 100%;
+      text-align: center;
+    }
+
+    &-value {
+      font-weight: 500;
+      color: variables.$typografy-color;
+    }
+  }
+}

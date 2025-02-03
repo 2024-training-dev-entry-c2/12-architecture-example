@@ -1,0 +1,57 @@
+<section
+  class="menu"
+  aria-label="pagina Menú contiene navegación y botón para agregar menú"
+>
+  <header class="menu__header" aria-label="header menu">
+    <h1 class="menu__title">Menú</h1>
+    <lib-modal [action]="'Agregar Menú'" #modal>
+      <lib-form-menu
+        [dishes]="allDishes()"
+        [menus]="currentMenu()"
+        (onSubmit)="handleSubmit($event)"
+      >
+      </lib-form-menu>
+    </lib-modal>
+  </header>
+
+  <div class="menu__grid" role="grid">
+    <article class="menu-card" role="article">
+      @for(menu of allMenus(); track $index) {
+      <div class="menu-card__content" role="contentinfo">
+        <h3 class="menu-card__title">{{ menu.name }}</h3>
+        <p class="menu-card__description">
+          {{ menu.description }}
+        </p>
+
+        <div class="menu-card__details">
+          <div class="menu-card__category">
+            @for(dish of menu.dishes; track $index) {
+            <span class="menu-card__dish">{{ dish.name }}, </span>
+            }
+          </div>
+        </div>
+
+        <div class="menu-card__actions">
+          <button
+            class="menu-card__btn menu-card__btn--edit"
+            (click)="selectMenu(menu.id)"
+            role="button"
+            aria-label="boton para editar menu"
+          >
+            Editar
+          </button>
+
+          <button
+            class="menu-card__btn menu-card__btn--delete"
+            (click)="deleteMenu(menu.id)"
+            role="button"
+            aria-label="boton para borrar menu"
+          >
+            Borrar
+          </button>
+        </div>
+      </div>
+      }
+    </article>
+  </div>
+</section>

@@ -1,0 +1,52 @@
+@use '../../styles/variables.scss' as variables;
+@use '../../styles/mixins.scss' as mixins;
+
+.header {
+  background-color: variables.$primary-color;
+  font-family: variables.$font-family-playfair;
+  display: flex;
+  padding: 0px 20px;
+  color: variables.$typografy-color;
+  align-items: center;
+
+
+  &__icon {
+    color: variables.$color-white;
+    cursor: pointer;
+
+    &:hover {
+      color: variables.$tercery-color;
+    }
+  }
+
+  &__menu {
+    @include mixins.flex-style(row, nowrap, 25px);
+    justify-content: center;
+    align-items: center;
+    flex-grow: 3;
+    list-style: none;
+    color: variables.$secundary-color;
+  }
+
+  &__li {
+    cursor: pointer;
+
+    &:hover {
+      color: variables.$tercery-color;
+    }
+  }
+
+  &__btn {
+    @include mixins.radius-cursor(6px, pointer);
+    @include mixins.text-style(15px, 500, normal);
+    padding: 5px 15px;
+    margin: auto;
+    background-color: variables.$secundary-color;
+    border: none;
+    font-family: variables.$font-family-raleway;
+
+    &:hover {
+      background-color: variables.$tercery-color;
+    }
+  }
+}

@@ -1,0 +1,50 @@
+<section class="dishes" aria-label="pagina Platos">
+  <header
+    class="dishes__header"
+    aria-label="header Platos contiene navegación y botón para agregar plato"
+  >
+    <lib-modal [action]="'Crear plato'" #modal>
+      <lib-dish-form
+        [dishes]="currentDish()"
+        (onSubmit)="handleSubmit($event)"
+      ></lib-dish-form>
+    </lib-modal>
+  </header>
+  <h1 class="dishes__title">Platos</h1>
+
+  <div class="dishes__grid" aria-label="grid de platos" role="article">
+    <article class="dish-card" role="grid">
+      @for(plato of allDishes(); track $index) {
+      <div class="dish-card__content" role="option" aria-label="card de plato">
+        <h3 class="dish-card__title">{{ plato.name }}</h3>
+        <p class="dish-card__description">
+          {{ plato.description }}
+        </p>
+
+        <div class="dish-card__details">
+          <div class="dish-card__price">{{ plato.price | currency }}</div>
+          <div class="dish-card__category" role="status">Plato tipico</div>
+        </div>
+
+        <div class="dish-card__actions">
+          <button
+            class="dish-card__btn dish-card__btn--edit"
+            (click)="selectDish(plato.id)"
+            role="button"
+          >
+            Editar
+          </button>
+
+          <button
+            class="dish-card__btn dish-card__btn--delete"
+            (click)="deleteDish(plato.id)"
+            role="button"
+          >
+            Borrar
+          </button>
+        </div>
+      </div>
+      }
+    </article>
+  </div>
+</section>

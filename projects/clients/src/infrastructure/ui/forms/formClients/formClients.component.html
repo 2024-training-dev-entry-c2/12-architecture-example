@@ -1,0 +1,50 @@
+<form
+  class="clientForm__form"
+  aria-label="Formulario para crear un usuario"
+  [formGroup]="form"
+  (ngSubmit)="submit()"
+  role="form"
+>
+  <h2 class="clientForm__title" aria-label="Titulo del formulario">
+    {{ form.getRawValue().id ? "Editar Cliente" : "Crear Cliente" }}
+  </h2>
+  <div class="clientForm__form-group">
+    <input
+      type="text"
+      formControlName="name"
+      class="clientForm__input"
+      placeholder="Nombre del usuario"
+    />
+  </div>
+
+  <div class="clientForm__form-group">
+    <input
+      type="email"
+      formControlName="email"
+      class="clientForm__input"
+      placeholder="Email del usuario"
+    />
+  </div>
+
+  <div class="clientForm__form-group">
+    <input
+      type="text"
+      formControlName="phone"
+      class="clientForm__input"
+      placeholder="Numero celular del usuario"
+    />
+  </div>
+
+  <div class="clientForm__form-group">
+    <input
+      type="text"
+      formControlName="address"
+      class="clientForm__input"
+      placeholder="Dirección de residencia del usuario (para enviar domicilios)"
+    />
+  </div>
+
+  <button type="submit" class="clientForm__submit">
+    {{ form.getRawValue().id ? "Editar" : "Crear" }}
+  </button>
+</form>

@@ -1,0 +1,52 @@
+<section
+  class="box"
+  role="complementary"
+  aria-label="Section de informació sobre entidades"
+>
+  <h5 class="box__title">Estadísticas generales</h5>
+
+  <div class="box__container" aria-label="grid informativo" role="group">
+    <div class="box__item" aria-label="recuadro de información sobre clientes">
+      <h6 class="box__item-title">Cantidad totales de clientes</h6>
+      <p class="box__item-value">{{ clientesBox().length }}</p>
+      <br />
+      <br />
+      <h6 class="box__item-title">Mejores clientes</h6>
+      @for(item of favoriteClientsBox(); track $index){
+
+      <p class="box__item-value">{{ item.name }}</p>
+      }
+    </div>
+
+    <div class="box__item" aria-label="recuadro de información sobre pedidos">
+      <h6 class="box__item-title">Pedidos realizados</h6>
+      <p class="box__item-value">{{ pedidosBox().length }}</p>
+      <br />
+      <br />
+      <h6 class="box__item-title">Porcentaje de pedidos</h6>
+      <p class="box__item-value">{{ porcentajeBox() }}%</p>
+    </div>
+
+    <div class="box__item" aria-label="recuadro de información sobre menus">
+      <h6 class="box__item-title">Menus en existencia</h6>
+      <p class="box__item-value">{{ menuBox().length }}</p>
+      <br />
+      <br />
+      <h6 class="box__item-title">Menus con mas platos</h6>
+      @for(item of menuByDishBox(); track $index){
+      <p class="box__item-value">{{ item.name }}</p>
+      }
+    </div>
+
+    <div class="box__item" aria-label="recuadro de información sobre platos">
+      <h6 class="box__item-title">Platos disponibles</h6>
+      <p class="box__item-value">{{ platosBox().length }}</p>
+      <br />
+      <br />
+      <h6 class="box__item-title">Mejores platos</h6>
+      @for(item of mejoresPlatosBox(); track $index){
+      <p class="box__item-value">{{ item.name }}</p>
+      }
+    </div>
+  </div>
+</section>

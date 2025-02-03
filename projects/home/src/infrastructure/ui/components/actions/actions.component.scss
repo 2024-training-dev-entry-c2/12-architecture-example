@@ -1,0 +1,69 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
+
+.actions {
+  min-width: 100%;
+
+  &__title {
+    @include mixins.text-style(16px, 900, normal);
+    margin: 5px 0px;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: start;
+    color: variables.$primary-color;
+    border-bottom: 1px solid variables.$tercery-color;
+    font-family: variables.$font-family-raleway;
+  }
+
+  &__container {
+    @include mixins.flex-style(row, nowrap, 20px);
+    align-items: center;
+    width: 100%;
+  }
+
+  &__btn {
+    @include mixins.flex-style(row, nowrap, 10px);
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    border: 2px solid variables.$tercery-color;
+    border-radius: 8px;
+    background-color: variables.$primary-color;
+    cursor: pointer;
+    height: 130px;
+
+    &:hover {
+      transition: all 0.1s;
+      opacity: 1;
+      background-repeat: no-repeat;
+      background-size: cover;
+
+      &:nth-child(1) {
+        background-image: url('https://images.unsplash.com/photo-1626202375382-cfefecd3a3d4?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+      }
+
+      &:nth-child(2) {
+        background-image: url('https://images.unsplash.com/41/EOZpjI3oSqKPNnF2S4Tp_Untitled.jpg?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+      }
+
+      &:nth-child(3) {
+        background-image: url('https://images.unsplash.com/photo-1551489186-c892fa1428c9?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+      }
+
+      &:nth-child(4) {
+        background-image: url('https://images.unsplash.com/photo-1529003600303-bd51f39627fb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+      }
+    }
+
+    & mat-icon {
+      color: variables.$color-white;
+    }
+  }
+
+  &__btn-text {
+    @include mixins.text-style(16px, 700, normal);
+    color: black;
+    font-family: variables.$font-family-raleway;
+  }
+}

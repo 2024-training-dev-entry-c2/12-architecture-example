@@ -1,0 +1,79 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
+
+.general-metrics {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: variables.$font-family-raleway;
+  border-radius: 3px;
+  padding: 10px;
+  background-color: variables.$color-white;
+  width: 500px;
+  color: variables.$typografy-color;
+  border-spacing: 0;
+
+  &__caption {
+    @include mixins.text-style(16px, 900, normal);
+    padding: 10px 20px;
+    text-align: start;
+    color: variables.$primary-color;
+    border-bottom: 1px solid variables.$tercery-color;
+    background-color: variables.$color-white;
+  }
+
+  &__thead {
+    @include mixins.flex-style(row, nowrap);
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: rgb(239, 239, 239);
+
+    & tr {
+      width: 100%;
+    }
+  }
+
+  &__th {
+    @include mixins.text-style(14px, 700, normal);
+    padding: 10px 50px;
+    text-align: start;
+    color: variables.$primary-color;
+    width: 100%;
+  }
+
+  &__th--date {
+    padding-right: 155px;
+  }
+
+  &__tbody {
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+
+  }
+
+  &__tr {
+    @include mixins.flex-style(row, nowrap);
+    align-items: center;
+    width: 100%;
+
+    &:nth-child(even) {
+      background-color: rgb(239, 239, 239);
+    }
+  }
+
+  &__td {
+    @include mixins.text-style(14px, 400, normal);
+    padding: 10px 50px;
+    text-align: start;
+    color: variables.$primary-color;
+    width: 100%;
+  }
+
+  &__td--placeholder {
+    text-align: center;
+    font-size: 23px;
+    padding-left: 7px;
+    color: variables.$tercery-color;
+  }
+}

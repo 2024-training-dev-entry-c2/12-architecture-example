@@ -1,0 +1,7 @@
+<lib-table-clients
+  [allClients]="clientes$ | async"
+  [currentClient]="currentClient$ | async"
+  (onCreateClient)="hanglePatchClient($event)"
+  (onSelectClient)="handleSelectClient($event)"
+  (onDeleteClient)="handleDeleteClient($event)"
+></lib-table-clients>

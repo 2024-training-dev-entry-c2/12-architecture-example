@@ -1,0 +1,42 @@
+<section class="sidebar" aria-label="sidebar - lado izquierdo" role="article">
+  <h1 class="sidebar__title">Restaurant Management</h1>
+  <menu
+    class="sidebar__menu"
+    aria-label="Menu principal"
+    role="menu"
+    tabindex="2"
+  >
+    @for(item of navItems; track $index) {
+    <li
+      class="sidebar__li"
+      [tabindex]="$index"
+      role="menuitem"
+      aria-label="items del menu"
+    >
+      <a class="sidebar__link" [routerLink]="item.path">
+        <span class="sidebar__name">{{ item.name }}</span>
+      </a>
+    </li>
+    }
+  </menu>
+
+  <img
+    src="https://marketplace.canva.com/EAGOADQey2g/1/0/1600w/canva-brown-simple-circle-restaurant-logo-BiB84MUi2zQ.jpg"
+    alt="cazuela icono"
+    class="sidebar__cazuela"
+    role="img"
+  />
+
+  <h2 class="sidebar__title" aria-label="información" role="contentinfo">
+    Información del restaurante
+  </h2>
+  <p class="sidebar__info"><b>Nombre:</b> La Cazuela</p>
+  <p class="sidebar__info">
+    <b>Dirección:</b> Avenida Sabores 456, Ciudad del Sazón, País del Gusto
+  </p>
+  <p class="sidebar__info"><b>Teléfono:</b> +1 (555) 987-6543</p>
+  <p class="sidebar__info">
+    Correo Electrónico:
+    <a href="mailto:contactoalacazuela.com">contactoalacazuela.com</a>
+  </p>
+</section>

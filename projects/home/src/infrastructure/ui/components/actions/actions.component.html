@@ -1,0 +1,18 @@
+<section
+  class="actions"
+  role="group"
+  aria-label="Grupo de botones de acciones rapidas"
+>
+  <h5 class="actions__title">Acciones Rapidas</h5>
+  <div class="actions__container">
+    @for(button of buttons; track $index) {
+    <button
+      class="actions__btn"
+      role="button"
+      aria-label="Botón para seleccionar la acción"
+    >
+      <span class="actions__btn-text">{{ button.name }}</span>
+    </button>
+    }
+  </div>
+</section>

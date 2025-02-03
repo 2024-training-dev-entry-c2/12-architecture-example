@@ -1,0 +1,122 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
+
+.clients {
+  padding: 2rem;
+  font-family: variables.$font-family-merriweather;
+  position: relative;
+
+  &__add {
+    position: absolute;
+    right: 3%;
+    background: variables.$primary-color;
+    color: variables.$color-white;
+    border: 1px solid variables.$color-white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: variables.$tercery-color;
+      transition: background-color 0.2s;
+      color: variables.$typografy-color;
+      border: 1px solid variables.$color-white;
+      font-weight: bold;
+    }
+  }
+
+  &__title {
+    font-size: 2rem;
+    font-weight: 500;
+    margin-bottom: 2rem;
+    color: variables.$typografy-color;
+  }
+
+  &__container {
+    background: variables.$color-white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    overflow: auto;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+  }
+
+  &__thead {
+    background-color: variables.$tercery-color;
+  }
+
+  &__th {
+    color: variables.$color-white;
+    font-weight: 500;
+    text-align: left;
+    padding: 1rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__tbody {
+    .clients__tr {
+      &:nth-child(even) {
+        background-color: #f8f9fa;
+      }
+
+      &:hover {
+        background-color: #f0f2f5;
+      }
+    }
+  }
+
+  &__td {
+    padding: 1rem;
+    font-size: 0.875rem;
+    color: #4a5568;
+    border-bottom: 1px solid #edf2f7;
+
+    &--actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+  }
+
+  &__btn {
+    background: none;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+
+    &--edit {
+      color: #4299e1;
+
+      &:hover {
+        background-color: rgba(66, 153, 225, 0.1);
+      }
+    }
+
+    &--delete {
+      color: #e53e3e;
+
+      &:hover {
+        background-color: rgba(229, 62, 62, 0.1);
+      }
+    }
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+}

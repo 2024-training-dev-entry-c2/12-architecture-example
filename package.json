@@ -1,20 +1,23 @@
 {
-  "name": "architecture-example",
+  "name": "restaurant-hexagonal",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build-alls": "ng build clients && ng build dish && ng build menu && ng build orders && ng build shared && ng build home"
   },
   "private": true,
   "dependencies": {
     "@angular/animations": "^19.1.0",
+    "@angular/cdk": "^19.1.2",
     "@angular/common": "^19.1.0",
     "@angular/compiler": "^19.1.0",
     "@angular/core": "^19.1.0",
     "@angular/forms": "^19.1.0",
+    "@angular/material": "^19.1.2",
     "@angular/platform-browser": "^19.1.0",
     "@angular/platform-browser-dynamic": "^19.1.0",
     "@angular/router": "^19.1.0",
@@ -23,8 +26,7 @@
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^19.1.4",
-    "@angular/build": "^19.1.4",
+    "@angular-devkit/build-angular": "^19.1.5",
     "@angular/cli": "^19.1.1",
     "@angular/compiler-cli": "^19.1.0",
     "@types/jasmine": "~5.1.0",
@@ -36,6 +38,5 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "ng-packagr": "^19.1.0",
     "typescript": "~5.7.2"
-  },
-  "packageManager": "pnpm@9.15.4+sha512.b2dc20e2fc72b3e18848459b37359a32064663e5627a51e4c74b2c29dd8e8e0491483c3abb40789cfd578bf362fb6ba8261b05f0387d76792ed6e23ea3b1b6a0"
+  }
 }

@@ -1,0 +1,23 @@
+<section class="layout" aria-label="layout">
+  <div class="layout__header">
+    <lib-header></lib-header>
+  </div>
+  <div class="layout__sidebar">
+    <lib-sidebar></lib-sidebar>
+  </div>
+  <div class="layout__main">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="layout__aside">
+    <lib-box
+      [clientesBox]="clientes()"
+      [platosBox]="dihes()"
+      [menuBox]="menus()"
+      [pedidosBox]="orders()"
+      [menuByDishBox]="menusByDish()"
+      [favoriteClientsBox]="favoriteClients()"
+      [mejoresPlatosBox]="mejoresPlatos()"
+      [porcentajeBox]="porcentaje()"
+    ></lib-box>
+  </div>
+</section>

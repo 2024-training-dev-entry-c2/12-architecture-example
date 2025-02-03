@@ -1,0 +1,40 @@
+<form
+  class="clientForm__form"
+  aria-label="Formulario para crear un plato"
+  [formGroup]="formDish"
+  (ngSubmit)="submit()"
+  role="form"
+>
+  <h2 class="clientForm__title" aria-label="Titulo del formulario">
+    {{ formDish.getRawValue().id ? "Editar Plato" : "Crear Plato" }}
+  </h2>
+  <div class="clientForm__form-group">
+    <input
+      type="text"
+      formControlName="name"
+      class="clientForm__input"
+      placeholder="Nombre del plato"
+    />
+  </div>
+
+  <div class="clientForm__form-group">
+    <input
+      type="text"
+      formControlName="description"
+      class="clientForm__input"
+      placeholder="Descripción del plato"
+    />
+  </div>
+
+  <div class="clientForm__form-group">
+    <input
+      type="number"
+      formControlName="price"
+      class="clientForm__input"
+      placeholder="Precio del plato"
+    />
+  </div>
+  <button type="submit" class="clientForm__submit">
+    {{ formDish.getRawValue().id ? "Editar" : "Crear" }}
+  </button>
+</form>

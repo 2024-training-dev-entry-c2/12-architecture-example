@@ -1,0 +1,82 @@
+{
+  // Apariencia del editor
+  "editor.fontSize": 14, // Tamaño de la fuente en el editor.
+  "editor.lineHeight": 22, // Altura de línea para mejor legibilidad.
+  "editor.tabSize": 2, // Tamaño del tabulador, ideal para proyectos Angular.
+  "editor.cursorStyle": "line", // Estilo del cursor (línea vertical).
+  "editor.cursorBlinking": "expand", // Efecto de parpadeo del cursor.
+  "editor.wordWrap": "on", // Activa el ajuste de línea.
+  // "editor.rulers": [
+  //   100
+  // ], // Límite visual a 80 caracteres.
+  "window.zoomLevel": 1, // Ajusta el nivel de zoom. Valores positivos aumentan el tamaño, negativos lo reducen.
+  "editor.renderWhitespace": "none", // Muestra los espacios en blanco (útil para detectar errores de formato).
+  "editor.bracketPairColorization.enabled": true, // Activa colores para los pares de corchetes y llaves.
+  "editor.guides.bracketPairs": true, // Muestra líneas guía entre pares de corchetes.
+  "editor.guides.highlightActiveBracketPair": true, // Resalta los corchetes activos.
+  "editor.minimap.enabled": false, // Habilita la minimapa.
+  "editor.renderLineHighlight": "all", // Muestra guías de indentación.
+  // Personalización de colores para los corchetes
+  "workbench.colorCustomizations": {
+    "editorBracketHighlight.foreground1": "#16de88",
+    "editorBracketHighlight.foreground2": "#decd51",
+    "editorBracketHighlight.foreground3": "#1E90FF",
+    "editorBracketHighlight.foreground4": "#e1744d",
+    "editorBracketHighlight.foreground5": "#007c1d",
+    "editorBracketHighlight.foreground6": "#FF69B4",
+    "editorBracketHighlight.unexpectedBracket.foreground": "#FF0000",
+    "editor.selectionBackground": "#264F78",
+    "tab.activeBackground": "#1d3058",
+    "editorLineNumber.foreground": "#858585",
+    "editorCursor.foreground": "#FFD700",
+    "sideBarSectionHeader.foreground": "#3ad1b8",
+    "tab.hoverBackground": "#232323",
+    "tab.activeForeground": "#ffffff",
+    "tab.hoverForeground": "#ffffff",
+    "tab.border": "#4a4f61",
+    "statusBar.hoverBackground": "#ED1053",
+    "titleBar.hoverBackground": "#3A3F4B"
+  },
+  // Apariencia general de VS Code
+  "workbench.colorTheme": "Aura Dark", // Tema de colores (requiere instalación).
+  "workbench.iconTheme": "material-icon-theme", // Iconos personalizados para archivos y carpetas.
+  "workbench.sideBar.location": "right", // Muestra la barra de actividad.
+  "workbench.statusBar.visible": true, // Muestra la barra de estado.
+  "workbench.editor.tabSizing": "shrink", // Reduce el tamaño de las pestañas.
+  "workbench.editor.labelFormat": "short", // Usa etiquetas cortas para las pestañas.
+  // Configuración del explorador de archivos
+  "explorer.compactFolders": false, // Desactiva las carpetas compactas.
+  "explorer.confirmDelete": false, // No pide confirmación al eliminar archivos.
+  "explorer.confirmDragAndDrop": false, // No pide confirmación al arrastrar archivos.
+  // Configuración del terminal integrado
+  "terminal.integrated.fontSize": 14, // Tamaño de la fuente del terminal.
+  "terminal.integrated.cursorStyle": "underline", // Cursor en forma de subrayado.
+  "terminal.integrated.cursorBlinking": true, // Efecto de parpadeo del cursor.
+  "terminal.integrated.scrollback": 10000, // Historial de líneas visibles en el terminal.
+  "terminal.integrated.defaultProfile.windows": "Git Bash", // Perfil predeterminado en Windows.
+  // Guardado automático y formato de código
+  // "files.autoSave": "afterDelay", // Guarda automáticamente después de un retraso.
+  // "files.autoSaveDelay": 1000, // Retraso de 1 segundo para el guardado automático.
+  "editor.formatOnSave": true, // Formato automático al guardar.
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always" // Aplica correcciones automáticas de ESLint.
+  },
+  // Configuración de Prettier
+  "prettier.singleQuote": true, // Usa comillas simples.
+  "prettier.semi": false, // No agrega punto y coma al final de las líneas.
+  "prettier.tabWidth": 2, // Indentación con 2 espacios.
+  // Integración con ESLint
+  "eslint.enable": true, // Habilita ESLint en el proyecto.
+  "eslint.alwaysShowStatus": true, // Siempre muestra el estado de ESLint.
+  // Configuración de Git
+  "git.enableSmartCommit": true, // Permite realizar commits sin necesidad de hacer stage explícito.
+  "git.confirmSync": false,
+  "editor.guides.indentation": true,
+  "angular-schematics.schematicsDefaultOptions": {
+    "angular-*": {
+      "style": "scss",
+      "externalTemplate": true
+    }
+  },
+  "jest.enable": false // No pide confirmación para sincronizar cambios.
+}

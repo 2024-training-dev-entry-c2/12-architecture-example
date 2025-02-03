@@ -1,0 +1,50 @@
+<form
+  class="clientForm__form"
+  aria-label="Formulario para una nueva orden"
+  role="form"
+  [formGroup]="form"
+  (ngSubmit)="submit()"
+>
+  <h2 class="clientForm__title">
+    {{ form.getRawValue().id ? "Editar Orden" : "Crear Orden" }}
+  </h2>
+  <div class="clientForm__form-group">
+    <input
+      type="date"
+      formControlName="date"
+      class="clientForm__input"
+      placeholder="Fecha de la orden"
+    />
+  </div>
+
+  <div class="clientForm__form-group">
+    <select formControlName="user" class="clientForm__input">
+      <option value="">Seleccione un usuario</option>
+      @for(itemUser of users; track $index) {
+      <option value="{{ itemUser.id }}">{{ itemUser.name }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="clientForm__form-group" multiple>
+    <select formControlName="dish" class="clientForm__input">
+      <option value="">Seleccione un plato</option>
+      @for(item of dishes; track $index) {
+      <option value="{{ item.id }}">{{ item.name }}</option>
+      }
+    </select>
+  </div>
+
+  <div class="clientForm__form-group">
+    <input
+      type="number"
+      formControlName="quantity"
+      class="clientForm__input"
+      placeholder="Cantidad de platos"
+    />
+  </div>
+
+  <button type="submit" class="clientForm__submit">
+    {{ form.getRawValue().id ? "Editar" : "Crear" }}
+  </button>
+</form>

@@ -1,0 +1,47 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
+
+.home {
+  @include mixins.flex-style(row, wrap, 0px);
+  width: 100%;
+  font-family: variables.$font-family-merriweather;
+
+  &__title {
+    font-size: 72px;
+    width: 50%;
+    margin: 0px;
+    color: variables.$primary-color;
+    text-align: center;
+  }
+
+  &__portainer {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 4rem;
+  }
+
+  &__description {
+    font-size: 16px;
+    width: 70%;
+    margin-top: 20px;
+    color: variables.$primary-color;
+    line-height: 25px;
+  }
+
+  &__container {
+    @include mixins.flex-style(row, wrap, 0px);
+    width: 100%;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  &__actions {
+    @include mixins.flex-style(column, wrap, 0px);
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+  }
+}
