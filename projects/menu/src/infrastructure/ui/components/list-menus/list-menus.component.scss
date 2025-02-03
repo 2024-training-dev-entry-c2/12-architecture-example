@@ -1,4 +1,5 @@
 @use "../../../../../../shared/src/insfrastructure/ui/styles/variables.scss" as var;
+@use "../../../../../../shared/src/insfrastructure/ui/styles/mixins.scss";
 @use 'sass:color';
 
 .menus-table {
@@ -38,8 +39,7 @@
     text-align: center;
 
     &--actions {
-      display: flex;
-      justify-content: center;
+      @include flex-center;
       gap: 0.5rem;
     }
   }

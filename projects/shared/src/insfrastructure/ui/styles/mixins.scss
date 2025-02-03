@@ -1,0 +1,50 @@
+@use "./variables.scss" as var;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+
+@mixin form-container {
+  @include flex-column;
+  gap: 1rem;
+  max-width: var.$max-width-form;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+@mixin form-input {
+  padding: 0.5rem;
+  border: 1px solid var.$border-color;
+  color: var.$text-primary;
+  transition: var.$transition-base;
+
+  &:focus {
+    outline: none;
+    border-color: var.$accent-color;
+  }
+
+  &[aria-invalid="true"] {
+    border-color: var.$danger-color;
+  }
+}
+
+@mixin table-container {
+  width: 90%;
+  max-width: var.$max-width-table;
+  border-collapse: collapse;
+  margin: 1rem auto;
+}
+
+@mixin table-cell {
+  padding: 1rem;
+  text-align: center;
+  border-bottom: 1px solid var.$primary-border;
+}

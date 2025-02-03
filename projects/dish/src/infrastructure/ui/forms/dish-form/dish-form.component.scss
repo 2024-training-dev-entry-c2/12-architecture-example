@@ -1,13 +1,9 @@
 @use "../../../../../../shared/src/insfrastructure/ui/styles/variables.scss" as var;
+@use "../../../../../../shared/src/insfrastructure/ui/styles/mixins.scss";
 @use "sass:color";
 
 .dish-form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  max-width: var.$max-width-form;
-  margin: 0 auto;
-  padding: 1rem;
+  @include form-container;
 
   &__title {
     font-size: 1.5rem;
@@ -16,8 +12,7 @@
   }
 
   &__label {
-    display: flex;
-    flex-direction: column;
+    @include flex-column;
     gap: 0.5rem;
   }
 
@@ -31,19 +26,7 @@
   }
 
   &__input {
-    padding: 0.5rem;
-    border: 1px solid var.$border-color;
-    border-radius: 4px;
-    font-size: 1rem;
-
-    &:focus {
-      outline: none;
-      border-color: var.$accent-color;
-    }
-
-    &[aria-invalid="true"] {
-      border-color: var.$danger-color;
-    }
+    @include form-input;
   }
 
   &__error {

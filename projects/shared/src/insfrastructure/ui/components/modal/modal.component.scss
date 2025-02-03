@@ -1,3 +1,6 @@
+@use "../../../../../../shared/src/insfrastructure/ui/styles/variables.scss" as var;
+@use "../../../../../../shared/src/insfrastructure/ui/styles/mixins.scss";
+
 .modal {
   position: fixed;
   top: 200%;
@@ -5,9 +8,7 @@
   width: 100dvw;
   height: 100dvh;
   background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex-center;
   z-index: 10;
 
   &--visible {
