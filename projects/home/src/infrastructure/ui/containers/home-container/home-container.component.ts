@@ -8,7 +8,6 @@ import { AsyncPipe } from '@angular/common';
   selector: 'lib-home-container',
   imports: [HomeComponent, AsyncPipe],
   templateUrl: './home-container.component.html',
-  styleUrl: './home-container.component.scss',
 })
 export class HomeContainerComponent implements OnInit {
   private readonly _getClients = inject(GetClientUseCase);

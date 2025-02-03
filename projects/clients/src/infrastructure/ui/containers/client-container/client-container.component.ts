@@ -13,7 +13,6 @@ import { DeleteClientUseCase } from '../../../../application/delete-client.useca
   selector: 'lib-client-container',
   imports: [AsyncPipe, TableClientsComponent],
   templateUrl: './client-container.component.html',
-  styleUrl: './client-container.component.scss',
 })
 export class ClientContainerComponent implements OnInit {
   public clientes$: Observable<Iclient[]>;

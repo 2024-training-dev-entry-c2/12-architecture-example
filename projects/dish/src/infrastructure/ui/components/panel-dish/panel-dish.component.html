@@ -12,10 +12,10 @@
   </header>
   <h1 class="dishes__title">Platos</h1>
 
-  <div class="dishes__grid" aria-label="grid de platos">
-    <article class="dish-card">
+  <div class="dishes__grid" aria-label="grid de platos" role="article">
+    <article class="dish-card" role="grid">
       @for(plato of allDishes(); track $index) {
-      <div class="dish-card__content">
+      <div class="dish-card__content" role="option" aria-label="card de plato">
         <h3 class="dish-card__title">{{ plato.name }}</h3>
         <p class="dish-card__description">
           {{ plato.description }}
@@ -23,13 +23,14 @@
 
         <div class="dish-card__details">
           <div class="dish-card__price">{{ plato.price | currency }}</div>
-          <div class="dish-card__category">Plato tipico</div>
+          <div class="dish-card__category" role="status">Plato tipico</div>
         </div>
 
         <div class="dish-card__actions">
           <button
             class="dish-card__btn dish-card__btn--edit"
             (click)="selectDish(plato.id)"
+            role="button"
           >
             <mat-icon aria-hidden="false" fontIcon="edit"></mat-icon>
           </button>
@@ -37,6 +38,7 @@
           <button
             class="dish-card__btn dish-card__btn--delete"
             (click)="deleteDish(plato.id)"
+            role="button"
           >
             <mat-icon aria-hidden="false" fontIcon="delete"></mat-icon>
           </button>

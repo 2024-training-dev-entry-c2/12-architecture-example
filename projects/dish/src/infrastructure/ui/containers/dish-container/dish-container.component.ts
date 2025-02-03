@@ -13,7 +13,6 @@ import { PanelDishComponent } from '../../components/panel-dish/panel-dish.compo
   selector: 'lib-dish-container',
   imports: [AsyncPipe, PanelDishComponent],
   templateUrl: './dish-container.component.html',
-  styleUrl: './dish-container.component.scss',
 })
 export class DishContainerComponent implements OnInit {
   private readonly _getDishCase = inject(GetDishesUseCase);

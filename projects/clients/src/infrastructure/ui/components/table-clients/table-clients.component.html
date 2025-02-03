@@ -7,8 +7,8 @@
   </lib-modal>
   <h1 class="clients__title">Clientes</h1>
   <div class="clients__container">
-    <table class="clients__table" aria-label="Tabla de Clientes">
-      <thead class="clients__thead">
+    <table class="clients__table" aria-label="Tabla de Clientes" role="table">
+      <thead class="clients__thead" aria-label="cabecera de la tabla">
         <tr class="clients__tr clients__tr--header">
           @for(item of this.itemsTable; track $index) {
           <th class="clients__th">{{ item }}</th>
@@ -16,7 +16,7 @@
         </tr>
       </thead>
 
-      <tbody class="clients__tbody">
+      <tbody class="clients__tbody" aria-label="Cuerpo de la tabla de clientes">
         @for(user of this.allClients(); track $index) {
         <tr class="clients__tr">
           <td class="clients__td">{{ user.name }}</td>
@@ -24,13 +24,13 @@
           <td class="clients__td">{{ user.phone }}</td>
           <td class="clients__td">{{ user.address }}</td>
           <td class="clients__td">{{ user.fechaCreacion | date }}</td>
-          <td class="clients__td clients__td--actions">
+          <td class="clients__td clients__td--actions" aria-label="Acciones de la tabla">
             <button
 
             class="clients__btn clients__btn--delete"
             (click)="deleteClient(user.id)"
             >
-            <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home"></mat-icon>
+            <mat-icon aria-hidden="false" aria-label=" home icon" fontIcon="home"></mat-icon>
             Borrar
             </button>
             <button

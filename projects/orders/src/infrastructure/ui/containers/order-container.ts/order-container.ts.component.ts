@@ -14,7 +14,6 @@ import { GetClientUseCase, Iclient } from 'clients';
   selector: 'lib-order-container.ts',
   imports: [TableOrderComponent, AsyncPipe],
   templateUrl: './order-container.ts.component.html',
-  styleUrl: './order-container.ts.component.scss',
 })
 export class OrderContainerTsComponent implements OnInit {
   private readonly _getOrdersUseCase = inject(GetOrdersUsecase);

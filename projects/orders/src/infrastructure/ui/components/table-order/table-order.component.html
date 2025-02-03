@@ -1,4 +1,4 @@
-<section class="orders" aria-label="pagina Órdenes">
+<section class="orders" aria-label="pagina Órdenes" role="article">
   <h1 class="orders__title">Órdenes</h1>
   <lib-modal #modal [action]="'Crear Orden'">
     <lib-form-orders
@@ -9,8 +9,8 @@
     </lib-form-orders>
   </lib-modal>
 
-  <div class="orders__container" aria-label="grid de ordenes">
-    <table class="orders__table">
+  <div class="orders__container" aria-label="grid de ordenes" role="grid">
+    <table class="orders__table" role="table">
       <thead class="orders__thead">
         <tr class="orders__tr orders__tr--header">
           @for(item of items; track $index) {
@@ -20,8 +20,8 @@
       </thead>
 
       @for(order of orders(); track $index) {
-      <tbody class="orders__tbody">
-        <tr class="orders__tr">
+      <tbody class="orders__tbody" aria-label="cuerpo de la tabla">
+        <tr class="orders__tr" role="tablist">
           <td class="orders__td">#ORD-{{ order.id }}</td>
           <td class="orders__td">
             <div class="orders__user">
@@ -49,16 +49,20 @@
             >
           </td>
           <td class="orders__td">{{ order.date }}</td>
-          <td class="orders__td orders__td--actions">
+          <td class="orders__td orders__td--actions" aria-label="boton que determina las acciones">
             <button
               class="orders__btn orders__btn--edit"
               (click)="selectOrder(order.id)"
+              role="button"
+              aria-label="boton para actualizar"
             >
               <mat-icon aria-hidden="false" fontIcon="edit"></mat-icon>
             </button>
             <button
               class="orders__btn orders__btn--delete"
               (click)="deleteOrder(order.id)"
+              aria-label="boton par borrar orden"
+              role="button"
             >
               <mat-icon aria-hidden="false" fontIcon="delete"></mat-icon>
             </button>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 // import { MatIconModule } from '@angular/material/icon';
 // import { ClientService } from '../../core/services/client.service';
 // import { tap } from 'rxjs';
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'lib-box',
-  imports: [],
+  imports: [MatIconModule],
   templateUrl: './box.component.html',
   styleUrl: './box.component.scss',
 })

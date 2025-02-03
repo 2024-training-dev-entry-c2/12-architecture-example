@@ -13,17 +13,16 @@ import { GetDishesUseCase, Idish } from 'dish';
   selector: 'lib-menu-container',
   imports: [AsyncPipe, PanelMenuComponent],
   templateUrl: './menu-container.component.html',
-  styleUrl: './menu-container.component.scss',
 })
 export class MenuContainerComponent implements OnInit {
   public allMenus$: Observable<Imenu[]>;
   public currentMenu$: Observable<Imenu>;
   public platos$: Observable<Idish[]>;
-  private readonly _getMenuCase = inject(GetMenuUseCase);
   private readonly _createMenuCase = inject(CreateMenuUseCase);
   private readonly _updateMenuCase = inject(UpdateMenuUseCase);
   private readonly _deleteMenuCase = inject(DeleteMenuUseCase);
   private readonly _getDishCase = inject(GetDishesUseCase);
+  private readonly _getMenuCase = inject(GetMenuUseCase);
 
   ngOnInit(): void {
     this._getMenuCase.initSubscriptions();
