@@ -7,7 +7,7 @@ describe('MainComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MainComponent] // ⚠️ IMPORTANTE: Si es standalone, va aquí
+      imports: [MainComponent]
     }).compileComponents();
   });
 

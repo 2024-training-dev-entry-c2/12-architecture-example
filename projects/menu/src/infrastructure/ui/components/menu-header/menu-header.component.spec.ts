@@ -8,7 +8,7 @@ describe('MenuHeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MenuHeaderComponent] // 🔹 Lo movemos a imports
+      imports: [MenuHeaderComponent]
     }).compileComponents();
   });
 
