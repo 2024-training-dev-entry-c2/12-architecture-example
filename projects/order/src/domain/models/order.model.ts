@@ -10,6 +10,6 @@ export interface IOrder {
 }
 
 export interface IOrderForm {
-  customerIds: number;
+  customerId: number;
   dishesIds: number[];
 }
