@@ -3,6 +3,11 @@ import { MainLayoutComponent } from 'shared';
 
 export const routes: Routes = [
     {
+        path: '',
+        component: MainLayoutComponent,
+        loadChildren: () => import('overview').then(m => m.overviewRoutes),
+    },
+    {
         path: 'menus',
         component: MainLayoutComponent,
         loadChildren: () => import('menu').then(m => m.menuRoutes),
