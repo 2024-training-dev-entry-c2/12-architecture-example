@@ -1,0 +1,20 @@
+<nav class="navbar">
+    <div class="navbar__left">
+        <button class="navbar__menu-toggle" aria-label="Toggle navigation menu" (click)="onClickToggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+        <span class="navbar__title">{{ breadcrumbText }}</span>
+    </div>
+
+    <div class="navbar__right">
+        <div class="navbar__actions">
+            <div class="navbar__user" (click)="isDropdownOpen = !isDropdownOpen">
+                <i class="navbar__user-avatar fa-solid fa-user"></i>
+               <!--  <img src="/assets/img/icon_user.ico" alt="User Profile" class="navbar__user-avatar"> -->
+                <div class="navbar__user-status"></div>
+            </div>
+            @if (isDropdownOpen) { <lib-user-profile-dropdown></lib-user-profile-dropdown>}
+
+        </div>
+    </div>
+</nav>
