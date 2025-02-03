@@ -77,5 +77,6 @@
       "style": "scss",
       "externalTemplate": true
     }
-  } // No pide confirmación para sincronizar cambios.
+  },
+  "jest.enable": false // No pide confirmación para sincronizar cambios.
 }

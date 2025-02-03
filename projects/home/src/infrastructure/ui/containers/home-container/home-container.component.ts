@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { HomeComponent } from "../../components/home/home.component";
+import { HomeComponent } from '../../components/home/home.component';
 import { GetClientUseCase, Iclient } from 'clients';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
@@ -17,12 +17,10 @@ export class HomeContainerComponent implements OnInit {
   ngOnInit(): void {
     this._getClients.initSubscriptions();
     this._getClients.execute();
-    this.client$ = this._getClients.client$()
+    this.client$ = this._getClients.client$();
   }
 
   ngOnDestroy() {
     this._getClients.destroySubscriptions();
   }
-
-
 }

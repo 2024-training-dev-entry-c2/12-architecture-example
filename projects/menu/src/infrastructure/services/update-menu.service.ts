@@ -10,7 +10,7 @@ export class UpdateMenuService {
 
   execute(menu: Imenu): Observable<Imenu> {
     return this._http.put<Imenu>(
-      `${environment.URL_MENU}/edit/${menu}`,
+      `${environment.URL_MENU}/edit/${menu.id}`,
       menu
     );
   }
