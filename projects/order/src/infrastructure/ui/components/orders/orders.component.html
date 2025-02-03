@@ -4,13 +4,16 @@
             <h1>Pedidos</h1>
         </div>
         <div class="entity__create-button-container">
-            <button aria-expanded="false" class="entity__create-button">
+            <button aria-expanded="false" class="entity__create-button" (click)="showCartModal()">
                 <fa-icon [icon]="faPlus"></fa-icon>
                 <span>Nuevo Pedido</span>
             </button>
             @if(showOrderDetails && selectedOrder){
             <app-order-detail [orderDetails]="selectedOrder.orderDetails"
                 (closeModal)="closeOrderDetailsModal()"></app-order-detail>
+            }
+            @if(showCart){
+            <app-cart (closeModal)="closeCartModal()" (newOrder)="createOrder($event)"></app-cart>
             }
 
         </div>

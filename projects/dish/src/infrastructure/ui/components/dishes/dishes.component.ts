@@ -97,4 +97,17 @@ export class DishesComponent implements OnInit {
       menuId: this.selectedMenuId,
     });
   }
+
+  setDishesCart(dish: IDishResponse): void {
+    let savedDishes: IDishResponse[] | null =
+      JSON.parse(sessionStorage.getItem('dishes') as string) || [];
+    if (savedDishes === null) {
+      savedDishes = [];
+    }
+    const dishSaved = savedDishes.find((obj) => obj.id === dish.id);
+    if (!dishSaved) {
+      savedDishes.push(dish);
+      sessionStorage.setItem('dishes', JSON.stringify(savedDishes));
+    }
+  }
 }

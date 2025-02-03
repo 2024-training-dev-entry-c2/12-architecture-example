@@ -69,4 +69,8 @@ export class CustomersComponent implements OnInit {
   deleteCustomer(data: { id: number; index: number }): void {
     this.onDelete.emit(data.id);
   }
+
+  setCustomerCart(customer: ICustomerResponse): void {
+    sessionStorage.setItem('client', JSON.stringify(customer));
+  }
 }

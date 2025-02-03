@@ -41,14 +41,9 @@ export class OrdersContainerComponent implements OnInit, OnDestroy {
     this._updateUseCase.execute(data.id, data.payload);
   }
 
-  // createOrder(order: IOrder): void {
-  //   const currentOrder = this._updateUseCase.snapshotCurrentOrder();
-  //   if (!currentOrder?.id) {
-  //     this._createUseCase.execute(order);
-  //   } else {
-  //     this._updateUseCase.execute(currentOrder.id, order);
-  //   }
-  // }
+  createOrder(order: IOrder): void {
+    this._createUseCase.execute(order);
+  }
 
   ngOnDestroy(): void {
     this._listUseCase.destroySubscriptions();

@@ -42,8 +42,12 @@ export class CartComponent implements OnInit {
   }
 
   decrement(index: number): void {
-    if (this.quantities[index] > 1) {
+    if (this.quantities[index] >= 1) {
       this.quantities[index]--;
+    }
+    if (this.quantities[index] === 0) {
+      this.dishes.splice(index, 1);
+      sessionStorage.setItem('dishes', JSON.stringify(this.dishes));
     }
   }
 

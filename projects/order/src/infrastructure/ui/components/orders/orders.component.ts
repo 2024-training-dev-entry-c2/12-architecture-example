@@ -30,7 +30,7 @@ registerLocaleData(localeEs, 'es');
     DecimalPipe,
     DatePipe,
     OrderDetailComponent,
-    // CartComponent,
+    CartComponent,
   ],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.scss',
@@ -38,6 +38,7 @@ registerLocaleData(localeEs, 'es');
 export class OrdersComponent implements OnInit {
   faPlus = faPlus;
   showOrderDetails = false;
+  showCart = false;
 
   orders: IOrderResponse[] = [];
   selectedOrder: IOrderResponse | null = null;
@@ -48,6 +49,7 @@ export class OrdersComponent implements OnInit {
     id: number;
     payload: IOrderRequestDTO;
   }>();
+  @Output() public onCreateOrder = new EventEmitter<IOrder>();
 
   ngOnInit(): void {
     this.orders$.subscribe((orders) => (this.orders = orders));
@@ -61,6 +63,18 @@ export class OrdersComponent implements OnInit {
   closeOrderDetailsModal(): void {
     this.showOrderDetails = false;
     this.selectedOrder = null;
+  }
+
+  showCartModal(): void {
+    this.showCart = true;
+  }
+
+  closeCartModal(): void {
+    this.showCart = false;
+  }
+
+  createOrder(order: IOrder): void {
+    this.onCreateOrder.emit(order);
   }
 
   changeStatus(order: IOrderResponse, status: string): void {

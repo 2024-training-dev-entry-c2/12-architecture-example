@@ -46,7 +46,7 @@
                         </button>
                         <lib-delete-card [selectedId]="customer.id" [entityName]="'cliente'"
                             (onDelete)="deleteCustomer($event)"></lib-delete-card>
-                        <button class="entity__add-button">Añadir</button>
+                        <button class="entity__add-button" (click)="setCustomerCart(customer)">Añadir</button>
                     </td>
                 </tr>
                 }

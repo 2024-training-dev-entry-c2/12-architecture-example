@@ -6,7 +6,9 @@
             </h2>
             <button (click)="close()"><fa-icon [icon]="faX"></fa-icon></button>
         </div>
+        @if(client){
         <h3>Cliente: {{ client?.name + ' ' + client?.lastName }}</h3>
+        }
 
         <table>
             <thead>
