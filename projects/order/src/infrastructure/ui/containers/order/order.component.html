@@ -1,0 +1,32 @@
+<lib-modal
+  [open]="isOpen$ | async"
+  (clickClose)="openModal($event)"
+>
+<lib-order-form 
+    [message]="message$ | async"
+    [order]="currentOrder$ | async"
+    [open$]="isOpen$"
+    [clients$]="clients$"
+    [dishes$]="dishes$"
+    (onSubmit)="submit($event)"
+  ></lib-order-form>
+</lib-modal>
+
+<lib-modal
+  [open]="isOpenDetails$ |async"
+  (clickClose)="closeDetailsModal($event)"
+>
+<lib-view-details
+    [order]="order$ | async"
+  ></lib-view-details>
+</lib-modal>
+
+<lib-table 
+  [title]="'Pedidos'" 
+  [data]="orders$ | async"
+  [columns]="columns" 
+  (openModal)="openModal($event)" 
+  (openDetailsModal)="openDetailsModal($event)"
+  (idDelete)="deleteOrder($event)" 
+  (idUpdate)="updateById($event)"
+/>

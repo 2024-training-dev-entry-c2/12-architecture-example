@@ -1,0 +1,68 @@
+<section class="data">
+  <header class="data__header">
+    <h1 class="data__title">Lista de {{title()}}</h1>
+    <lib-button 
+      [svg]="'add'" 
+      [text]="'Button for add new register'" 
+      [class]="'data__button'" 
+      [span]="'Agregar'" (click)="openForm()"
+    />
+  </header>
+
+  <table aria-label="Table for registers" class="data__table">
+    <thead>
+      <tr>
+        <th role="columnheader">Acciones</th>
+        @for (column of columns(); track $index) {
+        <th role="columnheader">{{column.header}}</th>
+        @if (column.header === 'Cliente') {
+        <th role="columnheader">Ver</th>
+        }
+        }
+      </tr>
+    </thead>
+    <tbody>
+      @for (data of data(); track $index) {
+      <tr class="data__table-row" role="row">
+        <td role="cell">
+          <lib-button
+            [svg]="'trash'" 
+            [text]="'Button for delete register'" 
+            [class]="'data__table-action data__table-action--trash'" 
+            (click)="openConfirmation(data.id)"
+          />
+          <lib-button 
+            [svg]="'edit'" 
+            [text]="'Button for update register'" 
+            [class]="'data__table-action data__table-action--edit'" 
+            (click)="sendUpdate(data.id)" 
+            (click)="openForm()"
+          />
+        </td>
+        <ng-container *ngFor="let column of columns(); let i = index">
+          <td role="cell">{{data?.[column.field]}}</td>
+          @if (column.header === 'Cliente') {
+          <td role="cell">
+            <lib-button 
+              [svg]="'view'" 
+              [text]="'Button for view details'" 
+              [class]="'data__table-action data__table-action--download'" 
+              (click)="openDetails($index)"
+            />
+          </td>
+          }
+        </ng-container>
+      </tr>
+      }
+    </tbody>
+  </table>
+
+  <lib-modal 
+    [open]="isOpen" 
+    (clickClose)="cancelDelete()">
+    <lib-confirm-action 
+      (clickConfirm)="confirmDelete()" 
+      (clickCancel)="cancelDelete()"
+    />
+  </lib-modal>
+</section>

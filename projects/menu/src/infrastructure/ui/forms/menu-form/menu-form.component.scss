@@ -1,0 +1,41 @@
+@use "../../../../../../shared/src/infrastructure/ui/styles/variables.scss" as variables;
+@use "../../../../../../shared/src/infrastructure/ui/styles/mixins.scss" as mixins;
+
+.form {
+  @include mixins.flex(column, center, stretch, 30px);
+  @include mixins.radius(500px, 60vh, 10px);
+  margin: 0 auto;
+  padding: 50px;
+
+  &__inputs {
+    @include mixins.flex(column, flex-start, stretch, 15px);
+    @include mixins.scrollbar();
+    overflow-y: scroll;
+  }
+
+  &__title {
+    font-size: 30px;
+    font-weight: 700;
+    color: variables.$green;
+  }
+
+  &__message {
+    @include mixins.letter(variables.$green-bc, variables.$green, 10px, 5px, 17px, normal);
+    border: 1px solid variables.$green;
+    text-align: center;
+    margin: 10px;
+  }
+
+  &__button {
+    @include mixins.letter(variables.$green, variables.$white, 10px, 5px, 20px, bold);
+    border: none;
+    outline: none;
+    box-shadow: variables.$box-shadow-lg;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      @include mixins.hover(variables.$green-light);
+    }
+  }
+}

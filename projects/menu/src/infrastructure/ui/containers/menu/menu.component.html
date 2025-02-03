@@ -1,0 +1,20 @@
+<lib-modal
+  [open]="isOpen$ | async"
+  (clickClose)="openModal($event)"
+>
+<lib-menu-form 
+    [message]="message$ | async"
+    [menu]="currentMenu$ | async"
+    [open$]="isOpen$"
+    (onSubmit)="submit($event)"
+  ></lib-menu-form>
+</lib-modal>
+
+<lib-table 
+  [title]="'Menus'" 
+  [data]="menus$ | async"
+  [columns]="columns" 
+  (openModal)="openModal($event)" 
+  (idDelete)="deleteMenu($event)" 
+  (idUpdate)="updateById($event)"
+/>
