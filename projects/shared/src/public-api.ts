@@ -1,7 +1,5 @@
-/*
- * Public API Surface of shared
- */
 
-export * from './lib/shared.service';
-export * from './lib/shared.component';
 export * from './infrastrucutre/environment/enviaronment';
+export * from './infrastrucutre/interceptor/AuthInterceptor';
+export * from './infrastrucutre/guard/auth.guard';
+export * from './infrastrucutre/service/auth.service';
