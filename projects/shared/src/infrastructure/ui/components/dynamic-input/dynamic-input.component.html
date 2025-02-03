@@ -1,0 +1,93 @@
+<div
+  class="dynamic-input"
+  [class.dynamic-input--checkbox]="config.type === 'checkbox'"
+  [formGroup]="formGroup"
+>
+  <label
+    class="dynamic-input__label"
+    [for]="config.name"
+    aria-label="Label"
+    role="label"
+  >
+    {{ config.label }}
+  </label>
+
+  @if (!isArray) { 
+    @if (config.type == "select") {
+      <select
+        class="dynamic-input__input"
+        [id]="config.name"
+        aria-label="Select"
+        role="combobox"
+        [formControlName]="config.name"
+      >
+        @for (option of config.options; track $index) {
+          <option [value]="option.value">
+            {{ option.label }}
+          </option>
+        }
+      </select>
+    }@else if (config.type == "selectM") {
+      <select
+        class="dynamic-input__input"
+        [id]="config.name"
+        aria-label="Select"
+        role="combobox"
+        multiple
+        [formControlName]="config.name"
+      >
+        @for (option of config.options; track $index) {
+          <option [value]="option.value">
+            {{ option.label }}
+          </option>
+        }
+      </select>
+    } @else {
+      <input
+        class="dynamic-input__input"
+        [class.dynamic-input__input--checkbox]="config.type === 'checkbox'"
+        [id]="config.name"
+        aria-label="Input"
+        role="input"
+        [type]="config.type || ''"
+        [formControlName]="config.name"
+        [placeholder]="config.placeholder || ''"
+      />
+    }
+  } @else {
+    <div
+      class="dynamic-input__array"
+      aria-label="array"
+      role="list"
+      formArrayName="{{ config.name }}"
+    >
+      @for (item of getFormArrayControls(control); track $index) {
+        <div
+          class="dynamic-input__array-item"
+          role="listitem"
+          aria-label="List item"
+        >
+          <select
+            class="dynamic-input__input dynamic-input__input--array"
+            [formControlName]="$index"
+            aria-label="Select"
+            role="combobox"
+          >
+            @for (option of config.options; track option.value) {
+              <option [value]="option.value">
+                {{ option.label }}
+              </option>
+            }
+          </select>
+        </div>
+      }
+    </div>
+  } 
+
+  @if (formGroup.get(config.name)?.invalid && formGroup.get(config.name)?.touched) {
+    <div class="dynamic-input__error">
+      <span>{{ config.errorMessage || "Invalid input" }}</span>
+    </div>
+  }
+</div>
+

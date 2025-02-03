@@ -1,0 +1,19 @@
+.menu-form{
+    gap: 30px;
+
+    &__form{
+        gap: 10px;
+    }
+
+    &__submit {
+        display: flex;
+        cursor: pointer;
+        background-color: rgb(18, 139, 64);
+        color: white;
+        font-weight: bold;
+        font-size: 17px;
+        margin-top: 15px;
+        border-radius: 10px;
+    }
+
+}

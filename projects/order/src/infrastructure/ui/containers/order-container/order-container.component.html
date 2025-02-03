@@ -1,0 +1,9 @@
+<lib-order-page
+ [orders]="orders$ | async" 
+ [dishes]="dishes$ | async"
+ [clients]="clients$ | async"
+ [currentOrder]="currentOrder$ | async"
+ (onCreateOrder)="handleOrder($event)"
+ (onSelectOrder)="handleSelectOrder($event)"
+ (onDelete)="handleDelete($event)"
+ ></lib-order-page>

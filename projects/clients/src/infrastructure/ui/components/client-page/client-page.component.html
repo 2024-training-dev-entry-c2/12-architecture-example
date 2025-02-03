@@ -1,0 +1,46 @@
+<section class="client-page" aria-labelledby="client-page-heading">
+    <header class="client-page__header">
+        <h1 id="client-page-heading" class="client-page__title">Gestión de Clientes</h1>
+        <p class="client-page__description">
+            Aquí encontrarás la lista de clientes registrados en el sistema. Puedes gestionar sus datos con las opciones
+            disponibles.
+        </p>
+        <lib-modal action="Crear Cliente" #modal>
+            <lib-client-form
+            [client]="currentClient()"
+            (onSubmit)="handleSubmit($event)"
+            ></lib-client-form>
+        </lib-modal>
+    </header>
+    <section class="client-page__list">
+        <div class="client-table">
+            @for(client of clients(); track $index){
+              <div class="client-table__card" aria-label="Tarjeta de cliente">
+                <div class="client-table__card-info">
+                  <h3 class="client-table__card-name" aria-label="Nombre del cliente">
+                    {{ client.name }} {{ client.lastName }}
+                  </h3>
+                  <p class="client-table__card-email" aria-label="Correo electrónico del cliente">
+                    {{ client.email }}
+                  </p>
+                  <p class="client-table__card-frequent" aria-label="Cliente frecuente">
+                    <strong>Frecuente:</strong> {{ client.frequent ? 'Sí' : 'No' }}
+                  </p>
+                </div>
+                <div class="client-table__card-actions">
+                   <button 
+                    class="btn--edit"
+                    (click)="selectClient(client.id)">
+                    ✏️ Editar
+                  </button>
+                  <button class="btn--delete" (click)="deleteClient(client.id)">
+                    🗑️ Eliminar
+                  </button>
+                </div>
+              </div>
+            }
+          </div>      
+    </section>
+</section>
+
+  

@@ -1,0 +1,32 @@
+<section class="client-form">
+  <form [formGroup]="clientForm" (ngSubmit)="submit()" class="client-form__form">
+      <h3 class="blog-form__title">{{ clientForm.getRawValue().id ? 'Editar cliente' : 'Crear Cliente' }}</h3>
+      <label for="name" class="client-form__label">Nombre</label>
+      <input 
+        type="text" 
+        id="name" 
+        class="client-form__input" 
+        formControlName="name" 
+        placeholder="Escribe el nombre"/>
+      
+      <label for="lastName" class="client-form__label">Apellido</label>
+      <input 
+        type="text" 
+        id="lastName" 
+        class="client-form__input" 
+        formControlName="lastName" 
+        placeholder="Ingresa el Apellido"/>
+      
+      <label for="email" class="client-form__label">Email</label>
+      <input 
+        type="text" 
+        id="email" 
+        class="client-form__input" 
+        formControlName="email" 
+        placeholder="Ingresa el Email"/>
+      <button type="submit" class="client-form__submit" [disabled]="clientForm.invalid">
+        {{ clientForm.getRawValue().id ? 'Editar' : 'Crear' }}
+      </button>
+    </form>
+  </section>
+  

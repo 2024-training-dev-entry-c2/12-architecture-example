@@ -1,0 +1,63 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss';
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss';
+
+.dish {
+  background-color: rgb(206, 206, 206);
+  padding: 0.2rem;
+
+  &__header {
+    margin-bottom: 1rem;
+    padding-left: 40px;
+  }
+
+  &__title {
+    @include mixins.text-style(3rem, variables.$title);
+  }
+
+  &__description {
+    @include mixins.text-style(1rem, #666);
+  }
+
+  &__list {
+    @include mixins.flex-container(space-between, center, 2rem);
+    flex-wrap: wrap;
+  }
+}
+
+.dish-table {
+  padding-left: 2rem;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(4 , 1fr);
+    gap: 1.5rem;
+  }
+
+  .dish-card {
+    @include mixins.dish-card-styles(variables.$orange);
+
+    &__content {
+      flex-grow: 1;
+      padding: 1rem 1rem 0 1rem;
+      text-align: center;
+    }
+
+    &__actions {
+      @include mixins.flex-container(center, center, 1rem);
+      margin-top: auto;
+      padding: 1rem;
+    }
+
+    &__button {
+      &--edit {
+        @include mixins.button-styles(#3498db, white, #2980b9);
+      }
+
+      &--delete {
+        @include mixins.button-styles(#e74c3c, white, #c0392b);
+      }
+    }
+  }
+}
+
+  
