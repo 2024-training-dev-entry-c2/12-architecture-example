@@ -1,0 +1,16 @@
+<section class="modal">
+    <p class="modal__title">
+      Are you sure you want to delete <strong>{{ menuName }}</strong>?
+    </p>
+  
+    <div class="modal__btn-container">
+      <button (click)="onDelete()" class="modal__btn modal__btn--confirm">
+        Confirm
+      </button>
+  
+      <button (click)="onCloseModal()" class="modal__btn modal__btn--cancel">
+        Cancel
+      </button>
+    </div>
+  </section>
+  

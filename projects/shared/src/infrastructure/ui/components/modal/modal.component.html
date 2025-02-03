@@ -1,0 +1,14 @@
+<!-- add-modal.component.html -->
+@if (isOpen) {
+    <div class="modal">
+        <div class="modal__container">
+          <header class="modal__header">
+            <h2>{{ title }}</h2>
+            <button class="modal__close-btn" (click)="closeModal.emit()">✖</button>
+          </header>
+          <div class="modal__body">
+            <ng-content></ng-content>
+          </div>
+        </div>
+      </div>
+  }

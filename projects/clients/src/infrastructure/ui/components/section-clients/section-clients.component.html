@@ -1,0 +1,63 @@
+<section class="section section--order-details" aria-labelledby="order-details-title">
+    <div class="container section__content">
+        <div class="section__content-header section__content-header--clients-img">
+            <figure class="section__content-container">
+                <img src="./logo.png" alt="Gusteau's Logo that is displayed in the header of the page with the logo being a draw of 'Rattatouille'" />
+                <h1 class="container__content-title">Gusteau's Clients Details</h1>
+                <button 
+                    aria-label="Open modal to add a new client"  
+                    (click)="onOpenAddModal()" 
+                    class="container__content-btn container__content-btn--add">
+                    Add Client
+                </button>
+            </figure>
+        </div>
+        <table class="container__content-table" role="table" aria-labelledby="clientsTable">
+            <thead class="container__content-table-header">
+                <tr>
+                    @for (header of tableHeaders; track $index) {
+                        <th class="">{{header}}</th>
+                    } 
+                </tr>
+            </thead>
+            <tbody class="container__content-table-body">
+                @for (client of clients; track client.id) {
+                    <tr>
+                        <td>{{client.id}}</td>
+                        <td>{{client.name}}</td>
+                        <td>{{client.email}}</td>
+                        <td>{{client.totalOrders}}</td>
+                        <td>{{client.userType}}</td>
+                        <td class="container__content-table-actions">
+                            <button aria-label="Edit client details" (click)="onOpenEditModal(client)" class="container__content-btn container__content-btn--edit">
+                                Edit
+                            </button>
+                            <button aria-label="Delete client" (click)="onOpenDeleteModal(client)" class="container__content-btn container__content-btn--delete">
+                                Delete
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <lib-modal 
+    [isOpen]="isModalOpen" 
+    [title]="modalType === 'add' ? 'Add Client' : modalType === 'edit' ? 'Edit Client' : 'Delete Client'" 
+    (closeModal)="onCloseModal()">
+
+    <lib-add-modal
+        *ngIf="modalType !== 'delete'"
+        [editData]="selectedClient"
+        (save)="onSave($event)">
+    </lib-add-modal>
+
+    @if(modalType === 'delete'){
+        <lib-remove-modal 
+            [clientName]="selectedClient?.name"
+            (deleteClient)="onDelete()"
+            (closeModal)="onCloseModal()">
+        </lib-remove-modal>
+    }
+</lib-modal>
+</section>

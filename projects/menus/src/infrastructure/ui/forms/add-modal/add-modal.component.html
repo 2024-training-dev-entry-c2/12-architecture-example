@@ -1,0 +1,18 @@
+<form [formGroup]="menuForm" class="form">
+  <div class="form__content">
+    @for(field of formFields; track field.valueLabel) {
+      <label [for]="field.valueLabel" class="form__label">{{ field.labelName }}</label>
+      <input 
+        [id]="field.valueLabel" 
+        class="form__input" 
+        [type]="field.type"
+        [formControlName]="field.valueLabel" 
+      />
+    }
+  </div>
+  <div class="form__btn-container">
+    <button class="form__btn" type="button" [disabled]="!menuForm.valid" (click)="onSave()">
+      Guardar
+    </button>
+  </div>
+</form>

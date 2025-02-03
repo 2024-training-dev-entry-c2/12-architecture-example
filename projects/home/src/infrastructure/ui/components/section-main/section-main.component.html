@@ -1,0 +1,41 @@
+<section class="dashboard">
+    <header class="dashboard__header">
+        <figure class="dashboard__image">
+            <img src="./chefcito.png" alt="Image of Gusteau's mascot Rattatouille that is a Rat from the movie 'Rattatouille'">
+        </figure>
+        <h1>Gusteaus Management System</h1>
+    </header>
+    <div class="dashboard__stats">
+        <article class="dashboard__stat" aria-labelledby="total-clients">
+            <h2 class="dashboard__stat-title" id="total-clients">Total Clients</h2>
+            <div class="dashboard__stat-value" aria-describedby="clients-description">
+                {{dashboardData.clients.length}}
+            </div>
+            <div class="dashboard__stat-graph" [style]="'--percentage: ' + (dashboardData.clients.length / 10) * 100 + '%'"></div>
+        </article>
+        
+        <article class="dashboard__stat" aria-labelledby="total-orders">
+            <h2 class="dashboard__stat-title" id="total-orders">Total Orders</h2>
+            <div class="dashboard__stat-value dashboard__stat-value--highlighted" aria-describedby="orders-description">
+                {{dashboardData.orders.length}}
+            </div>
+            <div class="dashboard__stat-graph dashboard__stat-graph--low" [style]="'--percentage: ' + (dashboardData.orders.length / 110) * 100 + '%'"></div>
+        </article>
+  
+        <article class="dashboard__stat" aria-labelledby="total-dishes">
+            <h2 class="dashboard__stat-title" id="total-dishes">Total Dishes</h2>
+            <div class="dashboard__stat-value" aria-describedby="dishes-description">
+                {{dashboardData.dishes.length}}
+            </div>
+            <div class="dashboard__stat-graph dashboard__stat-graph--low" [style]="'--percentage: ' + (dashboardData.dishes.length / 20) * 100 + '%'"></div>
+        </article>
+  
+        <article class="dashboard__stat" aria-labelledby="total-menus">
+            <h2 class="dashboard__stat-title" id="total-menus">Total Menus</h2>
+            <div class="dashboard__stat-value" aria-describedby="menus-description">
+                {{dashboardData.menus.length}}
+            </div>
+            <div class="dashboard__stat-graph dashboard__stat-graph--low" [style]="'--percentage: ' + (dashboardData.menus.length / 4) * 100 + '%'"></div>
+        </article>
+    </div>
+</section>

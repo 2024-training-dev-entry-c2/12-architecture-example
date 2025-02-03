@@ -1,0 +1,22 @@
+<menu class="menu" role="menubar" aria-label="Main Navigation Menu">
+    <div class="menu__logo">
+      <li class="menu__item" role="none">
+        <a [routerLink]="logo.url" aria-label="Go to homepage">
+          <i class="menu__item menu__item-icon" aria-hidden="true">
+            <img [src]="logo.src" [alt]="logo.alt" />
+          </i>
+        </a>
+      </li>
+    </div>
+    <div class="menu__navigation">
+        @for (link of navLinks; track $index) {
+      <li class="menu__item">
+        <a [routerLink]="link.path" [attr.aria-label]="link.ariaLabel">
+          <span>{{ link.name }}</span>
+        </a>
+      </li>
+
+    }
+    </div>
+  </menu>
+  

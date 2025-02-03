@@ -1,0 +1,15 @@
+<menu class="menu footer__menu footer" role="menubar" aria-label="Social media navigation">
+  <div class="footer__menu-content">
+    <ul class="footer__navigation">
+
+@for (link of socialLinks; track $index) {
+
+      <li class="menu__item" role="none">
+        <a [href]="link.url" [attr.aria-label]="link.ariaLabel" role="menuitem">
+          <span>{{ link.name }}</span>
+        </a>
+      </li>
+    }
+    </ul>
+  </div>
+</menu>

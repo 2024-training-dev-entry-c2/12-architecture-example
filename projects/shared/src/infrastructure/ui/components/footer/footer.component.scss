@@ -1,0 +1,33 @@
+.footer {
+    align-items: center;
+    background-color: #5d6ea6;
+    list-style: none;
+    padding: 0 15px;
+   
+  
+    &__navigation {
+      display: flex;
+      gap: 50px;
+      list-style: none;
+    }
+  
+    &__navigation a {
+      color: white;
+    }
+  
+    &__menu {
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+  
+    &__menu-content {
+      display: flex;
+      gap: 90px;
+      a {
+        color: white;
+      }
+    }
+  }
+  

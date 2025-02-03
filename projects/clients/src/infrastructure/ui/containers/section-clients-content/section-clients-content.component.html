@@ -1,0 +1,15 @@
+<main role="main">
+  <lib-section-clients
+    [clients]="clients$ | async"
+    [isModalOpen]="isModalOpen"
+    [modalType]="modalType"
+    [selectedClient]="selectedClient"
+    (addClient)="openAddModal()"
+    (editClient)="openEditModal($event)"
+    (deleteClient)="openDeleteModal($event)"
+    (confirmDelete)="deleteClient()"
+    (saveClient)="onSave($event)"
+    (closeModal)="closeModal()">
+    
+  </lib-section-clients>
+</main>
