@@ -11,6 +11,7 @@ export class CreateUserFormComponent {
   onSubmit = output<IUser>();
 
   submit(): void {
+    console.log("click boton de creación");
     this.onSubmit.emit({ id: 1, name: 'Test User' });
   }
 }
