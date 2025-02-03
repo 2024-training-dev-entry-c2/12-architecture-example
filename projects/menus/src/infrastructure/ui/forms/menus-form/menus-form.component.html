@@ -1,0 +1,22 @@
+<form [formGroup]="form" class="menu-form" (ngSubmit)="submit()">
+  <h3 class="menu-form__title">{{ form.getRawValue().id ? 'Editar Menú' : 'Crear Menú' }}</h3>
+
+  <label class="menu-form__label">
+    <span class="menu-form__text">Nombre</span>
+    <input class="menu-form__input" type="text" formControlName="name">
+  </label>
+
+  <label class="menu-form__label">
+    <span class="menu-form__text">Descripción</span>
+    <textarea class="menu-form__input" formControlName="description"></textarea>
+  </label>
+
+  <label class="menu-form__label">
+    <span class="menu-form__text">Platos</span>
+    <select class="menu-form__input" multiple formControlName="dishes">
+      <option *ngFor="let dish of availableDishes" [value]="dish.id">{{ dish.name }}</option>
+    </select>
+  </label>
+
+  <button class="menu-form__button" type="submit">{{ form.getRawValue().id ? 'Actualizar' : 'Crear' }}</button>
+</form>

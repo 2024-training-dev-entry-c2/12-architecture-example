@@ -1,0 +1,30 @@
+<form [formGroup]="form" class="client-form" (ngSubmit)="submit()">
+    <h3 class="client-form__title">{{ form.getRawValue().id ? 'Editar Cliente' : 'Crear Cliente' }}</h3>
+
+    <label class="client-form__label">
+        <span class="client-form__text">Nombre</span>
+        <input class="client-form__input" type="text" formControlName="name">
+    </label>
+
+    <label class="client-form__label">
+        <span class="client-form__text">Apellido</span>
+        <input class="client-form__input" type="text" formControlName="lastName">
+    </label>
+
+    <label class="client-form__label">
+        <span class="client-form__text">Correo Electrónico</span>
+        <input class="client-form__input" type="email" formControlName="email">
+    </label>
+
+    <label class="client-form__label">
+        <span class="client-form__text">Teléfono</span>
+        <input class="client-form__input" type="text" formControlName="phone">
+    </label>
+
+    <label class="client-form__label">
+        <span class="client-form__text">Tipo</span>
+        <input class="client-form__input" type="text" formControlName="type">
+    </label>
+
+    <button class="client-form__button" type="submit">{{ form.getRawValue().id ? 'Actualizar' : 'Crear' }}</button>
+</form>

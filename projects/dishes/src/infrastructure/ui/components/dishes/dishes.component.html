@@ -1,0 +1,32 @@
+<lib-modal action="Crear Plato" #modal class="lib-modal">
+    <lib-dishes-form
+      [dish]="currentDish()"
+      (onSubmit)="handleSubmit($event)"
+      class="lib-dishes-form"
+    >
+    </lib-dishes-form>
+  </lib-modal>
+  
+  <table class="table" aria-labelledby="table-heading">
+    <caption id="table-heading" class="sr-only">Lista de platos</caption>
+    <thead>
+      <tr>
+        <th scope="col" class="table__header">Nombre</th>
+        <th scope="col" class="table__header">Precio</th>
+        <th scope="col" class="table__header">Tipo</th>
+        <th scope="col" class="table__header">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dish of dishes()">
+        <td class="table__cell">{{ dish.name }}</td>
+        <td class="table__cell">{{ dish.price | currency }}</td>
+        <td class="table__cell">{{ dish.type }}</td>
+        <td class="table__actions">
+          <button (click)="selectDish(dish.id)" class="table__actions--edit edit-button">Editar</button>
+          <button (click)="deleteDish(dish.id)" class="table__actions--delete delete-button">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

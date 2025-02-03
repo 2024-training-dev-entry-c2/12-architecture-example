@@ -1,0 +1,21 @@
+<form [formGroup]="form" class="dish-form" (ngSubmit)="submit()">
+    <h3 class="dish-form__title">{{ form.getRawValue().id ? 'Editar Plato' : 'Crear Plato' }}</h3>
+  
+    <label class="dish-form__label">
+      <span class="dish-form__text">Nombre</span>
+      <input class="dish-form__input" type="text" formControlName="name">
+    </label>
+  
+    <label class="dish-form__label">
+      <span class="dish-form__text">Precio</span>
+      <input class="dish-form__input" type="number" formControlName="price">
+    </label>
+  
+    <label class="dish-form__label">
+      <span class="dish-form__text">Tipo</span>
+      <input class="dish-form__input" type="text" formControlName="type">
+    </label>
+  
+    <button class="dish-form__button" type="submit">{{ form.getRawValue().id ? 'Actualizar' : 'Crear' }}</button>
+  </form>
+  

@@ -1,0 +1,20 @@
+.dashboard__content {
+    flex: 1;
+    background-color: #f5f5f5;
+    padding: 20px;
+    height: 100vh;
+    overflow-y: auto;
+  }
+  
+  .dashboard__content-title {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .dashboard__content-info {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }

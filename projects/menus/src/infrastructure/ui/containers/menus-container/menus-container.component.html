@@ -1,0 +1,7 @@
+<lib-menus
+    [menus]="menus$ | async"
+    [currentMenu]="currentMenu$ | async"
+    (onCreateMenu)="handleCreateMenus($event)"
+    (onSelectMenu)="handleSelectMenu($event)"
+    (onDeleteMenu)="handleDeleteMenu($event)"
+></lib-menus>>
