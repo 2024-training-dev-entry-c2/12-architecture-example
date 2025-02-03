@@ -1,1 +1,32 @@
-<p>orders works!</p>,
+<lib-modal action="Crear Orden" #modal class="lib-modal">
+    <lib-orders-form
+      [order]="currentOrder()"
+      (onSubmit)="handleSubmit($event)"
+      class="lib-orders-form"
+    >
+    </lib-orders-form>
+  </lib-modal>
+  
+  <table class="table" aria-labelledby="table-heading">
+    <caption id="table-heading" class="sr-only">Lista de órdenes</caption>
+    <thead>
+      <tr>
+        <th scope="col" class="table__header">Cliente</th>
+        <th scope="col" class="table__header">Fecha</th>
+        <th scope="col" class="table__header">Total</th>
+        <th scope="col" class="table__header">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let order of orders()">
+        <td class="table__cell">{{ order.clientId }}</td>
+        <td class="table__cell">{{ order.date | date: 'short' }}</td>
+        <td class="table__cell">{{ order.totalCost | currency }}</td>
+        <td class="table__actions">
+          <button (click)="selectOrder(order.id)" class="table__actions--edit edit-button">Editar</button>
+          <button (click)="deleteOrder(order.id)" class="table__actions--delete delete-button">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  

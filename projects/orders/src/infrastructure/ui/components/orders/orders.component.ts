@@ -1,10 +1,12 @@
 import { ChangeDetectionStrategy, Component, input, output, viewChild } from '@angular/core';
 import { ModalComponent } from 'shared';
 import { IOrder } from '../../../../domain/models/orders.model';
+import { OrdersFormComponent } from "../../forms/orders-form/orders-form.component";
+import { CurrencyPipe, DatePipe, NgFor } from '@angular/common';
 
 @Component({
   selector: 'lib-orders',
-  imports: [],
+  imports: [ModalComponent, OrdersFormComponent, CurrencyPipe, DatePipe, NgFor ],
   templateUrl: './orders.component.html',
   styleUrl: './orders.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

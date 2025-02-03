@@ -1,1 +1,21 @@
-<p>orders-form works!</p>,
+<form [formGroup]="form" class="order-form" (ngSubmit)="submit()">
+    <h3 class="order-form__title">{{ form.getRawValue().id ? 'Editar Orden' : 'Crear Orden' }}</h3>
+  
+    <label class="order-form__label">
+      <span class="order-form__text">Cliente</span>
+      <input class="order-form__input" type="number" formControlName="clientId">
+    </label>
+  
+    <label class="order-form__label">
+      <span class="order-form__text">Fecha</span>
+      <input class="order-form__input" type="datetime-local" formControlName="date">
+    </label>
+  
+    <label class="order-form__label">
+      <span class="order-form__text">Total</span>
+      <input class="order-form__input" type="number" formControlName="totalCost">
+    </label>
+  
+    <button class="order-form__button" type="submit">{{ form.getRawValue().id ? 'Actualizar' : 'Crear' }}</button>
+  </form>
+  
