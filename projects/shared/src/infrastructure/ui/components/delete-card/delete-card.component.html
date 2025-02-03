@@ -1,21 +1,23 @@
-<button class="delete-modal__open-button" (click)="open()">
+<button aria-label="Open delete modal" class="delete-modal__open-button" (click)="open()">
     <fa-icon [icon]="faTrash"></fa-icon>
 </button>
 
-<dialog class="delete-modal" #deleteCard>
+<dialog class="delete-modal" #deleteCard aria-labelledby="delete-modal-title" aria-modal="true" role="dialog">
     <div class="delete-modal__header">
         <h2 class="delete-modal__title">Eliminar {{ entityName }}</h2>
-        <button (click)="close()"><fa-icon [icon]="faX"></fa-icon></button>
+        <button aria-label="Close delete modal" (click)="close()"><fa-icon [icon]="faX"></fa-icon></button>
     </div>
 
     <div class="delete-modal__content">
-        <fa-icon class="delete-modal__icon" [icon]="faExclamationCircle"></fa-icon>
+        <fa-icon aria-hidden="true" class="delete-modal__icon" [icon]="faExclamationCircle"></fa-icon>
         <h3 class="delete-modal__content-title">¿Está seguro de que desea eliminar el {{ entityName }}?</h3>
         <p class="delete-modal__content-text">Esta acción no se puede deshacer.</p>
     </div>
 
     <div class="delete-modal__buttons">
-        <button class="delete-modal__cancel-button" type="button" (click)="close()">Cancelar</button>
-        <button class="delete-modal__delete-button" type="button" (click)="delete()">Eliminar</button>
+        <button aria-label="Cancell delete modal" class="delete-modal__cancel-button" type="button"
+            (click)="close()">Cancelar</button>
+        <button aria-label="Confirm delete modal" class="delete-modal__delete-button" type="button"
+            (click)="delete()">Eliminar</button>
     </div>
 </dialog>

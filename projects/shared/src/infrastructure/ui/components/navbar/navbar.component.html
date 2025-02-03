@@ -1,8 +1,8 @@
-<nav class="navbar">
+<nav aria-label="Navbar" class="navbar">
     <a href="/">
         <img src="images/logo-navbar.png" alt="Bon Appétit restaurant navbar logo" width="auto" height="56" />
     </a>
-    <menu class="navbar__menu">
+    <menu class="navbar__menu" role="list">
         @for (item of [
         { title: 'Inicio', link: '' },
         { title: 'Clientes', link: '/customers' },
@@ -10,8 +10,7 @@
         { title: 'Platos', link: '/dishes' },
         { title: 'Pedidos', link: '/orders' },
         ]; track item.title){
-        <li><a class="navbar__link" [routerLink]="item.link">{{ item.title }}</a></li>
+        <li role="listitem"><a class="navbar__link" [routerLink]="item.link">{{ item.title }}</a></li>
         }
-        <!-- <li><button (click)="logout()" class="navbar__button">Cerrar sesión</button></li> -->
     </menu>
 </nav>

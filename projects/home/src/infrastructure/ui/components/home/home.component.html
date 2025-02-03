@@ -1,12 +1,12 @@
 <section class="home">
-    <menu class="home__menu">
+    <menu aria-label="Main menu" class="home__menu">
         @for (item of [
         { title: 'Clientes', link: '/customers', imgSrc: 'images/customers.png' },
         { title: 'Menús', link: '/menus', imgSrc: 'images/menus.png' },
         { title: 'Platos', link: '/dishes', imgSrc: 'images/dishes.png' },
         { title: 'Pedidos', link: '/orders', imgSrc: 'images/orders.png' },
         ]; track item.title){
-        <li>
+        <li role="listitem">
             <a class="home__link" [routerLink]="item.link">
                 <img aria-hidden="true" [src]="item.imgSrc" [alt]="item.title" />
                 <span>{{item.title}}</span>

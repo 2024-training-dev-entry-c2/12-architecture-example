@@ -10,7 +10,7 @@
         <h3>Cliente: {{ client?.name + ' ' + client?.lastName }}</h3>
         }
 
-        <table>
+        <table aria-describedby="cart-list-description">
             <thead>
                 <tr>
                     <th>PLATO</th>
@@ -24,13 +24,15 @@
                     <td>{{ dish.dishName }}</td>
                     <td>{{ quantities[$index] }}</td>
                     <td class="form-card__buttons">
-                        <button class="form-card__plus" (click)="increment($index)">+</button>
-                        <button class="form-card__minus" (click)="decrement($index)">-</button>
+                        <button aria-label="Increase quantity" class="form-card__plus"
+                            (click)="increment($index)">+</button>
+                        <button aria-label="Decrease quantity" class="form-card__minus"
+                            (click)="decrement($index)">-</button>
                     </td>
                 </tr>
                 }
             </tbody>
         </table>
-        <button class="form-card__plus" (click)="saveOrder()">Guardar</button>
+        <button aria-label="Save order" class="form-card__plus" (click)="saveOrder()">Guardar</button>
     </article>
 </section>

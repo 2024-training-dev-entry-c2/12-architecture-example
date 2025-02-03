@@ -5,22 +5,25 @@
         </div>
         @if(showCreateModal){
         <lib-form-dish [dish]="currentDish()" [menuId]="selectedMenuId" (onClose)="closeModal()"
-            (onSubmit)="handleSubmit($event)"></lib-form-dish>
+            (onSubmit)="handleSubmit($event)" aria-labelledby="create-dish-modal" aria-modal="true"
+            role="dialog"></lib-form-dish>
         }
         @if(showUpdateModal){
         <lib-form-dish [dish]="currentDish()" [menuId]="selectedMenuId" (onClose)="closeModal()"
-            (onSubmit)="handleSubmit($event)"></lib-form-dish>
+            (onSubmit)="handleSubmit($event)" aria-labelledby="update-dish-modal" aria-modal="true"
+            role="dialog"></lib-form-dish>
         }
 
         @for(dishList of dishes; track $index; let idx = $index){
         <div class="entity__create-button-container">
-            <button aria-expanded="false" class="entity__create-button" (click)="showCreateDish($index)">
+            <button aria-expanded="false" aria-label="Create new dish" aria-describedby="create-dish-description"
+                class="entity__create-button" (click)="showCreateDish($index)">
                 <fa-icon [icon]="faPlus"></fa-icon>
                 <span>Crear nuevo plato</span>
             </button>
         </div>
         <h2 class="entity__group-title">{{ menus[$index].menuName }}</h2>
-        <table>
+        <table aria-describedby="dish-list-description">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -41,12 +44,14 @@
                     <td>{{ dish.isPopular ? 'Si' : 'No' }}</td>
 
                     <td class="entity__buttons">
-                        <button class="entity__edit-button" (click)="showUpdateDish(dish.id, idx)">
+                        <button aria-label="Edit dish" class="entity__edit-button"
+                            (click)="showUpdateDish(dish.id, idx)">
                             <fa-icon [icon]="faEdit"></fa-icon>
                         </button>
-                        <lib-delete-card [selectedId]="dish.id" [index]="idx" [entityName]="'plato'"
-                            (onDelete)="deleteDish($event)"></lib-delete-card>
-                        <button class="entity__add-button" (click)="setDishesCart(dish)">Añadir</button>
+                        <lib-delete-card aria-label="Delete dish" [selectedId]="dish.id" [index]="idx"
+                            [entityName]="'plato'" (onDelete)="deleteDish($event)"></lib-delete-card>
+                        <button aria-label="Add dish to cart" class="entity__add-button"
+                            (click)="setDishesCart(dish)">Añadir</button>
                     </td>
                 </tr>
                 }

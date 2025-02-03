@@ -4,20 +4,22 @@
             <h1>Clientes</h1>
         </div>
         <div class="entity__create-button-container">
-            <button aria-expanded="false" class="entity__create-button" (click)="showCreateCustomer()">
+            <button aria-expanded="false" aria-label="Create new customer"
+                aria-describedby="create-customer-description" class="entity__create-button"
+                (click)="showCreateCustomer()">
                 <fa-icon [icon]="faPlus"></fa-icon>
                 <span>Crear nuevo cliente</span>
             </button>
             @if(showCreateModal){
-            <lib-form-customer [customer]="currentCustomer()" (onClose)="closeModal()"
-                (onSubmit)="handleSubmit($event)"></lib-form-customer>
+            <lib-form-customer [customer]="currentCustomer()" (onClose)="closeModal()" (onSubmit)="handleSubmit($event)"
+                aria-labelledby="create-customer-modal-title" aria-modal="true" role="dialog"></lib-form-customer>
             }
             @if(showUpdateModal){
-            <lib-form-customer [customer]="currentCustomer()" (onClose)="closeModal()"
-                (onSubmit)="handleSubmit($event)"></lib-form-customer>
+            <lib-form-customer [customer]="currentCustomer()" (onClose)="closeModal()" (onSubmit)="handleSubmit($event)"
+                aria-labelledby="update-customer-modal-title" aria-modal="true" role="dialog"></lib-form-customer>
             }
         </div>
-        <table>
+        <table aria-describedby="customer-list-description">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -41,12 +43,14 @@
                     <td>{{ customer.address }}</td>
                     <td>{{ customer.isFrequent ? 'Si' : 'No' }}</td>
                     <td class="entity__buttons">
-                        <button class="entity__edit-button" (click)="showUpdateCustomer(customer.id)">
+                        <button aria-label="Edit customer" class="entity__edit-button"
+                            (click)="showUpdateCustomer(customer.id)">
                             <fa-icon [icon]="faEdit"></fa-icon>
                         </button>
-                        <lib-delete-card [selectedId]="customer.id" [entityName]="'cliente'"
-                            (onDelete)="deleteCustomer($event)"></lib-delete-card>
-                        <button class="entity__add-button" (click)="setCustomerCart(customer)">Añadir</button>
+                        <lib-delete-card aria-label="Delete customer" [selectedId]="customer.id"
+                            [entityName]="'cliente'" (onDelete)="deleteCustomer($event)"></lib-delete-card>
+                        <button aria-label="Add customerto cart" class="entity__add-button"
+                            (click)="setCustomerCart(customer)">Añadir</button>
                     </td>
                 </tr>
                 }

@@ -4,20 +4,22 @@
             <h1>Pedidos</h1>
         </div>
         <div class="entity__create-button-container">
-            <button aria-expanded="false" class="entity__create-button" (click)="showCartModal()">
+            <button aria-expanded="false" aria-label="Create new order" aria-describedby="create-order-description"
+                class="entity__create-button" (click)="showCartModal()">
                 <fa-icon [icon]="faPlus"></fa-icon>
                 <span>Nuevo Pedido</span>
             </button>
             @if(showOrderDetails && selectedOrder){
-            <app-order-detail [orderDetails]="selectedOrder.orderDetails"
-                (closeModal)="closeOrderDetailsModal()"></app-order-detail>
+            <app-order-detail [orderDetails]="selectedOrder.orderDetails" (closeModal)="closeOrderDetailsModal()"
+                aria-labelledby="show-order-details-modal" aria-modal="true" role="dialog"></app-order-detail>
             }
             @if(showCart){
-            <app-cart (closeModal)="closeCartModal()" (newOrder)="createOrder($event)"></app-cart>
+            <app-cart (closeModal)="closeCartModal()" (newOrder)="createOrder($event)"
+                aria-labelledby="order-cart-modal" aria-modal="true" role="dialog"></app-cart>
             }
 
         </div>
-        <table>
+        <table aria-describedby="order-list-description">
             <thead>
                 <tr>
                     <th>ID</th>
@@ -39,11 +41,14 @@
                     <td>{{ order.total | number:'1.0-0':'es-ES' }}</td>
 
                     <td class="entity__buttons">
-                        <button class="entity__detail-button" (click)="showOrderDetailsModal(order)">Detalle </button>
+                        <button aria-label="Show order details" class="entity__detail-button"
+                            (click)="showOrderDetailsModal(order)">Detalle </button>
                         @if(order.status === 'PROCESSING'){
-                        <button class="entity__edit-button" (click)="changeStatus(order, 'COMPLETED')">Entregar
+                        <button aria-label="Change order status to completed" class="entity__edit-button"
+                            (click)="changeStatus(order, 'COMPLETED')">Entregar
                         </button>
-                        <button class="entity__delete-button" (click)="changeStatus(order, 'CANCELLED')">Cancelar
+                        <button aria-label="Change order status to cancelled" class="entity__delete-button"
+                            (click)="changeStatus(order, 'CANCELLED')">Cancelar
                         </button>
                         }
                     </td>
