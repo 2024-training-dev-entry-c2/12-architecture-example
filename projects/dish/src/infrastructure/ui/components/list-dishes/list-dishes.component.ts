@@ -2,7 +2,7 @@ import { Component, input, output, viewChild } from '@angular/core';
 import { DishFormComponent } from '../../forms/dish-form/dish-form.component';
 import { CurrencyPipe, NgFor } from '@angular/common';
 import { IDish } from '../../../../domain/model/dish.model';
-import { ModalComponent } from '../../../../../../shared/src/public-api';
+import { ModalComponent } from 'shared';
 
 @Component({
   selector: 'lib-list-dishes',

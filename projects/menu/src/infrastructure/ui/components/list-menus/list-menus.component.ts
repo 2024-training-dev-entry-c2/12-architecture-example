@@ -2,7 +2,7 @@ import { NgFor } from '@angular/common';
 import { Component, input, output, viewChild } from '@angular/core';
 import { IMenu } from '../../../../domain/models/menu.model';
 import { MenuFormComponent } from '../../forms/menu-form/menu-form.component';
-import { ModalComponent } from '../../../../../../shared/src/public-api';
+import { ModalComponent } from 'shared';
 
 @Component({
   selector: 'lib-list-menus',
