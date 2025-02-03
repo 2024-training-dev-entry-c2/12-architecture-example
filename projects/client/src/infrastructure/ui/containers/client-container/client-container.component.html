@@ -1,0 +1,7 @@
+<lib-client-component
+  (buttonSubmitClick)="handleCreateOrUpdate($event)"
+  [clients]="clients$ | async"
+  (selectedToUpdate)="handleSelect($event)"
+  (selectedToDelete)="handleDelete($event)"
+  [clientSelected]="currentClient$ | async"
+/>

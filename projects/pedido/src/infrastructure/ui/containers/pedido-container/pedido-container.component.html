@@ -1,0 +1,7 @@
+<lib-pedido-component
+  (buttonSubmitClick)="handleCreateOrUpdate($event)"
+  [pedidos]="pedidos$ | async"
+  (selectedToUpdate)="handleSelect($event)"
+  (selectedToDelete)="handleDelete($event)"
+  [pedidoSelected]="currentPedido$ | async"
+/>

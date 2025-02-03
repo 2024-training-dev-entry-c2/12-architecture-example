@@ -1,0 +1,7 @@
+<lib-list-menu
+  (buttonSubmitClick)="handleCreateOrUpdate($event)"
+  [menu]="menus$ | async"
+  (menuSelectedToUpdate)="handleSelectMenu($event)"
+  (menuSelectedToDelete)="handleDelete($event)"
+  [menuSelected]="currentMenu$ | async"
+/>

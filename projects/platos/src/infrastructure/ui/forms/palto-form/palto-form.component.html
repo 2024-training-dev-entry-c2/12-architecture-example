@@ -1,0 +1,66 @@
+<form
+  [formGroup]="platoForm"
+  class="form-plato"
+  (ngSubmit)="submit()"
+  aria-labelledby="form-plato-heading"
+>
+  <h2 id="form-plato-heading">Formulario de Plato</h2>
+
+  <div>
+    <label for="nombre">Nombre</label>
+    <input
+      id="nombre"
+      formControlName="nombre"
+      [value]="platoSelected()?.nombre"
+      type="text"
+      aria-required="true"
+      aria-describedby="nombre-help"
+    />
+    <small id="nombre-help">Ingrese el nombre del plato.</small>
+  </div>
+
+  <div>
+    <label for="precio">Precio</label>
+    <input
+      id="precio"
+      formControlName="precio"
+      [value]="platoSelected()?.precio"
+      type="text"
+      aria-required="true"
+      aria-describedby="precio-help"
+    />
+    <small id="precio-help">Ingrese el precio del plato.</small>
+  </div>
+
+  <div>
+    <label for="idmenu">Id del menu</label>
+    <input
+      id="idmenu"
+      formControlName="idmenu"
+      [value]="platoSelected()?.idmenu"
+      type="text"
+      aria-required="true"
+      aria-describedby="idmenu-help"
+    />
+    <small id="idmenu-help"
+      >Ingrese el ID del menú relacionado con el plato.</small
+    >
+  </div>
+
+  <div>
+    <label for="urlImage">URL-Image</label>
+    <input
+      id="urlImage"
+      formControlName="urlImage"
+      [value]="platoSelected()?.urlImage"
+      type="text"
+      aria-required="true"
+      aria-describedby="urlImage-help"
+      (input)="onInputChange($event)"
+    />
+    <small id="urlImage-help">Ingrese la URL de la imagen del plato.</small>
+  </div>
+
+  <button type="submit">Enviar</button>
+  <img [src]="inputValue" alt="" />
+</form>

@@ -2,11 +2,19 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
-    path: 'users',
-    loadChildren: () => import('users').then(m => m.usersRoutes)
+    path: '',
+    loadChildren: () => import('menu').then((m) => m.menuRoutes),
   },
-  // {
-  //   path: '',
-  //   loadChildren: () => import('home').then(m => m.homeRoutes)
-  // }
+  {
+    path: 'client',
+    loadChildren: () => import('client').then((m) => m.LibRoutes),
+  },
+  {
+    path: 'platos',
+    loadChildren: () => import('platos').then((m) => m.LibRoutes),
+  },
+  {
+    path: 'pedidos',
+    loadChildren: () => import('pedido').then((m) => m.LibRoutes),
+  },
 ];

@@ -1,0 +1,21 @@
+<form [formGroup]="menuForm" class="form-menu" (ngSubmit)="submit()">
+  <div>
+    <label>Nombre</label>
+    <input
+      formControlName="nombre"
+      [value]="menuSelected()?.nombre"
+      type="text"
+    />
+  </div>
+  <div>
+    <label>URL-Image</label>
+    <input
+      formControlName="urlImage"
+      [value]="menuSelected()?.urlImage"
+      type="text"
+      (input)="onInputChange($event)"
+    />
+  </div>
+  <button>Enviar</button>
+  <img [src]="inputValue" alt="" />
+</form>

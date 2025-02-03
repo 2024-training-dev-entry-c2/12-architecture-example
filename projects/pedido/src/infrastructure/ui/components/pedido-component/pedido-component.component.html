@@ -1,0 +1,28 @@
+<section class="pedido" aria-labelledby="pedido-heading">
+  <main class="pedido__main">
+    <h2 id="pedido-heading">Pedidos</h2>
+
+    <menu class="pedido__cards" role="list" aria-label="Lista de pedidos">
+      @if (pedidos().length > 0) { @for (item of pedidos(); track $index) {
+      <li role="listitem">
+        <lib-card
+          [idCliente]="item.idCliente"
+          [precio]="item.precio"
+          (buttonRemoveClick)="delete(item.id)"
+          (buttonModifyClick)="selectToUpdate(item)"
+        />
+      </li>
+      } } @else {
+      <li>
+        <span>No hay pedidos</span>
+      </li>
+      }
+    </menu>
+  </main>
+
+  <lib-pedido-form
+    [pedidoSelected]="pedidoSelected()"
+    (buttonSubmitClick)="handleSubmit($event)"
+    aria-labelledby="form-client-heading"
+  />
+</section>

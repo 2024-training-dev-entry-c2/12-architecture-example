@@ -1,0 +1,7 @@
+<lib-plato-component
+  (buttonSubmitClick)="handleCreateOrUpdate($event)"
+  [platos]="plato$ | async"
+  (selectedToUpdate)="handleSelect($event)"
+  (selectedToDelete)="handleDelete($event)"
+  [selected]="currentPlato$ | async"
+/>

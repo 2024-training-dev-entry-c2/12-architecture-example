@@ -1,0 +1,28 @@
+<section class="platos" aria-labelledby="platos-heading">
+  <main class="platos__main">
+    <h2 id="platos-heading">Platos</h2>
+
+    <menu class="platos__cards" role="list" aria-label="Lista de platos">
+      @if (platos().length > 0) { @for (item of platos(); track $index) {
+      <li role="listitem">
+        <lib-card
+          [name]="item.nombre"
+          [price]="item.precio"
+          [image]="item.urlImage"
+          (buttonRemoveClick)="deleteMenu(item.id)"
+          (buttonModifyClick)="selectMenuToUpdate(item)"
+        />
+      </li>
+      } } @else {
+      <li>
+        <span>No hay platos</span>
+      </li>
+      }
+    </menu>
+  </main>
+  <lib-palto-form
+    [platoSelected]="selected()"
+    (buttonSubmitClick)="handleSubmit($event)"
+    aria-labelledby="form-platos-heading"
+  />
+</section>

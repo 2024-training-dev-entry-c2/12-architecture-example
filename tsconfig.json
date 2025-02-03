@@ -7,6 +7,26 @@
     "strict": false,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
+    "paths": {
+      "client": [
+        "./dist/client"
+      ],
+      "menu": [
+        "./dist/menu"
+      ],
+      "mi-libreria": [
+        "./dist/mi-libreria"
+      ],
+      "pedido": [
+        "./dist/pedido"
+      ],
+      "platos": [
+        "./dist/platos"
+      ],
+      "shared": [
+        "./dist/shared"
+      ]
+    },
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
@@ -16,15 +36,7 @@
     "moduleResolution": "bundler",
     "importHelpers": true,
     "target": "ES2022",
-    "module": "ES2022",
-    "paths": {
-      "admin": [
-        "./dist/admin"
-      ],
-      "users": [
-        "./dist/users"
-      ]
-    }
+    "module": "ES2022"
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

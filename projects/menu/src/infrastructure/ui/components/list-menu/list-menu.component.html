@@ -1,0 +1,29 @@
+<!-- formulario -->
+<section class="menu" aria-labelledby="menu-heading">
+  <main class="menu__main">
+    <menu class="menu__cards" role="list" aria-label="Lista de menús">
+      @if (menu().length > 0) { @for (item of menu(); track $index) {
+      <li role="listitem">
+        <lib-card
+          [IdMenu]="item.id"
+          [image]="item.urlImage"
+          [link]="'/menu/' + item.id"
+          [title]="item.nombre"
+          (buttonRemoveClick)="deleteMenu(item.id)"
+          (buttonModifyClick)="selectMenuToUpdate(item)"
+        />
+      </li>
+      }}@else {
+      <li>
+        <span>No hay menús disponibles</span>
+      </li>
+      }
+    </menu>
+  </main>
+
+  <lib-menu-form
+    [menuSelected]="menuSelected()"
+    (buttonSubmitClick)="handleSubmit($event)"
+    aria-labelledby="form-menu-heading"
+  />
+</section>

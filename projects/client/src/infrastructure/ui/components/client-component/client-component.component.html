@@ -1,0 +1,27 @@
+<section class="client" aria-labelledby="client-heading">
+  <main class="client__main">
+    <menu class="client__cards" role="list" aria-label="Lista de clientes">
+      @if (clients().length > 0) { @for (item of clients(); track $index) {
+      <li>
+        <lib-card
+          [idClient]="item.id"
+          [name]="item.nombre"
+          [email]="item.email"
+          [tel]="item.telefono"
+          (buttonRemoveClick)="delete(item.id)"
+          (buttonModifyClick)="selectToUpdate(item)"
+        />
+      </li>
+      } }@else {
+      <li>
+        <span>No hay clientes</span>
+      </li>
+      }
+    </menu>
+  </main>
+  <lib-client-form
+    [clientSelected]="clientSelected()"
+    (buttonSubmitClick)="handleSubmit($event)"
+    aria-labelledby="form-client-heading"
+  />
+</section>

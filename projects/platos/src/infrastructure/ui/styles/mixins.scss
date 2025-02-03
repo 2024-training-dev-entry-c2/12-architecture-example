@@ -1,0 +1,9 @@
+@use '../styles/variables.scss' as variables;
+
+@mixin customBorder($up, $right, $bottom, $left) {
+  border: none;
+  border-bottom: $up solid variables.$borderColor;
+  border-left: $right solid variables.$borderColor;
+  border-right: $bottom solid variables.$borderColor;
+  border-top: $left solid variables.$borderColor;
+}
