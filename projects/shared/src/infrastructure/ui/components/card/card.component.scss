@@ -1,0 +1,32 @@
+@use '../../styles/abstracts/variables' as variables;
+
+.card {
+    background-color: #fff;
+    background-clip: border-box;
+    border: 0 solid rgba(0,0,0,.125);
+    box-shadow: 0 2px 1px rgba(0,0,0,.05);
+    margin-bottom: 30px;
+    transition: box-shadow .2s ease-in-out;
+    border-radius: variables.$global-radius;
+
+    &__header {
+        border-bottom: 1px solid #e2e5e8;
+        position: relative;
+
+        h5 {
+            margin-bottom: 0;
+            padding: 1.25rem;
+            color: #37474f;
+            font-size: 1.25rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-right: 10px;
+            line-height: 1.1;
+            position: relative;
+        }
+    }
+
+    &__body {
+        padding: 1.25rem;
+    }
+}

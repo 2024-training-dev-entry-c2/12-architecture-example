@@ -1,0 +1,25 @@
+<div class="form-container">
+  <form action="" [formGroup]="form" aria-label="Data Form">
+    <div class="grid">
+      @for (item of formData()?.fields; track $index) {
+      <div [class]="item.class">
+        @if (item.type === 'input' && item.input) {
+        <div class="form-container__field">
+          <app-input [inputData]="item.input" [formGroup]="form"></app-input>
+        </div>
+        } @else if (item.type === 'dropdown' && item.dropdown) {
+        <div class="form-container__field">
+          <app-dropdown [dropdownData]="item.dropdown" [formGroup]="form"></app-dropdown>
+        </div>
+        }
+      </div>
+    }
+      <div class="col-6 form-container__button">
+        <app-button
+          [buttonData]="formData()?.buttonForm"
+          (clickEvent)="onSubmit()"
+        ></app-button>
+      </div>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,20 @@
+@use '../styles/abstracts/mixins' as mixins;
+
+.layout-container {
+    display: flex;
+    background-color: #e9e9e9;
+    min-height: 100vh;
+    
+    &__content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        main {
+            @include mixins.margin-locale();
+            flex: 1;
+        }
+    }
+    
+}

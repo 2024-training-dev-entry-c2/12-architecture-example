@@ -1,0 +1,19 @@
+@if(showDialog && presentDialog()) {
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" >
+        <div class="modal__content">
+        <div class="modal__header">
+            <h4 class="modal__title" id="modal-title">{{ dialogData?.title }}</h4>
+            <button type="button" class="modal__close-button" aria-label="Close" (click)="onClose()">
+            <span aria-hidden="true">×</span>
+            </button>
+        </div>
+        <div class="modal__body">
+            <p>{{dialogData?.description}}</p>            
+        </div>
+            <div class="modal__footer">
+                <button type="button" class="modal__button modal__button--left" (click)="onClickLeftButton()">{{dialogData?.labelButtonLeft}}</button>
+                <button type="button" class="modal__button modal__button--right" (click)="onClickRightButton()">{{dialogData?.labelButtonRight}}</button>
+            </div>
+        </div>
+    </div>
+}

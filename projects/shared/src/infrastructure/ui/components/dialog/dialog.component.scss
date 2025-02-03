@@ -1,0 +1,80 @@
+@use "sass:color";
+@use '../../styles/abstracts/variables' as variables;
+@use '../../styles/abstracts/mixins' as mixins;
+
+.modal {
+    @include mixins.content-flex(center, center);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: variables.$loader-bg-color;
+    backdrop-filter: blur(5px);
+
+    &__content {
+        @include mixins.border-radius-locale();
+        background-color: white;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        width: 80%;
+        max-width: 500px;
+    }
+
+    &__header {
+        @include mixins.content-flex(center, space-between);
+        padding: 15px;
+        border-bottom: 1px solid #ddd;
+        background: variables.$info-color;
+    }
+
+    &__title {
+        margin: 0;
+        font-size: 1.2rem;
+        color: #ddd;
+    }
+
+    &__close-button {
+        @include mixins.close-button(2rem, #555, #222);
+    }
+
+    &__body {
+        padding: 15px;
+    }
+
+    &__description {
+        margin: 0;
+    }
+
+    &__footer {
+        @include mixins.content-flex(start, flex-end);
+        padding: 10px 15px;
+        border-top: 1px solid #ddd;
+    }
+
+    &__button {
+        @include mixins.border-radius-locale();
+        padding: 8px 16px;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+        margin-left: 8px;
+
+        &--left {
+            background-color: variables.$error-color;
+            color: white;
+
+            &:hover {
+                background-color: color.adjust(variables.$error-color, $lightness: -10%);
+            }
+        }
+
+        &--right {
+            background-color: variables.$info-color;
+            color: white;
+
+            &:hover {
+                background-color: color.adjust(variables.$info-color, $lightness: -10%);
+            }
+        }
+    }
+}

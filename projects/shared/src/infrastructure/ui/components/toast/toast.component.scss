@@ -1,0 +1,60 @@
+@use '../../styles/abstracts/variables' as variables;
+@use '../../styles/abstracts/mixins' as mixins;
+
+.toast {
+    @include mixins.visibility-element(hidden, 0, all 0.2s);
+    position: fixed;
+    top: 70px;
+    right: 10px;
+    border-radius: variables.$global-radius;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    min-width: 300px;
+    
+    &--show{
+        @include mixins.visibility-element(visible, 1);
+        display: block;
+    }
+
+    &__content {
+        @include mixins.content-flex(center, space-between);
+        padding: 5px 15px;
+        border-bottom: 1px solid #ddd;
+
+        &__body {
+            color: #ffff;
+            padding: 15px;
+        }
+    }
+
+    &__title {
+        margin: 0;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #ffff;
+    }
+
+    &__close-button {
+        @include mixins.close-button(1.5rem, #b8b8b8, #ffff);
+    }
+
+    &__body {
+        color: #ffff;
+       padding: 15px;
+    }
+
+    &__description{
+        margin: 0;
+    }
+
+    &--info {
+        background-color: variables.$info-color;
+    }
+
+    &--success {
+        background-color: variables.$success-color;
+    }
+
+    &--error {
+        background-color: variables.$error-color;
+    }
+}

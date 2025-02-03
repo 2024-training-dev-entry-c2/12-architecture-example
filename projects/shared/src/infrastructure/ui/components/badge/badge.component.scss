@@ -1,0 +1,19 @@
+@use '../../styles/abstracts/variables' as variables;
+@use '../../styles/abstracts/mixins' as mixins;
+
+.badge {
+    @include mixins.border-radius-locale();
+    font-size: 80%;
+    padding: .35em .6em;
+    font-weight: 600;
+}
+
+.badge--info {
+    background-color: variables.$info-color;
+    color: white;
+}
+
+.badge--error {
+    background-color: variables.$error-color;
+    color: white;
+}
