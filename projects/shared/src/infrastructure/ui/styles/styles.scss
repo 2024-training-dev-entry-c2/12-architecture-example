@@ -1,0 +1,71 @@
+
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", serif;
+
+}
+
+:root {
+  --background-color:#F5E6DA;
+  --background-color-card:#F2F2F2;
+  --color-menu: #ef4044;
+  --text-menu: hsl(0, 0%, 100%);
+  --text-menu-selected:  #ef4044;
+  --text-color: #000000;
+  --primary-color: #ff1900;
+  --card-color:#d6d6d6;
+  --title-color:#ef4044;
+  --subtitle-card:#272727;
+  --color-tab:#fdf4ed;
+  --text-tab:#000000;
+  --cnd-table:#fbe6e6;
+}
+
+.dark-theme {
+  --background-color:#272727;
+  --background-color-card:#3b3b3b;
+  --color-menu: #3b3b3b;
+  --text-menu: hsl(0, 0%, 100%);
+  --text-menu-selected:  #faff99;
+  --text-color: #cacaca;
+  --primary-color: #f3874d;
+  --card-color:#171717;
+  --title-color:#faff99;
+  --subtitle-card:#c4c4c4;
+  --color-tab:#3b3b3b;
+  --text-tab:#ffffff;
+  --cnd-table:#4e4e4e;
+}
+
+
+::-webkit-scrollbar {
+  width: 8px; /* Ancho de la barra vertical */
+  height: 8px; /* Alto de la barra horizontal */
+}
+
+/* Color del fondo de la scrollbar */
+::-webkit-scrollbar-track {
+  background: var(--background-color); /* Un gris claro */
+  border-radius: 10px;
+}
+
+/* Color del "thumb" (parte que se mueve) */
+::-webkit-scrollbar-thumb {
+  background: #e53935; /* Rojo similar al navbar */
+  border-radius: 10px;
+}
+
+/* Cuando el usuario pasa el mouse sobre la scrollbar */
+::-webkit-scrollbar-thumb:hover {
+  background: #bf3232; /* Rojo más oscuro */
+}

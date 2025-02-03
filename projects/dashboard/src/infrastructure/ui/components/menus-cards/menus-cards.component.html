@@ -1,0 +1,11 @@
+<div class="slider-container">
+    <button class="slider-btn left" (click)="prevSlide()">&#9664;</button>
+    <div class="slider" [style.transform]="'translateX(' + currentPosition + 'px)'">
+        @for(item of ticks; track $index) {
+        <lib-sales-card [title]="item.menu" subTitle="Order by menu" description="description"
+            [ticksData]="item.ticks"></lib-sales-card>
+
+        }
+    </div>
+    <button class="slider-btn right" (click)="nextSlide()">&#9654;</button>
+</div>

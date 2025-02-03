@@ -1,0 +1,24 @@
+
+<div class="card card--table">
+    <h2 class="card__title">Top 10 Clients</h2>
+<table class="card__table styled-table">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Cliente</th>
+        <th>Pedidos</th>
+        <th>Total Gastado</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of topClientes; track $index) {
+        <tr>
+          <td>{{ $index + 1 }}</td>
+          <td>{{ item.name }}</td>
+          <td>{{ item.orderCount }}</td>
+          <td>${{ item.totalPrice }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

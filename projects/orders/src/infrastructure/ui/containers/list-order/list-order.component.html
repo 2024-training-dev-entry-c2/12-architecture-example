@@ -1,0 +1,10 @@
+<lib-orders-table 
+    [dataOrders]="orders$ | async" 
+    (deleteId)="removeOrder($event)" 
+    [menu]="menu$ | async"
+    [client]="client$ | async" 
+    (onSelectOrder)="selectOrder($event)" 
+    [currentOrder]="currentOrder$ | async"
+    (updateOrderData)="handleUpdateOrder($event)" 
+    (createOrderData)="handleCreateOrder($event)"
+></lib-orders-table>

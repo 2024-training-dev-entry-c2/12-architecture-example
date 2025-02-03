@@ -1,0 +1,6 @@
+<form [formGroup]="clientForm" (ngSubmit)="submit()" class="form__client" aria-label="form to add Client"
+    aria-labelledby="form to add Client">
+    <lib-form [formFields]="fields" [formGroup]="clientForm">
+    </lib-form>
+    <button type="submit" (click)="submit()" class="form__button form__button--submit">Iniciar Sesión</button>
+</form>

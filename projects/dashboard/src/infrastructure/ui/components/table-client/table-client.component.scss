@@ -1,0 +1,75 @@
+@use "../../../../../../../projects/shared/src/infrastructure/ui/styles/mixins.scss"as mixins;
+@use "../../../../../../../projects/shared/src/infrastructure/ui/styles/variables.scss"as vars;
+
+.card {
+    min-width: 800px;
+    background-color: var(  --background-color-card);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    margin-bottom: 30px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+  
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15);
+    }
+  
+    &--chart {
+      canvas {
+        max-width: 100%;
+      }
+    }
+  
+    &--table {
+      .styled-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+  
+        th,
+        td {
+          padding: 12px 15px;
+          text-align: center;
+        }
+  
+        thead th {
+          background-color: vars.$color-menu;
+          color: vars.$color-text-light;
+          font-weight: bold;
+          font-size: 1rem;
+          text-transform: uppercase;
+        }
+  
+        tbody tr:nth-child(even) {
+          background-color: var(--background-color-card);
+          color: var(--text-color);
+        }
+  
+        tbody tr:hover {
+          background-color: rgba(76, 175, 80, 0.1);
+        }
+  
+        tbody td {
+          color: var(--text-color);
+          font-size: 0.9rem;
+        }
+  
+        tbody td:first-child {
+          font-weight: bold;
+        }
+      }
+    }
+  
+    &__title {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: vars.$color-menu;
+      border-bottom: 2px solid vars.$color-menu;
+      display: inline-block;
+      padding-bottom: 5px;
+    }
+  }

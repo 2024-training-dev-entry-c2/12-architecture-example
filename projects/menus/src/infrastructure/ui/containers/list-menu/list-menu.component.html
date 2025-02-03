@@ -1,0 +1,12 @@
+<lib-table-card 
+    [menu]="menus | async"
+    (deleteMenuData)="removeMenu($event)" 
+    (deleteDishData)="removeDish($event)"
+    (createMenuData)="handleCreateMenu($event)"
+    [currentMenu]="menuFound$ | async"
+    (onSelectMenu)="selectMenu($event)"
+    (updateMenuData)="handleUpdateMenu($event)"
+    (selectMenu)="menuSelected($event)"
+>
+ <lib-list-dish [menuSelected]="menuSelect"></lib-list-dish>
+</lib-table-card>

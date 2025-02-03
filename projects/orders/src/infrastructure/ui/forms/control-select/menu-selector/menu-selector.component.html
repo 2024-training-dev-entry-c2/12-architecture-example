@@ -1,0 +1,18 @@
+<div [formGroup]="formGroup" class="order-form__group">
+    <label for="menuId" class="order-form__label">Choose a menu option:</label>
+    <select select formControlName="menuId" (change)="onMenuChange($event)" class="order-form__select">
+        @for (item of menusList; track $index) {
+        <option value="{{item.id}}">{{item.name}}</option>
+        }
+    </select>
+
+
+    <label for="dishfoodIds" class="order-form__label">Choose Dishes:</label>
+    <select id="dishfoodIds" (change)="addDish($event)" class="order-form__select">
+        <option value="" disabled selected>Select a dish</option>
+        @for(item of filteredDishes; track $index) {
+        <option value="{{item.id}}">{{item.name}}</option>
+        }
+    </select>
+
+</div>

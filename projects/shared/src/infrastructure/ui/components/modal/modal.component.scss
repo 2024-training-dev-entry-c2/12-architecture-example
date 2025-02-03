@@ -1,0 +1,74 @@
+@use "../../../ui/styles/mixins.scss" as mix;
+@use "../../../ui/styles/variables.scss" as vars;
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+}
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--background-color);
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 3;
+  width: 600px;
+  &__content {
+    padding: vars.$size-small;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__form {
+    margin-bottom: 1rem;
+    &__input {
+      height: 20px;
+    }
+  }
+
+  &__selection,
+  &__optional {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: darken(vars.$text-color, 20%);
+  }
+
+  &__button {
+    @include mix.typography(1rem, bold, #fff);
+    padding: 0.75rem 1.5rem;
+    text-align: center;
+    color: #fff;
+    border: none;
+    border-radius: vars.$border-radius;
+    cursor: pointer;
+  }
+
+  &__button--close {
+    background-color: vars.$button-color;
+
+    &:hover {
+      background-color: darken(vars.$button-color, 10%);
+    }
+  }
+
+  &--extra {
+    background-color: vars.$primary-color;
+
+    &:hover {
+      background-color: lighten(vars.$primary-color, 10%);
+    }
+  }
+
+  &__extra-button {
+    align-self: flex-end;
+    margin-top: 1rem;
+  }
+}

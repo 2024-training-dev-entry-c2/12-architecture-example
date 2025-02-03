@@ -1,0 +1,21 @@
+<section class="section__main">
+    <h1 class="title__home">{{title}}</h1>
+    <div class="tabs__container">
+        <ul class="tabs__buttons">
+            @for(item of tabs; track $index) {
+            <li class="tab-button" [class.active]="activeTab === $index" (click)="selectTab($index)">
+                <svg width="20px" height="20px" src="assets/icons/form-svgrepo-com.svg" alt="logo" aria-hidden="true">
+                    <use [attr.xlink:href]="images[$index]"></use>
+                </svg>
+                <span>{{item.title}}</span>
+            </li>}
+        </ul>
+        <div class="slider">
+            <div class="slider__indicator" [style.transform]="'translateX(' + (activeTab * 100) + '%)'"></div>
+        </div>
+        <div class="tab__content">
+            @if(activeTab === 0){<ng-content select="[tabContent0]"></ng-content>}
+            @if(activeTab === 1){<ng-content select="[tabContent1]"></ng-content>}
+        </div>
+    </div>
+</section>

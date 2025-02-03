@@ -1,0 +1,5 @@
+<lib-table-dish [menu]="menus | async" [item]="menuSelected" (deleteDishfood)="removeDish($event)"
+    (createDishData)="handleCreateDish($event)" [currentDish]="currentDish$ | async"
+    (updateDish)="handleUpdateDish($event)" (onSelectDish)="setDish($event)" [dishes]="dishes | async">
+
+</lib-table-dish>

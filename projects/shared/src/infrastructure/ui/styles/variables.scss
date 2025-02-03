@@ -1,0 +1,54 @@
+//* Colores
+$background-color:rgb(255 243 222);
+$color-text: #fff;
+$color-blur: rgba(13, 13, 13, 0.5);
+$color-hover-link: #ddd;
+$color-menu: #ef4044;
+$color-menu-title: #e90e12;
+$color-menu-link: #ddcecb87;
+$color-actions-separator: #5f5e5e;
+$colot-text-dark: #000;
+$color-text-light: hsl(0, 0%, 100%);
+$color-gray-light: hsl(0, 0%, 50%);
+$text-color: #333;
+$primary-color: #4a90e2;
+$button-color: #e74c3c;
+$text-color: #333;
+$primary-color: #4a90e2;
+$error-color: #e74c3c;
+//* Tipografías
+$font-primary: "Inter", serif;
+
+//* Tamaños
+$font-size-very-small: 0.6875rem;
+$font-size-small: 0.875rem;
+$font-size-medium:1.5rem;
+
+//* grosor de fuente
+$font-weight-light: 450;
+$font-weight-medium: 500;   
+
+//* Espaciados
+$spacing-small: 0.5rem;
+$spacing-medium: 1.5rem;
+$spacing-large: 2rem;
+
+//* Border Radius
+$border-radius-small: 0.5rem;
+$border-radius-medium: 0.75rem;
+$border-radius-large: 1.25rem;
+
+//* generic size   
+$size-small: 1rem;
+$size-medium: 3rem;
+
+//tabs
+$tab-count: 2;
+$indicator-width: 50px;
+$indicator-height: 4px;
+//* Colores 
+$accent: #ef4044;
+$accent-inactive: desaturate($accent, 85%);
+$secondary: $accent-inactive;
+$border-radius: 8px;
+

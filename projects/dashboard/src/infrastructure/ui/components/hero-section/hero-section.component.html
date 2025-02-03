@@ -1,0 +1,23 @@
+<main class="dashboard">
+    <h1 class="dashboard__title">Restaurant Dashboard</h1>
+    
+    <div class="dashboard__content">
+      <h2 class="dashboard__subtitle">Menu per day</h2>
+      <lib-menus-cards [menu$]="menus" [order$]="orders"></lib-menus-cards>
+    </div>
+  
+    <div class="card card--chart">
+      <h2 class="card__title">Order per weeek</h2>
+      <lib-graph-order [ordersPerMonth]="orders"></lib-graph-order>
+    </div>
+  
+    <div class="card card--chart">
+      <h2 class="card__title">Best dishes</h2>
+      <lib-graph-dish [menu]="menus"></lib-graph-dish>
+      
+    </div>
+  
+
+        <lib-table-client [order]="orders"></lib-table-client>
+    
+  </main>

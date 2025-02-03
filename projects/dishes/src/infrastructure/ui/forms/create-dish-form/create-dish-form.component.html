@@ -1,0 +1,6 @@
+<form [formGroup]="dishfoodUpdatedForm" aria-label="form to update Dish" class="form_update">
+    <lib-modal (closeModal)="redirectToDish()" [data]="getData" [formGroup]="dishfoodUpdatedForm">
+        <button button type="submit" (click)="addDish() " class="modal__button modal__button--close"
+            aria-label="button to update Dish" aria-labelledby="button to update Dish">Add</button>
+    </lib-modal>
+</form>

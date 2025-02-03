@@ -1,0 +1,13 @@
+<lib-table title="DishFoods" [data]="getMenuDishes()" (deleteId)="deleteDish($event)" (updateId)="redirectToDishUpdate($event)">
+</lib-table>
+<div class="actions__button-dish">
+    <button (click)="redirectToDish()">Add Dish</button>
+</div>
+
+@if(showModal){
+<lib-create-dish-form (updateDish)="createDish($event)" (closeModal)="closeModal()"></lib-create-dish-form>
+}
+@if(showModalUpdate){
+<lib-update-dish-form [getData]="currentDish()" (updateDish)="handleUpdateDish($event)"
+    (closeModal)="closeModal()"></lib-update-dish-form>
+}

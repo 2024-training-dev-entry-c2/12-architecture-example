@@ -1,0 +1,8 @@
+<lib-client-table
+    [dataClients]="clients$ | async"
+    (deleteClient)="removeClient($event)" 
+    (onSelectClient)="handleSelectClient($event)"
+    [currentClient]="clientFound$ | async"
+    (updateClient)="UpdateClient($event)"
+    (createClient)="createClient($event)" 
+ ></lib-client-table>

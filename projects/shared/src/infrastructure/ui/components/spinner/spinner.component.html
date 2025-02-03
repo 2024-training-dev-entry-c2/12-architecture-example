@@ -1,0 +1,17 @@
+<div class="slider__container">
+    <button class="slider-btn left" (click)="prevSlide()" aria-label="button to next image">&#9664;</button>
+    <div class="slider__wrapper">
+      <div 
+        class="slider" 
+        [style.transform]="'translateX(' + currentPosition + 'px)'"
+      >
+      @for(item of images; track $index) {
+        <div class="card" >
+          <img [src]="item.src" [alt]="item.alt" class="card-image" />
+        </div>  
+        
+    }
+      </div>
+    </div>
+    <button class="slider-btn right" (click)="nextSlide()" aria-label="button to previous image">&#9654;</button>
+  </div>

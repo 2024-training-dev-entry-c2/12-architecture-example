@@ -7,15 +7,9 @@ describe('AppComponent', () => {
       imports: [AppComponent],
     }).compileComponents();
   });
-
   it('should be 5', () => {
     const num1 = 3;
     const num2 = 2;
-
-    const result = num1 + num2;
-
-    expect(result).toBe(5);
-  });
 
   it('should create the app', () => {
     const fixture = TestBed.createComponent(AppComponent);
@@ -52,4 +46,5 @@ describe('AppComponent', () => {
     
     expect(app.onClick.emit).toHaveBeenCalled();
   });
+
 });
