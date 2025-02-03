@@ -13,11 +13,6 @@ export const routes: Routes = [
         loadChildren: () => import('client').then(m => m.clientRoutes),
     },
     {
-        path: 'dishes',
-        component: MainLayoutComponent,
-        loadChildren: () => import('dish').then(m => m.dishRoutes),
-    },
-    {
         path: 'orders',
         component: MainLayoutComponent,
         loadChildren: () => import('order').then(m => m.orderRoutes),

@@ -11,7 +11,6 @@ export class SidebarMainComponent {
   menuItems = [
     { label: 'Panel de inicio', icon: 'svg/dashboard.svg#dashboard', link: '/' },
     { label: 'Menus', icon: 'svg/menu.svg#menu', link: '/menus' },
-    { label: 'Platos', icon: 'svg/dish.svg#dish', link: '/dishes'  },
     { label: 'Clientes', icon: 'svg/client.svg#client', link: '/clients' },
     { label: 'Ordenes', icon: 'svg/order.svg#order', link: '/orders' }
   ];
