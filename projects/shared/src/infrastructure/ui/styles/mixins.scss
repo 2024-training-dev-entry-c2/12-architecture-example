@@ -26,7 +26,7 @@
     border-radius: 6px;
     border-spacing: 0;
     overflow: hidden;
-    box-shadow: 1px -3px 10px #00000028;
+    box-shadow: vr.$shadow-primary;
     width: 100%;
     max-width: 100%;
     min-width: 100%;
@@ -54,12 +54,58 @@
 
 @mixin section-properties {
     @include flex-container(start, center , 0, column);
-    width: 85%;
-    max-width: 85%;    
+    width: 80%;
+    max-width: 80%;    
     margin: 0 auto;
     margin-top: 150px;
+}
+
+@mixin container-wrapper ($marginTop: 0, $marginBottom: 40px){
+    width: 100%;
+    margin-top: $marginTop;
+    margin-bottom: $marginBottom;
+}
+
+@mixin input-properties {
+    &__group{
+        @include flex-container(start,center,10px,column);
+        margin-bottom: 20px;
+    }
+        
+    &__label{
+        @include flex-container(center,center,8px,column);
+        width: 350px;        
+    }
+
+    &__text {
+        width: 80%;
+        font-size: 14px;
+        font-weight: 500;
+        text-align: left;
+    }
+    
+    &__control{
+        width: 80%;
+        padding: 3px;
+        border-radius: 3px;
+        outline: none;
+        border: none;
+        border-bottom: solid 2px #00000028;
+    }
+    
+    &__feedback{
+        margin: 5px 0;
+        width: 80%;
+        font-size: 13px;
+        text-align: center;
+        color: vr.$color-white;
+        background: vr.$color-red;
+        padding: 5px;
+        border-radius: 4px;
+    }      
 }
 
 @function px-to-rem($px, $base: 16) {
     @return $px / $base * 1rem;
 }
+

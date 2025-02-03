@@ -1,7 +1,8 @@
 <section class="menus">
-    <h1 class="menus_title">Dashboard de menús</h1>
-    <div>
-        <lib-modal [title]="modalTitle" action="Crear" [themeButton]="'success'" (onOpenByBtn)="openCreateModal()" (onClose)="handleCloseModal()" #modal>
+    <h1 class="menus__title">Dashboard de menús</h1>
+    <div class="menus__container">
+        <lib-search-bar [data]="menus()" (onFilteredData)="handleFilteredData($event)"/>
+        <lib-modal [title]="modalTitle" action="Crear menú" [themeButton]="'success'" (onOpenByBtn)="openCreateModal()" (onClose)="handleCloseModal()" #modal>
             <lib-menu-form 
             [menu]="currentMenu()"
             [action]="formAction"
@@ -10,9 +11,9 @@
             #menuForm/>
         </lib-modal> 
         <lib-delete-modal item="menú" (onDelete)="handleDelete($event)" #deleteModal/>
-        <lib-search-bar [data]="menus()" (onFilteredData)="handleFilteredData($event)"/>
     </div>
     <lib-menu-board
+    class="menus__board"
     [menus]="filteredmenus"
     (onSelectmenuToUpdate)="selectMenuToUpdate($event)"
     (onSelectmenuToDelete)="selectMenuToDelete($event)"

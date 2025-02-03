@@ -12,13 +12,11 @@
     </div>
 </dialog>
 
-@if (hasButton) {
-    <lib-theme-button
-        [text]="action()"
-        [idPopUp]="idModal()"
-        [theme]="themeButton()"
-        [form]="form()"
-        [hasPopup]="true"
-        (onClick)="openWithBtn()"
-    />
-}
+<lib-theme-button
+    [text]="action()"
+    [idPopUp]="idModal()"
+    [theme]="modalhasButton()"
+    [form]="form()"
+    [hasPopup]="true"
+    (onClick)="openWithBtn()"
+/>

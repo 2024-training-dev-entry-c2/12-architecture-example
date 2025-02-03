@@ -1,10 +1,9 @@
 <div class="form-selector__group" [formGroup]="formGroup()">
-    <label [for]="controlName()">
-        <span class="form-selector__label">{{ label() }}</span>
+    <label class="form-selector__label" [for]="controlName()">
+        <span class="form-selector__text">{{ label() }}</span>
         <select
             [formControlName]="controlName()"
             class="form-selector__control"
-            [ngClass]="{'form-selector__control--invalid': isInvalid}"
         >
         @for (client of clients(); track $index) {
             <option [value]="client.id"> {{ client.name }}</option>

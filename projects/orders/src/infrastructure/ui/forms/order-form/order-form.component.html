@@ -1,4 +1,4 @@
-<form [formGroup]="form" (ngSubmit)="submit()">
+<form class="order-form" [formGroup]="form" (ngSubmit)="submit()">
     <lib-form-field
     [formGroup]="form"
     controlName="date"
@@ -26,9 +26,15 @@
                 />
         }
     </div>
-    <lib-theme-button [theme]="'cancel'" text="Agregar plato" (onClick)="addDish()"/>
+    <lib-theme-button 
+    class="order-form__button order-form__button--secondary" 
+    [theme]="'secondary'" 
+    text="Agregar plato" 
+    (onClick)="addDish()"
+    />
 
     <lib-theme-button
+    class="order-form__button"
     [form]="form"
     [text]="action()"
     [theme]="theme()"

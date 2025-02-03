@@ -21,17 +21,20 @@
     }
 
     &__content {
+        @include mx.flex-container(start, center, 10px, column);
         position: relative;
         background-color: vr.$color-white;
         padding: 50px 30px;
         width: 500px;
         max-height: 80%;
+        border-radius: 8px;
         overflow-x: hidden;
         overflow-y: auto;
     }
 
     &__header {
         margin-bottom: 20px;
+        text-align: center;
     }
 
     &__button-close {

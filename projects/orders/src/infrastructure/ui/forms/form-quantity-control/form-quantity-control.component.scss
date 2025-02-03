@@ -1,0 +1,31 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as vr;
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mx;
+
+.form-control{
+    @include mx.flex-container(center,center, 5px);
+
+    &__buttons-container{
+        @include mx.flex-container(start, center, 5px);
+    }
+
+    &__button{
+        @include mx.flex-container(center,center);
+        border: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        font-size: 16px;
+        cursor: pointer;
+
+        &--delete{
+            background: vr.$color-red;
+            color: vr.$color-white;
+        }
+
+        & svg{
+            width: 15px;
+            height: 15px;
+        }
+    }
+
+}

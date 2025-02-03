@@ -1,0 +1,12 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as vr;
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mx;
+
+.search-bar{
+    width: 600px;
+    border: solid 2px vr.$color-gray;
+    border-radius: 100px;
+    padding: 8px;
+    padding-left: 20px;
+    box-shadow: vr.$shadow-secondary;    
+    margin-right: 10dvw;
+}

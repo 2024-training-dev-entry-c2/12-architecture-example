@@ -1,6 +1,7 @@
 <section class="orders">
-    <h1 class="orders_title">Dashboard de Pedidos</h1>
-    <div>
+    <h1 class="orders__title">Dashboard de Pedidos</h1>
+    <div class="orders__container">
+        <lib-search-bar [data]="orders()" (onFilteredData)="handleFilteredData($event)"/>
         <lib-modal [title]="modalTitle" action="Crear pedido" [themeButton]="'success'" (onOpenByBtn)="openCreateModal()" (onClose)="handleCloseModal()" #modal>
             <lib-order-form 
             [order] ="currentOrder()"
@@ -12,9 +13,9 @@
             #orderForm/>
         </lib-modal> 
         <lib-delete-modal item="pedido" (onDelete)="handleDelete($event)" #deleteModal/>
-        <lib-search-bar [data]="orders()" (onFilteredData)="handleFilteredData($event)"/>
     </div>
     <lib-order-board
+    class="orders__board"
     [orders]="filteredOrders"
     (onSelectOrderToUpdate)="selectOrderToUpdate($event)"
     (onSelectOrderToDelete)="selectOrderToDelete($event)"

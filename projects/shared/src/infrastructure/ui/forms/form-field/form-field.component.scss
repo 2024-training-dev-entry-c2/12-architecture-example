@@ -1,0 +1,5 @@
+@use '../../styles/mixins.scss' as mx;
+
+.form-field{
+    @include mx.input-properties;
+}

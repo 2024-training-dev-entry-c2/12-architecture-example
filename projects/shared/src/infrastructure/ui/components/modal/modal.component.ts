@@ -1,11 +1,11 @@
-import { NgClass } from '@angular/common';
+import { NgClass, NgIf } from '@angular/common';
 import { Component, input, output } from '@angular/core';
 import { ThemeButtonComponent } from '../theme-button/theme-button.component';
 import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'lib-modal',
-  imports: [NgClass, ThemeButtonComponent],
+  imports: [NgClass, ThemeButtonComponent, NgIf],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.scss'
 })
@@ -13,7 +13,7 @@ export class ModalComponent {
   public idModal = input<string>();
   public title = input<string>();
   public action = input<string>();
-  public themeButton = input<'success' | "warning" | 'danger' | 'cancel' | 'secundary'>();
+  public themeButton = input<'success' | "warning" | 'danger' | 'cancel' | 'secondary' | 'hidden'>();
   public form = input<FormGroup>();
   public onOpen = output<void>();
   public onOpenByBtn = output<void>();
@@ -33,5 +33,9 @@ export class ModalComponent {
   openWithBtn(){
     this.onOpenByBtn.emit();
     this.toggle();
+  }
+
+  modalhasButton(): 'success' | "warning" | 'danger' | 'cancel' | 'secondary' | 'hidden'{
+    return this.hasButton()? this.themeButton() : 'hidden';
   }
 }

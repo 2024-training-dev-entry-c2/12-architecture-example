@@ -1,4 +1,4 @@
- <form [formGroup]="form" (ngSubmit)="submit()">
+ <form class="client-form" [formGroup]="form" (ngSubmit)="submit()">
     <lib-form-field
     [formGroup]="form"
     controlName="name"
@@ -14,6 +14,7 @@
     />
 
     <lib-theme-button
+    class="client-form__button"
     [form]="form"
     [text]="action()"
     [theme]="theme()"

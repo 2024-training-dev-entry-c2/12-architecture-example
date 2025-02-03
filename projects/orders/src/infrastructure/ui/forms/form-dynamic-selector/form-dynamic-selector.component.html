@@ -1,6 +1,6 @@
-<div [formGroup]="form()!">
-    <div class="form__group" formArrayName="dishes">
-        <div class="form__group-name"  [formGroupName]="index().toString()">
+<div class="dynamic-field" [formGroup]="form()!">
+    <div class="dynamic-field__group" formArrayName="dishes">
+        <div class="dynamic-field__name"  [formGroupName]="index().toString()">
             <lib-form-dish-selector
             [dishes]="dishes()"
             [form]="form()"
@@ -11,6 +11,7 @@
             [formArray]="formArray()"
             controlName="quantity"
             [index]="index()"
+            (onDelete)="onDeleteClick()"
             />
         </div>
     </div>
