@@ -1,0 +1,77 @@
+.social-button {
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    width: 3.125rem;
+    height: 3.125rem;
+    border: 0.125rem solid transparent;
+    text-decoration: none;
+    text-align: center;
+    color: #fefefe;
+    font-size: 1.5625rem;
+    line-height: 2em;
+    border-radius: 1.6875rem;
+    transition: all 0.5s ease;
+    margin-right: 0.25rem;
+    margin-bottom: 0.25rem;
+
+    &:hover,
+    &:focus {
+        transform: rotate(360deg);
+    }
+
+    &.facebook {
+        background: #3b5998;
+
+        &:hover,
+        &:focus {
+            color: #3b5998;
+            background: #fefefe;
+            border-color: #3b5998;
+        }
+    }
+
+    &.twitter {
+        background: #55acee;
+
+        &:hover,
+        &:focus {
+            color: #55acee;
+            background: #fefefe;
+            border-color: #55acee;
+        }
+    }
+
+    &.linkedin {
+        background: #007bb5;
+
+        &:hover,
+        &:focus {
+            color: #007bb5;
+            background: #fefefe;
+            border-color: #007bb5;
+        }
+    }
+
+    &.youtube {
+        background: #bb0000;
+
+        &:hover,
+        &:focus {
+            color: #bb0000;
+            background: #fefefe;
+            border-color: #bb0000;
+        }
+    }
+
+    &.instagram {
+        background: #125688;
+
+        &:hover,
+        &:focus {
+            color: #125688;
+            background: #fefefe;
+            border-color: #125688;
+        }
+    }
+}

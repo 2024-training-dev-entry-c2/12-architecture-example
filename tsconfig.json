@@ -21,6 +21,13 @@
       "admin": [
         "./dist/admin"
       ],
+      "auth": [
+        "./dist/auth"
+      ],
+      "shared": [
+        "./dist/shared",
+        "./dist/shared"
+      ],
       "users": [
         "./dist/users"
       ]

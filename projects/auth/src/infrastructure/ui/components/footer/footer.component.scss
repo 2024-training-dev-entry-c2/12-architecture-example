@@ -1,0 +1,23 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #000000;
+
+    .rounded-social-buttons {
+        display: flex;
+        justify-content: center;
+    }
+
+    &__container {
+        padding: $spacing-base;
+        text-align: center;
+    }
+
+    &__text {
+        color: $white;
+        font-size: $font-size-xs;
+    }
+}

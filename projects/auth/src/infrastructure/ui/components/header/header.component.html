@@ -1,0 +1,17 @@
+<header class="header">
+    <div class="header__logo">
+        <fa-icon [icon]="faPiggyBank"></fa-icon>
+        <span>Banking App</span>
+    </div>
+    <!-- <nav aria-label="Main navigation">
+        <ul class="header__nav">
+            <li>
+                <a [routerLink]="['/dashboard']" role="link" [class.active]="isActive('/dashboard')">Accounts Dashboard</a>
+            </li>
+            <li>
+                <a [routerLink]="['/users']" role="link" [class.active]="isActive('/users')">Users</a>
+            </li>
+        </ul>
+    </nav> -->
+    <button class="header__signup-btn" aria-label="Sign up for Limitless" (click)="onLogout()">Logout</button>
+</header>
