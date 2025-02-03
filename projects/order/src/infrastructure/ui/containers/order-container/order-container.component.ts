@@ -45,6 +45,7 @@ export class OrderContainerComponent {
     this._createUsecase.initSubscriptions();
     this.loadOrders();
     this.order$ = this._searchUsecase.filteredOrders$();
+    this.order$ = this._listUsecase.order$();
   }
 
   ngOnDestroy(): void {

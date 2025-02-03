@@ -1,10 +1,12 @@
-import { Component, EventEmitter, input, Output } from '@angular/core';
+import { Component, EventEmitter, inject, input, Output, signal } from '@angular/core';
 import { IOrder, IOrderItem } from '../../../../domain/model/orders.model';
 import { CurrencyPipe, TitleCasePipe } from '@angular/common';
 import { CreateOrderItemUseCase } from '../../../../application/orders/create-order-item.usecase';
 import { UpdateOrderItemUseCase } from '../../../../application/orders/update-order-item.usecase';
 import { DeleteOrderItemUseCase } from '../../../../application/orders/delete-order-item.usecase';
 import { ItemModalComponent } from '../item-modal/item-modal.component';
+import { Observable } from 'rxjs';
+import { ListOrdersUseCase } from '../../../../application/orders/list-orders.usecase';
 
 @Component({
   selector: 'lib-order-main',
@@ -13,9 +15,15 @@ import { ItemModalComponent } from '../item-modal/item-modal.component';
   styleUrl: './order-main.component.scss'
 })
 export class OrderMainComponent {
+  private readonly createOrderItemUseCase = inject(CreateOrderItemUseCase);
+  private readonly updateOrderItemUseCase = inject(UpdateOrderItemUseCase);
+  private readonly deleteOrderItemUseCase = inject(DeleteOrderItemUseCase);
+  private readonly listOrdersUsecase = inject(ListOrdersUseCase);
+
   public orders = input<IOrder[]>();
   @Output() deleteOrderEvent = new EventEmitter<number>();
   @Output() editOrderEvent = new EventEmitter<IOrder>();
+  public selectedOrderId = signal<number | null>(null);
 
   isModalVisible = false;
   isEditMode = false;
@@ -23,11 +31,18 @@ export class OrderMainComponent {
   modalButton = 'Agregar';
   currentItem: IOrderItem | null = null;
 
-  constructor(
-    private createOrderItemUseCase: CreateOrderItemUseCase,
-    private updateOrderItemUseCase: UpdateOrderItemUseCase,
-    private deleteOrderItemUseCase: DeleteOrderItemUseCase
-  ) { }
+  onInit(): void {
+    this.createOrderItemUseCase.initSubscriptions();
+    this.updateOrderItemUseCase.initSubscriptions();
+    this.deleteOrderItemUseCase.initSubscriptions();
+    this.listOrdersUsecase.initSubscriptions();
+  }
+  onDestroy(): void {
+    this.createOrderItemUseCase.destroySubscriptions();
+    this.updateOrderItemUseCase.destroySubscriptions();
+    this.deleteOrderItemUseCase.destroySubscriptions();
+    this.listOrdersUsecase.destroySubscriptions();
+  }
 
   actions = [
     { label: 'Editar', type: 'edit', icon: 'svg/edit.svg#edit' },
@@ -46,6 +61,10 @@ export class OrderMainComponent {
 
   getActions() {
     return this.actions;
+  }
+
+  loadOrders(): void {
+    this.listOrdersUsecase.loadOrders();
   }
 
   toggleAccordion(event: Event): void {
@@ -68,12 +87,13 @@ export class OrderMainComponent {
     this.editOrderEvent.emit(order);
   }
 
-  openModal(mode: 'add' | 'edit', orderItem?: IOrderItem): void {
+  openModal(mode: 'add' | 'edit',idOrder: number, orderItem?: IOrderItem): void {
     this.isModalVisible = true;
     this.isEditMode = mode === 'edit';
     this.modalTitle = this.isEditMode ? 'Editar Item' : 'Agregar Item';
     this.modalButton = this.isEditMode ? 'Actualizar' : 'Agregar';
     this.currentItem = orderItem ? { ...orderItem } : null;
+    this.selectedOrderId.set(idOrder);
   }
 
   closeModal(): void {
@@ -82,23 +102,30 @@ export class OrderMainComponent {
   }
 
   addOrderItem(orderId: number): void {
-    this.openModal('add');
+    this.openModal('add', orderId);
+
   }
 
   editOrderItem(orderId: number, orderItem: IOrderItem): void {
-    this.openModal('edit', orderItem);
+    this.openModal('edit', orderId, orderItem);
+    // this.updateOrderItemUseCase.updateOrderItem(orderId, orderItem.idOrderItem, orderItem);
+
   }
 
   submitOrderItem(orderItem: IOrderItem): void {
     if (this.isEditMode && this.currentItem) {
-      this.updateOrderItemUseCase.updateOrderItem(orderItem.idItem, this.currentItem.idItem, orderItem);
+      this.updateOrderItemUseCase.updateOrderItem(this.selectedOrderId(), this.currentItem.idOrderItem, orderItem);
+      this.loadOrders();
     } else {
-      this.createOrderItemUseCase.addOrderItem(orderItem.idItem, orderItem);
+      this.createOrderItemUseCase.addOrderItem(this.selectedOrderId(), orderItem);
+      this.loadOrders();
     }
+    
     this.closeModal();
   }
 
   deleteOrderItem(orderId: number, orderItemId: number): void {
     this.deleteOrderItemUseCase.deleteOrderItem(orderId, orderItemId);
+    console.log('Order item deleted' + orderItemId);
   }
 }

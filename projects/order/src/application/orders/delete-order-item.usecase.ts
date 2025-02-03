@@ -21,13 +21,12 @@ export class DeleteOrderItemUseCase {
   }
 
   deleteOrderItem(orderId: number, orderItemId: number): void {
-    this.subscriptions.add(
       this._service.deleteOrderItem(orderId, orderItemId)
         .pipe(
           tap(() => {
             console.log('Order item deleted');
             const orderItems = this._state.orders.orderItem.snapshot();
-            const index = orderItems.findIndex(item => item.idItem === orderItemId);
+            const index = orderItems.findIndex(item => item.idOrderItem === orderItemId);
             if (index !== -1) {
               orderItems.splice(index, 1);
               this._state.orders.orderItem.set([...orderItems]);
@@ -35,6 +34,5 @@ export class DeleteOrderItemUseCase {
           })
         )
         .subscribe()
-    );
   }
 }

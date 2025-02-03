@@ -24,13 +24,17 @@
                                         <use xlink:href="svg/food.svg#food"></use>
                                     </svg>
                                 </i>
-                                {{ "ID del plato: " + item.idItem }} - {{"Cantidad: " + item.quantity }}
-                                <button (click)="editOrderItem(order.idOrder, item)">Editar</button>
-                                <button (click)="deleteOrderItem(order.idOrder, item.idItem)">Eliminar</button>
+                                {{ "ID del plato: " + item.idDish }} - {{"Cantidad: " + item.quantity }}
+                                <button class="panel__button panel__button--edit"
+                                    (click)="editOrderItem(order.idOrder, item)">Editar</button>
+                                <button class="panel__button panel__button--delete"
+                                    (click)="deleteOrderItem(order.idOrder, item.idOrderItem)">Eliminar</button>
                             </li>
+                            <hr class="panel__hr">
                             }
                         </ul>
-                        <button (click)="addOrderItem(order.idOrder)">Agregar Item</button>
+                        <button class="panel__button panel__button--add" (click)="addOrderItem(order.idOrder)">Agregar
+                            Item</button>
                     </div>
                 </td>
                 <td class="order__action">

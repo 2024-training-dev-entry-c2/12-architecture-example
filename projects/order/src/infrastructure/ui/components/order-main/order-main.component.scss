@@ -132,6 +132,8 @@
     overflow: hidden;
     font-size: 16px;
     transition: max-height 0.2s ease-out;
+    overflow-y: scroll;
+    height: 200px;
 
     &__list {
         list-style: none;
@@ -150,6 +152,29 @@
                 stroke-linecap: round;
                 stroke-linejoin: round;
             }
+        }
+    }
+
+    &__hr {
+        margin-bottom: 10px;
+        color: variables.$black;
+    }
+
+    &__button {
+        padding: 5px;
+        border-radius: 10px;
+        height: 30px;
+
+        &--edit {
+            background-color: variables.$blue;
+        }
+
+        &--delete {
+            background-color: variables.$red;
+        }
+
+        &--add {
+            background-color: variables.$green;
         }
     }
 }

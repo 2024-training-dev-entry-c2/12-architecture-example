@@ -16,7 +16,7 @@ export class ItemModalComponent implements OnInit{
   @Input() modalTitle: string = '';
   @Input() modalButton: string = 'Agregar';
   @Output() close = new EventEmitter();
-  @Output() submit = new EventEmitter<IOrderItem>();
+  @Output() submit = new EventEmitter< IOrderItem>();
 
   form: FormGroup;
 

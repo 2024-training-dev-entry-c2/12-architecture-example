@@ -10,7 +10,7 @@ import { IOrderItem } from "../../domain/model/orders.model";
 export class UpdateOrderItemUseCase {
   private readonly _service = inject(UpdateItemService);
   private readonly _state = inject(State);
-  private subscriptions: Subscription;
+  private subscriptions = new Subscription();
 
   initSubscriptions(): void {
     this.subscriptions = new Subscription();
@@ -27,7 +27,7 @@ export class UpdateOrderItemUseCase {
           tap(result => {
             console.log('Order item updated:', result);
             const orderItems = this._state.orders.orderItem.snapshot();
-            const index = orderItems.findIndex(item => item.idItem === orderItemId);
+            const index = orderItems.findIndex(item => item.idOrderItem === orderItemId);
             if (index !== -1) {
               orderItems[index] = result;
               this._state.orders.orderItem.set([...orderItems]);
