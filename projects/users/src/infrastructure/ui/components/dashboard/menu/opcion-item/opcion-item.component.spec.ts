@@ -1,23 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { TestBed } from '@angular/core/testing';
 import { OpcionItemComponent } from './opcion-item.component';
+import { ActivatedRoute } from '@angular/router';
+import { of } from 'rxjs';
 
 describe('OpcionItemComponent', () => {
-  let component: OpcionItemComponent;
-  let fixture: ComponentFixture<OpcionItemComponent>;
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [OpcionItemComponent],
+            providers: [
+                {
+                    provide: ActivatedRoute,
+                    useValue: { snapshot: { paramMap: of({}) } } 
+                }
+            ]
+        }).compileComponents();
+    });
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [OpcionItemComponent]
-    })
-    .compileComponents();
-
-    fixture = TestBed.createComponent(OpcionItemComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should create the component', () => {
+        const fixture = TestBed.createComponent(OpcionItemComponent);
+        expect(fixture.componentInstance).toBeTruthy();
+    });
 });

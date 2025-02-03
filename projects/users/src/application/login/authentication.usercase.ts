@@ -34,7 +34,6 @@ export class AuthenticateUserUsecase {
             this._service.login(user)
                 .pipe(
                     tap(result => {
-                        console.log("llega al login");
                         this._state.users.authenticateOut.set(result);
                     })
                 )

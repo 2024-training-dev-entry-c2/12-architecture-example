@@ -35,8 +35,6 @@ export class CreateUserUsecase {
             console.log("llega al create");
             this._state.users.userAdmin.set(result);
 
-            // const users = this._state.users.user.snapshot();
-            // this._state.users.user.set([...users, result])
           })
         )
         .subscribe()
@@ -44,6 +42,4 @@ export class CreateUserUsecase {
   }
   //#endregion
 
-  //#region Private Methods
-  //#endregion
 }

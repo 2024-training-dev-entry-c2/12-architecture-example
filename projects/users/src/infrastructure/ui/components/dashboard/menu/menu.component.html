@@ -1,20 +1,18 @@
-<div class="mlateral__menu-brand">
-    <h3 class="mlateral__menu-brand-name">BANK FAKE</h3>
+<div class="banner__menu-brand">
+    <h3 class="banner__menu-brand-name">BANK FAKE</h3>
 </div>
 
 
-<nav class="mlateral__menu-nav">
+<nav class="sidebar__menu-nav">
 
     <lib-menu-item [menuItem]="menuItem2" />
 
-    <ul class="mlateral__menu-nav-list">
+    <ul class="sidebar__menu-nav-list">
         @for (item of menuOptions2; track $index) {
-        <li class="mlateral__menu-nav-item"
-            [ngClass]="{'mlateral__menu-nav-item--active': activeMenu === item.activeMenu}">
+        <li class="sidebar__menu-nav-item"
+            [ngClass]="{'sidebar__menu-nav-item--active': activeMenu === item.activeMenu}">
             <lib-opcion-item [item]="item" (eventActiveMenu)="setActiveMenu($event)" />
         </li>
         }
     </ul>
-
-
 </nav>

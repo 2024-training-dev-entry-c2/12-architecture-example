@@ -1,24 +1,15 @@
 @import '../../../../assets/style/mixin.scss';
 
-.mlateral {
+.menu-item {
     display: flex;
-    height: 100vh;
-    overflow: hidden;
+    flex-direction: column;
+    padding-top: 1rem;
 
-    &__menu {
-        &-nav {
-            display: flex;
-            flex-direction: column;
-            padding-top: 1rem;
-
-            &-title {
-                @include menu-title(0.9rem, #818CF8, 1.2rem);
-            }
-
-            &-subtitle {
-                @include menu-title(0.9rem, #818CF8, 1.2rem);
-            }
-        }
+    &__title {
+        @include menu-title(0.9rem, #818CF8, 1.2rem);
     }
 
+    &__subtitle {
+        @include menu-title(0.7rem, #A3A3A3, 0.9rem);
+    }
 }
