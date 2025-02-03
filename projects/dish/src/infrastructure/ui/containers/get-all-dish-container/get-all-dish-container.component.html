@@ -1,0 +1,6 @@
+<lib-get-all-dish-comp 
+  [items]="items" 
+  [dishes]="dishes$ | async" 
+  (onDeleteDish)="handleDeleteDish($event)" 
+  (onUpdateDish)="handleUpdateDish($event)">
+</lib-get-all-dish-comp>

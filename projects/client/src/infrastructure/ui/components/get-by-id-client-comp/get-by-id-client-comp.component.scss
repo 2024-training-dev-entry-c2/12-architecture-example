@@ -1,0 +1,31 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
+
+.get-by-id-client-info {
+  @include mixins.styleContainer(variables.$colorLightBeige, variables.$colorDarkGray, 20px, 10px);
+  border: 1px solid variables.$colorMediumGray;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+
+  &__title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  &__container {
+    @include mixins.contColumn(1rem, 0);
+  }
+
+  &__details {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    font-weight: 400; 
+  }
+}

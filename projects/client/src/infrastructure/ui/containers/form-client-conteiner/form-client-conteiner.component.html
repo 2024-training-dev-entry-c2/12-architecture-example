@@ -1,0 +1,3 @@
+<!-- <lib-form-client [clients]="clients$ | async" /> -->
+<lib-form-client *ngIf="client$ | async as client" [client]="client" [title]="title" (onSubmit)="handleSubmit($event)"></lib-form-client>
+<!-- <lib-form-client [client]="client" [title]="title" (onSubmit)="handleSubmit($event)"></lib-form-client> -->

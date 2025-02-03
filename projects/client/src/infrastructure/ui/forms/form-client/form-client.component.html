@@ -1,0 +1,20 @@
+<form [formGroup]="form" class="form" (ngSubmit)="submit()">
+    <h3 class="form__title">{{title}}</h3>
+    <label class="form__label">
+        <span>Nombre:</span>
+        <input type="text" formControlName="nombre" class="form__input" aria-required="true" aria-label="name-label">
+    </label>
+    <label class="form__label">
+        <span>Cedula:</span>
+        <input type="text" formControlName="cedula" class="form__input" aria-required="true" aria-label="nit-label">
+    </label>
+    <label class="form__label">
+        <span>Correo:</span>
+        <input type="email" formControlName="correo" class="form__input" aria-required="true" aria-label="email-label">
+    </label>
+    <label class="form__label">
+        <span>Telefono:</span>
+        <input type="text" formControlName="telefono" class="form__input" aria-required="true" aria-label="phone-label">
+    </label>
+    <button class="form__button" aria-label="send form">Enviar</button>
+</form>

@@ -1,0 +1,34 @@
+<section class="get-all-order" aria-label="orders-title">
+    <h1 class="get-all-order__title">PEDIDOS</h1>
+    @for(order of orders(); track $index) {
+    <article class="get-all-order__info" aria-label="order-info" aria-describedby="order-details">
+        <div class="get-all-order__header">
+            <h2 class="get-all-order__order-id">Pedido ID: {{ order.id }}</h2>
+            <p class="get-all-order__client-id">Client ID: {{ order.idCliente }}</p>
+            <button role="button" (click)="updateOrder(order.id)" aria-label="Update order"
+                class="get-all-order__button">Actualizar</button>
+            <button role="button" (click)="deleteOrder(order.id)" aria-label="Delete order"
+                class="get-all-order__button--secundary">Eliminar</button>
+        </div>
+        <div class="get-all-order__body">
+            <h3 class="get-all-order__subtitle">Detalles:</h3>
+            <ul class="get-all-order__details">
+                @if(order.detalles) {
+                @for(detalle of order.detalles; track $index) {
+                <li class="get-all-order__detail" aria-labelledby="detail-info" aria-describedby="detail-details">
+                    <strong>{{ detalle.nombrePlato }}</strong>
+                    <p>Cantidad: {{ detalle.cantidad }}</p>
+                    <p>Valor total: {{ detalle.precio | currency }}</p>
+                </li>
+                <hr>
+                }
+                }
+
+            </ul>
+            <p class="get-all-order__total">Total: {{ order.total | currency }}</p>
+            <p>Estado: {{ order.estado }}</p>
+            <p>Fecha Pedido: {{ order.fechaPedido}}</p>
+        </div>
+    </article>
+    }
+</section>

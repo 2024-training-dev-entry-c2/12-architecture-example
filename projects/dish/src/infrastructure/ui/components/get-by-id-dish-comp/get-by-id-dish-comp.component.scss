@@ -1,0 +1,45 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
+
+.get-by-id-dish {
+  &__dish-info {
+    margin-top: 50px;
+    @include mixins.styleContainer(variables.$colorLightBeige, variables.$colorDarkGray, 20px, 10px);
+    border: 1px solid variables.$colorMediumGray;
+    border-radius: 6px; 
+    margin-bottom: 2rem;
+  }
+
+  &__dish-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  &__dish-container {
+    @include mixins.contColumn(1rem, 0);
+  }
+
+  &__dish-name {
+    h4 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 0;
+    }
+  }
+
+  &__dish-details {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__dish-item {
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    span {
+      font-weight: 600;
+      margin-right: 0.25rem;
+    }
+  }
+}

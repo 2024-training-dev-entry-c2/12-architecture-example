@@ -1,0 +1,6 @@
+<lib-form-by-id-order (orderSubmit)="handleGetId($event)"></lib-form-by-id-order>
+
+@if(order) {
+  <lib-get-by-id-order-comp [order]="order$ | async"></lib-get-by-id-order-comp>
+}
+

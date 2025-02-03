@@ -1,0 +1,5 @@
+<lib-form-by-id-dish (dishSubmit)="handleGetId($event)"></lib-form-by-id-dish>
+
+@if(dish) {
+  <lib-get-by-id-dish-comp [dish]="dish$ | async"></lib-get-by-id-dish-comp>
+}

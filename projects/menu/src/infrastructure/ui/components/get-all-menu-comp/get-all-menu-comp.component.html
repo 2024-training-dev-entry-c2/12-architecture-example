@@ -1,0 +1,30 @@
+<section class="get-all-menu" aria-label="menus-title">
+    <h1 class="get-all-menu__title" >MENUS</h1>
+    @for(menu of menus(); track $index) {
+    <article class="get-all-menu__info" aria-label="menu-info" aria-describedby="menu-details">
+        <div class="get-all-menu__header">
+            <h2>{{ menu.nombre }}</h2>
+            <p class="get-all-menu__menu-id">ID: {{ menu.id }}</p>
+            <button role="button" (click)="updateMenu(menu.id)" aria-label="Update menu" class="get-all-menu__button">Actualizar</button>
+            <button role="button" (click)="deleteMenu(menu.id)" aria-label="Delete menu" class="get-all-menu__button--secundary">Eliminar</button>
+        </div>
+        <div class="get-all-menu__body">
+            <h3>Platos:</h3>
+            <div class="get-all-menu__platos">
+                @if(menu.platos){
+                    @for(plato of menu.platos; track $index) {
+                    <article class="get-all-menu__plato" aria-labelledby="dish-info" aria-describedby="dish-details">
+                        <div>
+                            <p>{{ plato.nombre }} <span>({{ plato.tipo }})</span></p>
+                            <p>- {{ plato.descripcion }}</p>
+                        </div>
+                        <p>{{ plato.precio | currency }}</p>
+                    </article>
+                    <hr />
+                    }
+                }
+            </div>
+        </div>
+    </article>
+    }
+</section>

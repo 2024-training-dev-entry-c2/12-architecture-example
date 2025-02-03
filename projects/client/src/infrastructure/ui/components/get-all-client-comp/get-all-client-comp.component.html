@@ -1,0 +1,33 @@
+<section class="get-all-client">
+    <h1 class="get-all-client__title">CLIENTES</h1>
+
+    <article class="get-all-client__info" aria-label="clients information">
+        <table class="get-all-client__table">
+            <thead>
+                <tr role="row">
+                    @for(item of items(); track $index){
+                        <th  role="columnheader">{{item}}</th>
+                    } 
+                </tr>
+            </thead>
+            <tbody>
+                @for(client of clients(); track $index){
+                <tr>
+                    <td role="cell">{{ client.nombre }}</td>
+                    <td role="cell">{{ client.id }}</td>
+                    <td role="cell">{{ client.cedula }}</td>
+                    <td role="cell">{{ client.correo }}</td>
+                    <td role="cell">{{ client.telefono }}</td>
+                    <td role="cell">{{ client.tipo }}</td>
+                    <td>
+                        <div class="get-all-client__buttons">
+                            <button role="button" aria-label="update client" class="get-all-client__button" (click)="updateClient(client.id)">Actualizar </button>
+                            <button class="get-all-client__button--secundary" (click)="deleteClient(client.id)">Eliminar</button>
+                        </div>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </article>
+</section>
