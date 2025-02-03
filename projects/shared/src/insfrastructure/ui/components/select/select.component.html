@@ -5,8 +5,7 @@
     </button>
     <ul class="select__dropdown" role="listbox" [class.select__dropdown--open]="isOpen">
         @for (option of options(); track option.value) {
-        <li class="select__option" role="option" [id]="'option-' + option.value"
-            [class.select__option--selected]="option.label === selectedLabel"
+        <li class="select__option" role="option" [class.select__option--selected]="option.label === selectedLabel"
             [attr.aria-selected]="option.label === selectedLabel" (click)="onSelect(option)"
             (keydown.enter)="onSelect(option)" (keydown.space)="onSelect(option)">
             {{ option.label }}
