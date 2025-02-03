@@ -38,9 +38,8 @@
                         <button class="entity__edit-button" (click)="showUpdateMenu(menu.id)">
                             <fa-icon [icon]="faEdit"></fa-icon>
                         </button>
-                        <lib-delete-card [selectedId]="menu.id" [entityName]="'cliente'"
+                        <lib-delete-card [selectedId]="menu.id" [entityName]="'menu'"
                             (onDelete)="deleteMenu($event)"></lib-delete-card>
-                        <button class="entity__add-button">Añadir</button>
                     </td>
                 </tr>
                 }

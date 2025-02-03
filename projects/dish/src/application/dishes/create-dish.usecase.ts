@@ -20,21 +20,15 @@ export class CreateDishUsecase {
     this.subscriptions.unsubscribe();
   }
 
-  execute(payload: IDish): void {
+  execute(payload: IDish, index: number): void {
     this.subscriptions.add(
       this._createDishService
         .execute(payload)
         .pipe(
           tap((result) => {
-            const menus = this._state.dishes.menuResponse.snapshot();
-            const index = menus.findIndex((m) => m.id === payload.menuId);
-            if (index !== -1) {
-              const dishes = this._state.dishes.dishResponse.snapshot();
-              this._state.dishes.dishResponse[index].set([
-                ...dishes[index],
-                result,
-              ]);
-            }
+            const dishes = this._state.dishes.dishResponse.snapshot();
+            dishes[index] = [...dishes[index], result];
+            this._state.dishes.dishResponse.set(dishes);
           })
         )
         .subscribe()

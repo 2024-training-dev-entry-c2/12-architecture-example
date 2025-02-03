@@ -3,14 +3,21 @@
         <div class="entity__header">
             <h1>Platos</h1>
         </div>
+        @if(showCreateModal){
+        <lib-form-dish [dish]="currentDish()" [menuId]="selectedMenuId" (onClose)="closeModal()"
+            (onSubmit)="handleSubmit($event)"></lib-form-dish>
+        }
+        @if(showUpdateModal){
+        <lib-form-dish [dish]="currentDish()" [menuId]="selectedMenuId" (onClose)="closeModal()"
+            (onSubmit)="handleSubmit($event)"></lib-form-dish>
+        }
 
         @for(dishList of dishes; track $index; let idx = $index){
         <div class="entity__create-button-container">
-            <button aria-expanded="false" class="entity__create-button" (click)="showCreateDish()">
+            <button aria-expanded="false" class="entity__create-button" (click)="showCreateDish($index)">
                 <fa-icon [icon]="faPlus"></fa-icon>
                 <span>Crear nuevo plato</span>
             </button>
-
         </div>
         <h2 class="entity__group-title">{{ menus[$index].menuName }}</h2>
         <table>
@@ -37,7 +44,7 @@
                         <button class="entity__edit-button" (click)="showUpdateDish(dish.id, idx)">
                             <fa-icon [icon]="faEdit"></fa-icon>
                         </button>
-                        <lib-delete-card [selectedId]="dish.id" [entityName]="'cliente'"
+                        <lib-delete-card [selectedId]="dish.id" [entityName]="'plato'"
                             (onDelete)="deleteDish($event)"></lib-delete-card>
                         <button class="entity__add-button">Añadir</button>
                     </td>

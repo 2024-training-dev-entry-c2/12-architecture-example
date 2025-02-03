@@ -11,7 +11,7 @@ import { IMenuResponse } from 'menu';
 
 @Component({
   selector: 'lib-dishes-container',
-  imports: [DishesComponent],
+  imports: [DishesComponent, AsyncPipe],
   templateUrl: './dishes-container.component.html',
 })
 export class DishesContainerComponent implements OnInit, OnDestroy {
@@ -35,12 +35,16 @@ export class DishesContainerComponent implements OnInit, OnDestroy {
     this.currentDish$ = this._updateUseCase.currentDish$();
   }
 
-  createDish(dish: IDish): void {
+  createDish(data: { dish: IDish; selectedIndex: number }): void {
     const currentDish = this._updateUseCase.snapshotCurrentDish();
     if (!currentDish?.id) {
-      this._createUseCase.execute(dish);
+      this._createUseCase.execute(data.dish, data.selectedIndex);
     } else {
-      this._updateUseCase.execute(currentDish.id, dish);
+      this._updateUseCase.execute(
+        currentDish.id,
+        data.dish,
+        data.selectedIndex
+      );
     }
   }
 

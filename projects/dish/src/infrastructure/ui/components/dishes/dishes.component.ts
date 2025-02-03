@@ -15,12 +15,18 @@ import { DecimalPipe } from '@angular/common';
 import { IMenuResponse } from 'menu';
 import { registerLocaleData } from '@angular/common';
 import localeEs from '@angular/common/locales/es';
+import { FormDishComponent } from '../../forms/form-dish/form-dish.component';
 
 registerLocaleData(localeEs, 'es');
 
 @Component({
   selector: 'lib-dishes',
-  imports: [FontAwesomeModule, DeleteCardComponent, DecimalPipe],
+  imports: [
+    FontAwesomeModule,
+    DeleteCardComponent,
+    DecimalPipe,
+    FormDishComponent,
+  ],
   templateUrl: './dishes.component.html',
   styleUrl: './dishes.component.scss',
 })
@@ -33,13 +39,18 @@ export class DishesComponent implements OnInit {
   menus: IMenuResponse[] = [];
   showCreateModal = false;
   showUpdateModal = false;
+  selectedMenuId!: number;
+  selectedIndex!: number;
 
   @Input() public dishes$: Observable<IDishResponse[][]>;
   @Input() public menus$: Observable<IMenuResponse[]>;
   public currentDish = input<IDishResponse>();
 
   @Output() public onDelete = new EventEmitter<number>();
-  @Output() public onSaveDish = new EventEmitter<IDish>();
+  @Output() public onSaveDish = new EventEmitter<{
+    dish: IDish;
+    selectedIndex: number;
+  }>();
   @Output() public onSelectDish = new EventEmitter<{
     id: number;
     index: number;
@@ -50,13 +61,17 @@ export class DishesComponent implements OnInit {
     this.dishes$.subscribe((dishes) => (this.dishes = dishes));
   }
 
-  showCreateDish(): void {
-    this.onSelectDish.emit({ id: 0, index: 0 });
+  showCreateDish(index: number): void {
+    this.selectedMenuId = this.menus[index].id;
+    this.selectedIndex = index;
+    this.onSelectDish.emit({ id: 0, index });
     this.showCreateModal = true;
   }
 
   showUpdateDish(idDish: number, index: number): void {
-    this.onSelectDish.emit({ id: idDish, index: index });
+    this.selectedMenuId = this.menus[index].id;
+    this.selectedIndex = index;
+    this.onSelectDish.emit({ id: idDish, index });
     this.showUpdateModal = true;
   }
 
@@ -67,7 +82,7 @@ export class DishesComponent implements OnInit {
   }
 
   handleSubmit(dish: IDish): void {
-    this.onSaveDish.emit(dish);
+    this.onSaveDish.emit({ dish, selectedIndex: this.selectedIndex });
   }
 
   deleteDish(idDish: number): void {

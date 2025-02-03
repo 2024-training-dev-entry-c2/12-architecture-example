@@ -1,1 +1,42 @@
-<p>form-dish works!</p>
+<section class="modal-container">
+    <article class="form-modal">
+        <div class="form-modal__header">
+            <h2 class="form-modal__title">
+                @if(selectedDish){
+                Editar Plato
+                } @else {
+                Crear nuevo plato
+                }
+            </h2>
+            <button (click)="close()"><fa-icon [icon]="faX"></fa-icon></button>
+        </div>
+
+        @if(dishForm){
+        <form [formGroup]="dishForm" class="form-modal__form" (submit)="submit($event)">
+
+            <app-form-group label="Nombre plato" placeholder="Nombre del plato" [control]="dishNameControl" type="text"
+                id="dishName" [isSubmitted]="isSubmitted">
+            </app-form-group>
+
+            <app-form-group label="Descripción" placeholder="Descripción del plato" [control]="descriptionControl"
+                type="text" id="description" [isSubmitted]="isSubmitted">
+            </app-form-group>
+
+            <app-form-group label="Precio base" placeholder="Precio base del plato" [control]="basePriceControl"
+                type="text" id="basePrice" [isSubmitted]="isSubmitted">
+            </app-form-group>
+
+            <div class="form-modal__buttons">
+                <button class="form-modal__cancel-button" type="button" (click)="close()">Cancelar</button>
+                <button class="form-modal__save-button" type="submit">
+                    @if(selectedDish){
+                    Actualizar
+                    } @else {
+                    Guardar
+                    }
+                </button>
+            </div>
+        </form>
+        }
+    </article>
+</section>

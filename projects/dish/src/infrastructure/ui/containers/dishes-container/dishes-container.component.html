@@ -1,1 +1,2 @@
-<lib-dishes [dishes$]="dishes$" [menus$]="menus$" (onSelectDish)="handleSelectDish($event)"></lib-dishes>
+<lib-dishes [dishes$]="dishes$" [menus$]="menus$" [currentDish]="currentDish$ | async" (onSaveDish)="createDish($event)"
+    (onSelectDish)="handleSelectDish($event)"></lib-dishes>

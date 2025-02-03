@@ -28,22 +28,19 @@ export class UpdateDishUsecase {
     this.subscriptions.unsubscribe();
   }
 
-  execute(dishId: number, payload: IDish): void {
+  execute(dishId: number, payload: IDish, index: number): void {
     this.subscriptions.add(
       this._updateDishService
         .execute(dishId, payload)
         .pipe(
           tap((updatedDish) => {
-            const menus = this._state.dishes.menuResponse.snapshot();
-            const index = menus.findIndex((m) => m.id === payload.menuId);
-            if (index !== -1) {
-              const dishes = this._state.dishes.dishResponse.snapshot();
-              const newDishes = dishes[index].map((c) =>
-                c.id === updatedDish.id ? updatedDish : c
-              );
-              this._state.dishes.dishResponse[index].set(newDishes);
-              this._state.dishes.currentDish.set(null);
-            }
+            const dishes = this._state.dishes.dishResponse.snapshot();
+            const newDishes = dishes[index].map((c) =>
+              c.id === updatedDish.id ? updatedDish : c
+            );
+            dishes[index] = newDishes;
+            this._state.dishes.dishResponse.set(dishes);
+            this._state.dishes.currentDish.set(null);
           })
         )
         .subscribe()
