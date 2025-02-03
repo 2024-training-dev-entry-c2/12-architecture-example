@@ -1,5 +1,5 @@
-import { ICustomer } from '../../../../customer/src/domain/models/customer.model';
-import { IDish } from '../../../../dish/src/domain/model/dish.model';
+import { ICustomer } from './customer.model';
+import { IDish } from './dish.model';
 
 export interface IOrder {
   orderId: number;
