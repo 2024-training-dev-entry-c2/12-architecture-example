@@ -1,4 +1,3 @@
-// Variables de color y fuentes (heredadas)
 $primary-color: #007bff;
 $secondary-color: #6c757d;
 $accent-color: #28a745;
@@ -9,7 +8,6 @@ $input-bg-color: #ffffff;
 $table-border-color: #dee2e6;
 $button-hover-color: darken($primary-color, 10%);
 
-// Estilos globales
 *,
 *::before,
 *::after {
@@ -24,7 +22,6 @@ body {
   color: $text-color;
 }
 
-// Modal
 .lib-modal {
   &__overlay {
     position: fixed;
@@ -49,7 +46,6 @@ body {
   }
 }
 
-// Formulario de menús (menus)
 .lib-menus-form {
   display: flex;
   flex-direction: column;
@@ -85,7 +81,6 @@ body {
   }
 }
 
-// Tabla de menús (menus)
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -149,7 +144,6 @@ body {
   }
 }
 
-// Estilos de accesibilidad
 button {
   background-color: transparent;
   border: 2px solid transparent;
@@ -167,7 +161,6 @@ button {
   }
 }
 
-// Aseguramos que los elementos sean accesibles con color contrastante
 .lib-modal,
 .table {
   a {
