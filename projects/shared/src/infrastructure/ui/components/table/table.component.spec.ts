@@ -65,4 +65,9 @@ describe('TableComponent', () => {
     const table = fixture.debugElement.query(By.css('.styled-table'));
     expect(table).toBeFalsy();
   });
+  it('should emit when deleteId is called', () => {
+    spyOn(component.deleteId, 'emit');
+    component.deleteData(1);
+    expect(component.deleteId.emit).toHaveBeenCalledWith(1);
+  });
 });

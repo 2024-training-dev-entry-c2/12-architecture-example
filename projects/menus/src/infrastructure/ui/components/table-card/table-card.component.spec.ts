@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { TableCardComponent } from './table-card.component';
+import { IMenuRequest } from '../../../../domain/model/menu.model';
 
 describe('TableCardComponent', () => {
   let component: TableCardComponent;
@@ -46,6 +47,17 @@ describe('TableCardComponent', () => {
     component.closeModal();
     expect(component.showModal).toBeFalse();
     expect(component.showModalUpdate).toBeFalse();
+  });
+  it('should emit when createMenu is called', () => {
+    const menu = { name: 'Menu 1' } as IMenuRequest;
+    spyOn(component.createMenuData, 'emit');
+    component.createMenu(menu);
+    expect(component.createMenuData.emit).toHaveBeenCalledWith(menu);
+  });
+  it('should emit when redirectToMenu is called', () => {
+    spyOn(component.onSelectMenu, 'emit');
+    component.redirectToMenuId(1);
+    expect(component.onSelectMenu.emit).toHaveBeenCalled();
   });
 
   it('should create', () => {

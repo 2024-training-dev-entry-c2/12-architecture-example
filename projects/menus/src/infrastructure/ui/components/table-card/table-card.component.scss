@@ -19,7 +19,7 @@
 
 .tabs{
   &__container {
-    display: flex; /* Usamos flexbox para crear una disposición horizontal */
+    display: flex; 
     flex-direction: row;
     align-items: stretch;
     background: var(--background-color);
@@ -96,11 +96,11 @@
 }
 
 .tab__content {
-  flex: 1; /* Ocupa el resto del espacio */
+  flex: 1; 
   padding: 20px;
 
   border-radius: 5px;
-  margin-right: 20px; /* Separación con las pestañas */
+  margin-right: 20px; 
 }
 
 .slider {

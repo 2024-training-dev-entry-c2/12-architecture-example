@@ -43,21 +43,25 @@ describe('SpinnerComponent', () => {
     expect(component.images.length).toBe(10);
     expect(component.images[0].src).toBe('https://picsum.photos/300/300');
   });
+
   it('should move to next slide correctly', () => {
     component.currentPosition = 0;
     component.nextSlide();
     expect(component.currentPosition).toBe(-component.cardWidth);
   });
+
   it('should not move previous if at the first slide', () => {
     component.currentPosition = 0;
     component.prevSlide();
     expect(component.currentPosition).toBe(0);
   });
+
   it('should render the correct number of images', () => {
     fixture.detectChanges();
     const images = fixture.debugElement.queryAll(By.css('.card-image'));
     expect(images.length).toBe(10);
   });
+  
   it('should call nextSlide on right button click', () => {
     spyOn(component, 'nextSlide');
     const button = fixture.debugElement.query(By.css('.slider-btn.right'));

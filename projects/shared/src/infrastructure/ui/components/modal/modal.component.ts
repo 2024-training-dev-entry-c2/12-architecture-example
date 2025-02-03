@@ -23,7 +23,6 @@ export class ModalComponent {
     } else {
       this.fields = [];
     }
-
     console.log(this.fields);
   }
 
@@ -53,10 +52,10 @@ export class ModalComponent {
     return 'text';
   }
 
-  // Opcional: Determinar validadores según clave o regla
   private getValidatorsForKey(key: string): any[] {
     if (key === 'email') return [Validators.required, Validators.email];
     if (key === 'name') return [Validators.required, Validators.minLength(3)];
     return [];
   }
+  
 }

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { IMenu } from '../../../domain/model/menu.model';
 import { catchError, map, Observable, throwError } from 'rxjs';
+import { urlResources } from '../../../../../shared/src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { catchError, map, Observable, throwError } from 'rxjs';
 export class ListMenuService {
   private http = inject(HttpClient);
   getMenus(): Observable<IMenu[]> {
-    return this.http.get<any>('http://localhost:8080/menus').pipe(
+    return this.http.get<any>(urlResources.menu).pipe(
       map((response) => this.validateResponse(response)),
       catchError((error) => {
         console.error('Error fetching menus:', error);

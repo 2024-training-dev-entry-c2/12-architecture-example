@@ -1,4 +1,3 @@
-
 import { Component, HostListener } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { ThemeService } from '../../../services/toogle-theme/theme.service';
@@ -16,7 +15,6 @@ export class HeaderNavbarComponent {
     { label: 'Clients', icon: 'far fa-address-book', active: false,link: '/client' , ariaLabel: "Clients" },
     { label: 'Menus', icon: 'far fa-clone', active: false,link: '/menu' , ariaLabel: "Menus" },
     { label: 'Orders', icon: 'far fa-calendar-alt', active: false,link: '/orders' , ariaLabel: "Orders" },
-
   ];
   images = '/assets/icons/toogleMode.svg#icon-moon'; // Imagen inicial
   darkTheme = false;
@@ -29,7 +27,6 @@ export class HeaderNavbarComponent {
     this.themeService.themeState$.subscribe((isDark) => {
       this.darkTheme = isDark;
 
-      // Actualizar la imagen según el tema
       this.images = isDark
         ? '/assets/icons/toogleMode.svg#icon-dark'
         : '/assets/icons/toogleMode.svg#icon-moon';
@@ -71,8 +68,6 @@ export class HeaderNavbarComponent {
       this.onNavItemClick(targetItem);
     }
   }
-
-
 
   constructor(private themeService: ThemeService) {}
   toggleTheme() {

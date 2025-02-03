@@ -45,7 +45,6 @@ export class TableCardComponent {
     this.deleteMenuData.emit(id);
   }
 
-  constructor(private router: Router) {}
   redirectToMenu(): void {
     this.showModal = true;
   }

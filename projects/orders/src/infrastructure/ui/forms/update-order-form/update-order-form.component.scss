@@ -71,8 +71,8 @@ $transition-time: 0.3s;
     margin: 0;
     overflow-y: hidden;
     overflow-y: auto;
-
-    &-item {
+  }
+  &__list-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -86,7 +86,7 @@ $transition-time: 0.3s;
         color: #2c3e50;
         background-color: lighten($primary-color, 40%);
       }
-    }
+    
   }
 
   &__remove-button {

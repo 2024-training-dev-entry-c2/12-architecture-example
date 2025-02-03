@@ -32,6 +32,12 @@ describe('TableComponent', () => {
     spyOn(component.deleteClient, 'emit');
     component.sendToDelete(1);
     expect(component.deleteClient.emit).toHaveBeenCalledWith(1);
+  }); 
+  it('should  emit sendToCreate event when sendToCreate is called', () => {
+    const client = { name: 'Client 1', email: 'client@email.com', isOften: false } as IClientRequest;
+    spyOn(component.createClient, 'emit');
+    component.sendTocreate(client);
+    expect(component.createClient.emit).toHaveBeenCalled();
   });
 
   it('should emit onSelectClient and set clientID when redirectToClient is called', () => {

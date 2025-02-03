@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { TableOrdersComponent } from './table.component';
 import { PaginationComponent, TableComponent } from 'shared';
 import { By } from '@angular/platform-browser';
+import { IOrderRequest } from '../../../../domain/model/order.model';
 
 describe('TableComponent', () => {
   let component: TableOrdersComponent;
@@ -97,7 +98,26 @@ describe('TableComponent', () => {
     const tableElement = fixture.debugElement.query(By.directive(TableComponent));
     expect(tableElement).toBeTruthy();
   });
-  
+
+  it('redirectToOrder should emit onSelectOrder event', () => {
+    spyOn(component.onSelectOrder, 'emit');
+    component.redirectToOrder(1);
+    expect(component.onSelectOrder.emit).toHaveBeenCalledWith(1);
+  });
+
+  it('should emit when createOrder is called', () => {
+    const order = { clientId: 1, localDate: '2024-02-01T10:00:00', dishfoodIds: [1, 2, 3] } as unknown as IOrderRequest;
+    spyOn(component.createOrderData, 'emit');
+    component.createOrder(order);
+    expect(component.createOrderData.emit).toHaveBeenCalledWith(order);
+  });
+  it('should emit when updateOrder is called', () => {
+    const order = { clientId: 1, localDate: '2024-02-01T10:00:00', dishfoodIds: [1, 2, 3] } as unknown as IOrderRequest;
+    spyOn(component.updateOrderData, 'emit');
+    component.UpdateOrder(order);
+    expect(component.updateOrderData.emit).toHaveBeenCalledWith({ order, id: 0 });
+  });
+
 
   it('should close modal when closeModal is called', () => {
     component.showModal = true;

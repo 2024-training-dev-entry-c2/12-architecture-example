@@ -14,7 +14,6 @@ export class PaginationComponent implements OnInit {
 
   ngOnInit(){
     console.log(this.tabs);
-    
   }
   images = [
     'assets/icons/form-svgrepo-com.svg#icon-twitter',
@@ -26,7 +25,5 @@ export class PaginationComponent implements OnInit {
     this.activeTab = index;
 
   }
-  show(value: string): void {
-    console.log(value);
-  }
+
 }

@@ -4,6 +4,7 @@ import { ModalComponent } from './modal.component';
 import { FormGroup } from '@angular/forms';
 import { By } from '@angular/platform-browser';
 
+
 describe('ModalComponent', () => {
   let component: ModalComponent;
   let fixture: ComponentFixture<ModalComponent>;
@@ -46,4 +47,15 @@ describe('ModalComponent', () => {
     overlay.triggerEventHandler('click', null);
     expect(component.closeModal.emit).toHaveBeenCalled();
   });
+  it('should set fields to empty array if data is null', () => {
+    component.data = null;
+    component.ngOnInit();
+    expect(component.fields).toEqual([]);
+  });
+  it('should set fields to empty array if data is undefined', () => {
+    component.data = undefined;
+    component.ngOnInit();
+    expect(component.fields).toEqual([]);
+  });
+
 });

@@ -3,6 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { IDish, IDishRequest } from '../../../public-api';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { urlResources } from '../../../../../shared/src/environments/environment';
 
 
 @Injectable({
@@ -13,7 +14,7 @@ export class UpdateMenuService {
   updateDish(dish: IDishRequest, id: number): Observable<IDish> {
     console.log(dish);
     return this.http
-      .put<IDish>( `http://localhost:8080/dishfoods/${id}`, dish)
+      .put<IDish>( `${urlResources.dish}/${id}`, dish)
       .pipe(
         map((response) => this.validateObjectResponse(response)),
         catchError((error) => {
