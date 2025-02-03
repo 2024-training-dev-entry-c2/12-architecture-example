@@ -1,4 +1,4 @@
-import { booleanAttribute, Component, inject, Input } from '@angular/core';
+import { booleanAttribute, Component, EventEmitter, inject, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { ICustomer } from 'customers';
 import { CommonModule } from '@angular/common';
@@ -12,9 +12,6 @@ import { IDish } from 'dishes';
 })
 export class BoxCardComponent {
 
-  //customerService = inject(CustomersService);
- // dishesService = inject(DishesService);
-
   router = inject(Router);
 
   @Input() customer: ICustomer = {} as ICustomer;
@@ -22,15 +19,15 @@ export class BoxCardComponent {
 
   @Input({transform: booleanAttribute}) isCustomer: boolean = false;
   @Input({transform: booleanAttribute}) isDishes: boolean = false;
-
-
+  @Output() onDeleteCustomer : EventEmitter<ICustomer> = new EventEmitter<ICustomer>();
+  @Output() onDeleteDishes : EventEmitter<IDish> = new EventEmitter<IDish>();
 
   updateCustomer(){
     this.router.navigate([`/dashboard/customer/update/${this.customer.id}`]);
   }
 
   removeCustomer(){
-  //  this.customerService.remove(this.customer.id);
+    this.onDeleteCustomer.emit(this.customer);
   }
 
   updateDish(){
@@ -38,7 +35,7 @@ export class BoxCardComponent {
   }
 
   removeDish(){
-   // this.dishesService.remove(this.dish.id);
+    this.onDeleteDishes.emit(this.dish);
   }
 
 }

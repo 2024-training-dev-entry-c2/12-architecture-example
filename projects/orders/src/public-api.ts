@@ -2,5 +2,5 @@
  * Public API Surface of orders
  */
 
-export * from './lib/orders.service';
-export * from './lib/orders.component';
+export { ordersRoutes } from './infrastructure/ui/routes/orders.route';
+export type { IOrders } from './domain/model/orders.model';

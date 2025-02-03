@@ -1,0 +1,26 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
+
+:host {
+  display: block;
+}
+
+.form{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &__section{
+    border: none;
+
+
+  }
+  &__section__title{
+    color: variables.$header-color;
+    margin-block: 1rem;
+  }
+
+  &__btn{
+    @include mixins.primary-button(22%, 0, 1rem);
+  }
+}

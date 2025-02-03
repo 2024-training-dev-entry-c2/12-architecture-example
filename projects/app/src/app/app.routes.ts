@@ -12,12 +12,21 @@ export const routes: Routes = [
     loadChildren: () => import('customers').then(m => m.customersRoutes)
   },
   {
+    path: 'dashboard/dishes',
+    loadChildren: () => import('dishes').then(m => m.dishesRoutes)
+  },
+  {
+    path: 'dashboard/menu',
+    loadChildren: () => import('menu').then(m => m.menuRoutes)
+  },
+  {
+    path: 'dashboard/orders',
+    loadChildren: () => import('orders').then(m => m.ordersRoutes)
+  },
+  {
     path:'',
     redirectTo: 'dashboard/home',
     pathMatch: 'full'
   }
-  // {
-  //   path: '',
-  //   loadChildren: () => import('home').then(m => m.homeRoutes)
-  // }
+
 ];

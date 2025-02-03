@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "build-lib": "ng build dashboard && ng build home && ng build customers && ng build dishes && ng build shared"
+    "build-lib": "ng build dashboard && ng build home && ng build customers && ng build dishes && ng build menu && ng build shared"
   },
   "private": true,
   "dependencies": {

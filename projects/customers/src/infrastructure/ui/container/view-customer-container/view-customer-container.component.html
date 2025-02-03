@@ -1,1 +1,1 @@
-<lib-view-customer [headers]="headers" [customers]="customers$ | async" />
+<lib-view-customer [headers]="headers" [customers]="customers$ | async" (onDeleteCustomer)="handleDelete($event)" />

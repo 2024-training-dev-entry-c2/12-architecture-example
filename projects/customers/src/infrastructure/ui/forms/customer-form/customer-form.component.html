@@ -1,0 +1,8 @@
+<main class="customer__form">
+  <form [formGroup]="customerForm" (submit)="onSubmit()">
+    @for (item of inputs; track $index) {
+      <lib-input [data]="item" />
+    }
+    <button [disabled]="(!customerForm.valid)" type="submit" class="customer__btn">Guardar</button>
+  </form>
+</main>

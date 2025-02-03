@@ -11,7 +11,7 @@
     @if (isCustomers) {
       @for (item of customers; track $index) {
         <article class="box__card">
-          <lib-box-card [customer]="item" isCustomer="true" />
+          <lib-box-card [customer]="item" isCustomer="true" (onDeleteCustomer)="sendCustomer($event)" />
         </article>
       }@empty {
         <h2 class="box__subtitle">No hay clientes que mostrar</h2>
@@ -19,7 +19,7 @@
     }@else {
         @for (item of  dishes; track $index) {
           <article class="box__card">
-            <lib-box-card [dish]="item" isDishes="true" />
+            <lib-box-card [dish]="item" isDishes="true" (onDeleteDishes)="sendDishes($event)" />
           </article>
         }@empty {
           <h2 class="box__subtitle">No hay platos que mostrar</h2>

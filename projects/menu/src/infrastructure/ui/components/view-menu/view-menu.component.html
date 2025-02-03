@@ -1,0 +1,11 @@
+<section class="menu">
+  <h1 class="menu__title">Menus</h1>
+  <button (click)="createMenu()" class="menu__btn">Nuevo menu</button>
+  <section class="menu__content">
+    <article class="menu__card">
+      @for(item of menus | async; track $index){
+        <lib-card-menu [menu]="item" (onDeleteMenu)="handleDelete($event)"/>
+      }
+    </article>
+  </section>
+</section>

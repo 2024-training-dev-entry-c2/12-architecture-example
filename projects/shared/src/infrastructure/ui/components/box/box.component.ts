@@ -1,4 +1,4 @@
-import { booleanAttribute, Component, Input } from '@angular/core';
+import { booleanAttribute, Component, EventEmitter, Input, Output } from '@angular/core';
 import { ICustomer } from 'customers';
 import { CommonModule } from '@angular/common';
 import { BoxCardComponent } from '../box-card/box-card.component';
@@ -17,5 +17,17 @@ export class BoxComponent {
   @Input() dishes?: IDish[];
   @Input({transform: booleanAttribute}) isCustomers: boolean = false;
   @Input({transform: booleanAttribute}) isDishes: boolean = false;
+  @Output() onDeleteCustomer : EventEmitter<ICustomer> = new EventEmitter<ICustomer>();
+  @Output() onDeleteDishes : EventEmitter<IDish> = new EventEmitter<IDish>();
+
+  sendCustomer(event: ICustomer) {
+    console.log(event);
+    this.onDeleteCustomer.emit(event);
+  }
+
+  sendDishes(event: IDish) {
+    console.log(event);
+    this.onDeleteDishes.emit(event);
+  }
 
 }

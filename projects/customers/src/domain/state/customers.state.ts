@@ -9,10 +9,12 @@ import { ICustomer } from "../model/customer.model";
 export class CustomersState{
   private readonly _factory = inject(StateFactory);
   private readonly customers$ = new BehaviorSubject<ICustomer[]>([]);
+  private readonly currentCustomer$ = new BehaviorSubject<ICustomer>(null);
 
   store(){
     return{
-      customers: this._factory.state(this.customers$)
+      customers: this._factory.state(this.customers$),
+      currentCustomer: this._factory.state(this.currentCustomer$)
     }
   }
 
