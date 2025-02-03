@@ -1,0 +1,107 @@
+@use '../../styles/variables.scss' as variables;
+@use '../../styles/mixins.scss' as mixins;
+
+$primary-color: #4B0082;
+$secondary-color: #B2B2B3;
+$background-color: #F9FAFB;
+$white: #ffffff;
+$black: #000000;
+$gray-light: #F3F4F6;
+$gray-dark: #333333;
+
+.header {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    @include mixins.container(space-between);
+    padding: 12px 50px;
+    position: fixed;
+    width: 90%;
+    top: 0;
+    left: 0;
+    background-color: rgba($white, 0.9);
+    border-bottom: 1px solid transparent;
+    transition: border-bottom 0.3s ease, background-color 0.3s ease;
+    z-index: 1000;
+
+    &.scrolled {
+        border-bottom: 1px solid #dddddd;
+        background-color: rgba($white, 0.95);
+    }
+
+    &__logo {
+        display: flex;
+        align-items: center;
+
+        svg {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        span {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-left: 0.5rem;
+        }
+    }
+
+    &__nav {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+
+        li {
+            margin: 0 20px;
+        }
+    }
+
+    nav {
+        display: none;
+
+        a {
+            color: $gray-dark;
+            text-decoration: none;
+            margin: 0 20px;
+            font-weight: 600;
+
+            &:hover {
+                color: rgb(53, 58, 187);
+            }
+        }
+
+        @media (min-width: 768px) {
+            display: flex;
+        }
+    }
+
+    &__signup-btn {
+        font-weight: 600;
+        border: 1px solid $gray-dark;
+        padding: 5px 15px;
+        border-radius: 5px;
+        background: none;
+        cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease;
+
+        &:hover,
+        header.scrolled & {
+            background-color: red;
+            color: $white;
+        }
+
+        @media (min-width: 768px) {
+            display: block;
+            padding: 0.5rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.375rem;
+            color: #4a5568;
+            background: none;
+
+            &:hover {
+                background-color: red;
+                color: $white;
+            }
+
+        }
+    }
+}

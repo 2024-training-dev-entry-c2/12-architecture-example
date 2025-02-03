@@ -1,0 +1,25 @@
+<div class="card">
+    <div class="register">
+        <h1 class="register__title" id="register-heading">Register Form</h1>
+
+        <lib-auth-form [formGroup]="registerForm" formClass="register__form" ariaLabelledby="register-heading"
+            (onSubmit)="onSubmit()">
+
+            <lib-app-form-input [formGroup]="registerForm" type="email" controlName="email" inputClass="register__input"
+                placeholder="Email" ariaLabel="Email" id="email">
+            </lib-app-form-input>
+
+            <lib-app-form-input [formGroup]="registerForm" type="password" controlName="password"
+                inputClass="register__input" placeholder="Password" ariaLabel="Password" id="password">
+            </lib-app-form-input>
+
+            <lib-app-form-input [formGroup]="registerForm" type="text" controlName="document"
+                inputClass="register__input" placeholder="Documento" ariaLabel="Documento" id="documento">
+            </lib-app-form-input>
+
+            <button type="submit" class="register__button" aria-label="Login">
+                Register
+            </button>
+        </lib-auth-form>
+    </div>
+</div>

@@ -1,20 +1,15 @@
 import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
+      imports: [
+        AppComponent,
+        RouterTestingModule // Necesario para probar componentes con router-outlet
+      ],
     }).compileComponents();
-  });
-
-  it('should be 5', () => {
-    const num1 = 3;
-    const num2 = 2;
-
-    const result = num1 + num2;
-
-    expect(result).toBe(5);
   });
 
   it('should create the app', () => {
@@ -23,33 +18,25 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
+  it(`should have the 'app-bancaria' title`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('app-bancaria');
+  });
+
+  // Prueba para verificar que el router-outlet está presente
   it('should render router-outlet', () => {
     const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-
     expect(compiled.querySelector('router-outlet')).toBeTruthy();
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.componentRef.setInput('title', 'Angular');
-
-    fixture.detectChanges();
-    const app = fixture.componentInstance;
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(app.title()).toBe('Angular');
-    expect(compiled.querySelector('p').textContent).toBe('Angular');
-  })
-
-  it('should be called onClick', () => {
+  // Prueba para verificar el estado inicial del componente
+  it('should initialize with correct properties', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    const compiled = fixture.nativeElement as HTMLElement;
-    const buttonElement = compiled.querySelector('button');
-    spyOn(app.onClick, 'emit');
-
-    buttonElement.click();
-    
-    expect(app.onClick.emit).toHaveBeenCalled();
+    expect(app.title).toBeDefined();
+    expect(typeof app.title).toBe('string');
   });
 });

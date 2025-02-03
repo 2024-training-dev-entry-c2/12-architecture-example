@@ -1,0 +1,28 @@
+<section class="login-page">
+    <div class="login-page__box">
+        <div class="login-page__card">
+            <div class="login-page__card-header">
+                <a href="#" class="h1"> <fa-icon [icon]="faPiggyBank"></fa-icon> <b>Banking </b>App</a>
+            </div>
+            <div class="login-page__card-body">
+                <p class="login-page__box-message">Inicia sesión para continuar</p>
+
+                <lib-auth-form [formGroup]="loginForm" formClass="login__form" (onSubmit)="onSubmit()">
+
+                    <lib-app-form-input [formGroup]="loginForm" type="email" controlName="email"
+                        inputClass="login__input" placeholder="Email" id="email">
+                    </lib-app-form-input>
+
+                    <lib-app-form-input [formGroup]="loginForm" type="password" controlName="password"
+                        inputClass="login__input" placeholder="Password" id="password">
+                    </lib-app-form-input>
+
+                    <button type="submit" class="login__button">
+                        Login
+                    </button>
+
+                </lib-auth-form>
+            </div>
+        </div>
+    </div>
+</section>

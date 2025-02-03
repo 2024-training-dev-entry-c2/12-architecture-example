@@ -1,0 +1,179 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.login-page {
+    align-items: center;
+    background-color: #e9ecef;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+    &__box {
+        width: 360px;
+        box-sizing: border-box;
+        display: block;
+        unicode-bidi: isolate;
+
+        &-message {
+            margin: 0;
+            padding: 0 20px 20px;
+            text-align: center;
+            display: block;
+            margin-block-start: 1em;
+            margin-block-end: 1em;
+            margin-inline-start: 0px;
+            margin-inline-end: 0px;
+            unicode-bidi: isolate;
+            word-wrap: break-word;
+        }
+    }
+
+    &__card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        word-wrap: break-word;
+        background-color: #fff;
+        background-clip: border-box;
+        border: 0 solid rgba(0, 0, 0, .125);
+        border-radius: .25rem;
+        box-shadow: 0 0 1px rgba(0, 0, 0, .125), 0 1px 3px rgba(0, 0, 0, .2);
+        border-top: 3px solid #007bff;
+        margin-bottom: 0;
+
+        &-header {
+            background-color: transparent;
+            border-bottom: 1px solid rgba(0, 0, 0, .125);
+            padding: .75rem 1.25rem;
+            position: relative;
+            border-top-left-radius: .25rem;
+            border-top-right-radius: .25rem;
+            text-align: center !important;
+            box-sizing: border-box;
+            display: block;
+            unicode-bidi: isolate;
+            font-size: 2rem;
+
+            a {
+                text-decoration: none;
+            }
+        }
+
+        &-body {
+            flex: 1 1 auto;
+            min-height: 1px;
+            padding: 1.25rem;
+            box-sizing: border-box;
+            display: block;
+            unicode-bidi: isolate;
+            word-wrap: break-word;
+        }
+    }
+
+    &__form {
+        display: block;
+        margin-top: 0em;
+        unicode-bidi: isolate;
+
+        &-input {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: stretch;
+            width: 100%;
+            margin-bottom: 1rem;
+
+            &-append {
+                margin-left: -1px;
+                display: flex;
+                box-sizing: border-box;
+            }
+
+            &-text {
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+                display: flex;
+                align-items: center;
+                padding: .375rem .75rem;
+                margin-bottom: 0;
+                font-size: 1rem;
+                font-weight: 400;
+                line-height: 1.5;
+                color: #495057;
+                text-align: center;
+                white-space: nowrap;
+                background-color: #e9ecef;
+                border: 1px solid #ced4da;
+                border-radius: .25rem;
+            }
+        }
+    }
+}
+
+.login {
+    margin: 50px auto;
+    width: 500px;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    &__title {
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-size: 30px;
+    }
+
+    &__label {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 15px;
+
+        &--row {
+            flex-direction: row;
+            align-items: center;
+
+            span {
+                cursor: pointer;
+            }
+        }
+    }
+
+    &__input,
+    &__button {
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1);
+        padding: 10px;
+    }
+
+    &__button {
+        cursor: pointer;
+        background-color: rgb(18, 139, 64);
+        color: white;
+        font-weight: bold;
+        font-size: 17px;
+
+        &--rounded {
+            font-size: 15px;
+            margin-inline: 30px;
+            background-color: rgb(110, 220, 152);
+            color: black;
+        }
+    }
+
+    &__section {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+}
