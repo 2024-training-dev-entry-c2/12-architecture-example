@@ -30,16 +30,17 @@
       height: 30px;
       @include mix.transition(border-color, 0.3s);
   
-      &:focus {
+    }
+      &__input:focus {
         border-color: vars.$primary-color;
         box-shadow: 0 0 5px rgba(vars.$primary-color, 0.5);
       }
   
-      &--invalid {
+      &__input--invalid {
         border-color: vars.$error-color;
         background-color: lighten(vars.$error-color, 40%);
       }
-    }
+    
   
     &__error {
       @include mix.flex(column, flex-start, flex-start, vars.$spacing-small);

@@ -8,8 +8,7 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh; // Asegura que el hero cubra toda la altura de la ventana
-
+  height: 100vh;
   &__container {
     position: relative;
     width: 100%;
@@ -35,13 +34,13 @@
   }
 
   &__content img {
-    position: absolute; // Para que ocupe todo el área del hero
+    position: absolute; 
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; // Hace que la imagen se escale proporcionalmente para cubrir todo el contenedor
-    z-index: 1; // Asegura que la imagen esté detrás del texto
+    object-fit: cover;
+    z-index: 1;
     filter: brightness(35%);
   }
   &__content::before {

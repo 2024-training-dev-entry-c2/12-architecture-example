@@ -18,7 +18,7 @@ import { CreateOrderFormComponent } from '../../forms/create-order-form/create-o
   selector: 'lib-orders-table',
   imports: [ PaginationComponent,TableComponent,UpdateOrderFormComponent,CreateOrderFormComponent ],
   templateUrl: './table.component.html',
-  styleUrl: './table.component.css',
+
 })
 export class TableOrdersComponent {
   public menu = input.required<IMenu[]>();

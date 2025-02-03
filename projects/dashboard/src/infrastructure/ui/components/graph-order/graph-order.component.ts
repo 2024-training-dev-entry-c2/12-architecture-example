@@ -6,7 +6,7 @@ import { Chart } from 'chart.js/auto';
   selector: 'lib-graph-order',
   imports: [],
   templateUrl: './graph-order.component.html',
-  styleUrl: './graph-order.component.css',
+ 
 })
 export class GraphOrderComponent implements OnInit {
   constructor(private themeService: ThemeService) {}

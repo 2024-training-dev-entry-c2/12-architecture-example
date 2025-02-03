@@ -1,7 +1,6 @@
 @use "../../../ui/styles/mixins.scss" as mix;
 @use "../../../ui/styles/variables.scss" as vars;
 
-
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -16,7 +15,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color:var(--background-color); 
+  background-color: var(--background-color);
   padding: 20px;
   border-radius: 8px;
   z-index: 3;
@@ -50,21 +49,21 @@
     border: none;
     border-radius: vars.$border-radius;
     cursor: pointer;
+  }
 
-    &--close {
-      background-color: vars.$button-color;
+  &__button--close {
+    background-color: vars.$button-color;
 
-      &:hover {
-        background-color: darken(vars.$button-color, 10%);
-      }
+    &:hover {
+      background-color: darken(vars.$button-color, 10%);
     }
+  }
 
-    &--extra {
-      background-color: vars.$primary-color;
+  &--extra {
+    background-color: vars.$primary-color;
 
-      &:hover {
-        background-color: lighten(vars.$primary-color, 10%);
-      }
+    &:hover {
+      background-color: lighten(vars.$primary-color, 10%);
     }
   }
 

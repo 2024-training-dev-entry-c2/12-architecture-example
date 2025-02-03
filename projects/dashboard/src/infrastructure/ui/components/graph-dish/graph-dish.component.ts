@@ -5,7 +5,7 @@ import { Chart } from 'chart.js/auto';
   selector: 'lib-graph-dish',
   imports: [],
   templateUrl: './graph-dish.component.html',
-  styleUrl: './graph-dish.component.css',
+
 })
 export class GraphDishComponent {
   constructor(private themeService: ThemeService) {}

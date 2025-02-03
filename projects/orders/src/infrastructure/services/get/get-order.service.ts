@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { IOrder } from '../../../domain/model/order.model';
+import { urlResources } from '../../../../../shared/src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { IOrder } from '../../../domain/model/order.model';
 export class GetOrderService {
   private http = inject(HttpClient);
   getOrderId(id: number): Observable<IOrder> {
-    return this.http.get<any>(`http://localhost:8080/order/${id}`)
+    return this.http.get<any>(`${urlResources.order}/${id}`)
     .pipe(
       map((response) => this.validateObjectResponse(response)),
       catchError((error) => {

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { IOrder } from '../../../domain/model/order.model';
+import { urlResources } from '../../../../../shared/src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { IOrder } from '../../../domain/model/order.model';
 export class ListOrderService {
   private http = inject(HttpClient);
   getOrders(): Observable<any[]> {
-    return this.http.get<any>('http://localhost:8080/order').pipe(
+    return this.http.get<any>(urlResources.order).pipe(
       map((response) => this.validateResponse(response)),
       catchError((error) => {
         console.error('Error fetching orders:', error);

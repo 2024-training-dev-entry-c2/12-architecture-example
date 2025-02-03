@@ -11,6 +11,8 @@
     gap: 1rem;
     transition: transform 0.3s ease-in-out;
   }
+
+
   
   .card {
     flex: 0 0 calc(100% / 3 - 1rem);
@@ -22,18 +24,20 @@
     align-items: center;
     font-size: 1.5rem;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    min-width: 200px; /* Establece un ancho mínimo para evitar estiramientos */
-    max-width: 360px; /* Opcional: ancho máximo */
+    min-width: 200px;
+    max-width: 360px; 
+
+    & img {
+      min-width: 200px; 
+      max-width: 450px; 
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    &:hover {
+      animation: vibrate 0.5s linear both;
+    }
   }
-  .card img {
-    min-width: 200px; /* Establece un ancho mínimo para evitar estiramientos */
-    max-width: 450px; /* Opcional: ancho máximo */
-    object-fit: cover;
-    border-radius: 8px;
-  }
-  .card:hover {
-    animation: vibrate 0.5s linear both;
-  }
+
   
   .slider-btn {
     position: absolute;
