@@ -1,6 +1,6 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { AddMenuUsecase } from '../../../../application/add-menu.usecase';
-import { Observable } from 'rxjs';
+import { interval, Observable, Subscription, switchMap } from 'rxjs';
 import { IMenu } from '../../../../domain/model/menu.model';
 import { UpdateMenuUseCase } from '../../../../application/update-menu.usecase';
 import { GetAllMenusUsecase } from '../../../../application/get-all-menu.usecase';
@@ -21,6 +21,8 @@ export class FormMenuContainerComponent implements OnInit, OnDestroy {
   private readonly _deleteUseCase = inject(DeleteMenuUsecase);
   public menus$: Observable<IMenu[]>;
   public currentMenu$: Observable<IMenu>;
+  protected intervalSub: Subscription;
+  
 
 
   ngOnInit(): void {
@@ -30,6 +32,7 @@ export class FormMenuContainerComponent implements OnInit, OnDestroy {
     this._getMenuUseCase.execute();
     this.menus$ = this._getMenuUseCase.menus$();
     this.currentMenu$ = this._updateUseCase.currentMenu$();
+    this.intervalSub = interval(500).pipe(switchMap(async () => this._getMenuUseCase.execute())).subscribe();
   }
 
   ngOnDestroy(): void {
