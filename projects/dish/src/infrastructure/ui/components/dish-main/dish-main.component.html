@@ -1,0 +1,36 @@
+<main class="dish">
+    <table class="dish__table" aria-label="table">
+        <thead>
+            <tr>
+                @for (header of getHeaders(); track header.label) {
+                <th>{{ header.label }}</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @for (dish of filteredDishes; track $index) {
+            <tr>
+                <td>{{ dish.idDish }}</td>
+                <td>{{ dish.idMenu }}</td>
+                <td>{{ dish.dishName | titlecase}}</td>
+                <td>{{ dish.price | currency: 'USD' }}</td>
+                <td>{{ dish.description }}</td>
+                <td>{{ dish.isPopular ? 'Si' : 'No' }}</td>
+                <td class="dish__action">
+                    @for (action of getActions(); track action.label) {
+                    <a class="dish__button dish__button--{{ action.type }}" (click)="action.type === 'delete' ? openDeleteModal(dish.idMenu, dish.idDish) :  
+                        action.type === 'edit' ? openEditModal(dish.idMenu, dish) : null">
+                        <i class=" dish__icon" aria-hidden="true">
+                            <svg>
+                                <use [attr.xlink:href]="action.icon"></use>
+                            </svg>
+                        </i>
+                        {{ action.label }}
+                    </a>
+                    }
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</main>

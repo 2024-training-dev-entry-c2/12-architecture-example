@@ -1,0 +1,21 @@
+<div class="bento">
+    <ng-container *ngFor="let item of bentoItems; trackBy: trackByFn">
+        <article class="bento__item">
+            <svg>
+                <use [attr.xlink:href]="item.icon"></use>
+            </svg>
+            <div>
+                <h3>{{ item.title }}</h3>
+                <h2>{{ item.count }}</h2>
+            </div>
+        </article>
+    </ng-container>
+</div>
+<article class="client">
+    <h2 class="client__title">Lista de Clientes</h2>
+    <ul class="client__list">
+        <li>Maria</li>
+        <li>Carmen</li>
+        <li>Fabian</li>
+    </ul>
+</article>
