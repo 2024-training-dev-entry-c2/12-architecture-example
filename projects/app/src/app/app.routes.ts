@@ -13,4 +13,8 @@ export const routes: Routes = [
     path: 'platos',
     loadChildren: () => import('platos').then((m) => m.LibRoutes),
   },
+  {
+    path: 'pedidos',
+    loadChildren: () => import('pedido').then((m) => m.LibRoutes),
+  },
 ];

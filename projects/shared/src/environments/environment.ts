@@ -14,5 +14,9 @@ export const urlResources = {
   plato:{
     baseUrl: `${environment.apiUrl}/platos`,
     operationsById: (id: number) => `${environment.apiUrl}/platos/${id}`,
+  },
+  pedido:{
+    baseUrl: `${environment.apiUrl}/pedido`,
+    operationsById: (id: number) => `${environment.apiUrl}/pedido/${id}`,
   }
 };

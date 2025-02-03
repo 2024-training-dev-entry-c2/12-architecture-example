@@ -1,0 +1,8 @@
+<article class="pedido-card">
+  <span>Id de cliente: {{ idCliente() }}</span>
+  <span>Precio del pedido: {{ precio() | currency : "USD" }}</span>
+  <div class="pedido-card__button">
+    <lib-modify-button-shared (buttonClicked)="onClickModifyButton()" />
+    <lib-remove-button-shared (buttonClicked)="onClickRemoveButton()" />
+  </div>
+</article>

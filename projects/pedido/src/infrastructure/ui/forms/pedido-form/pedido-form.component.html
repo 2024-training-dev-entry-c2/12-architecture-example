@@ -1,0 +1,36 @@
+<form
+  [formGroup]="pedidoForm"
+  class="form-pedidos"
+  (ngSubmit)="submit()"
+  aria-labelledby="form-pedido-heading"
+>
+  <h2 id="form-pedido-heading">Formulario de Pedido</h2>
+
+  <div>
+    <label for="precio">Precio</label>
+    <input
+      id="precio"
+      formControlName="precio"
+      [value]="pedidoSelected()?.precio"
+      type="text"
+      aria-required="true"
+      aria-describedby="precio-help"
+    />
+    <small id="precio-help">Ingrese el precio del pedido.</small>
+  </div>
+
+  <div>
+    <label for="idCliente">Id cliente</label>
+    <input
+      id="idCliente"
+      formControlName="idCliente"
+      [value]="pedidoSelected()?.idCliente"
+      type="text"
+      aria-required="true"
+      aria-describedby="idCliente-help"
+    />
+    <small id="idCliente-help">Ingrese el ID del cliente para el pedido.</small>
+  </div>
+
+  <button type="submit">Enviar</button>
+</form>
