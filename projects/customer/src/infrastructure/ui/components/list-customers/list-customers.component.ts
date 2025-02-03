@@ -1,8 +1,8 @@
 import { NgFor } from '@angular/common';
 import { Component, input, output, viewChild } from '@angular/core';
-import { ModalComponent } from 'shared';
 import { ICustomer } from '../../../../domain/models/customer.model';
 import { CustomerFormComponent } from '../../forms/customer-form/customer-form.component';
+import { ModalComponent } from '../../../../../../shared/src/public-api';
 
 @Component({
   selector: 'lib-list-customers',
