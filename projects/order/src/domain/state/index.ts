@@ -5,9 +5,9 @@ import { OrdersState } from './orders.state';
   providedIn: 'root',
 })
 export class State {
-  private readonly _dishes = inject(OrdersState);
+  private readonly _orders = inject(OrdersState);
 
-  get dishes() {
-    return this._dishes.store().orders;
+  get ordersState() {
+    return this._orders.store();
   }
 }
