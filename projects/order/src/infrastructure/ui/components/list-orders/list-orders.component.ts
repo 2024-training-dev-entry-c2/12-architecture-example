@@ -1,5 +1,6 @@
 import { DatePipe, NgFor } from '@angular/common';
 import { Component, input, output, viewChild } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { ModalComponent, SelectOption } from 'shared';
 import { IOrder, IOrderForm } from '../../../../domain/models/order.model';
 import { OrderFormComponent } from '../../forms/order-form/order-form.component';
@@ -7,7 +8,7 @@ import { OrderFormComponent } from '../../forms/order-form/order-form.component'
 @Component({
   selector: 'lib-list-orders',
   standalone: true,
-  imports: [ModalComponent, OrderFormComponent, NgFor, DatePipe],
+  imports: [ModalComponent, OrderFormComponent, DatePipe, ReactiveFormsModule],
   templateUrl: './list-orders.component.html',
   styleUrl: './list-orders.component.scss',
 })
@@ -22,6 +23,11 @@ export class ListOrdersComponent {
   }>();
 
   handleSubmit(orderForm: IOrderForm) {
-    this.onCreateOrder.emit({ order: orderForm, modal: this.modal() });
+    if (orderForm) {
+      this.onCreateOrder.emit({
+        order: orderForm,
+        modal: this.modal() as ModalComponent,
+      });
+    }
   }
 }

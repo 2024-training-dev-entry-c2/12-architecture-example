@@ -11,7 +11,7 @@ describe('ListOrdersComponent', () => {
     {
       orderId: 2,
       totalOrderPrice: 7300.0,
-      date: new Date(),
+      date: new Date().toISOString(),
       customer: {
         customerId: 1,
         name: 'Johan',
@@ -78,8 +78,9 @@ describe('ListOrdersComponent', () => {
 
   it('should emit create order event', () => {
     const mockOrderForm: IOrderForm = {
+      date: new Date().toISOString(),
       customerId: 1,
-      dishesIds: [1, 2],
+      dishIds: [1, 2],
     };
 
     let emittedOrder: { order: IOrderForm; modal: ModalComponent } | undefined;

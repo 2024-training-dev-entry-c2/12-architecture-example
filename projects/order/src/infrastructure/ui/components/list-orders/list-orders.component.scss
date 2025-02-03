@@ -1,1 +1,85 @@
 @use "../../../../../../shared/src/insfrastructure/ui/styles/variables.scss" as var;
+@use "../../../../../../shared/src/insfrastructure/ui/styles/mixins.scss" as mix;
+@use "sass:color";
+
+.orders-table {
+  width: 90%;
+  max-width: var.$max-width-table;
+  border-collapse: collapse;
+  margin: 1rem auto;
+
+  &__head {
+    background-color: var.$primary-color;
+    color: white;
+  }
+
+  &__header {
+    padding: 1rem;
+    text-align: center;
+    font-weight: 600;
+  }
+
+  &__body {
+    .orders-table__row {
+      border-bottom: 1px solid rgba(130, 8, 191, 0.2);
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: rgba(130, 8, 191, 0.05);
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+
+  &__cell {
+    padding: 1rem;
+    text-align: center;
+  }
+}
+
+.confirmation-dialog {
+  padding: 1.5rem;
+  min-width: var.$max-width-form;
+
+  &__title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var.$text-primary;
+  }
+
+  &__message {
+    padding: 1rem 0;
+    color: var.$text-secondary;
+    line-height: 1.5;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+
+  &__button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: var.$transition-base;
+
+    &--confirm {
+      background-color: var.$primary-color;
+      color: white;
+
+      &:hover {
+        background-color: color.adjust(var.$primary-color, $lightness: -10%);
+      }
+    }
+  }
+}
