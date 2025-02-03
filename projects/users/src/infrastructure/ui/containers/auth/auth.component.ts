@@ -1,6 +1,6 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { FormLoginComponent } from '../../forms/form-login/form-login.component';
-import { AuthenticateUserUsecase } from '../../../../application/users/authentication.usercase';
+import { AuthenticateUserUsecase } from '../../../../application/login/authentication.usercase';
 import { IAuthenticateIn } from '../../../../domain/model/authenticate-in.modle';
 import { catchError, Observable, of, switchMap, tap } from 'rxjs';
 import { IAuthenticateOut } from '../../../../domain/model/authenticate-out.modle';
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   imports: [FormLoginComponent],
   templateUrl: './auth.component.html'
 })
-export class AuthComponent {
+export class AuthComponent implements OnInit, OnDestroy {
 
   private readonly _useCase = inject(AuthenticateUserUsecase);
   public user$: Observable<IAuthenticateOut>;
@@ -33,7 +33,9 @@ export class AuthComponent {
       .pipe(
         switchMap(() => this.user$),
         tap((response) => {
+          console.table(response);
           if (response?.token) {
+            this.error = "";
             this.router.navigate(['/app/main']);
             return true;
           } else {
@@ -42,6 +44,7 @@ export class AuthComponent {
           }
         }),
         catchError((err) => {
+          console.error("por error " + err)
           this.error = "Invalid credentials, please check your email and password";
           return of(null);
         })

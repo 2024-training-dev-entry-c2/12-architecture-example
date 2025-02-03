@@ -1,1 +1,58 @@
-<button (click)="submit()">Create User</button>
+<app-container>
+<form [formGroup]="createUserForm" (ngSubmit)="submit()">
+
+    <app-input-float label="First Name" formControlName="firstName" startIcon="fas fa-user"
+        [disabled]="disabled"></app-input-float>
+    @if(createUserForm.get('firstName')?.touched && createUserForm.get('firstName')?.invalid) {
+    <div class="error-validation">
+        @if(createUserForm.get('firstName')?.errors?.['required']){
+        <small class="login__error-message">This field is required</small>
+        }
+    </div>
+    }
+
+    <app-input-float label="Last Name" formControlName="lastName" startIcon="fas fa-user"
+        [disabled]="disabled"></app-input-float>
+    @if(createUserForm.get('lastName')?.touched && createUserForm.get('lastName')?.invalid) {
+    <div class="error-validation">
+        @if(createUserForm.get('lastName')?.errors?.['required']){
+        <small class="login__error-message">This field is required</small>
+        }
+    </div>
+    }
+
+    <app-input-float label="Email address" type="email" formControlName="email" startIcon="fas fa-envelope"
+        [disabled]="disabled"></app-input-float>
+    @if(createUserForm.get('email')?.touched && createUserForm.get('email')?.invalid) {
+    <div class="error-validation">
+        @if(createUserForm.get('email')?.errors?.['required']){
+        <small class="login__error-message">This field is required</small>
+        }
+        @if(createUserForm.get('email')?.errors?.['email']){
+        <small class="login__error-message">This field must be a valid email</small>
+        }
+    </div>
+    }
+    <app-input-float label="Password" type="password" formControlName="password" startIcon="fas fa-lock"
+        [disabled]="disabled"></app-input-float>
+    @if(createUserForm.get('password')?.touched && createUserForm.get('password')?.invalid) {
+    <div class="error-validation">
+        @if(createUserForm.get('password')?.errors?.['required']){
+        <small class="login__error-message">This field is required</small>
+        }
+    </div>
+    }
+
+    <app-input-float label="Role" type="text" formControlName="role" startIcon="fas fa-briefcase"
+        [disabled]="disabled"></app-input-float>
+
+    @if (error) {
+    <div class="login__error-message" role="alert">
+        {{ error }}
+    </div>
+    }
+    <div class="button-container">
+        <app-button type="submit" text="Save" icon="fas fa-save" [style]="'solid'" color="primary"></app-button>
+    </div>
+</form>
+</app-container>

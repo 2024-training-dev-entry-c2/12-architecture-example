@@ -31,22 +31,16 @@ export class MenuComponent {
 
   menuOptions2: OptionItem[] = [
     {
-      routerLink: 'customer',
+      routerLink: 'user',
       iconClass: 'fas fa-user-tie',
-      label: 'Customer',
-      activeMenu: 'customer'
+      label: 'User Admin',
+      activeMenu: 'user'
     },
     {
       routerLink: 'account',
       iconClass: 'fas fa-wallet',
       label: 'Account',
       activeMenu: 'account'
-    },
-    {
-      routerLink: 'transaction',
-      iconClass: 'fas fa-exchange-alt',
-      label: 'Transaction',
-      activeMenu: 'transaction'
     }
   ];
 

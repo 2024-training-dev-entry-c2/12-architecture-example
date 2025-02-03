@@ -1,0 +1,52 @@
+<app-container>
+    <app-button text="New User Admin" icon="fas fa-plus" [style]="'solid'" color="primary"
+        (onClick)="onCreate()"></app-button>
+
+    <app-button text="Watch User Admin" icon="fas fa-plus" [style]="'solid'" color="primary"
+        (onClick)="onCreate()"></app-button>
+
+    <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+        <app-input-float label="Identificación" formControlName="identification" startIcon="fas fa-id-card"
+            [disabled]="isActive"></app-input-float>
+        <app-input-float label="Nombre" formControlName="firstName" startIcon="fas fa-user"
+            [disabled]="isActive"></app-input-float>
+        <app-input-float label="Apellido" formControlName="lastName" startIcon="fas fa-user"
+            [disabled]="isActive"></app-input-float>
+        <app-input-float label="Correo electrónico" type="email" formControlName="email" startIcon="fas fa-envelope"
+            [disabled]="isActive"></app-input-float>
+        <app-input-float label="Teléfono" formControlName="phone" startIcon="fas fa-phone"
+            [disabled]="isActive"></app-input-float>
+        <app-input-float label="Dirección" formControlName="address" startIcon="fas fa-map-marker-alt"
+            [disabled]="isActive"></app-input-float>
+
+        <app-input label="Fecha de nacimiento" type="date" formControlName="birthDate" startIcon="fas fa-calendar-alt"
+            [disabled]="isActive"></app-input>
+
+
+
+        <div class="button-container">
+            <app-button type="submit" text="Guardar" icon="fas fa-save" [style]="'solid'" color="primary"></app-button>
+            <app-button text="Cancelar" [style]="'outlined'" (onClick)="onClose()"> </app-button>
+        </div>
+    </form>
+
+    
+    <app-notification />
+
+
+    <app-confirmation-dialog [isOpen]="isDialogOpen" [message]="'Are you sure you want to continue?'"
+        (confirm)="onConfirm()" (cancel)="onCancel()">
+    </app-confirmation-dialog>
+
+    <app-dynamic-table [data]="data" [columns]="columns" (infoEvent)="onInformation($event)"
+        (editEvent)="onEdit($event)" (deleteEvent)="onDelete($event)" [showDeleteButton]="false">
+    </app-dynamic-table>
+
+
+    <app-dialog [visible]="showDialog" title="User Admin Data Maintenance" (close)="showDialog = false"
+        [width]="'500px'">
+        <lib-dialog-uaser-admin (closeDialog)="showDialog = false"></lib-dialog-uaser-admin>
+    </app-dialog>
+
+
+</app-container>

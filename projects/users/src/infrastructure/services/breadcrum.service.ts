@@ -29,8 +29,8 @@ export class BreadcrumbService {
             breadcrumbText = 'Application > Customer';
         } else if (url.includes('/account')) {
             breadcrumbText = 'Application > Account';
-        } else if (url.includes('/transaction')) {
-            breadcrumbText = 'Application > Transaction';
+        } else if (url.includes('/user')) {
+            breadcrumbText = 'Application > User Admin';
         }
 
         this.breadcrumbSubject.next(breadcrumbText);

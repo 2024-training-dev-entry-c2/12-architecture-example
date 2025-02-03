@@ -1,7 +1,8 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../../services/auth.service';
+import { AuthSharedService } from 'shared';
 
 @Component({
   selector: 'lib-user-profile-dropdown',
@@ -10,10 +11,12 @@ import { AuthService } from '../../../../../services/auth.service';
   styleUrl: './user-profile-dropdown.component.scss'
 })
 export class UserProfileDropdownComponent implements OnInit, OnDestroy {
+
+  private readonly authService = inject(AuthSharedService);
   userEmail: string | null = null;
   private userEmailSubscription: Subscription | undefined;
 
-  constructor(private authService: AuthService,
+  constructor(//private authService: AuthService,
     private router: Router) {
   }
 

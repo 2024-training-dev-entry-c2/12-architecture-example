@@ -1,9 +1,9 @@
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
-import { CreateUserUsecase } from '../../../../application/users/create-user.usecase';
-import { Observable, of, switchMap, tap } from 'rxjs';
-import { IUser } from '../../../../domain/model/users.model';
+import { catchError, Observable, of, Subject, switchMap, takeUntil, tap } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { CreateUserFormComponent } from '../../forms/create-user-form/create-user-form.component';
+import { CreateUserUsecase } from '../../../../application/users/create-user-admin.usecase';
+import { IUserSystem } from '../../../../domain/model/user-system.model';
 
 @Component({
   selector: 'lib-create-users',
@@ -12,7 +12,8 @@ import { CreateUserFormComponent } from '../../forms/create-user-form/create-use
 })
 export class CreateUsersComponent implements OnInit, OnDestroy {
   private readonly _useCase = inject(CreateUserUsecase);
-  public user$: Observable<IUser>;
+  public user$: Observable<IUserSystem>;
+  private destroy$ = new Subject<void>();
 
   ngOnInit(): void {
     this._useCase.initSubscriptions();
@@ -23,8 +24,22 @@ export class CreateUsersComponent implements OnInit, OnDestroy {
     this._useCase.destroySubscriptions();
   }
 
-  createUser(user: IUser): void {
-    console.log("Llega el evento")
-    this._useCase.execute(user);
+  createUser(userAuth: IUserSystem): void {
+    console.log("llega con los datos");
+    console.table(userAuth);
+    of(this._useCase.execute(userAuth))
+      .pipe(
+        takeUntil(this.destroy$),
+        switchMap(() => this.user$),
+        tap((response) => {
+          console.log(response);
+
+        }),
+        catchError((err) => {
+          //this._errorService.handleError("Invalid credentials, please check your email and password")
+          return of(null);
+        })
+      )
+      .subscribe();
   }
 }

@@ -13,6 +13,7 @@ export class UsersState {
 
   //#region Subjects
   private readonly user$ = new BehaviorSubject<IUser>(null);
+  private readonly userAdmin$ = new BehaviorSubject<IUserSystem>(null);
   private readonly listUsersSytems$ = new BehaviorSubject<IUserSystem>(null);
   private readonly authenticateOut$ = new BehaviorSubject<IAuthenticateOut>(null);
   //#endregion
@@ -20,6 +21,7 @@ export class UsersState {
   store() {
     return {
       user: this._factory.state(this.user$),
+      userAdmin: this._factory.state(this.userAdmin$),
       listUsersSytems: this._factory.state(this.listUsersSytems$),
       authenticateOut: this._factory.state(this.authenticateOut$)
     }
