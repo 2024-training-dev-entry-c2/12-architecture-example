@@ -7,7 +7,6 @@ import { MenuFormComponent } from "../../forms/menu-form/menu-form.component";
 
 @Component({
   selector: 'lib-menu-header',
-  standalone: true,
   imports: [HeaderComponent, CommonModule, FormsModule, MenuFormComponent],
   templateUrl: './menu-header.component.html',
   styleUrl: './menu-header.component.scss'
