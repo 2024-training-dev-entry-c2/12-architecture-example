@@ -1,5 +1,5 @@
-import { Component, viewChild, input, output } from '@angular/core';
-import { AsyncPipe, DatePipe, NgFor } from '@angular/common';
+import { DatePipe, NgFor } from '@angular/common';
+import { Component, input, output, viewChild } from '@angular/core';
 import { ModalComponent, SelectOption } from 'shared';
 import { IOrder, IOrderForm } from '../../../../domain/models/order.model';
 import { OrderFormComponent } from '../../forms/order-form/order-form.component';
