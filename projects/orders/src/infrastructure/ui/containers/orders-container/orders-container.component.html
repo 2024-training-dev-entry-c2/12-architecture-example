@@ -1,0 +1,8 @@
+<lib-orders
+    [orders]="orders$ | async"
+    [currentOrder]="currentOrder$ | async"
+    (onCreateOrder)="handleCreateOrders($event)"
+    (onSelectOrder)="handleSelectOrder($event)"
+    (onDeleteOrder)="handleDeleteOrder($event)"
+>
+</lib-orders>>

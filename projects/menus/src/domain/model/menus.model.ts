@@ -1,4 +1,4 @@
-import { IDish } from "../../../../dishes/src/domain/model/dishes.model";
+import { IDish } from 'dishes';
 
 
 export interface IMenu {
