@@ -1,0 +1,31 @@
+<form [formGroup]="form" class="order-form" (ngSubmit)="submit()" role="form" aria-labelledby="formTitle" novalidate>
+  <h2 id="formTitle" class="order-form__title" tabindex="0">Crear Orden</h2>
+
+  <div class="order-form__field">
+    <label class="order-form__label" for="customerId">
+      <span class="order-form__text">Cliente <span class="order-form__required" aria-hidden="true">*</span></span>
+      <lib-select [options]="customerOptions()" [placeholder]="'Selecciona un cliente'"
+        (selectionChange)="onCustomerSelected($event)" formControlName="customerId">
+      </lib-select>
+      @if (formErrors.customerId.required) {
+      <span class="order-form__error" role="alert">El cliente es requerido</span>
+      }
+    </label>
+  </div>
+
+  <div class="order-form__field">
+    <label class="order-form__label" for="dishesIds">
+      <span class="order-form__text">Platos <span class="order-form__required" aria-hidden="true">*</span></span>
+      <lib-select [options]="dishOptions()" [placeholder]="'Selecciona los platos'"
+        (selectionChange)="onDishesSelected($event)" formControlName="dishesIds">
+      </lib-select>
+      @if (formErrors.dishesIds.required) {
+      <span class="order-form__error" role="alert">Los platos son requeridos</span>
+      }
+    </label>
+  </div>
+
+  <button type="submit" class="order-form__button" [disabled]="!form.valid" aria-label="Crear nueva orden">
+    Crear
+  </button>
+</form>

@@ -1,0 +1,66 @@
+@use "../../../../../../shared/src/insfrastructure/ui/styles/variables.scss" as var;
+@use "../../../../../../shared/src/insfrastructure/ui/styles/variables.scss" as var;
+@use "../../../../../../shared/src/insfrastructure/ui/styles/mixins.scss";
+@use "sass:color";
+
+.order-form {
+  @include form-container;
+
+  &__title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+
+  &__field {
+    @include flex-column;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  &__label {
+    @include flex-column;
+    gap: 0.5rem;
+  }
+
+  &__text {
+    font-weight: 500;
+    color: var.$text-primary;
+  }
+
+  &__required {
+    color: var.$danger-color;
+  }
+
+  &__error {
+    color: var.$danger-color;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+
+  &__button {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background-color: var.$primary-color;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: color.adjust(var.$primary-color, $lightness: -10%);
+    }
+
+    &:disabled {
+      background-color: var.$border-color;
+      cursor: not-allowed;
+    }
+
+    &:focus-visible {
+      outline: 2px solid var.$primary-color;
+      outline-offset: 2px;
+    }
+  }
+}
