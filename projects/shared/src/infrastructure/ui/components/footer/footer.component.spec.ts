@@ -20,4 +20,13 @@ describe('FooterComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+
+  it('should display the cont', () => {
+    const compiled = fixture.nativeElement;
+    const footerDescriptionElement = compiled.querySelector('h3');
+
+    expect(footerDescriptionElement.textContent).toContain('Creado con amor por CARLOS CUADRADO');
+  });
+
 });
