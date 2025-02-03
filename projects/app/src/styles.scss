@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Nunito", serif;
+}
+
+body {
+    background-color: hsla(119, 77%, 83%, 1);
+    background-image: radial-gradient(circle at -12% -12%, hsla(196, 76%, 61%, 1) 7%, transparent 53.664936346483934%), radial-gradient(circle at -3% 50%, hsla(130, 91%, 91%, 1) 16%, transparent 53%), radial-gradient(circle at -5% 31%, hsla(159, 97%, 75%, 1) 8%, transparent 74%), radial-gradient(circle at -4% 44%, hsla(95, 93%, 64%, 1) 6%, transparent 68%), radial-gradient(circle at -11% -5%, hsla(89.69696969696969, 69%, 71%, 1) 2%, transparent 85%);
+    background-blend-mode: normal, normal, normal, normal, normal;
+}

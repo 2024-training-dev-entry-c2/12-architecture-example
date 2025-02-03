@@ -1,0 +1,9 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
+
+.modal-input {
+    @include mixins.border(1px solid rgba(0, 0, 0, 0.361), 5px);
+    margin-top: 10px;
+    padding: 5px;
+    width: 360px;
+}

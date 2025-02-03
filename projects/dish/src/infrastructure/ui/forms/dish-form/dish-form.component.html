@@ -1,0 +1,21 @@
+<p class="initial-message" *ngIf="!isEditForm">Ingresa los datos del nuevo plato</p>
+<p class="initial-message" *ngIf="isEditForm">Edita los datos del plato</p>
+
+<form class="dish-form" [formGroup]="form" aria-label="form" aria-roledescription="formulario">
+    <label aria-roledescription="nombre del plato" for="dishName">Nombre del Plato</label>
+    <input aria-roledescription="nombre del plato" class="dish-form__input" id="dishName" formControlName="dishName"
+        [placeholder]="isEditForm ? currentDishName : 'Nombre del plato'" />
+
+    <label aria-roledescription="precio" for="price">Precio</label>
+    <input aria-roledescription="precio" class="dish-form__input" id="price" formControlName="price"
+        [placeholder]="isEditForm ? currentPrice : 'precio' " type="number" />
+
+    <label aria-roledescription="Descripcion" for="description">Descripcion</label>
+    <input aria-roledescription="Descripcion" class="dish-form__input" id="description" formControlName="description"
+        [placeholder]="isEditForm ? currentDescription : 'description'" type="text" />
+
+    <label for="menuId">Menu</label>
+    <select id="menuId" formControlName="idMenu">
+        <option *ngFor="let menu of menus" [value]="menu.idMenu">{{ menu.menuName }}</option>
+    </select>
+</form>

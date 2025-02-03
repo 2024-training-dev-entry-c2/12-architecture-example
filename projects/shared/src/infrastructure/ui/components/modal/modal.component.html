@@ -1,0 +1,15 @@
+<div class="modal" role="dialog" aria-roledescription="dialog modal">
+    <div class="modal__header">
+        {{ title }}
+        <span class="modal__close" (click)="close()">✕</span>
+    </div>
+    <hr>
+    <div role="document" aria-roledescription="contenido del modal" class="modal__content">
+        <ng-content></ng-content>
+    </div>
+    <div role="document" aria-roledescription="botones del modal" class="modal__footer">
+        <button class="modal__button" (click)="submit()">{{ buttonName }}</button>
+    </div>
+</div>
+
+<div aria-roledescription="escenario del modal" class="modal-backdrop" (click)="close()"></div>

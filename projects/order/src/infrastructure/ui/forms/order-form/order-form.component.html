@@ -1,0 +1,11 @@
+<p class="initial-message" *ngIf="!isEditForm">Ingresa los detalles de la nueva orden</p>
+<p class="initial-message" *ngIf="isEditForm">Ingrese los nuevos detalles de la orden</p>
+
+<form class="order-form" [formGroup]="form" aria-label="form" aria-roledescription="formulario">
+    <label aria-roledescription="nombre del cliente" for="clientName">Nombre del cliente</label>
+    <input aria-roledescription="nombre del cliente" class="order-form__input" formControlName="clientName"
+        [placeholder]="isEditForm ? currentClientName : 'Nombre del cliente'" />
+    <label aria-roledescription="precio total" for="totalAmount">Precio total</label>
+    <input aria-roledescription="precio total" class="order-form__input" formControlName="totalAmount" type="number"
+        [placeholder]="isEditForm ? currentTotalAmount : 'Precio total'" />
+</form>

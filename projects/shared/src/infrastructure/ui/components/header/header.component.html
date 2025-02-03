@@ -1,0 +1,17 @@
+<header class="header" role="banner" aria-roledescription="cabecera">
+    <h2>{{ title }}</h2>
+    <button role="button" aria-roledescription="boton de accion" class="header__button" (click)="openModal()">
+        <i class="header__icon" aria-hidden="true">
+            <svg>
+                <use [attr.xlink:href]="iconPath"></use>
+            </svg>
+        </i>
+        {{ buttonText }}
+    </button>
+</header>
+<hr>
+
+<lib-modal *ngIf="isModalOpen" [title]="modalTitle" [buttonName]="'Confirmar'" (submitEvent)="confirmAction()"
+    (closeEvent)="closeModal()">
+    <ng-content></ng-content>
+</lib-modal>
