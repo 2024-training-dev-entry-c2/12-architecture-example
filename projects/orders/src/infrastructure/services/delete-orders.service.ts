@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Iorder } from '../../domain/model/orders.model';
+import { environment } from 'shared';
 
 @Injectable({ providedIn: 'root' })
 export class DeleteOrdersService {
@@ -9,7 +10,7 @@ export class DeleteOrdersService {
 
   execute(id: number): Observable<Iorder> {
     return this._http.delete<Iorder>(
-      'http://localhost:8080/api/orders/borrar/' + id
+      `${environment.URL_ORDERS}/borrar/${id}`
     );
   }
 }

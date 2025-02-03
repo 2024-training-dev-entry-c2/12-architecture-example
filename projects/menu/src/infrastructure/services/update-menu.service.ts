@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Imenu } from '../../domain/model/menu.model';
 import { Observable } from 'rxjs';
+import { environment } from 'shared';
 
 @Injectable({ providedIn: 'root' })
 export class UpdateMenuService {
@@ -9,7 +10,7 @@ export class UpdateMenuService {
 
   execute(menu: Imenu): Observable<Imenu> {
     return this._http.put<Imenu>(
-      'http://localhost:8080/api/menu/edit/' + menu.id,
+      `${environment.URL_MENU}/edit/${menu}`,
       menu
     );
   }

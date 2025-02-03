@@ -8,6 +8,6 @@ import { environment } from 'shared';
 export class GetClientService {
   private readonly _http = inject(HttpClient);
   execute(): Observable<Iclient[]> {
-    return this._http.get<Iclient[]>(environment.BASE_URL);
+    return this._http.get<Iclient[]>(`${environment.URL_CLIENTS}all`);
   }
 }

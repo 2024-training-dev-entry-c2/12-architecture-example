@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Idish } from '../../domain/model/dish.model';
+import { environment } from 'shared';
 
 @Injectable({ providedIn: 'root' })
 export class DeleteDishService {
@@ -9,7 +10,7 @@ export class DeleteDishService {
 
   execute(id: number): Observable<Idish> {
     return this._http.delete<Idish>(
-      'http://localhost:8080/api/dish/borrar/' + id
+      `${environment.URL_DISH}/borrar/${id}`
     );
   }
 }
