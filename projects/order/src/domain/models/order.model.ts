@@ -4,12 +4,13 @@ import { IDish } from './dish.model';
 export interface IOrder {
   orderId: number;
   totalOrderPrice: number;
-  date: Date;
+  date: string;
   customer: ICustomer;
   dishes: IDish[];
 }
 
 export interface IOrderForm {
+  date: string;
   customerId: number;
-  dishesIds: number[];
+  dishIds: number[];
 }
