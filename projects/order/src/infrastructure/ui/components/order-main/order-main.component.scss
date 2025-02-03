@@ -15,7 +15,7 @@
     }
 
     &__table th:nth-child(2) {
-        width: 30%;
+        width: 10%;
     }
 
     &__table th:nth-child(3) {
@@ -23,7 +23,7 @@
     }
 
     &__table th:nth-child(4) {
-        width: 30%;
+        width: 50%;
     }
 
     &__table th:nth-child(5) {
@@ -134,6 +134,7 @@
     transition: max-height 0.2s ease-out;
     overflow-y: scroll;
     height: 200px;
+    text-align: center;
 
     &__list {
         list-style: none;
@@ -141,6 +142,7 @@
         li {
             margin-bottom: 5px;
             display: flex;
+            justify-content: space-evenly;
             gap: 5px;
 
             svg {
@@ -162,8 +164,16 @@
 
     &__button {
         padding: 5px;
-        border-radius: 10px;
+        border-radius: 5px;
+        border: 1px solid rgba(128, 128, 128, 0.384);
         height: 30px;
+        cursor: pointer;
+        transition: 0.5s transform;
+
+        &:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
 
         &--edit {
             background-color: variables.$blue;

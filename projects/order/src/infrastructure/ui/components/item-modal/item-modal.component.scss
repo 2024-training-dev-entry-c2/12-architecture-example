@@ -1,3 +1,6 @@
+@use '../../../../../../shared/src/infrastructure/ui/styles/variables.scss' as variables;
+@use '../../../../../../shared/src/infrastructure/ui/styles/mixins.scss' as mixins;
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -15,14 +18,69 @@
     padding: 20px;
     border-radius: 8px;
     width: 300px;
-}
-
-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+    flex-direction: column;
+    gap: 5px;
 
-button {
-    cursor: pointer;
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__title {
+        font-size: 22px;
+    }
+
+    &__close {
+        cursor: pointer;
+        padding: 5px;
+        font-weight: 800;
+        background-color: transparent;
+        transition: 0.5s transform;
+        border: none;
+
+        &:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+
+    }
+
+    &__form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-bottom: 10px;
+        width: 100%;
+
+        input {
+            padding: 5px;
+            border: 1px solid rgba(128, 128, 128, 0.384);
+            border-radius: 5px;
+        }
+    }
+
+    &__button {
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    &__action {
+        padding: 5px;
+        border-radius: 10px;
+        height: 35px;
+        width: 90px;
+        border: 1px solid rgba(128, 128, 128, 0.384);
+        background-color: variables.$green;
+        color: variables.$black;
+        text-align: center;
+        cursor: pointer;
+        transition: 0.5s transform;
+
+        &:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+        }
+    }
 }

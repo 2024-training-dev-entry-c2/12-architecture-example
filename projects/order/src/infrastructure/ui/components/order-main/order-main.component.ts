@@ -126,6 +126,7 @@ export class OrderMainComponent {
 
   deleteOrderItem(orderId: number, orderItemId: number): void {
     this.deleteOrderItemUseCase.deleteOrderItem(orderId, orderItemId);
+    this.loadOrders();
     console.log('Order item deleted' + orderItemId);
   }
 }
