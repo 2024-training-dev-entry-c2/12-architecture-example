@@ -1,10 +1,7 @@
 import { Component, inject, input, output } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { SelectComponent, SelectOption } from 'shared';
 import { IOrderForm } from '../../../../domain/models/order.model';
-import {
-  SelectComponent,
-  SelectOption,
-} from '../../../../../../shared/src/public-api';
 
 @Component({
   selector: 'lib-order-form',
@@ -22,32 +19,23 @@ export class OrderFormComponent {
 
   public form = this._fb.group({
     customerId: [null as number | null, [Validators.required]],
-    dishesIds: [[] as number[], [Validators.required]],
+    dishIds: [[] as number[], [Validators.required]],
+    date: [new Date().toISOString()],
   });
-
-  get formErrors() {
-    return {
-      customerId: {
-        required: this.form.get('customerId')?.errors?.['required'],
-      },
-      dishesIds: {
-        required: this.form.get('dishesIds')?.errors?.['required'],
-      },
-    };
-  }
-  submit() {
-    if (!this.form.valid) return;
-    this.onSubmit.emit(this.form.getRawValue());
-  }
 
   onCustomerSelected(customerId: number) {
     this.form.patchValue({ customerId });
   }
 
   onDishesSelected(dishId: number) {
-    const currentDishes = this.form.get('dishesIds')?.value || [];
+    const currentDishes = this.form.get('dishIds')?.value || [];
     this.form.patchValue({
-      dishesIds: [...currentDishes, dishId],
+      dishIds: [...currentDishes, dishId],
     });
+  }
+
+  submit() {
+    if (!this.form.valid) return;
+    this.onSubmit.emit(this.form.getRawValue());
   }
 }

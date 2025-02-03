@@ -1,0 +1,6 @@
+<lib-list-orders 
+  [orders]="orders$ | async" 
+  [customerOptions]="customerOptions$ | async"
+  [dishOptions]="dishOptions$ | async"
+  (onCreateOrder)="handleCreateOrder($event)">
+</lib-list-orders>

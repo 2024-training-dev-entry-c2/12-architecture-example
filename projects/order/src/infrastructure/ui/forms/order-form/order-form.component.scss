@@ -1,10 +1,9 @@
 @use "../../../../../../shared/src/insfrastructure/ui/styles/variables.scss" as var;
-@use "../../../../../../shared/src/insfrastructure/ui/styles/variables.scss" as var;
-@use "../../../../../../shared/src/insfrastructure/ui/styles/mixins.scss";
+@use "../../../../../../shared/src/insfrastructure/ui/styles/mixins.scss" as mix;
 @use "sass:color";
 
 .order-form {
-  @include form-container;
+  @include mix.form-container;
 
   &__title {
     font-size: 1.5rem;
@@ -13,13 +12,13 @@
   }
 
   &__field {
-    @include flex-column;
+    @include mix.flex-column;
     gap: 0.5rem;
     margin-bottom: 1rem;
   }
 
   &__label {
-    @include flex-column;
+    @include mix.flex-column;
     gap: 0.5rem;
   }
 
