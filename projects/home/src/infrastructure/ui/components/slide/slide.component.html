@@ -2,7 +2,12 @@
   <h5 class="slide__title">Platos más pedidos</h5>
   <div class="slide__container" role="figure">
     @for(imagen of images; track $index) {
-    <img class="slide__image" src="{{ imagen.src }}" alt="{{ imagen.alt }}" role="img" />
+    <img
+      class="slide__image"
+      src="{{ imagen.src }}"
+      alt="{{ imagen.alt }}"
+      role="img"
+    />
     }
   </div>
 </section>

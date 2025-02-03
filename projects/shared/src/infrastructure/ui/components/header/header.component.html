@@ -1,12 +1,28 @@
-<header class="header" role="heading" aria-label="Header de la pagina" tabindex="0">
-  <mat-icon aria-hidden="false" aria-label="Icono para abrir el sidebar" fontIcon="home"
-    class="header__icon"></mat-icon>
-
+<header
+  class="header"
+  role="heading"
+  aria-label="Header de la pagina"
+  tabindex="0"
+>
   <menu class="header__menu" aria-label="Menu principal" role="menu">
     @for (lista of listMenu; track $index) {
-    <li class="header__li" role="menuitem" tabindex="1" [routerLink]="lista.path" routerLinkActive="router-link-active"
-      aria-label="items del menu">{{ lista.name }}</li>
+    <li
+      class="header__li"
+      role="menuitem"
+      tabindex="1"
+      [routerLink]="lista.path"
+      routerLinkActive="router-link-active"
+      aria-label="items del menu"
+    >
+      {{ lista.name }}
+    </li>
     }
   </menu>
-  <button class="header__btn" aria-label="boton para registrar un usuario" role="button">Registrar usuario</button>
+  <button
+    class="header__btn"
+    aria-label="boton para registrar un usuario"
+    role="button"
+  >
+    Registrar usuario
+  </button>
 </header>

@@ -1,10 +1,10 @@
 import { Routes } from '@angular/router';
-import { LayoutComponent } from 'shared';
+import { SharedContainerComponent } from '../../../shared/src/infrastructure/ui/containers/shared-container/shared-container.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: LayoutComponent,
+    component: SharedContainerComponent,
     children: [
       {
         path: '',

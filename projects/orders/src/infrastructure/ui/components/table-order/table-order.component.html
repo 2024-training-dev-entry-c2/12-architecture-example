@@ -49,14 +49,17 @@
             >
           </td>
           <td class="orders__td">{{ order.date }}</td>
-          <td class="orders__td orders__td--actions" aria-label="boton que determina las acciones">
+          <td
+            class="orders__td orders__td--actions"
+            aria-label="boton que determina las acciones"
+          >
             <button
               class="orders__btn orders__btn--edit"
               (click)="selectOrder(order.id)"
               role="button"
               aria-label="boton para actualizar"
             >
-              <mat-icon aria-hidden="false" fontIcon="edit"></mat-icon>
+              Editar
             </button>
             <button
               class="orders__btn orders__btn--delete"
@@ -64,7 +67,7 @@
               aria-label="boton par borrar orden"
               role="button"
             >
-              <mat-icon aria-hidden="false" fontIcon="delete"></mat-icon>
+              Borrar
             </button>
           </td>
         </tr>

@@ -42,6 +42,8 @@
     padding: 1rem;
     height: 7rem;
     border: 1px solid variables.$primary-color;
+    overflow: auto;
+    justify-content: center;
 
     &-title {
       @include mixins.text-style(0.875rem, 600, normal);
@@ -52,7 +54,6 @@
     }
 
     &-value {
-      font-size: 25px;
       font-weight: 500;
       color: variables.$typografy-color;
     }

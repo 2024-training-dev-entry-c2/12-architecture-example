@@ -24,14 +24,15 @@
           <td class="clients__td">{{ user.phone }}</td>
           <td class="clients__td">{{ user.address }}</td>
           <td class="clients__td">{{ user.fechaCreacion | date }}</td>
-          <td class="clients__td clients__td--actions" aria-label="Acciones de la tabla">
+          <td
+            class="clients__td clients__td--actions"
+            aria-label="Acciones de la tabla"
+          >
             <button
-
-            class="clients__btn clients__btn--delete"
-            (click)="deleteClient(user.id)"
+              class="clients__btn clients__btn--delete"
+              (click)="deleteClient(user.id)"
             >
-            <mat-icon aria-hidden="false" aria-label=" home icon" fontIcon="home"></mat-icon>
-            Borrar
+              Borrar
             </button>
             <button
               class="clients__btn clients__btn--edit"

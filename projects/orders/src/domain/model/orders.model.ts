@@ -1,5 +1,5 @@
-import { Iclient } from "clients";
-import { Idish } from "dish";
+import { Iclient } from 'clients';
+import { Idish } from 'dish';
 
 export interface Iorder {
   id: number;

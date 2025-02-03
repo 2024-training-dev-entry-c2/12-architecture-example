@@ -6,10 +6,18 @@
     <lib-sidebar></lib-sidebar>
   </div>
   <div class="layout__main">
-    
     <router-outlet></router-outlet>
   </div>
   <div class="layout__aside">
-    <lib-box></lib-box>
+    <lib-box
+      [clientesBox]="clientes()"
+      [platosBox]="dihes()"
+      [menuBox]="menus()"
+      [pedidosBox]="orders()"
+      [menuByDishBox]="menusByDish()"
+      [favoriteClientsBox]="favoriteClients()"
+      [mejoresPlatosBox]="mejoresPlatos()"
+      [porcentajeBox]="porcentaje()"
+    ></lib-box>
   </div>
 </section>

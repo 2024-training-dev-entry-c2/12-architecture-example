@@ -48,7 +48,7 @@
   }
 
   &__title {
-    color: white;
+    color: rgb(16, 16, 16);
     margin-bottom: 2rem;
     font-size: 1.5rem;
   }
@@ -107,7 +107,7 @@
   }
 
   &__input {
-    width: 100%;
+    width: 95%;
     padding: 0.75rem;
     background-color: #2d2d2d;
     border: 1px solid #3d3d3d;
@@ -126,7 +126,7 @@
   }
 
   &__submit {
-    width: 100%;
+    width: 40%;
     padding: 0.75rem;
     background-color: #000;
     color: white;
