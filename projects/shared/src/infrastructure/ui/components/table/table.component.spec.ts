@@ -216,4 +216,17 @@ describe('TableComponent', () => {
     expect(component.isOpen).toBeFalse();
     expect(component.openModal.emit).toHaveBeenCalledWith(false);
   });
+
+  it('should render the openConfirmation', () => {
+    const fixture = TestBed.createComponent(TableComponent);
+    const component = fixture.componentInstance;
+
+    fixture.componentRef.setInput('columns', [{ header: 'Name', field: 'name', type: 'text' }, { header: 'Cliente', field: 'clientName', type: 'text' }]);
+    fixture.componentRef.setInput('data', [{ id: 1, name: 'name', clientName: 'clientName' }]);
+    
+    component.openConfirmation(1);
+
+    expect(component.selectedId).toBe(1);
+    expect(component.isOpen).toBeTrue();
+  });
 });
