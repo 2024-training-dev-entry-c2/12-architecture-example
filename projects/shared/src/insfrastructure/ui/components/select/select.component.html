@@ -1,15 +1,14 @@
-<div class="select" role="combobox" aria-expanded="false" aria-haspopup="listbox">
+<div class="select" role="combobox" [attr.aria-expanded]="isOpen" aria-haspopup="listbox">
     <button class="select__button" type="button" [attr.aria-label]="placeholder()" [attr.aria-expanded]="isOpen"
-        (click)="toggleDropdown()">
+        (click)="toggleDropdown()" (keydown.space)="toggleDropdown()" (keydown.enter)="toggleDropdown()">
         {{ selectedLabel || placeholder() }}
     </button>
-    <ul class="select__dropdown" role="listbox" [attr.aria-activedescendant]="activeOptionId"
-        [class.select__dropdown--open]="isOpen">
+    <ul class="select__dropdown" role="listbox" [class.select__dropdown--open]="isOpen">
         @for (option of options(); track option.value) {
         <li class="select__option" role="option" [id]="'option-' + option.value"
             [class.select__option--selected]="option.label === selectedLabel"
             [attr.aria-selected]="option.label === selectedLabel" (click)="onSelect(option)"
-            (keydown.enter)="onSelect(option)">
+            (keydown.enter)="onSelect(option)" (keydown.space)="onSelect(option)">
             {{ option.label }}
         </li>
         }
