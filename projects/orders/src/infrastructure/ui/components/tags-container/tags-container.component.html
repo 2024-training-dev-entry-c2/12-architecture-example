@@ -1,0 +1,10 @@
+<div class="label__container" id="selected-tags" aria-live="polite">
+    @for (tag of selectedTags(); track $index) {
+    <span class="label__tags">
+        {{ tag.label }}
+        <button type="button" class="label__button" (click)="removeTag(tag.value)"
+            [attr.aria-label]="'Eliminar etiqueta ' + tag.label">×</button>
+    </span>
+    }
+    <h3 class="label__price">Precio Total: {{ totalPrice() | currency:'USD':'symbol':'1.2-2' }}</h3>
+</div>

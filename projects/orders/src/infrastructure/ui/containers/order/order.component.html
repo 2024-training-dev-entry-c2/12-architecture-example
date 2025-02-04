@@ -1,0 +1,21 @@
+<lib-animation-wrapper>
+    <lib-table 
+    [title]="'Órdenes'" 
+    [data]="orders$ | async" 
+    [columns]="columns" 
+    (openModal)="openModal($event)" 
+    (update)="updateOrderById($event)" 
+    (delete)="deleteOrderById($event)">
+</lib-table>
+
+    <lib-modal [open]="isModalOpen$ | async" (close)="openModal($event)">
+        <lib-order-form 
+        [message]="message$ | async"
+        [order]="(selectedOrder$ | async)" 
+        [isOpen$]="isModalOpen$"
+        [clients$]="clients$"
+        [dishes$]="dishes$"	
+        (onSubmit)="submit($event)" 
+        ></lib-order-form>
+    </lib-modal>
+</lib-animation-wrapper>

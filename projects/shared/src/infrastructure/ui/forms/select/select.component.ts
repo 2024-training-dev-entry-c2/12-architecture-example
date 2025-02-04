@@ -16,8 +16,8 @@ import { IOptions } from '../../../../public-api';
   ]
 })
 export class SelectComponent implements ControlValueAccessor {
-  private onChange: (value: any) => void = () => {};
-  private onTouched: () => void = () => {};
+  private onChange: (value: any) => void = () => { };
+  private onTouched: () => void = () => { };
   public span = input<string>();
   public formControlName = input.required<string>();
   public formGroup = input.required<FormGroup>();
@@ -25,8 +25,9 @@ export class SelectComponent implements ControlValueAccessor {
   public options = input<IOptions[]>();
 
   writeValue(obj: any): void {
-    if (obj) {
-      this.formGroup().get(this.formControlName())?.setValue(obj, { emitEvent: false });
+    const control = this.formGroup().get(this.formControlName());
+    if (control && control.value !== obj) {
+      control.setValue(obj, { emitEvent: false });
     }
   }
 

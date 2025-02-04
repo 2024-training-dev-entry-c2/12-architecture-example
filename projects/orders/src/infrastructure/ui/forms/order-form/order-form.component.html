@@ -1,0 +1,26 @@
+<form aria-label="Form" [formGroup]="form" class="form" (ngSubmit)="submit()" aria-labelledby="form-title">
+
+    <h3 id="form-title" class="form__title">{{ form.getRawValue().id ? 'Actualizar' : 'Crear'}}</h3>
+    <div class="form__group">
+        @for (control of controls; track $index) {
+        @if (control.controlName === 'dishIds') {
+        <lib-select [formControlName]="control.controlName" [formGroup]="form" [span]="control.text"
+            [options]="control.options" (change)="addTag(handleSelectChange($event))">
+        </lib-select>
+        <lib-tags-container [selectedTags]="selectedTags" [totalPrice]="totalPrice"
+            (removeTagEvent)="removeTag($event)">
+        </lib-tags-container>
+        } @else {
+        <lib-select [formControlName]="control.controlName" [formGroup]="form" [span]="control.text"
+            [options]="control.options">
+        </lib-select>
+        }
+
+        }
+
+
+
+    </div>
+    <h3 id="form-message" class="form__message">{{ message() }}</h3>
+    <button class="form__button" aria-label="Submit">{{ form.getRawValue().id ? 'Actualizar' : 'Crear'}}</button>
+</form>
