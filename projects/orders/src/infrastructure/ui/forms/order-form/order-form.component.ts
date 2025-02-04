@@ -30,14 +30,30 @@ export class OrderFormComponent implements OnInit {
   @Input()
   set order(value: IOrder | null) {
     if (value) {
-      this.form.patchValue(value, { emitEvent: false });
-      this.initializeTags(value.dishes);
+      this.form.patchValue({
+        id: value.id ?? null,
+        clientId: value.clientId ?? null,
+        dishIds: value.dishes ? value.dishes.map(dish => dish.id) : []
+      }, { emitEvent: false });
+
+      this.selectedTags = [];
+      value.dishes?.forEach(dish => {
+        const existingTag = this.selectedTags.find(tag => tag.value === dish.id);
+        if (existingTag) {
+          existingTag.quantity += 1;
+        } else {
+          this.selectedTags.push({ value: dish.id, label: dish.name, quantity: 1 });
+        }
+      });
+
+      this.updateFormValue();
     } else {
       this.form.reset({}, { emitEvent: false });
       this.selectedTags = [];
       this.totalPrice = 0;
     }
   }
+
 
   public form: FormGroup = this._fb.group({
     id: [null],
@@ -130,8 +146,6 @@ export class OrderFormComponent implements OnInit {
   }
 
 
-
-
   private updateClientOptions(): void {
     const clientControl = this.controls.find(control => control.controlName === 'clientId');
     if (clientControl) {
@@ -167,9 +181,7 @@ export class OrderFormComponent implements OnInit {
 
     const requestBody = this.form.getRawValue();
 
-    if (requestBody.id === null) {
-      delete requestBody.id;
-    }
+    delete requestBody.id;
 
     requestBody.clientId = Number(requestBody.clientId);
 

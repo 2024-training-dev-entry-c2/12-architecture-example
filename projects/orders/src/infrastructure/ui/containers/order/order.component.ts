@@ -82,7 +82,9 @@ export class OrderComponent {
   
     public updateOrderById(orderId: number): void {
       this._useCaseUpdate.selectOrder(orderId);
+      this._useCaseModal.execute(true);
     }
+    
   
     public deleteOrderById(orderId: number): void {
       this._useCaseDelete.execute(orderId);

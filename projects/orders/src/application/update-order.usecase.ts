@@ -36,7 +36,7 @@ export class UpdateOrderUseCase {
             this._service.execute(order.id, order)
                 .pipe(
                     tap(result => {
-                        this._state.orders.message.set('Menú actualizado con éxito');
+                        this._state.orders.message.set('Orden actualizada con éxito');
                         const currentOrder = this._state.orders.showOrders.snapshot();
                         const updatedOrders = currentOrder.map(d => d.id === result.id ? result : d);
                         this._state.orders.showOrders.set(updatedOrders);
