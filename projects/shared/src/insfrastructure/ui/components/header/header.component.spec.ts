@@ -1,5 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { RouterLink } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
@@ -8,7 +10,8 @@ describe('HeaderComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HeaderComponent],
+      imports: [HeaderComponent, RouterLink, RouterTestingModule],
+      declarations: [],
     }).compileComponents();
 
     fixture = TestBed.createComponent(HeaderComponent);
@@ -20,31 +23,58 @@ describe('HeaderComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have a header element with role="banner"', () => {
-    const headerElement = fixture.debugElement.query(By.css('header'));
+  it('should have header with correct accessibility attributes', () => {
+    const headerElement = fixture.debugElement.query(By.css('.header'));
     expect(headerElement.attributes['role']).toBe('banner');
+    expect(headerElement.attributes['aria-label']).toBe('Main Header');
   });
 
-  it('should have a nav element with role="navigation"', () => {
-    const navElement = fixture.debugElement.query(By.css('nav'));
-    expect(navElement.attributes['role']).toBe('navigation');
+  it('should render logo with correct image and text', () => {
+    const logo = fixture.debugElement.query(By.css('.header__logo'));
+    const logoImage = logo.query(By.css('.header__logo-image'));
+    const logoText = logo.query(By.css('.header__logo-text'));
+
+    expect(logoImage.attributes['alt']).toBe('Mi Dulce Abuela muffin logo');
+    expect(logoText.nativeElement.textContent.trim()).toBe('Mi Dulce Abuela');
   });
 
-  it('should have buttons with appropriate aria-labels', () => {
-    const newOrderButton = fixture.debugElement.query(
-      By.css('.header__button--new-order')
+  it('should render navigation menu with correct items', () => {
+    const menuItems = fixture.debugElement.queryAll(
+      By.css('.header__dropdown-link')
     );
-    const addClientButton = fixture.debugElement.query(
-      By.css('.header__button--add-client')
-    );
-    expect(newOrderButton.attributes['aria-label']).toBe('Nueva Orden');
-    expect(addClientButton.attributes['aria-label']).toBe('Añadir Cliente');
-  });
+    const expectedTexts = ['Clientes', 'Menús', 'Platos', 'Órdenes'];
+    const expectedLinks = ['/customers', '/menus', '/dishes', '/orders'];
 
-  it('should have icons with aria-hidden="true"', () => {
-    const icons = fixture.debugElement.queryAll(By.css('.material-icons'));
-    icons.forEach((icon) => {
-      expect(icon.attributes['aria-hidden']).toBe('true');
+    menuItems.forEach((item, index) => {
+      expect(item.nativeElement.textContent.trim()).toBe(expectedTexts[index]);
+      expect(item.attributes['routerLink']).toBe(expectedLinks[index]);
     });
+  });
+
+  it('should render action buttons with correct labels', () => {
+    const buttons = fixture.debugElement.queryAll(By.css('.header__button'));
+    const newOrderBtn = buttons.find(
+      (btn) => btn.classes['header__button--new-order']
+    );
+    const addClientBtn = buttons.find(
+      (btn) => btn.classes['header__button--add-client']
+    );
+
+    expect(newOrderBtn.attributes['aria-label']).toBe('Nueva Orden');
+    expect(addClientBtn.attributes['aria-label']).toBe('Añadir Cliente');
+  });
+
+  it('should have dropdown button with correct accessibility attributes', () => {
+    const dropdownBtn = fixture.debugElement.query(
+      By.css('.header__button--dropdown')
+    );
+    expect(dropdownBtn.attributes['aria-expanded']).toBe('false');
+    expect(dropdownBtn.attributes['aria-haspopup']).toBe('true');
+  });
+
+  it('should have navigation with correct accessibility attributes', () => {
+    const nav = fixture.debugElement.query(By.css('.header__nav'));
+    expect(nav.attributes['role']).toBe('navigation');
+    expect(nav.attributes['aria-label']).toBe('Main Navigation');
   });
 });
