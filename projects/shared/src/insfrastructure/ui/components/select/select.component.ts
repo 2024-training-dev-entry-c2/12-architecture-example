@@ -1,4 +1,11 @@
-import { Component, forwardRef, input, output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  forwardRef,
+  HostListener,
+  input,
+  output,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { SelectOption } from '../../../../domain/models/select-component.model';
 
@@ -24,6 +31,15 @@ export class SelectComponent<T> implements ControlValueAccessor {
   public value: T | null = null;
   private onChange: (value: T | null) => void = () => {};
   private onTouched: () => void = () => {};
+
+  constructor(private elementRef: ElementRef) {}
+
+  @HostListener('document:click', ['$event'])
+  onClickOutside(event: Event) {
+    if (!this.elementRef.nativeElement.contains(event.target)) {
+      this.isOpen = false;
+    }
+  }
 
   writeValue(value: T): void {
     this.value = value;
@@ -53,5 +69,22 @@ export class SelectComponent<T> implements ControlValueAccessor {
     this.onTouched();
     this.selectionChange.emit(option.value);
     this.isOpen = false;
+  }
+
+  // Add keyboard navigation
+  @HostListener('keydown.arrowdown', ['$event'])
+  onArrowDown(event: Event) {
+    event.preventDefault();
+    if (!this.isOpen) {
+      this.toggleDropdown();
+    }
+  }
+
+  @HostListener('keydown.arrowup', ['$event'])
+  onArrowUp(event: Event) {
+    event.preventDefault();
+    if (!this.isOpen) {
+      this.toggleDropdown();
+    }
   }
 }
