@@ -4,6 +4,7 @@ import { NgClass } from '@angular/common';
 
 @Component({
   selector: 'lib-modal',
+  standalone: true,
   imports: [ButtonComponent, NgClass],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.scss',
