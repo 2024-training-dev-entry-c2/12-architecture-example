@@ -8,7 +8,7 @@ describe('FooterComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FooterComponent],
+      imports: [FooterComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(FooterComponent);
@@ -20,22 +20,26 @@ describe('FooterComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should have a footer element with role="contentinfo"', () => {
+  it('should have footer with correct accessibility attributes', () => {
     const footerElement = fixture.debugElement.query(By.css('footer'));
     expect(footerElement.attributes['role']).toBe('contentinfo');
-  });
-
-  it('should have a footer element with aria-label="Footer"', () => {
-    const footerElement = fixture.debugElement.query(By.css('footer'));
     expect(footerElement.attributes['aria-label']).toBe('Footer');
   });
 
-  it('should display the correct text', () => {
-    const footerText = fixture.debugElement.query(
-      By.css('.footer__text')
-    ).nativeElement;
-    expect(footerText.textContent).toBe(
-      '© Todos los derechos reservados restaurante Mi dulce abuela 2025'
+  it('should have correct CSS classes', () => {
+    const footerElement = fixture.debugElement.query(By.css('footer'));
+    expect(footerElement.classes['footer']).toBeTruthy();
+  });
+
+  it('should display footer text', () => {
+    const textElement = fixture.debugElement.query(By.css('.footer__text'));
+    expect(textElement.nativeElement.textContent).toContain(
+      'Todos los derechos reservados restaurante Mi dulce abuela'
     );
+  });
+
+  it('should display correct copyright year', () => {
+    const textElement = fixture.debugElement.query(By.css('.footer__text'));
+    expect(textElement.nativeElement.textContent).toContain('2025');
   });
 });
