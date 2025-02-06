@@ -148,6 +148,25 @@ describe('SelectComponent', () => {
       expect(changeSpy).toHaveBeenCalledWith(mockOptions[1].value);
       expect(touchSpy).toHaveBeenCalled();
     });
+
+    it('should register onChange function', () => {
+      const mockFn = (value: any) => {};
+      component.registerOnChange(mockFn);
+      expect((component as any).onChange).toBe(mockFn);
+    });
+
+    it('should register onTouched function', () => {
+      const mockFn = () => {};
+      component.registerOnTouched(mockFn);
+      expect((component as any).onTouched).toBe(mockFn);
+    });
+
+    it('should call onTouched when dropdown is closed', () => {
+      const touchSpy = spyOn(component as any, 'onTouched');
+      component.isOpen = true;
+      component.toggleDropdown();
+      expect(touchSpy).toHaveBeenCalled();
+    });
   });
 
   describe('Accessibility', () => {
