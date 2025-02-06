@@ -1,19 +1,35 @@
-<div class="select" [class.select--open]="isOpen" role="combobox" [attr.aria-expanded]="isOpen" aria-haspopup="listbox">
-    <button type="button" class="select__button" [attr.aria-label]="placeholder()" [attr.aria-expanded]="isOpen"
-        (click)="toggleDropdown()" (keydown.space)="$event.preventDefault(); toggleDropdown()"
+<div class="select" 
+  [class.select--open]="isOpen" 
+  role="combobox" 
+  [attr.aria-expanded]="isOpen" 
+  aria-haspopup="listbox"
+  tabindex="0">
+  <button type="button" 
+        class="select__button" 
+        [attr.aria-label]="placeholder()" 
+        [attr.aria-expanded]="isOpen"
+        (click)="toggleDropdown()"
+        (keydown.space)="$event.preventDefault(); toggleDropdown()"
         (keydown.enter)="$event.preventDefault(); toggleDropdown()">
-        <span>{{ selectedLabel || placeholder() }}</span>
-        <span class="select__arrow" aria-hidden="true"></span>
+    <span>{{ selectedLabel || placeholder() }}</span>
+    <span class="select__arrow" aria-hidden="true"></span>
     </button>
 
-    <ul class="select__options" role="listbox" [class.select__options--open]="isOpen">
-        @for (option of options(); track option.value) {
-        <li class="select__option" role="option" [id]="'option-' + option.value"
-            [class.select__option--selected]="option.value === value" [attr.aria-selected]="option.value === value"
-            (click)="onSelect(option)" (keydown.enter)="$event.preventDefault(); onSelect(option)"
-            (keydown.space)="$event.preventDefault(); onSelect(option)">
+  <ul class="select__options" 
+    role="listbox" 
+    [class.select__options--open]="isOpen">
+    @for (option of options(); track option.value) {
+        <li class="select__option" 
+            role="option"
+            [id]="'option-' + option.value"
+            [class.select__option--selected]="option.value === value"
+            [attr.aria-selected]="option.value === value"
+            (click)="onSelect(option)"
+            (keydown.enter)="$event.preventDefault(); onSelect(option)"
+            (keydown.space)="$event.preventDefault(); onSelect(option)"
+            tabindex="0">
             {{ option.label }}
         </li>
-        }
-    </ul>
+    }
+  </ul>
 </div>
