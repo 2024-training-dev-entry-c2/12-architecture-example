@@ -1,42 +1,77 @@
 @use "../../styles/variables.scss" as var;
+@use "../../styles/mixins.scss" as mix;
 
 .select {
   position: relative;
   width: 100%;
 
+  &--open {
+    .select__options {
+      display: block;
+      animation: slideDown 0.2s ease;
+    }
+
+    .select__arrow {
+      transform: translateY(-50%) rotate(180deg);
+    }
+  }
+
   &__button {
+    @include mix.form-input;
     width: 100%;
-    padding: 0.5rem;
-    border: 1px solid var.$border-color;
-    background: white;
-    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     cursor: pointer;
+    padding: 0.75rem;
+    background: white;
+    position: relative;
+
+    &:hover {
+      border-color: var.$primary-border;
+    }
 
     &:focus {
-      outline: none;
       border-color: var.$accent-color;
     }
   }
 
-  &__dropdown {
+  &__arrow {
+    border: solid var.$text-primary;
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: translateY(-50%) rotate(0deg);
+    transition: transform 0.2s ease;
     position: absolute;
+    right: 1rem;
+    top: 50%;
+  }
+
+  &__options {
+    position: absolute;
+    top: 100%;
+    left: 0;
     width: 100%;
     background: white;
     border: 1px solid var.$border-color;
+    border-radius: 4px;
+    margin-top: 4px;
     display: none;
-    list-style: none;
-    padding: 0;
-    margin: 0;
     z-index: 1000;
+    max-height: 200px;
+    overflow-y: auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-    &--open {
-      display: block;
+    &:focus-within {
+      border-color: var.$accent-color;
     }
   }
 
   &__option {
-    padding: 0.5rem;
+    padding: 0.75rem;
     cursor: pointer;
+    transition: background-color 0.2s ease;
 
     &:hover {
       background: var.$primary-light;
@@ -51,5 +86,22 @@
       outline: none;
       background: var.$primary-light;
     }
+
+    &:focus-visible {
+      outline: 2px solid var.$accent-color;
+      outline-offset: -2px;
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
