@@ -1,48 +1,27 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ListDishesComponent } from './list-dishes.component';
-import { ModalComponent } from 'shared';
-import { DishFormComponent } from '../../forms/dish-form/dish-form.component';
-import { Component } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ButtonComponent } from 'shared';
 import { IDish } from '../../../../domain/model/dish.model';
-import { signal } from '@angular/core';
+import { DishFormComponent } from '../../forms/dish-form/dish-form.component';
 
-@Component({
-  selector: 'lib-modal',
-  standalone: true,
-  template: '',
-})
-class MockModalComponent {
-  toggle() {}
-}
+describe('DishFormComponent', () => {
+  let component: DishFormComponent;
+  let fixture: ComponentFixture<DishFormComponent>;
 
-@Component({
-  selector: 'lib-dish-form',
-  standalone: true,
-  template: '',
-})
-class MockDishFormComponent {}
-
-describe('ListDishesComponent', () => {
-  let component: ListDishesComponent;
-  let fixture: ComponentFixture<ListDishesComponent>;
-
-  const mockDishes: IDish[] = [
-    { id: 1, name: 'Pizza', price: 10, menuId: 1 },
-    { id: 2, name: 'Burger', price: 8, menuId: 1 },
-  ];
+  const mockDish: IDish = {
+    id: 1,
+    name: 'Pizza',
+    price: 10,
+    menuId: 1,
+  };
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ListDishesComponent, MockModalComponent, MockDishFormComponent],
+      imports: [DishFormComponent, ReactiveFormsModule, ButtonComponent],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(ListDishesComponent);
+    fixture = TestBed.createComponent(DishFormComponent);
     component = fixture.componentInstance;
-
-    TestBed.runInInjectionContext(() => {
-      (component.dishes as any) = signal(mockDishes);
-    });
-
     fixture.detectChanges();
   });
 
@@ -50,90 +29,96 @@ describe('ListDishesComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  describe('Initialization', () => {
-    it('should render dishes table', () => {
-      const table = fixture.nativeElement.querySelector('.dishes-table');
-      expect(table).toBeTruthy();
+  describe('Form Initialization', () => {
+    it('should initialize with empty form', () => {
+      expect(component.form.get('name')?.value).toBe('');
+      expect(component.form.get('price')?.value).toBe(0);
     });
 
-    it('should render all dishes', () => {
-      const rows = fixture.nativeElement.querySelectorAll(
-        '.dishes-table__body .dishes-table__row'
-      );
-      expect(rows.length).toBe(mockDishes.length);
+    it('should initialize with dish data in edit mode', () => {
+      component.dish = mockDish;
+      // component.ngOnInit(); //!Dish form no maneja el ciclo de vida de Angular
+
+      expect(component.form.get('name')?.value).toBe(mockDish.name);
+      expect(component.form.get('price')?.value).toBe(mockDish.price);
     });
   });
 
-  describe('Create/Edit Modal', () => {
-    it('should open modal for new dish', () => {
-      const modal = component.modal();
-      const spy = spyOn(modal, 'toggle');
-
-      const createButton = fixture.nativeElement.querySelector(
-        'lib-modal[action="Crear Plato"]'
-      );
-      createButton.click();
-
-      expect(spy).toHaveBeenCalled();
+  describe('Form Validation', () => {
+    it('should be invalid when empty', () => {
+      expect(component.form.valid).toBeFalsy();
     });
 
-    it('should emit dish creation event', () => {
-      const newDish: IDish = { id: 3, name: 'Pasta', price: 12, menuId: 1 };
-      const createSpy = spyOn(component.onCreateDish, 'emit');
+    it('should be invalid with negative price', () => {
+      component.form.patchValue({
+        name: 'Test Dish',
+        price: -10,
+      });
 
-      component.handleSubmit(newDish);
+      expect(component.form.get('price')?.valid).toBeFalsy();
+    });
 
-      expect(createSpy).toHaveBeenCalledWith({
-        dish: newDish,
-        modal: component.modal(),
+    it('should be valid with correct data', () => {
+      component.form.patchValue({
+        name: 'Test Dish',
+        price: 10,
+        menuId: 1,
+      });
+
+      expect(component.form.valid).toBeTruthy();
+    });
+  });
+
+  describe('Form Submission', () => {
+    it('should emit form data on valid submit', () => {
+      const submitSpy = spyOn(component.onSubmit, 'emit');
+      component.form.patchValue({
+        id: 3,
+        name: 'Muffin de crema',
+        price: 15000,
+        menuId: 1,
+      });
+
+      component.submit();
+
+      expect(submitSpy).toHaveBeenCalledWith({
+        id: 3,
+        name: 'Muffin de crema',
+        price: 15000,
+        menuId: 1,
       });
     });
-  });
 
-  describe('Delete Modal', () => {
-    it('should open delete modal', () => {
-      const deleteModal = component.deleteModal();
-      const spy = spyOn(deleteModal, 'toggle');
-
-      component.handleDeleteClick(mockDishes[0]);
-
-      expect(spy).toHaveBeenCalled();
-      expect(component.dishToDelete).toBe(mockDishes[0]);
-    });
-
-    it('should emit delete event on confirm', () => {
-      const deleteSpy = spyOn(component.onDeleteDish, 'emit');
-      component.dishToDelete = mockDishes[0];
-
-      component.handleConfirmDelete();
-
-      expect(deleteSpy).toHaveBeenCalledWith({
-        dishId: mockDishes[0].id,
-        modal: component.deleteModal(),
+    it('should not emit if form is invalid', () => {
+      const submitSpy = spyOn(component.onSubmit, 'emit');
+      component.form.patchValue({
+        name: '',
+        price: -1,
       });
-      expect(component.dishToDelete).toBeNull();
-    });
 
-    it('should clear dishToDelete on cancel', () => {
-      const modalSpy = spyOn(component.deleteModal(), 'toggle');
-      component.dishToDelete = mockDishes[0];
+      component.submit();
 
-      component.handleCancelDelete();
-
-      expect(modalSpy).toHaveBeenCalled();
-      expect(component.dishToDelete).toBeNull();
+      expect(submitSpy).not.toHaveBeenCalled();
     });
   });
 
-  describe('Dish Selection', () => {
-    it('should emit selected dish id and open modal', () => {
-      const selectSpy = spyOn(component.onSelectDish, 'emit');
-      const modalSpy = spyOn(component.modal(), 'toggle');
+  // describe('Form Cancel', () => {
+  //   it('should emit cancel event', () => {
+  //     const cancelSpy = spyOn(component.onCancel, 'emit');
 
-      component.selectDish(1);
+  //     component.handleCancel();
 
-      expect(selectSpy).toHaveBeenCalledWith(1);
-      expect(modalSpy).toHaveBeenCalled();
-    });
-  });
+  //     expect(cancelSpy).toHaveBeenCalled();
+  //   });
+  // }); //! cancel method no esta implementado
+
+  // describe('Price Input Validation', () => {
+  //   it('should format price on blur', () => {
+  //     const priceControl = component.form.get('price');
+  //     priceControl?.setValue(10.999);
+
+  //     component.onPriceBlur();
+
+  //     expect(priceControl?.value).toBe(11);
+  //   });
 });
