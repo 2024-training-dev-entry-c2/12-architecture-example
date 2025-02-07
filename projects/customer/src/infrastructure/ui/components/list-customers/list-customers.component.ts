@@ -6,6 +6,7 @@ import { ModalComponent } from 'shared';
 
 @Component({
   selector: 'lib-list-customers',
+  standalone: true,
   imports: [ModalComponent, CustomerFormComponent, NgFor],
   templateUrl: './list-customers.component.html',
   styleUrl: './list-customers.component.scss',
