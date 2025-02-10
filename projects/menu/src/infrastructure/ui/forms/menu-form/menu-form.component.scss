@@ -7,32 +7,26 @@
 
   &__title {
     font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     text-align: center;
+  }
+
+  &__label {
+    @include mix.flex-column;
+    gap: 0.5rem;
+  }
+
+  &__text {
+    font-weight: 500;
     color: var.$text-primary;
   }
 
-  &__field {
-    @include mix.flex-column;
-    gap: 0.5rem;
-    margin-bottom: 1.25rem;
+  &__required {
+    color: var.$danger-color;
+  }
 
-    label {
-      font-weight: 500;
-      color: var.$text-primary;
-    }
-
-    input,
-    textarea {
-      @include mix.form-input;
-      width: 100%;
-      padding: 0.75rem;
-    }
-
-    textarea {
-      min-height: 100px;
-      resize: vertical;
-    }
+  &__input {
+    @include mix.form-input;
   }
 
   &__error {
@@ -54,8 +48,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 0.75rem;
-    background-color: var.$background-light;
-    border: 1px solid var.$border-color;
+    background-color: var.$primary-light;
+    border: 1px solid var.$primary-border;
     border-radius: 4px;
   }
 
@@ -71,26 +65,37 @@
     &:hover {
       background-color: color.adjust(var.$danger-color, $lightness: -10%);
     }
+
+    &:focus-visible {
+      outline: 2px solid var.$danger-color;
+      outline-offset: 2px;
+    }
   }
 
-  &__submit {
-    width: 100%;
+  &__button {
+    margin-top: 1rem;
     padding: 0.75rem;
-    background-color: var.$primary-color;
+    background-color: var.$accent-color;
     color: white;
     border: none;
     border-radius: 4px;
-    font-weight: 500;
+    font-size: 1rem;
+    width: 100%;
     cursor: pointer;
     transition: background-color 0.2s;
+
+    &:hover {
+      background-color: color.adjust(var.$accent-color, $lightness: -10%);
+    }
 
     &:disabled {
       background-color: var.$border-color;
       cursor: not-allowed;
     }
 
-    &:hover:not(:disabled) {
-      background-color: color.adjust(var.$primary-color, $lightness: -10%);
+    &:focus-visible {
+      outline: 2px solid var.$accent-color;
+      outline-offset: 2px;
     }
   }
 
@@ -122,11 +127,12 @@
         cursor: pointer;
 
         &:hover {
-          background-color: var.$background-light;
+          background-color: var.$primary-light;
         }
 
         &--selected {
-          background-color: color.adjust(var.$primary-color, $alpha: -0.9);
+          background-color: var.$primary-light;
+          color: var.$text-primary;
         }
       }
     }

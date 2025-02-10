@@ -3,30 +3,30 @@
         {{ form.get('menuId')?.value ? 'Editar Menú' : 'Crear Menú' }}
     </h2>
 
-    <div class="menu-form__field">
-        <label for="name">Nombre *</label>
-        <input id="name" type="text" formControlName="name">
+    <label class="menu-form__label">
+        <span class="menu-form__text">Nombre <span class="menu-form__required">*</span></span>
+        <input class="menu-form__input" id="name" type="text" formControlName="name">
         @if (formErrors.name.required && form.get('name')?.touched) {
         <span class="menu-form__error">El nombre es requerido</span>
         }
         @if (formErrors.name.minlength && form.get('name')?.touched) {
         <span class="menu-form__error">Mínimo 3 caracteres</span>
         }
-    </div>
+    </label>
 
-    <div class="menu-form__field">
-        <label for="description">Descripción *</label>
-        <textarea id="description" formControlName="description"></textarea>
+    <label class="menu-form__label">
+        <span class="menu-form__text">Descripción <span class="menu-form__required">*</span></span>
+        <textarea class="menu-form__input" id="description" formControlName="description"></textarea>
         @if (formErrors.description.required && form.get('description')?.touched) {
         <span class="menu-form__error">La descripción es requerida</span>
         }
         @if (formErrors.description.minlength && form.get('description')?.touched) {
         <span class="menu-form__error">Mínimo 10 caracteres</span>
         }
-    </div>
+    </label>
 
-    <div class="menu-form__field">
-        <label>Platos Disponibles *</label>
+    <label class="menu-form__label">
+        <span class="menu-form__text">Platos Disponibles <span class="menu-form__required">*</span></span>
         <lib-select [options]="dishOptions()" [placeholder]="'Seleccione un plato'"
             (selectionChange)="addDishId($event)">
         </lib-select>
@@ -45,9 +45,9 @@
             </li>
             }
         </ul>
-    </div>
+    </label>
 
-    <button type="submit" class="menu-form__submit" [disabled]="!form.valid">
+    <button type="submit" class="menu-form__button" [disabled]="!form.valid">
         {{ form.get('menuId')?.value ? 'Actualizar' : 'Crear' }}
     </button>
 </form>
